@@ -1,0 +1,26 @@
+{
+  "subject": "chemistry-hl",
+  "topic": "structure-1-stoichiometry",
+  "topicLabel": "Structure 1 — Particulate nature & stoichiometry (Sep–Nov unit)",
+  "cards": [
+    {"id": "fc-chem-s1-01", "type": "term", "tags": ["definition"], "front": "Mole", "back": "Amount of substance containing 6.02 \u00D7 10\u00B2\u00B3 particles (Avogadro's constant). Bridges the atomic scale and grams."},
+    {"id": "fc-chem-s1-02", "type": "term", "tags": ["formula"], "front": "n = m / M", "back": "Moles = mass (g) \u00F7 molar mass (g/mol). The workhorse of every stoichiometry calculation."},
+    {"id": "fc-chem-s1-03", "type": "term", "tags": ["formula"], "front": "n = c \u00D7 V", "back": "Moles = concentration (mol/dm\u00B3) \u00D7 volume (dm\u00B3). V in cm\u00B3 must be divided by 1000 first."},
+    {"id": "fc-chem-s1-04", "type": "term", "tags": ["formula"], "front": "Ideal gas equation", "back": "PV = nRT with R = 8.31 J K\u207B\u00B9 mol\u207B\u00B9. Pressure in Pa, volume in m\u00B3 (dm\u00B3 \u00F7 1000), T in kelvin."},
+    {"id": "fc-chem-s1-05", "type": "term", "tags": ["definition"], "front": "Empirical vs molecular formula", "back": "Empirical = simplest whole-number ratio; molecular = actual numbers = (empirical)\u2099. From % mass \u2192 moles \u2192 divide by smallest."},
+    {"id": "fc-chem-s1-06", "type": "term", "tags": ["definition"], "front": "Limiting reagent", "back": "Reactant fully consumed first \u2014 it caps the maximum product. Compare moles \u00F7 coefficient for each reactant."},
+    {"id": "fc-chem-s1-07", "type": "term", "tags": ["formula"], "front": "Percentage yield", "back": "actual yield / theoretical yield \u00D7 100. Above 100% means impure product."},
+    {"id": "fc-chem-s1-08", "type": "term", "tags": ["formula"], "front": "Molar gas volume at STP", "back": "22.7 dm\u00B3/mol (first assessment 2025 data booklet). Older books say 22.4 \u2014 use the booklet value."},
+    {"id": "fc-chem-s1-09", "type": "term", "tags": ["definition"], "front": "Isotope", "back": "Same protons, different neutrons: identical chemistry, different mass. Mass spectrometry gives masses + abundances \u2192 relative atomic mass."},
+    {"id": "fc-chem-s1-10", "type": "qa", "tags": ["process"], "front": "How many atoms in 1.0 mol of H\u2082O?", "back": "3 mol atoms (2 H + 1 O) = 3 \u00D7 6.02\u00D710\u00B2\u00B3 = 1.81\u00D710\u00B2\u2074 atoms. Count atoms per formula unit before multiplying."},
+    {"id": "fc-chem-s1-11", "type": "qa", "tags": ["process"], "front": "Why do 0.5 mol of CO\u2082 and 0.5 mol of SO\u2082 contain the same number of molecules but different masses?", "back": "Same moles = same molecule count (Avogadro). Different molar masses (44 vs 64 g/mol) \u2192 different masses. Moles \u2260 mass."},
+    {"id": "fc-chem-s1-12", "type": "qa", "tags": ["process"], "front": "Formula of a hydrated salt \u2014 what's the classic trap?", "back": "Forgetting the waters of crystallisation: CuSO\u2084\u00B75H\u2082O = 159.6 + 90 = 249.6 g/mol. Add the 5H\u2082O mass."},
+    {"id": "fc-chem-s1-13", "type": "qa", "tags": ["formula"], "front": "Dilution formula", "back": "c\u2081V\u2081 = c\u2082V\u2082. Every \u00D710 dilution adds exactly 1 to the pH of an acid."},
+    {"id": "fc-chem-s1-14", "type": "qa", "tags": ["process"], "front": "Two reactants given \u2014 which is limiting?", "back": "Convert both to moles, divide each by its coefficient, the smaller result limits. Then scale products from that reagent only."},
+    {"id": "fc-chem-s1-15", "type": "qa", "tags": ["command-term"], "front": "Command term: Deduce", "back": "Reach a conclusion from the information given through logical reasoning \u2014 e.g. identify the gas from its molar mass, or the metal from successive ionization energies."},
+    {"id": "fc-chem-s1-16", "type": "qa", "tags": ["exam"], "front": "Top three stoichiometry traps in Paper 1A?", "back": "1) cm\u00B3 \u2192 dm\u00B3 conversions; 2) counting atoms per formula unit (Al\u2082(SO\u2084)\u2083 has 12 O); 3) forgetting waters of crystallisation."},
+    {"id": "fc-chem-s1-17", "type": "qa", "tags": ["formula"], "front": "Avogadro's law (gas volumes)", "back": "Equal volumes of gases at the same T and P contain equal numbers of molecules \u2014 gas volume ratios = mole ratios in equations."},
+    {"id": "fc-chem-s1-18", "type": "qa", "tags": ["process"], "front": "Back-titration pattern (H\u2082X + 2NaOH)?", "back": "n(NaOH) = cV \u2192 n(acid) = \u00BD n(NaOH) \u2192 M = m/n. The equation ratio halves the base moles \u2014 always apply it."},
+    {"id": "fc-chem-s1-19", "type": "qa", "tags": ["definition"], "front": "Relative atomic mass (A\u1D63)", "back": "Weighted mean mass of an element's isotopes vs 1/12 of carbon-12. Isotopic masses \u00D7 abundances, summed."}
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "subject": "chemistry-hl",
+  "topic": "structure-2-bonding",
+  "topicLabel": "Structure 2 — Bonding (DP2: Oct–Nov unit)",
+  "cards": [
+    {"id": "fc-chem-s2-01", "type": "term", "tags": ["definition"], "front": "Ionic bond", "back": "Electrostatic attraction between oppositely charged ions \u2014 electron transfer metal \u2192 non-metal; giant lattice; high mp; conducts when molten/aqueous."},
+    {"id": "fc-chem-s2-02", "type": "term", "tags": ["definition"], "front": "Covalent bond", "back": "Shared electron pair between non-metals. Simple molecular (low mp, weak intermolecular forces) or giant network (diamond, SiO\u2082)."},
+    {"id": "fc-chem-s2-03", "type": "term", "tags": ["definition"], "front": "Metallic bond", "back": "Lattice of cations in a sea of delocalized electrons \u2014 explains conductivity, malleability, high melting points."},
+    {"id": "fc-chem-s2-04", "type": "term", "tags": ["process"], "front": "VSEPR repulsion order", "back": "Lone pair\u2013lone pair > lone pair\u2013bond pair > bond pair\u2013bond pair. Lone pairs compress bond angles below the ideal."},
+    {"id": "fc-chem-s2-05", "type": "term", "tags": ["formula"], "front": "Molecular shapes to memorize", "back": "2 domains linear 180\u00B0 · 3 trigonal planar 120\u00B0 · 4 tetrahedral 109.5\u00B0 · +1 lone pair pyramidal ~107\u00B0 · +2 lone pairs bent ~104.5\u00B0."},
+    {"id": "fc-chem-s2-06", "type": "term", "tags": ["definition"], "front": "Bond polarity", "back": "Unequal sharing from electronegativity difference \u2192 dipole. N\u2013H, O\u2013H and F\u2013H bonds are strongly polar."},
+    {"id": "fc-chem-s2-07", "type": "term", "tags": ["process"], "front": "Molecular polarity rule", "back": "Polar bonds + asymmetric shape = polar molecule. Symmetric shapes (CO\u2082, CH\u2084, BF\u2083) cancel dipoles \u2192 non-polar despite polar bonds."},
+    {"id": "fc-chem-s2-08", "type": "term", "tags": ["definition"], "front": "London (dispersion) forces", "back": "Present in ALL molecules; grow with electron count and surface area. Only force in non-polar molecules \u2014 explains I\u2082's low boiling point vs diamond's hardness."},
+    {"id": "fc-chem-s2-09", "type": "term", "tags": ["definition"], "front": "Hydrogen bonding", "back": "H covalently bonded to N/O/F attracted to a lone pair on another N/O/F. Strongest IMF \u2014 explains the boiling-point anomalies of H\u2082O, NH\u2083, HF."},
+    {"id": "fc-chem-s2-10", "type": "term", "tags": ["process"], "front": "Graphite vs diamond", "back": "Both giant covalent carbon. Graphite: 3-coordinated, delocalized electrons between layers \u2192 conducts + lubricates. Diamond: 4-coordinated network \u2192 hardest, insulates."},
+    {"id": "fc-chem-s2-11", "type": "qa", "tags": ["process"], "front": "Why doesn't solid NaCl conduct?", "back": "Ions are fixed in the lattice \u2014 charged but immobile. Molten or aqueous: ions free \u2192 conducts. Contrast metals (electrons always mobile)."},
+    {"id": "fc-chem-s2-12", "type": "qa", "tags": ["process"], "front": "Why is I\u2082's boiling point so low?", "back": "Simple molecular: boiling overcomes weak London forces BETWEEN molecules \u2014 the strong I\u2013I covalent bonds never break. Never say 'covalent bonds break'."},
+    {"id": "fc-chem-s2-13", "type": "qa", "tags": ["process"], "front": "Which molecules are non-polar despite polar bonds?", "back": "CO\u2082 (linear), CH\u2084 (tetrahedral), BF\u2083 (trigonal planar) \u2014 symmetric shapes cancel the dipoles. CHCl\u2083 is polar (asymmetric)."},
+    {"id": "fc-chem-s2-14", "type": "qa", "tags": ["process"], "front": "NH\u2084\u207A's fourth bond \u2014 what type?", "back": "Dative (coordinate) covalent: nitrogen supplies both electrons. Once formed, indistinguishable from the other three N\u2013H bonds."},
+    {"id": "fc-chem-s2-15", "type": "qa", "tags": ["process"], "front": "O\u2083's bond lengths \u2014 why equal and intermediate?", "back": "Delocalized/resonance: the double bond character spreads over both positions \u2192 bond order 1.5, identical bonds. Same principle as benzene."},
+    {"id": "fc-chem-s2-16", "type": "qa", "tags": ["formula"], "front": "Bond length vs strength order", "back": "Single > double > triple bond LENGTH; triple strongest. C\u2013C (ethane) > C=C (ethene) > C\u2261C (ethyne) in length \u2014 reversed for strength."},
+    {"id": "fc-chem-s2-17", "type": "qa", "tags": ["command-term"], "front": "Command term: Predict and explain (shapes)", "back": "Four-step template: count domains \u2192 domain geometry \u2192 molecular shape (subtract lone pairs) \u2192 quote angle + polarity reasoning."},
+    {"id": "fc-chem-s2-18", "type": "qa", "tags": ["exam"], "front": "Melting-point comparison template", "back": "Identify structure (giant ionic / simple molecular / giant covalent / metallic) \u2192 name what's overcome on melting \u2192 compare strengths. 'Covalent bonds break' is WRONG for simple molecules."},
+    {"id": "fc-chem-s2-19", "type": "qa", "tags": ["definition"], "front": "Expanded octet", "back": "Period 3+ elements can hold >8 electrons (SF\u2086 has 12 around S). Never for period 2 \u2014 C, N, O, F stop at the octet."}
+  ]
+}

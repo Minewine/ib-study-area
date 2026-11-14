@@ -1,0 +1,26 @@
+{
+  "subject": "chemistry-hl",
+  "topic": "organic-chemistry",
+  "topicLabel": "Organic chemistry (DP2: Nov–Mar unit)",
+  "cards": [
+    {"id": "fc-chem-org-01", "type": "term", "tags": ["definition"], "front": "Homologous series", "back": "Family sharing a general formula and functional group; successive members differ by CH\u2082; boiling points rise gradually along it."},
+    {"id": "fc-chem-org-02", "type": "term", "tags": ["definition"], "front": "Functional groups (recognize all)", "back": "\u2013OH alcohol · \u2013X halogenoalkane · C=C alkene · \u2013CHO aldehyde · C(=O) in-chain ketone · \u2013COOH carboxylic acid · \u2013COO\u2013 ester · \u2013NH\u2082 amine · benzene ring arene."},
+    {"id": "fc-chem-org-03", "type": "term", "tags": ["process"], "front": "Nomenclature rules", "back": "Longest chain \u2192 lowest locants \u2192 functional group suffix priority. Number from the end that gives the lowest numbers."},
+    {"id": "fc-chem-org-04", "type": "term", "tags": ["definition"], "front": "Structural isomers", "back": "Same molecular formula, different atom arrangement (C\u2084H\u2081\u2080: butane + 2-methylpropane). Branching lowers boiling point (weaker London contact)."},
+    {"id": "fc-chem-org-05", "type": "term", "tags": ["process"], "front": "Alkene test", "back": "Bromine water: decolorizes rapidly with C=C (addition), stays orange with alkanes. Quick unsaturation test."},
+    {"id": "fc-chem-org-06", "type": "term", "tags": ["definition"], "front": "Alcohol classes", "back": "Primary (C\u2013OH carbon bonded to 1 C), secondary (2 C), tertiary (3 C). Class decides oxidation products."},
+    {"id": "fc-chem-org-07", "type": "term", "tags": ["process"], "front": "Alcohol oxidation chain", "back": "Primary \u2192 aldehyde (distil as formed) \u2192 carboxylic acid (reflux, excess oxidant). Secondary \u2192 ketone only. Tertiary \u2192 resist mild oxidation."},
+    {"id": "fc-chem-org-08", "type": "term", "tags": ["process"], "front": "Substitution vs elimination (halogenoalkanes)", "back": "Aqueous NaOH \u2192 substitution \u2192 alcohol. Ethanolic NaOH, heat \u2192 elimination \u2192 alkene. Same reagent, solvent decides."},
+    {"id": "fc-chem-org-09", "type": "term", "tags": ["process"], "front": "Addition reactions of alkenes", "back": "C=C opens: H\u2082/Ni \u2192 alkane · Br\u2082 \u2192 dibromo · HBr \u2192 halogenoalkane · H\u2082O/catalyst \u2192 alcohol (Markovnikov: OH to the carbon with fewer H)."},
+    {"id": "fc-chem-org-10", "type": "term", "tags": ["definition"], "front": "Addition polymerization", "back": "Alkene C=C bonds open and link: ethene \u2192 poly(ethene). Polymer has the same empirical formula as the monomer; saturated chain."},
+    {"id": "fc-chem-org-11", "type": "term", "tags": ["process"], "front": "Esterification", "back": "Carboxylic acid + alcohol \u21CC ester + water, warm with acid catalyst. Condensation reaction \u2014 esters are fruity-smelling."},
+    {"id": "fc-chem-org-12", "type": "term", "tags": ["process"], "front": "Radical halogenation of alkanes", "back": "Alkane + Cl\u2082 needs UV light: initiation (Cl\u00B7 formed) \u2192 propagation chain \u2192 termination (radicals pair). Homolytic fission."},
+    {"id": "fc-chem-org-13", "type": "term", "tags": ["definition"], "front": "Benzene / arene", "back": "Delocalized \u03C0 ring, equal C\u2013C bond lengths (order 1.5) \u2192 reacts by SUBSTITUTION, not addition \u2014 the ring's stability is preserved."},
+    {"id": "fc-chem-org-14", "type": "term", "tags": ["formula"], "front": "IR identification", "back": "Broad 3200\u20133600 cm\u207B\u00B9 = O\u2013H (alcohol/acid) · sharp ~1700 cm\u207B\u00B9 = C=O · ~1700+ broad = carboxylic acid. Functional groups, not full structure."},
+    {"id": "fc-chem-org-15", "type": "qa", "tags": ["process"], "front": "Oxidation product of butan-2-ol?", "back": "Butanone \u2014 secondary alcohol \u2192 ketone, and ketones resist further oxidation. (Butan-1-ol would give butanal then butanoic acid.)"},
+    {"id": "fc-chem-org-16", "type": "qa", "tags": ["process"], "front": "Distil vs reflux when oxidizing a primary alcohol?", "back": "Distil immediately \u2192 aldehyde escapes before oxidizing further. Reflux with excess oxidant \u2192 goes all the way to the carboxylic acid."},
+    {"id": "fc-chem-org-17", "type": "qa", "tags": ["exam"], "front": "Incomplete combustion hazard", "back": "Limited O\u2082 \u2192 CO (toxic) + soot (C) instead of CO\u2082. Complete combustion: full oxidation to CO\u2082 + H\u2082O."},
+    {"id": "fc-chem-org-18", "type": "qa", "tags": ["command-term"], "front": "Command term: State the reagents and conditions", "back": "Both required: reagent (e.g. acidified K\u2082Cr\u2082O\u2087) AND condition (reflux/distil/heat). Naming the organic product at each step is expected too."},
+    {"id": "fc-chem-org-19", "type": "qa", "tags": ["process"], "front": "Synthesis planning in two steps", "back": "Work backwards: target functional group \u2190 reaction that makes it \u2190 starting alkene/halogenoalkane. E.g. propene \u2192 hydration \u2192 propan-2-ol \u2192 oxidation \u2192 propanone."}
+  ]
+}

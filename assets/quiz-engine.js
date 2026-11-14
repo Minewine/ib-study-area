@@ -8,7 +8,11 @@
     "chemistry-hl": { label: "Chemistry HL", banks: [
       { file: "library/questions/chem-structure-1-stoichiometry.json", label: "Structure 1 — Stoichiometry (notes 1)" },
       { file: "library/questions/chem-structure-3-1-periodicity.json", label: "Structure 3.1 — Periodicity (Nov unit)" },
-      { file: "library/questions/chem-reactivity-1-energetics.json", label: "Reactivity 1 — Energetics (Dec–Jan unit)" }
+      { file: "library/questions/chem-reactivity-1-energetics.json", label: "Reactivity 1 — Energetics (Dec–Jan unit)" },
+      { file: "library/questions/chem-reactivity-2-kinetics-equilibrium.json", label: "Reactivity 2 — Kinetics & equilibrium (Feb–Mar unit)" },
+      { file: "library/questions/chem-reactivity-3-redox-acids-bases.json", label: "Reactivity 3 — Redox & acids/bases (Apr–Jun unit)" },
+      { file: "library/questions/chem-structure-2-bonding.json", label: "Structure 2 — Bonding (DP2: Oct–Nov unit)" },
+      { file: "library/questions/chem-organic-chemistry.json", label: "Organic chemistry (DP2: Nov–Mar unit)" }
     ]},
     "biology-hl": { label: "Biology HL", banks: [
       { file: "library/questions/bio-unity-diversity-cells.json", label: "Unity & diversity — Cells & membranes" },

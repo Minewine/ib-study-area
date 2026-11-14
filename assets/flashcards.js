@@ -8,7 +8,13 @@
   const REGISTRY = [
     { file: "library/flashcards/bio-c1-1-enzymes-metabolism.json", subject: "biology-hl", subjectLabel: "Biology HL" },
     { file: "library/flashcards/math-number-algebra.json", subject: "math-aa-sl", subjectLabel: "Math AA SL" },
-    { file: "library/flashcards/chem-structure-3-1-periodicity.json", subject: "chemistry-hl", subjectLabel: "Chemistry HL" }
+    { file: "library/flashcards/chem-structure-3-1-periodicity.json", subject: "chemistry-hl", subjectLabel: "Chemistry HL" },
+    { file: "library/flashcards/chem-structure-1-stoichiometry.json", subject: "chemistry-hl", subjectLabel: "Chemistry HL" },
+    { file: "library/flashcards/chem-reactivity-1-energetics.json", subject: "chemistry-hl", subjectLabel: "Chemistry HL" },
+    { file: "library/flashcards/chem-reactivity-2-kinetics-equilibrium.json", subject: "chemistry-hl", subjectLabel: "Chemistry HL" },
+    { file: "library/flashcards/chem-reactivity-3-redox-acids-bases.json", subject: "chemistry-hl", subjectLabel: "Chemistry HL" },
+    { file: "library/flashcards/chem-structure-2-bonding.json", subject: "chemistry-hl", subjectLabel: "Chemistry HL" },
+    { file: "library/flashcards/chem-organic-chemistry.json", subject: "chemistry-hl", subjectLabel: "Chemistry HL" }
   ];
   const INTERVALS = { 1: 1, 2: 2, 3: 4, 4: 8, 5: 16 }; // days per Leitner box
 

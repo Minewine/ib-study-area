@@ -1,0 +1,26 @@
+{
+  "subject": "chemistry-hl",
+  "topic": "reactivity-2-kinetics-equilibrium",
+  "topicLabel": "Reactivity 2 — Kinetics & equilibrium (Feb–Mar unit)",
+  "cards": [
+    {"id": "fc-chem-r2-01", "type": "term", "tags": ["definition"], "front": "Reaction rate", "back": "Change in concentration of a reactant/product per unit time (mol dm\u207B\u00B3 s\u207B\u00B9) \u2014 tangent slope on a concentration\u2013time graph."},
+    {"id": "fc-chem-r2-02", "type": "term", "tags": ["definition"], "front": "Collision theory", "back": "Reaction needs collisions with energy \u2265 E\u1D00 AND correct orientation. Both requirements together explain why so few collisions react."},
+    {"id": "fc-chem-r2-03", "type": "term", "tags": ["process"], "front": "Rate factors", "back": "Increase rate: higher temperature, higher concentration/pressure, greater surface area (powder), catalyst. None of these changes \u0394H."},
+    {"id": "fc-chem-r2-04", "type": "term", "tags": ["definition"], "front": "Maxwell\u2013Boltzmann curve", "back": "Energy distribution of molecules: area = total number; only the tail beyond E\u1D00 reacts. Higher T flattens/shifts right; a catalyst moves the E\u1D00 line left."},
+    {"id": "fc-chem-r2-05", "type": "term", "tags": ["definition"], "front": "Catalyst", "back": "Provides an alternative pathway with lower E\u1D00. Regenerated unchanged; speeds both directions; no effect on \u0394H or K."},
+    {"id": "fc-chem-r2-06", "type": "term", "tags": ["definition"], "front": "Dynamic equilibrium", "back": "In a closed system: forward rate = reverse rate, concentrations constant (not equal). Both reactions still occurring."},
+    {"id": "fc-chem-r2-07", "type": "term", "tags": ["formula"], "front": "Equilibrium constant expression", "back": "K = products over reactants, each raised to its coefficient. Pure solids and liquids are omitted from the expression."},
+    {"id": "fc-chem-r2-08", "type": "term", "tags": ["definition"], "front": "Meaning of K's size", "back": "K \u226B 1 \u2192 products favoured; K \u226A 1 \u2192 reactants favoured. K's size says nothing about RATE."},
+    {"id": "fc-chem-r2-09", "type": "term", "tags": ["process"], "front": "Le Ch\u00E2telier's principle", "back": "A system at equilibrium shifts to OPPOSE a change: concentration, pressure (fewer gas moles) or temperature (endothermic direction absorbs heat)."},
+    {"id": "fc-chem-r2-10", "type": "term", "tags": ["process"], "front": "Pressure change effect", "back": "Higher pressure shifts toward fewer gas moles (N\u2082 + 3H\u2082 \u21CC 2NH\u2083: right). Inert gas at constant volume: no shift."},
+    {"id": "fc-chem-r2-11", "type": "term", "tags": ["process"], "front": "Temperature change effect", "back": "Shifts in the endothermic direction. For exothermic forward reactions, heating lowers the yield AND decreases K. Only T changes K."},
+    {"id": "fc-chem-r2-12", "type": "qa", "tags": ["process"], "front": "Why does the Haber process run at ~450 \u00B0C?", "back": "Rate/yield compromise: forward reaction is exothermic (lower T = more NH\u2083) but unacceptably slow. 450 \u00B0C + Fe catalyst + high pressure."},
+    {"id": "fc-chem-r2-13", "type": "qa", "tags": ["process"], "front": "Why remove NH\u2083 continuously in industry?", "back": "Liquefying and removing product keeps Q < K \u2192 equilibrium keeps shifting forward \u2192 more production."},
+    {"id": "fc-chem-r2-14", "type": "qa", "tags": ["process"], "front": "Q vs K \u2014 what does Q < K mean?", "back": "Too few products relative to equilibrium \u2192 forward shift until Q = K. Q > K \u2192 reverse shift."},
+    {"id": "fc-chem-r2-15", "type": "qa", "tags": ["exam"], "front": "Classic equilibrium trap questions?", "back": "Catalyst = faster, NOT more product. Inert gas at constant volume = no shift. 'Equal concentrations' at equilibrium = false (equal RATES)."},
+    {"id": "fc-chem-r2-16", "type": "qa", "tags": ["exam"], "front": "Where does the temperature effect bite in the Haber process?", "back": "K itself decreases as T rises (exothermic forward). Every other stress shifts position without changing K."},
+    {"id": "fc-chem-r2-17", "type": "qa", "tags": ["command-term"], "front": "Command term: Predict (equilibrium)", "back": "Give the direction AND the Le Ch\u00E2telier justification (opposing the change). Direction alone = half marks."},
+    {"id": "fc-chem-r2-18", "type": "qa", "tags": ["process"], "front": "Paper 1B data question on rates?", "back": "Read tangents for initial rate, compare curves for T/conc changes, and explain with collision theory + the MB tail \u2014 not just 'molecules move faster'."},
+    {"id": "fc-chem-r2-19", "type": "qa", "tags": ["process"], "front": "Why is kinetics about the JOURNEY and equilibrium about the DESTINATION?", "back": "Kinetics: how fast equilibrium is reached (E\u1D00, pathway). Equilibrium: where the mixture ends up (K, thermodynamics). Catalysts touch only the journey."}
+  ]
+}

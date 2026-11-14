@@ -13,8 +13,8 @@ Legend: ✅ in place · 🟡 partial / needs review · ❌ missing · ➖ not ap
 |---|---|---|---|---|---|---|---|
 | Subject hub (weightings, currency banner) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ Core hub |
 | Notes PDFs linked to checklist | ✅ 28 topics (T1–T2) | ✅ 43 topics (all themes) | ✅ 25 topics (all units) | ❌¹ | ❌² | ❌² | ➖ |
-| Quiz bank | 🟡 2 of 5 topics (44 items) | 🟡 2 units (44) | 🟡 3 units (66) | ❌³ | ➖³ | ➖³ | ➖ |
-| Flashcard deck | 🟡 1 deck (20) | 🟡 1 deck (19) | 🟡 1 deck (19) | ➖³ | 🟡 vocab deck would help | 🟡 quotes/lit-terms deck would help | ➖ |
+| Quiz bank | 🟡 2 of 5 topics (44 items) | 🟡 2 units (44) | ✅ 7 units (154) | ❌³ | ➖³ | ➖³ | ➖ |
+| Flashcard deck | 🟡 1 deck (20) | 🟡 1 deck (19) | ✅ 7 decks (~133) | ➖³ | 🟡 vocab deck would help | 🟡 quotes/lit-terms deck would help | ➖ |
 | Past papers + markschemes (local) | ❌ (school channel) | ❌ (M25/N25/M26 via school) | ❌ (same) | ❌ (specimens only — none exist yet) | ❌ (M26+ via school) | ✅ 2 official specimens | ➖ |
 | IA support | 🟡 exploration criteria + exemplars (TSM) | ✅ criteria + ISL practice/experiment schedule | ✅ same schedule | 🟡 IA rubric noted (30%) | ✅ IO structure + global-issue routine | ✅ HL Essay timeline (draft May 11, final Jun 18) | ✅ EE guide FA2027 + forms |
 | ISL teaching order documented | ❌ (confirm with teacher) | ✅ course outline | ✅ at-a-glance | ❌ | ❌ | ❌ | ➖ |
@@ -44,12 +44,11 @@ Legend: ✅ in place · 🟡 partial / needs review · ❌ missing · ➖ not ap
 5. Papers: M25/N25/M26 + markschemes via school.
 6. DP2 units (Continuity → Change): banks only when DP2 nears (Sept 2027) — do not front-load.
 
-### Chemistry HL
-1. Quiz bank: **Reactivity 2 — kinetics + equilibrium** (February–March ISL unit).
-2. Quiz bank: **Reactivity 3 — acids/bases + redox** (April–June).
-3. Flashcards: energetics deck (definitions, q=mcΔT, ΔG cases) before the December–January unit starts.
-4. Bonding + organic banks: **DP2 only** (ISL teaches them Oct–Nov 2027 / Nov 2027–Mar 2028) — deliberately last.
-5. Papers via school.
+### Chemistry HL — COMPLETE (2026-11-14)
+All 7 units now have a quiz bank and a flashcard deck: particulate/stoichiometry ·
+periodicity · energetics · kinetics+equilibrium · redox+acids/bases · bonding · organic.
+DP2 decks (bonding, organic) are ready in the pickers ahead of teaching. Remaining chem
+work is papers (school channel) and keeping the content current after each ISL unit test.
 
 ### History SL
 1. **Blocked on the topic list**: which focused studies (Paper 1) and P2 topics ISL runs for her class. Once known → content quiz items + essay-plan written items.

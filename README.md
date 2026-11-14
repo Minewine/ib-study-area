@@ -23,7 +23,7 @@ Status snapshot: **2026-11-14** — see [docs/ROADMAP.md](docs/ROADMAP.md) for w
 | Reference | `quick-reference.html` | Formula/data booklets, command terms, GDC exam-mode, citation |
 | Redirect | `sixth-subject.html` | The sixth subject is English A Literature HL → redirects to its hub |
 
-Content totals: **127 PDFs** in the library · **154 quiz questions** (7 banks) · **58 flashcards** (3 decks).
+Content totals: **127 PDFs** in the library · **242 quiz questions** (7 banks) · **172 flashcards** (7 decks).
 
 ## Tech stack (deliberately boring)
 
@@ -59,8 +59,8 @@ ibsystem/
 │   ├── official/             ← 21 PDFs from ibo.org (guides, specimens, briefs, booklets, EE guide)
 │   ├── school/               ← ISL course documents (bio outline, chem at-a-glance, math syllabus)
 │   ├── notes/                ← 103 topic PDFs, organised by ISL teaching order
-│   ├── questions/            ← 7 quiz banks (154 items) — schema in DEVELOPMENT.md
-│   ├── flashcards/           ← 3 decks (58 cards) — schema in DEVELOPMENT.md
+│   ├── questions/            ← 7 quiz banks (242 items) — schema in DEVELOPMENT.md
+│   ├── flashcards/           ← 7 decks (172 cards) — schema in DEVELOPMENT.md
 │   └── papers/               ← (empty) school-provided past papers land here
 ├── source-archives/          ← original downloaded ZIPs (kept as provenance; deletable once confident)
 └── tools/build_site.py       ← OPTIONAL generator for 10 base pages — see warning in DEVELOPMENT.md

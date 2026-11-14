@@ -1,0 +1,26 @@
+{
+  "subject": "chemistry-hl",
+  "topic": "reactivity-1-energetics",
+  "topicLabel": "Reactivity 1 — Energetics (Dec–Jan unit)",
+  "cards": [
+    {"id": "fc-chem-r1-01", "type": "term", "tags": ["definition"], "front": "Exothermic", "back": "\u0394H < 0 \u2014 heat released, products lower in energy than reactants. Container feels warm."},
+    {"id": "fc-chem-r1-02", "type": "term", "tags": ["definition"], "front": "Endothermic", "back": "\u0394H > 0 \u2014 heat absorbed, products higher in energy. Container feels cold (e.g. dissolving some salts)."},
+    {"id": "fc-chem-r1-03", "type": "term", "tags": ["definition"], "front": "Activation energy (E\u1D00)", "back": "Minimum energy colliding particles need to react \u2014 the peak minus reactants on an energy profile. Catalysts lower it; \u0394H is unchanged."},
+    {"id": "fc-chem-r1-04", "type": "term", "tags": ["formula"], "front": "q = mc\u0394T", "back": "Heat absorbed = mass of SOLUTION \u00D7 specific heat capacity \u00D7 temperature change. c(water) = 4.18 J g\u207B\u00B9 K\u207B\u00B9. m \u2248 total solution volume in g."},
+    {"id": "fc-chem-r1-05", "type": "term", "tags": ["definition"], "front": "Hess's law", "back": "\u0394H is independent of route \u2014 enthalpy is a state function. Lets you calculate impossible-to-measure \u0394H values from energy cycles."},
+    {"id": "fc-chem-r1-06", "type": "term", "tags": ["definition"], "front": "Average bond enthalpy", "back": "Energy to break one mole of a specific bond in the GASEOUS state. Averaged across molecules \u2014 so calculated \u0394H values differ slightly from experiment."},
+    {"id": "fc-chem-r1-07", "type": "term", "tags": ["formula"], "front": "\u0394H from bond enthalpies", "back": "\u0394H = bonds broken \u2212 bonds formed. (Breaking absorbs, forming releases.)"},
+    {"id": "fc-chem-r1-08", "type": "term", "tags": ["definition"], "front": "Standard enthalpy of formation", "back": "\u0394H making 1 mol of a compound from its elements in their standard states (100 kPa, 298 K). Elements in standard states \u2261 0."},
+    {"id": "fc-chem-r1-09", "type": "term", "tags": ["definition"], "front": "Entropy (S)", "back": "Dispersal of energy/particles: gas > liquid > solid; increases when gas moles increase. Units J K\u207B\u00B9 mol\u207B\u00B9."},
+    {"id": "fc-chem-r1-10", "type": "term", "tags": ["formula"], "front": "Gibbs free energy", "back": "\u0394G = \u0394H \u2212 T\u0394S. Spontaneous when \u0394G < 0; \u0394G = 0 at equilibrium. Convert \u0394S to kJ before mixing units."},
+    {"id": "fc-chem-r1-11", "type": "qa", "tags": ["process"], "front": "\u0394H < 0 and \u0394S > 0 \u2014 spontaneous?", "back": "Yes, at ALL temperatures: both terms drive \u0394G negative. (The other three sign combinations are temperature-dependent.)"},
+    {"id": "fc-chem-r1-12", "type": "qa", "tags": ["process"], "front": "\u0394H > 0 and \u0394S > 0 \u2014 when spontaneous?", "back": "Only above T = \u0394H/\u0394S (entropy-driven \u2014 e.g. melting ice above 0 \u00B0C)."},
+    {"id": "fc-chem-r1-13", "type": "qa", "tags": ["process"], "front": "What does a catalyst NOT change?", "back": "\u0394H, \u0394G or the equilibrium position \u2014 only E\u1D00 and therefore rate. Thermodynamics vs kinetics distinction."},
+    {"id": "fc-chem-r1-14", "type": "qa", "tags": ["process"], "front": "Temperature fell during a reaction \u2014 sign of \u0394H?", "back": "Positive (endothermic): the mixture absorbed heat from its surroundings. Read the sign from the thermometer's direction."},
+    {"id": "fc-chem-r1-15", "type": "qa", "tags": ["process"], "front": "Neutralisation \u0394H \u2014 expected value?", "back": "\u2248 \u221254 to \u221257 kJ/mol for strong acid + strong base (per mole of water formed). Negative, because temperature RISES."},
+    {"id": "fc-chem-r1-16", "type": "qa", "tags": ["exam"], "front": "Calorimetry trap: which mass goes into q = mc\u0394T?", "back": "The whole solution heated (both volumes \u2248 mass), not just the solute. Also divide by moles of WATER formed for neutralisation \u0394H."},
+    {"id": "fc-chem-r1-17", "type": "qa", "tags": ["process"], "front": "Why are calculated bond-enthalpy \u0394H values not exact?", "back": "Average bond enthalpies ignore the molecule's specific environment \u2014 real bonds vary slightly. Experiment beats calculation."},
+    {"id": "fc-chem-r1-18", "type": "qa", "tags": ["command-term"], "front": "Command term: Predict", "back": "Give an expected result WITH justification (Le Ch\u00E2telier, \u0394G cases). A bare answer loses the reasoning marks."},
+    {"id": "fc-chem-r1-19", "type": "qa", "tags": ["process"], "front": "Energy profile \u2014 what does a catalyst change on the diagram?", "back": "Only the peak (E\u1D00) drops, via a new pathway. Reactant and product levels (\u0394H) stay exactly the same."}
+  ]
+}
