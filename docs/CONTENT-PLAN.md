@@ -1,6 +1,6 @@
 # Content Plan & Completeness
 
-Status snapshot: **2026-11-14**. Update the matrix whenever something is added — the
+Status snapshot: **2026-11-14 (evening)** — quiz banks now cover every DP1 unit through the spring. Update the matrix whenever something is added — the
 matrix IS the tracking system (no separate tool needed).
 
 Legend: ✅ in place · 🟡 partial / needs review · ❌ missing · ➖ not applicable by design
@@ -13,7 +13,7 @@ Legend: ✅ in place · 🟡 partial / needs review · ❌ missing · ➖ not ap
 |---|---|---|---|---|---|---|---|
 | Subject hub (weightings, currency banner) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ Core hub |
 | Notes PDFs linked to checklist | ✅ 28 topics (T1–T2) | ✅ 43 topics (all themes) | ✅ 25 topics (all units) | ❌¹ | ❌² | ❌² | ➖ |
-| Quiz bank | 🟡 2 of 5 topics (44 items) | 🟡 2 units (44) | ✅ 7 units (154) | ❌³ | ➖³ | ➖³ | ➖ |
+| Quiz bank | ✅ 3 banks (65 items: T1, 2.1–2.3, 2.4–2.5) | ✅ 4 units (83) | ✅ 7 units (154) | ❌³ | ➖³ | ➖³ | ➖ |
 | Flashcard deck | 🟡 1 deck (20) | 🟡 1 deck (19) | ✅ 7 decks (~133) | ➖³ | 🟡 vocab deck would help | 🟡 quotes/lit-terms deck would help | ➖ |
 | Past papers + markschemes (local) | ❌ (school channel) | ❌ (M25/N25/M26 via school) | ❌ (same) | ❌ (specimens only — none exist yet) | ❌ (M26+ via school) | ✅ 2 official specimens | ➖ |
 | IA support | 🟡 exploration criteria + exemplars (TSM) | ✅ criteria + ISL practice/experiment schedule | ✅ same schedule | 🟡 IA rubric noted (30%) | ✅ IO structure + global-issue routine | ✅ HL Essay timeline (draft May 11, final Jun 18) | ✅ EE guide FA2027 + forms |
@@ -29,16 +29,16 @@ Legend: ✅ in place · 🟡 partial / needs review · ❌ missing · ➖ not ap
 ## Per-subject priorities (what to add, in order)
 
 ### Mathematics AA SL
-1. **Confirm ISL's unit order** with her teacher/planner, then relabel the math Functions bank ("likely next unit" is an assumption).
-2. Quiz bank: **Functions 2.4–2.5 (composite/transformations)** — one unit ahead.
+1. **Confirm ISL's unit order** with her teacher/planner (the math bank labels assume the standard T1 → Functions sequence).
+2. ~~Functions 2.4–2.5 bank~~ — ✅ built (2026-11-14).
 3. Quiz bank: **Topic 3 trigonometry** (25-hour topic) once Functions closes.
 4. Flashcards: trig formulae + exact values deck when Topic 3 starts.
 5. Notes: the official syllabus content is filed (`library/school/math-aa-syllabus-content.pdf`) — ISL-specific teaching order when available.
 6. Papers: recent TZ2 sessions + markschemes via school → `library/papers/math-aa-sl/`.
 
 ### Biology HL
-1. Quiz bank: **D2.3 water potential + A2.1 origin of cells top-up** (January unit; transport basics already covered by the cells bank).
-2. Quiz bank: **C1.2 cell respiration + D1.2/D2.2 protein synthesis/gene expression** (February–March units).
+1. ~~D2.3 water potential + A2.1 origin of cells~~ — ✅ built (2026-11-14).
+2. ~~C1.2 respiration + protein synthesis~~ — ✅ built (2026-11-14).
 3. Flashcards: enzymes deck exists; add **respiration stages + water potential** deck in January.
 4. **IA support is strong** — practice schedule from the course outline is integrated; add a one-page debrief after the November hydrogen-peroxide session (what the criteria looked like in practice).
 5. Papers: M25/N25/M26 + markschemes via school.

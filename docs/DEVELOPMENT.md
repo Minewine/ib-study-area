@@ -76,21 +76,19 @@ Ids unique **across all decks** (prefix per deck). Same `topic` keys as question
 ### Deadlines (`assets/deadlines.js` → `DEADLINES` array)
 `{ d: "YYYY-MM-DD", t: "label", tag: "sciences|ee|tok|core|exams|langlit|university|sixth" }`
 
-## ⚠️ Generator regression risk (read before running `tools/build_site.py`)
+## Generator
 
-`tools/build_site.py` regenerates 10 of the 16 pages. The hand-applied improvements listed
-below exist **only in the HTML files**, not in the generator — re-running it will silently
-revert them:
+`tools/build_site.py` regenerates the 10 base pages (index, 5 hubs, core, practice, ia,
+quick-reference) plus `assets/style.css` and `assets/app.js`. All post-generation patches
+are folded into its `PATCHES` list (teaching-sequence panels, dashboard next-up strip,
+English Lit card, quiz callout, ISL milestone dates, ISL paragraph, chip styles, canonical
+nav) — re-running it reproduces every page byte-for-byte (**verified 2026-11-14**).
 
-- `index.html`: "Next school deadlines" strip + `deadlines.js` script tag
-- `practice.html`: quiz-engine callout card
-- `ia.html`: ISL milestone dates in the table
-- nav on quiz/plan/deadlines/flashcards/english-lit pages (generator's BASE nav is synced
-  for most, but the hand-written pages are not generated anyway)
-
-**Options (pick one before anyone re-runs it):** fold the patches into the generator's
-templates, or retire the generator and treat all pages as hand-maintained. Until then:
-*treat `tools/build_site.py` as documentation of how the pages were built, not as a runnable.*
+Rules:
+- Any hand-edit to one of the 10 generated pages must ALSO be folded into the generator
+  (template or PATCHES entry) — otherwise the next regeneration reverts it.
+- The hand-maintained pages (`quiz.html`, `plan.html`, `deadlines.html`, `flashcards.html`,
+  `english-lit-hl.html`, `sixth-subject.html`) are never touched by the generator.
 
 ## Recipes (common changes)
 

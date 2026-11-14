@@ -4,7 +4,7 @@ A self-contained, private, static study website. No framework, no build step, no
 Everything here was built around one idea: **content is only useful if it matches the exact
 syllabus editions she is examined on (May 2028) and the order ISL actually teaches it.**
 
-Status snapshot: **2026-11-14** — see [docs/ROADMAP.md](docs/ROADMAP.md) for what's next.
+Status snapshot: **2026-11-14** — generator de-risked (regeneration is byte-safe), chemistry content complete. See [docs/ROADMAP.md](docs/ROADMAP.md) for what's next.
 
 ---
 
@@ -23,7 +23,7 @@ Status snapshot: **2026-11-14** — see [docs/ROADMAP.md](docs/ROADMAP.md) for w
 | Reference | `quick-reference.html` | Formula/data booklets, command terms, GDC exam-mode, citation |
 | Redirect | `sixth-subject.html` | The sixth subject is English A Literature HL → redirects to its hub |
 
-Content totals: **127 PDFs** in the library · **242 quiz questions** (7 banks) · **172 flashcards** (7 decks).
+Content totals: **127 PDFs** in the library · **303 quiz questions** (14 banks) · **172 flashcards** (7 decks).
 
 ## Tech stack (deliberately boring)
 
@@ -59,7 +59,7 @@ ibsystem/
 │   ├── official/             ← 21 PDFs from ibo.org (guides, specimens, briefs, booklets, EE guide)
 │   ├── school/               ← ISL course documents (bio outline, chem at-a-glance, math syllabus)
 │   ├── notes/                ← 103 topic PDFs, organised by ISL teaching order
-│   ├── questions/            ← 7 quiz banks (242 items) — schema in DEVELOPMENT.md
+│   ├── questions/            ← 14 quiz banks (303 items) — schema in DEVELOPMENT.md
 │   ├── flashcards/           ← 7 decks (172 cards) — schema in DEVELOPMENT.md
 │   └── papers/               ← (empty) school-provided past papers land here
 ├── source-archives/          ← original downloaded ZIPs (kept as provenance; deletable once confident)
@@ -99,14 +99,12 @@ banner on its hub.
 
 1. **Send the school-requests email** (ready to copy at the bottom of `plan.html`) — papers + markschemes, History FA2028 guide/specimens, LangLit materials, IA samples. Then file arrivals into `library/papers/<subject>/` and link them on `practice.html`.
 2. **Confirm with the school**: Nov–Jun calendar dates (only Aug–Oct verified against the official text layer), French A HL essay applicability, ISL's math unit order, licensed platforms.
-3. **De-risk the generator** — `tools/build_site.py` regenerates 10 pages and would *lose hand-patches* (dashboard next-up strip, quiz callout, ISL dates). Do not re-run it before folding those patches in (see [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md)).
 4. **Build the January banks** (bio water potential/origin of cells, math 2.4–2.5) before the exam window — see [docs/CONTENT-PLAN.md](docs/CONTENT-PLAN.md) queue.
 5. **Deploy** behind basic auth (DEPLOY.md) and set up the backup (MAINTENANCE.md).
 6. **Start the weekly loop with her** — Monday set the week · Tue+Thu quiz sessions · Friday error log · Sunday idea log. The compounding habit matters more than any remaining feature.
 
 ## Known issues & risks (flagged, not urgent)
 
-- **Generator regression risk** — see #3 above. The 10 generated pages are currently *ahead* of the generator.
 - **Nov–Jun deadline dates** come from a photo transcription; Aug–Oct verified against the official PDF.
 - **Progress is per-device** (localStorage). Export/Import exists on the Cards page; the Google-Sheet sync upgrade is in the roadmap if this starts to hurt.
 - **Math Functions bank** is labelled "likely next unit" — ISL's math teaching order isn't documented; confirm and rename if needed.

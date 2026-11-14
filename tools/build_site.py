@@ -183,9 +183,79 @@ __CONTENT__
 """
 
 
+# Post-generation patches (folded back in on 2026-11-14; keep in sync with the live pages)
+CANONICAL_NAV = '<nav>\n  <a href="index.html" class="brand">IB Study Area</a>\n  <a href="math-aa-sl.html">Math AA SL</a>\n  <a href="biology-hl.html">Biology HL</a>\n  <a href="chemistry-hl.html">Chemistry HL</a>\n  <a href="history-sl.html">History SL</a>\n  <a href="french-a-langlit.html">French A</a>\n  <a href="english-lit-hl.html">English Lit HL</a>\n  <a href="core.html">Core</a>\n  <a href="practice.html">Practice</a>\n  <a href="ia.html">IA &amp; EE</a>\n  <a href="quiz.html">Quiz</a>\n  <a href="plan.html">Plan</a>\n  <a href="deadlines.html">Deadlines</a>\n  <a href="flashcards.html">Cards</a>\n  <a href="quick-reference.html">Reference</a>\n</nav>'
+
+NEXTUP = ('<section class="card"><h3>Next school deadlines</h3><ul id="nextup" class="links"></ul>'
+          '<p class="muted">From the ISL Year 12 calendar \u2014 <a href="deadlines.html">full timeline</a> \u00b7 '
+          '<a href="plan.html">the DP1 plan</a></p></section>')
+
+CALLOUT = ('<section class="card"><h3>Quiz engine \u2014 20-question sessions</h3>'
+           '<p>Filtered by subject/topic/format, MCQs marked instantly, written answers self-marked against markschemes, '
+           'weak-topic flags + tactics at the end.</p>'
+           '<p><a class="btn-link" href="quiz.html">Start a session \u2192</a> \u00b7 <a href="plan.html">how sessions fit the week</a></p></section>')
+
+NEXTUP = ('<section class="card"><h3>Next school deadlines</h3><ul id="nextup" class="links"></ul>'
+          '<p class="muted">From the ISL Year 12 calendar — <a href="deadlines.html">full timeline</a> · '
+          '<a href="plan.html">the DP1 plan</a></p></section>')
+
+CALLOUT = ('<section class="card"><h3>Quiz engine — 20-question sessions</h3>'
+           '<p>Filtered by subject/topic/format, MCQs marked instantly, written answers self-marked against markschemes, '
+           'weak-topic flags + tactics at the end.</p>'
+           '<p><a class="btn-link" href="quiz.html">Start a session →</a> · <a href="plan.html">how sessions fit the week</a></p></section>')
+
+MATH_ANCHOR = "<section class=\"card\"><h3>Syllabus checklist <span class='count'>(topics with notes PDFs)</span></h3>"
+BIO_ANCHOR = "<section class=\"card\"><h3>Syllabus checklist <span class='count'>(43 topics, new-syllabus themes)</span></h3>"
+CHEM_ANCHOR = "<section class=\"card\"><h3>Syllabus checklist <span class='count'>(25 topics, Structure/Reactivity)</span></h3>"
+MATH_PANEL = '<section class="card">\n    <h3>Teaching hours (SL) <span class="count">(from the official syllabus content)</span></h3>\n    <table class="wt"><thead><tr><th>Topic</th><th>SL hours</th></tr></thead><tbody>\n      <tr><td>1. Number &amp; algebra</td><td>19</td></tr>\n      <tr><td>2. Functions</td><td>21</td></tr>\n      <tr><td>3. Geometry &amp; trigonometry</td><td>25</td></tr>\n      <tr><td>4. Statistics &amp; probability</td><td>27</td></tr>\n      <tr><td>5. Calculus</td><td>28</td></tr>\n    </tbody></table>\n    <p class="muted">Calculus carries the most hours and lands last — it is where steady DP1 pacing pays off. Full document: <a href="library/school/math-aa-syllabus-content.pdf" target="_blank">math-aa-syllabus-content.pdf</a>.</p>\n  </section>\n'
+BIO_PANEL = '<section class="card">\n    <h3>ISL teaching sequence 2026–28 <span class="count">(from the school course outline — timings approximate)</span></h3>\n    <table class="wt"><thead><tr><th>When</th><th>Units</th><th>Assessments</th></tr></thead><tbody>\n      <tr><td>DP1 Sep–Oct</td><td>Form &amp; function: A1.1 water · B1.1/B1.2 carbohydrates, lipids, proteins · A1.2 nucleic acids</td><td>unit tests</td></tr>\n      <tr><td>DP1 Nov</td><td>C1.1 enzymes &amp; metabolism</td><td><strong>IA practice</strong>: hydrogen peroxide (design · analysis · conclusion · evaluation)</td></tr>\n      <tr><td>DP1 Nov–Dec</td><td>Unity: A2.2 cell structure · B2.2 organelles · B2.3 specialization · A2.1 origin of cells</td><td><strong>January exam</strong> — everything to date</td></tr>\n      <tr><td>DP1 Jan–Feb</td><td>B2.1 membranes &amp; transport · D2.3 water potential</td><td><strong>IA practice</strong>: beetroot membranes (research design) · osmosis in potatoes (analysis/conclusion/evaluation)</td></tr>\n      <tr><td>DP1 Feb–Mar</td><td>C1.2 cell respiration · D1.2 protein synthesis · D2.2 gene expression · C3.2 defence against disease</td><td>tests</td></tr>\n      <tr><td>DP1 Apr–May</td><td>Flow: C1.3 photosynthesis · C4.2 transfer of energy &amp; matter · B3.1 gas exchange · B3.2 transport</td><td><strong>June exam</strong> — everything to date</td></tr>\n      <tr><td>DP1 June</td><td>B4.1/B4.2 niches · C4.1 populations · D1.1 DNA replication · A2.3 viruses</td><td><strong>IA experiments (late June)</strong></td></tr>\n      <tr><td>DP2 Sep–Nov</td><td>Continuity: D2.1 division · D3.1 reproduction · Diversity: A3.1/A3.2 · D1.3 mutation · D3.2 inheritance · A4.2 conservation</td><td><strong>IA draft (early Sept)</strong> → <strong>IA final (early Nov)</strong></td></tr>\n      <tr><td>DP2 Dec–Mar</td><td>Control &amp; coordination (C3.1, C2.2, B3.3, D3.3, C2.1) · Change (D4.1 selection, A4.1 evolution, D4.2, D4.3 climate)</td><td><strong>Mock exams (January)</strong></td></tr>\n    </tbody></table>\n    <p class="muted">Checklist rows below carry the same topic codes — keep the current unit green before its test. Official outline: <a href="library/school/bio-course-outline-2026-28.pdf" target="_blank">bio-course-outline-2026-28.pdf</a>.</p>\n  </section>\n'
+CHEM_PANEL = '<section class="card">\n    <h3>ISL timeline for the M28 cohort <span class="count">(from the school\'s "Chemistry at a glance")</span></h3>\n    <table class="wt"><thead><tr><th>When</th><th>ISL unit</th><th>Checklist section below</th></tr></thead><tbody>\n      <tr><td>DP1 Sep</td><td>Atomic theory &amp; kinetic theory</td><td>Structure 1 — particulate nature of matter</td></tr>\n      <tr><td>DP1 Oct–Nov</td><td>Periodicity · Stoichiometry</td><td>Structure 3 (classification) · Reactivity 2 — how much</td></tr>\n      <tr><td>DP1 Dec–Jan</td><td>Energetics</td><td>Reactivity 1 — what drives reactions</td></tr>\n      <tr><td>DP1 Feb–Mar</td><td>Kinetics · Equilibrium</td><td>Reactivity 2 — how fast · how far</td></tr>\n      <tr><td>DP1 Apr–May</td><td>Redox</td><td>Reactivity 3 — mechanisms of change</td></tr>\n      <tr><td>DP1 June</td><td>Acids and bases</td><td>Reactivity 3 — mechanisms of change</td></tr>\n      <tr><td>DP2 Sep–Oct</td><td>Acids &amp; bases (finish) · <strong>IA labwork</strong></td><td>—</td></tr>\n      <tr><td>DP2 Oct–Nov</td><td>Bonding</td><td>Structure 2 — models of bonding</td></tr>\n      <tr><td>DP2 Nov–Mar</td><td>Organic chemistry</td><td>Structure 3 — functional groups · Reactivity 3</td></tr>\n      <tr><td>DP2 Apr</td><td>Practical skills for Paper 1B</td><td>Tools (skills)</td></tr>\n    </tbody></table>\n    <p class="muted">School document: <a href="library/school/chem-at-a-glance-m28.pdf" target="_blank">chem-at-a-glance-m28.pdf</a> (subject to change — it does not replace the IB guide).</p>\n  </section>\n'
+
+FRENCH_CARD = '<a class="subj-card" href="french-a-langlit.html" data-subject="french"><strong>French A LangLit</strong><span class="bar mini"></span><span class="pct">0%</span></a>'
+ENGLISH_CARD = '<a class="subj-card" href="english-lit-hl.html" data-subject="english-lit"><strong>English A Lit HL</strong><span class="bar mini"></span><span class="pct">0%</span></a>'
+
+IA_DATES = [
+    ("IA idea log started (all subjects); TOK exhibition underway",
+     "✓ done — CSP Sep 1/24, CAS interview Sep 30"),
+    ("EE subject choice; sciences IA topic shortlist",
+     "EE launch Feb 17 · proposal due Mar 2 · TOK plan Mar 25"),
+    ("Draft IA research questions; IO global-issue bank solid",
+     "EE session 1 Mar 12 · equipment order Mar 23 · French essay draft Mar 26"),
+    ("Sciences IA experiments + write-up; history IA; EE outline",
+     "EE Phase 2 Apr 27 · TOK draft Apr 28 · exams late May · CAS portfolio Jun 7 · Bio IA experiments late June"),
+    ("IA final drafts; EE first draft; TOK essay (titles released)",
+     "TOK exhibition final Jun 16 · English A Lit HL Essay final Jun 18 (draft May 11)"),
+    ("Full timed mocks; IO final; EE viva voce",
+     "per school — see the deadlines page"),
+]
+
+IA_PARA_OLD = '<p>10 hours, 24 marks, report ≤ 3000 words. Four equally-weighted criteria: research design · data analysis '
+IA_PARA_NEW = ("<p>10 hours, 24 marks, report ≤ 3000 words. Four equally-weighted criteria: research design · data analysis "
+               "· conclusion · evaluation (6 marks each). At ISL: criteria are practised in DP1 (hydrogen peroxide in Nov, "
+               "beetroot/osmosis in Jan), experiments late June, draft early Sept of DP2, final early Nov — per the "
+               "<a href='library/school/bio-course-outline-2026-28.pdf' target='_blank'>course outline</a>. Calibrate against the "
+               "official TSM marked samples — and read exemplars for quality-bar only, never to imitate: IB similarity screening is strict.</p>")
+
+PATCHES = [
+    (MATH_ANCHOR, MATH_PANEL + MATH_ANCHOR),
+    (BIO_ANCHOR, BIO_PANEL + BIO_ANCHOR),
+    (CHEM_ANCHOR, CHEM_PANEL + CHEM_ANCHOR),
+    ('<section class="card"><h3>Subjects</h3>', NEXTUP + '<section class="card"><h3>Subjects</h3>'),
+    (FRENCH_CARD, FRENCH_CARD + ENGLISH_CARD),
+    ('<h2>Practice &amp; Past Papers</h2>', '<h2>Practice &amp; Past Papers</h2>' + CALLOUT),
+]
+for row2, dates in IA_DATES:
+    PATCHES.append((row2 + "</td><td></td></tr>", row2 + "</td><td>" + dates + "</td></tr>"))
+PATCHES.append((IA_PARA_OLD, IA_PARA_NEW))
+
 def page(fname, title, content_html, active):
     out = ROOT / fname
     h = BASE.replace("__TITLE__", title).replace("__CONTENT__", content_html)
+    for old, new in PATCHES:
+        h = h.replace(old, new)
+    if fname == "index.html":
+        h = h.replace('<script src="assets/app.js"></script>',
+                      '<script src="assets/deadlines.js"></script>\n<script src="assets/app.js"></script>', 1)
     out.write_text(h, encoding="utf-8")
     return fname
 
@@ -642,7 +712,7 @@ for fname, meta in [
 ]:
     label, subj = meta
     cards_html += f'<a class="subj-card" href="{fname}" data-subject="{subj}"><strong>{label}</strong><span class="bar mini"></span><span class="pct">0%</span></a>'
-
+cards_html = cards_html  # noqa: keep template structure
 SUBJECTS["index.html"] = dict(
     title="Dashboard",
     active="IB Study Area",
@@ -720,6 +790,13 @@ footer{max-width:1080px;margin:0 auto;padding:1rem;color:var(--muted);font-size:
 code{background:#eef1f4;border-radius:6px;padding:.05rem .3rem;font-size:.9em}
 @media (max-width:760px){.dash-top{grid-template-columns:1fr}}
 @media print{nav,footer{display:none}.card{box-shadow:none;break-inside:avoid}}
+
+.chip{display:inline-block;border:1px solid;border-radius:999px;padding:.02rem .5rem;font-size:.78rem;white-space:nowrap}
+.dl-date{display:inline-block;min-width:11.5rem;font-weight:600}
+.past{opacity:.55;text-decoration:line-through}
+.dl-in{font-size:.85rem}
+li.future{padding:.3rem 0}
+.btn-link{color:var(--accent);text-decoration:none;font-weight:600}
 """
 
 JS = """(function () {

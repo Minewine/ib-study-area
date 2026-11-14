@@ -9,7 +9,7 @@ features only exist to make that loop easier or more targeted.
 ## Short-term (next 2–4 weeks · before the December break)
 
 - [ ] **School email sent → papers integrated.** File arrivals into `library/papers/<subject>/`, add links to `practice.html`, wire one mock per subject into the plan.
-- [ ] **Generator de-risked** (see DEVELOPMENT.md): fold the hand-patches (dashboard next-up strip, quiz callout, ISL milestone dates) into `tools/build_site.py` — or retire the generator and declare the 16 pages hand-maintained. Pick one before anyone re-runs it.
+- [x] **Generator de-risked** (2026-11-14): all patches folded into the `PATCHES` list; regeneration verified byte-identical. Keep template edits and PATCHES in sync going forward.
 - [ ] **January banks built** (one unit ahead): bio water potential + origin of cells; math Functions 2.4–2.5.
 - [ ] **Chem energetics flashcards deck** (small: definitions, q=mcΔT, ΔG cases) before that unit starts in December.
 - [ ] **December 8 rehearsal**: English Paper 1 timed run using the local specimen; error-log entry after.

@@ -1,75 +1,314 @@
 {
-  "subject": "math-aa-sl",
-  "topic": "functions-2-1-to-2-3",
-  "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit (likely next unit)",
-  "items": [
-    {"id": "f01", "format": "mcq", "topic": "functions-2-1-to-2-3", "stem": "The domain of f(x) = \u221A(x \u2212 2) is:",
-     "choices": ["All real numbers", "x \u2265 2", "x > 2", "x \u2264 2"], "answer": 1,
-     "note": "Square roots need x \u2212 2 \u2265 0 \u2192 x \u2265 2. The endpoint is included, so \u2265 not >."},
-    {"id": "f02", "format": "mcq", "topic": "functions-2-1-to-2-3", "stem": "The range of f(x) = x\u00B2 + 3 for x \u2208 \u211D is:",
-     "choices": ["y \u2208 \u211D", "y \u2265 0", "y \u2265 3", "y > 3"], "answer": 2,
-     "note": "Minimum value of x\u00B2 is 0, so f \u2265 3 \u2014 and the minimum is attained, hence \u2265 not >."},
-    {"id": "f03", "format": "mcq", "topic": "functions-2-1-to-2-3", "stem": "Given f(x) = 2x \u2212 5 and g(x) = x\u00B2, the value of (f \u2218 g)(3) is:",
-     "choices": ["1", "3", "13", "36"], "answer": 2,
-     "note": "(f \u2218 g)(3) = f(g(3)) = f(9) = 2\u00D79 \u2212 5 = 13. Work inside-out."},
-    {"id": "f04", "format": "mcq", "topic": "functions-2-1-to-2-3", "stem": "With the same functions, (g \u2218 f)(2) equals:",
-     "choices": ["\u22121", "1", "3", "49"], "answer": 1,
-     "note": "f(2) = \u22121, then g(\u22121) = 1. Reversing the order changes the answer \u2014 composition is not commutative."},
-    {"id": "f05", "format": "mcq", "topic": "functions-2-1-to-2-3", "stem": "The inverse of f(x) = 3x + 1 is:",
-     "choices": ["f\u207B\u00B9(x) = (x \u2212 1)/3", "f\u207B\u00B9(x) = 3x \u2212 1", "f\u207B\u00B9(x) = 1/(3x + 1)", "f\u207B\u00B9(x) = (x + 1)/3"], "answer": 0,
-     "note": "Swap x and y, solve for y: y = 3x + 1 \u2192 x = 3y + 1 \u2192 y = (x \u2212 1)/3."},
-    {"id": "f06", "format": "mcq", "topic": "functions-2-1-to-2-3", "stem": "The graph of a function and its inverse are reflections of each other in the line:",
-     "choices": ["y = 0", "x = 0", "y = x", "y = \u2212x"], "answer": 2,
-     "note": "Swapping x and y mirrors every point across y = x. Useful GDC check: draw f, y = x and f\u207B\u00B9 together."},
-    {"id": "f07", "format": "mcq", "topic": "functions-2-1-to-2-3", "stem": "The zero of f(x) = 2x + 6 is:",
-     "choices": ["x = \u22126", "x = \u22123", "x = 3", "x = 6"], "answer": 1,
-     "note": "Zeroes are where f(x) = 0: 2x + 6 = 0 \u2192 x = \u22123."},
-    {"id": "f08", "format": "mcq", "topic": "functions-2-1-to-2-3", "stem": "The gradient of the line through (1, 4) and (3, 10) is:",
-     "choices": ["2", "3", "4", "\u22123"], "answer": 1,
-     "note": "m = (10 \u2212 4)/(3 \u2212 1) = 6/2 = 3. Rise over run \u2014 keep the order consistent in both numerator and denominator."},
-    {"id": "f09", "format": "mcq", "topic": "functions-2-1-to-2-3", "stem": "The equation of the line with y-intercept 2 and gradient \u22123 is:",
-     "choices": ["y = 2x \u2212 3", "y = \u22123x + 2", "y = \u22123x \u2212 2", "y = 3x + 2"], "answer": 1,
-     "note": "Gradient-intercept form: y = mx + c with m = \u22123, c = 2."},
-    {"id": "f10", "format": "mcq", "topic": "functions-2-1-to-2-3", "stem": "The roots of f(x) = x\u00B2 \u2212 6x + 8 are:",
-     "choices": ["x = 1 and x = 8", "x = 2 and x = 4", "x = \u22122 and x = \u22124", "x = \u22121 and x = \u22128"], "answer": 1,
-     "note": "Factorising: (x \u2212 2)(x \u2212 4) = 0 \u2192 2 and 4. Check by sum = 6, product = 8."},
-    {"id": "f11", "format": "mcq", "topic": "functions-2-1-to-2-3", "stem": "The vertex of the parabola y = x\u00B2 \u2212 6x + 8 is:",
-     "choices": ["(3, \u22121)", "(3, 1)", "(\u22123, \u22121)", "(2, 0)"], "answer": 0,
-     "note": "Axis of symmetry x = \u2212b/2a = 3; y = 9 \u2212 18 + 8 = \u22121. Vertex sits on the axis, midway between the roots."},
-    {"id": "f12", "format": "mcq", "topic": "functions-2-1-to-2-3", "stem": "The axis of symmetry of y = \u22122(x \u2212 1)\u00B2 + 5 is:",
-     "choices": ["x = 5", "x = \u22121", "x = 1", "y = 5"], "answer": 2,
-     "note": "Vertex form a(x \u2212 h)\u00B2 + k puts the axis at x = h. The (x \u2212 1) inside means h = 1 \u2014 the sign flips."},
-    {"id": "f13", "format": "mcq", "topic": "functions-2-1-to-2-3", "stem": "The discriminant of x\u00B2 + 4x + 4 = 0 tells us the equation has:",
-     "choices": ["Two distinct real roots", "One repeated real root", "No real roots", "Four roots"], "answer": 1,
-     "note": "\u0394 = b\u00B2 \u2212 4ac = 16 \u2212 16 = 0 \u2192 one repeated root. \u0394 > 0 two roots, \u0394 < 0 none."},
-    {"id": "f14", "format": "mcq", "topic": "functions-2-1-to-2-3", "stem": "For which values of k does x\u00B2 + kx + 9 = 0 have equal roots?",
-     "choices": ["k = 6 only", "k = \u00B16", "k = 3", "k = \u00B19"], "answer": 1,
-     "note": "Equal roots \u21D2 \u0394 = 0: k\u00B2 \u2212 36 = 0 \u2192 k = \u00B16. Both signs \u2014 forgetting the negative is the classic slip."},
-    {"id": "f15", "format": "mcq", "topic": "functions-2-1-to-2-3", "stem": "The parabola y = \u22123(x + 2)\u00B2 \u2212 4 has:",
-     "choices": ["A minimum value of \u22124 at x = \u22122", "A maximum value of \u22124 at x = \u22122", "A maximum value of 2 at x = 4", "A minimum value of \u22124 at x = 2"], "answer": 1,
-     "note": "a = \u22123 < 0 opens downward \u2192 maximum. h = \u22122 (from x + 2), k = \u22124."},
-    {"id": "f16", "format": "mcq", "topic": "functions-2-1-to-2-3", "stem": "If f(x) = x + 1, then f(f(f(1))) equals:",
-     "choices": ["2", "3", "4", "6"], "answer": 2,
-     "note": "f(1) = 2 \u2192 f(2) = 3 \u2192 f(3) = 4. Iterate step by step \u2014 don't cube anything."},
-    {"id": "f17", "format": "mcq", "topic": "functions-2-1-to-2-3", "stem": "Which relation is NOT a function of x?",
-     "choices": ["y = x\u00B2 + 1", "y = \u00B1\u221Ax", "y = |x| \u2212 3", "y = 5"], "answer": 1,
-     "note": "A function needs one output per input: \u00B1\u221Ax gives two outputs for x > 0 \u2014 it fails the vertical line test."},
-    {"id": "f18", "format": "mcq", "topic": "functions-2-1-to-2-3", "stem": "The domain of f(x) = (x + 2)/(x \u2212 3) is all real numbers except:",
-     "choices": ["x = \u22122", "x = 3", "x = 0", "x = 2"], "answer": 1,
-     "note": "Denominator cannot vanish: x \u2212 3 \u2260 0 \u2192 x \u2260 3. Numerator zeros are fine \u2014 that's just a root."},
-    {"id": "f19", "format": "mcq", "topic": "functions-2-1-to-2-3", "stem": "A linear function passes through (0, 3) and (2, 7). The value of f(5) is:",
-     "choices": ["10", "12", "13", "15"], "answer": 2,
-     "note": "m = (7 \u2212 3)/2 = 2, so f(x) = 2x + 3 \u2192 f(5) = 13."},
-    {"id": "f20", "format": "mcq", "topic": "functions-2-1-to-2-3", "stem": "Which function is self-inverse (its own inverse)?",
-     "choices": ["f(x) = 1/x", "f(x) = x\u00B2", "f(x) = 2x + 3", "f(x) = \u221Ax"], "answer": 0,
-     "note": "Applying 1/x twice returns x. Self-inverse functions sit on the line y = x symmetrically."},
-    {"id": "f21", "format": "written", "marks": 6, "topic": "functions-2-1-to-2-3",
-     "stem": "Let f(x) = x\u00B2 \u2212 4x + 3. (a) Write f in vertex form. (b) Find its zeros. (c) State the coordinates of the vertex and whether it is a maximum or minimum.",
-     "markscheme": ["(a) Complete the square: (x \u2212 2)\u00B2 \u2212 4 + 3 = (x \u2212 2)\u00B2 \u2212 1 (2)", "(b) (x \u2212 1)(x \u2212 3) = 0 \u2192 x = 1, x = 3 (2)", "(c) Vertex (2, \u22121) from vertex form (1)", "a = 1 > 0 opens upward \u2192 minimum (1)"],
-     "tactic": "Vertex form, zeros and sketch flow naturally from completing the square \u2014 do it once, get three answers. GDC can verify, Paper 1 must show working."},
-    {"id": "f22", "format": "written", "marks": 4, "topic": "functions-2-1-to-2-3",
-     "stem": "Let f(x) = 2x \u2212 1 and g(x) = x\u00B2. (a) Find (f \u2218 g)(x). (b) Solve (f \u2218 g)(x) = 49.",
-     "markscheme": ["(a) (f \u2218 g)(x) = f(x\u00B2) = 2x\u00B2 \u2212 1 (2)", "(b) 2x\u00B2 \u2212 1 = 49 \u2192 x\u00B2 = 25 (1)", "x = \u00B15 \u2014 both roots (1)"],
-     "tactic": "Write the composition explicitly before algebra: f(g(x)) means substitute g into f. Quadratics give two answers \u2014 say both."}
-  ]
+ "subject": "math-aa-sl",
+ "topic": "functions-2-1-to-2-3",
+ "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit",
+ "items": [
+  {
+   "id": "f01",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "The domain of f(x) = √(x − 2) is:",
+   "choices": [
+    "All real numbers",
+    "x ≥ 2",
+    "x > 2",
+    "x ≤ 2"
+   ],
+   "answer": 1,
+   "note": "Square roots need x − 2 ≥ 0 → x ≥ 2. The endpoint is included, so ≥ not >."
+  },
+  {
+   "id": "f02",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "The range of f(x) = x² + 3 for x ∈ ℝ is:",
+   "choices": [
+    "y ∈ ℝ",
+    "y ≥ 0",
+    "y ≥ 3",
+    "y > 3"
+   ],
+   "answer": 2,
+   "note": "Minimum value of x² is 0, so f ≥ 3 — and the minimum is attained, hence ≥ not >."
+  },
+  {
+   "id": "f03",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "Given f(x) = 2x − 5 and g(x) = x², the value of (f ∘ g)(3) is:",
+   "choices": [
+    "1",
+    "3",
+    "13",
+    "36"
+   ],
+   "answer": 2,
+   "note": "(f ∘ g)(3) = f(g(3)) = f(9) = 2×9 − 5 = 13. Work inside-out."
+  },
+  {
+   "id": "f04",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "With the same functions, (g ∘ f)(2) equals:",
+   "choices": [
+    "−1",
+    "1",
+    "3",
+    "49"
+   ],
+   "answer": 1,
+   "note": "f(2) = −1, then g(−1) = 1. Reversing the order changes the answer — composition is not commutative."
+  },
+  {
+   "id": "f05",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "The inverse of f(x) = 3x + 1 is:",
+   "choices": [
+    "f⁻¹(x) = (x − 1)/3",
+    "f⁻¹(x) = 3x − 1",
+    "f⁻¹(x) = 1/(3x + 1)",
+    "f⁻¹(x) = (x + 1)/3"
+   ],
+   "answer": 0,
+   "note": "Swap x and y, solve for y: y = 3x + 1 → x = 3y + 1 → y = (x − 1)/3."
+  },
+  {
+   "id": "f06",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "The graph of a function and its inverse are reflections of each other in the line:",
+   "choices": [
+    "y = 0",
+    "x = 0",
+    "y = x",
+    "y = −x"
+   ],
+   "answer": 2,
+   "note": "Swapping x and y mirrors every point across y = x. Useful GDC check: draw f, y = x and f⁻¹ together."
+  },
+  {
+   "id": "f07",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "The zero of f(x) = 2x + 6 is:",
+   "choices": [
+    "x = −6",
+    "x = −3",
+    "x = 3",
+    "x = 6"
+   ],
+   "answer": 1,
+   "note": "Zeroes are where f(x) = 0: 2x + 6 = 0 → x = −3."
+  },
+  {
+   "id": "f08",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "The gradient of the line through (1, 4) and (3, 10) is:",
+   "choices": [
+    "2",
+    "3",
+    "4",
+    "−3"
+   ],
+   "answer": 1,
+   "note": "m = (10 − 4)/(3 − 1) = 6/2 = 3. Rise over run — keep the order consistent in both numerator and denominator."
+  },
+  {
+   "id": "f09",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "The equation of the line with y-intercept 2 and gradient −3 is:",
+   "choices": [
+    "y = 2x − 3",
+    "y = −3x + 2",
+    "y = −3x − 2",
+    "y = 3x + 2"
+   ],
+   "answer": 1,
+   "note": "Gradient-intercept form: y = mx + c with m = −3, c = 2."
+  },
+  {
+   "id": "f10",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "The roots of f(x) = x² − 6x + 8 are:",
+   "choices": [
+    "x = 1 and x = 8",
+    "x = 2 and x = 4",
+    "x = −2 and x = −4",
+    "x = −1 and x = −8"
+   ],
+   "answer": 1,
+   "note": "Factorising: (x − 2)(x − 4) = 0 → 2 and 4. Check by sum = 6, product = 8."
+  },
+  {
+   "id": "f11",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "The vertex of the parabola y = x² − 6x + 8 is:",
+   "choices": [
+    "(3, −1)",
+    "(3, 1)",
+    "(−3, −1)",
+    "(2, 0)"
+   ],
+   "answer": 0,
+   "note": "Axis of symmetry x = −b/2a = 3; y = 9 − 18 + 8 = −1. Vertex sits on the axis, midway between the roots."
+  },
+  {
+   "id": "f12",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "The axis of symmetry of y = −2(x − 1)² + 5 is:",
+   "choices": [
+    "x = 5",
+    "x = −1",
+    "x = 1",
+    "y = 5"
+   ],
+   "answer": 2,
+   "note": "Vertex form a(x − h)² + k puts the axis at x = h. The (x − 1) inside means h = 1 — the sign flips."
+  },
+  {
+   "id": "f13",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "The discriminant of x² + 4x + 4 = 0 tells us the equation has:",
+   "choices": [
+    "Two distinct real roots",
+    "One repeated real root",
+    "No real roots",
+    "Four roots"
+   ],
+   "answer": 1,
+   "note": "Δ = b² − 4ac = 16 − 16 = 0 → one repeated root. Δ > 0 two roots, Δ < 0 none."
+  },
+  {
+   "id": "f14",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "For which values of k does x² + kx + 9 = 0 have equal roots?",
+   "choices": [
+    "k = 6 only",
+    "k = ±6",
+    "k = 3",
+    "k = ±9"
+   ],
+   "answer": 1,
+   "note": "Equal roots ⇒ Δ = 0: k² − 36 = 0 → k = ±6. Both signs — forgetting the negative is the classic slip."
+  },
+  {
+   "id": "f15",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "The parabola y = −3(x + 2)² − 4 has:",
+   "choices": [
+    "A minimum value of −4 at x = −2",
+    "A maximum value of −4 at x = −2",
+    "A maximum value of 2 at x = 4",
+    "A minimum value of −4 at x = 2"
+   ],
+   "answer": 1,
+   "note": "a = −3 < 0 opens downward → maximum. h = −2 (from x + 2), k = −4."
+  },
+  {
+   "id": "f16",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "If f(x) = x + 1, then f(f(f(1))) equals:",
+   "choices": [
+    "2",
+    "3",
+    "4",
+    "6"
+   ],
+   "answer": 2,
+   "note": "f(1) = 2 → f(2) = 3 → f(3) = 4. Iterate step by step — don't cube anything."
+  },
+  {
+   "id": "f17",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "Which relation is NOT a function of x?",
+   "choices": [
+    "y = x² + 1",
+    "y = ±√x",
+    "y = |x| − 3",
+    "y = 5"
+   ],
+   "answer": 1,
+   "note": "A function needs one output per input: ±√x gives two outputs for x > 0 — it fails the vertical line test."
+  },
+  {
+   "id": "f18",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "The domain of f(x) = (x + 2)/(x − 3) is all real numbers except:",
+   "choices": [
+    "x = −2",
+    "x = 3",
+    "x = 0",
+    "x = 2"
+   ],
+   "answer": 1,
+   "note": "Denominator cannot vanish: x − 3 ≠ 0 → x ≠ 3. Numerator zeros are fine — that's just a root."
+  },
+  {
+   "id": "f19",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "A linear function passes through (0, 3) and (2, 7). The value of f(5) is:",
+   "choices": [
+    "10",
+    "12",
+    "13",
+    "15"
+   ],
+   "answer": 2,
+   "note": "m = (7 − 3)/2 = 2, so f(x) = 2x + 3 → f(5) = 13."
+  },
+  {
+   "id": "f20",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "Which function is self-inverse (its own inverse)?",
+   "choices": [
+    "f(x) = 1/x",
+    "f(x) = x²",
+    "f(x) = 2x + 3",
+    "f(x) = √x"
+   ],
+   "answer": 0,
+   "note": "Applying 1/x twice returns x. Self-inverse functions sit on the line y = x symmetrically."
+  },
+  {
+   "id": "f21",
+   "format": "written",
+   "marks": 6,
+   "topic": "functions-2-1-to-2-3",
+   "stem": "Let f(x) = x² − 4x + 3. (a) Write f in vertex form. (b) Find its zeros. (c) State the coordinates of the vertex and whether it is a maximum or minimum.",
+   "markscheme": [
+    "(a) Complete the square: (x − 2)² − 4 + 3 = (x − 2)² − 1 (2)",
+    "(b) (x − 1)(x − 3) = 0 → x = 1, x = 3 (2)",
+    "(c) Vertex (2, −1) from vertex form (1)",
+    "a = 1 > 0 opens upward → minimum (1)"
+   ],
+   "tactic": "Vertex form, zeros and sketch flow naturally from completing the square — do it once, get three answers. GDC can verify, Paper 1 must show working."
+  },
+  {
+   "id": "f22",
+   "format": "written",
+   "marks": 4,
+   "topic": "functions-2-1-to-2-3",
+   "stem": "Let f(x) = 2x − 1 and g(x) = x². (a) Find (f ∘ g)(x). (b) Solve (f ∘ g)(x) = 49.",
+   "markscheme": [
+    "(a) (f ∘ g)(x) = f(x²) = 2x² − 1 (2)",
+    "(b) 2x² − 1 = 49 → x² = 25 (1)",
+    "x = ±5 — both roots (1)"
+   ],
+   "tactic": "Write the composition explicitly before algebra: f(g(x)) means substitute g into f. Quadratics give two answers — say both."
+  }
+ ]
 }

@@ -16,11 +16,14 @@
     ]},
     "biology-hl": { label: "Biology HL", banks: [
       { file: "library/questions/bio-unity-diversity-cells.json", label: "Unity & diversity — Cells & membranes" },
-      { file: "library/questions/bio-c1-1-enzymes-metabolism.json", label: "C1.1 — Enzymes & metabolism (Nov unit)" }
+      { file: "library/questions/bio-c1-1-enzymes-metabolism.json", label: "C1.1 — Enzymes & metabolism (Nov unit)" },
+      { file: "library/questions/bio-water-potential-origin-cells.json", label: "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)" },
+      { file: "library/questions/bio-respiration-protein-synthesis.json", label: "C1.2 — Respiration & D1.2 — Protein synthesis (Feb–Mar unit)" }
     ]},
     "math-aa-sl": { label: "Math AA SL", banks: [
       { file: "library/questions/math-aa-number-algebra.json", label: "Number & algebra (1.1–1.3)" },
-      { file: "library/questions/math-aa-functions-2-1-to-2-3.json", label: "Functions (2.1–2.3) — next unit" }
+      { file: "library/questions/math-aa-functions-2-1-to-2-3.json", label: "Functions (2.1–2.3) — linear, quadratic & toolkit" },
+      { file: "library/questions/math-functions-2-4-to-2-5.json", label: "Functions 2.4–2.5 — further functions & transformations (next unit)" }
     ]}
   };
 
@@ -63,7 +66,7 @@
     let items = [];
     try {
       for (const b of chosen) {
-        const res = await fetch(b.file);
+        const res = await fetch(b.file + "?cb=" + Date.now(), { cache: "no-store" });
         if (!res.ok) throw new Error(res.status + " " + b.file);
         const data = await res.json();
         items = items.concat(data.items.map(it => ({ ...it, topicLabel: data.topicLabel, bank: b.label })));

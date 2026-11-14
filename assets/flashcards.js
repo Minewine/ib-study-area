@@ -45,7 +45,7 @@
     DECKS = [];
     for (const r of REGISTRY) {
       try {
-        const res = await fetch(r.file);
+        const res = await fetch(r.file + "?cb=" + Date.now(), { cache: "no-store" });
         if (!res.ok) continue;
         const d = await res.json();
         DECKS.push({ subject: d.subject || r.subject, subjectLabel: r.subjectLabel, topic: d.topic, topicLabel: d.topicLabel, cards: d.cards || [] });
