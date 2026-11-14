@@ -1,0 +1,27 @@
+{
+  "subject": "math-aa-sl",
+  "topic": "number-algebra-1-1-to-1-3",
+  "topicLabel": "Number & algebra — 1.1 toolkit, 1.2 sequences, 1.3 exponents & logs",
+  "cards": [
+    {"id": "fc-math-n-01", "type": "term", "tags": ["formula"], "front": "Arithmetic sequence: nth term", "back": "u\u2099 = u\u2081 + (n \u2212 1)d"},
+    {"id": "fc-math-n-02", "type": "term", "tags": ["formula"], "front": "Arithmetic series: sum of n terms", "back": "S\u2099 = n/2 (u\u2081 + u\u2099) = n/2 (2u\u2081 + (n \u2212 1)d)"},
+    {"id": "fc-math-n-03", "type": "term", "tags": ["formula"], "front": "Geometric sequence: nth term", "back": "u\u2099 = u\u2081 \u00B7 r\u207F\u207B\u00B9"},
+    {"id": "fc-math-n-04", "type": "term", "tags": ["formula"], "front": "Geometric series: sum of n terms", "back": "S\u2099 = u\u2081(r\u207F \u2212 1)/(r \u2212 1), r \u2260 1"},
+    {"id": "fc-math-n-05", "type": "term", "tags": ["formula"], "front": "Infinite geometric sum", "back": "S\u221E = u\u2081/(1 \u2212 r) \u2014 valid only when |r| < 1"},
+    {"id": "fc-math-n-06", "type": "term", "tags": ["formula"], "front": "Compound percentage growth", "back": "value = initial \u00D7 (1 + r/100)\u207F \u2014 r is the % change per period"},
+    {"id": "fc-math-n-07", "type": "term", "tags": ["formula"], "front": "Percentage error", "back": "|measured \u2212 true| / true \u00D7 100 \u2014 always non-negative"},
+    {"id": "fc-math-n-08", "type": "term", "tags": ["formula"], "front": "Log laws (product, quotient, power)", "back": "log\u2090(xy) = log\u2090x + log\u2090y · log\u2090(x/y) = log\u2090x \u2212 log\u2090y · log\u2090(x\u207F) = n\u00B7log\u2090x"},
+    {"id": "fc-math-n-09", "type": "term", "tags": ["formula"], "front": "Change of base", "back": "log\u2090b = log b / log a (any base) \u2014 how the GDC evaluates any logarithm"},
+    {"id": "fc-math-n-10", "type": "qa", "tags": ["definition"], "front": "Define a logarithm.", "back": "log\u2090b = c \u21D4 a\u1D9C = b \u2014 a logarithm IS an exponent."},
+    {"id": "fc-math-n-11", "type": "qa", "tags": ["process"], "front": "Evaluate 27^(2/3) exactly.", "back": "Root first, then power: 27^(1/3) = 3 \u2192 3\u00B2 = 9."},
+    {"id": "fc-math-n-12", "type": "qa", "tags": ["process"], "front": "When can an infinite geometric series be summed?", "back": "Only when |r| < 1, then S\u221E = u\u2081/(1 \u2212 r). Otherwise it diverges."},
+    {"id": "fc-math-n-13", "type": "qa", "tags": ["process"], "front": "Off-by-one trap in u\u2099 = u\u2081 + (n \u2212 1)d?", "back": "The 10th term uses n \u2212 1 = 9 jumps, not 10. Using n gives one d too many."},
+    {"id": "fc-math-n-14", "type": "qa", "tags": ["exam"], "front": "Paper 1 vs Paper 2 calculator rule (Math AA SL)?", "back": "Paper 1: NO calculator \u2014 exact values (fractions, surds, logs by hand). Paper 2: GDC required. Practise Paper 1 without a GDC from day one."},
+    {"id": "fc-math-n-15", "type": "qa", "tags": ["process"], "front": "Growth model: value doubles every 9 years \u2014 expression after t years?", "back": "Proportional to 2^(t/9). Doubling time T \u2192 multiplier 2^(t/T)."},
+    {"id": "fc-math-n-16", "type": "qa", "tags": ["formula"], "front": "Standard form rules", "back": "a \u00D7 10\u207F with 1 \u2264 a < 10. Moving the decimal right \u2192 negative exponent; left \u2192 positive."},
+    {"id": "fc-math-n-17", "type": "qa", "tags": ["command-term"], "front": "Command term: Determine", "back": "Obtain the answer(s) by calculation, showing working \u2014 method marks live here."},
+    {"id": "fc-math-n-18", "type": "qa", "tags": ["command-term"], "front": "Command term: Justify", "back": "Give valid reasons or evidence for each step \u2014 not just the final answer."},
+    {"id": "fc-math-n-19", "type": "qa", "tags": ["process"], "front": "Solve 3\u02E3 = 81 without a calculator.", "back": "Write both sides base 3: 81 = 3\u2074 \u2192 x = 4. Same-base matching beats log buttons on Paper 1."},
+    {"id": "fc-math-n-20", "type": "qa", "tags": ["definition"], "front": "What is a sequence vs a series?", "back": "Sequence = the list of terms (u\u2081, u\u2082, \u2026). Series = the SUM of the terms (S\u2099). Words matter in questions."}
+  ]
+}

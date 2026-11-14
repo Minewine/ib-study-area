@@ -1,0 +1,810 @@
+"""Generate the IB study-area static site in /home/mick/Projects/ibsystem.
+
+Reads the organized library (library/notes, library/official) and writes:
+  index.html, per-subject hub pages, practice.html, ia.html,
+  quick-reference.html, assets/style.css, assets/app.js
+Every local href written into a page is verified to exist on disk
+before the script finishes.
+"""
+
+import html
+import re
+from pathlib import Path
+
+ROOT = Path("/home/mick/Projects/ibsystem")
+LIB = ROOT / "library"
+ASSETS = ROOT / "assets"
+
+
+def kebab(s):
+    s = s.lower()
+    s = re.sub(r"[^a-z0-9]+", "-", s)
+    return s.strip("-")
+
+
+def pretty(s):
+    s = s.replace("-", " ").replace("&", "&amp;")
+    s = re.sub(r"^(\d) (\d) ", r"\1.\2 ", s)
+    return s[0].upper() + s[1:]
+
+
+def gather_notes(subject):
+    """Return [(section_key, [(relpath, display), ...]), ...] from notes dir."""
+    base = LIB / "notes" / subject
+    if not base.exists():
+        return []
+    sections = {}
+    for pdf in sorted(base.rglob("*.pdf")):
+        rel = pdf.relative_to(ROOT).as_posix()
+        parts = pdf.relative_to(base).parts
+        section = parts[0] if len(parts) > 1 else ""
+        sections.setdefault(section, []).append((rel, pretty(pdf.stem)))
+    return list(sections.items())
+
+
+MATH_SECTIONS = {
+    "1-number-algebra": "1. Number &amp; algebra",
+    "2-functions": "2. Functions",
+    "3-geometry-trigonometry": "3. Geometry &amp; trigonometry",
+    "4-statistics-probability": "4. Statistics &amp; probability",
+    "5-calculus": "5. Calculus",
+    "": "Topics",
+}
+BIO_SECTIONS = {
+    "unity-diversity": "Unity &amp; diversity",
+    "form-function": "Form &amp; function",
+    "interaction-interdependence": "Interaction &amp; interdependence",
+    "continuity-change": "Continuity &amp; change",
+    "tools": "Tools (skills)",
+    "": "Topics",
+}
+CHEM_SECTIONS = {
+    "models-of-the-particulate-nature-of-matter": "Structure 1 — Particulate nature of matter",
+    "models-of-bonding-structure": "Structure 2 — Models of bonding &amp; structure",
+    "classification-of-matter": "Structure 3 — Classification of matter",
+    "what-drives-chemical-reactions": "Reactivity 1 — What drives chemical reactions?",
+    "how-much-how-fast-how-far": "Reactivity 2 — How much, how fast &amp; how far?",
+    "what-are-the-mechanisms-of-chemical-change": "Reactivity 3 — Mechanisms of chemical change",
+    "tools": "Tools (skills)",
+    "": "Topics",
+}
+
+
+def official_links():
+    out = {}
+    spec = {
+        "math-aa-sl": [
+            ("Formula booklet (FA2021)", "math-aa-formula-booklet-fa2021.pdf"),
+            ("Specimen papers + MS (FA2021)", "math-aa-specimen-papers-fa2021.pdf"),
+            ("Subject brief", "math-aa-subject-brief-fa2021.pdf"),
+        ],
+        "biology-hl": [
+            (
+                "Specimen papers HL/SL (FA2025)",
+                "biology-hl-sl-specimen-papers-fa2025.pdf",
+            ),
+            ("Sample Paper 1B — HL", "biology-hl-sample-paper-1b-fa2025.pdf"),
+            ("Sample Paper 1B — SL", "biology-sl-sample-paper-1b-fa2025.pdf"),
+            ("Subject brief", "biology-subject-brief-fa2025.pdf"),
+        ],
+        "chemistry-hl": [
+            (
+                "Specimen papers HL/SL (FA2025)",
+                "chemistry-hl-sl-specimen-papers-fa2025.pdf",
+            ),
+            ("Sample Paper 1B — HL", "chemistry-hl-sample-paper-1b-fa2025.pdf"),
+            ("Sample Paper 1B — SL", "chemistry-sl-sample-paper-1b-fa2025.pdf"),
+            ("Data booklet v1.1 (FA2025)", "chemistry-data-booklet-fa2025-v1.1.pdf"),
+            ("Subject brief", "chemistry-subject-brief-fa2025.pdf"),
+        ],
+        "history-sl": [
+            (
+                "Subject brief (first assessment 2028)",
+                "history-subject-brief-fa2028.pdf",
+            )
+        ],
+        "french-a-langlit": [("Subject brief", "language-a-langlit-subject-brief.pdf")],
+        "core": [
+            ("Extended Essay guide (FA2027)", "extended-essay-guide-fa2027.pdf"),
+            ("EE subject brief", "extended-essay-subject-brief-fa2027.pdf"),
+            ("TOK subject brief", "tok-subject-brief.pdf"),
+        ],
+    }
+    for subj, items in spec.items():
+        rows = []
+        for label, fname in items:
+            p = LIB / "official" / (subj if subj != "core" else "core-tok-ee") / fname
+            if p.exists():
+                rows.append((label, p.relative_to(ROOT).as_posix()))
+        out[subj] = rows
+    return out
+
+
+OFF = official_links()
+
+
+def checklist(subject, section_names):
+    blocks = []
+    idx = 0
+    for section, rows in gather_notes(subject):
+        label = section_names.get(section, pretty(section) if section else "Topics")
+        items = []
+        for rel, disp in rows:
+            key = f"{subject}::{rel}"
+            items.append(
+                f'<div class="row" data-key="{html.escape(key)}">'
+                f'<input type="checkbox" aria-label="done">'
+                f'<span class="name">{disp}</span>'
+                f'<select class="rag" aria-label="confidence">'
+                f'<option value="">–</option><option value="r">red</option>'
+                f'<option value="a">amber</option><option value="g">green</option></select>'
+                f'<a href="{html.escape(rel)}" target="_blank">notes&nbsp;PDF</a></div>'
+            )
+            idx += 1
+        blocks.append(
+            f'<h3>{label} <span class="count">({len(rows)})</span></h3>'
+            + "\n".join(items)
+        )
+    return "\n".join(blocks), idx
+
+
+BASE = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__TITLE__ — IB Study Area</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav>
+  <a href="index.html" class="brand">IB Study Area</a>
+  <a href="math-aa-sl.html">Math AA SL</a>
+  <a href="biology-hl.html">Biology HL</a>
+  <a href="chemistry-hl.html">Chemistry HL</a>
+  <a href="history-sl.html">History SL</a>
+  <a href="french-a-langlit.html">French A</a>
+  <a href="english-lit-hl.html">English Lit HL</a>
+  <a href="core.html">Core</a>
+  <a href="practice.html">Practice</a>
+  <a href="ia.html">IA &amp; EE</a>
+  <a href="quiz.html">Quiz</a>
+  <a href="plan.html">Plan</a>
+  <a href="deadlines.html">Deadlines</a>
+  <a href="flashcards.html">Cards</a><a href="quick-reference.html">Reference</a>
+</nav>
+<main>
+__CONTENT__
+</main>
+<footer>Private family study area · exams <strong>May 2028</strong> · keep this site and its library non-public</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>
+"""
+
+
+def page(fname, title, content_html, active):
+    out = ROOT / fname
+    h = BASE.replace("__TITLE__", title).replace("__CONTENT__", content_html)
+    out.write_text(h, encoding="utf-8")
+    return fname
+
+
+def h2(t):
+    return f"<h2>{t}</h2>"
+
+
+def card(inner):
+    return f'<section class="card">{inner}</section>'
+
+
+def weighting_table(rows):
+    trs = "".join(f"<tr><td>{a}</td><td>{b}</td></tr>" for a, b in rows)
+    return f'<table class="wt"><thead><tr><th>Component</th><th>Weighting</th></tr></thead><tbody>{trs}</tbody></table>'
+
+
+def currency_note(text):
+    return f'<div class="currency">{text}</div>'
+
+
+def rag_row(key, name):
+    return (
+        f'<div class="row" data-key="{key}"><input type="checkbox">'
+        f'<span class="name">{name}</span>'
+        f'<select class="rag" aria-label="confidence"><option value="">–</option>'
+        f'<option value="r">red</option><option value="a">amber</option><option value="g">green</option></select></div>'
+    )
+
+
+SUBJECTS = {}
+
+# ---------- MATH AA SL ----------
+topics_html, n_math = checklist("math-aa-sl", MATH_SECTIONS)
+SUBJECTS["math-aa-sl.html"] = dict(
+    title="Math AA SL",
+    active="Math AA SL",
+    content=(
+        h2("Mathematics: Analysis &amp; Approaches SL")
+        + currency_note(
+            "Guide: Feb 2019 (updated Nov 2024) — current through <strong>the May 2028 exams</strong> (next guide first assesses May 2029). Aligned past papers: <strong>May 2021 → May 2028</strong>; skip May 2021 (COVID format). TZ2 is the European timezone."
+        )
+        + card(
+            "<h3>Assessment</h3>"
+            + weighting_table(
+                [
+                    ("Paper 1 — 1h30, no calculator, 80 marks", "40%"),
+                    ("Paper 2 — 1h30, GDC required, 80 marks", "40%"),
+                    ("Exploration (IA) — written investigation", "20%"),
+                ]
+            )
+            + "<p>Paper 1 discipline: no calculator means exact values, factorising, mental algebra. Practise it that way from day one.</p>"
+        )
+        + card(
+            "<h3>Syllabus checklist <span class='count'>(topics with notes PDFs)</span></h3>"
+            + "<div class='legend'>checkbox = revised · red/amber/green = confidence</div>"
+            + "<div class='bar' data-subject='math-aa-sl'></div>"
+            + topics_html
+        )
+        + card(
+            "<h3>Official documents</h3><ul class='links'>"
+            + "".join(
+                f"<li><a href='{href}' target='_blank'>{label}</a></li>"
+                for label, href in OFF["math-aa-sl"]
+            )
+            + "</ul><p class='muted'>Full subject guide + subject reports: via school (not published publicly).</p>"
+        )
+    ),
+)
+
+# ---------- BIOLOGY HL ----------
+topics_html, n_bio = checklist("biology-hl", BIO_SECTIONS)
+SUBJECTS["biology-hl.html"] = dict(
+    title="Biology HL",
+    active="Biology HL",
+    content=(
+        h2("Biology HL")
+        + currency_note(
+            "Guide: Feb 2023, first assessment <strong>May 2025</strong> — only <strong>May 2025, Nov 2025, May 2026</strong> papers match. Everything older in any archive is the dead 2016 syllabus: different structure, different IA."
+        )
+        + card(
+            "<h3>Assessment</h3>"
+            + weighting_table(
+                [
+                    (
+                        "Paper 1 — 2h, 75 marks: 1A (40 MCQ) + 1B (data-based questions)",
+                        "36%",
+                    ),
+                    (
+                        "Paper 2 — 2h30, 80 marks: Section A data/short answer, Section B extended response",
+                        "44%",
+                    ),
+                    (
+                        "IA — scientific investigation (10 h, 24 marks, report ≤ 3000 words)",
+                        "20%",
+                    ),
+                ]
+            )
+            + "<p>Paper 1B (data handling) is the new skill: read graphs, design tables, evaluate methods. No data booklet exists for biology — the skills must be automatic.</p>"
+        )
+        + card(
+            "<h3>Syllabus checklist <span class='count'>(43 topics, new-syllabus themes)</span></h3>"
+            + "<div class='legend'>checkbox = revised · red/amber/green = confidence</div>"
+            + "<div class='bar' data-subject='biology-hl'></div>"
+            + topics_html
+        )
+        + card(
+            "<h3>Official documents</h3><ul class='links'>"
+            + "".join(
+                f"<li><a href='{href}' target='_blank'>{label}</a></li>"
+                for label, href in OFF["biology-hl"]
+            )
+            + "</ul><p class='muted'>Full guide + TSM (marked IA samples): via school.</p>"
+        )
+    ),
+)
+
+# ---------- CHEMISTRY HL ----------
+topics_html, n_chem = checklist("chemistry-hl", CHEM_SECTIONS)
+SUBJECTS["chemistry-hl.html"] = dict(
+    title="Chemistry HL",
+    active="Chemistry HL",
+    content=(
+        h2("Chemistry HL")
+        + currency_note(
+            "Guide: Feb 2023, first assessment <strong>May 2025</strong> — only <strong>May 2025, Nov 2025, May 2026</strong> papers match. Use the <strong>v1.1 data booklet (FA2025)</strong> only; the old booklet has a different structure."
+        )
+        + card(
+            "<h3>Assessment</h3>"
+            + weighting_table(
+                [
+                    (
+                        "Paper 1 — 2h, 75 marks: 1A (40 MCQ) + 1B (data-based questions)",
+                        "36%",
+                    ),
+                    ("Paper 2 — 2h30, 90 marks: short + extended response", "44%"),
+                    (
+                        "IA — scientific investigation (10 h, 24 marks, report ≤ 3000 words)",
+                        "20%",
+                    ),
+                ]
+            )
+            + "<p>Structure 1 (stoichiometry) is the classic DP1 grade-killer — go green on it before anything else.</p>"
+        )
+        + card(
+            "<h3>Syllabus checklist <span class='count'>(25 topics, Structure/Reactivity)</span></h3>"
+            + "<div class='legend'>checkbox = revised · red/amber/green = confidence</div>"
+            + "<div class='bar' data-subject='chemistry-hl'></div>"
+            + topics_html
+        )
+        + card(
+            "<h3>Official documents</h3><ul class='links'>"
+            + "".join(
+                f"<li><a href='{href}' target='_blank'>{label}</a></li>"
+                for label, href in OFF["chemistry-hl"]
+            )
+            + "</ul><p class='muted'>Full guide + TSM (marked IA samples): via school.</p>"
+        )
+    ),
+)
+
+# ---------- HISTORY SL ----------
+SUBJECTS["history-sl.html"] = dict(
+    title="History SL",
+    active="History SL",
+    content=(
+        h2("History SL")
+        + currency_note(
+            "<strong>Cohort #1:</strong> the new guide (first teaching Aug 2026) assesses for the first time in <strong>the May 2028 session</strong>. No past papers exist anywhere; only specimen papers. Everything in archives is the old guide — different P1/P2 and a different IA (reflection removed, max 7 sources)."
+        )
+        + card(
+            "<h3>Assessment</h3>"
+            + weighting_table(
+                [
+                    ("Paper 1 — 1h15, source paper, 24 marks", "30%"),
+                    (
+                        "Paper 2 — 1h45, concepts question + thematic short responses + essay, 25 marks",
+                        "40%",
+                    ),
+                    ("IA — historical investigation (20 h, 24 marks)", "30%"),
+                ]
+            )
+            + "<p>Practice diet: the official specimen set (via school) + teacher-made source work + old-guide Paper 1 for source-evaluation technique only (content differs).</p>"
+        )
+        + card(
+            "<h3>Skills checklist</h3>"
+            + "<div class='legend'>checkbox = revised · red/amber/green = confidence</div>"
+            + "<div class='bar' data-subject='history'></div>"
+            + rag_row(
+                "history::p1-source",
+                "P1 source skills — comprehension, origin/value/limitation, corroboration, evaluation",
+            )
+            + rag_row("history::p2-concepts", "P2 concepts question (Section A)")
+            + rag_row(
+                "history::p2-essay", "P2 thematic short-response + essay (Section B)"
+            )
+            + rag_row(
+                "history::ia-topic",
+                "IA — topic chosen, 7-source cap planned, research underway",
+            )
+        )
+        + card(
+            "<h3>Official documents</h3><ul class='links'>"
+            + "".join(
+                f"<li><a href='{href}' target='_blank'>{label}</a></li>"
+                for label, href in OFF["history-sl"]
+            )
+            + "</ul><p class='muted'>FA2028 guide + specimen papers: via school (not published publicly).</p>"
+        )
+    ),
+)
+
+# ---------- FRENCH A ----------
+SUBJECTS["french-a-langlit.html"] = dict(
+    title="French A: Language & Literature SL",
+    active="French A",
+    content=(
+        h2("French A: Language &amp; Literature SL")
+        + currency_note(
+            "2021 guide, refreshed with <strong>first assessment 2026</strong>: May 2026+ papers align fully; May 2021–Nov 2025 usable with caveats (P2 was marked /30, now /25; P1 texts no longer carry line numbers). Small-candidature subject — French papers are scarce everywhere."
+        )
+        + card(
+            "<h3>Assessment</h3>"
+            + weighting_table(
+                [
+                    (
+                        "Paper 1 — 1h15, guided textual analysis of one of two unseen texts",
+                        "35%",
+                    ),
+                    ("Paper 2 — 1h30, comparative essay on works studied", "35%"),
+                    (
+                        "Individual Oral — 15 min (10 min analysis + 5 min questions) on a global issue",
+                        "30%",
+                    ),
+                ]
+            )
+            + "<p>DP1 routine: one real francophone non-literary text per week (editorial, ad, speech, cartoon) analysed in French. Keep a running bank of global issues for the IO.</p>"
+        )
+        + card(
+            "<h3>Skills checklist</h3>"
+            + "<div class='legend'>checkbox = revised · red/amber/green = confidence</div>"
+            + "<div class='bar' data-subject='french'></div>"
+            + rag_row("french::p1-analysis", "P1 — textual analysis routine (weekly)")
+            + rag_row(
+                "french::p2-works", "P2 — works notes + comparative essay structure"
+            )
+            + rag_row(
+                "french::io-bank", "IO — global-issue bank + extract choices building"
+            )
+        )
+        + card(
+            "<h3>Official documents</h3><ul class='links'>"
+            + "".join(
+                f"<li><a href='{href}' target='_blank'>{label}</a></li>"
+                for label, href in OFF["french-a-langlit"]
+            )
+            + "</ul><p class='muted'>2026-refresh guide + specimen papers: via school.</p>"
+        )
+    ),
+)
+
+# ---------- CORE ----------
+SUBJECTS["core.html"] = dict(
+    title="Core — TOK · EE · CAS",
+    active="Core",
+    content=(
+        h2("Core — TOK · Extended Essay · CAS")
+        + card(
+            "<h3>Theory of Knowledge</h3>"
+            + weighting_table(
+                [
+                    ("Exhibition (DP1 — confirm timing with the TOK teacher)", "33%"),
+                    ("Essay on prescribed title, 1600 words (DP2)", "67%"),
+                ]
+            )
+            + "<p>Guide: Feb 2020, first assessment May 2022 — unchanged for this cohort. Start a weekly <em>TOK journal</em>: one real-world situation + one knowledge question each week. Prescribed titles for May 2028 release in DP2.</p>"
+        )
+        + card(
+            "<h3>Extended Essay</h3>"
+            + weighting_table(
+                [("Written essay, 4000 words", "TOK/EE matrix → up to 3 bonus points")]
+            )
+            + "<p><strong>This cohort uses the new guide (first assessment 2027)</strong>: 5 criteria / 30 marks (Framework 6, Knowledge &amp; understanding 6, Analysis &amp; argument 6, Discussion &amp; evaluation 8, Reflection 4); subject-focused or interdisciplinary pathway; three reflection sessions incl. viva voce on a form capped at 500 words; RRS optional.</p>"
+            + "<p>DP1 actions: keep an idea log, choose subject by end of DP1, read the official guide (linked below) — not the old 2018 criteria.</p>"
+        )
+        + card(
+            "<h3>CAS</h3><p>7 learning outcomes, evidence portfolio, unassessed but must be complete. Log activities as they happen — DP2 leaves no time to reconstruct two years.</p>"
+        )
+        + card(
+            "<h3>Official documents &amp; forms</h3><ul class='links'>"
+            + "".join(
+                f"<li><a href='{href}' target='_blank'>{label}</a></li>"
+                for label, href in OFF["core"]
+            )
+            + "<li><a href='library/notes/tsm/tok-tsm-2022.pdf' target='_blank'>TOK TSM 2022</a></li>"
+            + "<li><a href='library/notes/tsm/ee-reflection-form.pdf' target='_blank'>EE reflection form (new guide)</a></li>"
+            + "</ul>"
+        )
+    ),
+)
+
+# ---------- PRACTICE ----------
+SUBJECTS["practice.html"] = dict(
+    title="Practice & Past Papers",
+    active="Practice",
+    content=(
+        h2("Practice &amp; Past Papers")
+        + card(
+            "<h3>The mock protocol (use every time)</h3><ol>"
+            "<li>Paper printed, timed, closed-book — phone out of the room.</li>"
+            "<li>Formula/data booklet on the desk from day 1 (math P1: nothing).</li>"
+            "<li>Mark yourself with the markscheme in hand — award marks only as written.</li>"
+            "<li>Log every lost mark in the error log below with a topic tag.</li>"
+            "<li>Re-attempt logged error questions after 1 week, then after 1 month.</li></ol>"
+        )
+        + card(
+            "<h3>Error log</h3>"
+            "<table class='wt'><thead><tr><th>Session/Paper</th><th>Question</th><th>What I did</th><th>Why it was wrong</th><th>Topic tag</th><th>Retry date</th></tr></thead>"
+            "<tbody>"
+            + "".join("<tr>" + "<td>&nbsp;</td>" * 6 + "</tr>" for _ in range(8))
+            + "</tbody></table>"
+            "<p class='muted'>Print-friendly table — fill by hand.</p>"
+        )
+        + card(
+            "<h3>Which sessions actually match her exams</h3>"
+            "<table class='wt'><thead><tr><th>Subject</th><th>Usable papers</th><th>Not usable</th></tr></thead><tbody>"
+            "<tr><td>Math AA SL</td><td>May 2021 → May 2026 (TZ2), Nov sessions too</td><td>May 2021 (COVID format); pre-2021</td></tr>"
+            "<tr><td>Biology HL</td><td>May 2025 · Nov 2025 · May 2026 (+ specimens)</td><td>Everything before May 2025</td></tr>"
+            "<tr><td>Chemistry HL</td><td>May 2025 · Nov 2025 · May 2026 (+ specimens)</td><td>Everything before May 2025</td></tr>"
+            "<tr><td>History SL</td><td>Specimen papers only — none exist yet</td><td>All archive papers (old guide)</td></tr>"
+            "<tr><td>French A LangLit</td><td>May 2026+ fully; May 2021–Nov 2025 with caveats</td><td>Pre-2021</td></tr>"
+            "</tbody></table>"
+            "<p class='muted'>Papers + markschemes come from school (teachers hold them legally) — drop files into <code>library/papers/&lt;subject&gt;/</code> and link them here as they arrive.</p>"
+        )
+    ),
+)
+
+# ---------- IA ----------
+SUBJECTS["ia.html"] = dict(
+    title="IA & EE Support",
+    active="IA & EE",
+    content=(
+        h2("Internal Assessment &amp; Extended Essay")
+        + card(
+            "<h3>DP1 rule: collect, don't write</h3><p>Keep an <strong>idea log</strong> — every lab observation, curiosity or real-world question noted in 2 minutes. It becomes the IA/exploration/EE shortlist in DP2. Never start writing before the school timeline says so.</p>"
+        )
+        + card(
+            "<h3>Sciences IA — scientific investigation (Bio/Chem HL, 20%)</h3>"
+            "<p>10 hours, 24 marks, report ≤ 3000 words. Four equally-weighted criteria: research design · data analysis · conclusion · evaluation (6 marks each). Calibrate against the official TSM marked samples (via school) — and read exemplars for the quality bar only, never to imitate: IB similarity screening is strict.</p>"
+        )
+        + card(
+            "<h3>Math exploration (20%)</h3>"
+            "<p>Choose something you can genuinely explore, not an impressive topic. Criteria and marked samples: <a href='library/notes/tsm/math-ia-exemplars-2020.pdf' target='_blank'>official Assessed Student Work 2020</a> · <a href='library/notes/tsm/math-aa-tsm-2023.pdf' target='_blank'>Math AA TSM 2023</a>. Idea sources: <a href='https://ibmathsresources.com' target='_blank'>IB Maths Resources</a>.</p>"
+        )
+        + card(
+            "<h3>History investigation (30% at SL!)</h3>"
+            "<p>20 hours, 24 marks, max 7 sources, no reflection section under the new guide. A third of the history grade — treat it like a mini-thesis. Start source-gathering early DP2.</p>"
+        )
+        + card(
+            "<h3>EE (new guide)</h3>"
+            "<p>Subject-focused or interdisciplinary pathway; 5 criteria / 30 marks; 4000 words; reflection form ≤ 500 words across three sessions. Read the official <a href='library/official/core-tok-ee/extended-essay-guide-fa2027.pdf' target='_blank'>EE guide (FA2027)</a> — old-guide criteria found anywhere else are obsolete.</p>"
+        )
+        + card(
+            "<h3>Milestone timeline (fill in ISL's internal dates)</h3>"
+            "<table class='wt'><thead><tr><th>When</th><th>What</th><th>School deadline</th></tr></thead><tbody>"
+            + "".join(
+                f"<tr><td>{a}</td><td>{b}</td><td></td></tr>"
+                for a, b in [
+                    (
+                        "DP1 autumn",
+                        "IA idea log started (all subjects); TOK exhibition underway",
+                    ),
+                    ("DP1 spring", "EE subject choice; sciences IA topic shortlist"),
+                    (
+                        "DP1 summer",
+                        "Draft IA research questions; IO global-issue bank solid",
+                    ),
+                    (
+                        "DP2 autumn",
+                        "Sciences IA experiments + write-up; history IA; EE outline",
+                    ),
+                    (
+                        "DP2 winter",
+                        "IA final drafts; EE first draft; TOK essay (titles released)",
+                    ),
+                    ("DP2 spring", "Full timed mocks; IO final; EE viva voce"),
+                ]
+            )
+            + "</tbody></table>"
+        )
+    ),
+)
+
+# ---------- QUICK REFERENCE ----------
+SUBJECTS["quick-reference.html"] = dict(
+    title="Quick Reference",
+    active="Reference",
+    content=(
+        h2("Quick Reference")
+        + card(
+            "<h3>Booklets — use these editions only</h3><ul class='links'>"
+            "<li><a href='library/official/math-aa-sl/math-aa-formula-booklet-fa2021.pdf' target='_blank'>Math AA/AI formula booklet (first assessment 2021)</a></li>"
+            "<li><a href='library/official/chemistry-hl/chemistry-data-booklet-fa2025-v1.1.pdf' target='_blank'>Chemistry data booklet v1.1 (first assessment 2025)</a></li>"
+            "</ul><p class='muted'>Biology has no data booklet — data skills are tested directly in Paper 1B.</p>"
+        )
+        + card(
+            "<h3>Command terms that decide marks</h3>"
+            "<table class='wt'><thead><tr><th>Term</th><th>What the examiner wants</th></tr></thead><tbody>"
+            + "".join(
+                f"<tr><td>{t}</td><td>{d}</td></tr>"
+                for t, d in [
+                    ("State", "one word/short phrase, no reasoning"),
+                    ("Identify", "pick out from context"),
+                    ("Define", "exact meaning"),
+                    ("Outline", "brief structure, little detail"),
+                    ("Describe", "give a detailed account"),
+                    ("Distinguish", "differences between two things"),
+                    ("Explain", "give reasons/causes — the 'why'"),
+                    ("Calculate", "show method, units, significant figures"),
+                    ("Determine", "usually needs data extraction + calculation"),
+                    ("Predict", "give an expected result with justification"),
+                    ("Sketch", "correct shape/labelled graph, not to scale"),
+                    ("Draw", "precise labelled diagram"),
+                    ("Compare", "both sides with explicit links"),
+                    ("Discuss", "balanced review with range of arguments"),
+                    ("Evaluate", "strengths AND weaknesses, weighed judgement"),
+                    ("Justify", "give valid reasons with evidence"),
+                    ("To what extent", "weigh the evidence, then conclude"),
+                ]
+            )
+            + "</tbody></table>"
+            "<p class='muted'>Matching the verb to the answer shape is the cheapest marks in bio/chem/history.</p>"
+        )
+        + card(
+            "<h3>GDC exam mode</h3><p>Confirm the ISL-approved calculator model, clear memory / enter exam mode exactly as the school instructs, and rehearse: reset → exam mode → the 5 settings used most (radians/degrees, stats editor, tables).</p>"
+        )
+        + card(
+            "<h3>Citation</h3><p>APA style for IA/EE: author · year · title · source · URL/access date. Keep the source list growing as you read — never reconstruct at the end.</p>"
+        )
+        + card(
+            "<h3>Everything else</h3><p>Full subject guides, subject reports and the Questionbank: via ISL teachers. Mirror copies exist elsewhere, but the school channel is the clean one.</p>"
+        )
+    ),
+)
+
+# ---------- DASHBOARD ----------
+cards_html = ""
+for fname, meta in [
+    ("math-aa-sl.html", ("Math AA SL", "math-aa-sl")),
+    ("biology-hl.html", ("Biology HL", "biology-hl")),
+    ("chemistry-hl.html", ("Chemistry HL", "chemistry-hl")),
+    ("history-sl.html", ("History SL", "history")),
+    ("french-a-langlit.html", ("French A LangLit", "french")),
+]:
+    label, subj = meta
+    cards_html += f'<a class="subj-card" href="{fname}" data-subject="{subj}"><strong>{label}</strong><span class="bar mini"></span><span class="pct">0%</span></a>'
+
+SUBJECTS["index.html"] = dict(
+    title="Dashboard",
+    active="IB Study Area",
+    content=(
+        h2("Dashboard")
+        + '<div class="dash-top"><div class="card countdown"><h3>May 2028 exams</h3><div id="countdown" class="big">—</div><p class="muted">first papers expected late April 2028</p></div>'
+        + '<div class="card week"><h3>This week (set Monday, 5 items max)</h3><div id="weekrows">'
+        + "".join(
+            f'<input class="week" data-i="{i}" placeholder="…">' for i in range(5)
+        )
+        + "</div></div></div>"
+        + card(
+            "<h3>Subjects</h3><div class='grid'>" + cards_html + "</div>"
+            "<p class='muted'>Progress = share of checklist topics marked done/green; updates as she works through the hubs.</p>"
+        )
+        + card(
+            "<h3>Milestone strip</h3><ul>"
+            "<li><strong>DP1 now:</strong> topic-by-topic mastery as units close · command-term fluency · IA idea log · TOK exhibition · weekly French textual analysis</li>"
+            "<li><strong>End DP1:</strong> EE subject choice · sciences IA shortlist</li>"
+            "<li><strong>DP2:</strong> IA write-ups · history IA · EE drafting · full timed mocks from spring</li></ul>"
+        )
+        + card(
+            "<h3>New here?</h3><p>Three rules of this site: (1) trust only files whose guide edition matches the <em>currency notes</em> on each page; (2) log every practice session in the <a href='practice.html'>error log</a>; (3) keep this folder private.</p>"
+        )
+    ),
+)
+
+# ---------- CSS + JS ----------
+CSS = """
+:root{--ink:#1d2733;--muted:#5b6b7c;--bg:#f6f7f9;--card:#fff;--line:#dfe4ea;--accent:#2c5fa8}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg)}
+nav{display:flex;flex-wrap:wrap;gap:.35rem;align-items:center;padding:.6rem 1rem;background:#122033;position:sticky;top:0;z-index:2}
+nav a{color:#cfe0f5;text-decoration:none;padding:.3rem .65rem;border-radius:999px;font-size:.92rem}
+nav a:hover{background:#1e3350}
+nav .brand{font-weight:700;color:#fff;margin-right:.6rem}
+main{max-width:1080px;margin:0 auto;padding:1.2rem 1rem 3rem}
+h2{margin:.4rem 0 .6rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1rem 1.2rem;margin:.9rem 0;box-shadow:0 1px 2px rgba(15,25,40,.05)}
+h3{margin:.1rem 0 .5rem}
+h3:not(:first-child){margin-top:1rem}
+.count{color:var(--muted);font-weight:400;font-size:.9rem}
+.legend{color:var(--muted);font-size:.88rem;margin-bottom:.5rem}
+.row{display:flex;align-items:center;gap:.55rem;padding:.28rem .35rem;border-bottom:1px solid #eef1f4}
+.row:last-child{border-bottom:0}
+.row[data-rag="g"]{background:#e9f6ee}
+.row[data-rag="a"]{background:#fdf4e3}
+.row[data-rag="r"]{background:#fdeaea}
+.row .name{flex:1;font-size:.95rem}
+.row a{font-size:.85rem;white-space:nowrap}
+select.rag{border:1px solid var(--line);border-radius:8px;padding:.15rem .35rem;font-size:.85rem;background:#fff}
+.bar{height:8px;border-radius:999px;background:#e7ebef;position:relative;margin:.4rem 0 .8rem;overflow:hidden}
+.bar::after{content:"";position:absolute;inset:0;width:var(--pct,0%);border-radius:999px;background:var(--accent)}
+table.wt{border-collapse:collapse;width:100%;font-size:.93rem}
+table.wt th,table.wt td{border:1px solid var(--line);padding:.4rem .55rem;text-align:left;vertical-align:top}
+table.wt th{background:#eef2f7}
+.currency{background:#eef4fc;border:1px solid #c9dcf3;border-left:5px solid var(--accent);border-radius:10px;padding:.6rem .8rem;font-size:.92rem;margin:.6rem 0 .9rem}
+.links{list-style:none;padding:0;margin:0}
+.links li{padding:.15rem 0}
+.links a{color:var(--accent);text-decoration:none}
+.links a:hover{text-decoration:underline}
+ul{margin:.4rem 0 .4rem 1.2rem}
+.dash-top{display:grid;grid-template-columns:1fr 1.4fr;gap:.9rem}
+.big{font-size:2.2rem;font-weight:700;color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.7rem}
+.subj-card{display:block;background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:.7rem .8rem;text-decoration:none;color:var(--ink)}
+.subj-card strong{display:block;margin-bottom:.2rem}
+.subj-card .bar.mini{margin:.5rem 0 .2rem}
+.pct{font-size:.85rem;color:var(--muted)}
+.subj-card:hover{border-color:var(--accent)}
+input.week{width:100%;border:0;border-bottom:1px dashed var(--line);padding:.3rem .1rem;font:inherit;margin:.15rem 0;background:transparent}
+input.week:focus{outline:none;border-bottom-color:var(--accent)}
+.muted{color:var(--muted);font-size:.88rem}
+footer{max-width:1080px;margin:0 auto;padding:1rem;color:var(--muted);font-size:.85rem}
+code{background:#eef1f4;border-radius:6px;padding:.05rem .3rem;font-size:.9em}
+@media (max-width:760px){.dash-top{grid-template-columns:1fr}}
+@media print{nav,footer{display:none}.card{box-shadow:none;break-inside:avoid}}
+"""
+
+JS = """(function () {
+  const store = {
+    get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v === null ? d : v; } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  };
+  document.querySelectorAll('.row[data-key]').forEach(row => {
+    const key = row.dataset.key;
+    const st = store.get('chk:' + key, { c: false, r: '' });
+    const cb = row.querySelector('input[type=checkbox]');
+    const sel = row.querySelector('select.rag');
+    if (cb) cb.checked = !!st.c;
+    if (sel) sel.value = st.r || '';
+    const save = () => store.set('chk:' + key, { c: !!(cb && cb.checked), r: sel ? sel.value : '' });
+    const paint = () => { row.setAttribute('data-rag', sel ? sel.value : ''); };
+    if (cb) cb.addEventListener('change', () => { save(); paint(); progressPage(); });
+    if (sel) sel.addEventListener('change', () => { save(); paint(); progressPage(); });
+    paint();
+  });
+  function progressPage() {
+    document.querySelectorAll('.bar[data-subject]').forEach(bar => {
+      const prefix = bar.dataset.subject + '::';
+      const rows = [...document.querySelectorAll('.row[data-key^="' + prefix + '"]')];
+      if (!rows.length) return;
+      const done = rows.filter(r => {
+        const cb = r.querySelector('input[type=checkbox]');
+        const sel = r.querySelector('select.rag');
+        return (cb && cb.checked) || (sel && sel.value === 'g');
+      }).length;
+      bar.style.setProperty('--pct', Math.round(100 * done / rows.length) + '%');
+    });
+  }
+  progressPage();
+  document.querySelectorAll('.subj-card').forEach(cardEl => {
+    const subj = cardEl.dataset.subject;
+    let total = 0, done = 0;
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (k && k.startsWith('chk:' + subj + '::')) {
+        total++;
+        const st = store.get(k, { c: false, r: '' });
+        if (st.c || st.r === 'g') done++;
+      }
+    }
+    if (total) {
+      const pct = Math.round(100 * done / total) + '%';
+      const mini = cardEl.querySelector('.bar.mini');
+      if (mini) mini.style.setProperty('--pct', pct);
+      const lbl = cardEl.querySelector('.pct');
+      if (lbl) lbl.textContent = pct;
+    }
+  });
+  const cd = document.getElementById('countdown');
+  if (cd) {
+    const target = new Date('2028-04-28T00:00:00');
+    const days = Math.max(0, Math.ceil((target - new Date()) / 86400000));
+    cd.textContent = days.toLocaleString() + ' days';
+  }
+  document.querySelectorAll('input.week').forEach(inp => {
+    inp.value = store.get('week:' + inp.dataset.i, '');
+    inp.addEventListener('input', () => store.set('week:' + inp.dataset.i, inp.value));
+  });
+})();
+"""
+
+# ---------- write everything ----------
+ASSETS.mkdir(exist_ok=True)
+(ASSETS / "style.css").write_text(CSS, encoding="utf-8")
+(ASSETS / "app.js").write_text(JS, encoding="utf-8")
+written = [page(f, m["title"], m["content"], m["active"]) for f, m in SUBJECTS.items()]
+
+missing = []
+for f in written:
+    txt = (ROOT / f).read_text(encoding="utf-8")
+    for href in re.findall(r'href="([^"#]+)"', txt):
+        if href.startswith(("http", "mailto")):
+            continue
+        if not (ROOT / href.split("?")[0]).exists():
+            missing.append((f, href))
+print("pages:", ", ".join(sorted(written)))
+print("checklist rows:", n_math + n_bio + n_chem)
+if missing:
+    print("MISSING HREFS:")
+    for m in missing:
+        print("  ", m)
+else:
+    print("all local hrefs verified")

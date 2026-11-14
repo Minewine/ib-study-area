@@ -1,0 +1,26 @@
+{
+  "subject": "chemistry-hl",
+  "topic": "structure-3-1-periodicity",
+  "topicLabel": "Structure 3.1 — Periodic table & electron structure (Nov unit)",
+  "cards": [
+    {"id": "fc-chem-p-01", "type": "term", "tags": ["definition"], "front": "Period vs group", "back": "Period = row (same number of occupied shells). Group = column (same number of valence electrons \u2192 similar chemistry)."},
+    {"id": "fc-chem-p-02", "type": "term", "tags": ["definition"], "front": "Aufbau principle", "back": "Electrons fill sublevels in energy order: 1s 2s 2p 3s 3p 4s 3d 4p \u2026 (4s fills before 3d)."},
+    {"id": "fc-chem-p-03", "type": "term", "tags": ["definition"], "front": "Pauli exclusion principle", "back": "An orbital holds at most 2 electrons, with opposite spins."},
+    {"id": "fc-chem-p-04", "type": "term", "tags": ["definition"], "front": "Hund's rule", "back": "In degenerate orbitals (same sublevel), electrons occupy singly with parallel spins before pairing."},
+    {"id": "fc-chem-p-05", "type": "term", "tags": ["definition"], "front": "First ionization energy", "back": "Energy to remove one mole of electrons from one mole of gaseous atoms to form gaseous ions. Rising trend across a period, falling down a group."},
+    {"id": "fc-chem-p-06", "type": "term", "tags": ["definition"], "front": "Electronegativity", "back": "Ability of an atom to attract a shared pair of electrons. Increases across a period, decreases down a group \u2014 fluorine is the maximum."},
+    {"id": "fc-chem-p-07", "type": "term", "tags": ["process"], "front": "Atomic radius trends", "back": "Decreases across a period (same shell, rising nuclear charge). Increases down a group (extra shell + shielding)."},
+    {"id": "fc-chem-p-08", "type": "term", "tags": ["process"], "front": "IE anomaly 1: Be > B", "back": "Boron's removed electron sits in the higher-energy, more shielded 2p sublevel; beryllium's comes from 2s\u00B2."},
+    {"id": "fc-chem-p-09", "type": "term", "tags": ["process"], "front": "IE anomaly 2: N > O", "back": "Nitrogen's 2p\u00B3 is half-filled (extra stability). Oxygen's 4th 2p electron pairs up \u2014 repulsion makes it easier to remove."},
+    {"id": "fc-chem-p-10", "type": "term", "tags": ["process"], "front": "Successive IE jump \u2014 what it reveals", "back": "A huge jump after the nth ionization = n valence electrons = group number. The (n+1)th electron comes from an inner shell."},
+    {"id": "fc-chem-p-11", "type": "qa", "tags": ["formula"], "front": "Valence electrons from group number?", "back": "Groups 1\u20132: group number. Groups 13\u201318: group number \u2212 10. (16 \u2192 6, 17 \u2192 7, 18 \u2192 8.)"},
+    {"id": "fc-chem-p-12", "type": "qa", "tags": ["definition"], "front": "Which ion is isoelectronic with Ne (10 e\u207B)?", "back": "Na\u207A (11\u22121). Also O\u00B2\u207B, Mg\u00B2\u207A, F\u207B. Count protons minus charge \u2014 K\u207A and Cl\u207B are argon-like (18)."},
+    {"id": "fc-chem-p-13", "type": "qa", "tags": ["process"], "front": "Condensed configuration of Ca (Z = 20)?", "back": "[Ar]4s\u00B2 \u2014 4s fills before 3d (aufbau order). [Ar]3d\u00B2 would be titanium."},
+    {"id": "fc-chem-p-14", "type": "qa", "tags": ["process"], "front": "Why is Na's 2nd ionization energy far larger than its 1st?", "back": "After losing 3s\u00B9, Na\u207A has the stable 2p\u2076 core \u2014 the 2nd electron must come from an inner, full shell."},
+    {"id": "fc-chem-p-15", "type": "qa", "tags": ["process"], "front": "Period 3 oxide trend (Na\u2082O \u2192 SO\u2083)?", "back": "Basic (Na\u2082O, MgO) \u2192 amphoteric (Al\u2082O\u2083) \u2192 acidic (SiO\u2082, P\u2084O\u2081\u2080, SO\u2083). Al\u2082O\u2083 reacts with both acids and bases."},
+    {"id": "fc-chem-p-16", "type": "qa", "tags": ["process"], "front": "Group 1 vs group 17 reactivity trends?", "back": "Group 1 metals: reactivity INCREASES down (outer electron lost more easily). Group 17 halogens: DECREASES down (electron gain weaker). Opposite directions \u2014 common exam trap."},
+    {"id": "fc-chem-p-17", "type": "qa", "tags": ["definition"], "front": "Why are group 18 elements so unreactive?", "back": "Full valence shells (8, or 2 for He) \u2192 no drive to gain/lose/share. Monatomic, s/p boundary family."},
+    {"id": "fc-chem-p-18", "type": "qa", "tags": ["command-term"], "front": "Command term: Explain a trend (vs State it)", "back": "State = name the trend. Explain = add the mechanism: nuclear charge up, same shell (across) vs more shielding/new shell (down). The reason carries the marks."},
+    {"id": "fc-chem-p-19", "type": "qa", "tags": ["formula"], "front": "Full vs condensed configuration \u2014 quick method", "back": "Count electrons = Z. Fill in aufbau order, e.g. Cl (17): 1s\u00B22s\u00B22p\u20763s\u00B23p\u2075 = [Ne]3s\u00B23p\u2075. 4s before 3d until the d block starts."}
+  ]
+}

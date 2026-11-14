@@ -1,0 +1,25 @@
+# ── Copyrighted / personal content: NEVER commit ────────────────────────────
+# IB past papers, markschemes, guides, specimens and ISL internal documents are
+# copyrighted by their owners. The notes in library/notes/ come from sources
+# that are not licensed for redistribution. Keep all of it local-only.
+library/official/
+library/school/
+library/notes/
+library/papers/
+source-archives/
+
+# ── Tracked on purpose ──────────────────────────────────────────────────────
+# library/questions/  — original quiz banks authored for this site
+# library/flashcards/ — original flashcard decks authored for this site
+# library/README.md   — how to reconstruct the ignored folders locally
+
+# ── OS / editor noise ───────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# ── Python ──────────────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+.venv/

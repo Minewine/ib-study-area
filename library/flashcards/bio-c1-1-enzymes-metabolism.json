@@ -1,0 +1,26 @@
+{
+  "subject": "biology-hl",
+  "topic": "c1-1-enzymes-metabolism",
+  "topicLabel": "C1.1 — Enzymes & metabolism (Nov unit)",
+  "cards": [
+    {"id": "fc-bio-e-01", "type": "term", "tags": ["definition"], "front": "Enzyme", "back": "Globular protein catalyst (a few are RNA) that speeds a reaction by lowering activation energy — never consumed by it."},
+    {"id": "fc-bio-e-02", "type": "term", "tags": ["definition"], "front": "Active site", "back": "Region of the enzyme whose shape and charge properties are complementary to one specific substrate; reaction happens here."},
+    {"id": "fc-bio-e-03", "type": "term", "tags": ["definition", "process"], "front": "Induced fit", "back": "Substrate binding induces a shape change in the active site, improving catalysis (replaces the rigid lock-and-key idea)."},
+    {"id": "fc-bio-e-04", "type": "term", "tags": ["definition"], "front": "Activation energy (E\u1D00)", "back": "Minimum energy colliding particles need for a reaction to occur. Enzymes lower E\u1D00 \u2014 they do not change \u0394G or the equilibrium."},
+    {"id": "fc-bio-e-05", "type": "term", "tags": ["definition"], "front": "Denaturation", "back": "Permanent loss of tertiary structure (weak bonds broken) \u2192 distorted active site \u2192 no function. Caused by heat above optimum or pH outside range."},
+    {"id": "fc-bio-e-06", "type": "term", "tags": ["definition"], "front": "Competitive inhibition", "back": "Inhibitor resembles the substrate and occupies the active site. Raising substrate concentration outcompetes it."},
+    {"id": "fc-bio-e-07", "type": "term", "tags": ["definition"], "front": "Non-competitive inhibition", "back": "Inhibitor binds an allosteric site, distorting the active site. Raising substrate concentration does NOT restore rate."},
+    {"id": "fc-bio-e-08", "type": "term", "tags": ["definition"], "front": "Allosteric site", "back": "Binding site away from the active site \u2014 target of non-competitive inhibitors and end-product regulators."},
+    {"id": "fc-bio-e-09", "type": "term", "tags": ["process"], "front": "End-product inhibition", "back": "Final product of a pathway allosterically inhibits the first enzyme \u2014 negative feedback (e.g. isoleucine inhibiting the threonine pathway)."},
+    {"id": "fc-bio-e-10", "type": "term", "tags": ["definition"], "front": "Anabolism vs catabolism", "back": "Anabolism builds (usually condensation, energy-requiring); catabolism breaks down (usually hydrolysis, energy-releasing)."},
+    {"id": "fc-bio-e-11", "type": "term", "tags": ["definition"], "front": "Cofactor vs coenzyme", "back": "Cofactor: inorganic ion helper (Zn\u00B2\u207A, Mg\u00B2\u207A). Coenzyme: organic helper, often vitamin-derived."},
+    {"id": "fc-bio-e-12", "type": "qa", "tags": ["process"], "front": "Why does reaction rate plateau at high substrate concentration?", "back": "All active sites are occupied \u2014 the enzyme becomes the limiting factor. Rate then depends on enzyme concentration."},
+    {"id": "fc-bio-e-13", "type": "qa", "tags": ["process"], "front": "Describe the rate\u2013temperature curve for an enzyme.", "back": "Rises below the optimum (more kinetic energy, more successful collisions); falls steeply above it (heat breaks hydrogen bonds \u2192 denaturation). Asymmetric shape."},
+    {"id": "fc-bio-e-14", "type": "qa", "tags": ["process"], "front": "Why does pH affect enzyme activity?", "back": "pH changes charges on amino acid side chains in the active site \u2192 substrate binds less well \u2192 extremes denature the enzyme. Optimum matches the enzyme's environment (stomach \u2248 2, intestine \u2248 7)."},
+    {"id": "fc-bio-e-15", "type": "qa", "tags": ["IA"], "front": "Catalase/H\u2082O\u2082 filter-paper experiment \u2014 how is rate measured?", "back": "Time for disks to rise to the surface: O\u2082 bubbles lift them. Faster rise = faster rate. Vary one factor (e.g. [H\u2082O\u2082] or temperature), control the rest."},
+    {"id": "fc-bio-e-16", "type": "qa", "tags": ["IA"], "front": "Why include a boiled-enzyme tube in the catalase experiment?", "back": "Negative control: shows no O\u2082 production without active enzyme \u2014 proves observed change is enzyme-dependent (an IA design criterion)."},
+    {"id": "fc-bio-e-17", "type": "qa", "tags": ["process"], "front": "Two advantages of immobilised enzymes in industry?", "back": "Reusable and easily separated from the product; often more heat-stable (e.g. lactose-free milk)."},
+    {"id": "fc-bio-e-18", "type": "qa", "tags": ["command-term"], "front": "Command term: Explain (vs State)", "back": "Explain = give reasons/causes with a mechanism. State = short answer, no reasoning. Matching the verb to the answer shape earns the marks."},
+    {"id": "fc-bio-e-19", "type": "qa", "tags": ["definition"], "front": "Which enzymes are the exception to \u201call enzymes are proteins\u201d?", "back": "Ribozymes \u2014 catalytic RNA molecules. Almost everything else is a globular protein."}
+  ]
+}
