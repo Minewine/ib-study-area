@@ -1,0 +1,22 @@
+{
+  "_howto": "Copy this file, rename it (kebab-case), fill in the cards, save into library/flashcards/, then add one line to library/flashcards/manifest.json and run tools/validate_content.py. Full guide: docs/AUTHORING.md.",
+  "subject": "SUBJECT-KEY (e.g. biology-hl, math-aa-sl)",
+  "topic": "topic-key-matching-the-quiz-bank",
+  "topicLabel": "Human-readable topic label shown in the Cards picker",
+  "cards": [
+    {
+      "id": "UNIQUE-GLOBALLY-01",
+      "type": "term",
+      "tags": ["definition"],
+      "front": "The term (shown first)",
+      "back": "The definition (revealed on flip)"
+    },
+    {
+      "id": "UNIQUE-GLOBALLY-02",
+      "type": "qa",
+      "tags": ["process"],
+      "front": "A question (shown first)",
+      "back": "The answer (revealed on flip)"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "subject": "math-aa-sl",
+  "topic": "functions-2-4-to-2-5",
+  "topicLabel": "Functions 2.4\u20132.5 \u2014 further functions & transformations (next unit)",
+  "cards": [
+    {"id": "fc-math-tf-01", "type": "term", "tags": ["definition"], "front": "Reciprocal function y = 1/x", "back": "Two branches; vertical asymptote x = 0, horizontal asymptote y = 0. Undefined at x = 0, never touches either axis."},
+    {"id": "fc-math-tf-02", "type": "term", "tags": ["formula"], "front": "Translation OUTSIDE the brackets", "back": "y = f(x) + a \u2192 vertical shift UP a (y-values change, direction as written)."},
+    {"id": "fc-math-tf-03", "type": "term", "tags": ["formula"], "front": "Translation INSIDE the brackets", "back": "y = f(x \u2212 a) \u2192 horizontal shift RIGHT a \u2014 inside acts horizontally and OPPOSITE to the sign. The classic exam trap."},
+    {"id": "fc-math-tf-04", "type": "term", "tags": ["formula"], "front": "Reflections", "back": "y = \u2212f(x) \u2192 reflect in the x-axis. y = f(\u2212x) \u2192 reflect in the y-axis. Minus outside flips y; minus inside flips x."},
+    {"id": "fc-math-tf-05", "type": "term", "tags": ["formula"], "front": "Stretches", "back": "y = a\u00B7f(x) \u2192 vertical stretch, factor a. y = f(ax) \u2192 horizontal compression by factor 1/a (inside = reciprocal)."},
+    {"id": "fc-math-tf-06", "type": "qa", "tags": ["process"], "front": "(2, 5) is on y = f(x). Where does it land on y = f(x + 3)?", "back": "(\u22121, 5) \u2014 inside +3 shifts LEFT 3; y unchanged. On y = f(x) + 3 it would be (2, 8)."},
+    {"id": "fc-math-tf-07", "type": "qa", "tags": ["formula"], "front": "Exponential y = a\u02E3 \u2014 key graph facts", "back": "Passes through (0, 1) (a\u2070 = 1); horizontal asymptote y = 0. y = 2\u02E3 + 1 shifts the asymptote to y = 1."},
+    {"id": "fc-math-tf-08", "type": "qa", "tags": ["formula"], "front": "Log graph y = log\u2082 x \u2014 key graph facts", "back": "Passes through (1, 0); vertical asymptote x = 0; mirror image of y = 2\u02E3 in the line y = x."},
+    {"id": "fc-math-tf-09", "type": "qa", "tags": ["process"], "front": "Solve f(g(x)) = 17 for f(x) = x + 1, g(x) = x\u00B2.", "back": "x\u00B2 + 1 = 17 \u2192 x\u00B2 = 16 \u2192 x = \u00B14. Compose first, then solve; quadratics give BOTH roots."},
+    {"id": "fc-math-tf-10", "type": "qa", "tags": ["definition"], "front": "When does f(x) = x\u00B2 have an inverse?", "back": "Only after restricting the domain (x \u2265 0) \u2014 on \u211D it fails the horizontal line test (f(2) = f(\u22122)). Then f\u207B\u00B9(x) = \u221Ax."},
+    {"id": "fc-math-tf-11", "type": "qa", "tags": ["formula"], "front": "(f \u2218 f\u207B\u00B9)(x) = ?", "back": "x \u2014 a function and its inverse undo each other (identity composition)."},
+    {"id": "fc-math-tf-12", "type": "qa", "tags": ["process"], "front": "Solve x\u00B2 \u2212 5x + 6 < 0.", "back": "Factor: (x \u2212 2)(x \u2212 3) < 0 \u2192 2 < x < 3 (below zero BETWEEN the roots of a positive parabola). Sketch, don't memorize."},
+    {"id": "fc-math-tf-13", "type": "qa", "tags": ["definition"], "front": "Even vs odd functions", "back": "Even: f(\u2212x) = f(x) \u2192 y-axis symmetry (x\u00B2). Odd: f(\u2212x) = \u2212f(x) \u2192 180\u00B0 rotation symmetry about the origin (x\u00B3)."},
+    {"id": "fc-math-tf-14", "type": "qa", "tags": ["process"], "front": "Transformations mapping y = x\u00B2 onto y = \u2212(x \u2212 3)\u00B2 + 2?", "back": "Shift right 3 \u2192 reflect in the x-axis \u2192 shift up 2. Vertex lands at (3, 2), a maximum (a < 0)."},
+    {"id": "fc-math-tf-15", "type": "qa", "tags": ["formula"], "front": "Vertex form \u2014 what it tells you", "back": "y = a(x \u2212 h)\u00B2 + k: vertex (h, k) (note the sign flip of h); a < 0 \u2192 maximum, a > 0 \u2192 minimum; axis of symmetry x = h."},
+    {"id": "fc-math-tf-16", "type": "qa", "tags": ["process"], "front": "Asymptote of y = 3\u207B\u02E3 \u2014 and from which side?", "back": "y = 0, approached as x \u2192 +\u221E (decay). Direction of approach matters for sketch marks."},
+    {"id": "fc-math-tf-17", "type": "qa", "tags": ["exam"], "front": "Transformation questions \u2014 the two-row check?", "back": "OUTSIDE the brackets changes y (direction as written); INSIDE changes x (direction opposite). Check every answer against a known point."},
+    {"id": "fc-math-tf-18", "type": "qa", "tags": ["command-term"], "front": "Command term: Describe the transformations", "back": "Give each transformation in order with type and parameter (translation, stretch, reflection) \u2014 a bare sketch is not an answer."},
+    {"id": "fc-math-tf-19", "type": "qa", "tags": ["exam"], "front": "GDC check for transformations", "back": "Plot f, the transformed graph AND a known point's image \u2014 confirm the shift direction before committing. Paper 2 only."}
+  ]
+}

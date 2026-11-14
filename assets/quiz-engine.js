@@ -4,21 +4,28 @@
 (function () {
   "use strict";
 
-  const BANKS = {
-    "chemistry-hl": { label: "Chemistry HL", banks: [
-      { file: "library/questions/chem-structure-1-stoichiometry.json", label: "Structure 1 — Stoichiometry (notes 1)" },
-      { file: "library/questions/chem-structure-3-1-periodicity.json", label: "Structure 3.1 — Periodicity (Nov unit)" },
-      { file: "library/questions/chem-reactivity-1-energetics.json", label: "Reactivity 1 — Energetics (Dec–Jan unit)" },
-      { file: "library/questions/chem-reactivity-2-kinetics-equilibrium.json", label: "Reactivity 2 — Kinetics & equilibrium (Feb–Mar unit)" },
-      { file: "library/questions/chem-reactivity-3-redox-acids-bases.json", label: "Reactivity 3 — Redox & acids/bases (Apr–Jun unit)" },
-      { file: "library/questions/chem-structure-2-bonding.json", label: "Structure 2 — Bonding (DP2: Oct–Nov unit)" },
-      { file: "library/questions/chem-organic-chemistry.json", label: "Organic chemistry (DP2: Nov–Mar unit)" }
-    ]},
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const shuffle = (a) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+  let session = null;
+  let BANKS = {};
+
+const FALLBACK_BANKS = {
     "biology-hl": { label: "Biology HL", banks: [
       { file: "library/questions/bio-unity-diversity-cells.json", label: "Unity & diversity — Cells & membranes" },
       { file: "library/questions/bio-c1-1-enzymes-metabolism.json", label: "C1.1 — Enzymes & metabolism (Nov unit)" },
       { file: "library/questions/bio-water-potential-origin-cells.json", label: "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)" },
-      { file: "library/questions/bio-respiration-protein-synthesis.json", label: "C1.2 — Respiration & D1.2 — Protein synthesis (Feb–Mar unit)" }
+      { file: "library/questions/bio-respiration-protein-synthesis.json", label: "C1.2 — Cell respiration & D1.2 — Protein synthesis (Feb–Mar unit)" },
+    ]},
+    "chemistry-hl": { label: "Chemistry HL", banks: [
+      { file: "library/questions/chem-structure-1-stoichiometry.json", label: "Structure 1 — Stoichiometry (notes 1)" },
+      { file: "library/questions/chem-structure-3-1-periodicity.json", label: "Structure 3.1 — Periodicity (Nov unit)" },
+{ file: "library/questions/chem-reactivity-1-energetics.json", label: "Reactivity 1 — Energetics (Dec–Jan unit)" },
+{ file: "library/questions/chem-reactivity-2-kinetics-equilibrium.json", label: "Reactivity 2 — Kinetics & equilibrium (Feb–Mar unit)" },
+{ file: "library/questions/chem-reactivity-3-redox-acids-bases.json", label: "Reactivity 3 — Redox & acids/bases (Apr–Jun unit)" },
+{ file: "library/questions/chem-structure-2-bonding.json", label: "Structure 2 — Bonding (DP2: Oct–Nov unit)" },
+{ file: "library/questions/chem-organic-chemistry.json", label: "Organic chemistry (DP2: Nov–Mar unit)" },
     ]},
     "math-aa-sl": { label: "Math AA SL", banks: [
       { file: "library/questions/math-aa-number-algebra.json", label: "Number & algebra (1.1–1.3)" },
@@ -27,13 +34,22 @@
     ]}
   };
 
-  const $ = (id) => document.getElementById(id);
-  const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-  const shuffle = (a) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  async function loadManifest() {
+    try {
+      const res = await fetch("library/questions/manifest.json?cb=" + Date.now(), { cache: "no-store" });
+      if (!res.ok) throw new Error(res.status);
+      const manifest = await res.json();
+      BANKS = {};
+      manifest.forEach(m => {
+        BANKS[m.subject] = BANKS[m.subject] || { label: m.subjectLabel, banks: [] };
+        BANKS[m.subject].banks.push({ file: m.file, label: m.label });
+      });
+      return true;
+    } catch (e) { console.warn("quiz manifest load failed — using built-in fallback", e); BANKS = FALLBACK_BANKS; return false; }
+  }
 
-  let session = null;
-
-  function init() {
+async function init() {
+    await loadManifest();
     const subj = $("q-subject");
     Object.entries(BANKS).forEach(([key, b]) => {
       const o = document.createElement("option"); o.value = key; o.textContent = b.label; subj.appendChild(o);

@@ -1,0 +1,26 @@
+{
+  "subject": "biology-hl",
+  "topic": "water-potential-origin-cells",
+  "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)",
+  "cards": [
+    {"id": "fc-bio-wp-01", "type": "term", "tags": ["definition"], "front": "Water potential (\u03A8)", "back": "Tendency of water to move out of a solution. Measured in kPa; pure water = 0 kPa (the maximum); all solutions are negative."},
+    {"id": "fc-bio-wp-02", "type": "term", "tags": ["definition"], "front": "Solute potential (\u03A8s)", "back": "Always negative; becomes MORE negative as solute concentration rises. In an open beaker \u03A8p = 0, so \u03A8w = \u03A8s."},
+    {"id": "fc-bio-wp-03", "type": "term", "tags": ["definition"], "front": "Pressure potential (\u03A8p)", "back": "Wall push-back on the protoplast. Positive in turgid cells; \u2248 0 in plasmolysed cells and open solutions."},
+    {"id": "fc-bio-wp-04", "type": "term", "tags": ["formula"], "front": "Water potential equation", "back": "\u03A8w = \u03A8s + \u03A8p. Example: \u03A8s = \u2212500, \u03A8p = +200 \u2192 \u03A8w = \u2212300 kPa."},
+    {"id": "fc-bio-wp-05", "type": "qa", "tags": ["process"], "front": "Which way does net osmosis go?", "back": "Down the water-potential gradient: from higher (less negative) \u03A8 to lower (more negative) \u03A8 \u2014 i.e. toward the more concentrated solution."},
+    {"id": "fc-bio-wp-06", "type": "qa", "tags": ["process"], "front": "Turgid vs plasmolysed plant cell \u2014 pressure potentials?", "back": "Turgid: \u03A8p positive (wall pushes back), \u03A8w rises to 0 \u2192 no net movement. Plasmolysed: \u03A8p \u2248 0, membrane pulls away from the wall."},
+    {"id": "fc-bio-wp-07", "type": "qa", "tags": ["process"], "front": "Animal cell in pure water vs in concentrated salt solution?", "back": "Pure water: swells and can lyse (no wall). Salt solution: crenates/shrinks. Isotonic (\u2248 same osmolarity): no net movement."},
+    {"id": "fc-bio-wp-08", "type": "qa", "tags": ["process"], "front": "How is osmolarity measured in the lab?", "back": "With an osmometer \u2014 freezing-point depression converts to osmolality: more solute particles \u2192 lower freezing point."},
+    {"id": "fc-bio-wp-09", "type": "qa", "tags": ["process"], "front": "Why does salting meat preserve it?", "back": "High external solute \u2192 very negative external \u03A8 \u2192 water leaves microbial cells by osmosis \u2192 they cannot function."},
+    {"id": "fc-bio-wp-10", "type": "qa", "tags": ["IA"], "front": "Potato-strip osmosis experiment \u2014 what does the zero-mass-change point tell you?", "back": "The isotonic point: external \u03A8 equals the cell \u03A8 \u2192 no net water movement. Interpolate between data points and quote units (mol/dm\u00B3)."},
+    {"id": "fc-bio-wp-11", "type": "term", "tags": ["definition"], "front": "Cells come only from pre-existing cells \u2014 the evidence", "back": "Pasteur's swan-neck flasks: sterile broth stayed sterile unless exposed to dust. Creates the origins paradox the cell theory can't explain by itself."},
+    {"id": "fc-bio-wp-12", "type": "term", "tags": ["definition", "process"], "front": "Miller\u2013Urey experiment", "back": "Electrical sparks through a reducing atmosphere (H\u2082, CH\u2084, NH\u2083, H\u2082O) produced amino acids \u2014 abiotic synthesis of organic monomers was possible on early Earth."},
+    {"id": "fc-bio-wp-13", "type": "term", "tags": ["definition"], "front": "Endosymbiotic theory", "back": "Mitochondria and chloroplasts originated as prokaryotes engulfed by larger cells \u2014 mutually beneficial, then permanent."},
+    {"id": "fc-bio-wp-14", "type": "qa", "tags": ["process"], "front": "Four pieces of evidence for endosymbiosis?", "back": "Double membrane (engulfment + vesicle); own circular DNA; 70S bacterial-style ribosomes; similar size to bacteria + binary fission."},
+    {"id": "fc-bio-wp-15", "type": "qa", "tags": ["definition"], "front": "What is LUCA and how is it inferred?", "back": "Last Universal Common Ancestor \u2014 inferred from shared biochemistry: same genetic code, ATP, ribosomes, ~20 amino acids across all life."},
+    {"id": "fc-bio-wp-16", "type": "qa", "tags": ["process"], "front": "Why are extremophiles relevant to cell origins?", "back": "They show cells survive harsh conditions (heat, pressure, acidity) hypothesized for early Earth \u2014 supports plausible first-cell environments."},
+    {"id": "fc-bio-wp-17", "type": "qa", "tags": ["process"], "front": "Order the stages in the origin of cells.", "back": "Abiotic monomers (Miller\u2013Urey) \u2192 polymers \u2192 self-replicating molecules (RNA-era) \u2192 membranes enclose them \u2192 first cells."},
+    {"id": "fc-bio-wp-18", "type": "qa", "tags": ["command-term"], "front": "Command term: Evaluate (endosymbiosis)", "back": "Supporting evidence AND the limitation: the events happened ~1.5+ billion years ago and cannot be directly observed \u2014 the conclusion is an inference from converging evidence."},
+    {"id": "fc-bio-wp-19", "type": "qa", "tags": ["exam"], "front": "Water-potential calculation trap?", "back": "Write \u03A8w = \u03A8s + \u03A8p first, then compare against the external \u03A8. Pure water = 0 anchors every direction decision."}
+  ]
+}

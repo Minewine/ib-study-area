@@ -1,0 +1,179 @@
+{
+ "subject": "biology-hl",
+ "topic": "respiration-protein-synthesis",
+ "topicLabel": "C1.2 — Cell respiration & D1.2 — Protein synthesis (Feb–Mar unit)",
+ "cards": [
+  {
+   "id": "fc-bio-rs-01",
+   "type": "term",
+   "tags": [
+    "definition"
+   ],
+   "front": "ATP",
+   "back": "Universal energy currency — hydrolysis to ADP + phosphate releases small, manageable packets of energy for every cell process."
+  },
+  {
+   "id": "fc-bio-rs-02",
+   "type": "term",
+   "tags": [
+    "formula"
+   ],
+   "front": "Aerobic respiration equation",
+   "back": "glucose + 6O₂ → 6CO₂ + 6H₂O (+ ATP). Photosynthesis is the same equation reversed."
+  },
+  {
+   "id": "fc-bio-rs-03",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "Three stages of aerobic respiration and their locations?",
+   "back": "Glycolysis — cytoplasm · Krebs cycle — mitochondrial matrix · oxidative phosphorylation (ETC) — inner membrane (cristae). Location questions are near-guaranteed."
+  },
+  {
+   "id": "fc-bio-rs-04",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "Glycolysis — inputs, outputs, oxygen?",
+   "back": "Glucose (6C) → 2 pyruvate (3C); net 2 ATP + 2 NADH. Does NOT require oxygen — it predates aerobic respiration."
+  },
+  {
+   "id": "fc-bio-rs-05",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "Oxygen's role in aerobic respiration?",
+   "back": "Terminal electron acceptor at the END of the ETC: combines with electrons + H⁻ → water. Without O₂ the ETC backs up and stops."
+  },
+  {
+   "id": "fc-bio-rs-06",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "Anaerobic endpoints: animals vs yeast?",
+   "back": "Animals: pyruvate → lactate (muscle fatigue). Yeast/plants: pyruvate → ethanol + CO₂. Both regenerate NAD⁺ so glycolysis can continue."
+  },
+  {
+   "id": "fc-bio-rs-07",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "Why does anaerobic respiration release so little ATP?",
+   "back": "Only glycolysis runs (≈ 2 ATP) — glucose is not fully oxidized, so most energy stays trapped in lactate or ethanol."
+  },
+  {
+   "id": "fc-bio-rs-08",
+   "type": "qa",
+   "tags": [
+    "IA"
+   ],
+   "front": "Respirometer — what does the fluid movement measure, and why add KOH?",
+   "back": "Respiration absorbs O₂ and releases CO₂; KOH absorbs the CO₂, so the only gas change is O₂ decrease → fluid moves toward the organism. Rate of movement = respiration rate."
+  },
+  {
+   "id": "fc-bio-rs-09",
+   "type": "qa",
+   "tags": [
+    "IA"
+   ],
+   "front": "Why keep the respirometer in a constant-temperature water bath?",
+   "back": "Respiration rate depends on enzyme activity (temperature-sensitive), and gas expansion from heat would confound the O₂ reading. Controls = design marks."
+  },
+  {
+   "id": "fc-bio-rs-10",
+   "type": "term",
+   "tags": [
+    "definition",
+    "process"
+   ],
+   "front": "Chemiosmosis",
+   "back": "ETC pumps H⁻ into the intermembrane space; protons flow back through ATP synthase → ATP. Cristae (folds) maximize surface area → more ATP synthase."
+  },
+  {
+   "id": "fc-bio-rs-11",
+   "type": "term",
+   "tags": [
+    "definition"
+   ],
+   "front": "NADH and FADH₂",
+   "back": "Hydrogen carriers: collect electrons/hydrogen in glycolysis and the Krebs cycle, deliver them to the ETC."
+  },
+  {
+   "id": "fc-bio-rs-12",
+   "type": "term",
+   "tags": [
+    "process"
+   ],
+   "front": "Transcription",
+   "back": "RNA polymerase binds the promoter, unwinds DNA, uses one strand as template, joins RNA nucleotides into mRNA (5′ → 3′) — in the nucleus of eukaryotes."
+  },
+  {
+   "id": "fc-bio-rs-13",
+   "type": "qa",
+   "tags": [
+    "definition"
+   ],
+   "front": "RNA vs DNA — three differences",
+   "back": "Ribose sugar (vs deoxyribose) · uracil (vs thymine) · usually single-stranded (vs double helix)."
+  },
+  {
+   "id": "fc-bio-rs-14",
+   "type": "term",
+   "tags": [
+    "definition"
+   ],
+   "front": "Codon vs anticodon",
+   "back": "Codon = 3-base triplet on mRNA; anticodon = complementary triplet on tRNA. Ribosome base-pairs them and joins amino acids with peptide bonds."
+  },
+  {
+   "id": "fc-bio-rs-15",
+   "type": "qa",
+   "tags": [
+    "definition"
+   ],
+   "front": "Two properties of the genetic code and why each matters?",
+   "back": "Universal (same codons in nearly all organisms → human genes work in bacteria) and degenerate (several codons per amino acid → buffers point mutations)."
+  },
+  {
+   "id": "fc-bio-rs-16",
+   "type": "qa",
+   "tags": [
+    "formula"
+   ],
+   "front": "Start and stop codons?",
+   "back": "AUG = methionine + start signal. UAA, UAG, UGA = stop codons — they code for NO amino acid and release the polypeptide."
+  },
+  {
+   "id": "fc-bio-rs-17",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "What happens to pre-mRNA before it leaves the nucleus?",
+   "back": "Splicing: introns (non-coding) removed, exons (coding) joined → mature mRNA. Bacterial mRNA needs no splicing."
+  },
+  {
+   "id": "fc-bio-rs-18",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "Why is the mitochondrial inner membrane folded into cristae?",
+   "back": "More surface area for the ETC and ATP synthase → more chemiosmosis → more ATP. Structure–function link, classic exam point."
+  },
+  {
+   "id": "fc-bio-rs-19",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "tRNA structure → function?",
+   "back": "Anticodon loop (3 bases) pairs with the mRNA codon; the 3′ end carries ONE specific amino acid — specificity at both ends guarantees correct sequence."
+  }
+ ]
+}
