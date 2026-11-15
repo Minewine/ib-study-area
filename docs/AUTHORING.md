@@ -92,6 +92,17 @@ If a JSON has a syntax error, the validator names the file and the problem.
 
 ---
 
+## Creating large batches of questions
+
+For scale (a whole unit, or several), don't hand-write JSON — use the generation prompt in
+[QUIZ-GENERATION-PROMPT.md](QUIZ-GENERATION-PROMPT.md): paste it into any capable AI chat with
+the unit's syllabus scope filled in, save the returned JSON as a bank, validate, spot-check
+5 items against the notes, register in the manifest. The validator catches format errors;
+the human spot-check catches factual ones (the real failure mode of generated questions).
+
+A flashcard-deck equivalent works the same way with the deck schema (fronts 3–12 words,
+one fact per card).
+
 ## Where the engines read from
 
 - `quiz.html` loads `library/questions/manifest.json` at startup and builds its subject/topic

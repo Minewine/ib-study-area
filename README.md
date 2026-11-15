@@ -98,6 +98,7 @@ banner on its hub.
 | [DEPLOY.md](DEPLOY.md) | LAN / generic-host options |
 | [server/deploy-notes.md](server/deploy-notes.md) | Hosted deployment to rametric.com/nevaib (accounts + cross-device sync) |
 | [docs/NEXT-PHASE-PROMPT.md](docs/NEXT-PHASE-PROMPT.md) | Handoff prompt for continuing in a fresh chat |
+| [docs/QUIZ-GENERATION-PROMPT.md](docs/QUIZ-GENERATION-PROMPT.md) | Reusable prompt for generating new question batches |
 
 ## Next actions (ordered — details in the linked docs)
 
