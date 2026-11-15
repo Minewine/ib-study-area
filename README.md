@@ -102,11 +102,10 @@ banner on its hub.
 
 ## Next actions (ordered — details in the linked docs)
 
-1. ~~**Deploy to rametric.com/nevaib**~~ — ✅ **live and verified (2026-11-15)**; updates push with `python3 -I tools/push_deploy.py` (checklist + host notes in [server/deploy-notes.md](server/deploy-notes.md)).
+1. **Tell her** — the app is live: rametric.com/nevaib, her login is `neva` + the account password (created via the setup action). Bookmark / add to home screen on the phone.
 2. **Send the school-requests email** (ready to copy at the bottom of `plan.html`) — papers + markschemes, History FA2028 guide/specimens, LangLit materials, IA samples. Then file arrivals into `library/papers/<subject>/` and link them on `practice.html`.
 3. **Confirm with the school**: Nov–Jun calendar dates (only Aug–Oct verified against the official text layer), ISL's math unit order, licensed platforms.
-4. **Start the weekly loop with her** — Monday set the week · Tue+Thu quiz sessions · Friday error log · Sunday idea log. Logged in at rametric.com/nevaib, progress follows her across devices; the dashboard's "Progress pulse" shows the trend.
-5. **Monthly**: content commit + push, host backup of `~/nevaib-data/` (recipe in server/deploy-notes.md — the cPanel File Manager is disabled on this account), next bank/deck batch per [docs/CONTENT-PLAN.md](docs/CONTENT-PLAN.md). For PHP 8: no MultiPHP/Selector UI exists on the account and 8.x handlers are 403-blocked — ask **Namecheap support** to enable PHP 8.x for the account (api.php already runs on both).
+4. **Monthly rhythm** (MAINTENANCE.md): content commit + push, host backup of `~/nevaib-data/`, next bank/deck batch per [docs/CONTENT-PLAN.md](docs/CONTENT-PLAN.md), validator + link check.
 
 Development handoff for the next phase: [docs/NEXT-PHASE-PROMPT.md](docs/NEXT-PHASE-PROMPT.md).
 

@@ -5,7 +5,7 @@ touching this site.
 
 ## Architecture
 
-- **Static site, no build step.** 16 study-site pages + 4 practice-app pages (`app/`) + 5 asset files + JSON data in `library/`.
+- **Static site, no build step.** 16 study-site pages + 4 practice-app pages (`app/`, LIVE on rametric.com/nevaib) + 6 asset files + JSON data in `library/` (22 quiz banks / 547 items, 21 flashcard decks / 407 cards).
 - **Practice app (`app/`)**: `index.html` (launcher), `quiz.html`, `cards.html`, `author.html` (upload/manage/export).
   Engines resolve content via `PATH_BASE` (`../` when served from `/app/`, empty at the root), so the same engine
   files serve both layers. Root `quiz.html`/`flashcards.html` are one-line redirect stubs to the app.

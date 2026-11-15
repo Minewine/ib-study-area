@@ -13,6 +13,8 @@ features only exist to make that loop easier or more targeted.
 
 ## Short-term (next 2–4 weeks · before the December break)
 
+*(The December-exam bank queue is complete — wave-2 extension shipped 2026-11-15. What remains here is verification and usage, not building.)*
+
 - [ ] **School email sent → papers integrated.** File arrivals into `library/papers/<subject>/`, add links to `practice.html`, wire one mock per subject into the plan.
 - [x] **Generator de-risked** (2026-11-14): all patches folded into the `PATCHES` list; regeneration verified byte-identical. Keep template edits and PATCHES in sync going forward.
 - [x] **January banks built** (2026-11-14): bio water potential/origin of cells (18 items), bio respiration/protein synthesis (21), math functions 2.4–2.5 (22).

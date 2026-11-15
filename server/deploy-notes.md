@@ -1,8 +1,9 @@
 # Deploying the practice app to rametric.com/nevaib
 
-Target: Namecheap shared hosting (no shell). The deployable folder contains only
-original content — the copyrighted PDF library is **not** part of it and must
-never be uploaded.
+**STATUS 2026-11-15: DEPLOYED AND LIVE** — `deploy/nevaib/` uploaded via SFTP, verified
+over HTTPS (pages 200, API live, TLS valid for rametric.com). Setup key blanked on the
+host after account creation. The steps below remain the re-deployment procedure for
+content updates.
 
 ## Verified live 2026-11-15
 
@@ -20,7 +21,7 @@ token/auth flow was verified live after making the file 7.2-safe.
 
 ## One-time setup (already done for this site)
 
-1. Build the deployable folder:
+1. RE-DEPLOY (content updates): build the deployable folder:
    ```sh
    python3 -I tools/build_deploy.py
    ```
