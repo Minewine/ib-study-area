@@ -96,15 +96,15 @@ banner on its hub.
 | [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md) | Architecture, data schemas, localStorage keys, gotchas, recipes |
 | [docs/MAINTENANCE.md](docs/MAINTENANCE.md) | Weekly/termly checklists, backups, health checks |
 | [DEPLOY.md](DEPLOY.md) | LAN / generic-host options |
-| [server/deploy-notes.md](server/deploy-notes.md) | Hosted deployment to rametic.com/nevaib (accounts + cross-device sync) |
+| [server/deploy-notes.md](server/deploy-notes.md) | Hosted deployment to rametric.com/nevaib (accounts + cross-device sync) |
 | [docs/NEXT-PHASE-PROMPT.md](docs/NEXT-PHASE-PROMPT.md) | Handoff prompt for continuing in a fresh chat |
 
 ## Next actions (ordered — details in the linked docs)
 
-1. ~~**Deploy to rametic.com/nevaib**~~ — ✅ **live and verified (2026-11-15)**; updates push with `python3 -I tools/push_deploy.py` (checklist + host notes in [server/deploy-notes.md](server/deploy-notes.md)).
+1. ~~**Deploy to rametric.com/nevaib**~~ — ✅ **live and verified (2026-11-15)**; updates push with `python3 -I tools/push_deploy.py` (checklist + host notes in [server/deploy-notes.md](server/deploy-notes.md)).
 2. **Send the school-requests email** (ready to copy at the bottom of `plan.html`) — papers + markschemes, History FA2028 guide/specimens, LangLit materials, IA samples. Then file arrivals into `library/papers/<subject>/` and link them on `practice.html`.
 3. **Confirm with the school**: Nov–Jun calendar dates (only Aug–Oct verified against the official text layer), ISL's math unit order, licensed platforms.
-4. **Start the weekly loop with her** — Monday set the week · Tue+Thu quiz sessions · Friday error log · Sunday idea log. Logged in at rametic.com/nevaib, progress follows her across devices; the dashboard's "Progress pulse" shows the trend.
+4. **Start the weekly loop with her** — Monday set the week · Tue+Thu quiz sessions · Friday error log · Sunday idea log. Logged in at rametric.com/nevaib, progress follows her across devices; the dashboard's "Progress pulse" shows the trend.
 5. **Monthly**: content commit + push, host backup of `~/nevaib-data/` (recipe in server/deploy-notes.md — the cPanel File Manager is disabled on this account), next bank/deck batch per [docs/CONTENT-PLAN.md](docs/CONTENT-PLAN.md). For PHP 8: no MultiPHP/Selector UI exists on the account and 8.x handlers are 403-blocked — ask **Namecheap support** to enable PHP 8.x for the account (api.php already runs on both).
 
 Development handoff for the next phase: [docs/NEXT-PHASE-PROMPT.md](docs/NEXT-PHASE-PROMPT.md).
@@ -112,7 +112,7 @@ Development handoff for the next phase: [docs/NEXT-PHASE-PROMPT.md](docs/NEXT-PH
 ## Known issues & risks (flagged, not urgent)
 
 - **Nov–Jun deadline dates** come from a photo transcription; Aug–Oct verified against the official PDF.
-- **Progress syncs across devices when logged in.** On the hosted copy (rametic.com/nevaib) quiz sessions, flashcards, uploads *and* the study-site checklist ticks + this-week items sync to the server (token auth; the local study site talks to the hosted API from `localhost`/LAN). Logged out = per-device localStorage, as before.
+- **Progress syncs across devices when logged in.** On the hosted copy (rametric.com/nevaib) quiz sessions, flashcards, uploads *and* the study-site checklist ticks + this-week items sync to the server (token auth; the local study site talks to the hosted API from `localhost`/LAN). Logged out = per-device localStorage, as before.
 - **Math Functions bank** is labelled "likely next unit" — ISL's math teaching order isn't documented; confirm and rename if needed.
 - **`source-archives/` holds ~434 MB of ZIPs** already extracted into `library/notes/` — safe to delete once you're confident in the extraction (your call).
 - A staging copy of the official library exists in the ZCode workspace (`ib-library/`) — `ibsystem/library/` is the canonical one; stop updating the staging copy.

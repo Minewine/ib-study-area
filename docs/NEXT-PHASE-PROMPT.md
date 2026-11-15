@@ -18,7 +18,7 @@ You are continuing development of a private IB Diploma study website for one stu
 
 - **Study site** (static, vanilla JS, no build step): dashboard, 6 subject hubs with syllabus checklists linked to local notes PDFs, deadlines timeline, DP1 plan, practice/error-log page, quick reference. Content data in `library/` (official/school/notes/questions/flashcards). 127 PDFs live locally; the copyrighted PDF folders (`library/official|school|notes|papers/`, `source-archives/`) are gitignored and must NEVER be committed, hosted, or included in any deploy.
 - **Practice app** (`app/`): quiz engine (14 original banks, 303 items — every DP1 science/math unit through spring) + flashcards (12 decks, 229 cards, Leitner SRS) + `author.html` (upload/manage/export JSON content). Engines: `assets/quiz-engine.js`, `assets/flashcards.js` (manifest-driven via `library/*/manifest.json`), shared `PATH_BASE` content resolution so the same engines serve both the root site and `app/`.
-- **Hosted backend** (`server/api.php`): PHP, stdlib only — login/logout/me + per-user state get/save (PHP sessions, JSON files under the cPanel home on rametic.com). Target deployment: `rametic.com/nevaib` on Namecheap shared hosting (no shell — cPanel/SFTP only; PHP 8 available; HTTPS live). Deploy artifact built by `tools/build_deploy.py` → `deploy/nevaib/`. NOT YET UPLOADED — that's the first task.
+- **Hosted backend** (`server/api.php`): PHP, stdlib only — login/logout/me + per-user state get/save (PHP sessions, JSON files under the cPanel home on rametric.com). Target deployment: `rametric.com/nevaib` on Namecheap shared hosting (no shell — cPanel/SFTP only; PHP 8 available; HTTPS live). Deploy artifact built by `tools/build_deploy.py` → `deploy/nevaib/`. NOT YET UPLOADED — that's the first task.
 - **Sync model**: logged-in users get last-write-wins whole-payload sync of the app-owned keys (`q-userbanks, fc-userdecks, fc-state, fc-user, fc-deleted, fc-edits, quizlog`) via `app/assets/auth.js` (debounced 2 s push, pull on load, one reload to apply). Logged out = localStorage-only. Study-site checklist ticks (`chk:*`) and this-week items are NOT synced yet.
 
 ## Conventions & hard rules
@@ -42,6 +42,6 @@ You are continuing development of a private IB Diploma study website for one stu
 
 ## Definition of done for this phase
 
-- rametic.com/nevaib live over HTTPS with her account working from a phone; quiz sessions and flashcard reviews from a phone persist server-side and appear on other devices after login.
+- rametric.com/nevaib live over HTTPS with her account working from a phone; quiz sessions and flashcard reviews from a phone persist server-side and appear on other devices after login.
 - Checklist ticks synced cross-device without data loss (migration path tested).
 - All validators/link checks pass; docs updated; changes committed and pushed to `origin` (private repo — never make it public).

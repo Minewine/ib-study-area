@@ -24,7 +24,7 @@ regularly costs more should be simplified, not maintained harder.
       add to `library/papers/` and `practice.html`.
 - [ ] **Backup**: zip `ibsystem/` minus `source-archives/` to a second location
       (external drive or the hosting server). `library/` is the irreplaceable part.
-- [ ] **Host backup** (once deployed to rametic.com/nevaib): the cPanel File Manager is
+- [ ] **Host backup** (once deployed to rametric.com/nevaib): the cPanel File Manager is
       disabled on this account — use the FTP + key-gated dumper recipe in
       [server/deploy-notes.md](../server/deploy-notes.md) to pull `~/nevaib-data/`
       (users.json + per-user state) — small, but it holds her progress.
@@ -40,7 +40,7 @@ regularly costs more should be simplified, not maintained harder.
       re-prioritise the queues.
 - [ ] **School channel check**: Questionbank topical sets received? IA/TSM samples received?
       If not, chase — these unlock the most valuable content.
-- [ ] **Host check** (once deployed): rametic.com/nevaib reachable over HTTPS, login works,
+- [ ] **Host check** (once deployed): rametric.com/nevaib reachable over HTTPS, login works,
       state file updated recently (cPanel → `~/nevaib-data/state/`).
 - [ ] **Works/topic lists** (English + French + History): updated into the hubs, quote
       banks and any new decks.
