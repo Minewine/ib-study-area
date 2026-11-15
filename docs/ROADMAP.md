@@ -11,7 +11,7 @@ features only exist to make that loop easier or more targeted.
 - [ ] **School email sent → papers integrated.** File arrivals into `library/papers/<subject>/`, add links to `practice.html`, wire one mock per subject into the plan.
 - [x] **Generator de-risked** (2026-11-14): all patches folded into the `PATCHES` list; regeneration verified byte-identical. Keep template edits and PATCHES in sync going forward.
 - [x] **January banks built** (2026-11-14): bio water potential/origin of cells (18 items), bio respiration/protein synthesis (21), math functions 2.4–2.5 (22).
-- [ ] **Chem energetics flashcards deck** (small: definitions, q=mcΔT, ΔG cases) before that unit starts in December.
+- [x] **Chem energetics flashcards deck** — ✅ in place (chem-reactivity-1-energetics, 19 cards).
 - [ ] **December 8 rehearsal**: English Paper 1 timed run using the local specimen; error-log entry after.
 - [ ] **Calendar verification**: cross-check Nov–Jun dates against the official sheet (only Aug–Oct is text-verified).
 - [ ] **Math unit order confirmed** with her teacher; relabel the Functions bank.
@@ -21,15 +21,17 @@ features only exist to make that loop easier or more targeted.
 - [ ] **January exam preparation flow**: school papers integrated → full timed mocks per the practice-page protocol → error-log-driven revision for each paper.
 - [ ] **IA practice debrief page**: after the November hydrogen-peroxide and January beetroot/osmosis sessions, capture what research-design / data-analysis / conclusion / evaluation looked like in practice — she walks into the June IA experiments having already seen every criterion.
 - [ ] **EE launch support (Feb 17 → proposal Mar 2)**: idea-log shortlist page → one-page proposal checklist mapped to the new EE criteria.
-- [ ] **Quiz banks one unit ahead** (chem kinetics + equilibrium for Feb–Mar; bio respiration for Feb).
-- [ ] **Flashcards decks kept current**: energetics (Dec), water potential (Jan), then respiration.
-- [ ] **Progress dashboard v2**: index card showing quiz-score trend (last 5 sessions from `quizlog`), flashcards due tomorrow, and checklist % per subject — one small stats aggregation, no new infrastructure.
-- [x] **Deployment prepared** (2026-11-15): `server/api.php` (PHP auth + per-user state), `app/assets/auth.js` sync layer, `tools/build_deploy.py` → `deploy/nevaib/`. Remaining: upload to rametic.com/nevaib via cPanel/SFTP + create accounts (checklist in `server/deploy-notes.md`).
-- [ ] **First backup taken** of `ibsystem/` (minus `source-archives/`) to a second location.
+- [x] **Quiz banks one unit ahead** (2026-11-15): chem kinetics + equilibrium (Feb–Mar) and bio respiration/protein synthesis built, each with a flashcard deck — the whole Feb–Mar queue is in place.
+- [x] **Flashcards decks kept current** (2026-11-15): energetics (Dec), water potential (Jan), respiration — all exist; 12 decks / 229 cards total.
+- [x] **Progress dashboard v2** (2026-11-15): "Progress pulse" card on the study dashboard — quiz-score trend (last 5 sessions), flashcards due/mastered/seen, checklist % overall + weakest subject. Checklist % denominator fixed (untouched rows now initialise on hub visits).
+- [x] **Deployment** (2026-11-15): live at rametric.com/nevaib over HTTPS, verified end-to-end (api auth, CORS preflights, token sync). Host runs PHP 7.2 — api.php written for it. Remaining habit: `push_deploy.py` for updates + cPanel backup of `~/nevaib-data/`.
+- [x] **Study-site sync** (2026-11-15): hub checklist ticks (`chk:*`) + this-week items sync cross-device via a batched `site-state` payload (token auth + CORS in api.php; per-row merge, first-login migration without data loss — browser-verified).
+- [x] **In-app quiz item editor** (2026-11-15): author.html — create banks, add/edit/delete items with the upload-path validation, per-bank export; edits flow into the Quiz picker and sync.
+- [x] **First backup taken** (2026-11-15): `~/Backups/ibsystem-2026-11-15.zip` (minus `source-archives/`, deploy folder and credentials). Repeat monthly — `library/` is the irreplaceable part.
 
 ## Later / nice-to-have (revisit in DP2, or when something actually hurts)
 
-- [ ] **Progress sync across devices** (Google-Sheet embed or a tiny JSON-sync) — only if per-device localStorage becomes a real annoyance.
+- [x] **Progress sync across devices** (2026-11-15) — done for the practice app and the study-site checklist/week data via the hosted backend (token auth). Not planned: syncing anything beyond these (the data is small and the model is simple).
 - [ ] **Chem bonding + organic banks** (DP2 units at ISL: Oct–Nov 2027 / Nov 2027–Mar 2028).
 - [ ] **History content banks** — the moment her class's focused studies/topic list is known.
 - [ ] **DP2 biology banks** (Continuity → Change units, Sept 2027 onward).
@@ -41,7 +43,7 @@ features only exist to make that loop easier or more targeted.
 
 ## Explicitly not doing
 
-- No accounts/servers/backends — the site's value is that it is one folder.
+- No public hosting of `library/` — IB-copyrighted material stays behind auth, forever. (Amended 2026-11-15: the practice app does use a tiny PHP backend for accounts/sync — stdlib PHP, JSON files, no database. The *study-site pages* stay local-only: one folder, no server required.)
 - No public hosting of `library/` — IB-copyrighted material stays behind auth, forever.
 - No MCQ banks for English/French/History-by-default — wrong tool for analysis subjects, and off-target until History topics are known.
 - No feature that adds more than ~30 minutes of monthly maintenance. The 30-minute budget is the ceiling.

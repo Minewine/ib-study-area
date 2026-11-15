@@ -11,17 +11,33 @@ touching this site.
   files serve both layers. Root `quiz.html`/`flashcards.html` are one-line redirect stubs to the app.
 - **Hosted deployment**: `server/api.php` (auth + per-user state, PHP sessions, JSON files under the cPanel home)
   + `tools/build_deploy.py` (assembles `deploy/nevaib/` — original content only). See `server/deploy-notes.md`.
-- **auth.js (`app/assets/`)**: login/logout widget, server pull on load, debounced push on every engine write
-  (engines call `Auth.queueSync()` from their `store.set`). Logged out = localStorage-only fallback.
-- **Hosted backend (`server/api.php`)**: PHP, stdlib only — `login/logout/me/get-state/save-state`.
-  Passwords: `password_hash`/`password_verify` against `~/nevaib-data/users.json`. Per-user state: JSON file per
-  user under `~/nevaib-data/state/` (outside the web root). Sessions: PHP cookies (HttpOnly, Secure auto, 30 d).
-  Brute-force guard: 5 fails → 5-min lockout (`login-fails.json`). Accounts: key-protected `action=setup`.
+- **auth.js (`assets/`)**: login/logout widget, server pull on load, debounced push on every engine write
+  (engines call `Auth.queueSync()` from their `store.set`; `app.js` and the author page do the same after their writes).
+  Logged out = localStorage-only fallback. The API base resolves per origin: pages on rametric.com use
+  `/nevaib/api/api.php` (same-origin, session cookie), every other origin (localhost study site, LAN) uses the
+  production URL **plus the login token** (`X-Nevaib-Token` header) — cookies can't cross origins, tokens can.
+  A dev-only override exists for testing: `?nbapi=<url>` on a localhost page (sticky in localStorage `nb-api`,
+  `?nbapi=` resets it).
+- **Hosted backend (`server/api.php`)**: PHP, stdlib only — `login/logout/me/get-state/save-state`. **Must run on
+  PHP 7.2+** (the host serves 7.2.34): no `never` return type, no arrow functions, positional
+  `session_set_cookie_params`. Passwords: `password_hash`/`password_verify` against `~/nevaib-data/users.json`.
+  Per-user state: JSON file per user under `~/nevaib-data/state/` (outside the web root). Sessions: PHP cookies
+  (HttpOnly, Secure auto, 30 d) for same-origin callers; login also issues a bearer token (stored sha256-hashed
+  in `~/nevaib-data/tokens.json`, 90-day expiry, max 8 per user) for cross-origin callers. Brute-force guard:
+  5 fails → 5-min lockout (`login-fails.json`). Accounts: key-protected `action=setup`. CORS: whitelisted origins
+  (rametric.com, localhost/127.0.0.1, LAN 192.168/10/172.16-31) get `Access-Control-Allow-Origin`; OPTIONS
+  preflights answer 204 before auth.
 - **Sync model**: last-write-wins on the whole synced payload (`q-userbanks, fc-userdecks, fc-state, fc-user,
-  fc-deleted, fc-edits, quizlog`). On load, the server state replaces local; every engine write triggers a debounced
-  (2 s) push; retry loop every 15 s while dirty. Login triggers one reload so engines re-read restored state.
-- **Cache-busting convention**: engine script tags carry `?v=N` — bump N in the app pages whenever an engine file
-  changes. Bank/deck fetches use `?cb=Date.now()` + `cache: no-store`.
+  fc-deleted, fc-edits, quizlog` **+ `site-state`**). On load, the server state replaces local per key; every engine
+  write triggers a debounced (2 s) push; retry loop every 15 s while dirty. Login triggers one reload so engines
+  re-read restored state. `site-state` = `{checklists: {"chk:…": {c,r}}, week: {"week:0": "…"}}` — one batched
+  object built from the per-row localStorage keys on push, distributed back to per-row keys on pull; **rows merge
+  per-row** (server wins on pull; local-only rows survive; a push first re-fetches and merges server rows it lacks
+  — never pushes blind, since `save-state` replaces the whole per-user file). First login on an empty account
+  pushes the local state up (migration, no data loss).
+- **Cache-busting convention**: engine script tags carry `?v=N` — bump N in the referencing pages whenever an engine
+  file changes. auth.js is at `?v=3` on the four app pages **and** the six auth pages (dashboard + hubs);
+  `app.js` is at `?v=2` everywhere it loads. Bank/deck fetches use `?cb=Date.now()` + `cache: no-store`.
 - **Vanilla JS, one engine per concern**:
   | File | Owns | Page(s) |
   |---|---|---|
@@ -43,6 +59,17 @@ python3 -m http.server 8017 --bind 0.0.0.0 --directory ~/Projects/ibsystem
 `file://` is blocked by browsers. The site *pages* open fine from disk, but always use the
 HTTP server for real use.
 
+**Testing the PHP API locally** (no host needed):
+
+```bash
+NEVAIB_DATA_DIR=/tmp/nevaib-test-data php -S 127.0.0.1:8018 -t . tools/dev_server.php
+```
+
+`tools/dev_server.php` maps `/api/api.php` onto `server/api.php` and `NEVAIB_DATA_DIR`
+keeps test accounts/state out of the real `~/nevaib-data`. Point the browser at
+`http://localhost:8017/…?nbapi=http://127.0.0.1:8018/api/api.php` to exercise the
+cross-origin token path (the sticky override is localhost-only, by design).
+
 ## localStorage keys
 
 | Key | Owner | Contents |
@@ -57,6 +84,9 @@ HTTP server for real use.
 | `fc-theme` | `flashcards.js` | "light"/"dark" for the Cards page |
 | `q-userbanks` | `app/author.html` + quiz-engine | uploaded quiz banks (per device) |
 | `fc-userdecks` | `app/author.html` + flashcards | uploaded flashcard decks (per device) |
+| `nb-token` | `auth.js` | login bearer token (sent as `X-Nevaib-Token`) — cross-origin sync |
+| `nb-api` | `auth.js` | dev-only API override set via `?nbapi=` on localhost pages |
+| `chk:*` / `week:*` | `app.js` | synced inside the `site-state` payload (not as their own keys) |
 
 ## Data schemas
 
@@ -105,6 +135,9 @@ nav) — re-running it reproduces every page byte-for-byte (**verified 2026-11-1
 Rules:
 - Any hand-edit to one of the 10 generated pages must ALSO be folded into the generator
   (template or PATCHES entry) — otherwise the next regeneration reverts it.
+- The dashboard/hub auth widget (auth-slot + `auth.js?v=3` tag) is injected by `page()` for the
+  `AUTH_PAGES` set (index + the 5 generated hubs); `english-lit-hl.html` carries the same markup
+  hand-edited. Keep the two in sync.
 - The hand-maintained pages (`quiz.html`, `plan.html`, `deadlines.html`, `flashcards.html`,
   `english-lit-hl.html`, `sixth-subject.html`) are never touched by the generator.
 
@@ -148,3 +181,7 @@ EOF
   deletable once confident in `library/notes/`.
 - The Cards page dark mode is scoped to that page (`data-fcTheme` attribute); the rest of
   the site is light-only by design (one thing to change at a time).
+- **The host runs PHP 7.2.34**, not 8 (cPanel can switch it — worth asking for). `server/api.php`
+  is written for 7.2+: no `never` return type, no arrow functions, positional
+  `session_set_cookie_params`, no trailing commas in calls. Keep it that way even though local
+  `php -l` (8.3) accepts newer syntax.

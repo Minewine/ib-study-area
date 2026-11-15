@@ -4,7 +4,7 @@ A self-contained, private, static study website. No framework, no build step, no
 Everything here was built around one idea: **content is only useful if it matches the exact
 syllabus editions she is examined on (May 2028) and the order ISL actually teaches it.**
 
-Status snapshot: **2026-11-15** — practice app spun out (`app/`, with content upload), PHP auth/state backend built, hosted deployment to **rametic.com/nevaib** prepared but not yet uploaded. See [docs/ROADMAP.md](docs/ROADMAP.md).
+Status snapshot: **2026-11-15** — hosted at **rametric.com/nevaib (live, verified)** with cross-device sync; the practice app now has an in-app quiz item editor; study-site checklist ticks + this-week items sync across devices too; "Progress pulse" stats on the dashboard. See [docs/ROADMAP.md](docs/ROADMAP.md).
 
 ---
 
@@ -23,7 +23,7 @@ Status snapshot: **2026-11-15** — practice app spun out (`app/`, with content 
 | Reference | `quick-reference.html` | Formula/data booklets, command terms, GDC exam-mode, citation |
 | Redirect | `sixth-subject.html` | The sixth subject is English A Literature HL → redirects to its hub |
 
-Content totals: **127 PDFs** in the library · **303 quiz questions** (14 banks) · **172 flashcards** (7 decks).
+Content totals: **127 PDFs** in the library · **303 quiz questions** (14 banks) · **229 flashcards** (12 decks).
 
 ## Tech stack (deliberately boring)
 
@@ -101,18 +101,18 @@ banner on its hub.
 
 ## Next actions (ordered — details in the linked docs)
 
-1. **Deploy to rametic.com/nevaib** — checklist in [server/deploy-notes.md](server/deploy-notes.md): build the deploy folder (`tools/build_deploy.py`), set `$SETUP_KEY`, upload via cPanel/SFTP, create her account via the setup action, blank the key, verify HTTPS end-to-end from a phone.
+1. ~~**Deploy to rametic.com/nevaib**~~ — ✅ **live and verified (2026-11-15)**; updates push with `python3 -I tools/push_deploy.py` (checklist + host notes in [server/deploy-notes.md](server/deploy-notes.md)).
 2. **Send the school-requests email** (ready to copy at the bottom of `plan.html`) — papers + markschemes, History FA2028 guide/specimens, LangLit materials, IA samples. Then file arrivals into `library/papers/<subject>/` and link them on `practice.html`.
 3. **Confirm with the school**: Nov–Jun calendar dates (only Aug–Oct verified against the official text layer), ISL's math unit order, licensed platforms.
-4. **Start the weekly loop with her** — Monday set the week · Tue+Thu quiz sessions · Friday error log · Sunday idea log. Logged in at rametic.com/nevaib, progress follows her across devices.
-5. **Monthly**: content commit + push, host backup of `~/nevaib-data/` (MAINTENANCE.md), next bank/deck batch per [docs/CONTENT-PLAN.md](docs/CONTENT-PLAN.md).
+4. **Start the weekly loop with her** — Monday set the week · Tue+Thu quiz sessions · Friday error log · Sunday idea log. Logged in at rametic.com/nevaib, progress follows her across devices; the dashboard's "Progress pulse" shows the trend.
+5. **Monthly**: content commit + push, host backup of `~/nevaib-data/` (MAINTENANCE.md), next bank/deck batch per [docs/CONTENT-PLAN.md](docs/CONTENT-PLAN.md). Also worth asking cPanel to switch the account to PHP 8 — the site now runs on the host's PHP 7.2 (supported, but 7.2 is EOL).
 
 Development handoff for the next phase: [docs/NEXT-PHASE-PROMPT.md](docs/NEXT-PHASE-PROMPT.md).
 
 ## Known issues & risks (flagged, not urgent)
 
 - **Nov–Jun deadline dates** come from a photo transcription; Aug–Oct verified against the official PDF.
-- **Progress is per-device when running locally.** On the hosted copy (rametic.com/nevaib, logged in), app progress + uploads sync to the server and follow the account across devices. Study-site checklist ticks remain per-device for now (roadmap).
+- **Progress syncs across devices when logged in.** On the hosted copy (rametic.com/nevaib) quiz sessions, flashcards, uploads *and* the study-site checklist ticks + this-week items sync to the server (token auth; the local study site talks to the hosted API from `localhost`/LAN). Logged out = per-device localStorage, as before.
 - **Math Functions bank** is labelled "likely next unit" — ISL's math teaching order isn't documented; confirm and rename if needed.
 - **`source-archives/` holds ~434 MB of ZIPs** already extracted into `library/notes/` — safe to delete once you're confident in the extraction (your call).
 - A staging copy of the official library exists in the ZCode workspace (`ib-library/`) — `ibsystem/library/` is the canonical one; stop updating the staging copy.

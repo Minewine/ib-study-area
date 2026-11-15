@@ -7,9 +7,16 @@ never be uploaded.
 ## Verified live 2026-11-15
 
 `https://rametric.com/nevaib/` serves the app; api.php auth + cross-device
-state sync verified end-to-end (login 200, wrong password 401, setup locked).
-First deployment was done as: zip → cPanel extract → curl setup → blank key.
-Ongoing updates use the push script below.
+state sync verified end-to-end (login 200, wrong password 401, setup locked,
+CORS preflights OK). First deployment was done as: zip → cPanel extract →
+curl setup → blank key. Ongoing updates use the push script below.
+
+**Host PHP is 7.2.34** (not 8 — check the cPanel MultiPHP Manager; 7.2 is EOL,
+worth switching the account when convenient). `server/api.php` is therefore
+written for 7.2+: no `never` return type (8.1+), no arrow functions (7.4+),
+positional `session_set_cookie_params` (array form needs 7.3+). Local
+`php -l` (8.3) won't catch violations — keep new syntax out by hand. The
+token/auth flow was verified live after making the file 7.2-safe.
 
 ## One-time setup (already done for this site)
 
@@ -81,7 +88,21 @@ over plain HTTP.
 ## Per-user data on the host
 
 - `~/nevaib-data/users.json` — password hashes (never plaintext).
-- `~/nevaib-data/state/<user>.json` — each user's full app state.
+- `~/nevaib-data/state/<user>.json` — each user's full app state (incl. `site-state`:
+  checklist ticks + this-week items, synced from the study-site pages too).
+- `~/nevaib-data/tokens.json` — sha256-hashed login tokens (90-day expiry, max 8/user)
+  used by non-rametric.com origins (localhost study site, LAN) where cookies can't cross.
 - `~/nevaib-data/login-fails.json` — brute-force guard (auto-clears on success).
 - Back these up occasionally (cPanel file manager → download the `nevaib-data`
   folder); the practice app has no other server-side state.
+
+## Local test host (no shell on the real one)
+
+```sh
+NEVAIB_DATA_DIR=/tmp/nevaib-test-data php -S 127.0.0.1:8018 -t . tools/dev_server.php
+```
+
+`tools/dev_server.php` maps `/api/api.php` → `server/api.php`; the env var keeps
+test data out of the real home dir. From a browser:
+`http://localhost:8017/<page>?nbapi=http://127.0.0.1:8018/api/api.php` exercises
+the full cross-origin token path (override is localhost-only; see DEVELOPMENT.md).

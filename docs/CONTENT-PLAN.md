@@ -1,7 +1,8 @@
 # Content Plan & Completeness
 
-Status snapshot: **2026-11-15** — quiz banks now cover every DP1 unit through the spring. Update the matrix whenever something is added — the
-matrix IS the tracking system (no separate tool needed).
+Status snapshot: **2026-11-15** — quiz banks now cover every DP1 unit through the spring (incl. the Feb–Mar queue:
+chem kinetics/equilibrium, bio respiration/protein synthesis — all with matching flashcard decks). Update the matrix
+whenever something is added — the matrix IS the tracking system (no separate tool needed).
 
 Legend: ✅ in place · 🟡 partial / needs review · ❌ missing · ➖ not applicable by design
 
@@ -14,7 +15,7 @@ Legend: ✅ in place · 🟡 partial / needs review · ❌ missing · ➖ not ap
 | Subject hub (weightings, currency banner) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ Core hub |
 | Notes PDFs linked to checklist | ✅ 28 topics (T1–T2) | ✅ 43 topics (all themes) | ✅ 25 topics (all units) | ❌¹ | ❌² | ❌² | ➖ |
 | Quiz bank | ✅ 3 banks (65 items: T1, 2.1–2.3, 2.4–2.5) | ✅ 4 units (83) | ✅ 7 units (154) | ❌³ | ➖³ | ➖³ | ➖ |
-| Flashcard deck | 🟡 1 deck (20) | 🟡 1 deck (19) | ✅ 7 decks (~133) | ➖³ | 🟡 vocab deck would help | 🟡 quotes/lit-terms deck would help | ➖ |
+| Flashcard deck | ✅ 2 decks (39) | ✅ 3 decks (57) | ✅ 7 decks (~133) | ➖³ | 🟡 vocab deck would help | 🟡 quotes/lit-terms deck would help | ➖ |
 | Past papers + markschemes (local) | ❌ (school channel) | ❌ (M25/N25/M26 via school) | ❌ (same) | ❌ (specimens only — none exist yet) | ❌ (M26+ via school) | ✅ 2 official specimens | ➖ |
 | IA support | 🟡 exploration criteria + exemplars (TSM) | ✅ criteria + ISL practice/experiment schedule | ✅ same schedule | 🟡 IA rubric noted (30%) | ✅ IO structure + global-issue routine | ✅ HL Essay timeline (draft May 11, final Jun 18) | ✅ EE guide FA2027 + forms |
 | ISL teaching order documented | ❌ (confirm with teacher) | ✅ course outline | ✅ at-a-glance | ❌ | ❌ | ❌ | ➖ |
@@ -39,7 +40,7 @@ Legend: ✅ in place · 🟡 partial / needs review · ❌ missing · ➖ not ap
 ### Biology HL
 1. ~~D2.3 water potential + A2.1 origin of cells~~ — ✅ built (2026-11-14).
 2. ~~C1.2 respiration + protein synthesis~~ — ✅ built (2026-11-14).
-3. Flashcards: enzymes deck exists; add **respiration stages + water potential** deck in January.
+3. ~~Flashcards: enzymes deck exists; add respiration stages + water potential deck in January~~ — ✅ both exist (bio-respiration-protein-synthesis, bio-water-potential-origin-cells). Next deck only when a new unit starts.
 4. **IA support is strong** — practice schedule from the course outline is integrated; add a one-page debrief after the November hydrogen-peroxide session (what the criteria looked like in practice).
 5. Papers: M25/N25/M26 + markschemes via school.
 6. DP2 units (Continuity → Change): banks only when DP2 nears (Sept 2027) — do not front-load.
