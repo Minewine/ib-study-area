@@ -93,8 +93,25 @@ over plain HTTP.
 - `~/nevaib-data/tokens.json` — sha256-hashed login tokens (90-day expiry, max 8/user)
   used by non-rametric.com origins (localhost study site, LAN) where cookies can't cross.
 - `~/nevaib-data/login-fails.json` — brute-force guard (auto-clears on success).
-- Back these up occasionally (cPanel file manager → download the `nevaib-data`
-  folder); the practice app has no other server-side state.
+
+**Backup recipe (verified 2026-11-15):** the cPanel **File Manager UI is disabled** on this
+account (and `FileMan` UAPI + most file APIs are stripped), so the documented
+"cPanel → download the folder" route does not exist. Working path: upload a
+temporary **key-gated PHP dumper** into `public_html/nevaib/` via the scoped FTP
+account, curl it with the key (it base64-returns every `nevaib-data` file),
+save + byte-verify against a `statfiles` listing, then **delete the dumper**
+and confirm it 404s. First backup: `~/Backups/nevaib-data-2026-11-15/` (+ zip)
+on the dev machine. Ask support for Web Disk or a restored File Manager if a
+zero-PHP route is preferred.
+
+**PHP on the host — findings (2026-11-15):** the account runs **PHP 7.2.34** and
+has **no MultiPHP Manager and no CloudLinux PHP Selector** (both UIs + the
+`multiphp` feature are absent). `.htaccess` handler tests from `/nevaib/`:
+`application/x-httpd-ea-php81(-lsphp)` falls back to 7.2, while
+`ea-php82/83/84` handlers are recognised by LiteSpeed but return **403 —
+defined server-wide, not permitted for this account**. So PHP 8 needs a
+**Namecheap support ticket** (ask them to enable PHP 8.x for the account).
+`server/api.php` is written for 7.2 and runs fine; this is hygiene, not urgency.
 
 ## Local test host (no shell on the real one)
 

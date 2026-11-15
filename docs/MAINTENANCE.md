@@ -24,7 +24,9 @@ regularly costs more should be simplified, not maintained harder.
       add to `library/papers/` and `practice.html`.
 - [ ] **Backup**: zip `ibsystem/` minus `source-archives/` to a second location
       (external drive or the hosting server). `library/` is the irreplaceable part.
-- [ ] **Host backup** (once deployed to rametic.com/nevaib): cPanel → download `~/nevaib-data/`
+- [ ] **Host backup** (once deployed to rametic.com/nevaib): the cPanel File Manager is
+      disabled on this account — use the FTP + key-gated dumper recipe in
+      [server/deploy-notes.md](../server/deploy-notes.md) to pull `~/nevaib-data/`
       (users.json + per-user state) — small, but it holds her progress.
 
 ## Termly (start of each ISL term: Jan, Apr, Sep)
