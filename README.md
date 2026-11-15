@@ -61,7 +61,7 @@ ibsystem/
 │   ├── official/             ← 21 PDFs from ibo.org (guides, specimens, briefs, booklets, EE guide)
 │   ├── school/               ← ISL course documents (bio outline, chem at-a-glance, math syllabus)
 │   ├── notes/                ← 103 topic PDFs, organised by ISL teaching order
-│   ├── questions/            ← 18 quiz banks (391 items) — schema in DEVELOPMENT.md
+│   ├── questions/            ← 22 quiz banks (465 items) — schema in DEVELOPMENT.md
 │   ├── flashcards/           ← 7 decks (172 cards) — schema in DEVELOPMENT.md
 │   └── papers/               ← (empty) school-provided past papers land here
 ├── source-archives/          ← original downloaded ZIPs (kept as provenance; deletable once confident)

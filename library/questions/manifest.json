@@ -106,5 +106,29 @@
   "subject": "math-aa-sl",
   "subjectLabel": "Math AA SL",
   "label": "Calculus (5.1–5.6)"
+ },
+ {
+  "file": "library/questions/bio-molecules-water.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL",
+  "label": "A1.1/B1.1/B1.2/A1.2 — Water & biological molecules (Sep–Oct unit)"
+ },
+ {
+  "file": "library/questions/bio-photosynthesis-energy.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL",
+  "label": "C1.3 — Photosynthesis & C4.2 — Transfer of energy (Apr–May unit)"
+ },
+ {
+  "file": "library/questions/bio-gas-exchange-transport.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL",
+  "label": "B3.1/B3.2 — Gas exchange & transport (Apr–May unit)"
+ },
+ {
+  "file": "library/questions/bio-ecology-adaptations-populations.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL",
+  "label": "B4.1/B4.2/C4.1 — Ecology & populations (June unit)"
  }
 ]
