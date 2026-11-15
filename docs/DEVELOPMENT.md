@@ -5,7 +5,7 @@ touching this site.
 
 ## Architecture
 
-- **Static site, no build step.** 17 study-site pages + 4 practice-app pages (`app/`, LIVE on rametric.com/nevaib) + 7 asset files + JSON data in `library/` (23 quiz banks / 631 items, 23 flashcard decks / 484 cards).
+- **Static site, no build step.** 17 study-site pages + 4 practice-app pages (`app/`, LIVE on rametric.com/nevaib) + 7 asset files + JSON data in `library/` (23 quiz banks / 631 items, 23 flashcard decks / 484 cards). The engines build their pickers from `library/questions/manifest.json` + `library/flashcards/manifest.json`.
 - **Practice app (`app/`)**: `index.html` (launcher), `quiz.html`, `cards.html`, `author.html` (upload/manage/export).
   Engines resolve content via `PATH_BASE` (`../` when served from `/app/`, empty at the root), so the same engine
   files serve both layers. Root `quiz.html`/`flashcards.html` are one-line redirect stubs to the app.
@@ -38,7 +38,7 @@ touching this site.
 - **Cache-busting convention**: engine script tags carry `?v=N` — bump N in the referencing pages whenever an engine
   file changes. auth.js is at `?v=4` on the four app pages **and** the ten study-site auth pages (dashboard, hubs,
   core, ia, ee); `app.js` is at `?v=2` everywhere it loads; `deadlines.js` is at `?v=2` (index + deadlines);
-  `lists.js` is at `?v=1` (core, ia, french hub, ee). Bank/deck fetches use `?cb=Date.now()` + `cache: no-store`.
+  `lists.js` is at `?v=1` (core, ia, french hub, ee). Bank/deck/manifest fetches use `?cb=Date.now()` + `cache: no-store`.
 - **Vanilla JS, one engine per concern**:
   | File | Owns | Page(s) |
   |---|---|---|
@@ -132,6 +132,19 @@ its unit `topic` code; notes state the fact and the trap — never hedge.
 ```
 Ids unique **across all decks** (prefix per deck). Same `topic` keys as question banks.
 
+### Content manifests (`library/questions/manifest.json`, `library/flashcards/manifest.json`)
+```json
+[
+  {"file": "library/questions/bio-unity-diversity-cells.json", "subject": "biology-hl",
+   "subjectLabel": "Biology HL", "label": "Unity & diversity — Cells & membranes"}
+]
+```
+Array of entries; this is what `quiz-engine.js` / `flashcards.js` fetch to build their
+pickers (`?cb=` + `cache: no-store`). The flashcards manifest omits `label`. The inline
+`FALLBACK_BANKS` / `FALLBACK_REGISTRY` lists at the top of the engines are partial
+fetch-failure snapshots, not the source of truth — the manifests are. `validate_content.py`
+checks that every manifest entry points to an existing file.
+
 ### Deadlines (`assets/deadlines.js` → `DEADLINES` array)
 `{ d: "YYYY-MM-DD", t: "label", tag: "sciences|ee|tok|core|exams|langlit|university|sixth" }`
 
@@ -160,10 +173,16 @@ Rules:
 
 - **Add school papers**: save into `library/papers/<subject>/`, then link them from the
   matching table/card on `practice.html`.
-- **Add a quiz bank**: JSON into `library/questions/`, register the file+label in `BANKS`
-  at the top of `quiz-engine.js`. Validate: every `answer` in range, unique ids.
-- **Add a flashcard deck**: JSON into `library/flashcards/`, register in `REGISTRY` at the
-  top of `flashcards.js`.
+- **Add a quiz bank**: JSON into `library/questions/`, then add an entry to
+  `library/questions/manifest.json` (`file`, `subject`, `subjectLabel`, `label`). The engines
+  fetch the manifest — no engine edit needed. The inline `FALLBACK_BANKS` in `quiz-engine.js`
+  is only a best-effort snapshot for a manifest-fetch failure (may lag the manifest; not
+  authoritative) — update it only if the degraded picker should include the new bank too.
+  Validate with `python3 -I tools/validate_content.py` (answer ranges, unique ids,
+  manifest→file consistency).
+- **Add a flashcard deck**: JSON into `library/flashcards/`, then add an entry to
+  `library/flashcards/manifest.json` (`file`, `subject`, `subjectLabel`). Same fallback note
+  (`FALLBACK_REGISTRY` in `flashcards.js`) and same validator.
 - **Add deadlines**: edit the `DEADLINES` array in `assets/deadlines.js` (dashboard next-up
   and the timeline update automatically; the renderers sort by date, but keep the array ordered).
 - **Add a tracked list or debrief notes**: drop a `<div data-list="<key>" data-list-fields='[{"k":"a","label":"…","ph":"…"}]'></div>`

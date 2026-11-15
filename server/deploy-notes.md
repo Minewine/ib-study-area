@@ -114,6 +114,26 @@ defined server-wide, not permitted for this account**. So PHP 8 needs a
 **Namecheap support ticket** (ask them to enable PHP 8.x for the account).
 `server/api.php` is written for 7.2 and runs fine; this is hygiene, not urgency.
 
+Ready-to-send ticket text for that hygiene pass (fill in the cPanel username):
+
+> Subject: Enable PHP 8.x for my account (cPanel: `<username>`, domain rametric.com)
+>
+> Hi — my account currently serves `public_html` with PHP 7.2.34. The MultiPHP
+> Manager and CloudLinux PHP Selector icons are not present in my cPanel, and
+> `.htaccess` handler overrides (`ea-php82/83/84`) return 403 from my sites, so I
+> can't switch the version myself. Please enable PHP 8.x (8.2 or newer) for the
+> account, or let me know the supported way to change it.
+>
+> One more ask while you're there: the cPanel File Manager is disabled on this
+> account and the FileMan UAPI + most file APIs are stripped — please restore it
+> or enable Web Disk, so I can back up my files without workarounds.
+>
+> The only PHP on the account is a small standard-library script; I'll re-test it
+> after any switch. Thanks!
+
+After the switch: re-verify `https://rametric.com/nevaib/` (login + a state save),
+then the 7.2 syntax constraints in `server/api.php` can be relaxed if desired.
+
 ## Local test host (no shell on the real one)
 
 ```sh
