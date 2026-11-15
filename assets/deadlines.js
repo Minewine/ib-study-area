@@ -30,12 +30,16 @@
     { d: "2027-06-14", t: "French A HL: essay (final) — HL French class only", tag: "langlit" },
     { d: "2027-06-16", t: "TOK Exhibition: final", tag: "tok" },
     { d: "2027-06-16", t: "Biology: IA experiments begin (late June, per course outline)", tag: "sciences" },
-    { d: "2027-09-06", t: "Biology: IA draft due (early Sept, DP2 — approximate)", tag: "sciences" },
-    { d: "2027-11-08", t: "Biology: IA final due (early Nov, DP2 — approximate)", tag: "sciences" },
     { d: "2027-06-18", t: "English A Lit HL: HL Essay (final)", tag: "langlit" },
     { d: "2027-06-23", t: "Physics: IA report (draft)", tag: "sixth" },
-    { d: "2027-06-25", t: "Geography: IA (final)", tag: "sixth" }
+    { d: "2027-06-25", t: "Geography: IA (final)", tag: "sixth" },
+    { d: "2027-09-06", t: "Biology: IA draft due (early Sept, DP2 — approximate)", tag: "sciences" },
+    { d: "2027-11-08", t: "Biology: IA final due (early Nov, DP2 — approximate)", tag: "sciences" }
   ];
+
+  // renderers assume chronological order — sort defensively (the literal has
+  // drifted out of order once already)
+  DEADLINES.sort((a, b) => (a.d < b.d ? -1 : a.d > b.d ? 1 : 0));
 
   const TAGS = {
     sciences: { label: "Sciences", color: "#2e8b57" },

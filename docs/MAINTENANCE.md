@@ -60,13 +60,13 @@ regularly costs more should be simplified, not maintained harder.
 
 | When | What |
 |---|---|
-| DP1 Nov | Bio IA practice: hydrogen peroxide (all four criteria) |
-| DP1 Jan | Bio IA practice: beetroot (research design) + osmosis (analysis/conclusion/evaluation) |
+| DP1 Nov | Bio IA practice: hydrogen peroxide (all four criteria) → **fill the debrief on ia.html within a day** |
+| DP1 Jan | Bio IA practice: beetroot (research design) + osmosis (analysis/conclusion/evaluation) → **fill the debrief on ia.html** |
 | DP1 late June | **Bio IA experiments** (research question fixed by mid-May) |
 | DP2 early Sept | **Bio IA draft** |
 | DP2 Sep–Oct | Chemistry IA labwork |
 | DP2 early Nov | **Bio IA final** |
-| DP1 2 Mar | **EE proposal** (subject + topic + RRS) — idea log must be shortlisted by Feb 17 launch |
+| DP1 2 Mar | **EE proposal** (subject + topic + RRS) — idea log shortlisted in [ee.html](../ee.html) by the Feb 17 launch; proposal checklist ticked with the supervisor |
 | DP2 | EE conference Jun 9 (DP1); viva voce per school |
 
 ## Health checks (2 minutes, whenever something seems off)

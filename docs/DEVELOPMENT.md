@@ -5,7 +5,7 @@ touching this site.
 
 ## Architecture
 
-- **Static site, no build step.** 16 study-site pages + 4 practice-app pages (`app/`, LIVE on rametric.com/nevaib) + 6 asset files + JSON data in `library/` (23 quiz banks / 631 items, 21 flashcard decks / 407 cards).
+- **Static site, no build step.** 17 study-site pages + 4 practice-app pages (`app/`, LIVE on rametric.com/nevaib) + 7 asset files + JSON data in `library/` (23 quiz banks / 631 items, 23 flashcard decks / 484 cards).
 - **Practice app (`app/`)**: `index.html` (launcher), `quiz.html`, `cards.html`, `author.html` (upload/manage/export).
   Engines resolve content via `PATH_BASE` (`../` when served from `/app/`, empty at the root), so the same engine
   files serve both layers. Root `quiz.html`/`flashcards.html` are one-line redirect stubs to the app.
@@ -28,7 +28,7 @@ touching this site.
   (rametric.com, localhost/127.0.0.1, LAN 192.168/10/172.16-31) get `Access-Control-Allow-Origin`; OPTIONS
   preflights answer 204 before auth.
 - **Sync model**: last-write-wins on the whole synced payload (`q-userbanks, fc-userdecks, fc-state, fc-user,
-  fc-deleted, fc-edits, quizlog` **+ `site-state`**). On load, the server state replaces local per key; every engine
+  fc-deleted, fc-edits, quizlog, tok-objects, ee-ideas, io-issues, ia-debriefs` **+ `site-state`**). On load, the server state replaces local per key; every engine
   write triggers a debounced (2 s) push; retry loop every 15 s while dirty. Login triggers one reload so engines
   re-read restored state. `site-state` = `{checklists: {"chk:…": {c,r}}, week: {"week:0": "…"}}` — one batched
   object built from the per-row localStorage keys on push, distributed back to per-row keys on pull; **rows merge
@@ -36,8 +36,9 @@ touching this site.
   — never pushes blind, since `save-state` replaces the whole per-user file). First login on an empty account
   pushes the local state up (migration, no data loss).
 - **Cache-busting convention**: engine script tags carry `?v=N` — bump N in the referencing pages whenever an engine
-  file changes. auth.js is at `?v=3` on the four app pages **and** the six auth pages (dashboard + hubs);
-  `app.js` is at `?v=2` everywhere it loads. Bank/deck fetches use `?cb=Date.now()` + `cache: no-store`.
+  file changes. auth.js is at `?v=4` on the four app pages **and** the ten study-site auth pages (dashboard, hubs,
+  core, ia, ee); `app.js` is at `?v=2` everywhere it loads; `deadlines.js` is at `?v=2` (index + deadlines);
+  `lists.js` is at `?v=1` (core, ia, french hub, ee). Bank/deck fetches use `?cb=Date.now()` + `cache: no-store`.
 - **Vanilla JS, one engine per concern**:
   | File | Owns | Page(s) |
   |---|---|---|
@@ -45,6 +46,7 @@ touching this site.
   | `assets/quiz-engine.js` | Session builder, MCQ marking, written self-marking, summaries, `fcSaveFromQuiz()` hook, PATH_BASE content resolution, user-bank merge | `quiz.html` (root + `app/`) |
   | `assets/flashcards.js` | Deck loading, Leitner SRS, session runner, editor, export/import, theme, PATH_BASE, user-deck merge | `flashcards.html` (root + `app/`) |
   | `assets/deadlines.js` | Deadline data + `#nextup` / `#timeline` renderers | `index.html`, `deadlines.html` |
+  | `assets/lists.js` | Tracked lists (`data-list` containers) + debrief notes (`textarea[data-note]`), one synced blob each | `core.html`, `ia.html`, `french-a-langlit.html`, `ee.html` |
 - **State** lives in `localStorage` (per browser/device — see table below).
 - **Python** is used only for one-off scripts, run with `python3 -I` (`tools/build_site.py`,
   past extraction scripts). Nothing at runtime needs Python except the file server.
@@ -88,6 +90,14 @@ cross-origin token path (the sticky override is localhost-only, by design).
 | `nb-token` | `auth.js` | login bearer token (sent as `X-Nevaib-Token`) — cross-origin sync |
 | `nb-api` | `auth.js` | dev-only API override set via `?nbapi=` on localhost pages |
 | `chk:*` / `week:*` | `app.js` | synced inside the `site-state` payload (not as their own keys) |
+| `tok-objects` | `lists.js` (core.html) | TOK exhibition shortlist blob `{items:[{t, done, a: prompt, b: why}]}` |
+| `ee-ideas` | `lists.js` (ee.html) | EE idea-log shortlist blob `{items:[{t, done, a: subject, b: why}]}` |
+| `io-issues` | `lists.js` (french hub) | French IO global-issue bank blob `{items:[{t, done, a: text, b: work}]}` |
+| `ia-debriefs` | `lists.js` (ia.html) | IA practice debrief notes `{nov:{rd,da,ce}, jan:{rd,ace}}` |
+
+`tok-objects`, `ee-ideas`, `io-issues`, `ia-debriefs` are plain synced keys (in `auth.js` `SYNCED_KEYS`,
+last-write-wins per blob). `q-errors` is deliberately NOT synced (device-local, rendered by practice.html's
+inline script — now folded into the generator).
 
 ## Data schemas
 
@@ -130,17 +140,21 @@ Ids unique **across all decks** (prefix per deck). Same `topic` keys as question
 `tools/build_site.py` regenerates the 10 base pages (index, 5 hubs, core, practice, ia,
 quick-reference) plus `assets/style.css` and `assets/app.js`. All post-generation patches
 are folded into its `PATCHES` list (teaching-sequence panels, dashboard next-up strip,
-English Lit card, quiz callout, ISL milestone dates, ISL paragraph, chip styles, canonical
-nav) — re-running it reproduces every page byte-for-byte (**verified 2026-11-14**).
+English Lit card, quiz callout, ISL milestone dates, chip styles, canonical nav) — re-running
+it reproduces every page. The practice-page "Missed questions" card + its inline script live in
+the generator too (folded in 2026-11-15 — they used to be hand-added drift). The sciences-IA
+paragraph on ia.html is single-source (the old IA_PARA prefix-patch that duplicated a fragment
+is gone).
 
 Rules:
 - Any hand-edit to one of the 10 generated pages must ALSO be folded into the generator
   (template or PATCHES entry) — otherwise the next regeneration reverts it.
-- The dashboard/hub auth widget (auth-slot + `auth.js?v=3` tag) is injected by `page()` for the
-  `AUTH_PAGES` set (index + the 5 generated hubs); `english-lit-hl.html` carries the same markup
-  hand-edited. Keep the two in sync.
+- Auth widget (auth-slot + `auth.js?v=4` tag) is injected by `page()` for the `AUTH_PAGES` set
+  (index, 5 hubs, core, ia); `english-lit-hl.html` and `ee.html` carry the same markup
+  hand-authored. Keep them in sync. Core/ia/ee load auth.js because their lists/notes sync.
+- Per-page engine scripts go through `EXTRA_SCRIPTS` (currently lists.js on core/ia/french/ee).
 - The hand-maintained pages (`quiz.html`, `plan.html`, `deadlines.html`, `flashcards.html`,
-  `english-lit-hl.html`, `sixth-subject.html`) are never touched by the generator.
+  `english-lit-hl.html`, `ee.html`, `sixth-subject.html`) are never touched by the generator.
 
 ## Recipes (common changes)
 
@@ -151,7 +165,12 @@ Rules:
 - **Add a flashcard deck**: JSON into `library/flashcards/`, register in `REGISTRY` at the
   top of `flashcards.js`.
 - **Add deadlines**: edit the `DEADLINES` array in `assets/deadlines.js` (dashboard next-up
-  and the timeline update automatically).
+  and the timeline update automatically; the renderers sort by date, but keep the array ordered).
+- **Add a tracked list or debrief notes**: drop a `<div data-list="<key>" data-list-fields='[{"k":"a","label":"…","ph":"…"}]'></div>`
+  or `<textarea class="tnote" data-note="<key>:<dot.path>"></textarea>` into the page, register `<key>`
+  in `auth.js` `SYNCED_KEYS`, and load `lists.js` on that page (add it to `EXTRA_SCRIPTS` for generated
+  pages, or the script tag for hand-made ones). One blob key per list/notes group; blobs are
+  last-write-wins on sync.
 - **Add a subject hub**: copy a hub page, keep the checklist `data-key` convention
   (`<subject>::<path>`), add the nav link on **every** page (navs are hand-copied), add a
   dashboard card with `data-subject="<key>"`.

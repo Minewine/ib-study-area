@@ -1,8 +1,9 @@
 # Content Plan & Completeness
 
-Status snapshot: **2026-11-15** — quiz banks now cover every DP1 unit through the spring (incl. the Feb–Mar queue:
-chem kinetics/equilibrium, bio respiration/protein synthesis — all with matching flashcard decks). Update the matrix
-whenever something is added — the matrix IS the tracking system (no separate tool needed).
+Status snapshot: **2026-11-15** — quiz banks cover every DP1 unit through the spring (incl. the Feb–Mar queue:
+chem kinetics/equilibrium, bio respiration/protein synthesis — all with matching flashcard decks). The language
+decks now exist too (French terminology 35 cards, English literary terms 42 cards), and the EE/TOK/IO tracked
+lists are live and synced. Update the matrix whenever something is added — the matrix IS the tracking system.
 
 Legend: ✅ in place · 🟡 partial / needs review · ❌ missing · ➖ not applicable by design
 
@@ -12,12 +13,12 @@ Legend: ✅ in place · 🟡 partial / needs review · ❌ missing · ➖ not ap
 
 | Content type | Math AA SL | Bio HL | Chem HL | History SL | French A LangLit SL | English A Lit HL | Core |
 |---|---|---|---|---|---|---|---|
-| Subject hub (weightings, currency banner) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ Core hub |
+| Subject hub (weightings, currency banner) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ Core hub + EE workspace |
 | Notes PDFs linked to checklist | ✅ 28 topics (T1–T2) | ✅ 43 topics (all themes) | ✅ 25 topics (all units) | ❌¹ | ❌² | ❌² | ➖ |
 | Quiz bank | ✅ 6 banks (T1–T5 complete, 168 items) | ✅ 9 banks — every DP1 unit (253) | ✅ 8 banks — every unit + review bank (210) | ❌³ | ➖³ | ➖³ | ➖ |
-| Flashcard deck | ✅ 6 decks (117) | ✅ 8 decks (157) | ✅ 7 decks (133) | ➖³ | 🟡 vocab deck would help | 🟡 quotes/lit-terms deck would help | ➖ |
+| Flashcard deck | ✅ 6 decks (117) | ✅ 8 decks (157) | ✅ 7 decks (133) | ➖³ | ✅ terminology deck (35) | ✅ literary terms (42); quote banks ❌ pending work list | ➖ |
 | Past papers + markschemes (local) | ❌ (school channel) | ❌ (M25/N25/M26 via school) | ❌ (same) | ❌ (specimens only — none exist yet) | ❌ (M26+ via school) | ✅ 2 official specimens | ➖ |
-| IA support | 🟡 exploration criteria + exemplars (TSM) | ✅ criteria + ISL practice/experiment schedule | ✅ same schedule | 🟡 IA rubric noted (30%) | ✅ IO structure + global-issue routine | ✅ HL Essay timeline (draft May 11, final Jun 18) | ✅ EE guide FA2027 + forms |
+| IA support | 🟡 exploration criteria + exemplars (TSM) | ✅ criteria + ISL practice/experiment schedule + **debrief notes (ia.html)** | ✅ same schedule | 🟡 IA rubric noted (30%) | ✅ IO structure + global-issue bank (tracked, synced) | ✅ HL Essay timeline (draft May 11, final Jun 18) | ✅ EE guide FA2027 + workspace (idea shortlist + proposal checklist) + TOK object shortlist |
 | ISL teaching order documented | ❌ (confirm with teacher) | ✅ course outline | ✅ at-a-glance | ❌ | ❌ | ❌ | ➖ |
 | Official/school docs filed | ✅ syllabus content | ✅ course outline | ✅ at-a-glance | 🟡 brief only | 🟡 brief only | ✅ 2 specimens | ✅ EE guide + forms |
 
@@ -30,12 +31,11 @@ Legend: ✅ in place · 🟡 partial / needs review · ❌ missing · ➖ not ap
 ## Per-subject priorities (what to add, in order)
 
 ### Mathematics AA SL
-1. **Confirm ISL's unit order** with her teacher/planner (the math bank labels assume the standard T1 → Functions sequence).
+1. **Confirm ISL's unit order** with her teacher/planner (the math bank labels assume the standard T1 → Functions sequence; relabel if needed — content is complete either way).
 2. ~~Functions 2.4–2.5, Topic 3, Topic 4, Topic 5 banks~~ — ✅ all built (2026-11-15); math quiz content now covers every SL topic.
-3. Quiz bank: **Topic 3 trigonometry** (25-hour topic) once Functions closes.
-4. Flashcards: trig formulae + exact values deck when Topic 3 starts.
-5. Notes: the official syllabus content is filed (`library/school/math-aa-syllabus-content.pdf`) — ISL-specific teaching order when available.
-6. Papers: recent TZ2 sessions + markschemes via school → `library/papers/math-aa-sl/`.
+3. ~~Flashcards: trig formulae + exact values deck~~ — ✅ exists (math-topic3-geometry-trig).
+4. Notes: the official syllabus content is filed (`library/school/math-aa-syllabus-content.pdf`) — ISL-specific teaching order when available.
+5. Papers: recent TZ2 sessions + markschemes via school → `library/papers/math-aa-sl/`.
 
 ### Biology HL
 1. ~~D2.3 water potential + A2.1 origin of cells~~ — ✅ built (2026-11-14).
@@ -44,7 +44,7 @@ Legend: ✅ in place · 🟡 partial / needs review · ❌ missing · ➖ not ap
 4. ~~Sep–Oct molecules unit~~ — ✅ built (2026-11-15): A1.1/B1.1/B1.2/A1.2 bank + flashcards.
 5. ~~Apr–May + June units~~ — ✅ built (2026-11-15): photosynthesis/energy transfer, gas exchange/transport, ecology/populations banks + flashcards. **Every DP1 2026–27 unit now has a bank AND flashcards.**
 3. ~~Flashcards: enzymes deck exists; add respiration stages + water potential deck in January~~ — ✅ both exist (bio-respiration-protein-synthesis, bio-water-potential-origin-cells). Next deck only when a new unit starts.
-4. **IA support is strong** — practice schedule from the course outline is integrated; add a one-page debrief after the November hydrogen-peroxide session (what the criteria looked like in practice).
+4. ~~**IA support is strong** — practice schedule integrated; add a one-page debrief after the November hydrogen-peroxide session~~ — ✅ debrief page live on `ia.html` (2026-11-15): criteria-mapped prompts + saved/synced notes for Nov and Jan sessions; fill within a day of each session.
 5. Papers: M25/N25/M26 + markschemes via school.
 6. DP2 units (Continuity → Change): banks only when DP2 nears (Sept 2027) — do not front-load.
 
@@ -60,20 +60,20 @@ work is papers (school channel) and keeping the content current after each ISL u
 3. IA: she's cohort #1 — the IA carries 30% at SL. Plan source-gathering early DP2; keep the 7-source cap visible.
 
 ### French A: Language & Literature SL
-1. **IO global-issue bank** — a simple page (or flashcards) of issues + paired works/texts; feeds the Individual Oral directly.
+1. ~~**IO global-issue bank**~~ — ✅ built (2026-11-15): tracked, synced bank on the French hub (issue + non-literary text + literary work per entry); her entries accumulate weekly.
 2. **Weekly textual-analysis archive**: her weekly francophone text + her notes, filed by date — becomes the P1 revision bank.
-3. **French terminology flashcards** (procédés stylistiques, registres…) — small deck, high value for P1 vocabulary.
+3. ~~**French terminology flashcards**~~ — ✅ built (2026-11-15): `french-a-langlit-terminology` deck (35 cards, incl. the P1 analysis method).
 4. Papers: M26+ via school (scarce everywhere; the school Questionbank is the route).
 
 ### English A: Literature HL
-1. **Quote banks per studied work** (flashcard format: quote → work/theme/technique) — serves P2, HL Essay and IO simultaneously.
-2. **Literary terms deck** (term → definition + example).
-3. HL Essay: idea log → line-of-inquiry shortlist page before March (feeds the May 11 draft).
-4. Paper 1 practice routine: alternate poetry/prose weekly; the two official specimens are filed locally.
+1. **Quote banks per studied work** (flashcard format: quote → work/theme/technique) — serves P2, HL Essay and IO simultaneously. **Blocked until the school confirms the P2 work list.**
+2. ~~**Literary terms deck**~~ — ✅ built (2026-11-15): `english-lit-literary-terms` deck (42 cards, term → definition + effect).
+3. HL Essay: line-of-inquiry shortlist — her IA/EE idea log (`ee.html`) feeds it; needed before March (draft May 11).
+4. Paper 1 practice routine: alternate poetry/prose weekly; the two official specimens are filed locally; first timed rehearsal 8 Dec.
 
 ### Core
-1. EE: idea-log → proposal checklist page before the **2 March** deadline (subject + topic + RRS).
-2. TOK: exhibition object shortlist (plan due 25 March) — a simple tracked list on the Core hub.
+1. ~~EE: idea-log → proposal checklist page~~ — ✅ built (2026-11-15): `ee.html` workspace (shortlist due at the Feb 17 launch; checklist maps items to the new-EE criteria; proposal due 2 Mar).
+2. ~~TOK: exhibition object shortlist~~ — ✅ built (2026-11-15): tracked, synced list on the Core hub (plan due 25 Mar).
 3. CAS: nothing to build — evidence habit only.
 
 ---

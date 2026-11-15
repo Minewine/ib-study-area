@@ -168,6 +168,7 @@ BASE = """<!DOCTYPE html>
   <a href="core.html">Core</a>
   <a href="practice.html">Practice</a>
   <a href="ia.html">IA &amp; EE</a>
+  <a href="ee.html">EE</a>
   <a href="quiz.html">Quiz</a>
   <a href="plan.html">Plan</a>
   <a href="deadlines.html">Deadlines</a>
@@ -184,20 +185,7 @@ __CONTENT__
 
 
 # Post-generation patches (folded back in on 2026-11-14; keep in sync with the live pages)
-CANONICAL_NAV = '<nav>\n  <a href="index.html" class="brand">IB Study Area</a>\n  <a href="math-aa-sl.html">Math AA SL</a>\n  <a href="biology-hl.html">Biology HL</a>\n  <a href="chemistry-hl.html">Chemistry HL</a>\n  <a href="history-sl.html">History SL</a>\n  <a href="french-a-langlit.html">French A</a>\n  <a href="english-lit-hl.html">English Lit HL</a>\n  <a href="core.html">Core</a>\n  <a href="practice.html">Practice</a>\n  <a href="ia.html">IA &amp; EE</a>\n  <a href="quiz.html">Quiz</a>\n  <a href="plan.html">Plan</a>\n  <a href="deadlines.html">Deadlines</a>\n  <a href="flashcards.html">Cards</a>\n  <a href="quick-reference.html">Reference</a>\n</nav>'
-
-NEXTUP = (
-    '<section class="card"><h3>Next school deadlines</h3><ul id="nextup" class="links"></ul>'
-    '<p class="muted">From the ISL Year 12 calendar \u2014 <a href="deadlines.html">full timeline</a> \u00b7 '
-    '<a href="plan.html">the DP1 plan</a></p></section>'
-)
-
-CALLOUT = (
-    '<section class="card"><h3>Quiz engine \u2014 20-question sessions</h3>'
-    "<p>Filtered by subject/topic/format, MCQs marked instantly, written answers self-marked against markschemes, "
-    "weak-topic flags + tactics at the end.</p>"
-    '<p><a class="btn-link" href="quiz.html">Start a session \u2192</a> \u00b7 <a href="plan.html">how sessions fit the week</a></p></section>'
-)
+CANONICAL_NAV = '<nav>\n  <a href="index.html" class="brand">IB Study Area</a>\n  <a href="math-aa-sl.html">Math AA SL</a>\n  <a href="biology-hl.html">Biology HL</a>\n  <a href="chemistry-hl.html">Chemistry HL</a>\n  <a href="history-sl.html">History SL</a>\n  <a href="french-a-langlit.html">French A</a>\n  <a href="english-lit-hl.html">English Lit HL</a>\n  <a href="core.html">Core</a>\n  <a href="practice.html">Practice</a>\n  <a href="ia.html">IA &amp; EE</a>\n  <a href="ee.html">EE</a>\n  <a href="quiz.html">Quiz</a>\n  <a href="plan.html">Plan</a>\n  <a href="deadlines.html">Deadlines</a>\n  <a href="flashcards.html">Cards</a>\n  <a href="quick-reference.html">Reference</a>\n</nav>'
 
 NEXTUP = (
     '<section class="card"><h3>Next school deadlines</h3><ul id="nextup" class="links"></ul>'
@@ -246,15 +234,6 @@ IA_DATES = [
     ("Full timed mocks; IO final; EE viva voce", "per school — see the deadlines page"),
 ]
 
-IA_PARA_OLD = "<p>10 hours, 24 marks, report ≤ 3000 words. Four equally-weighted criteria: research design · data analysis "
-IA_PARA_NEW = (
-    "<p>10 hours, 24 marks, report ≤ 3000 words. Four equally-weighted criteria: research design · data analysis "
-    "· conclusion · evaluation (6 marks each). At ISL: criteria are practised in DP1 (hydrogen peroxide in Nov, "
-    "beetroot/osmosis in Jan), experiments late June, draft early Sept of DP2, final early Nov — per the "
-    "<a href='library/school/bio-course-outline-2026-28.pdf' target='_blank'>course outline</a>. Calibrate against the "
-    "official TSM marked samples — and read exemplars for quality-bar only, never to imitate: IB similarity screening is strict.</p>"
-)
-
 PATCHES = [
     (MATH_ANCHOR, MATH_PANEL + MATH_ANCHOR),
     (BIO_ANCHOR, BIO_PANEL + BIO_ANCHOR),
@@ -273,10 +252,9 @@ for row2, dates in IA_DATES:
     PATCHES.append(
         (row2 + "</td><td></td></tr>", row2 + "</td><td>" + dates + "</td></tr>")
     )
-PATCHES.append((IA_PARA_OLD, IA_PARA_NEW))
 
-# Pages that carry the login widget (auth-slot + auth.js); the rest of the
-# generated site stays auth-free.
+# Pages that carry the login widget (auth-slot + auth.js); pages with synced
+# lists/notes (core, ia, french, ee) need it too — they call Auth.queueSync().
 AUTH_PAGES = (
     "index.html",
     "math-aa-sl.html",
@@ -284,7 +262,16 @@ AUTH_PAGES = (
     "chemistry-hl.html",
     "history-sl.html",
     "french-a-langlit.html",
+    "core.html",
+    "ia.html",
 )
+
+# Per-page engine scripts injected before </body> (tracked lists + debrief notes).
+EXTRA_SCRIPTS = {
+    "core.html": ["assets/lists.js?v=2"],
+    "ia.html": ["assets/lists.js?v=2"],
+    "french-a-langlit.html": ["assets/lists.js?v=2"],
+}
 
 
 def page(fname, title, content_html, active):
@@ -296,13 +283,20 @@ def page(fname, title, content_html, active):
         h = h.replace("</nav>", '  <span id="auth-slot"></span>\n</nav>', 1)
         h = h.replace(
             '<script src="assets/app.js?v=2"></script>',
-            '<script src="assets/app.js?v=2"></script>\n<script src="assets/auth.js?v=3"></script>',
+            '<script src="assets/app.js?v=2"></script>\n<script src="assets/auth.js?v=4"></script>',
+            1,
+        )
+    if fname in EXTRA_SCRIPTS:
+        h = h.replace(
+            "</body>",
+            "".join(f'<script src="{s}"></script>\n' for s in EXTRA_SCRIPTS[fname])
+            + "</body>",
             1,
         )
     if fname == "index.html":
         h = h.replace(
             '<script src="assets/app.js?v=2"></script>',
-            '<script src="assets/deadlines.js"></script>\n<script src="assets/app.js?v=2"></script>',
+            '<script src="assets/deadlines.js?v=2"></script>\n<script src="assets/app.js?v=2"></script>',
             1,
         )
     out.write_text(h, encoding="utf-8")
@@ -544,6 +538,17 @@ SUBJECTS["french-a-langlit.html"] = dict(
             + "<p>DP1 routine: one real francophone non-literary text per week (editorial, ad, speech, cartoon) analysed in French. Keep a running bank of global issues for the IO.</p>"
         )
         + card(
+            "<h3>Individual oral — build the bank early <span class='count'>(feeds DP2, pays weekly)</span></h3>"
+            "<p>A global issue is not a topic label (<em>« les inégalités »</em>) — it is a debatable statement, broad "
+            "enough to be called global, narrow enough to anchor in the extract and one literary work. The weekly "
+            "routine: every text analysed for P1 practice gets one candidate issue line in the bank below; an issue "
+            "only becomes usable once it has (a) a non-literary text and (b) a literary work with a specific passage. "
+            "Ten minutes a week now makes the IO choice calm in DP2.</p>"
+            '<div data-list=\'io-issues\' data-list-fields=\'[{"k":"a","label":"Non-literary text","ph":"body of work · text · date"},{"k":"b","label":"Literary work + passage","ph":"work · passage"}]\'></div>'
+            "<p>Marking vocabulary for P1 and the IO: the <a href='flashcards.html'>Cards page</a> has a French "
+            "terminology deck (procédés stylistiques, registres, argumentation) — run it before each written analysis.</p>"
+        )
+        + card(
             "<h3>Skills checklist</h3>"
             + "<div class='legend'>checkbox = revised · red/amber/green = confidence</div>"
             + "<div class='bar' data-subject='french'></div>"
@@ -583,12 +588,21 @@ SUBJECTS["core.html"] = dict(
             + "<p>Guide: Feb 2020, first assessment May 2022 — unchanged for this cohort. Start a weekly <em>TOK journal</em>: one real-world situation + one knowledge question each week. Prescribed titles for May 2028 release in DP2.</p>"
         )
         + card(
+            "<h3>TOK exhibition — object shortlist <span class='count'>(plan due 25 March)</span></h3>"
+            "<p>The exhibition: three objects, each anchored to one IA prompt, each justified in writing. Collect "
+            "candidates all year — a strong object is specific (hers, or exactly dated and sourced), open to several "
+            "perspectives, and personally connected. The prompt list comes from the TOK teacher (current list lives "
+            "in the guide — never an old web copy).</p>"
+            '<div data-list=\'tok-objects\' data-list-fields=\'[{"k":"a","label":"IA prompt","ph":"prompt number / short name"},{"k":"b","label":"Why this object","ph":"perspectives · personal link"}]\'></div>'
+            "<p class='muted'>Tick = chosen for the final three. Saves on this device; syncs when logged in (key <code>tok-objects</code>).</p>"
+        )
+        + card(
             "<h3>Extended Essay</h3>"
             + weighting_table(
                 [("Written essay, 4000 words", "TOK/EE matrix → up to 3 bonus points")]
             )
             + "<p><strong>This cohort uses the new guide (first assessment 2027)</strong>: 5 criteria / 30 marks (Framework 6, Knowledge &amp; understanding 6, Analysis &amp; argument 6, Discussion &amp; evaluation 8, Reflection 4); subject-focused or interdisciplinary pathway; three reflection sessions incl. viva voce on a form capped at 500 words; RRS optional.</p>"
-            + "<p>DP1 actions: keep an idea log, choose subject by end of DP1, read the official guide (linked below) — not the old 2018 criteria.</p>"
+            + "<p>DP1 actions: keep the idea log in the <a href='ee.html'>EE workspace</a> — shortlist ready at the Feb 17 launch, proposal 2 Mar — and read the official guide (linked below), not the old 2018 criteria.</p>"
         )
         + card(
             "<h3>CAS</h3><p>7 learning outcomes, evidence portfolio, unassessed but must be complete. Log activities as they happen — DP2 leaves no time to reconstruct two years.</p>"
@@ -629,15 +643,51 @@ SUBJECTS["practice.html"] = dict(
             "<p class='muted'>Print-friendly table — fill by hand.</p>"
         )
         + card(
+            "<h3>Missed questions (auto-tracked by the Quiz)</h3>"
+            "<div id='err-summary' class='muted'></div><div id='err-list'></div>"
+            "<p class='muted'>Every wrong answer in a Quiz session is stored here until it's answered correctly in a "
+            "Review session. Open the <a href='quiz.html'>Quiz</a> → “Review past errors” to re-attempt them.</p>"
+            "<script>\n"
+            "(function () {\n"
+            "  function render() {\n"
+            "    let errs = [];\n"
+            '    try { errs = JSON.parse(localStorage.getItem("q-errors") || "[]"); } catch (e) {}\n'
+            "    const open = errs.filter(x => !x.resolved);\n"
+            "    const done = errs.length - open.length;\n"
+            '    const s = document.getElementById("err-summary");\n'
+            '    if (s) s.textContent = open.length + " unanswered · " + done + " resolved · " + errs.length + " tracked in total.";\n'
+            '    const l = document.getElementById("err-list");\n'
+            "    if (l) l.innerHTML = open.length\n"
+            '      ? ("<ul class=\'links\'>" + open.slice(0, 8).map(x => "<li>" + (x.topicLabel ? x.topicLabel + ": " : "") +\n'
+            '          (x.stem || "").slice(0, 70) + " — missed " + (x.attempts || 1) + "×</li>").join("") + "</ul>")\n'
+            "      : \"<p class='muted'>Nothing waiting — well done.</p>\";\n"
+            "  }\n"
+            "  render();\n"
+            '  window.addEventListener("storage", render);\n'
+            "})();\n"
+            "</script>"
+        )
+        + card(
             "<h3>Which sessions actually match her exams</h3>"
             "<table class='wt'><thead><tr><th>Subject</th><th>Usable papers</th><th>Not usable</th></tr></thead><tbody>"
             "<tr><td>Math AA SL</td><td>May 2021 → May 2026 (TZ2), Nov sessions too</td><td>May 2021 (COVID format); pre-2021</td></tr>"
             "<tr><td>Biology HL</td><td>May 2025 · Nov 2025 · May 2026 (+ specimens)</td><td>Everything before May 2025</td></tr>"
             "<tr><td>Chemistry HL</td><td>May 2025 · Nov 2025 · May 2026 (+ specimens)</td><td>Everything before May 2025</td></tr>"
+            "<tr><td>English A Lit HL</td><td>May 2021 → May 2028 (May 2026+ fully aligned) · 2 official specimens filed locally</td><td>Pre-2021</td></tr>"
             "<tr><td>History SL</td><td>Specimen papers only — none exist yet</td><td>All archive papers (old guide)</td></tr>"
             "<tr><td>French A LangLit</td><td>May 2026+ fully; May 2021–Nov 2025 with caveats</td><td>Pre-2021</td></tr>"
             "</tbody></table>"
             "<p class='muted'>Papers + markschemes come from school (teachers hold them legally) — drop files into <code>library/papers/&lt;subject&gt;/</code> and link them here as they arrive.</p>"
+        )
+        + card(
+            "<h3>Mock schedule — December → January</h3>"
+            "<table class='wt'><thead><tr><th>When</th><th>Mock</th><th>Material</th></tr></thead><tbody>"
+            "<tr><td>Mon 8 Dec 2026</td><td>English A Lit HL — Paper 1 rehearsal (timed, closed-book, two-passage format)</td><td>official specimen (linked on the <a href='english-lit-hl.html'>English hub</a>)</td></tr>"
+            "<tr><td>Jan 12–22 window</td><td>Math AA SL — one full P1 (no calculator) + one full P2 (GDC)</td><td>teacher revision sets until school papers arrive</td></tr>"
+            "<tr><td>Jan 12–22 window</td><td>Biology HL + Chemistry HL — one full timed mock each, per the school's exam format</td><td>teacher sets · quiz-bank written items as markscheme drills</td></tr>"
+            "<tr><td>Night before each paper</td><td>Error-log review only — 15 minutes, no new content</td><td>this page → missed questions</td></tr>"
+            "</tbody></table>"
+            "<p class='muted'>Every mock runs the five-step protocol above. School papers (email ready on the <a href='plan.html'>plan page</a>) slot in as they arrive.</p>"
         )
     ),
 )
@@ -653,7 +703,36 @@ SUBJECTS["ia.html"] = dict(
         )
         + card(
             "<h3>Sciences IA — scientific investigation (Bio/Chem HL, 20%)</h3>"
-            "<p>10 hours, 24 marks, report ≤ 3000 words. Four equally-weighted criteria: research design · data analysis · conclusion · evaluation (6 marks each). Calibrate against the official TSM marked samples (via school) — and read exemplars for the quality bar only, never to imitate: IB similarity screening is strict.</p>"
+            "<p>10 hours, 24 marks, report ≤ 3000 words. Four equally-weighted criteria: research design · data analysis "
+            "· conclusion · evaluation (6 marks each). At ISL: the criteria are practised in DP1 (hydrogen peroxide in "
+            "Nov, beetroot/osmosis in Jan — debriefs below), experiments late June, draft early Sept of DP2, final "
+            "early Nov — per the <a href='library/school/bio-course-outline-2026-28.pdf' target='_blank'>course "
+            "outline</a>. Calibrate against the official TSM marked samples (via school) — and read exemplars for the "
+            "quality bar only, never to imitate: IB similarity screening is strict.</p>"
+        )
+        + card(
+            "<h3>Practice IA debriefs — the criteria in the wild <span class='count'>(fill within a day of each session)</span></h3>"
+            "<p>The DP1 practice sessions exist so the real IA (experiments late June) feels familiar. Right after "
+            "each session, capture what each criterion actually looked like: where the marks were won, where they "
+            "went, and which method step caused it. Short honest bullets beat essays — they feed straight into the "
+            "June write-ups.</p>"
+            "<p><strong>November · hydrogen peroxide</strong> <span class='count'>(all four criteria practised)</span></p>"
+            "<table class='wt'><thead><tr><th>Criterion</th><th>What to capture (2–3 lines each)</th></tr></thead><tbody>"
+            "<tr><td>Research design</td><td>Was the research question measurable and specific? Which variables were identified and controlled — and where did the method lose precision (range, repeats, confounders)?</td></tr>"
+            "<tr><td>Data analysis</td><td>How were raw data processed (means, uncertainties, graphs)? Did the processing reveal the trend or smooth it away? What did outliers say about the method?</td></tr>"
+            "<tr><td>Conclusion</td><td>Did the conclusion answer the research question using the data, with the trend stated at the right strength? Where did expectation and observation diverge?</td></tr>"
+            "<tr><td>Evaluation</td><td>Which specific limitation moved the result most — and was the proposed improvement realistic and tied to the data, not generic?</td></tr>"
+            "</tbody></table>"
+            "<textarea class='tnote' data-note='ia-debriefs:nov.rd' placeholder='Research design — what it looked like in practice…'></textarea>"
+            "<textarea class='tnote' data-note='ia-debriefs:nov.da' placeholder='Data analysis…'></textarea>"
+            "<textarea class='tnote' data-note='ia-debriefs:nov.ce' placeholder='Conclusion · evaluation…'></textarea>"
+            "<p><strong>January · beetroot membranes + osmosis</strong> <span class='count'>(the pair splits the criteria)</span></p>"
+            "<p>Beetroot is the <strong>research-design</strong> rehearsal (variables, controls, dilution series); osmosis "
+            "rehearses <strong>analysis → conclusion → evaluation</strong> (processing, trend, limitations).</p>"
+            "<textarea class='tnote' data-note='ia-debriefs:jan.rd' placeholder='Beetroot — research design…'></textarea>"
+            "<textarea class='tnote' data-note='ia-debriefs:jan.ace' placeholder='Osmosis — analysis, conclusion, evaluation…'></textarea>"
+            "<p class='muted'>Text saves as you type and syncs when logged in (key <code>ia-debriefs</code>). The official "
+            "criterion wording lives in the guide/TSM — this page is the practice view, not the rubric.</p>"
         )
         + card(
             "<h3>Math exploration (20%)</h3>"
@@ -852,6 +931,23 @@ code{background:#eef1f4;border-radius:6px;padding:.05rem .3rem;font-size:.9em}
 .dl-in{font-size:.85rem}
 li.future{padding:.3rem 0}
 .btn-link{color:var(--accent);text-decoration:none;font-weight:600}
+
+/* tracked lists + debrief notes (lists.js) */
+.tlist{display:flex;flex-direction:column;gap:.45rem;margin:.5rem 0}
+.titem{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;border:1px solid var(--line);border-radius:10px;padding:.4rem .55rem}
+.titem.done{border-left:4px solid #2e8b57;background:#f2f9f4}
+.titem input[type="text"],.tadd input[type="text"]{font:inherit;font-size:.9rem;border:1px solid var(--line);border-radius:8px;padding:.3rem .45rem;background:#fff;box-sizing:border-box}
+.titem input[type="text"]:focus,.tadd input[type="text"]:focus,.tnote:focus{outline:none;border-color:var(--accent)}
+.t-main{flex:2 1 230px;min-width:170px}
+.t-field{flex:1 1 150px;min-width:130px}
+.titem input[type="checkbox"]{width:auto;margin:0 .1rem}
+.titem .t-tick{font-size:.75rem;color:var(--muted)}
+.t-del{border:none;background:none;color:#c23b3b;cursor:pointer;font-size:1.05rem;padding:.05rem .3rem}
+.tadd{display:flex;flex-wrap:wrap;gap:.4rem;margin:.55rem 0 .2rem}
+.tadd button{font:inherit;font-size:.88rem;border:1px solid var(--accent);border-radius:8px;padding:.3rem .7rem;background:var(--accent);color:#fff;cursor:pointer}
+.tadd button:hover{background:#234d8c}
+.tcount{font-size:.82rem;color:var(--muted);margin:.2rem 0 0}
+.tnote{display:block;width:100%;min-height:72px;margin:.4rem 0;font:inherit;font-size:.92rem;line-height:1.45;border:1px solid var(--line);border-radius:10px;padding:.5rem .6rem;background:#fff;resize:vertical;box-sizing:border-box}
 
 /* auth widget — lives inside the dark nav (study pages + practice app) */
 .auth-form{display:inline-flex;align-items:center;gap:.3rem}

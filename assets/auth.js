@@ -3,8 +3,9 @@
    origins (the study site on localhost etc.) cookies can't cross, so the login
    token is sent in the X-Nevaib-Token header instead. Logged in: the server
    holds the master copy of the app-owned state plus "site-state" (study-site
-   checklist ticks + this-week items); every change is pushed (debounced).
-   Logged out: localStorage-only, exactly as before. */
+   checklist ticks + this-week items) and the tracked-list/debrief blobs
+   (tok-objects, ee-ideas, io-issues, ia-debriefs — see lists.js); every change
+   is pushed (debounced). Logged out: localStorage-only, exactly as before. */
 (function () {
   "use strict";
 
@@ -23,7 +24,9 @@
 
   const SYNCED_KEYS = [
     "q-userbanks", "fc-userdecks", "fc-state", "fc-user",
-    "fc-deleted", "fc-edits", "quizlog", "site-state"
+    "fc-deleted", "fc-edits", "quizlog", "site-state",
+    // study-site tracked lists + debrief notes (lists.js blobs)
+    "tok-objects", "ee-ideas", "io-issues", "ia-debriefs"
   ];
   const store = {
     get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v === null ? d : v; } catch (e) { return d; } },

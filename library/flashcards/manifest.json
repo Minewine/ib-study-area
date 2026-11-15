@@ -103,5 +103,15 @@
   "file": "library/flashcards/math-topic5-calculus.json",
   "subject": "math-aa-sl",
   "subjectLabel": "Math AA SL"
+ },
+ {
+  "file": "library/flashcards/french-a-langlit-terminology.json",
+  "subject": "french-a-langlit",
+  "subjectLabel": "French A LangLit SL"
+ },
+ {
+  "file": "library/flashcards/english-lit-literary-terms.json",
+  "subject": "english-lit-hl",
+  "subjectLabel": "English A Lit HL"
  }
 ]

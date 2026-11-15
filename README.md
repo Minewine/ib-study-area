@@ -4,7 +4,7 @@ A self-contained, private, static study website. No framework, no build step, no
 Everything here was built around one idea: **content is only useful if it matches the exact
 syllabus editions she is examined on (May 2028) and the order ISL actually teaches it.**
 
-Status snapshot: **2026-11-15** — hosted at **rametric.com/nevaib (live, verified)** with cross-device sync; the practice app now has an in-app quiz item editor; study-site checklist ticks + this-week items sync across devices too; "Progress pulse" stats on the dashboard. See [docs/ROADMAP.md](docs/ROADMAP.md).
+Status snapshot: **2026-11-15** — hosted at **rametric.com/nevaib (live, verified)** with cross-device sync; the practice app has an in-app quiz item editor; checklist ticks, this-week items **and the new tracked lists (EE ideas, TOK objects, French IO bank, IA debrief notes)** sync across devices; "Progress pulse" stats on the dashboard. See [docs/ROADMAP.md](docs/ROADMAP.md).
 
 ---
 
@@ -14,16 +14,18 @@ Status snapshot: **2026-11-15** — hosted at **rametric.com/nevaib (live, verif
 |---|---|---|
 | Dashboard | `index.html` | Countdown to May 2028, "this week" box, 6 subject progress cards, next school deadlines |
 | Subject hubs (6) | `math-aa-sl.html` `biology-hl.html` `chemistry-hl.html` `history-sl.html` `french-a-langlit.html` `english-lit-hl.html` | Verified assessment weightings, currency banners (which papers/guides match), syllabus checklists linked to notes PDFs, IA corners, ISL teaching-sequence panels (bio/chem), teaching hours (math) |
-| Core | `core.html` | TOK (exhibition 33% / essay 67%), **new EE guide** (first assessment 2027), CAS |
+| Core | `core.html` | TOK (exhibition 33% / essay 67%), **new EE guide** (first assessment 2027), CAS + TOK exhibition object shortlist (tracked, synced) |
+| EE workspace | `ee.html` | Idea-log shortlist (tracked, synced), one-page proposal checklist mapped to the new-EE criteria, DP1 timeline, reflection-session guidance |
 | Quiz engine | `quiz.html` | 20-question sessions, filtered by subject/topic/format; instant MCQ marking; written answers self-marked against markschemes; weak-topic flags + tactics; "＋ Flashcard" button on every answer |
 | Flashcards | `flashcards.html` | Leitner spaced repetition (1/2/4/8/16-day boxes), flip UI, keyboard shortcuts, dark mode, editor, export/import |
-| Practice | `practice.html` | Mock protocol, printable error log, paper-alignment table per subject |
+| Practice | `practice.html` | Mock protocol, printable error log, missed-question tracker, paper-alignment table per subject, Dec–Jan mock schedule |
+| IA & EE | `ia.html` | IA/EE criteria per subject, milestone timeline, **practice-IA debrief notes** (Nov hydrogen-peroxide + Jan beetroot/osmosis — saved + synced) |
 | Plan | `plan.html` | DP1 term-by-term plan merged from ISL's deadline calendar + weekly loop + school-requests email (copy-paste) |
 | Deadlines | `deadlines.html` | ISL Year 12 calendar as a live timeline (past struck through, upcoming with days-to-go) |
 | Reference | `quick-reference.html` | Formula/data booklets, command terms, GDC exam-mode, citation |
 | Redirect | `sixth-subject.html` | The sixth subject is English A Literature HL → redirects to its hub |
 
-Content totals: **127 PDFs** in the library · **631 quiz questions** (23 banks) · **407 flashcards** (21 decks).
+Content totals: **127 PDFs** in the library · **631 quiz questions** (23 banks) · **484 flashcards** (23 decks — now incl. French terminology + English literary terms).
 
 ## Tech stack (deliberately boring)
 
@@ -56,13 +58,14 @@ ibsystem/
 │   ├── app.js                ← checklists, progress bars, countdown, this-week
 │   ├── quiz-engine.js        ← quiz sessions + flashcard hook
 │   ├── flashcards.js         ← SRS engine + editor + export/import
+│   ├── lists.js              ← tracked lists + debrief notes (synced blobs)
 │   └── deadlines.js          ← deadline data + timeline renderers
 ├── library/                  ← all content data (the important folder — back this up)
 │   ├── official/             ← 21 PDFs from ibo.org (guides, specimens, briefs, booklets, EE guide)
 │   ├── school/               ← ISL course documents (bio outline, chem at-a-glance, math syllabus)
 │   ├── notes/                ← 103 topic PDFs, organised by ISL teaching order
 │   ├── questions/            ← 23 quiz banks (631 items) — schema in DEVELOPMENT.md
-│   ├── flashcards/           ← 21 decks (407 cards) — schema in DEVELOPMENT.md
+│   ├── flashcards/           ← 23 decks (484 cards) — schema in DEVELOPMENT.md
 │   └── papers/               ← (empty) school-provided past papers land here
 ├── source-archives/          ← original downloaded ZIPs (kept as provenance; deletable once confident)
 └── tools/build_site.py       ← OPTIONAL generator for 10 base pages — see warning in DEVELOPMENT.md
@@ -104,15 +107,16 @@ banner on its hub.
 
 1. **Tell her** — the app is live: rametric.com/nevaib, her login is `neva` + the account password (created via the setup action). Bookmark / add to home screen on the phone.
 2. **Send the school-requests email** (ready to copy at the bottom of `plan.html`) — papers + markschemes, History FA2028 guide/specimens, LangLit materials, IA samples. Then file arrivals into `library/papers/<subject>/` and link them on `practice.html`.
-3. **Confirm with the school**: Nov–Jun calendar dates (only Aug–Oct verified against the official text layer), ISL's math unit order, licensed platforms.
-4. **Monthly rhythm** (MAINTENANCE.md): content commit + push, host backup of `~/nevaib-data/`, next bank/deck batch per [docs/CONTENT-PLAN.md](docs/CONTENT-PLAN.md), validator + link check.
+3. **8 December**: English Paper 1 timed rehearsal (specimen on the English hub) → error-log entry. The Dec–Jan mock schedule lives on `practice.html`; the IA debrief boxes on `ia.html` get filled after each bio practice session.
+4. **Confirm with the school**: Nov–Jun calendar dates (only Aug–Oct verified against the official text layer), ISL's math unit order (relabel the Functions bank if needed), the English P2 work list (unlocks quote banks).
+5. **Monthly rhythm** (MAINTENANCE.md): content commit + push, host backup of `~/nevaib-data/`, next bank/deck batch per [docs/CONTENT-PLAN.md](docs/CONTENT-PLAN.md), validator + link check.
 
 Development handoff for the next phase: [docs/NEXT-PHASE-PROMPT.md](docs/NEXT-PHASE-PROMPT.md).
 
 ## Known issues & risks (flagged, not urgent)
 
 - **Nov–Jun deadline dates** come from a photo transcription; Aug–Oct verified against the official PDF.
-- **Progress syncs across devices when logged in.** On the hosted copy (rametric.com/nevaib) quiz sessions, flashcards, uploads *and* the study-site checklist ticks + this-week items sync to the server (token auth; the local study site talks to the hosted API from `localhost`/LAN). Logged out = per-device localStorage, as before.
+- **Progress syncs across devices when logged in.** On the hosted copy (rametric.com/nevaib) quiz sessions, flashcards, uploads, the study-site checklist ticks + this-week items *and* the tracked lists/notes (EE ideas, TOK objects, French IO bank, IA debriefs) sync to the server (token auth; the local study site talks to the hosted API from `localhost`/LAN). Logged out = per-device localStorage, as before.
 - **Math Functions bank** is labelled "likely next unit" — ISL's math teaching order isn't documented; confirm and rename if needed.
 - **`source-archives/` holds ~434 MB of ZIPs** already extracted into `library/notes/` — safe to delete once you're confident in the extraction (your call).
 - A staging copy of the official library exists in the ZCode workspace (`ib-library/`) — `ibsystem/library/` is the canonical one; stop updating the staging copy.

@@ -10,26 +10,32 @@ features only exist to make that loop easier or more targeted.
 
 - [x] Practice app spun out (`app/`) with content upload (author page) and cross-device sync (auth.js + api.php).
 - [x] Automatic error capture: wrong quiz answers stored, review mode re-serves them until correct, unresolved list on the practice page.
+- [x] **IA practice debrief page** (2026-11-15): ia.html — criteria-mapped debrief prompts + saved/synced notes for the Nov hydrogen-peroxide and Jan beetroot/osmosis sessions, feeding the June experiments.
+- [x] **EE workspace** (2026-11-15): `ee.html` — idea-log shortlist (tracked list, synced), one-page proposal checklist mapped to the new-EE criteria, DP1 timeline, reflection guidance. TOK exhibition object shortlist on the Core hub (tracked, synced).
+- [x] **French IO support** (2026-11-15): IO routine + global-issue bank (tracked list, synced) on the French hub; terminology deck (35 cards). English literary-terms deck (42 cards) live on the Cards page.
+- [x] **Sync extended** (2026-11-15): four new synced blobs (`tok-objects`, `ee-ideas`, `io-issues`, `ia-debriefs`) via a small `lists.js` engine; verified end-to-end against the local PHP test host (push on first login + restore on a wiped device).
+- [x] **Generator drift repaired** (2026-11-15): practice.html's missed-questions card + script folded into `build_site.py`; ia.html's duplicated paragraph removed at the source; dead duplicate NEXTUP/CALLOUT constants deleted; deadlines.js tail sorted (renderers now sort defensively).
+- [x] **Mock schedule** (2026-11-15): Dec–Jan mock calendar on practice.html (8 Dec English P1 rehearsal + January-window mocks + night-before error-log loop); English A Lit row added to the papers-alignment table.
 
 ## Short-term (next 2–4 weeks · before the December break)
 
-*(The December-exam bank queue is complete — wave-2 extension shipped 2026-11-15. What remains here is verification and usage, not building.)*
+*(Everything buildable before the December break is built. What remains is usage and school-dependent items.)*
 
 - [ ] **School email sent → papers integrated.** File arrivals into `library/papers/<subject>/`, add links to `practice.html`, wire one mock per subject into the plan.
-- [x] **Generator de-risked** (2026-11-14): all patches folded into the `PATCHES` list; regeneration verified byte-identical. Keep template edits and PATCHES in sync going forward.
+- [x] **Generator de-risked** (2026-11-14): all patches folded into the `PATCHES` list; regeneration verified. Keep template edits and PATCHES in sync going forward.
 - [x] **January banks built** (2026-11-14): bio water potential/origin of cells (18 items), bio respiration/protein synthesis (21), math functions 2.4–2.5 (22).
 - [x] **Chem energetics flashcards deck** — ✅ in place (chem-reactivity-1-energetics, 19 cards).
 - [ ] **December 8 rehearsal**: English Paper 1 timed run using the local specimen; error-log entry after.
-- [ ] **Calendar verification**: cross-check Nov–Jun dates against the official sheet (only Aug–Oct is text-verified).
-- [ ] **Math unit order confirmed** with her teacher; relabel the Functions bank.
+- [ ] **Calendar verification**: cross-check Nov–Jun dates against the official sheet (only Aug–Oct is text-verified; January term per MAINTENANCE.md).
+- [ ] **Math unit order confirmed** with her teacher; relabel the Functions bank (trig bank + deck already exist).
 
 ## Medium-term (next 2–3 months · January–February, into exam season)
 
-- [ ] **January exam preparation flow**: school papers integrated → full timed mocks per the practice-page protocol → error-log-driven revision for each paper.
-- [ ] **IA practice debrief page**: after the November hydrogen-peroxide and January beetroot/osmosis sessions, capture what research-design / data-analysis / conclusion / evaluation looked like in practice — she walks into the June IA experiments having already seen every criterion.
-- [ ] **EE launch support (Feb 17 → proposal Mar 2)**: idea-log shortlist page → one-page proposal checklist mapped to the new EE criteria.
+- [ ] **January exam preparation flow**: school papers integrated → full timed mocks per the practice-page protocol (schedule now on practice.html) → error-log-driven revision for each paper.
+- [ ] **Fill the IA debriefs** after each session (Nov hydrogen-peroxide, Jan beetroot/osmosis) — the page and storage are live; the content is hers to capture.
+- [ ] **EE shortlist → proposal**: she keeps the idea log current in `ee.html`; shortlist ready at the Feb 17 launch, proposal checklist ticked with the supervisor before Mar 2. TOK object candidates accumulate on `core.html` (plan due Mar 25).
 - [x] **Quiz banks one unit ahead** (2026-11-15): chem kinetics + equilibrium (Feb–Mar) and bio respiration/protein synthesis built, each with a flashcard deck — the whole Feb–Mar queue is in place.
-- [x] **Flashcards decks kept current** (2026-11-15): every DP1 science/math unit covered; 21 decks / 407 cards total.
+- [x] **Flashcards decks kept current** (2026-11-15): every DP1 science/math unit covered + French terminology (35) + English literary terms (42); 23 decks / 484 cards total.
 - [x] **Progress dashboard v2** (2026-11-15): "Progress pulse" card on the study dashboard — quiz-score trend (last 5 sessions), flashcards due/mastered/seen, checklist % overall + weakest subject. Checklist % denominator fixed (untouched rows now initialise on hub visits).
 - [x] **Deployment** (2026-11-15): live at rametric.com/nevaib over HTTPS, verified end-to-end (api auth, CORS preflights, token sync). Host runs PHP 7.2 — api.php written for it. Remaining habit: `push_deploy.py` for updates + cPanel backup of `~/nevaib-data/`.
 - [x] **Study-site sync** (2026-11-15): hub checklist ticks (`chk:*`) + this-week items sync cross-device via a batched `site-state` payload (token auth + CORS in api.php; per-row merge, first-login migration without data loss — browser-verified).
