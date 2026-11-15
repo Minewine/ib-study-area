@@ -13,6 +13,15 @@ touching this site.
   + `tools/build_deploy.py` (assembles `deploy/nevaib/` — original content only). See `server/deploy-notes.md`.
 - **auth.js (`app/assets/`)**: login/logout widget, server pull on load, debounced push on every engine write
   (engines call `Auth.queueSync()` from their `store.set`). Logged out = localStorage-only fallback.
+- **Hosted backend (`server/api.php`)**: PHP, stdlib only — `login/logout/me/get-state/save-state`.
+  Passwords: `password_hash`/`password_verify` against `~/nevaib-data/users.json`. Per-user state: JSON file per
+  user under `~/nevaib-data/state/` (outside the web root). Sessions: PHP cookies (HttpOnly, Secure auto, 30 d).
+  Brute-force guard: 5 fails → 5-min lockout (`login-fails.json`). Accounts: key-protected `action=setup`.
+- **Sync model**: last-write-wins on the whole synced payload (`q-userbanks, fc-userdecks, fc-state, fc-user,
+  fc-deleted, fc-edits, quizlog`). On load, the server state replaces local; every engine write triggers a debounced
+  (2 s) push; retry loop every 15 s while dirty. Login triggers one reload so engines re-read restored state.
+- **Cache-busting convention**: engine script tags carry `?v=N` — bump N in the app pages whenever an engine file
+  changes. Bank/deck fetches use `?cb=Date.now()` + `cache: no-store`.
 - **Vanilla JS, one engine per concern**:
   | File | Owns | Page(s) |
   |---|---|---|

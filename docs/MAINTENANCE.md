@@ -24,6 +24,8 @@ regularly costs more should be simplified, not maintained harder.
       add to `library/papers/` and `practice.html`.
 - [ ] **Backup**: zip `ibsystem/` minus `source-archives/` to a second location
       (external drive or the hosting server). `library/` is the irreplaceable part.
+- [ ] **Host backup** (once deployed to rametic.com/nevaib): cPanel → download `~/nevaib-data/`
+      (users.json + per-user state) — small, but it holds her progress.
 
 ## Termly (start of each ISL term: Jan, Apr, Sep)
 
@@ -36,6 +38,8 @@ regularly costs more should be simplified, not maintained harder.
       re-prioritise the queues.
 - [ ] **School channel check**: Questionbank topical sets received? IA/TSM samples received?
       If not, chase — these unlock the most valuable content.
+- [ ] **Host check** (once deployed): rametic.com/nevaib reachable over HTTPS, login works,
+      state file updated recently (cPanel → `~/nevaib-data/state/`).
 - [ ] **Works/topic lists** (English + French + History): updated into the hubs, quote
       banks and any new decks.
 

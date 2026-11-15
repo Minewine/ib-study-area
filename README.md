@@ -4,7 +4,7 @@ A self-contained, private, static study website. No framework, no build step, no
 Everything here was built around one idea: **content is only useful if it matches the exact
 syllabus editions she is examined on (May 2028) and the order ISL actually teaches it.**
 
-Status snapshot: **2026-11-14** — generator de-risked (regeneration is byte-safe), chemistry content complete. See [docs/ROADMAP.md](docs/ROADMAP.md) for what's next.
+Status snapshot: **2026-11-15** — practice app spun out (`app/`, with content upload), PHP auth/state backend built, hosted deployment to **rametic.com/nevaib** prepared but not yet uploaded. See [docs/ROADMAP.md](docs/ROADMAP.md).
 
 ---
 
@@ -95,20 +95,24 @@ banner on its hub.
 | [docs/ROADMAP.md](docs/ROADMAP.md) | Feature roadmap: next 2–4 weeks / 2–3 months / later |
 | [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md) | Architecture, data schemas, localStorage keys, gotchas, recipes |
 | [docs/MAINTENANCE.md](docs/MAINTENANCE.md) | Weekly/termly checklists, backups, health checks |
-| [DEPLOY.md](DEPLOY.md) | Getting it onto her devices safely |
+| [DEPLOY.md](DEPLOY.md) | LAN / generic-host options |
+| [server/deploy-notes.md](server/deploy-notes.md) | Hosted deployment to rametic.com/nevaib (accounts + cross-device sync) |
+| [docs/NEXT-PHASE-PROMPT.md](docs/NEXT-PHASE-PROMPT.md) | Handoff prompt for continuing in a fresh chat |
 
 ## Next actions (ordered — details in the linked docs)
 
-1. **Send the school-requests email** (ready to copy at the bottom of `plan.html`) — papers + markschemes, History FA2028 guide/specimens, LangLit materials, IA samples. Then file arrivals into `library/papers/<subject>/` and link them on `practice.html`.
-2. **Confirm with the school**: Nov–Jun calendar dates (only Aug–Oct verified against the official text layer), French A HL essay applicability, ISL's math unit order, licensed platforms.
-4. **Build the January banks** (bio water potential/origin of cells, math 2.4–2.5) before the exam window — see [docs/CONTENT-PLAN.md](docs/CONTENT-PLAN.md) queue.
-5. **Deploy** behind basic auth (DEPLOY.md) and set up the backup (MAINTENANCE.md).
-6. **Start the weekly loop with her** — Monday set the week · Tue+Thu quiz sessions · Friday error log · Sunday idea log. The compounding habit matters more than any remaining feature.
+1. **Deploy to rametic.com/nevaib** — checklist in [server/deploy-notes.md](server/deploy-notes.md): build the deploy folder (`tools/build_deploy.py`), set `$SETUP_KEY`, upload via cPanel/SFTP, create her account via the setup action, blank the key, verify HTTPS end-to-end from a phone.
+2. **Send the school-requests email** (ready to copy at the bottom of `plan.html`) — papers + markschemes, History FA2028 guide/specimens, LangLit materials, IA samples. Then file arrivals into `library/papers/<subject>/` and link them on `practice.html`.
+3. **Confirm with the school**: Nov–Jun calendar dates (only Aug–Oct verified against the official text layer), ISL's math unit order, licensed platforms.
+4. **Start the weekly loop with her** — Monday set the week · Tue+Thu quiz sessions · Friday error log · Sunday idea log. Logged in at rametic.com/nevaib, progress follows her across devices.
+5. **Monthly**: content commit + push, host backup of `~/nevaib-data/` (MAINTENANCE.md), next bank/deck batch per [docs/CONTENT-PLAN.md](docs/CONTENT-PLAN.md).
+
+Development handoff for the next phase: [docs/NEXT-PHASE-PROMPT.md](docs/NEXT-PHASE-PROMPT.md).
 
 ## Known issues & risks (flagged, not urgent)
 
 - **Nov–Jun deadline dates** come from a photo transcription; Aug–Oct verified against the official PDF.
-- **Progress is per-device** (localStorage). Export/Import exists on the Cards page; the Google-Sheet sync upgrade is in the roadmap if this starts to hurt.
+- **Progress is per-device when running locally.** On the hosted copy (rametic.com/nevaib, logged in), app progress + uploads sync to the server and follow the account across devices. Study-site checklist ticks remain per-device for now (roadmap).
 - **Math Functions bank** is labelled "likely next unit" — ISL's math teaching order isn't documented; confirm and rename if needed.
 - **`source-archives/` holds ~434 MB of ZIPs** already extracted into `library/notes/` — safe to delete once you're confident in the extraction (your call).
 - A staging copy of the official library exists in the ZCode workspace (`ib-library/`) — `ibsystem/library/` is the canonical one; stop updating the staging copy.

@@ -10,7 +10,7 @@ features only exist to make that loop easier or more targeted.
 
 - [ ] **School email sent → papers integrated.** File arrivals into `library/papers/<subject>/`, add links to `practice.html`, wire one mock per subject into the plan.
 - [x] **Generator de-risked** (2026-11-14): all patches folded into the `PATCHES` list; regeneration verified byte-identical. Keep template edits and PATCHES in sync going forward.
-- [ ] **January banks built** (one unit ahead): bio water potential + origin of cells; math Functions 2.4–2.5.
+- [x] **January banks built** (2026-11-14): bio water potential/origin of cells (18 items), bio respiration/protein synthesis (21), math functions 2.4–2.5 (22).
 - [ ] **Chem energetics flashcards deck** (small: definitions, q=mcΔT, ΔG cases) before that unit starts in December.
 - [ ] **December 8 rehearsal**: English Paper 1 timed run using the local specimen; error-log entry after.
 - [ ] **Calendar verification**: cross-check Nov–Jun dates against the official sheet (only Aug–Oct is text-verified).
@@ -24,7 +24,8 @@ features only exist to make that loop easier or more targeted.
 - [ ] **Quiz banks one unit ahead** (chem kinetics + equilibrium for Feb–Mar; bio respiration for Feb).
 - [ ] **Flashcards decks kept current**: energetics (Dec), water potential (Jan), then respiration.
 - [ ] **Progress dashboard v2**: index card showing quiz-score trend (last 5 sessions from `quizlog`), flashcards due tomorrow, and checklist % per subject — one small stats aggregation, no new infrastructure.
-- [ ] **Deploy decision executed** (basic auth on the website host) + first backup taken.
+- [x] **Deployment prepared** (2026-11-15): `server/api.php` (PHP auth + per-user state), `app/assets/auth.js` sync layer, `tools/build_deploy.py` → `deploy/nevaib/`. Remaining: upload to rametic.com/nevaib via cPanel/SFTP + create accounts (checklist in `server/deploy-notes.md`).
+- [ ] **First backup taken** of `ibsystem/` (minus `source-archives/`) to a second location.
 
 ## Later / nice-to-have (revisit in DP2, or when something actually hurts)
 
@@ -44,3 +45,11 @@ features only exist to make that loop easier or more targeted.
 - No public hosting of `library/` — IB-copyrighted material stays behind auth, forever.
 - No MCQ banks for English/French/History-by-default — wrong tool for analysis subjects, and off-target until History topics are known.
 - No feature that adds more than ~30 minutes of monthly maintenance. The 30-minute budget is the ceiling.
+
+
+---
+
+## Next phase (handoff prompt ready)
+
+The prioritized next-phase list and the full handoff prompt live in
+[NEXT-PHASE-PROMPT.md](NEXT-PHASE-PROMPT.md) — paste it into a fresh chat to continue.

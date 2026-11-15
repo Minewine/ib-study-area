@@ -1,6 +1,6 @@
 # Content Plan & Completeness
 
-Status snapshot: **2026-11-14 (evening)** — quiz banks now cover every DP1 unit through the spring. Update the matrix whenever something is added — the
+Status snapshot: **2026-11-15** — quiz banks now cover every DP1 unit through the spring. Update the matrix whenever something is added — the
 matrix IS the tracking system (no separate tool needed).
 
 Legend: ✅ in place · 🟡 partial / needs review · ❌ missing · ➖ not applicable by design
