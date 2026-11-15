@@ -20,7 +20,7 @@
     {"id": "fc-math-st-15", "type": "qa", "tags": ["formula"], "front": "Binomial conditions", "back": "Fixed n trials, two outcomes, constant p, independent trials. X ~ B(n, p)."},
     {"id": "fc-math-st-16", "type": "qa", "tags": ["formula"], "front": "Binomial expected value", "back": "E(X) = np \u2014 e.g. 50 flips of a fair coin \u2192 25 heads expected."},
     {"id": "fc-math-st-17", "type": "qa", "tags": ["process"], "front": "Binomial \u2014 P(X = r) and P(X \u2265 r)", "back": "P(X = r) = nCr\u00B7p\u02B3(1\u2212p)^(n\u2212r). 'At least r' = 1 \u2212 P(X \u2264 r\u22121) \u2014 use the complement on the GDC."},
-    {"id": "fc-math-st-18", "type": "qa", "tags": ["definition"], "front": "Normal distribution properties", "back": "Symmetric about the mean (mean = median = mode), bell-shaped, asymptotic tails, defined by \u03BC and \u03C3."},
+    {"id": "fc-math-st-18", "type": "qa", "tags": ["definition"], "front": "Normal distribution properties", "back": "Symmetric about the mean (mean=median=mode), bell-shaped, asymptotic tails, defined by \u03BC and \u03C3."},
     {"id": "fc-math-st-19", "type": "qa", "tags": ["formula"], "front": "Empirical rule", "back": "\u00B11\u03C3 \u2192 68% \u00b7 \u00B12\u03C3 \u2192 95% \u00b7 \u00B13\u03C3 \u2192 99.7%. Quote these when the GDC isn't needed."},
     {"id": "fc-math-st-20", "type": "qa", "tags": ["process"], "front": "GDC commands for normals", "back": "normalcdf(lower, upper, \u03BC, \u03C3) for probabilities; invNorm(area, \u03BC, \u03C3) for x-values given a probability. Sketch and shade first."}
   ]

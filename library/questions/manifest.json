@@ -130,5 +130,11 @@
   "subject": "biology-hl",
   "subjectLabel": "Biology HL",
   "label": "B4.1/B4.2/C4.1 — Ecology & populations (June unit)"
+ },
+ {
+  "file": "library/questions/chem-periodicity-energetics-review.json",
+  "subject": "chemistry-hl",
+  "subjectLabel": "Chemistry HL",
+  "label": "Periodicity & Energetics — Nov–Dec window review"
  }
 ]
