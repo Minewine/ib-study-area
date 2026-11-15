@@ -122,3 +122,27 @@ subject, so review + new unit mix automatically.
 2. Add the manifest entries with a `subjectLabel` (e.g. "Environmental Systems & Societies").
 3. The quiz and Cards pickers pick it up automatically. For a full subject **hub page**, copy an
    existing hub and follow docs/DEVELOPMENT.md (hubs are generated or hand-maintained — see there).
+
+
+---
+
+## Uploading your own content (the Practice App)
+
+The standalone practice app (`app/` — Quiz, Cards, Upload) accepts your own JSON files
+without touching the server or any manifest:
+
+1. Author the JSON per the formats above (copy a template from `library/templates/`).
+2. Open the app's **Upload** page, drop the file (or paste the JSON) and press Add.
+3. The upload is validated (ids, answer indexes, markschemes, required fields) and stored
+   **in that browser** — it appears immediately in the Quiz and Cards pickers.
+
+Notes:
+- Uploaded content is **per device** (localStorage). Use the Upload page's **Download my
+  content** button to back it up, and **Import** on a new device to restore it.
+- To make an uploaded bank permanent for every device: save its JSON into
+  `library/questions/` (or `library/flashcards/`) and add one line to the matching
+  `manifest.json` — then delete the upload from the app to avoid duplicates.
+- Uploaded quiz banks must carry a `subject` key; a bank-level `label` and `subjectLabel`
+  are optional (they name the entry in the picker).
+- Validate before uploading: `python3 -I tools/validate_content.py` checks the library
+  files; the Upload page applies the same rules in the browser.

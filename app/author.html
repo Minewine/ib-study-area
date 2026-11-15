@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Upload — Practice</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .up-zone{border:2px dashed var(--line);border-radius:12px;padding:1.2rem;text-align:center;background:#fafbfc}
+  .up-zone.drag{border-color:var(--accent);background:#eef4fc}
+  .up-result{margin:.6rem 0;padding:.6rem .8rem;border-radius:10px;font-size:.92rem}
+  .up-result.ok{background:#e9f6ee;border:1px solid #2e8b57}
+  .up-result.bad{background:#fdeaea;border:1px solid #c23b3b}
+  .fc-manage-item{display:flex;align-items:center;gap:.6rem;padding:.45rem 0;border-bottom:1px solid var(--line)}
+  .fc-manage-item .name{flex:1}
+  .fc-mini{font-size:.8rem;padding:.25rem .6rem;border-radius:8px;border:1px solid var(--line);background:#fff;cursor:pointer}
+  textarea#paste-box{width:100%;min-height:130px;font-family:monospace;font-size:.82rem;border:1px solid var(--line);border-radius:8px;padding:.5rem}
+  details summary{cursor:pointer;font-weight:600;margin:.6rem 0}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="brand">Practice</a>
+  <a href="quiz.html">Quiz</a>
+  <a href="cards.html">Cards</a>
+  <a href="author.html">Upload</a>
+  <a href="../index.html" style="margin-left:auto">\u2190 Study site</a>
+</nav>
+<main>
+  <h2>Upload your own content</h2>
+  <p class="muted">Add your own quiz banks and flashcard decks as JSON files (format: <a href="../docs/AUTHORING.md" target="_blank">docs/AUTHORING.md</a> \u2014 templates in <code>library/templates/</code>). Uploaded content is stored in this browser and appears automatically in the Quiz and Cards pickers.</p>
+
+  <section class="card">
+    <h3>1 \u00b7 Upload a JSON file</h3>
+    <div class="up-zone" id="drop-zone">
+      <p><input type="file" id="file-input" accept=".json,application/json" multiple></p>
+      <p class="muted">or drop .json files here \u00b7 or paste JSON below and press Add</p>
+      <textarea id="paste-box" placeholder='{"subject": "chemistry-hl", "topic": "...", "topicLabel": "...", "items": [ ... ] }'></textarea>
+      <p><button id="paste-add" class="btn">Add pasted JSON</button></p>
+    </div>
+    <div id="upload-results"></div>
+  </section>
+
+  <section class="card">
+    <h3>2 \u00b7 Manage uploaded content</h3>
+    <div id="manage-quiz"><h3 class="count">Quiz banks</h3><div id="quiz-list"><p class="muted">None uploaded yet.</p></div></div>
+    <div id="manage-cards"><h3 class="count">Flashcard decks</h3><div id="deck-list"><p class="muted">None uploaded yet.</p></div></div>
+  </section>
+
+  <section class="card">
+    <h3>3 \u00b7 Backup &amp; move between devices</h3>
+    <p class="muted">Everything you upload plus all progress lives in this browser. Export it as a file before switching devices \u2014 and import the file on the new one.</p>
+    <button id="export-btn" class="btn primary">Download my content (JSON)</button>
+    <input type="file" id="import-file" accept=".json" style="margin-left:.5rem">
+    <p class="muted" style="margin-top:.5rem">Tip: to make an uploaded bank permanent for all devices, save its JSON into <code>library/questions/</code> (or <code>library/flashcards/</code>) and add one line to the matching <code>manifest.json</code> \u2014 see docs/AUTHORING.md.</p>
+  </section>
+</main>
+<footer>Private family use \u00b7 exams <strong>May 2028</strong> \u00b7 keep this app and its content non-public</footer>
+
+<script>
+(function () {
+  "use strict";
+  const store = {
+    get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v === null ? d : v; } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  };
+  const QBANKS = "q-userbanks", FDECKS = "fc-userdecks";
+
+  function result(ok, msg) {
+    const d = document.createElement("div");
+    d.className = "up-result " + (ok ? "ok" : "bad");
+    d.textContent = msg;
+    document.getElementById("upload-results").prepend(d);
+  }
+
+  function validateQuizBank(bank) {
+    if (typeof bank.subject !== "string" || !bank.subject.trim()) return "missing 'subject' (e.g. chemistry-hl)";
+    if (!Array.isArray(bank.items) || bank.items.length === 0) return "missing or empty 'items' array";
+    const ids = new Set();
+    for (const it of bank.items) {
+      if (!it.id) return "an item is missing 'id'";
+      if (ids.has(it.id)) return "duplicate id '" + it.id + "' (ids must be unique within the file)";
+      ids.add(it.id);
+      if (!it.stem) return "item '" + it.id + "': missing 'stem'";
+      if (it.format === "mcq") {
+        if (!Array.isArray(it.choices) || it.choices.length < 2) return "item '" + it.id + "': needs at least 2 choices";
+        if (!Number.isInteger(it.answer) || it.answer < 0 || it.answer >= it.choices.length) return "item '" + it.id + "': 'answer' must be the 0-based index of the correct choice";
+      } else if (it.format === "written") {
+        if (!it.marks || !Array.isArray(it.markscheme) || !it.markscheme.length) return "item '" + it.id + "': written items need 'marks' and a markscheme array";
+      } else return "item '" + it.id + "': format must be 'mcq' or 'written'";
+    }
+    return null;
+  }
+
+  function validateDeck(deck, existingIds) {
+    if (typeof deck.subject !== "string" || !deck.subject.trim()) return "missing 'subject' (e.g. biology-hl)";
+    if (typeof deck.topic !== "string" || !deck.topic.trim()) return "missing 'topic' (must match the quiz bank's topic key)";
+    if (!Array.isArray(deck.cards) || deck.cards.length === 0) return "missing or empty 'cards' array";
+    for (const c of deck.cards) {
+      if (!c.id) return "a card is missing 'id'";
+      if (existingIds.has(c.id)) return "card id '" + c.id + "' already exists in another deck \u2014 make ids globally unique (e.g. prefix them)";
+      if (!c.front || !c.back) return "card '" + c.id + "': 'front' and 'back' are both required";
+      if (c.type && c.type !== "qa" && c.type !== "term") return "card '" + c.id + "': type must be 'qa' or 'term'";
+      existingIds.add(c.id);
+    }
+    return null;
+  }
+
+  function existingFlashcardIds() {
+    // seed decks (via manifest) + previously uploaded decks + user-created cards
+    const ids = new Set();
+    const add = (id) => { if (id) ids.add(id); };
+    const seeds = store.get("fc-seedids", null);
+    if (seeds) { seeds.forEach(add); return Promise.resolve(ids); }
+    return fetch("../assets/flashcards.js").catch(() => null) // warm-up no-op
+      .then(() => fetch((location.pathname.includes("/app/") ? "../" : "") + "library/flashcards/manifest.json"))
+      .then(r => r.json())
+      .then(manifest => Promise.all(manifest.map(m => fetch(m.file).then(r => r.json()).then(d => d.cards.forEach(c => add(c.id))).catch(() => {}))))
+      .then(() => { store.set("fc-seedids", [...ids]); return ids; })
+      .catch(() => ids);
+  }
+
+  function processContent(text, sourceName) {
+    let data;
+    try { data = JSON.parse(text); } catch (e) { return result(false, sourceName + ": invalid JSON \u2014 " + e.message); }
+    if (Array.isArray(data.items)) {
+      const err = validateQuizBank(data);
+      if (err) return result(false, sourceName + ": " + err);
+      const banks = store.get(QBANKS, []);
+      if (banks.some(b => b.name === sourceName)) return result(false, sourceName + ": an upload with this filename already exists \u2014 delete it first or rename the file");
+      const entry = Object.assign({}, data, { name: sourceName, uploaded: new Date().toISOString().slice(0, 10) });
+      if (!entry.label) entry.label = data.topicLabel || sourceName;
+      if (!entry.subjectLabel) entry.subjectLabel = data.subject;
+      banks.push(entry);
+      store.set(QBANKS, banks);
+      result(true, sourceName + ": quiz bank saved (" + data.items.length + " items, subject " + data.subject + ") \u2014 it now appears in the Quiz picker.");
+    } else if (Array.isArray(data.cards)) {
+      existingFlashcardIds().then(ids => {
+        const err = validateDeck(data, ids);
+        if (err) return result(false, sourceName + ": " + err);
+        const decks = store.get(FDECKS, []);
+        if (decks.some(d => d.name === sourceName)) return result(false, sourceName + ": an upload with this filename already exists \u2014 delete it first or rename the file");
+        const entry = Object.assign({}, data, { name: sourceName, uploaded: new Date().toISOString().slice(0, 10) });
+        if (!entry.subjectLabel) entry.subjectLabel = data.subject;
+        decks.push(entry);
+        store.set(FDECKS, decks);
+        result(true, sourceName + ": flashcard deck saved (" + data.cards.length + " cards, subject " + data.subject + ") \u2014 it now appears in the Cards picker.");
+        renderManage();
+      });
+    } else {
+      result(false, sourceName + ": no 'items' or 'cards' array found \u2014 is this a quiz bank or a flashcard deck?");
+    }
+  }
+
+  function renderManage() {
+    const banks = store.get(QBANKS, []);
+    const decks = store.get(FDECKS, []);
+    const ql = document.getElementById("quiz-list");
+    ql.innerHTML = banks.length ? banks.map((b, i) =>
+      `<div class="fc-manage-item"><span class="name"><strong>${b.name}</strong> \u00b7 ${b.subject} \u00b7 ${b.items.length} items</span><button class="fc-mini" data-kind="quiz" data-i="${i}">Delete</button></div>`).join("")
+      : "<p class='muted'>None uploaded yet.</p>";
+    const dl = document.getElementById("deck-list");
+    dl.innerHTML = decks.length ? decks.map((d, i) =>
+      `<div class="fc-manage-item"><span class="name"><strong>${d.name}</strong> \u00b7 ${d.subject} \u00b7 ${d.cards.length} cards</span><button class="fc-mini" data-kind="deck" data-i="${i}">Delete</button></div>`).join("")
+      : "<p class='muted'>None uploaded yet.</p>";
+    ql.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
+      const arr = store.get(QBANKS, []); arr.splice(parseInt(b.dataset.i), 1); store.set(QBANKS, arr); renderManage();
+    }));
+    dl.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
+      const arr = store.get(FDECKS, []); arr.splice(parseInt(b.dataset.i), 1); store.set(FDECKS, arr); renderManage();
+    }));
+  }
+
+  // file input
+  document.getElementById("file-input").addEventListener("change", (e) => {
+    [...e.target.files].forEach(f => {
+      const reader = new FileReader();
+      reader.onload = () => processContent(reader.result, f.name);
+      reader.readAsText(f);
+    });
+    e.target.value = "";
+  });
+
+  // drag & drop onto the zone
+  const zone = document.getElementById("drop-zone");
+  ["dragover", "dragenter"].forEach(ev => zone.addEventListener(ev, (e) => { e.preventDefault(); zone.classList.add("drag"); }));
+  ["dragleave", "drop"].forEach(ev => zone.addEventListener(ev, (e) => { e.preventDefault(); zone.classList.remove("drag"); }));
+  zone.addEventListener("drop", (e) => {
+    [...e.dataTransfer.files].forEach(f => {
+      const reader = new FileReader();
+      reader.onload = () => processContent(reader.result, f.name);
+      reader.readAsText(f);
+    });
+  });
+
+  // paste path
+  document.getElementById("paste-add").addEventListener("click", () => {
+    processContent(document.getElementById("paste-box").value, "pasted JSON");
+  });
+
+  // export / import
+  document.getElementById("export-btn").addEventListener("click", () => {
+    const payload = {
+      version: 2,
+      exported: new Date().toISOString().slice(0, 10),
+      qUserBanks: store.get(QBANKS, []),
+      fcUserDecks: store.get(FDECKS, []),
+      fcState: store.get("fc-state", {}),
+      fcUser: store.get("fc-user", []),
+      fcDeleted: store.get("fc-deleted", []),
+      fcEdits: store.get("fc-edits", {}),
+      quizlog: store.get("quizlog", [])
+    };
+    const blob = new Blob([JSON.stringify(payload, null, 1)], { type: "application/json" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "practice-user-content.json";
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+  document.getElementById("import-file").addEventListener("change", (e) => {
+    const f = e.target.files[0];
+    if (!f) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const data = JSON.parse(reader.result);
+        if (data.qUserBanks) store.set(QBANKS, data.qUserBanks);
+        if (data.fcUserDecks) store.set(FDECKS, data.fcUserDecks);
+        if (data.fcState) store.set("fc-state", data.fcState);
+        if (data.fcUser) store.set("fc-user", data.fcUser);
+        if (data.fcDeleted) store.set("fc-deleted", data.fcDeleted);
+        if (data.fcEdits) store.set("fc-edits", data.fcEdits);
+        if (data.quizlog) store.set("quizlog", data.quizlog);
+        renderManage();
+        alert("Imported. Reload the Quiz and Cards pages to see everything.");
+      } catch (err) { alert("Could not import: " + err.message); }
+    };
+    reader.readAsText(f);
+    e.target.value = "";
+  });
+
+  renderManage();
+})();
+</script>
+</body>
+</html>

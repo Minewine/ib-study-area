@@ -5,6 +5,8 @@
 (function () {
   "use strict";
 
+  const PATH_BASE = location.pathname.includes("/app/") ? "../" : "";
+
   const FALLBACK_REGISTRY = [
     { file: "library/flashcards/bio-unity-diversity-cells.json", subject: "biology-hl", subjectLabel: "Biology HL" },
     { file: "library/flashcards/bio-c1-1-enzymes-metabolism.json", subject: "biology-hl", subjectLabel: "Biology HL" },
@@ -39,7 +41,7 @@
 
   async function loadRegistry() {
     try {
-      const res = await fetch("library/flashcards/manifest.json?cb=" + Date.now(), { cache: "no-store" });
+      const res = await fetch(PATH_BASE + "library/flashcards/manifest.json?cb=" + Date.now(), { cache: "no-store" });
       if (!res.ok) throw new Error(res.status);
       REGISTRY = await res.json();
       return true;
@@ -51,12 +53,15 @@
     DECKS = [];
     for (const r of REGISTRY) {
       try {
-        const res = await fetch(r.file + "?cb=" + Date.now(), { cache: "no-store" });
+        const res = await fetch(PATH_BASE + r.file + "?cb=" + Date.now(), { cache: "no-store" });
         if (!res.ok) throw new Error(res.status + " " + r.file);
         const d = await res.json();
         DECKS.push({ subject: d.subject || r.subject, subjectLabel: r.subjectLabel, topic: d.topic, topicLabel: d.topicLabel, cards: d.cards || [] });
       } catch (e) { console.warn("deck failed:", r.file, e); }
     }
+    store.get("fc-userdecks", []).forEach(ud => {
+      DECKS.push({ subject: ud.subject, subjectLabel: ud.subjectLabel || ud.subject, topic: ud.topic, topicLabel: ud.topicLabel || ud.topic, cards: ud.cards || [] });
+    });
     rebuild();
   }
 

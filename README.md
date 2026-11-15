@@ -48,7 +48,8 @@ ibsystem/
 │   ├── ROADMAP.md            ← feature roadmap (short/medium/later)
 │   ├── DEVELOPMENT.md        ← architecture, data schemas, gotchas
 │   └── MAINTENANCE.md        ← weekly/termly checklists
-├── index.html … *.html       ← 16 pages (see table above)
+├── index.html … *.html       ← study-site pages (see table above)
+├── app/                      ← self-contained practice app (quiz + flashcards + upload)
 ├── assets/
 │   ├── style.css             ← site-wide styles
 │   ├── app.js                ← checklists, progress bars, countdown, this-week

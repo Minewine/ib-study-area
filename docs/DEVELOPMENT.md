@@ -5,13 +5,16 @@ touching this site.
 
 ## Architecture
 
-- **Static site, no build step.** 16 HTML pages + 5 asset files + JSON data in `library/`.
+- **Static site, no build step.** 16 study-site pages + 4 practice-app pages (`app/`) + 5 asset files + JSON data in `library/`.
+- **Practice app (`app/`)**: `index.html` (launcher), `quiz.html`, `cards.html`, `author.html` (upload/manage/export).
+  Engines resolve content via `PATH_BASE` (`../` when served from `/app/`), so the same engine files serve both layers.
+  Root `quiz.html`/`flashcards.html` are one-line redirect stubs to the app.
 - **Vanilla JS, one engine per concern**:
   | File | Owns | Page(s) |
   |---|---|---|
   | `assets/app.js` | Checklist rows (RAG + ticks), progress bars, countdown, this-week inputs | all pages (safe no-op) |
-  | `assets/quiz-engine.js` | Session builder, MCQ marking, written self-marking, summaries, `fcSaveFromQuiz()` hook | `quiz.html` |
-  | `assets/flashcards.js` | Deck loading, Leitner SRS, session runner, editor, export/import, theme | `flashcards.html` |
+  | `assets/quiz-engine.js` | Session builder, MCQ marking, written self-marking, summaries, `fcSaveFromQuiz()` hook, PATH_BASE content resolution, user-bank merge | `quiz.html` (root + `app/`) |
+  | `assets/flashcards.js` | Deck loading, Leitner SRS, session runner, editor, export/import, theme, PATH_BASE, user-deck merge | `flashcards.html` (root + `app/`) |
   | `assets/deadlines.js` | Deadline data + `#nextup` / `#timeline` renderers | `index.html`, `deadlines.html` |
 - **State** lives in `localStorage` (per browser/device — see table below).
 - **Python** is used only for one-off scripts, run with `python3 -I` (`tools/build_site.py`,
@@ -39,6 +42,8 @@ HTTP server for real use.
 | `fc-deleted` | `flashcards.js` | seeded card ids the user deleted (override) |
 | `fc-edits` | `flashcards.js` | edits to seeded cards `{id: {front, back, tags}}` |
 | `fc-theme` | `flashcards.js` | "light"/"dark" for the Cards page |
+| `q-userbanks` | `app/author.html` + quiz-engine | uploaded quiz banks (per device) |
+| `fc-userdecks` | `app/author.html` + flashcards | uploaded flashcard decks (per device) |
 
 ## Data schemas
 

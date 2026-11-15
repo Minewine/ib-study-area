@@ -4,6 +4,8 @@
 (function () {
   "use strict";
 
+  const PATH_BASE = location.pathname.includes("/app/") ? "../" : "";
+
   const $ = (id) => document.getElementById(id);
   const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   const shuffle = (a) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
@@ -36,7 +38,7 @@ const FALLBACK_BANKS = {
 
   async function loadManifest() {
     try {
-      const res = await fetch("library/questions/manifest.json?cb=" + Date.now(), { cache: "no-store" });
+      const res = await fetch(PATH_BASE + "library/questions/manifest.json?cb=" + Date.now(), { cache: "no-store" });
       if (!res.ok) throw new Error(res.status);
       const manifest = await res.json();
       BANKS = {};
@@ -50,6 +52,13 @@ const FALLBACK_BANKS = {
 
 async function init() {
     await loadManifest();
+    store.get("q-userbanks", []).forEach(b => {
+      BANKS[b.subject] = BANKS[b.subject] || { label: b.subjectLabel || b.subject, banks: [] };
+      BANKS[b.subject].banks.push({
+        file: null, label: b.label || b.topicLabel || "My bank",
+        items: b.items, topicLabel: b.topicLabel || b.label || "My bank", inline: true
+      });
+    });
     const subj = $("q-subject");
     Object.entries(BANKS).forEach(([key, b]) => {
       const o = document.createElement("option"); o.value = key; o.textContent = b.label; subj.appendChild(o);
@@ -82,7 +91,11 @@ async function init() {
     let items = [];
     try {
       for (const b of chosen) {
-        const res = await fetch(b.file + "?cb=" + Date.now(), { cache: "no-store" });
+        if (b.inline) {
+          items = items.concat((b.items || []).map(it => ({ ...it, topicLabel: it.topicLabel || b.topicLabel, bank: b.label })));
+          continue;
+        }
+        const res = await fetch(PATH_BASE + b.file + "?cb=" + Date.now(), { cache: "no-store" });
         if (!res.ok) throw new Error(res.status + " " + b.file);
         const data = await res.json();
         items = items.concat(data.items.map(it => ({ ...it, topicLabel: data.topicLabel, bank: b.label })));
