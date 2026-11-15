@@ -409,6 +409,146 @@
    "answer": 0,
    "note": "n = 4.0/4.0 = 1 mol → 6.02×10²³ atoms. Helium is monatomic — atoms = moles directly.",
    "topicLabel": "Structure 1 — Stoichiometry & the particulate nature of matter"
+  },
+  {
+   "id": "chx9",
+   "format": "mcq",
+   "topic": "structure-1-stoichiometry",
+   "stem": "Chlorine has two isotopes: ³⁵Cl (75%) and ³⁷Cl (25%). Its relative atomic mass is:",
+   "choices": [
+    "35.5",
+    "36",
+    "37",
+    "35"
+   ],
+   "answer": 0,
+   "note": "Weighted mean: (35×75 + 37×25)/100 = 35.5. Isotopic abundances weight the average — never take the simple mean of mass numbers."
+  },
+  {
+   "id": "chx10",
+   "format": "mcq",
+   "topic": "structure-1-stoichiometry",
+   "stem": "The number of molecules in 9.0 g of water (M = 18.0 g/mol) is: (Nᴀ = 6.02 × 10²³)",
+   "choices": [
+    "3.01 × 10²³",
+    "6.02 × 10²³",
+    "1.20 × 10²´",
+    "3.01 × 10²²"
+   ],
+   "answer": 0,
+   "note": "n = 9.0/18.0 = 0.50 mol → 0.50 × 6.02×10²³ = 3.01×10²³ molecules."
+  },
+  {
+   "id": "chx11",
+   "format": "mcq",
+   "topic": "structure-1-stoichiometry",
+   "stem": "The total number of atoms in 0.50 mol of H₂O is:",
+   "choices": [
+    "3.01 × 10²³",
+    "9.03 × 10²³",
+    "6.02 × 10²³",
+    "1.50 × 10²´"
+   ],
+   "answer": 1,
+   "note": "3 atoms per molecule × 0.50 mol = 1.5 mol atoms = 9.03×10²³. Count atoms per unit before multiplying."
+  },
+  {
+   "id": "chx12",
+   "format": "mcq",
+   "topic": "structure-1-stoichiometry",
+   "stem": "The volume occupied by 0.25 mol of any ideal gas at STP is approximately: (molar volume = 22.7 dm³/mol)",
+   "choices": [
+    "5.7 dm³",
+    "22.7 dm³",
+    "11.4 dm³",
+    "45.4 dm³"
+   ],
+   "answer": 0,
+   "note": "0.25 × 22.7 = 5.7 dm³. Use the current data booklet value — older books said 22.4."
+  },
+  {
+   "id": "chx13",
+   "format": "mcq",
+   "topic": "structure-1-stoichiometry",
+   "stem": "50 cm³ of H₂ react with 50 cm³ of Cl₂ at the same temperature and pressure: H₂ + Cl₂ → 2HCl. The volume of HCl formed is:",
+   "choices": [
+    "25 cm³",
+    "50 cm³",
+    "100 cm³",
+    "200 cm³"
+   ],
+   "answer": 2,
+   "note": "Gay-Lussac's law of combining volumes: gas volume ratios = mole ratios. 1:1:2 → equal volumes of H₂ and Cl₂ give double the HCl volume."
+  },
+  {
+   "id": "chx14",
+   "format": "mcq",
+   "topic": "structure-1-stoichiometry",
+   "stem": "The percentage by mass of oxygen in CaCO₃ (Ca 40.1, C 12.0, O 16.0) is approximately:",
+   "choices": [
+    "16%",
+    "32%",
+    "40%",
+    "48%"
+   ],
+   "answer": 3,
+   "note": "3 × 16.0 = 48.0 out of 100.1 → 48%. Three oxygens per formula unit — multiply before dividing."
+  },
+  {
+   "id": "chx15",
+   "format": "mcq",
+   "topic": "structure-1-stoichiometry",
+   "stem": "A compound contains 27.3% carbon and 72.7% oxygen by mass. Its empirical formula is: (C 12, O 16)",
+   "choices": [
+    "CO",
+    "CO₂",
+    "C₂O₃",
+    "C₃O₄"
+   ],
+   "answer": 1,
+   "note": "C: 27.3/12 = 2.275; O: 72.7/16 = 4.54 → ratio 1:2 → CO₂. Divide each percentage by the atomic mass, then simplify."
+  },
+  {
+   "id": "chx16",
+   "format": "mcq",
+   "topic": "structure-1-stoichiometry",
+   "stem": "100 cm³ of 2.0 mol/dm³ hydrochloric acid is diluted to 500 cm³. The new concentration is:",
+   "choices": [
+    "0.10 mol/dm³",
+    "0.40 mol/dm³",
+    "0.50 mol/dm³",
+    "2.0 mol/dm³"
+   ],
+   "answer": 1,
+   "note": "c₁V₁ = c₂V₂: 2.0 × 100/500 = 0.40 mol/dm³. Dilution ×5 → concentration ÷5."
+  },
+  {
+   "id": "chx17",
+   "format": "written",
+   "marks": 4,
+   "topic": "structure-1-stoichiometry",
+   "stem": "12.5 g of hydrated copper(II) sulfate, CuSO₄·xH₂O, is heated to constant mass. The remaining anhydrous CuSO₄ has a mass of 8.00 g. Determine the value of x. (M: CuSO₄ = 159.6, H₂O = 18.0)",
+   "markscheme": [
+    "Mass of water lost = 12.5 − 8.00 = 4.50 g (1)",
+    "n(CuSO₄) = 8.00/159.6 ≈ 0.0501 mol (1)",
+    "n(H₂O) = 4.50/18.0 = 0.250 mol (1)",
+    "Ratio water:salt = 0.250:0.0501 ≈ 5:1 → x = 5 (1)"
+   ],
+   "tactic": "Hydrated-salt problems: mass lost = water; convert both to moles and take the ratio. This is the classic experimental determination of x."
+  },
+  {
+   "id": "chx18",
+   "format": "written",
+   "marks": 4,
+   "topic": "structure-1-stoichiometry",
+   "stem": "A student needs 250 cm³ of 0.500 mol/dm³ sodium carbonate solution for a titration series. Calculate the mass of anhydrous sodium carbonate, Na₂CO₃, that must be dissolved to prepare this solution. (Na 23.0, C 12.0, O 16.0)",
+   "markscheme": [
+    "n(Na₂CO₃) = c×V = 0.500 × 0.250 = 0.125 mol (1)",
+    "M(Na₂CO₃) = 2×23.0 + 12.0 + 3×16.0 = 106.0 g/mol (1)",
+    "m = n × M = 0.125 × 106.0 (1)",
+    "= 13.25 g ≈ 13.3 g (1)"
+   ],
+   "tactic": "Standard-solution preparation: moles from c×V, then mass from n×M. This exact calculation is what she'll do in the January titration practicals."
   }
  ]
 }
