@@ -4,7 +4,7 @@ Copy everything below the line into a new chat to continue development with full
 
 ---
 
-You are continuing development of a private IB Diploma study website for one student (Year 12 / DP1 at the International School of Lausanne, exams May 2028). The project lives at `/home/mick/Projects/ibsystem` (git repo, remote `origin` = private `github.com/Minewine/ib-study-area`). A previous session built the entire site and deployed it; this phase extends it. Work only inside that folder.
+You are continuing development of a private IB Diploma study website for one student (Year 12 / DP1 at the International School of Lausanne, exams May 2028). The project lives at `/home/mick/Projects/ibsystem` (git repo, remote `origin` = private `github.com/Minewine/ib-study-area`). Previous sessions built the site, the practice app, the hosted sync backend, and the content through spring 2027; this phase is about **usage-driven work** — papers, mocks, IA/EE support, and the next content queues. Work only inside that folder.
 
 ## Read first, in this order
 
@@ -14,12 +14,12 @@ You are continuing development of a private IB Diploma study website for one stu
 4. `/home/mick/Projects/ibsystem/docs/CONTENT-PLAN.md` — content completeness matrix + queues
 5. `/home/mick/Projects/ibsystem/server/deploy-notes.md` — the hosted deployment checklist
 
-## What exists (summary)
+## What exists (all verified live 2026-11-15)
 
-- **Study site** (static, vanilla JS, no build step): dashboard, 6 subject hubs with syllabus checklists linked to local notes PDFs, deadlines timeline, DP1 plan, practice/error-log page, quick reference. Content data in `library/` (official/school/notes/questions/flashcards). 127 PDFs live locally; the copyrighted PDF folders (`library/official|school|notes|papers/`, `source-archives/`) are gitignored and must NEVER be committed, hosted, or included in any deploy.
-- **Practice app** (`app/`): quiz engine (22 original banks, 547 items — every DP1 science/math unit through spring) + flashcards (21 decks, 407 cards, Leitner SRS) + `author.html` (upload/manage/export JSON content). Engines: `assets/quiz-engine.js`, `assets/flashcards.js` (manifest-driven via `library/*/manifest.json`), shared `PATH_BASE` content resolution so the same engines serve both the root site and `app/`.
-- **Hosted backend** (`server/api.php`): PHP, stdlib only — login/logout/me + per-user state get/save (PHP sessions, JSON files under the cPanel home on rametric.com). **DEPLOYED AND LIVE at rametric.com/nevaib** (2026-11-15, HTTPS verified, account `neva` active). Re-deploy for content updates: `tools/build_deploy.py` → upload `deploy/nevaib/` via SFTP.
-- **Sync model**: logged-in users get last-write-wins whole-payload sync of the app-owned keys (`q-userbanks, fc-userdecks, fc-state, fc-user, fc-deleted, fc-edits, quizlog, q-errors`) via `app/assets/auth.js` (debounced 2 s push, pull on load, one reload to apply). Logged out = localStorage-only. Study-site checklist ticks (`chk:*`) and this-week items are NOT synced yet.
+- **Study site** (static, vanilla JS, no build step, local-only by design): dashboard with "Progress pulse" stats, 6 subject hubs with syllabus checklists linked to local notes PDFs, deadlines timeline, DP1 plan, practice/error-log page, quick reference. 127 PDFs in `library/`; the copyrighted folders (`library/official|school|notes|papers/`, `source-archives/`) are gitignored and must NEVER be committed, hosted, or included in any deploy.
+- **Practice app** (`app/`, the only thing hosted): quiz engine (23 original banks, 631 items — every DP1 science/math unit through spring) + flashcards (21 decks, 407 cards, Leitner SRS) + `author.html` (upload/manage/quiz-item-editor/export). Engines are shared via `PATH_BASE`; content resolves through `library/*/manifest.json`.
+- **Hosted backend** (rametric.com/nevaib, LIVE over HTTPS): `server/api.php` (PHP 7.2-compatible, stdlib only; login/logout/me + per-user state, JSON files under the cPanel home). Account `neva` active. Re-deploy with `python3 -I tools/push_deploy.py --rebuild` (FTPS, credentials in gitignored `deploy/.ftp-credentials`).
+- **Sync**: logged-in users get last-write-wins sync of `q-userbanks, fc-userdecks, fc-state, fc-user, fc-deleted, fc-edits, quizlog, q-errors` plus a batched `site-state` (checklist ticks `chk:*` + this-week items) via `assets/auth.js` — wired on all 4 app pages and all 7 study-site auth pages, with first-login migration and per-row merge. Logged out = localStorage-only. Bump `?v=N` on engine script tags in referencing pages whenever an engine file changes.
 
 ## Conventions & hard rules
 
@@ -27,21 +27,22 @@ You are continuing development of a private IB Diploma study website for one stu
 - **Copyright firewall (absolute)**: never commit, host, bundle, or reproduce IB/publisher copyrighted material (past papers, markschemes, guide text, the notes in `library/notes/`). Quiz banks and flashcards must be original items written to the syllabus.
 - A formatter may reflow files after edits — always re-read/verify after writing; anchor patches on short unique substrings and re-run the link check.
 - JS engines: run `node --check` after every edit. Content: run `python3 -I tools/validate_content.py` (must pass).
-- Verify features in the browser end-to-end (the site runs via `python3 -m http.server 8017 --bind 0.0.0.0 --directory /home/mick/Projects/ibsystem`; the PHP API test host pattern is in `server/deploy-notes.md`).
-- Commit with conventional messages and push to origin when a milestone passes.
-- Documentation lives in `docs/` and README — update them as part of any milestone (ROADMAP checkboxes, CONTENT-PLAN matrix).
+- Verify features in the browser end-to-end (dev server: `python3 -m http.server 8017 --bind 0.0.0.0 --directory /home/mick/Projects/ibsystem`; PHP API test host pattern in `server/deploy-notes.md`).
+- Any hand-edit to one of the 10 generator-built pages must also be folded into `tools/build_site.py` (template or PATCHES) — see DEVELOPMENT.md "Generator".
+- Commit with conventional messages and push to origin when a milestone passes. Docs (`README`, `ROADMAP`, `CONTENT-PLAN`) are part of every milestone.
 
 ## Your tasks for this phase (in priority order)
 
-1. ~~Extend cross-device sync~~ — **DONE** (2026-11-15): auth.js wired on all pages, `q-errors` added to the synced payload, 407 cards serving from the live host.
-2. **In-app quiz item editor** Add them to the synced payload + include `assets/auth.js` on the study-site pages (dashboard + hubs) with an auth indicator, keeping the logged-out fallback intact. Mind the storage-shape differences (`chk:*` keys are many small entries — batch them into one synced object, e.g. `{checklists: {...}, week: [...]}`) and migrate existing local state on first login without data loss.
-2. **In-app quiz item editor** (`app/author.html` or `app/editor.html`): mirror the existing flashcard editor — add/edit/delete quiz items in an uploaded or created bank, with the same validation rules as the upload path.
-3. **Progress dashboard v2** (`app/index.html` or the study dashboard): quiz-score trend from `quizlog` (last sessions), flashcards due count, checklist % per subject — one small stats view, no new infrastructure.
-4. **Content**: build the February–March bank queue if not present (chem kinetics/equilibrium, bio respiration/protein synthesis — check `docs/CONTENT-PLAN.md` first; some exist). Flashcard decks for the same units. History banks remain blocked until the school confirms the class's focused studies/topics.
-5. **Monthly maintenance** per `docs/MAINTENANCE.md`: backup, host state backup, validator + link check, content matrix update.
+1. **School papers integration** (the school-requests email is ready at the bottom of `plan.html`): when papers/markschemes arrive, file into `library/papers/<subject>/`, link them on `practice.html`, wire one mock per subject into the plan.
+2. **January exam preparation flow**: full timed mocks per the practice-page protocol; error-log-driven revision per paper; **December 8 rehearsal** — English Paper 1 timed run using the local specimen, error-log entry after.
+3. **IA practice debrief page**: after the November hydrogen-peroxide and January beetroot/osmosis sessions, capture what research-design / data-analysis / conclusion / evaluation looked like in practice (feeds the June IA experiments).
+4. **EE launch support (Feb 17 → proposal Mar 2)**: idea-log shortlist page → one-page proposal checklist mapped to the new EE criteria. Also a TOK exhibition object shortlist on the Core hub (plan due 25 March).
+5. **Content queues** (check `docs/CONTENT-PLAN.md` first — most things exist): math **Topic 3 trigonometry** bank + trig-formulae deck once Functions closes (confirm ISL's math unit order first, then relabel the Functions bank); **French** IO global-issue bank + terminology flashcards; **English** quote banks per studied work + literary-terms deck. History banks stay **blocked** until the school confirms the class's focused studies/topics.
+6. **Verification items**: cross-check Nov–Jun deadline dates against the official calendar (only Aug–Oct text-verified; do it at the January term per MAINTENANCE.md); optionally ask Namecheap support to enable PHP 8.x for the account (hygiene — `server/api.php` runs fine on 7.2).
+7. **Monthly maintenance** per `docs/MAINTENANCE.md`: backup (`ibsystem/` minus `source-archives/`), host state backup (FTP + key-gated dumper recipe in `server/deploy-notes.md`), validator + link check, content matrix update, `push_deploy.py --rebuild` whenever content changed.
 
 ## Definition of done for this phase
 
-- rametric.com/nevaib live over HTTPS with her account working from a phone; quiz sessions and flashcard reviews from a phone persist server-side and appear on other devices after login.
-- Checklist ticks synced cross-device without data loss (migration path tested).
-- All validators/link checks pass; docs updated; changes committed and pushed to `origin` (private repo — never make it public).
+- Whatever ships: all validators/link checks pass; docs updated; changes committed and pushed to `origin` (private repo — never make it public); hosted copy refreshed via `tools/push_deploy.py --rebuild` if content or engines changed.
+- New content matches the matrix keys (`subject` + `topic`) and passes `tools/validate_content.py`.
+- No copyrighted file ever enters the repo, the deploy build, or the host.

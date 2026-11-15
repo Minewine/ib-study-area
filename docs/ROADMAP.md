@@ -29,7 +29,7 @@ features only exist to make that loop easier or more targeted.
 - [ ] **IA practice debrief page**: after the November hydrogen-peroxide and January beetroot/osmosis sessions, capture what research-design / data-analysis / conclusion / evaluation looked like in practice — she walks into the June IA experiments having already seen every criterion.
 - [ ] **EE launch support (Feb 17 → proposal Mar 2)**: idea-log shortlist page → one-page proposal checklist mapped to the new EE criteria.
 - [x] **Quiz banks one unit ahead** (2026-11-15): chem kinetics + equilibrium (Feb–Mar) and bio respiration/protein synthesis built, each with a flashcard deck — the whole Feb–Mar queue is in place.
-- [x] **Flashcards decks kept current** (2026-11-15): energetics (Dec), water potential (Jan), respiration — all exist; 12 decks / 229 cards total.
+- [x] **Flashcards decks kept current** (2026-11-15): every DP1 science/math unit covered; 21 decks / 407 cards total.
 - [x] **Progress dashboard v2** (2026-11-15): "Progress pulse" card on the study dashboard — quiz-score trend (last 5 sessions), flashcards due/mastered/seen, checklist % overall + weakest subject. Checklist % denominator fixed (untouched rows now initialise on hub visits).
 - [x] **Deployment** (2026-11-15): live at rametric.com/nevaib over HTTPS, verified end-to-end (api auth, CORS preflights, token sync). Host runs PHP 7.2 — api.php written for it. Remaining habit: `push_deploy.py` for updates + cPanel backup of `~/nevaib-data/`.
 - [x] **Study-site sync** (2026-11-15): hub checklist ticks (`chk:*`) + this-week items sync cross-device via a batched `site-state` payload (token auth + CORS in api.php; per-row merge, first-login migration without data loss — browser-verified).

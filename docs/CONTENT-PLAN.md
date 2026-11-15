@@ -14,8 +14,8 @@ Legend: ✅ in place · 🟡 partial / needs review · ❌ missing · ➖ not ap
 |---|---|---|---|---|---|---|---|
 | Subject hub (weightings, currency banner) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ Core hub |
 | Notes PDFs linked to checklist | ✅ 28 topics (T1–T2) | ✅ 43 topics (all themes) | ✅ 25 topics (all units) | ❌¹ | ❌² | ❌² | ➖ |
-| Quiz bank | ✅ 6 banks (T1–T5 complete, 109 items) | ✅ 9 banks — every DP1 unit (172) | ✅ 7 units (154) | ❌³ | ➖³ | ➖³ | ➖ |
-| Flashcard deck | ✅ 2 decks (39) | ✅ 3 decks (57) | ✅ 7 decks (~133) | ➖³ | 🟡 vocab deck would help | 🟡 quotes/lit-terms deck would help | ➖ |
+| Quiz bank | ✅ 6 banks (T1–T5 complete, 168 items) | ✅ 9 banks — every DP1 unit (253) | ✅ 8 banks — every unit + review bank (210) | ❌³ | ➖³ | ➖³ | ➖ |
+| Flashcard deck | ✅ 6 decks (117) | ✅ 8 decks (157) | ✅ 7 decks (133) | ➖³ | 🟡 vocab deck would help | 🟡 quotes/lit-terms deck would help | ➖ |
 | Past papers + markschemes (local) | ❌ (school channel) | ❌ (M25/N25/M26 via school) | ❌ (same) | ❌ (specimens only — none exist yet) | ❌ (M26+ via school) | ✅ 2 official specimens | ➖ |
 | IA support | 🟡 exploration criteria + exemplars (TSM) | ✅ criteria + ISL practice/experiment schedule | ✅ same schedule | 🟡 IA rubric noted (30%) | ✅ IO structure + global-issue routine | ✅ HL Essay timeline (draft May 11, final Jun 18) | ✅ EE guide FA2027 + forms |
 | ISL teaching order documented | ❌ (confirm with teacher) | ✅ course outline | ✅ at-a-glance | ❌ | ❌ | ❌ | ➖ |

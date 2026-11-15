@@ -23,7 +23,7 @@ Status snapshot: **2026-11-15** — hosted at **rametric.com/nevaib (live, verif
 | Reference | `quick-reference.html` | Formula/data booklets, command terms, GDC exam-mode, citation |
 | Redirect | `sixth-subject.html` | The sixth subject is English A Literature HL → redirects to its hub |
 
-Content totals: **127 PDFs** in the library · **303 quiz questions** (14 banks) · **229 flashcards** (12 decks).
+Content totals: **127 PDFs** in the library · **631 quiz questions** (23 banks) · **407 flashcards** (21 decks).
 
 ## Tech stack (deliberately boring)
 
@@ -61,8 +61,8 @@ ibsystem/
 │   ├── official/             ← 21 PDFs from ibo.org (guides, specimens, briefs, booklets, EE guide)
 │   ├── school/               ← ISL course documents (bio outline, chem at-a-glance, math syllabus)
 │   ├── notes/                ← 103 topic PDFs, organised by ISL teaching order
-│   ├── questions/            ← 22 quiz banks (547 items) — schema in DEVELOPMENT.md
-│   ├── flashcards/           ← 7 decks (172 cards) — schema in DEVELOPMENT.md
+│   ├── questions/            ← 23 quiz banks (631 items) — schema in DEVELOPMENT.md
+│   ├── flashcards/           ← 21 decks (407 cards) — schema in DEVELOPMENT.md
 │   └── papers/               ← (empty) school-provided past papers land here
 ├── source-archives/          ← original downloaded ZIPs (kept as provenance; deletable once confident)
 └── tools/build_site.py       ← OPTIONAL generator for 10 base pages — see warning in DEVELOPMENT.md
