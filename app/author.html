@@ -16,6 +16,10 @@
   .fc-mini{font-size:.8rem;padding:.25rem .6rem;border-radius:8px;border:1px solid var(--line);background:#fff;cursor:pointer}
   textarea#paste-box{width:100%;min-height:130px;font-family:monospace;font-size:.82rem;border:1px solid var(--line);border-radius:8px;padding:.5rem}
   details summary{cursor:pointer;font-weight:600;margin:.6rem 0}
+  .ed-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.7rem;margin:.6rem 0}
+  .ed-lbl{display:block;font-size:.85rem;color:var(--muted);margin:.5rem 0 .2rem}
+  #ed-formwrap input[type=text],#ed-formwrap input[type=number],#ed-formwrap textarea,#ed-newbank-form input[type=text]{width:100%;padding:.4rem;border:1px solid var(--line);border-radius:8px;font:inherit}
+  .ed-answer{margin:.5rem 0}
 </style>
 </head>
 <body>
@@ -28,7 +32,7 @@
 </nav>
 <main>
   <h2>Upload your own content</h2>
-  <p class="muted">Add your own quiz banks and flashcard decks as JSON files (format: <a href="../docs/AUTHORING.md" target="_blank">docs/AUTHORING.md</a> — templates in <code>library/templates/</code>). Uploaded content is stored in this browser and appears automatically in the Quiz and Cards pickers.</p>
+  <p class="muted">Add your own quiz banks and flashcard decks as JSON files — or write and edit quiz items directly with the item editor below (format: <a href="../docs/AUTHORING.md" target="_blank">docs/AUTHORING.md</a> — templates in <code>library/templates/</code>). Uploaded content is stored in this browser and appears automatically in the Quiz and Cards pickers.</p>
 
   <section class="card">
     <h3>1 · Upload a JSON file</h3>
@@ -48,7 +52,66 @@
   </section>
 
   <section class="card">
-    <h3>3 · Backup &amp; move between devices</h3>
+    <h3>3 · Edit quiz items</h3>
+    <p class="muted">Add, edit and delete items in your own quiz banks without editing JSON — pick a bank below, or create a new one and start writing. Changes appear immediately in the Quiz picker (and sync when logged in).</p>
+    <div class="ed-grid">
+      <div><label class="ed-lbl" for="ed-bank">Bank</label><select id="ed-bank"></select></div>
+    </div>
+    <button id="ed-newbank" class="fc-mini">＋ New bank</button>
+    <div id="ed-newbank-form" style="display:none">
+      <div class="ed-grid">
+        <div><label class="ed-lbl" for="ed-nb-subject">Subject (e.g. chemistry-hl)</label><input id="ed-nb-subject" type="text" list="ed-subjects"></div>
+        <div><label class="ed-lbl" for="ed-nb-topic">Topic key</label><input id="ed-nb-topic" type="text" placeholder="enzymes-metabolism"></div>
+        <div><label class="ed-lbl" for="ed-nb-topiclabel">Topic label (shown in pickers)</label><input id="ed-nb-topiclabel" type="text"></div>
+      </div>
+      <datalist id="ed-subjects"><option value="biology-hl"></option><option value="chemistry-hl"></option><option value="math-aa-sl"></option></datalist>
+      <button id="ed-nb-create" class="btn primary">Create bank</button>
+      <button id="ed-nb-cancel" class="btn" style="margin-left:.4rem">Cancel</button>
+    </div>
+    <div id="ed-list"></div>
+    <div id="ed-formwrap" style="display:none">
+      <h3>Item form</h3>
+      <div class="ed-grid">
+        <div><label class="ed-lbl" for="ed-id">Item id (unique in this bank)</label><input id="ed-id" type="text"></div>
+        <div><span class="ed-lbl">Format</span>
+          <label><input type="radio" name="ed-fmt" value="mcq" checked> mcq</label>
+          <label><input type="radio" name="ed-fmt" value="written"> written</label>
+        </div>
+      </div>
+      <label class="ed-lbl" for="ed-stem">Stem</label>
+      <textarea id="ed-stem" rows="2"></textarea>
+      <div id="ed-mcq-fields">
+        <div class="ed-grid">
+          <div><label class="ed-lbl" for="ed-c0">Choice A</label><input id="ed-c0" type="text"></div>
+          <div><label class="ed-lbl" for="ed-c1">Choice B</label><input id="ed-c1" type="text"></div>
+          <div><label class="ed-lbl" for="ed-c2">Choice C</label><input id="ed-c2" type="text"></div>
+          <div><label class="ed-lbl" for="ed-c3">Choice D</label><input id="ed-c3" type="text"></div>
+        </div>
+        <div class="ed-answer">Correct choice:
+          <label><input type="radio" name="ed-answer" value="0"> A</label>
+          <label><input type="radio" name="ed-answer" value="1"> B</label>
+          <label><input type="radio" name="ed-answer" value="2"> C</label>
+          <label><input type="radio" name="ed-answer" value="3"> D</label>
+        </div>
+        <label class="ed-lbl" for="ed-note">Note (the fact and the trap — optional but encouraged)</label>
+        <textarea id="ed-note" rows="2"></textarea>
+      </div>
+      <div id="ed-written-fields" style="display:none">
+        <div class="ed-grid">
+          <div><label class="ed-lbl" for="ed-marks">Marks (≥ 1)</label><input id="ed-marks" type="number" min="1"></div>
+        </div>
+        <label class="ed-lbl" for="ed-ms">Markscheme (one marking point per line, each with its marks, e.g. "point (1)")</label>
+        <textarea id="ed-ms" rows="4"></textarea>
+        <label class="ed-lbl" for="ed-tactic">Tactic (optional)</label>
+        <textarea id="ed-tactic" rows="2"></textarea>
+      </div>
+      <p><button id="ed-save" class="btn primary">Save item</button> <button id="ed-cancel" class="btn">Cancel</button></p>
+    </div>
+    <p><button id="ed-add" class="btn primary">＋ Add item</button></p>
+  </section>
+
+  <section class="card">
+    <h3>4 · Backup &amp; move between devices</h3>
     <p class="muted">Everything you upload plus all progress lives in this browser. Export it as a file before switching devices — and import the file on the new one.</p>
     <button id="export-btn" class="btn primary">Download my content (JSON)</button>
     <input type="file" id="import-file" accept=".json" style="margin-left:.5rem">
@@ -62,7 +125,7 @@
   "use strict";
   const store = {
     get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v === null ? d : v; } catch (e) { return d; } },
-    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} try { if (window.Auth && window.Auth.queueSync) window.Auth.queueSync(); } catch (e) {} }
   };
   const QBANKS = "q-userbanks", FDECKS = "fc-userdecks";
 
@@ -157,18 +220,21 @@
     const decks = store.get(FDECKS, []);
     const ql = document.getElementById("quiz-list");
     ql.innerHTML = banks.length ? banks.map((b, i) =>
-      `<div class="fc-manage-item"><span class="name"><strong>${b.name}</strong> · ${b.subject} · ${b.items.length} items</span><button class="fc-mini" data-kind="quiz" data-i="${i}">Delete</button></div>`).join("")
+      `<div class="fc-manage-item"><span class="name"><strong>${esc(b.name)}</strong> · ${esc(b.subject)} · ${b.items.length} items</span><button class="fc-mini" data-kind="quiz" data-i="${i}" data-act="export">Export .json</button><button class="fc-mini" data-kind="quiz" data-i="${i}" data-act="del">Delete</button></div>`).join("")
       : "<p class='muted'>None uploaded yet.</p>";
     const dl = document.getElementById("deck-list");
     dl.innerHTML = decks.length ? decks.map((d, i) =>
-      `<div class="fc-manage-item"><span class="name"><strong>${d.name}</strong> · ${d.subject} · ${d.cards.length} cards</span><button class="fc-mini" data-kind="deck" data-i="${i}">Delete</button></div>`).join("")
+      `<div class="fc-manage-item"><span class="name"><strong>${esc(d.name)}</strong> · ${esc(d.subject)} · ${d.cards.length} cards</span><button class="fc-mini" data-kind="deck" data-i="${i}">Delete</button></div>`).join("")
       : "<p class='muted'>None uploaded yet.</p>";
     ql.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
-      const arr = store.get(QBANKS, []); arr.splice(parseInt(b.dataset.i), 1); store.set(QBANKS, arr); renderManage();
+      const arr = store.get(QBANKS, []);
+      if (b.dataset.act === "export") { exportBank(arr[parseInt(b.dataset.i)]); return; }
+      arr.splice(parseInt(b.dataset.i), 1); store.set(QBANKS, arr); renderManage();
     }));
     dl.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
       const arr = store.get(FDECKS, []); arr.splice(parseInt(b.dataset.i), 1); store.set(FDECKS, arr); renderManage();
     }));
+    renderEditor();
   }
 
   // file input
@@ -199,6 +265,15 @@
   });
 
   // export / import
+  function exportBank(bank) {
+    if (!bank) return;
+    const blob = new Blob([JSON.stringify(bank, null, 1)], { type: "application/json" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = bank.name || "quiz-bank.json";
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
   document.getElementById("export-btn").addEventListener("click", () => {
     const payload = {
       version: 2,
@@ -240,9 +315,156 @@
     e.target.value = "";
   });
 
+  // ---------- quiz item editor ----------
+  let editIdx = -1; // index of the item being edited, -1 = add mode
+
+  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+  function bankLabel(b) { return b.label || b.topicLabel || b.name; }
+  function editorBank() { return store.get(QBANKS, [])[parseInt(document.getElementById("ed-bank").value)]; }
+
+  function suggestId(bank) {
+    const prefix = ((bank && bank.topic) || "item").replace(/[^a-zA-Z0-9]/g, "").slice(0, 4).toLowerCase() || "item";
+    const ids = new Set((bank ? bank.items : []).map(it => it.id));
+    let n = 1;
+    while (ids.has(prefix + String(n).padStart(2, "0"))) n++;
+    return prefix + String(n).padStart(2, "0");
+  }
+
+  function renderEditor() {
+    const sel = document.getElementById("ed-bank");
+    const banks = store.get(QBANKS, []);
+    const cur = sel.value;
+    sel.innerHTML = banks.length
+      ? banks.map((b, i) => `<option value="${i}">${esc(bankLabel(b))}</option>`).join("")
+      : "<option value=''>no user banks yet — upload one above or create one below</option>";
+    sel.value = banks.length ? String(banks[cur] ? cur : 0) : "";
+    renderEditorList();
+  }
+
+  function renderEditorList() {
+    const list = document.getElementById("ed-list");
+    document.getElementById("ed-formwrap").style.display = "none";
+    editIdx = -1;
+    const bank = editorBank();
+    if (!bank) { list.innerHTML = "<p class='muted'>No bank selected.</p>"; return; }
+    list.innerHTML = bank.items.length ? bank.items.map((it, j) =>
+      `<div class="fc-manage-item"><span class="name"><strong>${esc(it.id)}</strong> · ${esc(it.format)} · ${esc(String(it.stem || "").slice(0, 70))}${String(it.stem || "").length > 70 ? "…" : ""}</span><button class="fc-mini" data-act="edit" data-j="${j}">Edit</button><button class="fc-mini" data-act="del" data-j="${j}">Delete</button></div>`).join("")
+      : "<p class='muted'>No items yet — press ＋ Add item.</p>";
+    list.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
+      const j = parseInt(b.dataset.j);
+      const banks = store.get(QBANKS, []);
+      const cur = banks[parseInt(document.getElementById("ed-bank").value)];
+      if (!cur || !cur.items[j]) return;
+      if (b.dataset.act === "del") {
+        cur.items.splice(j, 1);
+        store.set(QBANKS, banks);
+        renderManage();
+      } else if ((cur.items[j].choices || []).length > 4 || (cur.items[j].choices && cur.items[j].answer > 3)) {
+        // the form models at most 4 choices — opening would silently drop extras
+        alert("This item has more than 4 choices — edit it by exporting the bank and re-uploading the JSON.");
+      } else {
+        editIdx = j;
+        openForm(cur.items[j]);
+      }
+    }));
+  }
+
+  function toggleFmt() {
+    const written = document.querySelector('input[name="ed-fmt"]:checked').value === "written";
+    document.getElementById("ed-mcq-fields").style.display = written ? "none" : "";
+    document.getElementById("ed-written-fields").style.display = written ? "" : "none";
+  }
+
+  function openForm(item) {
+    document.getElementById("ed-formwrap").style.display = "";
+    const bank = editorBank();
+    document.getElementById("ed-id").value = editIdx >= 0 ? item.id : suggestId(bank);
+    document.getElementById("ed-stem").value = item.stem || "";
+    const written = item.format === "written";
+    document.querySelector(`input[name="ed-fmt"][value="${written ? "written" : "mcq"}"]`).checked = true;
+    const choices = item.choices || [];
+    for (let c = 0; c < 4; c++) document.getElementById("ed-c" + c).value = choices[c] || "";
+    const ans = written || !Number.isInteger(item.answer) || item.answer < 0 || item.answer > 3 ? 0 : item.answer;
+    document.querySelector(`input[name="ed-answer"][value="${ans}"]`).checked = true;
+    document.getElementById("ed-note").value = item.note || "";
+    document.getElementById("ed-marks").value = item.marks || "";
+    document.getElementById("ed-ms").value = (item.markscheme || []).join("\n");
+    document.getElementById("ed-tactic").value = item.tactic || "";
+    toggleFmt();
+  }
+
+  document.getElementById("ed-bank").addEventListener("change", renderEditorList);
+  document.querySelectorAll('input[name="ed-fmt"]').forEach(r => r.addEventListener("change", toggleFmt));
+
+  document.getElementById("ed-add").addEventListener("click", () => {
+    if (!editorBank()) return;
+    editIdx = -1;
+    openForm({});
+  });
+
+  document.getElementById("ed-cancel").addEventListener("click", () => {
+    document.getElementById("ed-formwrap").style.display = "none";
+    editIdx = -1;
+  });
+
+  document.getElementById("ed-save").addEventListener("click", () => {
+    const banks = store.get(QBANKS, []);
+    const bank = banks[parseInt(document.getElementById("ed-bank").value)];
+    if (!bank) return;
+    const fmt = document.querySelector('input[name="ed-fmt"]:checked').value;
+    const item = { id: document.getElementById("ed-id").value.trim(), format: fmt, stem: document.getElementById("ed-stem").value.trim() };
+    if (fmt === "mcq") {
+      const raw = [0, 1, 2, 3].map(c => document.getElementById("ed-c" + c).value.trim());
+      const marked = parseInt(document.querySelector('input[name="ed-answer"]:checked').value, 10);
+      if (!raw[marked]) { alert("Cannot save item: the choice marked as correct is empty."); return; }
+      item.choices = raw.filter(Boolean); // empty inputs are dropped — 2-choice questions are fine
+      item.answer = raw.slice(0, marked + 1).filter(Boolean).length - 1; // marked choice's index among the non-empty ones
+      const note = document.getElementById("ed-note").value.trim();
+      if (note) item.note = note;
+    } else {
+      const marks = parseInt(document.getElementById("ed-marks").value, 10);
+      if (marks >= 1) item.marks = marks;
+      item.markscheme = document.getElementById("ed-ms").value.split("\n").map(s => s.trim()).filter(Boolean);
+      const tactic = document.getElementById("ed-tactic").value.trim();
+      if (tactic) item.tactic = tactic;
+    }
+    // validate with the exact rules of the upload path
+    const cand = Object.assign({}, bank, { items: bank.items.slice() });
+    if (editIdx >= 0) cand.items[editIdx] = item; else cand.items.push(item);
+    const err = validateQuizBank(cand);
+    if (err) { alert("Cannot save item: " + err); return; }
+    bank.items = cand.items;
+    store.set(QBANKS, banks);
+    renderManage();
+  });
+
+  document.getElementById("ed-newbank").addEventListener("click", () => {
+    const f = document.getElementById("ed-newbank-form");
+    f.style.display = f.style.display === "none" ? "" : "none";
+  });
+  document.getElementById("ed-nb-cancel").addEventListener("click", () => {
+    document.getElementById("ed-newbank-form").style.display = "none";
+  });
+  document.getElementById("ed-nb-create").addEventListener("click", () => {
+    const subject = document.getElementById("ed-nb-subject").value.trim();
+    const topic = document.getElementById("ed-nb-topic").value.trim();
+    const topicLabel = document.getElementById("ed-nb-topiclabel").value.trim();
+    if (!subject || !topic || !topicLabel) { alert("Subject, topic and topic label are all required."); return; }
+    const name = "created-" + topic + ".json";
+    const banks = store.get(QBANKS, []);
+    if (banks.some(b => b.name === name)) { alert(name + " already exists — delete it first or pick a different topic key."); return; }
+    banks.push({ subject: subject, topic: topic, topicLabel: topicLabel, items: [], name: name, uploaded: new Date().toISOString().slice(0, 10), label: topicLabel, subjectLabel: subject });
+    store.set(QBANKS, banks);
+    document.getElementById("ed-newbank-form").style.display = "none";
+    ["ed-nb-subject", "ed-nb-topic", "ed-nb-topiclabel"].forEach(id => { document.getElementById(id).value = ""; });
+    renderManage();
+    document.getElementById("ed-bank").value = banks.length - 1;
+    renderEditorList();
+  });
+
   renderManage();
 })();
 </script>
-<script src="../assets/auth.js?v=1"></script>
+<script src="../assets/auth.js?v=3"></script>
 </body>
 </html>
