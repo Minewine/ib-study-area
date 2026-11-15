@@ -4,7 +4,7 @@ Copy everything below the line into a new chat to continue development with full
 
 ---
 
-You are continuing development of a private IB Diploma study website for one student (Year 12 / DP1 at the International School of Lausanne, exams May 2028). The project lives at `/home/mick/Projects/ibsystem` (git repo, remote `origin` = private `github.com/Minewine/ib-study-area`). A previous session built the entire site; this phase extends it. Work only inside that folder.
+You are continuing development of a private IB Diploma study website for one student (Year 12 / DP1 at the International School of Lausanne, exams May 2028). The project lives at `/home/mick/Projects/ibsystem` (git repo, remote `origin` = private `github.com/Minewine/ib-study-area`). A previous session built the entire site and deployed it; this phase extends it. Work only inside that folder.
 
 ## Read first, in this order
 
@@ -17,9 +17,9 @@ You are continuing development of a private IB Diploma study website for one stu
 ## What exists (summary)
 
 - **Study site** (static, vanilla JS, no build step): dashboard, 6 subject hubs with syllabus checklists linked to local notes PDFs, deadlines timeline, DP1 plan, practice/error-log page, quick reference. Content data in `library/` (official/school/notes/questions/flashcards). 127 PDFs live locally; the copyrighted PDF folders (`library/official|school|notes|papers/`, `source-archives/`) are gitignored and must NEVER be committed, hosted, or included in any deploy.
-- **Practice app** (`app/`): quiz engine (14 original banks, 303 items — every DP1 science/math unit through spring) + flashcards (12 decks, 229 cards, Leitner SRS) + `author.html` (upload/manage/export JSON content). Engines: `assets/quiz-engine.js`, `assets/flashcards.js` (manifest-driven via `library/*/manifest.json`), shared `PATH_BASE` content resolution so the same engines serve both the root site and `app/`.
+- **Practice app** (`app/`): quiz engine (22 original banks, 547 items — every DP1 science/math unit through spring) + flashcards (21 decks, 407 cards, Leitner SRS) + `author.html` (upload/manage/export JSON content). Engines: `assets/quiz-engine.js`, `assets/flashcards.js` (manifest-driven via `library/*/manifest.json`), shared `PATH_BASE` content resolution so the same engines serve both the root site and `app/`.
 - **Hosted backend** (`server/api.php`): PHP, stdlib only — login/logout/me + per-user state get/save (PHP sessions, JSON files under the cPanel home on rametric.com). **DEPLOYED AND LIVE at rametric.com/nevaib** (2026-11-15, HTTPS verified, account `neva` active). Re-deploy for content updates: `tools/build_deploy.py` → upload `deploy/nevaib/` via SFTP.
-- **Sync model**: logged-in users get last-write-wins whole-payload sync of the app-owned keys (`q-userbanks, fc-userdecks, fc-state, fc-user, fc-deleted, fc-edits, quizlog`) via `app/assets/auth.js` (debounced 2 s push, pull on load, one reload to apply). Logged out = localStorage-only. Study-site checklist ticks (`chk:*`) and this-week items are NOT synced yet.
+- **Sync model**: logged-in users get last-write-wins whole-payload sync of the app-owned keys (`q-userbanks, fc-userdecks, fc-state, fc-user, fc-deleted, fc-edits, quizlog, q-errors`) via `app/assets/auth.js` (debounced 2 s push, pull on load, one reload to apply). Logged out = localStorage-only. Study-site checklist ticks (`chk:*`) and this-week items are NOT synced yet.
 
 ## Conventions & hard rules
 
@@ -33,12 +33,12 @@ You are continuing development of a private IB Diploma study website for one stu
 
 ## Your tasks for this phase (in priority order)
 
-1. ~~Hosted deployment~~ — **DONE and LIVE** (2026-11-15). Remaining: verify from an actual phone after a few days of use and document any host-specific quirks.
-2. **Extend cross-device sync to the study-site data**: the hub checklist ticks (`chk:*` keys) and this-week items currently stay per-device. Add them to the synced payload + include `assets/auth.js` on the study-site pages (dashboard + hubs) with an auth indicator, keeping the logged-out fallback intact. Mind the storage-shape differences (`chk:*` keys are many small entries — batch them into one synced object, e.g. `{checklists: {...}, week: [...]}`) and migrate existing local state on first login without data loss.
-3. **In-app quiz item editor** (`app/author.html` or `app/editor.html`): mirror the existing flashcard editor — add/edit/delete quiz items in an uploaded or created bank, with the same validation rules as the upload path.
-4. **Progress dashboard v2** (`app/index.html` or the study dashboard): quiz-score trend from `quizlog` (last sessions), flashcards due count, checklist % per subject — one small stats view, no new infrastructure.
-5. **Content**: build the February–March bank queue if not present (chem kinetics/equilibrium, bio respiration/protein synthesis — check `docs/CONTENT-PLAN.md` first; some exist). Flashcard decks for the same units. History banks remain blocked until the school confirms the class's focused studies/topics.
-6. **Monthly maintenance** per `docs/MAINTENANCE.md`: backup, host state backup, validator + link check, content matrix update.
+1. ~~Extend cross-device sync~~ — **DONE** (2026-11-15): auth.js wired on all pages, `q-errors` added to the synced payload, 407 cards serving from the live host.
+2. **In-app quiz item editor** Add them to the synced payload + include `assets/auth.js` on the study-site pages (dashboard + hubs) with an auth indicator, keeping the logged-out fallback intact. Mind the storage-shape differences (`chk:*` keys are many small entries — batch them into one synced object, e.g. `{checklists: {...}, week: [...]}`) and migrate existing local state on first login without data loss.
+2. **In-app quiz item editor** (`app/author.html` or `app/editor.html`): mirror the existing flashcard editor — add/edit/delete quiz items in an uploaded or created bank, with the same validation rules as the upload path.
+3. **Progress dashboard v2** (`app/index.html` or the study dashboard): quiz-score trend from `quizlog` (last sessions), flashcards due count, checklist % per subject — one small stats view, no new infrastructure.
+4. **Content**: build the February–March bank queue if not present (chem kinetics/equilibrium, bio respiration/protein synthesis — check `docs/CONTENT-PLAN.md` first; some exist). Flashcard decks for the same units. History banks remain blocked until the school confirms the class's focused studies/topics.
+5. **Monthly maintenance** per `docs/MAINTENANCE.md`: backup, host state backup, validator + link check, content matrix update.
 
 ## Definition of done for this phase
 
