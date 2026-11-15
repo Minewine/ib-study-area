@@ -433,6 +433,172 @@
    "answer": 1,
    "note": "Purines: A and G (fused double ring, larger). Pyrimidines: C, T and U (single ring). Purine always pairs with a pyrimidine — constant strand width.",
    "topicLabel": "A1.1/B1.1/B1.2/A1.2 — Water & biological molecules (Sep–Oct unit)"
+  },
+  {
+   "format": "mcq",
+   "topic": "water-and-biological-molecules",
+   "stem": "Hydrogen bonds between water molecules are individually weak, but water still has a high boiling point because:",
+   "choices": [
+    "Each molecule forms one strong bond",
+    "There are many hydrogen bonds acting collectively",
+    "The covalent bonds break",
+    "Water has a large molar mass"
+   ],
+   "answer": 1,
+   "note": "Individually weak but collectively strong — the key phrase for hydrogen bonding questions. It takes constant energy input to break them all at boiling.",
+   "id": "wm23",
+   "topicLabel": "A1.1/B1.1/B1.2/A1.2 — Water & biological molecules (Sep–Oct unit)"
+  },
+  {
+   "id": "wm24",
+   "format": "mcq",
+   "topic": "water-and-biological-molecules",
+   "stem": "The R group of an amino acid determines whether the resulting protein region is:",
+   "choices": [
+    "Always hydrophobic",
+    "Polar, non-polar, acidic or basic — determining how it folds and interacts",
+    "Always charged",
+    "Always aromatic"
+   ],
+   "answer": 1,
+   "note": "The 20 amino acids differ only in their R groups: non-polar (fold inside), polar (surface), charged (active sites, salt bridges).",
+   "topicLabel": "A1.1/B1.1/B1.2/A1.2 — Water & biological molecules (Sep–Oct unit)"
+  },
+  {
+   "id": "wm25",
+   "format": "mcq",
+   "topic": "water-and-biological-molecules",
+   "stem": "The FOUR levels of protein structure, in order, are:",
+   "choices": [
+    "Primary, secondary, tertiary, quaternary",
+    "Monomer, dimer, trimer, polymer",
+    "Soluble, insoluble, globular, fibrous",
+    "Amino acid, peptide, protein, enzyme"
+   ],
+   "answer": 0,
+   "note": "Primary = sequence; secondary = H-bonded helices/sheets; tertiary = full 3D folding of one chain; quaternary = multiple chains assembled (e.g. hemoglobin's 4 subunits).",
+   "topicLabel": "A1.1/B1.1/B1.2/A1.2 — Water & biological molecules (Sep–Oct unit)"
+  },
+  {
+   "id": "wm26",
+   "format": "mcq",
+   "topic": "water-and-biological-molecules",
+   "stem": "Hemoglobin is a CONJUGATED protein because it:",
+   "choices": [
+    "Contains a non-protein component — the heme group with iron",
+    "Is made of two polypeptides",
+    "Is soluble in water",
+    "Contains only alpha helices"
+   ],
+   "answer": 0,
+   "note": "Conjugated proteins carry a non-amino-acid prosthetic group — hemoglobin's heme holds the iron that binds oxygen.",
+   "topicLabel": "A1.1/B1.1/B1.2/A1.2 — Water & biological molecules (Sep–Oct unit)"
+  },
+  {
+   "id": "wm27",
+   "format": "mcq",
+   "topic": "water-and-biological-molecules",
+   "stem": "Which pair correctly matches a globular and a fibrous protein?",
+   "choices": [
+    "Collagen — globular; hemoglobin — fibrous",
+    "Hemoglobin — globular; collagen — fibrous",
+    "Both are fibrous",
+    "Both are globular"
+   ],
+   "answer": 1,
+   "note": "Globular: compact, soluble, functional (hemoglobin, enzymes). Fibrous: long strands, structural (collagen, keratin).",
+   "topicLabel": "A1.1/B1.1/B1.2/A1.2 — Water & biological molecules (Sep–Oct unit)"
+  },
+  {
+   "id": "wm28",
+   "format": "mcq",
+   "topic": "water-and-biological-molecules",
+   "stem": "Water acts as a REACTANT in which process?",
+   "choices": [
+    "Photolysis in photosynthesis and hydrolysis of polymers",
+    "Condensation reactions",
+    "Protein synthesis only",
+    "Muscle contraction"
+   ],
+   "answer": 0,
+   "note": "Water isn't just a medium: it's split in photolysis (releasing O₂) and consumed in every hydrolysis reaction — digestion, starch breakdown, ATP hydrolysis.",
+   "topicLabel": "A1.1/B1.1/B1.2/A1.2 — Water & biological molecules (Sep–Oct unit)"
+  },
+  {
+   "id": "wm29",
+   "format": "mcq",
+   "topic": "water-and-biological-molecules",
+   "stem": "DNA strands are described as antiparallel because:",
+   "choices": [
+    "The bases are complementary",
+    "One strand runs 5'→3' and the other 3'→5'",
+    "The sugar-phosphate backbone is coiled",
+    "Adenine pairs with thymine"
+   ],
+   "answer": 1,
+   "note": "The two backbones run in opposite chemical directions — essential for the base pairing geometry and for replication.",
+   "topicLabel": "A1.1/B1.1/B1.2/A1.2 — Water & biological molecules (Sep–Oct unit)"
+  },
+  {
+   "id": "wm30",
+   "format": "mcq",
+   "topic": "water-and-biological-molecules",
+   "stem": "ATP is a modified nucleotide consisting of:",
+   "choices": [
+    "Adenine, ribose and three phosphate groups",
+    "Deoxyribose, thymine and one phosphate",
+    "Two pentose sugars",
+    "Amino acid, sugar and base"
+   ],
+   "answer": 0,
+   "note": "Same building blocks as an RNA nucleotide plus two extra phosphates — energy is released when the terminal bond is hydrolysed.",
+   "topicLabel": "A1.1/B1.1/B1.2/A1.2 — Water & biological molecules (Sep–Oct unit)"
+  },
+  {
+   "id": "wm31",
+   "format": "mcq",
+   "topic": "water-and-biological-molecules",
+   "stem": "The difference between a solvent property and a reactant role of water is that a reactant is:",
+   "choices": [
+    "Changed by the reaction",
+    "Recovered unchanged afterwards",
+    "Always a gas",
+    "Always the larger quantity"
+   ],
+   "answer": 0,
+   "note": "Solvent water just carries dissolved particles; reactant water is chemically consumed — split in photolysis, used in every hydrolysis.",
+   "topicLabel": "A1.1/B1.1/B1.2/A1.2 — Water & biological molecules (Sep–Oct unit)"
+  },
+  {
+   "id": "wm32",
+   "format": "mcq",
+   "topic": "water-and-biological-molecules",
+   "stem": "Which is the correct distinction between specific heat capacity and latent heat of vaporization?",
+   "choices": [
+    "Specific heat = energy to raise the temperature of 1 g by 1 K; latent heat = energy to convert liquid to gas at constant temperature",
+    "Both describe boiling",
+    "Latent heat applies only to ice",
+    "They are the same property"
+   ],
+   "answer": 0,
+   "note": "Specific heat changes TEMPERATURE; latent heat changes STATE. The distinction explains both stable habitats and evaporative cooling.",
+   "topicLabel": "A1.1/B1.1/B1.2/A1.2 — Water & biological molecules (Sep–Oct unit)"
+  },
+  {
+   "id": "wm33",
+   "format": "written",
+   "marks": 5,
+   "topic": "water-and-biological-molecules",
+   "stem": "Explain how the cohesion, adhesion and thermal properties of water allow tall trees to transport water from roots to leaves.",
+   "markscheme": [
+    "Transpiration creates tension — water evaporates from the leaves (1)",
+    "Cohesion: hydrogen bonds hold water molecules together in an unbroken column (1)",
+    "Adhesion: water sticks to the xylem walls, supporting the column (1)",
+    "The column is pulled up from the roots to the tops of trees over 100 m tall (1)",
+    "Water's high specific heat also keeps the column liquid across temperature ranges (1)"
+   ],
+   "tactic": "Transport questions need the three C's in order: cohesion, adhesion, tension — plus the physical property behind each.",
+   "topicLabel": "A1.1/B1.1/B1.2/A1.2 — Water & biological molecules (Sep–Oct unit)"
   }
  ]
 }

@@ -429,6 +429,156 @@
    "answer": 1,
    "note": "x² + 1 = 17 → x² = 16 → x = ±4. Two solutions — quadratics always give both.",
    "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit"
+  },
+  {
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "The equation of the line through (2, 3) with gradient 2 is:",
+   "choices": [
+    "y = 2x − 1",
+    "y = 2x + 3",
+    "y = 2x − 3",
+    "y = x + 2"
+   ],
+   "answer": 0,
+   "note": "y − 3 = 2(x − 2) → y = 2x − 1. Point-slope form — substitute the point to check.",
+   "id": "fn01",
+   "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit"
+  },
+  {
+   "id": "f23",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "The line perpendicular to y = 2x + 1 through the origin has gradient:",
+   "choices": [
+    "2",
+    "−2",
+    "−½",
+    "½"
+   ],
+   "answer": 2,
+   "note": "Perpendicular gradients multiply to −1: m₂ = −1/m₁ = −½. Negative reciprocal — the standard result.",
+   "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit"
+  },
+  {
+   "id": "f24",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "The vertex of the parabola y = x² − 6x + 8 is at:",
+   "choices": [
+    "x = 3",
+    "x = −3",
+    "(3, −1)",
+    "(−3, 1)"
+   ],
+   "answer": 2,
+   "note": "x = −b/2a = 3; substitute back: 9 − 18 + 8 = −1 → vertex (3, −1), a minimum (a > 0).",
+   "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit"
+  },
+  {
+   "id": "f25",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "For y = x² + 4x + 4, the discriminant tells us the equation y = 0 has:",
+   "choices": [
+    "Two distinct real roots",
+    "One repeated root",
+    "No real roots",
+    "Four roots"
+   ],
+   "answer": 1,
+   "note": "Δ = 16 − 16 = 0 → one repeated root — the parabola touches the x-axis at its vertex.",
+   "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit"
+  },
+  {
+   "id": "f26",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "Replacing f(x) with f(x) + 3 shifts the graph:",
+   "choices": [
+    "Up 3",
+    "Right 3",
+    "Down 3",
+    "Left 3"
+   ],
+   "answer": 0,
+   "note": "OUTSIDE the brackets → vertical, direction as written. f(x + 3) would shift LEFT 3 (inside = opposite).",
+   "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit"
+  },
+  {
+   "id": "f27",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "Replacing f(x) with f(x − 2) shifts the graph:",
+   "choices": [
+    "Left 2",
+    "Right 2",
+    "Up 2",
+    "Down 2"
+   ],
+   "answer": 1,
+   "note": "INSIDE → horizontal, opposite direction: −2 in the brackets moves the graph RIGHT 2.",
+   "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit"
+  },
+  {
+   "id": "f28",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "The domain of f(x) = 1/(x − 3) is all real numbers except:",
+   "choices": [
+    "x = −3",
+    "x = 3",
+    "x = 0",
+    "x = 1"
+   ],
+   "answer": 1,
+   "note": "Denominator cannot be zero. Numerator zeros are fine — those are just roots.",
+   "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit"
+  },
+  {
+   "id": "f29",
+   "format": "mcq",
+   "topic": "functions-2-1-to-2-3",
+   "stem": "With f(x) = x + 1 and g(x) = x², solving f(g(x)) = 17 gives:",
+   "choices": [
+    "x = 4",
+    "x = ±4",
+    "x = 16",
+    "x = ±16"
+   ],
+   "answer": 1,
+   "note": "x² + 1 = 17 → x² = 16 → x = ±4. Two solutions — quadratics always give both.",
+   "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit"
+  },
+  {
+   "id": "f30",
+   "format": "written",
+   "marks": 5,
+   "topic": "functions-2-1-to-2-3",
+   "stem": "A line passes through the points (1, 3) and (5, 11). (a) Find its equation in the form y = mx + c. (b) Find the midpoint of the two points.",
+   "markscheme": [
+    "(a) Gradient m = (11 − 3)/(5 − 1) = 2 (1)",
+    "y − 3 = 2(x − 1) → y = 2x + 1 (1)",
+    "Check with the second point: 2 × 5 + 1 = 11 ✓ (1)",
+    "(b) Midpoint = ((1+5)/2, (3+11)/2) = (3, 7) (2)"
+   ],
+   "tactic": "Line questions: gradient first, then substitute one point to find c — verify with the second point before moving on.",
+   "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit"
+  },
+  {
+   "id": "f31",
+   "format": "written",
+   "marks": 6,
+   "topic": "functions-2-1-to-2-3",
+   "stem": "Let f(x) = x² − 4x + 3. (a) Write f in the form (x − p)² + q. (b) State the coordinates of the vertex. (c) Solve f(x) = 0.",
+   "markscheme": [
+    "(a) x² − 4x + 3 = (x − 2)² − 4 + 3 = (x − 2)² − 1 (2)",
+    "(b) Vertex (2, −1) — a minimum since a > 0 (1)",
+    "(c) (x − 1)(x − 3) = 0 → x = 1 or x = 3 (2: method 1, both roots 1)",
+    "The roots are symmetric about x = 2 — a useful check (1)"
+   ],
+   "tactic": "Completing the square gives vertex AND roots in one move: the vertex sits on the axis of symmetry, halfway between the roots. Sketching verifies all three.",
+   "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit"
   }
  ]
 }

@@ -424,6 +424,171 @@
    ],
    "tactic": "Compare items: pair every difference (A vs B on the same line). A table format prevents the common error of listing features of one cell only.",
    "topicLabel": "Unity & diversity — Cells, membranes & division"
+  },
+  {
+   "format": "mcq",
+   "topic": "unity-diversity-cells",
+   "stem": "Resolution differs from magnification because resolution is:",
+   "choices": [
+    "The ability to distinguish two objects as separate",
+    "How much larger the image appears",
+    "The brightness of the image",
+    "The total area visible"
+   ],
+   "answer": 0,
+   "note": "Magnification makes things bigger without more detail; resolution shows detail. Electron microscopes win on resolution (short electron wavelength).",
+   "id": "b23",
+   "topicLabel": "Unity & diversity — Cells, membranes & division"
+  },
+  {
+   "id": "b24",
+   "format": "mcq",
+   "topic": "unity-diversity-cells",
+   "stem": "Electron microscopes have much higher resolution than light microscopes because:",
+   "choices": [
+    "They use stronger lenses",
+    "Electrons have a much shorter wavelength than visible light",
+    "They magnify more",
+    "They use colour"
+   ],
+   "answer": 1,
+   "note": "Resolution limit ≈ half the wavelength used: electrons ≈ 0.005 nm vs visible light ≈ 400 nm → vastly more detail.",
+   "topicLabel": "Unity & diversity — Cells, membranes & division"
+  },
+  {
+   "id": "b25",
+   "format": "mcq",
+   "topic": "unity-diversity-cells",
+   "stem": "Prokaryotic cells divide by:",
+   "choices": [
+    "Mitosis",
+    "Binary fission",
+    "Meiosis",
+    "Budding"
+   ],
+   "answer": 1,
+   "note": "Binary fission: the circular DNA replicates, the cell elongates and splits. No spindle, no nucleus to break down.",
+   "topicLabel": "Unity & diversity — Cells, membranes & division"
+  },
+  {
+   "id": "b26",
+   "format": "mcq",
+   "topic": "unity-diversity-cells",
+   "stem": "The main advantage of compartmentalization in eukaryotic cells is:",
+   "choices": [
+    "Larger cell size",
+    "Separating incompatible reactions and concentrating enzymes and substrates",
+    "Faster DNA replication",
+    "More cell walls"
+   ],
+   "answer": 1,
+   "note": "E.g. lysosomes digest safely inside membranes without destroying the cytoplasm; the nucleus separates transcription from translation.",
+   "topicLabel": "Unity & diversity — Cells, membranes & division"
+  },
+  {
+   "id": "b27",
+   "format": "mcq",
+   "topic": "unity-diversity-cells",
+   "stem": "Mitochondrial cristae (folds) increase the:",
+   "choices": [
+    "Volume of the matrix",
+    "Surface area for the electron transport chain and ATP synthase",
+    "Number of nuclei",
+    "Storage of glycogen"
+   ],
+   "answer": 1,
+   "note": "More inner membrane = more ETC and ATP synthase → more ATP. Structure–function link repeated in the respiration topic.",
+   "topicLabel": "Unity & diversity — Cells, membranes & division"
+  },
+  {
+   "id": "b28",
+   "format": "mcq",
+   "topic": "unity-diversity-cells",
+   "stem": "Which cell wall composition matches its organism?",
+   "choices": [
+    "Plants — peptidoglycan; fungi — cellulose; bacteria — chitin",
+    "Plants — cellulose; fungi — chitin; bacteria — peptidoglycan",
+    "Plants — chitin; fungi — peptidoglycan; bacteria — cellulose",
+    "All use cellulose"
+   ],
+   "answer": 1,
+   "note": "Three walls, three different materials — a standard identification question. Animals have no cell wall.",
+   "topicLabel": "Unity & diversity — Cells, membranes & division"
+  },
+  {
+   "id": "b29",
+   "format": "mcq",
+   "topic": "unity-diversity-cells",
+   "stem": "Stem cells are able to:",
+   "choices": [
+    "Divide uncontrollably",
+    "Self-renew and differentiate into specialized cell types",
+    "Only produce blood cells",
+    "Skip mitosis"
+   ],
+   "answer": 1,
+   "note": "Two defining properties: self-renewal and potency (ability to differentiate). Therapeutic uses include bone marrow transplants and Stargardt's disease trials.",
+   "topicLabel": "Unity & diversity — Cells, membranes & division"
+  },
+  {
+   "id": "b30",
+   "format": "mcq",
+   "topic": "unity-diversity-cells",
+   "stem": "Which are atypical examples — cell structures that challenge simple cell theory?",
+   "choices": [
+    "Striated muscle (multinucleate), aseptate fungal hyphae, giant algae",
+    "Red blood cells and platelets",
+    "Prokaryotic ribosomes",
+    "Mitochondria and chloroplasts"
+   ],
+   "answer": 0,
+   "note": "Striated muscle: multinucleate. Aseptate fungal hyphae: many nuclei, no dividing walls. Giant algae: huge single cells — all stretch the 'one cell one nucleus' idea.",
+   "topicLabel": "Unity & diversity — Cells, membranes & division"
+  },
+  {
+   "id": "b31",
+   "format": "mcq",
+   "topic": "unity-diversity-cells",
+   "stem": "A light microscope CANNOT clearly show ribosomes because:",
+   "choices": [
+    "Ribosomes are transparent",
+    "Ribosomes are below the resolution limit of visible light",
+    "Ribosomes move too fast",
+    "Ribosomes do not scatter light"
+   ],
+   "answer": 1,
+   "note": "Ribosomes (~25 nm) are far below the light microscope's ~200 nm resolution limit — electron microscopes revealed them.",
+   "topicLabel": "Unity & diversity — Cells, membranes & division"
+  },
+  {
+   "id": "b32",
+   "format": "mcq",
+   "topic": "unity-diversity-cells",
+   "stem": "The rough ER is 'rough' because of:",
+   "choices": [
+    "Folded membranes with no function",
+    "Ribosomes attached to its cytoplasmic surface",
+    "Its lipid droplets",
+    "Embedded DNA"
+   ],
+   "answer": 1,
+   "note": "Ribosomes on the cytoplasmic side synthesize proteins that enter the ER for transport — the 'rough' appearance is the ribosomes themselves.",
+   "topicLabel": "Unity & diversity — Cells, membranes & division"
+  },
+  {
+   "id": "b33",
+   "format": "written",
+   "marks": 4,
+   "topic": "unity-diversity-cells",
+   "stem": "Distinguish between the structure of a prokaryotic cell and a eukaryotic animal cell, giving three differences and one similarity.",
+   "markscheme": [
+    "DNA: prokaryotes — naked circular DNA in the cytoplasm; eukaryotes — linear DNA with histones inside a nucleus (1)",
+    "Organelles: prokaryotes — no membrane-bound organelles; eukaryotes — mitochondria, ER, Golgi etc. (1)",
+    "Ribosomes: prokaryotes 70S; eukaryotes 80S (1)",
+    "Both: plasma membrane, cytoplasm, ribosomes for protein synthesis, DNA as genetic material (1)"
+   ],
+   "tactic": "Compare questions: give paired differences on the same feature (DNA form, organelles, ribosome size), then one genuine similarity — that similarity mark is the one most students forget.",
+   "topicLabel": "Unity & diversity — Cells, membranes & division"
   }
  ]
 }

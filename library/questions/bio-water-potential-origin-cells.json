@@ -389,6 +389,157 @@
    ],
    "tactic": "Write Ψw = Ψs + Ψp first, quote the value, then compare with the outside Ψ. Pure water = 0 anchors every direction decision.",
    "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)"
+  },
+  {
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "Osmosis is defined as the movement of water:",
+   "choices": [
+    "Across a partially permeable membrane from high to low water potential",
+    "From low to high water potential",
+    "Against the gradient using ATP",
+    "Of solute molecules through pores"
+   ],
+   "answer": 0,
+   "note": "Water moves DOWN the water-potential gradient — toward the more concentrated (more negative Ψ) solution. Osmosis is specifically WATER.",
+   "id": "oc08",
+   "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)"
+  },
+  {
+   "id": "oc09",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "Aquaporins are:",
+   "choices": [
+    "Membrane channels that greatly increase water permeability",
+    "Enzymes that split water",
+    "Pumps moving water against the gradient",
+    "Storage vesicles for water"
+   ],
+   "answer": 0,
+   "note": "Channels allowing rapid water movement across membranes — explains how kidney cells and plant roots move large water volumes quickly.",
+   "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)"
+  },
+  {
+   "id": "oc10",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "Incipient plasmolysis is the point where:",
+   "choices": [
+    "The cell is fully turgid",
+    "The protoplast just begins to pull away from the wall — Ψp = 0",
+    "The cell bursts",
+    "The wall dissolves"
+   ],
+   "answer": 1,
+   "note": "At incipient plasmolysis Ψp = 0, so Ψw = Ψs — the external solution equals the cell's solute potential. Used to measure plant Ψs.",
+   "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)"
+  },
+  {
+   "id": "oc11",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "Wilting occurs when plant cells:",
+   "choices": [
+    "Become fully turgid",
+    "Lose turgor — water loss exceeds uptake across many cells",
+    "Divide too fast",
+    "Gain too many solutes"
+   ],
+   "answer": 1,
+   "note": "Persistent hypertonic conditions → widespread plasmolysis → tissues lose support → wilting. Turgor is what holds non-woody plants upright.",
+   "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)"
+  },
+  {
+   "id": "oc12",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "The first cells are thought to have arisen in:",
+   "choices": [
+    "Air",
+    "Water — most likely deep-sea hydrothermal vents or shallow pools",
+    "Ice",
+    "Soil"
+   ],
+   "answer": 1,
+   "note": "Water as the medium for life: the first cells originated in water where monomers could accumulate and react — the starting point of the origin-of-cells story.",
+   "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)"
+  },
+  {
+   "id": "oc13",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "Which evidence suggests mitochondria were once free-living bacteria?",
+   "choices": [
+    "They use oxygen",
+    "They have their own circular DNA, 70S ribosomes and divide by fission",
+    "They are surrounded by a cell wall",
+    "They produce ATP"
+   ],
+   "answer": 1,
+   "note": "Four independent lines: double membrane, circular DNA, 70S ribosomes, binary fission — plus comparable size. Converging evidence makes the theory strong.",
+   "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)"
+  },
+  {
+   "id": "oc14",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "The Miller–Urey experiment passed sparks through a mixture of gases. The products included:",
+   "choices": [
+    "Living cells",
+    "Amino acids — organic monomers from inorganic precursors",
+    "Fully formed proteins",
+    "DNA"
+   ],
+   "answer": 1,
+   "note": "Abiotic synthesis of organic monomers from H₂, CH₄, NH₃, H₂O — evidence that early Earth chemistry could produce life's building blocks.",
+   "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)"
+  },
+  {
+   "id": "oc15",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "Prokaryotes were the first cells because their fossils date to ~3.5 billion years, while eukaryote fossils appear much later. This supports:",
+   "choices": [
+    "Endosymbiosis",
+    "The idea that cells evolved from simpler prokaryote-like ancestors before eukaryotes",
+    "Spontaneous generation",
+    "Panspermia"
+   ],
+   "answer": 1,
+   "note": "Fossil sequence + biochemical logic: simple cells first, compartmentalized cells later — consistent with the difficulty of building organelles.",
+   "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)"
+  },
+  {
+   "id": "oc16",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "The RNA-world hypothesis proposes that early life used RNA because RNA can:",
+   "choices": [
+    "Store genetic information AND catalyze reactions — both roles needed before specialized enzymes and DNA",
+    "Only store information",
+    "Only catalyze reactions",
+    "Replace water as a solvent"
+   ],
+   "answer": 0,
+   "note": "RNA's dual role (information + catalysis, as ribozymes) makes it a plausible first biomolecule — DNA and proteins took over later.",
+   "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)"
+  },
+  {
+   "id": "oc17",
+   "format": "written",
+   "marks": 5,
+   "topic": "water-potential-origin-cells",
+   "stem": "Outline the evidence and reasoning for the endosymbiotic origin of mitochondria and chloroplasts.",
+   "markscheme": [
+    "Both organelles have their own circular DNA, like bacteria (1)",
+    "They have 70S ribosomes and divide by binary fission (1)",
+    "They have double membranes — consistent with engulfment plus a vesicle (1)",
+    "They are similar in size to bacteria (1)",
+    "Converging evidence makes the inference strong, though the events cannot be directly observed (1)"
+   ],
+   "tactic": "Endosymbiosis answers: list the independent evidence lines (DNA, ribosomes, division, membranes, size), then acknowledge the inference. Evidence-first answers score.",
+   "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)"
   }
  ]
 }
