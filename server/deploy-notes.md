@@ -52,6 +52,16 @@ Credentials live in the gitignored `deploy/.ftp-credentials` (or
 `NEVAIB_FTP_*` env vars). Unchanged files (same size + mtime) are skipped,
 so a no-change push is cheap.
 
+**Gotcha (cost us an hour):** when creating the FTP account programmatically
+(UAPI `Ftp::add_ftp`), `homedir` must be **relative to the account root** —
+`/public_html/nevaib`. An absolute path like `/home/<user>/public_html/nevaib`
+gets *nested* (`/home/<user>/home/...`): FTP uploads then land in a folder the
+web server never serves, and every push "succeeds" into thin air. The host
+runs LiteSpeed, so freshly-uploaded PHP files can also lag a moment before
+serving. Verify scoping with a canary: upload `zz-canary.txt` over FTPS, then
+expect `https://rametric.com/nevaib/zz-canary.txt` to return it (200), and
+delete it afterwards.
+
 The engines carry a version query (`?v=N`) — bump it in the app pages when you change
 an engine file, so phones pick up the new copy instead of a cached one.
 
