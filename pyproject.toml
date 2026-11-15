@@ -1,0 +1,12 @@
+[project]
+name = "ibsystem"
+version = "0.1.0"
+description = "IB study system — practice app, content validation and deploy tooling"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
