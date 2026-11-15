@@ -177,7 +177,7 @@ BASE = """<!DOCTYPE html>
 __CONTENT__
 </main>
 <footer>Private family study area · exams <strong>May 2028</strong> · keep this site and its library non-public</footer>
-<script src="assets/app.js"></script>
+<script src="assets/app.js?v=2"></script>
 </body>
 </html>
 """
@@ -186,23 +186,31 @@ __CONTENT__
 # Post-generation patches (folded back in on 2026-11-14; keep in sync with the live pages)
 CANONICAL_NAV = '<nav>\n  <a href="index.html" class="brand">IB Study Area</a>\n  <a href="math-aa-sl.html">Math AA SL</a>\n  <a href="biology-hl.html">Biology HL</a>\n  <a href="chemistry-hl.html">Chemistry HL</a>\n  <a href="history-sl.html">History SL</a>\n  <a href="french-a-langlit.html">French A</a>\n  <a href="english-lit-hl.html">English Lit HL</a>\n  <a href="core.html">Core</a>\n  <a href="practice.html">Practice</a>\n  <a href="ia.html">IA &amp; EE</a>\n  <a href="quiz.html">Quiz</a>\n  <a href="plan.html">Plan</a>\n  <a href="deadlines.html">Deadlines</a>\n  <a href="flashcards.html">Cards</a>\n  <a href="quick-reference.html">Reference</a>\n</nav>'
 
-NEXTUP = ('<section class="card"><h3>Next school deadlines</h3><ul id="nextup" class="links"></ul>'
-          '<p class="muted">From the ISL Year 12 calendar \u2014 <a href="deadlines.html">full timeline</a> \u00b7 '
-          '<a href="plan.html">the DP1 plan</a></p></section>')
+NEXTUP = (
+    '<section class="card"><h3>Next school deadlines</h3><ul id="nextup" class="links"></ul>'
+    '<p class="muted">From the ISL Year 12 calendar \u2014 <a href="deadlines.html">full timeline</a> \u00b7 '
+    '<a href="plan.html">the DP1 plan</a></p></section>'
+)
 
-CALLOUT = ('<section class="card"><h3>Quiz engine \u2014 20-question sessions</h3>'
-           '<p>Filtered by subject/topic/format, MCQs marked instantly, written answers self-marked against markschemes, '
-           'weak-topic flags + tactics at the end.</p>'
-           '<p><a class="btn-link" href="quiz.html">Start a session \u2192</a> \u00b7 <a href="plan.html">how sessions fit the week</a></p></section>')
+CALLOUT = (
+    '<section class="card"><h3>Quiz engine \u2014 20-question sessions</h3>'
+    "<p>Filtered by subject/topic/format, MCQs marked instantly, written answers self-marked against markschemes, "
+    "weak-topic flags + tactics at the end.</p>"
+    '<p><a class="btn-link" href="quiz.html">Start a session \u2192</a> \u00b7 <a href="plan.html">how sessions fit the week</a></p></section>'
+)
 
-NEXTUP = ('<section class="card"><h3>Next school deadlines</h3><ul id="nextup" class="links"></ul>'
-          '<p class="muted">From the ISL Year 12 calendar — <a href="deadlines.html">full timeline</a> · '
-          '<a href="plan.html">the DP1 plan</a></p></section>')
+NEXTUP = (
+    '<section class="card"><h3>Next school deadlines</h3><ul id="nextup" class="links"></ul>'
+    '<p class="muted">From the ISL Year 12 calendar — <a href="deadlines.html">full timeline</a> · '
+    '<a href="plan.html">the DP1 plan</a></p></section>'
+)
 
-CALLOUT = ('<section class="card"><h3>Quiz engine — 20-question sessions</h3>'
-           '<p>Filtered by subject/topic/format, MCQs marked instantly, written answers self-marked against markschemes, '
-           'weak-topic flags + tactics at the end.</p>'
-           '<p><a class="btn-link" href="quiz.html">Start a session →</a> · <a href="plan.html">how sessions fit the week</a></p></section>')
+CALLOUT = (
+    '<section class="card"><h3>Quiz engine — 20-question sessions</h3>'
+    "<p>Filtered by subject/topic/format, MCQs marked instantly, written answers self-marked against markschemes, "
+    "weak-topic flags + tactics at the end.</p>"
+    '<p><a class="btn-link" href="quiz.html">Start a session →</a> · <a href="plan.html">how sessions fit the week</a></p></section>'
+)
 
 MATH_ANCHOR = "<section class=\"card\"><h3>Syllabus checklist <span class='count'>(topics with notes PDFs)</span></h3>"
 BIO_ANCHOR = "<section class=\"card\"><h3>Syllabus checklist <span class='count'>(43 topics, new-syllabus themes)</span></h3>"
@@ -215,47 +223,88 @@ FRENCH_CARD = '<a class="subj-card" href="french-a-langlit.html" data-subject="f
 ENGLISH_CARD = '<a class="subj-card" href="english-lit-hl.html" data-subject="english-lit"><strong>English A Lit HL</strong><span class="bar mini"></span><span class="pct">0%</span></a>'
 
 IA_DATES = [
-    ("IA idea log started (all subjects); TOK exhibition underway",
-     "✓ done — CSP Sep 1/24, CAS interview Sep 30"),
-    ("EE subject choice; sciences IA topic shortlist",
-     "EE launch Feb 17 · proposal due Mar 2 · TOK plan Mar 25"),
-    ("Draft IA research questions; IO global-issue bank solid",
-     "EE session 1 Mar 12 · equipment order Mar 23 · French essay draft Mar 26"),
-    ("Sciences IA experiments + write-up; history IA; EE outline",
-     "EE Phase 2 Apr 27 · TOK draft Apr 28 · exams late May · CAS portfolio Jun 7 · Bio IA experiments late June"),
-    ("IA final drafts; EE first draft; TOK essay (titles released)",
-     "TOK exhibition final Jun 16 · English A Lit HL Essay final Jun 18 (draft May 11)"),
-    ("Full timed mocks; IO final; EE viva voce",
-     "per school — see the deadlines page"),
+    (
+        "IA idea log started (all subjects); TOK exhibition underway",
+        "✓ done — CSP Sep 1/24, CAS interview Sep 30",
+    ),
+    (
+        "EE subject choice; sciences IA topic shortlist",
+        "EE launch Feb 17 · proposal due Mar 2 · TOK plan Mar 25",
+    ),
+    (
+        "Draft IA research questions; IO global-issue bank solid",
+        "EE session 1 Mar 12 · equipment order Mar 23 · French essay draft Mar 26",
+    ),
+    (
+        "Sciences IA experiments + write-up; history IA; EE outline",
+        "EE Phase 2 Apr 27 · TOK draft Apr 28 · exams late May · CAS portfolio Jun 7 · Bio IA experiments late June",
+    ),
+    (
+        "IA final drafts; EE first draft; TOK essay (titles released)",
+        "TOK exhibition final Jun 16 · English A Lit HL Essay final Jun 18 (draft May 11)",
+    ),
+    ("Full timed mocks; IO final; EE viva voce", "per school — see the deadlines page"),
 ]
 
-IA_PARA_OLD = '<p>10 hours, 24 marks, report ≤ 3000 words. Four equally-weighted criteria: research design · data analysis '
-IA_PARA_NEW = ("<p>10 hours, 24 marks, report ≤ 3000 words. Four equally-weighted criteria: research design · data analysis "
-               "· conclusion · evaluation (6 marks each). At ISL: criteria are practised in DP1 (hydrogen peroxide in Nov, "
-               "beetroot/osmosis in Jan), experiments late June, draft early Sept of DP2, final early Nov — per the "
-               "<a href='library/school/bio-course-outline-2026-28.pdf' target='_blank'>course outline</a>. Calibrate against the "
-               "official TSM marked samples — and read exemplars for quality-bar only, never to imitate: IB similarity screening is strict.</p>")
+IA_PARA_OLD = "<p>10 hours, 24 marks, report ≤ 3000 words. Four equally-weighted criteria: research design · data analysis "
+IA_PARA_NEW = (
+    "<p>10 hours, 24 marks, report ≤ 3000 words. Four equally-weighted criteria: research design · data analysis "
+    "· conclusion · evaluation (6 marks each). At ISL: criteria are practised in DP1 (hydrogen peroxide in Nov, "
+    "beetroot/osmosis in Jan), experiments late June, draft early Sept of DP2, final early Nov — per the "
+    "<a href='library/school/bio-course-outline-2026-28.pdf' target='_blank'>course outline</a>. Calibrate against the "
+    "official TSM marked samples — and read exemplars for quality-bar only, never to imitate: IB similarity screening is strict.</p>"
+)
 
 PATCHES = [
     (MATH_ANCHOR, MATH_PANEL + MATH_ANCHOR),
     (BIO_ANCHOR, BIO_PANEL + BIO_ANCHOR),
     (CHEM_ANCHOR, CHEM_PANEL + CHEM_ANCHOR),
-    ('<section class="card"><h3>Subjects</h3>', NEXTUP + '<section class="card"><h3>Subjects</h3>'),
+    (
+        '<section class="card"><h3>Subjects</h3>',
+        NEXTUP + '<section class="card"><h3>Subjects</h3>',
+    ),
     (FRENCH_CARD, FRENCH_CARD + ENGLISH_CARD),
-    ('<h2>Practice &amp; Past Papers</h2>', '<h2>Practice &amp; Past Papers</h2>' + CALLOUT),
+    (
+        "<h2>Practice &amp; Past Papers</h2>",
+        "<h2>Practice &amp; Past Papers</h2>" + CALLOUT,
+    ),
 ]
 for row2, dates in IA_DATES:
-    PATCHES.append((row2 + "</td><td></td></tr>", row2 + "</td><td>" + dates + "</td></tr>"))
+    PATCHES.append(
+        (row2 + "</td><td></td></tr>", row2 + "</td><td>" + dates + "</td></tr>")
+    )
 PATCHES.append((IA_PARA_OLD, IA_PARA_NEW))
+
+# Pages that carry the login widget (auth-slot + auth.js); the rest of the
+# generated site stays auth-free.
+AUTH_PAGES = (
+    "index.html",
+    "math-aa-sl.html",
+    "biology-hl.html",
+    "chemistry-hl.html",
+    "history-sl.html",
+    "french-a-langlit.html",
+)
+
 
 def page(fname, title, content_html, active):
     out = ROOT / fname
     h = BASE.replace("__TITLE__", title).replace("__CONTENT__", content_html)
     for old, new in PATCHES:
         h = h.replace(old, new)
+    if fname in AUTH_PAGES:
+        h = h.replace("</nav>", '  <span id="auth-slot"></span>\n</nav>', 1)
+        h = h.replace(
+            '<script src="assets/app.js?v=2"></script>',
+            '<script src="assets/app.js?v=2"></script>\n<script src="assets/auth.js?v=3"></script>',
+            1,
+        )
     if fname == "index.html":
-        h = h.replace('<script src="assets/app.js"></script>',
-                      '<script src="assets/deadlines.js"></script>\n<script src="assets/app.js"></script>', 1)
+        h = h.replace(
+            '<script src="assets/app.js?v=2"></script>',
+            '<script src="assets/deadlines.js"></script>\n<script src="assets/app.js?v=2"></script>',
+            1,
+        )
     out.write_text(h, encoding="utf-8")
     return fname
 
@@ -724,6 +773,7 @@ SUBJECTS["index.html"] = dict(
             f'<input class="week" data-i="{i}" placeholder="…">' for i in range(5)
         )
         + "</div></div></div>"
+        + '<section class="card" id="stats"><h3>Progress pulse</h3><div id="stats-body"></div></section>'
         + card(
             "<h3>Subjects</h3><div class='grid'>" + cards_html + "</div>"
             "<p class='muted'>Progress = share of checklist topics marked done/green; updates as she works through the hubs.</p>"
@@ -783,6 +833,11 @@ ul{margin:.4rem 0 .4rem 1.2rem}
 .subj-card .bar.mini{margin:.5rem 0 .2rem}
 .pct{font-size:.85rem;color:var(--muted)}
 .subj-card:hover{border-color:var(--accent)}
+/* dashboard progress pulse */
+.stat-row{display:flex;align-items:center;gap:.55rem;font-size:.85rem;padding:.14rem 0}
+.stat-row .stat-date{color:var(--muted);white-space:nowrap}
+.stat-row .stat-label{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.stat-row .bar{flex:0 0 6rem;margin:0}
 input.week{width:100%;border:0;border-bottom:1px dashed var(--line);padding:.3rem .1rem;font:inherit;margin:.15rem 0;background:transparent}
 input.week:focus{outline:none;border-bottom-color:var(--accent)}
 .muted{color:var(--muted);font-size:.88rem}
@@ -797,6 +852,17 @@ code{background:#eef1f4;border-radius:6px;padding:.05rem .3rem;font-size:.9em}
 .dl-in{font-size:.85rem}
 li.future{padding:.3rem 0}
 .btn-link{color:var(--accent);text-decoration:none;font-weight:600}
+
+/* auth widget — lives inside the dark nav (study pages + practice app) */
+.auth-form{display:inline-flex;align-items:center;gap:.3rem}
+.auth-form input{width:8.5rem;padding:.22rem .5rem;border:1px solid #3a4d63;border-radius:8px;background:#1e3350;color:#e8eef7;font:inherit;font-size:.85rem}
+.auth-form input:focus{outline:none;border-color:#5b87c7}
+.auth-user{display:inline-block;background:#1e3350;border:1px solid #3a4d63;border-radius:999px;padding:.12rem .6rem;font-size:.85rem;color:#cfe0f5;white-space:nowrap}
+.auth-status{display:inline-block;font-size:.8rem;color:#9fb3c8;max-width:13rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.auth-status.good{color:#8fd6ab}
+.auth-status.bad{color:#f0a5a5}
+#auth-slot .btn{padding:.2rem .6rem;font-size:.82rem;border:1px solid #3a4d63;border-radius:8px;background:#1e3350;color:#e8eef7;cursor:pointer}
+#auth-slot .btn:hover{background:#26415f}
 """
 
 JS = """(function () {
@@ -807,14 +873,15 @@ JS = """(function () {
   document.querySelectorAll('.row[data-key]').forEach(row => {
     const key = row.dataset.key;
     const st = store.get('chk:' + key, { c: false, r: '' });
+    if (localStorage.getItem('chk:' + key) === null) store.set('chk:' + key, st);
     const cb = row.querySelector('input[type=checkbox]');
     const sel = row.querySelector('select.rag');
     if (cb) cb.checked = !!st.c;
     if (sel) sel.value = st.r || '';
     const save = () => store.set('chk:' + key, { c: !!(cb && cb.checked), r: sel ? sel.value : '' });
     const paint = () => { row.setAttribute('data-rag', sel ? sel.value : ''); };
-    if (cb) cb.addEventListener('change', () => { save(); paint(); progressPage(); });
-    if (sel) sel.addEventListener('change', () => { save(); paint(); progressPage(); });
+    if (cb) cb.addEventListener('change', () => { save(); paint(); progressPage(); try { if (window.Auth && window.Auth.queueSync) window.Auth.queueSync(); } catch (e) {} });
+    if (sel) sel.addEventListener('change', () => { save(); paint(); progressPage(); try { if (window.Auth && window.Auth.queueSync) window.Auth.queueSync(); } catch (e) {} });
     paint();
   });
   function progressPage() {
@@ -850,6 +917,62 @@ JS = """(function () {
       if (lbl) lbl.textContent = pct;
     }
   });
+  const statsBody = document.getElementById('stats-body');
+  if (statsBody) {
+    const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const d = new Date();
+    const today = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    let html = '';
+    const pcts = [];
+    const log = store.get('quizlog', []).filter(e => e && typeof e.pct === 'number');
+    if (log.length) {
+      html += log.slice(0, 5).reverse().map(e => {
+        const raw = String(e.label || '');
+        const label = raw.length > 30 ? raw.slice(0, 29) + '…' : raw;
+        pcts.push(e.pct);
+        return '<div class="stat-row"><span class="stat-date">' + esc((e.date || '').slice(5)) + '</span><span class="stat-label">' + esc(label) + '</span><span class="bar mini"></span><span class="pct">' + e.pct + '%</span></div>';
+      }).join('');
+    } else {
+      html += '<p class="muted">No quiz sessions yet — run one in the practice app.</p>';
+    }
+    const seen = Object.values(store.get('fc-state', {})).filter(c => c && typeof c.seen === 'number' && c.seen > 0);
+    if (seen.length) {
+      const due = seen.filter(c => c.due <= today).length;
+      const mastered = seen.filter(c => c.box >= 4).length;
+      html += '<p>Flashcards: ' + (due ? '<strong>' + due + '</strong>' : due) + ' due · ' + mastered + ' mastered of ' + seen.length + ' seen</p>';
+    } else {
+      html += '<p class="muted">Flashcards: nothing seen yet.</p>';
+    }
+    const bySubj = {};
+    let total = 0, done = 0;
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (!k || !k.startsWith('chk:')) continue;
+      const sep = k.indexOf('::');
+      if (sep < 0) continue;
+      const st = store.get(k, { c: false, r: '' });
+      const ok = st.c || st.r === 'g';
+      total++;
+      if (ok) done++;
+      const subj = k.slice(4, sep);
+      if (!bySubj[subj]) bySubj[subj] = { done: 0, total: 0 };
+      bySubj[subj].total++;
+      if (ok) bySubj[subj].done++;
+    }
+    if (total) {
+      let worst = null;
+      for (const subj in bySubj) {
+        const s = bySubj[subj];
+        const pct = Math.round(100 * s.done / s.total);
+        if (!worst || pct < worst.pct) worst = { subj, pct };
+      }
+      html += '<p>Checklists: ' + Math.round(100 * done / total) + '% overall (' + done + ' of ' + total + ' rows) · weakest: ' + esc(worst.subj) + ' (' + worst.pct + '%)</p>';
+    } else {
+      html += '<p class="muted">Checklists: nothing ticked yet.</p>';
+    }
+    statsBody.innerHTML = html;
+    statsBody.querySelectorAll('.bar').forEach((b, i) => b.style.setProperty('--pct', pcts[i] + '%'));
+  }
   const cd = document.getElementById('countdown');
   if (cd) {
     const target = new Date('2028-04-28T00:00:00');
@@ -858,7 +981,7 @@ JS = """(function () {
   }
   document.querySelectorAll('input.week').forEach(inp => {
     inp.value = store.get('week:' + inp.dataset.i, '');
-    inp.addEventListener('input', () => store.set('week:' + inp.dataset.i, inp.value));
+    inp.addEventListener('input', () => { store.set('week:' + inp.dataset.i, inp.value); try { if (window.Auth && window.Auth.queueSync) window.Auth.queueSync(); } catch (e) {} });
   });
 })();
 """

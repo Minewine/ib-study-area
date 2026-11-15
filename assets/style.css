@@ -40,6 +40,11 @@ ul{margin:.4rem 0 .4rem 1.2rem}
 .subj-card .bar.mini{margin:.5rem 0 .2rem}
 .pct{font-size:.85rem;color:var(--muted)}
 .subj-card:hover{border-color:var(--accent)}
+/* dashboard progress pulse */
+.stat-row{display:flex;align-items:center;gap:.55rem;font-size:.85rem;padding:.14rem 0}
+.stat-row .stat-date{color:var(--muted);white-space:nowrap}
+.stat-row .stat-label{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.stat-row .bar{flex:0 0 6rem;margin:0}
 input.week{width:100%;border:0;border-bottom:1px dashed var(--line);padding:.3rem .1rem;font:inherit;margin:.15rem 0;background:transparent}
 input.week:focus{outline:none;border-bottom-color:var(--accent)}
 .muted{color:var(--muted);font-size:.88rem}
@@ -54,3 +59,14 @@ code{background:#eef1f4;border-radius:6px;padding:.05rem .3rem;font-size:.9em}
 .dl-in{font-size:.85rem}
 li.future{padding:.3rem 0}
 .btn-link{color:var(--accent);text-decoration:none;font-weight:600}
+
+/* auth widget — lives inside the dark nav (study pages + practice app) */
+.auth-form{display:inline-flex;align-items:center;gap:.3rem}
+.auth-form input{width:8.5rem;padding:.22rem .5rem;border:1px solid #3a4d63;border-radius:8px;background:#1e3350;color:#e8eef7;font:inherit;font-size:.85rem}
+.auth-form input:focus{outline:none;border-color:#5b87c7}
+.auth-user{display:inline-block;background:#1e3350;border:1px solid #3a4d63;border-radius:999px;padding:.12rem .6rem;font-size:.85rem;color:#cfe0f5;white-space:nowrap}
+.auth-status{display:inline-block;font-size:.8rem;color:#9fb3c8;max-width:13rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.auth-status.good{color:#8fd6ab}
+.auth-status.bad{color:#f0a5a5}
+#auth-slot .btn{padding:.2rem .6rem;font-size:.82rem;border:1px solid #3a4d63;border-radius:8px;background:#1e3350;color:#e8eef7;cursor:pointer}
+#auth-slot .btn:hover{background:#26415f}
