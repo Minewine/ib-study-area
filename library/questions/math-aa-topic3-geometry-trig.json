@@ -1,0 +1,316 @@
+{
+ "subject": "math-aa-sl",
+ "topic": "geometry-trigonometry-3-1-to-3-6",
+ "topicLabel": "Geometry & trigonometry (3.1–3.6)",
+ "items": [
+  {
+   "id": "gt01",
+   "format": "mcq",
+   "topic": "geometry-trigonometry-3-1-to-3-6",
+   "stem": "The distance between the points (−1, 2) and (3, 5) is:",
+   "choices": [
+    "5",
+    "7",
+    "√7",
+    "25"
+   ],
+   "answer": 0,
+   "note": "√((3−(−1))² + (5−2)²) = √(16+9) = √25 = 5. The 3–4–5 triple — spot it to avoid expanding."
+  },
+  {
+   "id": "gt02",
+   "format": "mcq",
+   "topic": "geometry-trigonometry-3-1-to-3-6",
+   "stem": "The midpoint of (−1, 2) and (3, 5) is:",
+   "choices": [
+    "(2, 7)",
+    "(1, 3.5)",
+    "(1, 2.5)",
+    "(2, 3.5)"
+   ],
+   "answer": 1,
+   "note": "Midpoint = average of coordinates: ((−1+3)/2, (2+5)/2) = (1, 3.5)."
+  },
+  {
+   "id": "gt03",
+   "format": "mcq",
+   "topic": "geometry-trigonometry-3-1-to-3-6",
+   "stem": "The gradient of the line through (2, 3) and (6, 11) is:",
+   "choices": [
+    "½",
+    "2",
+    "4",
+    "8"
+   ],
+   "answer": 1,
+   "note": "(11−3)/(6−2) = 8/4 = 2. Keep rise over run in the same order for both coordinates."
+  },
+  {
+   "id": "gt04",
+   "format": "mcq",
+   "topic": "geometry-trigonometry-3-1-to-3-6",
+   "stem": "A cone has radius 3 cm and perpendicular height 4 cm. Its volume is:",
+   "choices": [
+    "12π cm³",
+    "16π cm³",
+    "36π cm³",
+    "9π cm³"
+   ],
+   "answer": 0,
+   "note": "V = ⅓πr²h = ⅓π×9×4 = 12π cm³. The ⅓ is the part students forget."
+  },
+  {
+   "id": "gt05",
+   "format": "mcq",
+   "topic": "geometry-trigonometry-3-1-to-3-6",
+   "stem": "The surface area of a sphere of radius 3 cm is:",
+   "choices": [
+    "9π cm²",
+    "12π cm²",
+    "27π cm²",
+    "36π cm²"
+   ],
+   "answer": 3,
+   "note": "A = 4πr² = 4π×9 = 36π cm². Volume would be (4/3)πr³ = 36π — same number, different formula and units: cm³."
+  },
+  {
+   "id": "gt06",
+   "format": "mcq",
+   "topic": "geometry-trigonometry-3-1-to-3-6",
+   "stem": "sin 30° + cos 60° equals:",
+   "choices": [
+    "½",
+    "1",
+    "√3/2",
+    "√2"
+   ],
+   "answer": 1,
+   "note": "sin 30° = ½ and cos 60° = ½ → sum = 1. The exact values for 30°/45°/60° are assumed knowledge on Paper 1."
+  },
+  {
+   "id": "gt07",
+   "format": "mcq",
+   "topic": "geometry-trigonometry-3-1-to-3-6",
+   "stem": "In a right-angled triangle, the side opposite the right angle has length 13, the side opposite angle X has length 5. cos X equals:",
+   "choices": [
+    "5/13",
+    "12/13",
+    "13/5",
+    "5/12"
+   ],
+   "answer": 1,
+   "note": "Hypotenuse 13, opposite 5 → adjacent = √(169−25) = 12. cos = adjacent/hypotenuse = 12/13 — not 5/13 (that's sin)."
+  },
+  {
+   "id": "gt08",
+   "format": "mcq",
+   "topic": "geometry-trigonometry-3-1-to-3-6",
+   "stem": "In triangle ABC, angle A = 30°, side a (opposite A) = 6 cm and angle B = 45°. Side b equals:",
+   "choices": [
+    "6√3 cm",
+    "8.49 cm",
+    "6√2 cm",
+    "4.24 cm"
+   ],
+   "answer": 1,
+   "note": "Sine rule: b/sinB = a/sinA → b = 6 × sin45°/sin30° = 6 × 0.7071/0.5 ≈ 8.49 cm."
+  },
+  {
+   "id": "gt09",
+   "format": "mcq",
+   "topic": "geometry-trigonometry-3-1-to-3-6",
+   "stem": "In a triangle, a = 7 cm, b = 8 cm and angle C = 60°. The third side c is:",
+   "choices": [
+    "√57 ≈ 7.55 cm",
+    "√113 ≈ 10.6 cm",
+    "7.5 cm",
+    "15 cm"
+   ],
+   "answer": 0,
+   "note": "Cosine rule: c² = a² + b² − 2ab·cosC = 49 + 64 − 2×7×8×cos60° = 113 − 56 = 57 → c = √57 ≈ 7.55 cm."
+  },
+  {
+   "id": "gt10",
+   "format": "mcq",
+   "topic": "geometry-trigonometry-3-1-to-3-6",
+   "stem": "The area of a triangle with sides 6 cm and 10 cm and the included angle 30° is:",
+   "choices": [
+    "30 cm²",
+    "15 cm²",
+    "60 cm²",
+    "26 cm²"
+   ],
+   "answer": 1,
+   "note": "Area = ½ab·sinC = ½ × 6 × 10 × sin30° = 30 × 0.5 = 15 cm². The µsinC version of ½base×height."
+  },
+  {
+   "id": "gt11",
+   "format": "mcq",
+   "topic": "geometry-trigonometry-3-1-to-3-6",
+   "stem": "A ship leaves port on a bearing of 070°. The bearing it should sail to return directly to port is:",
+   "choices": [
+    "070°",
+    "110°",
+    "250°",
+    "290°"
+   ],
+   "answer": 2,
+   "note": "Reverse bearing = 070° + 180° = 250° (subtract 180 if over 360). Bearings: three digits, measured clockwise from north."
+  },
+  {
+   "id": "gt12",
+   "format": "mcq",
+   "topic": "geometry-trigonometry-3-1-to-3-6",
+   "stem": "A tower casts a 15 m shadow when the sun's angle of elevation is such that tan θ = 20/15. The angle of elevation of the sun is approximately:",
+   "choices": [
+    "36.9°",
+    "53.1°",
+    "48.6°",
+    "56.3°"
+   ],
+   "answer": 1,
+   "note": "tan θ = opposite/adjacent = 20/15 → θ = tan⁻¹(1.333) ≈ 53.1°. The tower is opposite, the shadow adjacent."
+  },
+  {
+   "id": "gt13",
+   "format": "mcq",
+   "topic": "geometry-trigonometry-3-1-to-3-6",
+   "stem": "The arc length of a circle of radius 5 cm subtended by a central angle of 1.2 radians is:",
+   "choices": [
+    "6 cm",
+    "2.4 cm",
+    "5 × 1.2² cm",
+    "3 cm"
+   ],
+   "answer": 0,
+   "note": "s = rθ (with θ in radians) = 5 × 1.2 = 6 cm. Radians make arc length a simple multiplication."
+  },
+  {
+   "id": "gt14",
+   "format": "mcq",
+   "topic": "geometry-trigonometry-3-1-to-3-6",
+   "stem": "The area of a sector of radius 4 cm and angle 0.8 radians is:",
+   "choices": [
+    "3.2 cm²",
+    "1.6 cm²",
+    "6.4 cm²",
+    "8 cm²"
+   ],
+   "answer": 2,
+   "note": "A = ½r²θ = ½ × 16 × 0.8 = 6.4 cm². Radians again — convert degrees first if needed."
+  },
+  {
+   "id": "gt15",
+   "format": "mcq",
+   "topic": "geometry-trigonometry-3-1-to-3-6",
+   "stem": "150° expressed in radians is:",
+   "choices": [
+    "5π/6",
+    "3π/4",
+    "2π/3",
+    "5π/4"
+   ],
+   "answer": 0,
+   "note": "150 = 180 × 5/6 → 5π/6 radians. Convert by multiplying by π/180."
+  },
+  {
+   "id": "gt16",
+   "format": "mcq",
+   "topic": "geometry-trigonometry-3-1-to-3-6",
+   "stem": "cos 120° equals:",
+   "choices": [
+    "½",
+    "−½",
+    "√3/2",
+    "√2/2"
+   ],
+   "answer": 1,
+   "note": "120° is in the second quadrant where cos is negative: reference angle 60° → −cos60° = −½. All Students Take Calculus: in Q2 only sin is positive."
+  },
+  {
+   "id": "gt17",
+   "format": "mcq",
+   "topic": "geometry-trigonometry-3-1-to-3-6",
+   "stem": "For an acute angle with sin θ = 3/5, tan θ equals:",
+   "choices": [
+    "3/4",
+    "4/3",
+    "3/5",
+    "5/4"
+   ],
+   "answer": 0,
+   "note": "3–4–5 triangle: sin = 3/5 → opposite 3, hypotenuse 5 → adjacent 4 → tan = 3/4."
+  },
+  {
+   "id": "gt18",
+   "format": "mcq",
+   "topic": "geometry-trigonometry-3-1-to-3-6",
+   "stem": "The period of the function y = 3 sin 2x is:",
+   "choices": [
+    "2π",
+    "π",
+    "3",
+    "4π"
+   ],
+   "answer": 1,
+   "note": "Period = 2π/b = 2π/2 = π. Amplitude is 3 (the number outside), period depends on b (the number multiplying x)."
+  },
+  {
+   "id": "gt19",
+   "format": "mcq",
+   "topic": "geometry-trigonometry-3-1-to-3-6",
+   "stem": "If sin θ = 0.6 and θ is acute, then cos θ equals:",
+   "choices": [
+    "0.8",
+    "0.6",
+    "−0.8",
+    "0.36"
+   ],
+   "answer": 0,
+   "note": "sin²θ + cos²θ = 1 → cosθ = √(1 − 0.36) = 0.8. Acute θ → positive cos."
+  },
+  {
+   "id": "gt20",
+   "format": "mcq",
+   "topic": "geometry-trigonometry-3-1-to-3-6",
+   "stem": "The solutions of sin x = 0.5 for 0 ≤ x ≤ 2π are:",
+   "choices": [
+    "x = π/6 and x = 5π/6",
+    "x = π/6 only",
+    "x = π/3 and x = 2π/3",
+    "x = π/2"
+   ],
+   "answer": 0,
+   "note": "sin positive in Q1 and Q2: π/6 and π − π/6 = 5π/6. Always find BOTH solutions in the given domain."
+  },
+  {
+   "id": "gt21",
+   "format": "written",
+   "marks": 5,
+   "topic": "geometry-trigonometry-3-1-to-3-6",
+   "stem": "In triangle ABC, AB = 8 cm, angle A = 40° and angle B = 65°. Find (a) the length of AC, (b) the area of the triangle.",
+   "markscheme": [
+    "Angle C = 180 − 40 − 65 = 75° (1)",
+    "Sine rule: AC/sinB = AB/sinC (1)",
+    "AC = 8 × sin65°/sin75° ≈ 7.51 cm (1)",
+    "Area = ½ × AB × AC × sinA (1)",
+    "Area = ½ × 8 × 7.51 × sin40° ≈ 19.3 cm² (1)"
+   ],
+   "tactic": "No right angle → sine rule for sides and ½ab·sinC for area. Find the missing angle first, label sides opposite their angles, and keep 4+ significant figures until the final answer."
+  },
+  {
+   "id": "gt22",
+   "format": "written",
+   "marks": 6,
+   "topic": "geometry-trigonometry-3-1-to-3-6",
+   "stem": "A ship sails 15 km on a bearing of 050°, then 20 km on a bearing of 140°. Find (a) the distance from its starting point, (b) the bearing of the ship from the starting point.",
+   "markscheme": [
+    "Resolve leg 1 (050°): east = 15 sin50° ≈ 11.49, north = 15 cos50° ≈ 9.64 (1)",
+    "Resolve leg 2 (140°): east = 20 sin140° ≈ 12.86, north = 20 cos140° ≈ −15.32 (1)",
+    "Totals: east = 24.35, north = −5.68 → distance = √(24.35² + 5.68²) ≈ 25.0 km (2)",
+    "Bearing = 180° − tan⁻¹(24.35/5.68) ≈ 103° (2)"
+   ],
+   "tactic": "Bearings journeys: split each leg into north/east components (sin for east, cos for north), add them, then distance by Pythagoras and bearing by tan⁻¹(east/north). Always give bearings as three digits."
+  }
+ ]
+}

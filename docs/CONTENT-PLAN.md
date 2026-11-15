@@ -14,7 +14,7 @@ Legend: ✅ in place · 🟡 partial / needs review · ❌ missing · ➖ not ap
 |---|---|---|---|---|---|---|---|
 | Subject hub (weightings, currency banner) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ Core hub |
 | Notes PDFs linked to checklist | ✅ 28 topics (T1–T2) | ✅ 43 topics (all themes) | ✅ 25 topics (all units) | ❌¹ | ❌² | ❌² | ➖ |
-| Quiz bank | ✅ 3 banks (65 items: T1, 2.1–2.3, 2.4–2.5) | ✅ 4 units (83) | ✅ 7 units (154) | ❌³ | ➖³ | ➖³ | ➖ |
+| Quiz bank | ✅ 6 banks (T1–T5 complete, 109 items) | ✅ 5 units (105) | ✅ 7 units (154) | ❌³ | ➖³ | ➖³ | ➖ |
 | Flashcard deck | ✅ 2 decks (39) | ✅ 3 decks (57) | ✅ 7 decks (~133) | ➖³ | 🟡 vocab deck would help | 🟡 quotes/lit-terms deck would help | ➖ |
 | Past papers + markschemes (local) | ❌ (school channel) | ❌ (M25/N25/M26 via school) | ❌ (same) | ❌ (specimens only — none exist yet) | ❌ (M26+ via school) | ✅ 2 official specimens | ➖ |
 | IA support | 🟡 exploration criteria + exemplars (TSM) | ✅ criteria + ISL practice/experiment schedule | ✅ same schedule | 🟡 IA rubric noted (30%) | ✅ IO structure + global-issue routine | ✅ HL Essay timeline (draft May 11, final Jun 18) | ✅ EE guide FA2027 + forms |
@@ -31,7 +31,7 @@ Legend: ✅ in place · 🟡 partial / needs review · ❌ missing · ➖ not ap
 
 ### Mathematics AA SL
 1. **Confirm ISL's unit order** with her teacher/planner (the math bank labels assume the standard T1 → Functions sequence).
-2. ~~Functions 2.4–2.5 bank~~ — ✅ built (2026-11-14).
+2. ~~Functions 2.4–2.5, Topic 3, Topic 4, Topic 5 banks~~ — ✅ all built (2026-11-15); math quiz content now covers every SL topic.
 3. Quiz bank: **Topic 3 trigonometry** (25-hour topic) once Functions closes.
 4. Flashcards: trig formulae + exact values deck when Topic 3 starts.
 5. Notes: the official syllabus content is filed (`library/school/math-aa-syllabus-content.pdf`) — ISL-specific teaching order when available.
@@ -40,6 +40,7 @@ Legend: ✅ in place · 🟡 partial / needs review · ❌ missing · ➖ not ap
 ### Biology HL
 1. ~~D2.3 water potential + A2.1 origin of cells~~ — ✅ built (2026-11-14).
 2. ~~C1.2 respiration + protein synthesis~~ — ✅ built (2026-11-14).
+3. ~~C3.2 defence against disease~~ — ✅ built (2026-11-15).
 3. ~~Flashcards: enzymes deck exists; add respiration stages + water potential deck in January~~ — ✅ both exist (bio-respiration-protein-synthesis, bio-water-potential-origin-cells). Next deck only when a new unit starts.
 4. **IA support is strong** — practice schedule from the course outline is integrated; add a one-page debrief after the November hydrogen-peroxide session (what the criteria looked like in practice).
 5. Papers: M25/N25/M26 + markschemes via school.

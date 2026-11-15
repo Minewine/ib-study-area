@@ -82,5 +82,29 @@
   "subject": "math-aa-sl",
   "subjectLabel": "Math AA SL",
   "label": "Functions 2.4–2.5 — further functions & transformations (next unit)"
+ },
+ {
+  "file": "library/questions/bio-defence-against-disease.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL",
+  "label": "C3.2 — Defence against disease (Feb–Mar unit)"
+ },
+ {
+  "file": "library/questions/math-aa-topic3-geometry-trig.json",
+  "subject": "math-aa-sl",
+  "subjectLabel": "Math AA SL",
+  "label": "Geometry & trigonometry (3.1–3.6)"
+ },
+ {
+  "file": "library/questions/math-aa-topic4-statistics.json",
+  "subject": "math-aa-sl",
+  "subjectLabel": "Math AA SL",
+  "label": "Statistics & probability (4.1–4.6)"
+ },
+ {
+  "file": "library/questions/math-aa-topic5-calculus.json",
+  "subject": "math-aa-sl",
+  "subjectLabel": "Math AA SL",
+  "label": "Calculus (5.1–5.6)"
  }
 ]
