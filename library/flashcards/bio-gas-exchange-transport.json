@@ -1,0 +1,26 @@
+{
+  "subject": "biology-hl",
+  "topic": "gas-exchange-transport",
+  "topicLabel": "B3.1 — Gas exchange & B3.2 — Transport (Apr–May unit)",
+  "cards": [
+    {"id": "fc-bio-ge-01", "type": "qa", "tags": ["definition"], "front": "Why do large organisms need specialized gas exchange surfaces and transport systems?", "back": "As size increases, surface area-to-volume ratio falls \u2192 diffusion alone can't reach inner cells \u2192 specialized surfaces + a circulatory system."},
+    {"id": "fc-bio-ge-02", "type": "term", "tags": ["definition"], "front": "Four properties of efficient gas exchange surfaces", "back": "Thin (short diffusion path), moist (gases dissolve), large surface area, dense blood supply/ventilation maintaining the gradient."},
+    {"id": "fc-bio-ge-03", "type": "qa", "tags": ["process"], "front": "Alveoli adaptations for gas exchange?", "back": "Huge total surface area (millions of alveoli), one-cell-thick walls, moist surface, dense capillary network \u2014 steep gradients on both sides."},
+    {"id": "fc-bio-ge-04", "type": "qa", "tags": ["definition"], "front": "Type I vs Type II pneumocytes", "back": "Type I: extremely thin flattened cells for gas exchange (~95% of surface). Type II: secrete surfactant, preventing alveolar collapse."},
+    {"id": "fc-bio-ge-05", "type": "term", "tags": ["definition"], "front": "Surfactant", "back": "Lipid-protein secretion reducing surface tension in the alveoli \u2014 stops them collapsing on exhalation."},
+    {"id": "fc-bio-ge-06", "type": "qa", "tags": ["process"], "front": "Inhalation mechanics", "back": "Diaphragm contracts (flattens) + external intercostals lift the ribs \u2192 volume increases \u2192 pressure drops below atmospheric \u2192 air flows in. Exhalation at rest is passive recoil."},
+    {"id": "fc-bio-ge-07", "type": "qa", "tags": ["process"], "front": "Leaf gas exchange \u2014 where and what?", "back": "Stomata: pores opened/closed by guard cells. CO\u2082 diffuses in for photosynthesis; O\u2082 and water vapour diffuse out \u2014 the photosynthesis/transpiration trade-off."},
+    {"id": "fc-bio-ge-08", "type": "qa", "tags": ["definition"], "front": "Double circulation", "back": "Pulmonary circuit (right heart \u2192 lungs \u2192 left heart) + systemic circuit (left heart \u2192 body). Blood passes the heart twice per circuit \u2192 full pressure to both lungs and body."},
+    {"id": "fc-bio-ge-09", "type": "term", "tags": ["definition"], "front": "SA node", "back": "The pacemaker \u2014 muscle cells in the right atrium that initiate each heartbeat. Impulse \u2192 atria contract \u2192 AV node \u2192 Purkinje fibres \u2192 ventricles."},
+    {"id": "fc-bio-ge-10", "type": "qa", "tags": ["exam"], "front": "Aorta vs pulmonary artery \u2014 which blood?", "back": "Aorta: oxygenated blood to the body. Pulmonary artery: the exception among arteries \u2014 carries DEoxygenated blood to the lungs. Pulmonary vein: the vein carrying oxygenated blood."},
+    {"id": "fc-bio-ge-11", "type": "qa", "tags": ["definition"], "front": "Artery walls vs vein walls", "back": "Arteries: thick muscular/elastic walls for high pressure + elastic recoil. Veins: thinner, lower pressure, valves to prevent backflow."},
+    {"id": "fc-bio-ge-12", "type": "qa", "tags": ["definition"], "front": "Capillary adaptations", "back": "One cell thick (short diffusion distance), permeable walls, enormous total surface area from branching, narrow \u2014 red cells squeeze close to the wall."},
+    {"id": "fc-bio-ge-13", "type": "term", "tags": ["definition"], "front": "Xylem vs phloem", "back": "Xylem: dead hollow tubes, water + minerals UP only (transpiration pull). Phloem: living sieve tubes, sucrose both directions (translocation)."},
+    {"id": "fc-bio-ge-14", "type": "term", "tags": ["definition"], "front": "Transpiration", "back": "Water vapour loss from leaves through open stomata \u2014 driven by light, heat, wind and low humidity; the engine of the transpiration stream."},
+    {"id": "fc-bio-ge-15", "type": "qa", "tags": ["process"], "front": "Cohesion-tension theory in one breath", "back": "Evaporation pulls the water column; cohesion (H-bonds) holds it together; adhesion to the walls supports it; root pressure pushes from below."},
+    {"id": "fc-bio-ge-16", "type": "qa", "tags": ["process"], "front": "Phloem translocation \u2014 direction and mechanism?", "back": "Sucrose actively loaded at SOURCES (mature leaves) \u2192 high pressure \u2192 flows to SINKS (roots, fruits, growing tips). Direction varies with the season."},
+    {"id": "fc-bio-ge-17", "type": "qa", "tags": ["process"], "front": "Guard cells \u2014 when do stomata open?", "back": "Light \u2192 potassium ions pumped in \u2192 osmotic water uptake \u2192 turgid guard cells bow apart. Water stress or darkness closes them."},
+    {"id": "fc-bio-ge-18", "type": "qa", "tags": ["exam"], "front": "Paper 1B ventilation data question?", "back": "Volume/pressure changes during breathing: identify inhalation (volume up, pressure down) vs exhalation, and explain with the diaphragm/intercostals."},
+    {"id": "fc-bio-ge-19", "type": "qa", "tags": ["command-term"], "front": "Command term: Outline (gas exchange)", "back": "Sequence the structures without deep detail: air \u2192 trachea \u2192 bronchi \u2192 bronchioles \u2192 alveoli \u2192 capillaries."}
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "subject": "biology-hl",
+  "topic": "ecology-adaptations-populations",
+  "topicLabel": "B4.1/B4.2/C4.1 — Ecology, adaptations & populations (June unit)",
+  "cards": [
+    {"id": "fc-bio-ec-01", "type": "term", "tags": ["definition"], "front": "Ecological niche", "back": "A species' role in its ecosystem: habitat, nutrition, interactions and activity pattern. Two species cannot share the same niche in one community."},
+    {"id": "fc-bio-ec-02", "type": "qa", "tags": ["definition"], "front": "Competitive exclusion principle", "back": "Two species competing for the same niche cannot stably coexist \u2014 the weaker is excluded (Gause's Paramecium experiments)."},
+    {"id": "fc-bio-ec-03", "type": "term", "tags": ["definition"], "front": "Fundamental vs realized niche", "back": "Fundamental: the full potential range of conditions/resources. Realized: what is actually used after competition and interactions shrink it."},
+    {"id": "fc-bio-ec-04", "type": "qa", "tags": ["definition"], "front": "Why are invasive species so successful?", "back": "In a new range they escape their predators, competitors and diseases \u2192 rapid population growth \u2192 native species displaced."},
+    {"id": "fc-bio-ec-05", "type": "term", "tags": ["definition"], "front": "Three classes of adaptation", "back": "Structural (body form: blubber, rolled leaves), behavioural (migration, burrowing, nocturnal activity), physiological (internal processes: antifreeze proteins, hibernation metabolism)."},
+    {"id": "fc-bio-ec-06", "type": "term", "tags": ["definition"], "front": "Carrying capacity", "back": "The maximum population size an environment can sustain indefinitely \u2014 set by limiting factors (food, water, space, shelter)."},
+    {"id": "fc-bio-ec-07", "type": "qa", "tags": ["process"], "front": "Sigmoid growth curve \u2014 the phases?", "back": "Exponential (few individuals, abundant resources, rapid growth) \u2192 transitional (slowing as competition rises) \u2192 plateau at the carrying capacity."},
+    {"id": "fc-bio-ec-08", "type": "qa", "tags": ["process"], "front": "Density-dependent vs density-independent limiting factors?", "back": "Density-dependent intensify with density: competition, predation, disease. Density-independent hit regardless: floods, fires, weather."},
+    {"id": "fc-bio-ec-09", "type": "qa", "tags": ["process"], "front": "Predator\u2013prey cycle \u2014 why does the predator peak lag behind the prey peak?", "back": "Predators respond to prey abundance with a delay (reproduction takes time): prey rise \u2192 predators rise late \u2192 prey crash \u2192 predators crash \u2192 cycle repeats."},
+    {"id": "fc-bio-ec-10", "type": "qa", "tags": ["formula"], "front": "Population change equation", "back": "Change = (natality + immigration) \u2212 (mortality + emigration). All four processes, both arrivals and departures."},
+    {"id": "fc-bio-ec-11", "type": "term", "tags": ["definition"], "front": "In situ vs ex situ conservation", "back": "In situ: protecting species in their habitat (reserves). Ex situ: captive breeding, seed banks, zoos \u2014 used together for endangered species."},
+    {"id": "fc-bio-ec-12", "type": "qa", "tags": ["process"], "front": "Quadrat sampling \u2014 rules for reliable estimates?", "back": "Random placement (no bias) + enough repeats. Transects sample changes along a gradient instead."},
+    {"id": "fc-bio-ec-13", "type": "qa", "tags": ["formula"], "front": "Lincoln index (capture\u2013mark\u2013recapture)", "back": "Population \u2248 (marked \u00D7 total second catch) \u00F7 marked recaptured. Assumes no migration, random mixing, marks don't affect survival."},
+    {"id": "fc-bio-ec-14", "type": "qa", "tags": ["exam"], "front": "Paper 1B ecology data questions?", "back": "Sigmoid curves (name the phases + limiting factors), predator\u2013prey graphs (explain the lag), quadrat/Lincoln index calculations \u2014 standard shapes."},
+    {"id": "fc-bio-ec-15", "type": "qa", "tags": ["definition"], "front": "Detritivore vs saprotroph", "back": "Detritivore ingests dead matter internally (earthworms, woodlice). Saprotroph secretes enzymes and absorbs externally digested products (fungi, bacteria)."},
+    {"id": "fc-bio-ec-16", "type": "qa", "tags": ["command-term"], "front": "Command term: Explain (ecology)", "back": "Cause \u2192 effect with named mechanisms: e.g. 'more hares \u2192 more food for lynxes \u2192 lynx population rises (with a delay)'. Never just restate the graph."},
+    {"id": "fc-bio-ec-17", "type": "qa", "tags": ["exam"], "front": "Growth curve \u2014 which phase is which?", "back": "Exponential (lag-free rapid rise) \u2192 transitional (slowing) \u2192 plateau at the carrying capacity. Data questions ask you to identify the phase AND its limiting factor."},
+    {"id": "fc-bio-ec-18", "type": "qa", "tags": ["definition"], "front": "Species vs population vs community", "back": "Species: interbreeding group. Population: all members of one species in an area. Community: all populations of all species in an area."},
+    {"id": "fc-bio-ec-19", "type": "qa", "tags": ["definition"], "front": "What does a pyramid of energy show?", "back": "Energy content at each trophic level \u2014 always upright, because energy is lost at every transfer (heat from respiration)."}
+  ]
+}

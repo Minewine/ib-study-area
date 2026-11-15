@@ -1,0 +1,26 @@
+{
+  "subject": "math-aa-sl",
+  "topic": "functions-2-1-to-2-3",
+  "topicLabel": "Functions (2.1\u20132.3) \u2014 linear, quadratic & toolkit",
+  "cards": [
+    {"id": "fc-math-fn-01", "type": "term", "tags": ["formula"], "front": "Gradient formula", "back": "m = (y\u2082 \u2212 y\u2081)/(x\u2082 \u2212 x\u2081) \u2014 rise over run, keep both differences in the same order."},
+    {"id": "fc-math-fn-02", "type": "term", "tags": ["formula"], "front": "Gradient-intercept form", "back": "y = mx + c: m gradient, c the y-intercept."},
+    {"id": "fc-math-fn-03", "type": "qa", "tags": ["formula"], "front": "Parallel and perpendicular gradients?", "back": "Parallel: equal gradients. Perpendicular: m\u2081 \u00D7 m\u2082 = \u22121 \u2014 negative reciprocals."},
+    {"id": "fc-math-fn-04", "type": "qa", "tags": ["formula"], "front": "Point-slope form", "back": "y \u2212 y\u2081 = m(x \u2212 x\u2081) \u2014 use when a point and the gradient are known."},
+    {"id": "fc-math-fn-05", "type": "qa", "tags": ["formula"], "front": "Axis of symmetry of a parabola", "back": "x = \u2212b/2a \u2014 also the x-coordinate of the vertex; substitute back for y."},
+    {"id": "fc-math-fn-06", "type": "qa", "tags": ["formula"], "front": "Discriminant \u0394 = b\u00B2 \u2212 4ac", "back": "\u0394 > 0 two distinct real roots \u00b7 \u0394 = 0 one repeated root \u00b7 \u0394 < 0 no real roots."},
+    {"id": "fc-math-fn-07", "type": "qa", "tags": ["process"], "front": "Vertex form y = a(x \u2212 h)\u00B2 + k \u2014 what it tells you", "back": "Vertex (h, k) \u2014 note the sign flip of h. a > 0 \u2192 minimum, a < 0 \u2192 maximum."},
+    {"id": "fc-math-fn-08", "type": "qa", "tags": ["process"], "front": "Transformations of y = f(x)", "back": "OUTSIDE changes y (as written): f(x)+a up, a\u00B7f(x) vertical stretch. INSIDE changes x (opposite): f(x\u2212a) right, f(ax) horizontal compression \u00BD."},
+    {"id": "fc-math-fn-09", "type": "qa", "tags": ["definition"], "front": "Function definition", "back": "One output per input \u2014 fails the vertical line test otherwise. \u00B1\u221Ax is NOT a function."},
+    {"id": "fc-math-fn-10", "type": "qa", "tags": ["definition"], "front": "Domain vs range", "back": "Domain = allowed inputs (denominator \u2260 0, square root \u2265 0). Range = possible outputs."},
+    {"id": "fc-math-fn-11", "type": "qa", "tags": ["process"], "front": "Composite functions \u2014 order of operations", "back": "f(g(x)): work inside-out. f(g(2)) means g first, then f."},
+    {"id": "fc-math-fn-12", "type": "qa", "tags": ["process"], "front": "Finding an inverse", "back": "Swap x and y, solve for y. Graph mirrors in y = x. (f \u2218 f\u207B\u00B9)(x) = x."},
+    {"id": "fc-math-fn-13", "type": "qa", "tags": ["definition"], "front": "Invertibility condition", "back": "The function must pass the horizontal line test \u2014 restrict the domain if it doesn't (e.g. x\u00B2 on x \u2265 0)."},
+    {"id": "fc-math-fn-14", "type": "qa", "tags": ["formula"], "front": "Tangent line at x = a", "back": "y = f\u2032(a)(x \u2212 a) + f(a) \u2014 gradient f\u2032(a), through the point (a, f(a))."},
+    {"id": "fc-math-fn-15", "type": "qa", "tags": ["exam"], "front": "Paper 1 vs Paper 2 \u2014 functions", "back": "Paper 1: exact algebra \u2014 no GDC. Paper 2: GDC allowed, use the graphing calculator to verify roots and intercepts."},
+    {"id": "fc-math-fn-16", "type": "qa", "tags": ["exam"], "front": "Sketching quadratics \u2014 what must appear?", "back": "Shape (a sign), y-intercept, axis of symmetry, vertex with coordinates, roots. Label everything \u2014 sketch marks are for labels."},
+    {"id": "fc-math-fn-17", "type": "qa", "tags": ["process"], "front": "Solving f(x) = g(x) graphically", "back": "The x-coordinates of the intersection points \u2014 GDC: use intersect, report ALL solutions."},
+    {"id": "fc-math-fn-18", "type": "qa", "tags": ["command-term"], "front": "Command term: State vs Find", "back": "State = read off, no working. Find = show method or GDC steps. The verb decides how much working earns marks."},
+    {"id": "fc-math-fn-19", "type": "qa", "tags": ["exam"], "front": "GDC trap: multiple intersections", "back": "Zoom windows can hide intersection points \u2014 set the window first or use the solver with sensible bounds; always report ALL solutions."}
+  ]
+}

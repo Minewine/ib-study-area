@@ -41,8 +41,8 @@ Legend: ✅ in place · 🟡 partial / needs review · ❌ missing · ➖ not ap
 1. ~~D2.3 water potential + A2.1 origin of cells~~ — ✅ built (2026-11-14).
 2. ~~C1.2 respiration + protein synthesis~~ — ✅ built (2026-11-14).
 3. ~~C3.2 defence against disease~~ — ✅ built (2026-11-15).
-4. ~~Sep–Oct molecules unit~~ — ✅ built (2026-11-15): A1.1/B1.1/B1.2/A1.2 bank.
-5. ~~Apr–May + June units~~ — ✅ built (2026-11-15): photosynthesis/energy transfer, gas exchange/transport, ecology/populations banks. **Every DP1 2026–27 unit now has a bank.**
+4. ~~Sep–Oct molecules unit~~ — ✅ built (2026-11-15): A1.1/B1.1/B1.2/A1.2 bank + flashcards.
+5. ~~Apr–May + June units~~ — ✅ built (2026-11-15): photosynthesis/energy transfer, gas exchange/transport, ecology/populations banks + flashcards. **Every DP1 2026–27 unit now has a bank AND flashcards.**
 3. ~~Flashcards: enzymes deck exists; add respiration stages + water potential deck in January~~ — ✅ both exist (bio-respiration-protein-synthesis, bio-water-potential-origin-cells). Next deck only when a new unit starts.
 4. **IA support is strong** — practice schedule from the course outline is integrated; add a one-page debrief after the November hydrogen-peroxide session (what the criteria looked like in practice).
 5. Papers: M25/N25/M26 + markschemes via school.

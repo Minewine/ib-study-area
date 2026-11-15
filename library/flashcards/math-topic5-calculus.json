@@ -1,0 +1,26 @@
+{
+  "subject": "math-aa-sl",
+  "topic": "calculus-5-1-to-5-6",
+  "topicLabel": "Calculus (5.1\u20135.6)",
+  "cards": [
+    {"id": "fc-math-ca-01", "type": "term", "tags": ["definition"], "front": "Derivative \u2014 meaning", "back": "Gradient of the tangent at a point = instantaneous rate of change. f\u2032(a) = slope at x = a."},
+    {"id": "fc-math-ca-02", "type": "term", "tags": ["formula"], "front": "Power rule", "back": "d/dx(ax\u207F) = a\u00B7n\u00B7x\u207F\u207B\u00B9 \u2014 multiply by the power, reduce the power by one."},
+    {"id": "fc-math-ca-03", "type": "qa", "tags": ["process"], "front": "Tangent line at x = a", "back": "y = f\u2032(a)(x \u2212 a) + f(a) \u2014 gradient f\u2032(a), through the point (a, f(a))."},
+    {"id": "fc-math-ca-04", "type": "qa", "tags": ["formula"], "front": "Normal line at x = a", "back": "Gradient = \u22121/f\u2032(a) through the same point \u2014 perpendicular to the tangent."},
+    {"id": "fc-math-ca-05", "type": "qa", "tags": ["process"], "front": "Increasing and decreasing intervals", "back": "f\u2032 > 0 rising, f\u2032 < 0 falling \u2014 solve f\u2032(x) = 0 first, then test signs between the roots."},
+    {"id": "fc-math-ca-06", "type": "qa", "tags": ["definition"], "front": "Stationary point", "back": "f\u2032(x) = 0 \u2014 maximum, minimum or point of inflexion. Second derivative test decides: f\u2033 > 0 min, f\u2033 < 0 max."},
+    {"id": "fc-math-ca-07", "type": "qa", "tags": ["process"], "front": "Optimisation \u2014 the 6-step template", "back": "Variables \u2192 constraint equation \u2192 substitute into the objective \u2192 differentiate \u2192 f\u2032 = 0 \u2192 justify max/min with f\u2033 \u2192 answer the actual question asked."},
+    {"id": "fc-math-ca-08", "type": "qa", "tags": ["process"], "front": "Kinematics \u2014 the derivative chain", "back": "s = displacement \u2192 v = s\u2032 \u2192 a = v\u2032. At rest: v = 0. Direction: sign of v."},
+    {"id": "fc-math-ca-09", "type": "qa", "tags": ["formula"], "front": "Chain rule (linear inner)", "back": "d/dx (ax+b)\u207F = n\u00B7a(ax+b)^(n\u22121) \u2014 multiply by the inner derivative."},
+    {"id": "fc-math-ca-10", "type": "qa", "tags": ["process"], "front": "Definite integral \u2014 meaning", "back": "\u222B\u2090\u1D47 f(x)dx = F(b) \u2212 F(a) \u2014 signed area between the curve and the x-axis."},
+    {"id": "fc-math-ca-11", "type": "qa", "tags": ["process"], "front": "Area under a curve \u2014 the axis-crossing trap", "back": "If the curve dips below the axis, split at the roots and add absolute areas \u2014 or the areas cancel and the answer is wrong."},
+    {"id": "fc-math-ca-12", "type": "qa", "tags": ["formula"], "front": "Area between two curves", "back": "\u222B\u2090\u1D47 (upper \u2212 lower) dx \u2014 find the intersection points first to set the limits."},
+    {"id": "fc-math-ca-13", "type": "qa", "tags": ["process"], "front": "Kinematics \u2014 displacement vs distance", "back": "Displacement = \u222Bv dt (signed). Distance = \u222B|v| dt (turn at v = 0 and add the pieces)."},
+    {"id": "fc-math-ca-14", "type": "qa", "tags": ["exam"], "front": "Paper 1 calculus without a GDC", "back": "Factorise before integrating; exact fractions, not decimals; check by differentiating the answer."},
+    {"id": "fc-math-ca-15", "type": "qa", "tags": ["exam"], "front": "GDC calculus commands", "back": "Intersections (solve), zero of f\u2032 (stationary points), \u222Bf(x)dx between limits \u2014 but show the setup in working for method marks."},
+    {"id": "fc-math-ca-16", "type": "qa", "tags": ["command-term"], "front": "Command term: Interpret (calculus)", "back": "Connect the derivative sign to the motion: v > 0 moving forward, v < 0 backward, a same sign as v = speeding up."},
+    {"id": "fc-math-ca-17", "type": "qa", "tags": ["process"], "front": "Why differentiate to CHECK an integral?", "back": "Integration is the reverse of differentiation \u2014 d/dx of your answer must return the original function (plus c verification)."},
+    {"id": "fc-math-ca-18", "type": "qa", "tags": ["exam"], "front": "Common calculus exam trap", "back": "The question asks for the MAXIMUM VALUE \u2014 that's f(x) at the stationary point, not the x-coordinate. Read what the mark is for."},
+    {"id": "fc-math-ca-19", "type": "qa", "tags": ["process"], "front": "Curve sketching checklist", "back": "y-intercept, roots, stationary points with nature (f\u2033), asymptotes, end behaviour \u2014 in that order."}
+  ]
+}

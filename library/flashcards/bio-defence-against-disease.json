@@ -1,0 +1,27 @@
+{
+  "subject": "biology-hl",
+  "topic": "defence-against-disease",
+  "topicLabel": "C3.2 — Defence against disease (Feb–Mar unit)",
+  "cards": [
+    {"id": "fc-bio-im-01", "type": "term", "tags": ["definition"], "front": "Pathogen", "back": "Disease-causing organism: bacteria, viruses, fungi or protozoa."},
+    {"id": "fc-bio-im-02", "type": "term", "tags": ["definition"], "front": "First line of defence", "back": "Barrier defences: skin, mucous membranes and their secretions \u2014 stop pathogens entering."},
+    {"id": "fc-bio-im-03", "type": "qa", "tags": ["process"], "front": "How does blood clotting defend the body?", "back": "Platelets + clotting factors \u2192 thrombin converts fibrinogen into fibrin mesh \u2192 seals the wound and blocks pathogen entry."},
+    {"id": "fc-bio-im-04", "type": "term", "tags": ["definition"], "front": "Phagocyte", "back": "Innate immune cell that engulfs and digests pathogens. Neutrophils are fast and short-lived; macrophages are larger and longer-lived."},
+    {"id": "fc-bio-im-05", "type": "term", "tags": ["definition", "process"], "front": "Inflammation", "back": "Histamine \u2192 vasodilation + leaky capillaries \u2192 redness, heat, swelling and pain. Brings more immune cells to the infection site."},
+    {"id": "fc-bio-im-06", "type": "qa", "tags": ["process"], "front": "Why does a fever help against infection?", "back": "Higher temperature inhibits pathogen reproduction and increases immune cell activity. Only moderate fevers help \u2014 very high fevers are dangerous."},
+    {"id": "fc-bio-im-07", "type": "qa", "tags": ["definition"], "front": "Role of B lymphocytes?", "back": "Differentiate into plasma cells (secrete antibodies) and memory cells (long-term immunity)."},
+    {"id": "fc-bio-im-08", "type": "term", "tags": ["definition"], "front": "Plasma cell", "back": "Short-lived B-lymphocyte derivative \u2014 an antibody factory secreting thousands of identical antibodies per second."},
+    {"id": "fc-bio-im-09", "type": "term", "tags": ["definition", "IA"], "front": "Antibody structure", "back": "Y-shaped: 2 heavy + 2 light chains. Variable regions at the tips bind ONE antigen (2 binding sites); constant region determines class."},
+    {"id": "fc-bio-im-10", "type": "qa", "tags": ["exam"], "front": "Primary vs secondary immune response \u2014 the graph?", "back": "Primary: slow rise, lower peak, short duration. Secondary: memory cells \u2192 faster rise, higher peak, longer duration. Label the lag phase in both."},
+    {"id": "fc-bio-im-11", "type": "qa", "tags": ["definition"], "front": "What do vaccines contain?", "back": "Antigens without causing disease: attenuated (weakened), inactivated, subunit or mRNA forms. Result = artificial active immunity + memory."},
+    {"id": "fc-bio-im-12", "type": "qa", "tags": ["process"], "front": "Explain herd immunity.", "back": "When most of the population is immune, transmission chains break \u2014 even unvaccinated individuals are protected. Threshold depends on the disease's R\u2080."},
+    {"id": "fc-bio-im-13", "type": "qa", "tags": ["definition"], "front": "Why DON'T antibiotics work on viruses?", "back": "Viruses lack the bacterial targets (cell wall, bacterial ribosomes, DNA gyrase) that antibiotics attack."},
+    {"id": "fc-bio-im-14", "type": "qa", "tags": ["process"], "front": "Explain how antibiotic resistance develops.", "back": "Antibiotics create selection pressure: resistant bacteria survive, reproduce and pass resistance genes (often on plasmids) \u2192 resistant population."},
+    {"id": "fc-bio-im-15", "type": "qa", "tags": ["exam"], "front": "Measures that slow antibiotic resistance?", "back": "Complete prescribed courses; never use antibiotics for viral infections; hygiene to limit spread; reduced livestock use. Any one, explained."},
+    {"id": "fc-bio-im-16", "type": "term", "tags": ["definition"], "front": "Monoclonal antibody", "back": "Identical antibodies from a hybridoma \u2014 a B lymphocyte fused with a myeloma cell: divides forever AND secretes one specific antibody."},
+    {"id": "fc-bio-im-17", "type": "qa", "tags": ["IA"], "front": "Monoclonal antibodies in pregnancy tests?", "back": "Antibodies specific to hCG carry a coloured marker on the strip \u2014 hCG in urine binds and produces the visible line."},
+    {"id": "fc-bio-im-18", "type": "qa", "tags": ["definition"], "front": "HIV \u2014 mechanism and immune effect?", "back": "Retrovirus: reverse transcriptase copies RNA \u2192 DNA, integrated into the host genome. Destroys helper T cells \u2192 adaptive immunity collapses \u2192 AIDS."},
+    {"id": "fc-bio-im-19", "type": "qa", "tags": ["definition"], "front": "Allergy vs autoimmune disease?", "back": "Allergy: overreaction to a HARMLESS antigen (histamine from mast cells). Autoimmune: attack on the body's OWN cells (type 1 diabetes, rheumatoid arthritis)."},
+    {"id": "fc-bio-im-20", "type": "qa", "tags": ["definition"], "front": "Passive vs active immunity?", "back": "Passive: ready-made antibodies (breast milk, injection) \u2014 immediate but temporary, no memory. Active: own response + memory cells \u2014 lasting."}
+  ]
+}

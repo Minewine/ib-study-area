@@ -1,0 +1,27 @@
+{
+  "subject": "math-aa-sl",
+  "topic": "statistics-probability-4-1-to-4-6",
+  "topicLabel": "Statistics & probability (4.1\u20134.6)",
+  "cards": [
+    {"id": "fc-math-st-01", "type": "qa", "tags": ["definition"], "front": "Sampling concepts", "back": "Random \u2192 no bias; representative \u2192 reflects the population; enough samples \u2192 reliable. Bias sources: convenience samples, leading questions."},
+    {"id": "fc-math-st-02", "type": "qa", "tags": ["definition"], "front": "Mean vs median vs mode", "back": "Mean = sum/n (affected by outliers). Median = middle value (resistant). Mode = most frequent. Skew: mean > median \u2192 right skew."},
+    {"id": "fc-math-st-03", "type": "qa", "tags": ["formula"], "front": "IQR and the outlier rule", "back": "IQR = Q3 \u2212 Q1. Outlier if outside Q1 \u2212 1.5\u00D7IQR or Q3 + 1.5\u00D7IQR \u2014 quote the fence value in exams."},
+    {"id": "fc-math-st-04", "type": "qa", "tags": ["process"], "front": "Box plot \u2014 how to read the skew", "back": "Median closer to the top of the box + long lower whisker \u2192 left/negative skew. Tail side = skew side."},
+    {"id": "fc-math-st-05", "type": "qa", "tags": ["process"], "front": "Percentage error vs percentage change", "back": "Error = |measured \u2212 true|/true \u00D7 100. Change = (new \u2212 old)/old \u00D7 100. Different questions, don't mix."},
+    {"id": "fc-math-st-06", "type": "qa", "tags": ["definition"], "front": "Pearson correlation r", "back": "\u22121 \u2264 r \u2264 1: strength AND direction of LINEAR correlation. |r| > 0.8 strong. Correlation \u2260 causation \u2014 always note it."},
+    {"id": "fc-math-st-07", "type": "qa", "tags": ["process"], "front": "Regression line \u2014 what is it for?", "back": "Best-fit line for prediction. Interpolation (inside the data) is reliable; extrapolation (outside) is risky. Passes through (\u03BCx, \u03BCy)."},
+    {"id": "fc-math-st-08", "type": "qa", "tags": ["definition"], "front": "Standard deviation \u2014 meaning", "back": "Average spread about the mean. Larger SD = more variation. Additive to nothing \u2014 don't add SDs of two datasets directly."},
+    {"id": "fc-math-st-09", "type": "qa", "tags": ["definition"], "front": "Probability rules", "back": "0 \u2264 P \u2264 1. P(not A) = 1 \u2212 P(A). Mutually exclusive: P(A\u222AB) = P(A) + P(B)."},
+    {"id": "fc-math-st-10", "type": "qa", "tags": ["formula"], "front": "Addition rule (not mutually exclusive)", "back": "P(A\u222AB) = P(A) + P(B) \u2212 P(A\u2229B) \u2014 subtract the overlap so it isn't counted twice."},
+    {"id": "fc-math-st-11", "type": "qa", "tags": ["formula"], "front": "Independent events", "back": "P(A\u2229B) = P(A) \u00D7 P(B) \u2014 and P(A|B) = P(A). Independence = no information shared."},
+    {"id": "fc-math-st-12", "type": "qa", "tags": ["formula"], "front": "Conditional probability", "back": "P(A|B) = P(A\u2229B)/P(B) \u2014 restrict the sample space to B first, then find A within it."},
+    {"id": "fc-math-st-13", "type": "qa", "tags": ["process"], "front": "Tree diagrams \u2014 the rules", "back": "Multiply along branches (AND); add between complete paths (OR). Mark conditional branches after the first split."},
+    {"id": "fc-math-st-14", "type": "qa", "tags": ["exam"], "front": "Venn diagram region trap", "back": "Start from the INTERSECTION (both = 12) and work outwards \u2014 never fill the overlap first with one set's total."},
+    {"id": "fc-math-st-15", "type": "qa", "tags": ["formula"], "front": "Binomial conditions", "back": "Fixed n trials, two outcomes, constant p, independent trials. X ~ B(n, p)."},
+    {"id": "fc-math-st-16", "type": "qa", "tags": ["formula"], "front": "Binomial expected value", "back": "E(X) = np \u2014 e.g. 50 flips of a fair coin \u2192 25 heads expected."},
+    {"id": "fc-math-st-17", "type": "qa", "tags": ["process"], "front": "Binomial \u2014 P(X = r) and P(X \u2265 r)", "back": "P(X = r) = nCr\u00B7p\u02B3(1\u2212p)^(n\u2212r). 'At least r' = 1 \u2212 P(X \u2264 r\u22121) \u2014 use the complement on the GDC."},
+    {"id": "fc-math-st-18", "type": "qa", "tags": ["definition"], "front": "Normal distribution properties", "back": "Symmetric about the mean (mean = median = mode), bell-shaped, asymptotic tails, defined by \u03BC and \u03C3."},
+    {"id": "fc-math-st-19", "type": "qa", "tags": ["formula"], "front": "Empirical rule", "back": "\u00B11\u03C3 \u2192 68% \u00b7 \u00B12\u03C3 \u2192 95% \u00b7 \u00B13\u03C3 \u2192 99.7%. Quote these when the GDC isn't needed."},
+    {"id": "fc-math-st-20", "type": "qa", "tags": ["process"], "front": "GDC commands for normals", "back": "normalcdf(lower, upper, \u03BC, \u03C3) for probabilities; invNorm(area, \u03BC, \u03C3) for x-values given a probability. Sketch and shade first."}
+  ]
+}

@@ -58,5 +58,50 @@
   "file": "library/flashcards/math-functions-2-4-to-2-5.json",
   "subject": "math-aa-sl",
   "subjectLabel": "Math AA SL"
+ },
+ {
+  "file": "library/flashcards/bio-defence-against-disease.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL"
+ },
+ {
+  "file": "library/flashcards/bio-molecules-water.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL"
+ },
+ {
+  "file": "library/flashcards/bio-photosynthesis-energy-transfer.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL"
+ },
+ {
+  "file": "library/flashcards/bio-gas-exchange-transport.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL"
+ },
+ {
+  "file": "library/flashcards/bio-ecology-adaptations-populations.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL"
+ },
+ {
+  "file": "library/flashcards/math-functions-2-1-to-2-3.json",
+  "subject": "math-aa-sl",
+  "subjectLabel": "Math AA SL"
+ },
+ {
+  "file": "library/flashcards/math-topic3-geometry-trig.json",
+  "subject": "math-aa-sl",
+  "subjectLabel": "Math AA SL"
+ },
+ {
+  "file": "library/flashcards/math-topic4-statistics.json",
+  "subject": "math-aa-sl",
+  "subjectLabel": "Math AA SL"
+ },
+ {
+  "file": "library/flashcards/math-topic5-calculus.json",
+  "subject": "math-aa-sl",
+  "subjectLabel": "Math AA SL"
  }
 ]

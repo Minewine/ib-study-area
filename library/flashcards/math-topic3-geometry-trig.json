@@ -1,0 +1,27 @@
+{
+  "subject": "math-aa-sl",
+  "topic": "geometry-trigonometry-3-1-to-3-6",
+  "topicLabel": "Geometry & trigonometry (3.1\u20133.6)",
+  "cards": [
+    {"id": "fc-math-gt-01", "type": "term", "tags": ["formula"], "front": "Distance between two points", "back": "d = \u221a((x\u2082\u2212x\u2081)\u00B2 + (y\u2082\u2212y\u2081)\u00B2) \u2014 Pythagoras. In 3D add the z\u00B2 term."},
+    {"id": "fc-math-gt-02", "type": "term", "tags": ["formula"], "front": "Midpoint of two points", "back": "((x\u2081+x\u2082)/2, (y\u2081+y\u2082)/2) \u2014 average each coordinate."},
+    {"id": "fc-math-gt-03", "type": "term", "tags": ["formula"], "front": "Volume: sphere, cone, pyramid", "back": "Sphere (4/3)\u03C0r\u00B3 \u00b7 cone \u2153\u03C0r\u00B2h \u00b7 pyramid \u2153 \u00D7 base area \u00D7 height."},
+    {"id": "fc-math-gt-04", "type": "term", "tags": ["formula"], "front": "Surface area: sphere", "back": "4\u03C0r\u00B2 \u2014 don't confuse with the volume formula (4/3)\u03C0r\u00B3."},
+    {"id": "fc-math-gt-05", "type": "qa", "tags": ["process"], "front": "3D problems \u2014 the standard method", "back": "Draw the right triangle INSIDE the solid (e.g. the vertical height and the base radius/diagonal). The diagonal of the base often is the hidden link."},
+    {"id": "fc-math-gt-06", "type": "term", "tags": ["formula"], "front": "SOH CAH TOA", "back": "sin = opposite/hypotenuse \u00b7 cos = adjacent/hypotenuse \u00b7 tan = opposite/adjacent \u2014 right-angled triangles only."},
+    {"id": "fc-math-gt-07", "type": "qa", "tags": ["formula"], "front": "Exact values for 30\u00B0, 45\u00B0, 60\u00B0", "back": "sin30 = \u00BD, cos30 = \u221a3/2, tan30 = \u221a3/3 \u00b7 sin45 = cos45 = \u221a2/2 \u00b7 sin60 = \u221a3/2, cos60 = \u00BD, tan60 = \u221a3."},
+    {"id": "fc-math-gt-08", "type": "term", "tags": ["formula"], "front": "Sine rule", "back": "a/sinA = b/sinB = c/sinC \u2014 use when you know one side + its opposite angle and one more pair. Ambiguous case with the shorter side + obtuse option."},
+    {"id": "fc-math-gt-09", "type": "term", "tags": ["formula"], "front": "Cosine rule", "back": "c\u00B2 = a\u00B2 + b\u00B2 \u2212 2ab\u00B7cosC \u2014 two sides + the included angle, or all three sides to find an angle."},
+    {"id": "fc-math-gt-10", "type": "term", "tags": ["formula"], "front": "Area of any triangle", "back": "Area = \u00BDab\u00B7sinC \u2014 no height needed, just two sides and the included angle."},
+    {"id": "fc-math-gt-11", "type": "qa", "tags": ["process"], "front": "Bearings \u2014 the rules", "back": "Three digits, measured clockwise from north. Back-bearing = +180\u00B0. Split journeys into north/east components when angles differ."},
+    {"id": "fc-math-gt-12", "type": "qa", "tags": ["process"], "front": "Angles of elevation and depression", "back": "Elevation = looking UP from the horizontal; depression = looking DOWN. Both measured from the horizontal, and they're alternate angles."},
+    {"id": "fc-math-gt-13", "type": "qa", "tags": ["exam"], "front": "Non-right triangle \u2014 which rule?", "back": "Sine rule: angle + opposite side + one more value. Cosine rule: two sides + included angle (or three sides). Match the given information to the rule."},
+    {"id": "fc-math-gt-14", "type": "term", "tags": ["definition"], "front": "Radian", "back": "Angle where the arc length equals the radius. \u03C0 rad = 180\u00B0. Always set the GDC to radians for arc/sector questions using s = r\u03B8."},
+    {"id": "fc-math-gt-15", "type": "term", "tags": ["formula"], "front": "Arc length and sector area", "back": "s = r\u03B8 \u00b7 A = \u00BDr\u00B2\u03B8 \u2014 \u03B8 MUST be in radians."},
+    {"id": "fc-math-gt-16", "type": "qa", "tags": ["definition"], "front": "Unit circle definitions of sin and cos", "back": "For angle \u03B8 from the positive x-axis: cos \u03B8 = x-coordinate, sin \u03B8 = y-coordinate of the point on the circle of radius 1."},
+    {"id": "fc-math-gt-17", "type": "qa", "tags": ["definition"], "front": "Quadrant sign rule", "back": "All Students Take Calculus: Q1 all positive, Q2 sin only, Q3 tan only, Q4 cos only. Explains every 'unexpected' negative."},
+    {"id": "fc-math-gt-18", "type": "qa", "tags": ["process"], "front": "Solving trig equations \u2014 the two-solutions rule", "back": "sin positive in Q1 AND Q2; cos positive in Q1 AND Q4. Find both solutions in 0 \u2264 x < 2\u03C0 using the reference angle."},
+    {"id": "fc-math-gt-19", "type": "qa", "tags": ["formula"], "front": "Pythagorean identity", "back": "sin\u00B2\u03B8 + cos\u00B2\u03B8 = 1 \u2014 divide by cos\u00B2 to get tan\u00B2\u03B8 + 1 = sec\u00B2\u03B8. Use it to switch between sin and cos."},
+    {"id": "fc-math-gt-20", "type": "qa", "tags": ["exam"], "front": "Sketching trig graphs \u2014 the checklist", "back": "Amplitude |a|, period 2\u03C0/b, phase shift c, vertical shift d \u2014 label the axis crossings and the max/min values."}
+  ]
+}

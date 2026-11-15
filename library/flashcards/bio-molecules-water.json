@@ -1,0 +1,30 @@
+{
+  "subject": "biology-hl",
+  "topic": "water-and-biological-molecules",
+  "topicLabel": "A1.1/B1.1/B1.2/A1.2 — Water & biological molecules (Sep–Oct unit)",
+  "cards": [
+    {"id": "fc-bio-wm-01", "type": "term", "tags": ["definition"], "front": "Water polarity", "back": "Unequal O\u2013H sharing \u2192 partial charges \u2192 hydrogen bonding between molecules \u2192 every water property follows from this."},
+    {"id": "fc-bio-wm-02", "type": "term", "tags": ["definition"], "front": "Cohesion", "back": "Water\u2013water hydrogen bonding \u2192 surface tension and continuous columns in xylem."},
+    {"id": "fc-bio-wm-03", "type": "term", "tags": ["definition"], "front": "Adhesion", "back": "Water bonding to polar surfaces \u2014 capillary action in soil and cell walls."},
+    {"id": "fc-bio-wm-04", "type": "qa", "tags": ["process"], "front": "Why is water a good solvent for polar molecules?", "back": "Its polarity lets it surround charged/polar particles and break ionic bonds \u2014 metabolic reactions happen in aqueous solution."},
+    {"id": "fc-bio-wm-05", "type": "qa", "tags": ["process"], "front": "High specific heat capacity \u2014 consequence for life?", "back": "Aquatic habitats are thermally stable; body temperature changes slowly \u2014 enzymes work in steady conditions."},
+    {"id": "fc-bio-wm-06", "type": "qa", "tags": ["process"], "front": "Why does ice float \u2014 and why does it matter?", "back": "Hydrogen bonds lock molecules into an open lattice, less dense than liquid water \u2192 ice insulates the water below, letting aquatic life survive."},
+    {"id": "fc-bio-wm-07", "type": "qa", "tags": ["process"], "front": "Cohesion + adhesion together explain what in plants?", "back": "Water transport under tension in xylem: cohesion holds the column together, adhesion supports it against gravity."},
+    {"id": "fc-bio-wm-08", "type": "qa", "tags": ["exam"], "front": "Which water properties appear in Paper 1 questions most often?", "back": "Cohesion (surface tension), solvent properties, high specific heat, ice density \u2014 each linked to a named biological example."},
+    {"id": "fc-bio-wm-09", "type": "term", "tags": ["definition"], "front": "Monosaccharide", "back": "Single sugar unit \u2014 glucose, fructose, galactose. Fuel for respiration and the monomer of polysaccharides."},
+    {"id": "fc-bio-wm-10", "type": "term", "tags": ["formula"], "front": "Three disaccharides and their monomers", "back": "Maltose = glucose + glucose \u00b7 lactose = glucose + galactose \u00b7 sucrose = glucose + fructose."},
+    {"id": "fc-bio-wm-11", "type": "qa", "tags": ["definition", "process"], "front": "Starch vs glycogen vs cellulose \u2014 one line each", "back": "Starch: plant storage (alpha-glucose, helical + branched). Glycogen: animal storage, even more branched. Cellulose: plant cell walls, straight beta-glucose chains, hydrogen-bonded microfibrils."},
+    {"id": "fc-bio-wm-12", "type": "qa", "tags": ["definition"], "front": "Why does branching matter in storage polysaccharides?", "back": "More free ends \u2192 enzymes can release glucose rapidly. Glycogen is the most branched \u2192 fastest mobilization."},
+    {"id": "fc-bio-wm-13", "type": "qa", "tags": ["process"], "front": "Condensation vs hydrolysis", "back": "Condensation joins monomers and releases water (builds polymers); hydrolysis splits polymers by adding water (digestion)."},
+    {"id": "fc-bio-wm-14", "type": "term", "tags": ["definition"], "front": "Triglyceride", "back": "Glycerol + 3 fatty acids joined by ester bonds \u2014 energy storage, insulation, buoyancy (whale blubber)."},
+    {"id": "fc-bio-wm-15", "type": "qa", "tags": ["definition"], "front": "Saturated vs unsaturated fatty acids?", "back": "Saturated: no C=C double bonds, straight, solid at room temperature. Unsaturated: cis double bonds kink the chain \u2192 liquid oils, healthier membranes."},
+    {"id": "fc-bio-wm-16", "type": "qa", "tags": ["formula"], "front": "Lipids vs carbohydrates \u2014 energy per gram", "back": "Lipids store about twice as much energy per gram \u2014 richer in carbon\u2013hydrogen bonds, and stored without water."},
+    {"id": "fc-bio-wm-17", "type": "term", "tags": ["definition"], "front": "Phospholipid", "back": "Glycerol + 2 fatty acids + a polar phosphate group \u2014 amphipathic: hydrophilic head, hydrophobic tails \u2192 bilayers."},
+    {"id": "fc-bio-wm-18", "type": "qa", "tags": ["definition"], "front": "Amino acid general structure", "back": "Central carbon with four groups: amine (NH\u2082), carboxyl (COOH), hydrogen and the variable R group \u2014 the R group defines each of the 20 amino acids."},
+    {"id": "fc-bio-wm-19", "type": "qa", "tags": ["formula"], "front": "Peptide bond \u2014 how formed, how broken?", "back": "Formed by condensation between the amine of one amino acid and the carboxyl of the next (\u2212CO\u2013NH\u2013). Broken by hydrolysis."},
+    {"id": "fc-bio-wm-20", "type": "qa", "tags": ["definition"], "front": "Protein denaturation \u2014 what happens and why?", "back": "Heat or pH change breaks the weak bonds holding the 3D shape \u2192 active site deforms \u2192 function lost. Peptide bonds survive \u2014 the sequence is unchanged."},
+    {"id": "fc-bio-wm-21", "type": "qa", "tags": ["definition"], "front": "Nucleotide \u2014 three components", "back": "Phosphate group + pentose sugar (deoxyribose in DNA, ribose in RNA) + nitrogenous base (A, T/U, C, G)."},
+    {"id": "fc-bio-wm-22", "type": "qa", "tags": ["definition"], "front": "DNA base pairing rules", "back": "A\u2013T with two hydrogen bonds; G\u2013C with three. Purines (A, G) pair with pyrimidines (T, C) \u2014 constant strand width."},
+    {"id": "fc-bio-wm-23", "type": "qa", "tags": ["definition"], "front": "RNA vs DNA \u2014 three differences", "back": "Ribose sugar (vs deoxyribose) \u00b7 uracil (vs thymine) \u00b7 usually single-stranded (vs double helix)."}
+  ]
+}

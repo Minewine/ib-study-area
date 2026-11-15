@@ -1,0 +1,26 @@
+{
+  "subject": "biology-hl",
+  "topic": "photosynthesis-energy-transfer",
+  "topicLabel": "C1.3 — Photosynthesis & C4.2 — Transfer of energy (Apr–May unit)",
+  "cards": [
+    {"id": "fc-bio-ph-01", "type": "term", "tags": ["formula"], "front": "Photosynthesis equation", "back": "6CO\u2082 + 6H\u2082O \u2192 glucose + 6O\u2082 \u2014 using light energy captured by chlorophyll. Respiration reversed."},
+    {"id": "fc-bio-ph-02", "type": "qa", "tags": ["definition"], "front": "Photosynthesis \u2014 the energy conversion?", "back": "Light energy \u2192 chemical energy stored in carbon compounds (glucose). The syllabus definition in one line."},
+    {"id": "fc-bio-ph-03", "type": "qa", "tags": ["process"], "front": "Where does the released oxygen come from?", "back": "Photolysis of water at photosystem II \u2014 water is split for electrons, O\u2082 is the by-product. Confirmed with \u00B9\u2078O-labelled water."},
+    {"id": "fc-bio-ph-04", "type": "qa", "tags": ["definition"], "front": "Which wavelengths does chlorophyll absorb?", "back": "Red and blue strongly; green reflected \u2192 leaves look green. The action spectrum matches the absorption spectrum."},
+    {"id": "fc-bio-ph-05", "type": "qa", "tags": ["formula"], "front": "Rf value in pigment chromatography", "back": "Rf = distance moved by pigment / distance moved by solvent. Each pigment has a characteristic Rf."},
+    {"id": "fc-bio-ph-06", "type": "qa", "tags": ["process"], "front": "Light-dependent vs light-independent \u2014 where?", "back": "Dependent: thylakoid membranes (photosystems, photolysis, ATP + NADPH). Independent: stroma (Calvin cycle)."},
+    {"id": "fc-bio-ph-07", "type": "qa", "tags": ["process"], "front": "What links the light-dependent reactions to the Calvin cycle?", "back": "ATP and NADPH \u2014 the energy and hydrogen needed to reduce GP to triose phosphate in the stroma."},
+    {"id": "fc-bio-ph-08", "type": "qa", "tags": ["process"], "front": "What happens in carbon fixation?", "back": "CO\u2082 combines with RuBP \u2192 glycerate 3-phosphate (GP), reduced to triose phosphate \u2192 glucose or RuBP regeneration."},
+    {"id": "fc-bio-ph-09", "type": "qa", "tags": ["process"], "front": "Limiting factors of photosynthesis?", "back": "Light intensity, CO\u2082 concentration and temperature \u2014 the graph plateaus when the next factor runs out; excess light can cause photoinhibition."},
+    {"id": "fc-bio-ph-10", "type": "qa", "tags": ["exam"], "front": "Paper 1B data question on photosynthesis?", "back": "Rate graphs vs light intensity/CO\u2082: identify the limiting factor at each region of the curve and explain the plateau with the named next factor."},
+    {"id": "fc-bio-ph-11", "type": "qa", "tags": ["definition"], "front": "Producer", "back": "Autotroph capturing light energy through photosynthesis \u2014 the base of every food chain and pyramid of energy."},
+    {"id": "fc-bio-ph-12", "type": "qa", "tags": ["process"], "front": "Three ways energy is lost between trophic levels?", "back": "Heat from respiration; uneaten/indigestible parts (egestion); excretion. Only ~10% passes to the next level."},
+    {"id": "fc-bio-ph-13", "type": "qa", "tags": ["exam"], "front": "Why do food chains rarely exceed 4\u20135 trophic levels?", "back": "After each ~10% transfer too little energy remains to sustain another population."},
+    {"id": "fc-bio-ph-14", "type": "qa", "tags": ["definition"], "front": "Why are pyramids of energy always upright?", "back": "Energy always decreases between levels (2nd law of thermodynamics) \u2014 unlike pyramids of numbers, which can invert."},
+    {"id": "fc-bio-ph-15", "type": "term", "tags": ["definition"], "front": "Saprotroph vs detritivore", "back": "Saprotroph: secretes enzymes and absorbs externally digested dead matter. Detritivore: ingests dead matter internally (earthworms, woodlice)."},
+    {"id": "fc-bio-ph-16", "type": "qa", "tags": ["process"], "front": "Photosynthesis and respiration in the carbon cycle?", "back": "Photosynthesis removes CO\u2082 from the atmosphere; respiration, combustion and decomposition add it back. Fossil fuels tip the balance."},
+    {"id": "fc-bio-ph-17", "type": "qa", "tags": ["exam"], "front": "Which gas-releasing reactions belong to which process?", "back": "CO\u2082: respiration + combustion. O\u2082: photosynthesis (photolysis). Hydrogen/CO\u2082 confusion is a common exam error."},
+    {"id": "fc-bio-ph-18", "type": "qa", "tags": ["command-term"], "front": "Command term: Outline (photosynthesis)", "back": "Give the main steps in sequence without detail \u2014 e.g. photolysis \u2192 ATP/NADPH \u2192 Calvin cycle. Shorter than 'explain'."},
+    {"id": "fc-bio-ph-19", "type": "qa", "tags": ["exam"], "front": "Paper 1B photosynthesis data questions?", "back": "Rate graphs vs light intensity/CO\u2082/temperature: name the limiting factor at each region and explain the plateau \u2014 standard question shape."}
+  ]
+}
