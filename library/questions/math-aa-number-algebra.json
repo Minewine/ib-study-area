@@ -1,75 +1,417 @@
 {
-  "subject": "math-aa-sl",
-  "topic": "number-algebra-1-1-to-1-3",
-  "topicLabel": "Number & algebra — 1.1 toolkit, 1.2 sequences, 1.3 exponents & logs",
-  "items": [
-    {"id": "m01", "format": "mcq", "stem": "Write 0.000456 in standard form (scientific notation).",
-     "choices": ["4.56 \u00D7 10\u207B\u2074", "45.6 \u00D7 10\u207B\u2075", "4.56 \u00D7 10\u2074", "4.56 \u00D7 10\u207B\u00B3"], "answer": 0,
-     "note": "Move the decimal 4 places right \u2192 negative exponent 4. One non-zero digit before the decimal point."},
-    {"id": "m02", "format": "mcq", "stem": "The number 2678 rounded to 3 significant figures is:",
-     "choices": ["2680", "2670", "2700", "2678"], "answer": 0,
-     "note": "Digits 2, 6, 7 with next digit 8 \u2265 5 \u2192 round the third figure up: 267 \u2192 268 \u2192 2680."},
-    {"id": "m03", "format": "mcq", "stem": "A length is measured as 34.5 cm, true value 35.0 cm. The percentage error is approximately:",
-     "choices": ["0.5%", "1.4%", "2.9%", "14%"], "answer": 1,
-     "note": "|34.5\u221235.0|/35.0 \u00D7 100 = 0.5/35.0 \u00D7 100 \u2248 1.43% \u2192 1.4% (2 s.f.). Percentage error is always non-negative."},
-    {"id": "m04", "format": "mcq", "stem": "The 10th term of the arithmetic sequence 7, 12, 17, \u2026 is:",
-     "choices": ["52", "57", "47", "62"], "answer": 0,
-     "note": "u\u2099 = u\u2081 + (n\u22121)d = 7 + 9 \u00D7 5 = 52. Using n instead of n\u22121 gives 57 \u2014 the classic off-by-one in sequences."},
-    {"id": "m05", "format": "mcq", "stem": "The sum of the first 20 terms of the arithmetic series 3 + 7 + 11 + \u2026 is:",
-     "choices": ["400", "780", "820", "760"], "answer": 2,
-     "note": "u\u2082\u2080 = 3 + 19\u00D74 = 79; S\u2082\u2080 = 20/2 \u00D7 (3 + 79) = 10 \u00D7 82 = 820."},
-    {"id": "m06", "format": "mcq", "stem": "A geometric sequence has u\u2081 = 5 and r = 3. The 6th term is:",
-     "choices": ["1215", "405", "135", "3645"], "answer": 0,
-     "note": "u\u2099 = u\u2081r\u207F\u207B\u00B9 = 5 \u00D7 3\u2075 = 5 \u00D7 243 = 1215."},
-    {"id": "m07", "format": "mcq", "stem": "Which series is geometric with r = \u2212\u00BD and has sum to infinity?",
-     "choices": ["8, \u22124, 2, \u2026", "8, 4, 2, \u2026", "8, \u221216, 32, \u2026", "1, \u22122, 4, \u2026"], "answer": 0,
-     "note": "r = \u2212\u00BD has |r| < 1 \u2192 S\u221E = u\u2081/(1\u2212r) = 8/1.5 = 16/3 converges. Infinite sums need |r| < 1."},
-    {"id": "m08", "format": "mcq", "stem": "Simplify (3x\u00B2y)\u00B3 \u00F7 (9xy\u00B2).",
-     "choices": ["3x\u2075y", "x\u2075y", "3x\u2075/y", "x\u00B3y/3"], "answer": 0,
-     "note": "(3x\u00B2y)\u00B3 = 27x\u2076y\u00B3; 27/9 = 3, x\u2076/x = x\u2075, y\u00B3/y\u00B2 = y \u2192 3x\u2075y. All three laws at once: power of a product, then divide coefficients and subtract exponents."},
-    {"id": "m09", "format": "mcq", "stem": "2\u2075 \u00D7 2\u207B\u00B2 \u00F7 2\u00B3 equals:",
-     "choices": ["2\u2070", "2\u00B4", "2\u00B9\u2070", "2\u2076"], "answer": 0,
-     "note": "Add exponents for multiplication, subtract for division: 5\u22122\u22123 = 0 \u2192 2\u2070 = 1."},
-    {"id": "m10", "format": "mcq", "stem": "If log\u2082 x = 5, then x equals:",
-     "choices": ["10", "25", "32", "64"], "answer": 2,
-     "note": "log\u2082 x = 5 \u21D2 x = 2\u2075 = 32. Logs are exponent questions in disguise."},
-    {"id": "m11", "format": "mcq", "stem": "log\u2083 81 equals:",
-     "choices": ["3", "4", "9", "27"], "answer": 1,
-     "note": "3\u2074 = 81 \u2192 log\u2083 81 = 4."},
-    {"id": "m12", "format": "mcq", "stem": "log 8 + log 9, written as a single logarithm (base 10), is:",
-     "choices": ["log 17", "log 72", "log 8/9", "log 89"], "answer": 1,
-     "note": "Sum of logs = log of product: log(8\u00D79) = log 72. Difference would be a quotient."},
-    {"id": "m13", "format": "mcq", "stem": "Solve 3\u02E3 = 81.",
-     "choices": ["x = 3", "x = 4", "x = 27", "x = 9"], "answer": 1,
-     "note": "81 = 3\u2074 \u2192 x = 4. For non-obvious values: x = log 81 / log 3 = 4."},
-    {"id": "m14", "format": "mcq", "stem": "The first term of an arithmetic sequence is 12 and the 5th term is 0. The common difference is:",
-     "choices": ["3", "\u22123", "\u22124", "\u22124.8"], "answer": 1,
-     "note": "u\u2085 = 12 + 4d = 0 \u2192 d = \u22123. Solve linearly \u2014 no guess-and-check needed."},
-    {"id": "m15", "format": "mcq", "stem": "\u2211 (2k + 1) for k = 1 to 10 equals:",
-     "choices": ["110", "120", "55", "100"], "answer": 1,
-     "note": "Terms: 3,5,\u2026,21 \u2014 arithmetic with 10 terms: S = 10/2 \u00D7 (3+21) = 120. Sigma notation is just a packed series."},
-    {"id": "m16", "format": "mcq", "stem": "A population of 5000 grows by 4% per year. After 3 whole years it is closest to:",
-     "choices": ["5600", "5624", "5200", "5750"], "answer": 1,
-     "note": "Compound growth: 5000 \u00D7 1.04\u00B3 = 5624.32. Percent growth per period is always a power, never repeated addition."},
-    {"id": "m17", "format": "mcq", "stem": "The value of 27^(2/3) is:",
-     "choices": ["9", "18", "6", "3"], "answer": 0,
-     "note": "Cube root first: 27^(1/3) = 3, then square: 3\u00B2 = 9. Fractional exponents = root then power."},
-    {"id": "m18", "format": "mcq", "stem": "If log\u2093 16 = 2, then x =",
-     "choices": ["2", "4", "8", "16"], "answer": 1,
-     "note": "x\u00B2 = 16 \u2192 x = 4 (base must be positive and \u2260 1)."},
-    {"id": "m19", "format": "mcq", "stem": "An investment doubles every 9 years. Written as an exponential, value after t years is proportional to:",
-     "choices": ["2^(t/9)", "2^9t", "9^t", "t\u00B2/81"], "answer": 0,
-     "note": "Doubling time T: multiplier 2^(t/T). Growth models appear in both Paper 2 and IA contexts."},
-    {"id": "m20", "format": "mcq", "stem": "The exact value of (2\u207B\u00B3 + 2\u207B\u00B9) \u00D7 2\u00B2 is:",
-     "choices": ["5/2", "3/4", "5/4", "3"], "answer": 0,
-     "note": "2\u207B\u00B3 = 1/8, 2\u207B\u00B9 = 1/2 \u2192 sum = 5/8 \u2192 \u00D74 = 20/8 = 5/2. Paper 1 is no-calculator: exact fractions only."},
-    {"id": "m21", "format": "written", "marks": 5, "topic": "number-algebra-1-1-to-1-3",
-     "stem": "The third term of an arithmetic sequence is 14 and the eighth term is 39. Find the first term, the common difference, and the sum of the first 15 terms.",
-     "markscheme": ["u\u2083 = a + 2d = 14 and u\u2088 = a + 7d = 39 (1 for setting up)", "Subtract: 5d = 25 \u2192 d = 5 (1)", "a = 14 \u2212 10 = 4 (1)", "u\u2081\u2085 = 4 + 14\u00D75 = 74 (1)", "S\u2081\u2085 = 15/2 \u00D7 (4 + 74) = 15 \u00D7 39 = 585 (1)"],
-     "tactic": "Two-unknown sequence problems: write two u\u2099 equations, solve simultaneously. Show GDC-free working \u2014 this is Paper 1 territory."},
-    {"id": "m22", "format": "written", "marks": 6, "topic": "number-algebra-1-1-to-1-3",
-     "stem": "(a) Solve 2\u02E3\u207A\u00B9 = 16. (b) Hence or otherwise solve log\u2082(x + 3) = 4.",
-     "markscheme": ["(a) 2\u02E3\u207A\u00B9 = 2\u2074 \u2192 x + 1 = 4 \u2192 x = 3 (2: 1 for equating exponents, 1 for answer)", "(b) log\u2082(x+3) = 4 \u21D2 x + 3 = 2\u2074 = 16 (1)", "x = 13 (1)", "Check domain: x + 3 > 0 satisfied (1)", "Clear communication of both parts with correct notation (1)"],
-     "tactic": "'Hence' means use part (a)'s method: convert logs to exponents. Always state the domain check for log equations."}
-  ]
+ "subject": "math-aa-sl",
+ "topic": "number-algebra-1-1-to-1-3",
+ "topicLabel": "Number & algebra — 1.1 toolkit, 1.2 sequences, 1.3 exponents & logs",
+ "items": [
+  {
+   "id": "m01",
+   "format": "mcq",
+   "stem": "Write 0.000456 in standard form (scientific notation).",
+   "choices": [
+    "4.56 × 10⁻⁴",
+    "45.6 × 10⁻⁵",
+    "4.56 × 10⁴",
+    "4.56 × 10⁻³"
+   ],
+   "answer": 0,
+   "note": "Move the decimal 4 places right → negative exponent 4. One non-zero digit before the decimal point."
+  },
+  {
+   "id": "m02",
+   "format": "mcq",
+   "stem": "The number 2678 rounded to 3 significant figures is:",
+   "choices": [
+    "2680",
+    "2670",
+    "2700",
+    "2678"
+   ],
+   "answer": 0,
+   "note": "Digits 2, 6, 7 with next digit 8 ≥ 5 → round the third figure up: 267 → 268 → 2680."
+  },
+  {
+   "id": "m03",
+   "format": "mcq",
+   "stem": "A length is measured as 34.5 cm, true value 35.0 cm. The percentage error is approximately:",
+   "choices": [
+    "0.5%",
+    "1.4%",
+    "2.9%",
+    "14%"
+   ],
+   "answer": 1,
+   "note": "|34.5−35.0|/35.0 × 100 = 0.5/35.0 × 100 ≈ 1.43% → 1.4% (2 s.f.). Percentage error is always non-negative."
+  },
+  {
+   "id": "m04",
+   "format": "mcq",
+   "stem": "The 10th term of the arithmetic sequence 7, 12, 17, … is:",
+   "choices": [
+    "52",
+    "57",
+    "47",
+    "62"
+   ],
+   "answer": 0,
+   "note": "uₙ = u₁ + (n−1)d = 7 + 9 × 5 = 52. Using n instead of n−1 gives 57 — the classic off-by-one in sequences."
+  },
+  {
+   "id": "m05",
+   "format": "mcq",
+   "stem": "The sum of the first 20 terms of the arithmetic series 3 + 7 + 11 + … is:",
+   "choices": [
+    "400",
+    "780",
+    "820",
+    "760"
+   ],
+   "answer": 2,
+   "note": "u₂₀ = 3 + 19×4 = 79; S₂₀ = 20/2 × (3 + 79) = 10 × 82 = 820."
+  },
+  {
+   "id": "m06",
+   "format": "mcq",
+   "stem": "A geometric sequence has u₁ = 5 and r = 3. The 6th term is:",
+   "choices": [
+    "1215",
+    "405",
+    "135",
+    "3645"
+   ],
+   "answer": 0,
+   "note": "uₙ = u₁rⁿ⁻¹ = 5 × 3⁵ = 5 × 243 = 1215."
+  },
+  {
+   "id": "m07",
+   "format": "mcq",
+   "stem": "Which series is geometric with r = −½ and has sum to infinity?",
+   "choices": [
+    "8, −4, 2, …",
+    "8, 4, 2, …",
+    "8, −16, 32, …",
+    "1, −2, 4, …"
+   ],
+   "answer": 0,
+   "note": "r = −½ has |r| < 1 → S∞ = u₁/(1−r) = 8/1.5 = 16/3 converges. Infinite sums need |r| < 1."
+  },
+  {
+   "id": "m08",
+   "format": "mcq",
+   "stem": "Simplify (3x²y)³ ÷ (9xy²).",
+   "choices": [
+    "3x⁵y",
+    "x⁵y",
+    "3x⁵/y",
+    "x³y/3"
+   ],
+   "answer": 0,
+   "note": "(3x²y)³ = 27x⁶y³; 27/9 = 3, x⁶/x = x⁵, y³/y² = y → 3x⁵y. All three laws at once: power of a product, then divide coefficients and subtract exponents."
+  },
+  {
+   "id": "m09",
+   "format": "mcq",
+   "stem": "2⁵ × 2⁻² ÷ 2³ equals:",
+   "choices": [
+    "2⁰",
+    "2´",
+    "2¹⁰",
+    "2⁶"
+   ],
+   "answer": 0,
+   "note": "Add exponents for multiplication, subtract for division: 5−2−3 = 0 → 2⁰ = 1."
+  },
+  {
+   "id": "m10",
+   "format": "mcq",
+   "stem": "If log₂ x = 5, then x equals:",
+   "choices": [
+    "10",
+    "25",
+    "32",
+    "64"
+   ],
+   "answer": 2,
+   "note": "log₂ x = 5 ⇒ x = 2⁵ = 32. Logs are exponent questions in disguise."
+  },
+  {
+   "id": "m11",
+   "format": "mcq",
+   "stem": "log₃ 81 equals:",
+   "choices": [
+    "3",
+    "4",
+    "9",
+    "27"
+   ],
+   "answer": 1,
+   "note": "3⁴ = 81 → log₃ 81 = 4."
+  },
+  {
+   "id": "m12",
+   "format": "mcq",
+   "stem": "log 8 + log 9, written as a single logarithm (base 10), is:",
+   "choices": [
+    "log 17",
+    "log 72",
+    "log 8/9",
+    "log 89"
+   ],
+   "answer": 1,
+   "note": "Sum of logs = log of product: log(8×9) = log 72. Difference would be a quotient."
+  },
+  {
+   "id": "m13",
+   "format": "mcq",
+   "stem": "Solve 3ˣ = 81.",
+   "choices": [
+    "x = 3",
+    "x = 4",
+    "x = 27",
+    "x = 9"
+   ],
+   "answer": 1,
+   "note": "81 = 3⁴ → x = 4. For non-obvious values: x = log 81 / log 3 = 4."
+  },
+  {
+   "id": "m14",
+   "format": "mcq",
+   "stem": "The first term of an arithmetic sequence is 12 and the 5th term is 0. The common difference is:",
+   "choices": [
+    "3",
+    "−3",
+    "−4",
+    "−4.8"
+   ],
+   "answer": 1,
+   "note": "u₅ = 12 + 4d = 0 → d = −3. Solve linearly — no guess-and-check needed."
+  },
+  {
+   "id": "m15",
+   "format": "mcq",
+   "stem": "∑ (2k + 1) for k = 1 to 10 equals:",
+   "choices": [
+    "110",
+    "120",
+    "55",
+    "100"
+   ],
+   "answer": 1,
+   "note": "Terms: 3,5,…,21 — arithmetic with 10 terms: S = 10/2 × (3+21) = 120. Sigma notation is just a packed series."
+  },
+  {
+   "id": "m16",
+   "format": "mcq",
+   "stem": "A population of 5000 grows by 4% per year. After 3 whole years it is closest to:",
+   "choices": [
+    "5600",
+    "5624",
+    "5200",
+    "5750"
+   ],
+   "answer": 1,
+   "note": "Compound growth: 5000 × 1.04³ = 5624.32. Percent growth per period is always a power, never repeated addition."
+  },
+  {
+   "id": "m17",
+   "format": "mcq",
+   "stem": "The value of 27^(2/3) is:",
+   "choices": [
+    "9",
+    "18",
+    "6",
+    "3"
+   ],
+   "answer": 0,
+   "note": "Cube root first: 27^(1/3) = 3, then square: 3² = 9. Fractional exponents = root then power."
+  },
+  {
+   "id": "m18",
+   "format": "mcq",
+   "stem": "If logₓ 16 = 2, then x =",
+   "choices": [
+    "2",
+    "4",
+    "8",
+    "16"
+   ],
+   "answer": 1,
+   "note": "x² = 16 → x = 4 (base must be positive and ≠ 1)."
+  },
+  {
+   "id": "m19",
+   "format": "mcq",
+   "stem": "An investment doubles every 9 years. Written as an exponential, value after t years is proportional to:",
+   "choices": [
+    "2^(t/9)",
+    "2^9t",
+    "9^t",
+    "t²/81"
+   ],
+   "answer": 0,
+   "note": "Doubling time T: multiplier 2^(t/T). Growth models appear in both Paper 2 and IA contexts."
+  },
+  {
+   "id": "m20",
+   "format": "mcq",
+   "stem": "The exact value of (2⁻³ + 2⁻¹) × 2² is:",
+   "choices": [
+    "5/2",
+    "3/4",
+    "5/4",
+    "3"
+   ],
+   "answer": 0,
+   "note": "2⁻³ = 1/8, 2⁻¹ = 1/2 → sum = 5/8 → ×4 = 20/8 = 5/2. Paper 1 is no-calculator: exact fractions only."
+  },
+  {
+   "id": "m21",
+   "format": "written",
+   "marks": 5,
+   "topic": "number-algebra-1-1-to-1-3",
+   "stem": "The third term of an arithmetic sequence is 14 and the eighth term is 39. Find the first term, the common difference, and the sum of the first 15 terms.",
+   "markscheme": [
+    "u₃ = a + 2d = 14 and u₈ = a + 7d = 39 (1 for setting up)",
+    "Subtract: 5d = 25 → d = 5 (1)",
+    "a = 14 − 10 = 4 (1)",
+    "u₁₅ = 4 + 14×5 = 74 (1)",
+    "S₁₅ = 15/2 × (4 + 74) = 15 × 39 = 585 (1)"
+   ],
+   "tactic": "Two-unknown sequence problems: write two uₙ equations, solve simultaneously. Show GDC-free working — this is Paper 1 territory."
+  },
+  {
+   "id": "m22",
+   "format": "written",
+   "marks": 6,
+   "topic": "number-algebra-1-1-to-1-3",
+   "stem": "(a) Solve 2ˣ⁺¹ = 16. (b) Hence or otherwise solve log₂(x + 3) = 4.",
+   "markscheme": [
+    "(a) 2ˣ⁺¹ = 2⁴ → x + 1 = 4 → x = 3 (2: 1 for equating exponents, 1 for answer)",
+    "(b) log₂(x+3) = 4 ⇒ x + 3 = 2⁴ = 16 (1)",
+    "x = 13 (1)",
+    "Check domain: x + 3 > 0 satisfied (1)",
+    "Clear communication of both parts with correct notation (1)"
+   ],
+   "tactic": "'Hence' means use part (a)'s method: convert logs to exponents. Always state the domain check for log equations."
+  },
+  {
+   "id": "mnx1",
+   "format": "mcq",
+   "topic": "number-algebra-1-1-to-1-3",
+   "stem": "The 10th term of the arithmetic sequence 7, 12, 17, … is:",
+   "choices": [
+    "52",
+    "57",
+    "47",
+    "62"
+   ],
+   "answer": 0,
+   "note": "uₙ = u₁ + (n−1)d = 7 + 9×5 = 52. The off-by-one trap: n−1 jumps, not n.",
+   "topicLabel": "Number & algebra — 1.1 toolkit, 1.2 sequences, 1.3 exponents & logs"
+  },
+  {
+   "id": "mnx2",
+   "format": "mcq",
+   "topic": "number-algebra-1-1-to-1-3",
+   "stem": "The sum of the first 20 terms of the arithmetic series 3, 7, 11, … is:",
+   "choices": [
+    "400",
+    "780",
+    "820",
+    "760"
+   ],
+   "answer": 2,
+   "note": "u₂₀ = 3 + 19×4 = 79; S₂₀ = 20/2 × (3 + 79) = 820. Two-step: find the last term, then the sum.",
+   "topicLabel": "Number & algebra — 1.1 toolkit, 1.2 sequences, 1.3 exponents & logs"
+  },
+  {
+   "id": "mnx3",
+   "format": "mcq",
+   "topic": "number-algebra-1-1-to-1-3",
+   "stem": "A geometric sequence has u₁ = 5 and r = 3. The 6th term is:",
+   "choices": [
+    "1215",
+    "405",
+    "135",
+    "3645"
+   ],
+   "answer": 0,
+   "note": "uₙ = u₁rⁿ⁻¹ = 5 × 3⁵ = 5 × 243 = 1215.",
+   "topicLabel": "Number & algebra — 1.1 toolkit, 1.2 sequences, 1.3 exponents & logs"
+  },
+  {
+   "id": "mnx4",
+   "format": "mcq",
+   "topic": "number-algebra-1-1-to-1-3",
+   "stem": "The sum to infinity of 8 − 4 + 2 − 1 + … is:",
+   "choices": [
+    "16",
+    "8",
+    "16/3",
+    "Does not converge"
+   ],
+   "answer": 2,
+   "note": "r = −½, |r| < 1 → S∞ = u₁/(1−r) = 8/1.5 = 16/3. The alternating sign is fine — only |r| matters.",
+   "topicLabel": "Number & algebra — 1.1 toolkit, 1.2 sequences, 1.3 exponents & logs"
+  },
+  {
+   "id": "mnx5",
+   "format": "mcq",
+   "topic": "number-algebra-1-1-to-1-3",
+   "stem": "A population of 5000 grows by 4% per year. After 3 whole years it is closest to:",
+   "choices": [
+    "5600",
+    "5624",
+    "5200",
+    "5750"
+   ],
+   "answer": 1,
+   "note": "Compound growth: 5000 × 1.04³ = 5624.32 → 5624. Repeated multiplication, not simple interest.",
+   "topicLabel": "Number & algebra — 1.1 toolkit, 1.2 sequences, 1.3 exponents & logs"
+  },
+  {
+   "id": "mnx6",
+   "format": "mcq",
+   "topic": "number-algebra-1-1-to-1-3",
+   "stem": "A length is measured as 34.5 cm; the true value is 35.0 cm. The percentage error is approximately:",
+   "choices": [
+    "0.5%",
+    "1.4%",
+    "2.9%",
+    "14%"
+   ],
+   "answer": 1,
+   "note": "|34.5 − 35.0|/35.0 × 100 = 0.5/35 × 100 ≈ 1.43% → 1.4%. Percentage error is always non-negative.",
+   "topicLabel": "Number & algebra — 1.1 toolkit, 1.2 sequences, 1.3 exponents & logs"
+  },
+  {
+   "id": "mnx7",
+   "format": "mcq",
+   "topic": "number-algebra-1-1-to-1-3",
+   "stem": "2⁵ × 2⁻² ÷ 2³ simplifies to:",
+   "choices": [
+    "2⁰",
+    "2´",
+    "2¹⁰",
+    "2⁶"
+   ],
+   "answer": 0,
+   "note": "Add exponents when multiplying, subtract when dividing: 5 + (−2) − 3 = 0 → 2⁰ = 1.",
+   "topicLabel": "Number & algebra — 1.1 toolkit, 1.2 sequences, 1.3 exponents & logs"
+  },
+  {
+   "id": "mnx8",
+   "format": "mcq",
+   "topic": "number-algebra-1-1-to-1-3",
+   "stem": "log₂ 32 equals:",
+   "choices": [
+    "4",
+    "5",
+    "6",
+    "16"
+   ],
+   "answer": 1,
+   "note": "log₂ 32 = 5 because 2⁵ = 32. A logarithm IS an exponent — the base just tells you which power.",
+   "topicLabel": "Number & algebra — 1.1 toolkit, 1.2 sequences, 1.3 exponents & logs"
+  }
+ ]
 }

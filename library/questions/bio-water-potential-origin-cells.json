@@ -1,63 +1,394 @@
 {
-  "subject": "biology-hl",
-  "topic": "water-potential-origin-cells",
-  "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)",
-  "items": [
-    {"id": "wp01", "format": "mcq", "topic": "water-potential-origin-cells", "stem": "Water potential (\u03A8) is measured in and has its maximum value at:",
-     "choices": ["kPa; pure water = 0 kPa", "mol/dm\u00B3; pure water = 1", "J/mol; pure water = 0", "kPa; pure water = \u2212100 kPa"], "answer": 0,
-     "note": "\u03A8 in kilopascals; pure water has the maximum possible water potential, defined as 0 kPa. All solutions have negative \u03A8."},
-    {"id": "wp02", "format": "mcq", "topic": "water-potential-origin-cells", "stem": "Adding solute to pure water changes the water potential by:",
-     "choices": ["Making it more negative (lowering \u03A8)", "Making it positive", "No change \u2014 only pressure changes \u03A8", "Raising it above 0"], "answer": 0,
-     "note": "Solute potential (\u03A8s) is always negative and becomes more negative with more dissolved solute \u2014 water is 'held' by the solute."},
-    {"id": "wp03", "format": "mcq", "topic": "water-potential-origin-cells", "stem": "The water potential equation is:",
-     "choices": ["\u03A8w = \u03A8s \u2212 \u03A8p", "\u03A8w = \u03A8s + \u03A8p", "\u03A8w = \u03A8p \u2212 \u03A8s", "\u03A8w = \u03A8s \u00D7 \u03A8p"], "answer": 1,
-     "note": "\u03A8w = \u03A8s + \u03A8p: solute potential + pressure potential. In an open beaker \u03A8p = 0, so \u03A8w = \u03A8s."},
-    {"id": "wp04", "format": "mcq", "topic": "water-potential-origin-cells", "stem": "Net water movement occurs from:",
-     "choices": ["Lower to higher water potential", "Higher to lower water potential", "Negative to positive \u03A8", "Any direction randomly"], "answer": 1,
-     "note": "Water moves down the water-potential gradient: from higher (less negative) to lower (more negative) \u03A8 \u2014 i.e. toward the more concentrated solution."},
-    {"id": "wp05", "format": "mcq", "topic": "water-potential-origin-cells", "stem": "A turgid plant cell has a pressure potential that is:",
-     "choices": ["Zero", "Negative", "Positive \u2014 the wall pushes back on the contents", "Undefined"], "answer": 2,
-     "note": "As water enters, the protoplast presses on the cell wall \u2192 positive \u03A8p raises \u03A8w until net movement stops (turgor). Plasmolysed cells have \u03A8p \u2248 0."},
-    {"id": "wp06", "format": "mcq", "topic": "water-potential-origin-cells", "stem": "A red blood cell is placed in pure water. It will:",
-     "choices": ["Become crenated", "Swell and potentially burst (lyse) \u2014 no cell wall", "Become turgid", "Stay unchanged"], "answer": 1,
-     "note": "Pure water (\u03A8 = 0) vs cell interior (negative \u03A8) \u2192 water floods in. Animal cells lack a wall \u2192 they lyse; plant cells become turgid instead."},
-    {"id": "wp07", "format": "mcq", "topic": "water-potential-origin-cells", "stem": "Osmolarity is measured with an osmometer, which works by:",
-     "choices": ["Measuring the freezing point depression of the sample", "Weighing dissolved salts", "Colour change with iodine", "Counting particles microscopically"], "answer": 0,
-     "note": "More solute particles lower the freezing point \u2014 osmometers convert freezing-point depression into osmolality (mol/kg)."},
-    {"id": "wp08", "format": "mcq", "topic": "water-potential-origin-cells", "stem": "Salting meat or preserving fruit in concentrated sugar syrup prevents microbial growth because:",
-     "choices": ["Salt and sugar are toxic to all bacteria", "The high external solute concentration lowers \u03A8 \u2192 water leaves microbial cells", "It raises the temperature", "It removes all oxygen"], "answer": 1,
-     "note": "High external solute \u2192 very negative \u03A8 outside \u2192 microbes lose water by osmosis. A real-world application of water potential."},
-    {"id": "wp09", "format": "mcq", "topic": "water-potential-origin-cells", "stem": "A plant cell with \u03A8s = \u2212500 kPa and \u03A8p = +200 kPa is placed in a solution with \u03A8w = \u2212450 kPa. Water will:",
-     "choices": ["Enter the cell", "Leave the cell", "Show no net movement", "Move sideways"], "answer": 1,
-     "note": "Cell \u03A8w = \u2212500 + 200 = \u2212300 kPa. Solution \u03A8w = \u2212450 kPa. Water moves from higher (\u2212300) to lower (\u2212450) \u2192 out \u2192 plasmolysis."},
-    {"id": "wp10", "format": "mcq", "topic": "water-potential-origin-cells", "stem": "An isotonic solution for animal cells means:",
-     "choices": ["Same solute concentration as the cell interior \u2014 no net water movement", "Pure water", "Higher solute concentration than the cell", "Zero solute concentration"], "answer": 0,
-     "note": "Isotonic = equal osmolarity \u2192 no net osmosis. Hypertonic \u2192 cells shrink; hypotonic \u2192 cells swell/lyse."},
-    {"id": "oc01", "format": "mcq", "topic": "water-potential-origin-cells", "stem": "Pasteur's swan-neck flask experiment provided evidence that:",
-     "choices": ["Cells can spontaneously generate", "Cells arise only from pre-existing cells", "The first cells came from space", "Amino acids form from gases"], "answer": 1,
-     "note": "Sterile broth stayed sterile unless the curved neck let dust in \u2014 life did not appear spontaneously. This creates the origins paradox the cell theory can't explain directly."},
-    {"id": "oc02", "format": "mcq", "topic": "water-potential-origin-cells", "stem": "The Miller\u2013Urey experiment demonstrated that:",
-     "choices": ["Cells form spontaneously in broth", "Amino acids can form abiotically from inorganic gases and electrical sparks", "Bacteria evolved from archaea", "RNA catalyses its own replication"], "answer": 1,
-     "note": "Sparks through a reducing atmosphere (H\u2082, CH\u2084, NH\u2083, H\u2082O) produced amino acids \u2014 evidence that early Earth conditions could build organic monomers."},
-    {"id": "oc03", "format": "mcq", "topic": "water-potential-origin-cells", "stem": "Which is NOT evidence supporting the endosymbiotic theory for mitochondria?",
-     "choices": ["They have their own circular DNA", "They have 70S ribosomes like bacteria", "They have a double membrane", "They have a linear nucleus-like genome"], "answer": 3,
-     "note": "Mitochondria/chloroplasts: double membrane, circular DNA, 70S ribosomes, similar size to bacteria, binary fission \u2014 engulfed prokaryote ancestors."},
-    {"id": "oc04", "format": "mcq", "topic": "water-potential-origin-cells", "stem": "The last universal common ancestor (LUCA) is inferred from:",
-     "choices": ["Fossil cells 3.5 billion years old", "Shared genes and biochemistry across all life (DNA code, ATP, universal genetic code)", "Miller\u2013Urey products", "Endosymbiotic events"], "answer": 1,
-     "note": "All life shares the same genetic code, ATP and ribosome machinery \u2014 the simplest explanation is descent from one common ancestor."},
-    {"id": "oc05", "format": "mcq", "topic": "water-potential-origin-cells", "stem": "Extremophiles (e.g. heat-loving bacteria near hydrothermal vents) are relevant to cell origins because they:",
-     "choices": ["Prove spontaneous generation", "Show cells can survive in conditions thought to resemble early Earth", "Have eukaryotic features", "Disprove the cell theory"], "answer": 1,
-     "note": "Life thriving at high temperature/pressure/acidity supports the idea that the first cells tolerated harsh early-Earth conditions."},
-    {"id": "oc06", "format": "mcq", "topic": "water-potential-origin-cells", "stem": "Which sequence correctly orders stages in the origin of cells?",
-     "choices": ["Cells \u2192 abiotic monomers \u2192 polymers \u2192 membranes", "Abiotic synthesis of monomers \u2192 polymers \u2192 self-replicating molecules \u2192 membranes enclosing them \u2192 cells", "Polymers \u2192 cells \u2192 monomers", "Membranes \u2192 DNA \u2192 proteins"], "answer": 1,
-     "note": "Standard outline: abiotic monomers (Miller\u2013Urey) \u2192 polymers \u2192 self-replicating molecules (RNA-era discussion) \u2192 compartmentalizing membranes \u2192 first cells."},
-    {"id": "wp11", "format": "written", "marks": 4, "topic": "water-potential-origin-cells",
-     "stem": "A plant cell has a solute potential of \u2212500 kPa and a pressure potential of +200 kPa. Calculate its water potential, and predict and explain what happens when it is placed in pure water.",
-     "markscheme": ["\u03A8w = \u03A8s + \u03A8p = \u2212500 + 200 = \u2212300 kPa (1)", "Pure water \u03A8w = 0 kPa \u2014 higher than the cell (1)", "Water enters the cell down the gradient (1)", "Cell becomes turgid: \u03A8p rises until cell \u03A8w reaches 0 and net movement stops (1)"],
-     "tactic": "Water-potential calculations: write the equation, quote the value, then give the direction with the reason. Pure water = 0 anchors every comparison."},
-    {"id": "oc07", "format": "written", "marks": 4, "topic": "water-potential-origin-cells",
-     "stem": "Evaluate the evidence for the endosymbiotic origin of mitochondria and chloroplasts.",
-     "markscheme": ["Structural evidence: double membrane consistent with engulfment + vesicle enclosure (1)", "Own circular DNA like bacteria, and 70S ribosomes, binary fission (1)", "Size comparable to free-living bacteria; genetic code shared with host (1)", "Limitation: the events occurred ~1.5+ billion years ago \u2014 they cannot be directly observed; the conclusion is an inference from multiple converging lines of evidence (1)"],
-     "tactic": "'Evaluate' answers need the supporting evidence AND the limitation. Name at least two structural similarities plus the inference caveat."}
-  ]
+ "subject": "biology-hl",
+ "topic": "water-potential-origin-cells",
+ "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)",
+ "items": [
+  {
+   "id": "wp01",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "Water potential (Ψ) is measured in and has its maximum value at:",
+   "choices": [
+    "kPa; pure water = 0 kPa",
+    "mol/dm³; pure water = 1",
+    "J/mol; pure water = 0",
+    "kPa; pure water = −100 kPa"
+   ],
+   "answer": 0,
+   "note": "Ψ in kilopascals; pure water has the maximum possible water potential, defined as 0 kPa. All solutions have negative Ψ."
+  },
+  {
+   "id": "wp02",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "Adding solute to pure water changes the water potential by:",
+   "choices": [
+    "Making it more negative (lowering Ψ)",
+    "Making it positive",
+    "No change — only pressure changes Ψ",
+    "Raising it above 0"
+   ],
+   "answer": 0,
+   "note": "Solute potential (Ψs) is always negative and becomes more negative with more dissolved solute — water is 'held' by the solute."
+  },
+  {
+   "id": "wp03",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "The water potential equation is:",
+   "choices": [
+    "Ψw = Ψs − Ψp",
+    "Ψw = Ψs + Ψp",
+    "Ψw = Ψp − Ψs",
+    "Ψw = Ψs × Ψp"
+   ],
+   "answer": 1,
+   "note": "Ψw = Ψs + Ψp: solute potential + pressure potential. In an open beaker Ψp = 0, so Ψw = Ψs."
+  },
+  {
+   "id": "wp04",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "Net water movement occurs from:",
+   "choices": [
+    "Lower to higher water potential",
+    "Higher to lower water potential",
+    "Negative to positive Ψ",
+    "Any direction randomly"
+   ],
+   "answer": 1,
+   "note": "Water moves down the water-potential gradient: from higher (less negative) to lower (more negative) Ψ — i.e. toward the more concentrated solution."
+  },
+  {
+   "id": "wp05",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "A turgid plant cell has a pressure potential that is:",
+   "choices": [
+    "Zero",
+    "Negative",
+    "Positive — the wall pushes back on the contents",
+    "Undefined"
+   ],
+   "answer": 2,
+   "note": "As water enters, the protoplast presses on the cell wall → positive Ψp raises Ψw until net movement stops (turgor). Plasmolysed cells have Ψp ≈ 0."
+  },
+  {
+   "id": "wp06",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "A red blood cell is placed in pure water. It will:",
+   "choices": [
+    "Become crenated",
+    "Swell and potentially burst (lyse) — no cell wall",
+    "Become turgid",
+    "Stay unchanged"
+   ],
+   "answer": 1,
+   "note": "Pure water (Ψ = 0) vs cell interior (negative Ψ) → water floods in. Animal cells lack a wall → they lyse; plant cells become turgid instead."
+  },
+  {
+   "id": "wp07",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "Osmolarity is measured with an osmometer, which works by:",
+   "choices": [
+    "Measuring the freezing point depression of the sample",
+    "Weighing dissolved salts",
+    "Colour change with iodine",
+    "Counting particles microscopically"
+   ],
+   "answer": 0,
+   "note": "More solute particles lower the freezing point — osmometers convert freezing-point depression into osmolality (mol/kg)."
+  },
+  {
+   "id": "wp08",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "Salting meat or preserving fruit in concentrated sugar syrup prevents microbial growth because:",
+   "choices": [
+    "Salt and sugar are toxic to all bacteria",
+    "The high external solute concentration lowers Ψ → water leaves microbial cells",
+    "It raises the temperature",
+    "It removes all oxygen"
+   ],
+   "answer": 1,
+   "note": "High external solute → very negative Ψ outside → microbes lose water by osmosis. A real-world application of water potential."
+  },
+  {
+   "id": "wp09",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "A plant cell with Ψs = −500 kPa and Ψp = +200 kPa is placed in a solution with Ψw = −450 kPa. Water will:",
+   "choices": [
+    "Enter the cell",
+    "Leave the cell",
+    "Show no net movement",
+    "Move sideways"
+   ],
+   "answer": 1,
+   "note": "Cell Ψw = −500 + 200 = −300 kPa. Solution Ψw = −450 kPa. Water moves from higher (−300) to lower (−450) → out → plasmolysis."
+  },
+  {
+   "id": "wp10",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "An isotonic solution for animal cells means:",
+   "choices": [
+    "Same solute concentration as the cell interior — no net water movement",
+    "Pure water",
+    "Higher solute concentration than the cell",
+    "Zero solute concentration"
+   ],
+   "answer": 0,
+   "note": "Isotonic = equal osmolarity → no net osmosis. Hypertonic → cells shrink; hypotonic → cells swell/lyse."
+  },
+  {
+   "id": "oc01",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "Pasteur's swan-neck flask experiment provided evidence that:",
+   "choices": [
+    "Cells can spontaneously generate",
+    "Cells arise only from pre-existing cells",
+    "The first cells came from space",
+    "Amino acids form from gases"
+   ],
+   "answer": 1,
+   "note": "Sterile broth stayed sterile unless the curved neck let dust in — life did not appear spontaneously. This creates the origins paradox the cell theory can't explain directly."
+  },
+  {
+   "id": "oc02",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "The Miller–Urey experiment demonstrated that:",
+   "choices": [
+    "Cells form spontaneously in broth",
+    "Amino acids can form abiotically from inorganic gases and electrical sparks",
+    "Bacteria evolved from archaea",
+    "RNA catalyses its own replication"
+   ],
+   "answer": 1,
+   "note": "Sparks through a reducing atmosphere (H₂, CH₄, NH₃, H₂O) produced amino acids — evidence that early Earth conditions could build organic monomers."
+  },
+  {
+   "id": "oc03",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "Which is NOT evidence supporting the endosymbiotic theory for mitochondria?",
+   "choices": [
+    "They have their own circular DNA",
+    "They have 70S ribosomes like bacteria",
+    "They have a double membrane",
+    "They have a linear nucleus-like genome"
+   ],
+   "answer": 3,
+   "note": "Mitochondria/chloroplasts: double membrane, circular DNA, 70S ribosomes, similar size to bacteria, binary fission — engulfed prokaryote ancestors."
+  },
+  {
+   "id": "oc04",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "The last universal common ancestor (LUCA) is inferred from:",
+   "choices": [
+    "Fossil cells 3.5 billion years old",
+    "Shared genes and biochemistry across all life (DNA code, ATP, universal genetic code)",
+    "Miller–Urey products",
+    "Endosymbiotic events"
+   ],
+   "answer": 1,
+   "note": "All life shares the same genetic code, ATP and ribosome machinery — the simplest explanation is descent from one common ancestor."
+  },
+  {
+   "id": "oc05",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "Extremophiles (e.g. heat-loving bacteria near hydrothermal vents) are relevant to cell origins because they:",
+   "choices": [
+    "Prove spontaneous generation",
+    "Show cells can survive in conditions thought to resemble early Earth",
+    "Have eukaryotic features",
+    "Disprove the cell theory"
+   ],
+   "answer": 1,
+   "note": "Life thriving at high temperature/pressure/acidity supports the idea that the first cells tolerated harsh early-Earth conditions."
+  },
+  {
+   "id": "oc06",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "Which sequence correctly orders stages in the origin of cells?",
+   "choices": [
+    "Cells → abiotic monomers → polymers → membranes",
+    "Abiotic synthesis of monomers → polymers → self-replicating molecules → membranes enclosing them → cells",
+    "Polymers → cells → monomers",
+    "Membranes → DNA → proteins"
+   ],
+   "answer": 1,
+   "note": "Standard outline: abiotic monomers (Miller–Urey) → polymers → self-replicating molecules (RNA-era discussion) → compartmentalizing membranes → first cells."
+  },
+  {
+   "id": "wp11",
+   "format": "written",
+   "marks": 4,
+   "topic": "water-potential-origin-cells",
+   "stem": "A plant cell has a solute potential of −500 kPa and a pressure potential of +200 kPa. Calculate its water potential, and predict and explain what happens when it is placed in pure water.",
+   "markscheme": [
+    "Ψw = Ψs + Ψp = −500 + 200 = −300 kPa (1)",
+    "Pure water Ψw = 0 kPa — higher than the cell (1)",
+    "Water enters the cell down the gradient (1)",
+    "Cell becomes turgid: Ψp rises until cell Ψw reaches 0 and net movement stops (1)"
+   ],
+   "tactic": "Water-potential calculations: write the equation, quote the value, then give the direction with the reason. Pure water = 0 anchors every comparison."
+  },
+  {
+   "id": "oc07",
+   "format": "written",
+   "marks": 4,
+   "topic": "water-potential-origin-cells",
+   "stem": "Evaluate the evidence for the endosymbiotic origin of mitochondria and chloroplasts.",
+   "markscheme": [
+    "Structural evidence: double membrane consistent with engulfment + vesicle enclosure (1)",
+    "Own circular DNA like bacteria, and 70S ribosomes, binary fission (1)",
+    "Size comparable to free-living bacteria; genetic code shared with host (1)",
+    "Limitation: the events occurred ~1.5+ billion years ago — they cannot be directly observed; the conclusion is an inference from multiple converging lines of evidence (1)"
+   ],
+   "tactic": "'Evaluate' answers need the supporting evidence AND the limitation. Name at least two structural similarities plus the inference caveat."
+  },
+  {
+   "id": "wpx1",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "Pure water has a water potential of:",
+   "choices": [
+    "0 kPa — the maximum possible",
+    "−0 kPa — the minimum",
+    "100 kPa",
+    "Undefined"
+   ],
+   "answer": 0,
+   "note": "Ψw = 0 for pure water at standard conditions — every solution's Ψ is negative. Water moves from higher (less negative) to lower Ψ.",
+   "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)"
+  },
+  {
+   "id": "wpx2",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "Dissolving solute in pure water makes its water potential:",
+   "choices": [
+    "More positive",
+    "More negative (lower)",
+    "Zero",
+    "Higher"
+   ],
+   "answer": 1,
+   "note": "Solute potential (Ψs) is always negative and increasingly negative with concentration — water molecules are 'held' by the solute.",
+   "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)"
+  },
+  {
+   "id": "wpx3",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "A turgid plant cell has a pressure potential that is:",
+   "choices": [
+    "Zero",
+    "Negative",
+    "Positive — the wall pushes back on the protoplast",
+    "Equal to the solute potential"
+   ],
+   "answer": 2,
+   "note": "As water enters, the wall resists → Ψp rises, raising Ψw until net flow stops. Turgor also supports non-woody tissues.",
+   "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)"
+  },
+  {
+   "id": "wpx4",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "Plasmolysis occurs when a plant cell is placed in:",
+   "choices": [
+    "Pure water",
+    "A hypertonic solution — the membrane pulls away from the wall",
+    "An isotonic solution",
+    "Boiling water"
+   ],
+   "answer": 1,
+   "note": "Hypertonic outside → water leaves → protoplast shrinks from the wall. Reversible if returned to hypotonic solution quickly.",
+   "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)"
+  },
+  {
+   "id": "wpx5",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "An animal cell in pure water will:",
+   "choices": [
+    "Become turgid",
+    "Swell and lyse — no cell wall resists the inflow",
+    "Plasmolyse",
+    "Stay unchanged"
+   ],
+   "answer": 1,
+   "note": "No wall to resist → the membrane bursts (lysis). This is why IV fluids are isotonic (e.g. 0.9% saline).",
+   "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)"
+  },
+  {
+   "id": "wpx6",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "Osmolarity of a solution can be measured with an osmometer using:",
+   "choices": [
+    "Colour change",
+    "Freezing-point depression",
+    "Electrical conductivity only",
+    "pH change"
+   ],
+   "answer": 1,
+   "note": "More solute particles lower the freezing point — the osmometer converts this to osmolality (mol/kg).",
+   "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)"
+  },
+  {
+   "id": "wpx7",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "Which is NOT evidence for the endosymbiotic origin of mitochondria?",
+   "choices": [
+    "They have their own circular DNA",
+    "They have 70S ribosomes like bacteria",
+    "They have a double membrane",
+    "They have a linear genome like the nucleus"
+   ],
+   "answer": 3,
+   "note": "Mitochondrial DNA is circular and bacterial-like. A linear nuclear-style genome would contradict endosymbiosis.",
+   "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)"
+  },
+  {
+   "id": "wpx8",
+   "format": "mcq",
+   "topic": "water-potential-origin-cells",
+   "stem": "Extremophiles living near hydrothermal vents support the idea that the first cells:",
+   "choices": [
+    "Required oxygen",
+    "Could survive in conditions similar to early Earth",
+    "Appeared after plants evolved",
+    "Needed light energy"
+   ],
+   "answer": 1,
+   "note": "Life thriving without oxygen, at high temperature and pressure, supports plausible pre-oxygen early-Earth environments for the first cells.",
+   "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)"
+  },
+  {
+   "id": "wpx9",
+   "format": "written",
+   "marks": 4,
+   "topic": "water-potential-origin-cells",
+   "stem": "A plant cell has Ψs = −500 kPa and Ψp = +200 kPa. Calculate its water potential and predict and explain what happens when it is placed in pure water.",
+   "markscheme": [
+    "Ψw = Ψs + Ψp = −500 + 200 = −300 kPa (1)",
+    "Pure water Ψw = 0 — higher than the cell (1)",
+    "Water enters the cell down the gradient (1)",
+    "Cell becomes turgid: Ψp increases until Ψw reaches 0 and net movement stops (1)"
+   ],
+   "tactic": "Write Ψw = Ψs + Ψp first, quote the value, then compare with the outside Ψ. Pure water = 0 anchors every direction decision.",
+   "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)"
+  }
+ ]
 }

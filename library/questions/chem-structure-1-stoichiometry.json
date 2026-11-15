@@ -1,75 +1,414 @@
 {
-  "subject": "chemistry-hl",
-  "topic": "structure-1-stoichiometry",
-  "topicLabel": "Structure 1 — Stoichiometry & the particulate nature of matter",
-  "items": [
-    {"id": "c01", "format": "mcq", "stem": "What is the number of molecules in 0.250 mol of CO\u2082? (N\u1D00 = 6.02 \u00D7 10\u00B2\u00B3)",
-     "choices": ["1.50 \u00D7 10\u00B2\u00B3", "6.02 \u00D7 10\u00B2\u00B3", "1.51 \u00D7 10\u00B2\u00B4", "2.41 \u00D7 10\u00B2\u00B4"], "answer": 2,
-     "note": "N = n \u00D7 N\u1D00 = 0.250 \u00D7 6.02\u00D710\u00B2\u00B3 = 1.505\u00D710\u00B2\u00B3 \u2248 1.51\u00D710\u00B2\u00B4 (3 s.f.). Watch the exponent \u2014 1.50\u00D710\u00B2\u00B3 forgets the 0.250 multiplier's effect on magnitude."},
-    {"id": "c02", "format": "mcq", "stem": "How many oxygen atoms are present in 0.100 mol of Al\u2082(SO\u2084)\u2083? (N\u1D00 = 6.02 \u00D7 10\u00B2\u00B3)",
-     "choices": ["6.02 \u00D7 10\u00B2\u00B2", "7.22 \u00D7 10\u00B2\u00B3", "2.41 \u00D7 10\u00B2\u00B3", "6.02 \u00D7 10\u00B2\u00B3"], "answer": 1,
-     "note": "Each formula unit has 12 O atoms (4 \u00D7 3): 0.100 \u00D7 12 = 1.20 mol O atoms \u2192 1.20 \u00D7 6.02\u00D710\u00B2\u00B3 = 7.22\u00D710\u00B2\u00B3. The trap is counting O once instead of four times per sulfate ion."},
-    {"id": "c03", "format": "mcq", "stem": "The empirical formula of a compound containing 40.0% C, 6.7% H and 53.3% O by mass is:",
-     "choices": ["CHO", "CH\u2082O", "C\u2082H\u2084O", "C\u2082H\u2086O"], "answer": 1,
-     "note": "Moles: C 40.0/12.01 = 3.33; H 6.7/1.01 = 6.63; O 53.3/16.00 = 3.33 \u2192 ratio 1:2:1 \u2192 CH\u2082O."},
-    {"id": "c04", "format": "mcq", "stem": "What mass of NaCl (M = 58.44 g/mol) is needed to prepare 250.0 cm\u00B3 of a 0.100 mol/dm\u00B3 solution?",
-     "choices": ["1.46 g", "5.84 g", "14.6 g", "0.584 g"], "answer": 0,
-     "note": "n = c\u00D7V = 0.100 \u00D7 0.2500 = 0.0250 mol \u2192 m = 0.0250 \u00D7 58.44 = 1.46 g. The cm\u00B3 \u2192 dm\u00B3 division by 1000 is the classic slip."},
-    {"id": "c05", "format": "mcq", "stem": "In the reaction N\u2082 + 3H\u2082 \u2192 2NH\u2083, what is the maximum mass of NH\u2083 (M = 17.0 g/mol) from 14.0 g N\u2082 and excess H\u2082?",
-     "choices": ["8.50 g", "17.0 g", "34.0 g", "25.5 g"], "answer": 1,
-     "note": "n(N\u2082) = 14.0/28.0 = 0.500 mol \u2192 1.00 mol NH\u2083 \u2192 17.0 g. Ratio 1:2 from the equation."},
-    {"id": "c06", "format": "mcq", "stem": "5.60 g of iron (M = 55.8 g/mol) reacts completely with chlorine: 2Fe + 3Cl\u2082 \u2192 2FeCl\u2083. What mass of FeCl\u2083 (M = 162.2 g/mol) forms?",
-     "choices": ["8.11 g", "16.2 g", "24.3 g", "32.4 g"], "answer": 1,
-     "note": "n(Fe) = 0.100 mol \u2192 n(FeCl\u2083) = 0.100 mol (2:2) \u2192 m = 16.2 g."},
-    {"id": "c07", "format": "mcq", "stem": "25.0 cm\u00B3 of 0.200 mol/dm\u00B3 NaOH exactly neutralises 20.0 cm\u00B3 of HCl. The concentration of the HCl is:",
-     "choices": ["0.160 mol/dm\u00B3", "0.200 mol/dm\u00B3", "0.250 mol/dm\u00B3", "0.313 mol/dm\u00B3"], "answer": 2,
-     "note": "n(NaOH) = c \u00D7 V = 0.200 \u00D7 0.0250 = 5.00\u00D710\u207B\u00B3 mol = n(HCl) (1:1 ratio) \u2192 c = 5.00\u00D710\u207B\u00B3 / 0.0200 = 0.250 mol/dm\u00B3."},
-    {"id": "c08", "format": "mcq", "stem": "Which sample contains the greatest number of atoms?",
-     "choices": ["1.0 mol H\u2082O", "1.0 mol CO\u2082", "0.5 mol C\u2082H\u2086", "1.0 mol O\u2082"], "answer": 0,
-     "note": "H\u2082O = 3 atoms/unit \u2192 3.0 mol atoms; CO\u2082 = 3 \u2192 3.0; C\u2082H\u2086 = 8 \u00D7 0.5 = 4.0; O\u2082 = 2. Recheck: C\u2082H\u2086 gives 4.0 mol atoms \u2014 the greatest here is C\u2082H\u2086. (If you answered H\u2082O, recount atoms per molecule.)"},
-    {"id": "c09", "format": "mcq", "stem": "The Avogadro constant is best described as the number of:",
-     "choices": ["particles in 22.4 dm\u00B3 of any gas", "particles in one mole of substance", "protons in 1 g of hydrogen", "molecules in 1 kg of water"], "answer": 1,
-     "note": "Definition question \u2014 one mole contains 6.02\u00D710\u00B2\u00B3 particles. 22.4 dm\u00B3 only applies to gases at STP with the old convention."},
-    {"id": "c10", "format": "mcq", "stem": "0.500 mol of an ideal gas occupies 12.3 dm\u00B3 at 300 K. The pressure is approximately:",
-     "choices": ["50 kPa", "100 kPa", "101 kPa", "150 kPa"], "answer": 1,
-     "note": "PV = nRT \u2192 P = nRT/V = 0.500 \u00D7 8.31 \u00D7 300 / 0.0123 \u2248 1.01\u00D710\u2075 Pa = 101 kPa. Convert dm\u00B3 \u2192 m\u00B3 before using R = 8.31 J/(mol\u00B7K)."},
-    {"id": "c11", "format": "mcq", "stem": "What is the percentage yield if 8.0 g of product is obtained when the theoretical yield is 10.0 g?",
-     "choices": ["60%", "75%", "80%", "125%"], "answer": 2,
-     "note": "%yield = actual/theoretical \u00D7 100 = 8.0/10.0 \u00D7 100 = 80%. Yields above 100% indicate impure product."},
-    {"id": "c12", "format": "mcq", "stem": "A 2.00 g sample of an oxide of copper contains 1.60 g Cu. The empirical formula is (M: Cu 63.5, O 16.0):",
-     "choices": ["CuO", "Cu\u2082O", "Cu\u2082O\u2083", "CuO\u2082"], "answer": 0,
-     "note": "Cu: 1.60/63.5 = 0.0252 mol; O: 0.40/16.0 = 0.0250 mol \u2192 1:1 \u2192 CuO. The oxygen mass is what's left after Cu."},
-    {"id": "c13", "format": "mcq", "stem": "Which change doubles the volume occupied by a fixed amount of ideal gas at constant pressure?",
-     "choices": ["Doubling the temperature in \u00B0C", "Doubling the temperature in K", "Halving the pressure at constant T", "Doubling the pressure at constant T"], "answer": 1,
-     "note": "V \u221D T(K) at constant P \u2014 Kelvin, never Celsius. Option 3 also doubles V: halving P at constant T doubles V \u2014 but the stem fixes pressure, so only T doubling qualifies."},
-    {"id": "c14", "format": "mcq", "stem": "The molar mass of a hydrated salt CuSO\u2084\u00B75H\u2082O (Cu 63.5, S 32.1, O 16.0, H 1.0) is:",
-     "choices": ["160.0 g/mol", "180.0 g/mol", "249.6 g/mol", "213.6 g/mol"], "answer": 2,
-     "note": "CuSO\u2084 = 63.5+32.1+64 = 159.6; 5H\u2082O = 90 \u2192 249.6 g/mol. Forgetting waters of crystallisation is a classic Paper 1A trap."},
-    {"id": "c15", "format": "mcq", "stem": "How many moles of ions are present in 1.0 mol of Ca(NO\u2083)\u2082 dissolved in water?",
-     "choices": ["1.0 mol", "2.0 mol", "3.0 mol", "4.0 mol"], "answer": 2,
-     "note": "Ca(NO\u2083)\u2082 \u2192 Ca\u00B2\u207A + 2NO\u2083\u207B = 3 mol ions per mol salt."},
-    {"id": "c16", "format": "mcq", "stem": "10.0 cm\u00B3 of 0.500 mol/dm\u00B3 H\u2082SO\u2084 is diluted to 100.0 cm\u00B3. The new concentration is:",
-     "choices": ["0.00500 mol/dm\u00B3", "0.0500 mol/dm\u00B3", "0.500 mol/dm\u00B3", "5.00 mol/dm\u00B3"], "answer": 1,
-     "note": "Dilution factor 10 \u2192 c\u2081V\u2081 = c\u2082V\u2082 \u2192 0.500\u00D710.0/100.0 = 0.0500 mol/dm\u00B3. Keep the trailing zeros \u2014 they show the 3 s.f. precision."},
-    {"id": "c17", "format": "mcq", "stem": "Which contains 0.0500 mol of particles?",
-     "choices": ["3.01 \u00D7 10\u00B2\u00B2 atoms", "6.02 \u00D7 10\u00B2\u00B2 atoms", "3.01 \u00D7 10\u00B2\u00B3 atoms", "6.02 \u00D7 10\u00B2\u00B3 atoms"], "answer": 0,
-     "note": "0.0500 \u00D7 6.02\u00D710\u00B2\u00B3 = 3.01\u00D710\u00B2\u00B2. Exponent slips here are the most common Paper 1A error in stoichiometry."},
-    {"id": "c18", "format": "mcq", "stem": "2.00 g of a Group 2 metal reacts with excess water to give 0.0500 mol of H\u2082. The metal is (M: Mg 24.3, Ca 40.1, Sr 87.6, Ba 137.3):",
-     "choices": ["Magnesium", "Calcium", "Strontium", "Barium"], "answer": 1,
-     "note": "M + 2H\u2082O \u2192 M(OH)\u2082 + H\u2082 gives 1 mol H\u2082 per mol metal: n(M) = 0.0500 mol \u2192 M = 2.00/0.0500 = 40.1 g/mol \u2192 calcium."},
-    {"id": "c19", "format": "mcq", "stem": "The concentration of 5.85 g NaCl (M = 58.5) made up to 500 cm\u00B3 solution is:",
-     "choices": ["0.100 mol/dm\u00B3", "0.200 mol/dm\u00B3", "0.500 mol/dm\u00B3", "1.00 mol/dm\u00B3"], "answer": 1,
-     "note": "n = 0.100 mol in 0.500 dm\u00B3 \u2192 c = 0.200 mol/dm\u00B3."},
-    {"id": "c20", "format": "mcq", "stem": "Equal masses of CO and CO\u2082 contain which ratio of molecules CO : CO\u2082?",
-     "choices": ["1 : 1", "11 : 7", "7 : 11", "44 : 28"], "answer": 2,
-     "note": "Same mass m: n \u221D 1/M \u2192 ratio CO:CO\u2082 = M(CO\u2082):M(CO) = 44:28 = 11:7. Inverting the ratio is the trap."},
-    {"id": "c21", "format": "written", "marks": 3, "topic": "structure-1-stoichiometry",
-     "stem": "1.20 g of calcium carbonate is completely dissolved in 50.0 cm\u00B3 of 0.500 mol/dm\u00B3 hydrochloric acid. Determine which reactant is in excess. (M: CaCO\u2083 = 100.1)",
-     "markscheme": ["n(CaCO\u2083) = 1.20/100.1 = 0.0120 mol (1)", "n(HCl) = 0.500 \u00D7 0.0500 = 0.0250 mol (1)", "CaCO\u2083 + 2HCl: acid needed = 2 \u00D7 0.0120 = 0.0240 < 0.0250 mol available \u2192 acid in excess (1)"],
-     "tactic": "Limiting-reagent logic: convert both to moles, scale by the equation ratio, compare."},
-    {"id": "c22", "format": "written", "marks": 4, "topic": "structure-1-stoichiometry",
-     "stem": "A 0.250 g sample of an unknown acid H\u2082X requires 20.00 cm\u00B3 of 0.150 mol/dm\u00B3 NaOH for complete neutralisation: H\u2082X + 2NaOH \u2192 Na\u2082X + 2H\u2082O. Determine the molar mass of H\u2082X.",
-     "markscheme": ["n(NaOH) = 0.150 \u00D7 0.02000 = 3.00\u00D710\u207B\u00B3 mol (1)", "n(H\u2082X) = \u00BD \u00D7 3.00\u00D710\u207B\u00B3 = 1.50\u00D710\u207B\u00B3 mol (1)", "M = m/n = 0.250/1.50\u00D710\u207B\u00B3 (1)", "= 167 g/mol (1)"],
-     "tactic": "Titration back-calculation: always start from the known solution, apply the equation ratio, then M = m/n with the sample mass."}
-  ]
+ "subject": "chemistry-hl",
+ "topic": "structure-1-stoichiometry",
+ "topicLabel": "Structure 1 — Stoichiometry & the particulate nature of matter",
+ "items": [
+  {
+   "id": "c01",
+   "format": "mcq",
+   "stem": "What is the number of molecules in 0.250 mol of CO₂? (Nᴀ = 6.02 × 10²³)",
+   "choices": [
+    "1.50 × 10²³",
+    "6.02 × 10²³",
+    "1.51 × 10²´",
+    "2.41 × 10²´"
+   ],
+   "answer": 2,
+   "note": "N = n × Nᴀ = 0.250 × 6.02×10²³ = 1.505×10²³ ≈ 1.51×10²´ (3 s.f.). Watch the exponent — 1.50×10²³ forgets the 0.250 multiplier's effect on magnitude."
+  },
+  {
+   "id": "c02",
+   "format": "mcq",
+   "stem": "How many oxygen atoms are present in 0.100 mol of Al₂(SO₄)₃? (Nᴀ = 6.02 × 10²³)",
+   "choices": [
+    "6.02 × 10²²",
+    "7.22 × 10²³",
+    "2.41 × 10²³",
+    "6.02 × 10²³"
+   ],
+   "answer": 1,
+   "note": "Each formula unit has 12 O atoms (4 × 3): 0.100 × 12 = 1.20 mol O atoms → 1.20 × 6.02×10²³ = 7.22×10²³. The trap is counting O once instead of four times per sulfate ion."
+  },
+  {
+   "id": "c03",
+   "format": "mcq",
+   "stem": "The empirical formula of a compound containing 40.0% C, 6.7% H and 53.3% O by mass is:",
+   "choices": [
+    "CHO",
+    "CH₂O",
+    "C₂H₄O",
+    "C₂H₆O"
+   ],
+   "answer": 1,
+   "note": "Moles: C 40.0/12.01 = 3.33; H 6.7/1.01 = 6.63; O 53.3/16.00 = 3.33 → ratio 1:2:1 → CH₂O."
+  },
+  {
+   "id": "c04",
+   "format": "mcq",
+   "stem": "What mass of NaCl (M = 58.44 g/mol) is needed to prepare 250.0 cm³ of a 0.100 mol/dm³ solution?",
+   "choices": [
+    "1.46 g",
+    "5.84 g",
+    "14.6 g",
+    "0.584 g"
+   ],
+   "answer": 0,
+   "note": "n = c×V = 0.100 × 0.2500 = 0.0250 mol → m = 0.0250 × 58.44 = 1.46 g. The cm³ → dm³ division by 1000 is the classic slip."
+  },
+  {
+   "id": "c05",
+   "format": "mcq",
+   "stem": "In the reaction N₂ + 3H₂ → 2NH₃, what is the maximum mass of NH₃ (M = 17.0 g/mol) from 14.0 g N₂ and excess H₂?",
+   "choices": [
+    "8.50 g",
+    "17.0 g",
+    "34.0 g",
+    "25.5 g"
+   ],
+   "answer": 1,
+   "note": "n(N₂) = 14.0/28.0 = 0.500 mol → 1.00 mol NH₃ → 17.0 g. Ratio 1:2 from the equation."
+  },
+  {
+   "id": "c06",
+   "format": "mcq",
+   "stem": "5.60 g of iron (M = 55.8 g/mol) reacts completely with chlorine: 2Fe + 3Cl₂ → 2FeCl₃. What mass of FeCl₃ (M = 162.2 g/mol) forms?",
+   "choices": [
+    "8.11 g",
+    "16.2 g",
+    "24.3 g",
+    "32.4 g"
+   ],
+   "answer": 1,
+   "note": "n(Fe) = 0.100 mol → n(FeCl₃) = 0.100 mol (2:2) → m = 16.2 g."
+  },
+  {
+   "id": "c07",
+   "format": "mcq",
+   "stem": "25.0 cm³ of 0.200 mol/dm³ NaOH exactly neutralises 20.0 cm³ of HCl. The concentration of the HCl is:",
+   "choices": [
+    "0.160 mol/dm³",
+    "0.200 mol/dm³",
+    "0.250 mol/dm³",
+    "0.313 mol/dm³"
+   ],
+   "answer": 2,
+   "note": "n(NaOH) = c × V = 0.200 × 0.0250 = 5.00×10⁻³ mol = n(HCl) (1:1 ratio) → c = 5.00×10⁻³ / 0.0200 = 0.250 mol/dm³."
+  },
+  {
+   "id": "c08",
+   "format": "mcq",
+   "stem": "Which sample contains the greatest number of atoms?",
+   "choices": [
+    "1.0 mol H₂O",
+    "1.0 mol CO₂",
+    "0.5 mol C₂H₆",
+    "1.0 mol O₂"
+   ],
+   "answer": 0,
+   "note": "H₂O = 3 atoms/unit → 3.0 mol atoms; CO₂ = 3 → 3.0; C₂H₆ = 8 × 0.5 = 4.0; O₂ = 2. Recheck: C₂H₆ gives 4.0 mol atoms — the greatest here is C₂H₆. (If you answered H₂O, recount atoms per molecule.)"
+  },
+  {
+   "id": "c09",
+   "format": "mcq",
+   "stem": "The Avogadro constant is best described as the number of:",
+   "choices": [
+    "particles in 22.4 dm³ of any gas",
+    "particles in one mole of substance",
+    "protons in 1 g of hydrogen",
+    "molecules in 1 kg of water"
+   ],
+   "answer": 1,
+   "note": "Definition question — one mole contains 6.02×10²³ particles. 22.4 dm³ only applies to gases at STP with the old convention."
+  },
+  {
+   "id": "c10",
+   "format": "mcq",
+   "stem": "0.500 mol of an ideal gas occupies 12.3 dm³ at 300 K. The pressure is approximately:",
+   "choices": [
+    "50 kPa",
+    "100 kPa",
+    "101 kPa",
+    "150 kPa"
+   ],
+   "answer": 1,
+   "note": "PV = nRT → P = nRT/V = 0.500 × 8.31 × 300 / 0.0123 ≈ 1.01×10⁵ Pa = 101 kPa. Convert dm³ → m³ before using R = 8.31 J/(mol·K)."
+  },
+  {
+   "id": "c11",
+   "format": "mcq",
+   "stem": "What is the percentage yield if 8.0 g of product is obtained when the theoretical yield is 10.0 g?",
+   "choices": [
+    "60%",
+    "75%",
+    "80%",
+    "125%"
+   ],
+   "answer": 2,
+   "note": "%yield = actual/theoretical × 100 = 8.0/10.0 × 100 = 80%. Yields above 100% indicate impure product."
+  },
+  {
+   "id": "c12",
+   "format": "mcq",
+   "stem": "A 2.00 g sample of an oxide of copper contains 1.60 g Cu. The empirical formula is (M: Cu 63.5, O 16.0):",
+   "choices": [
+    "CuO",
+    "Cu₂O",
+    "Cu₂O₃",
+    "CuO₂"
+   ],
+   "answer": 0,
+   "note": "Cu: 1.60/63.5 = 0.0252 mol; O: 0.40/16.0 = 0.0250 mol → 1:1 → CuO. The oxygen mass is what's left after Cu."
+  },
+  {
+   "id": "c13",
+   "format": "mcq",
+   "stem": "Which change doubles the volume occupied by a fixed amount of ideal gas at constant pressure?",
+   "choices": [
+    "Doubling the temperature in °C",
+    "Doubling the temperature in K",
+    "Halving the pressure at constant T",
+    "Doubling the pressure at constant T"
+   ],
+   "answer": 1,
+   "note": "V ∝ T(K) at constant P — Kelvin, never Celsius. Option 3 also doubles V: halving P at constant T doubles V — but the stem fixes pressure, so only T doubling qualifies."
+  },
+  {
+   "id": "c14",
+   "format": "mcq",
+   "stem": "The molar mass of a hydrated salt CuSO₄·5H₂O (Cu 63.5, S 32.1, O 16.0, H 1.0) is:",
+   "choices": [
+    "160.0 g/mol",
+    "180.0 g/mol",
+    "249.6 g/mol",
+    "213.6 g/mol"
+   ],
+   "answer": 2,
+   "note": "CuSO₄ = 63.5+32.1+64 = 159.6; 5H₂O = 90 → 249.6 g/mol. Forgetting waters of crystallisation is a classic Paper 1A trap."
+  },
+  {
+   "id": "c15",
+   "format": "mcq",
+   "stem": "How many moles of ions are present in 1.0 mol of Ca(NO₃)₂ dissolved in water?",
+   "choices": [
+    "1.0 mol",
+    "2.0 mol",
+    "3.0 mol",
+    "4.0 mol"
+   ],
+   "answer": 2,
+   "note": "Ca(NO₃)₂ → Ca²⁺ + 2NO₃⁻ = 3 mol ions per mol salt."
+  },
+  {
+   "id": "c16",
+   "format": "mcq",
+   "stem": "10.0 cm³ of 0.500 mol/dm³ H₂SO₄ is diluted to 100.0 cm³. The new concentration is:",
+   "choices": [
+    "0.00500 mol/dm³",
+    "0.0500 mol/dm³",
+    "0.500 mol/dm³",
+    "5.00 mol/dm³"
+   ],
+   "answer": 1,
+   "note": "Dilution factor 10 → c₁V₁ = c₂V₂ → 0.500×10.0/100.0 = 0.0500 mol/dm³. Keep the trailing zeros — they show the 3 s.f. precision."
+  },
+  {
+   "id": "c17",
+   "format": "mcq",
+   "stem": "Which contains 0.0500 mol of particles?",
+   "choices": [
+    "3.01 × 10²² atoms",
+    "6.02 × 10²² atoms",
+    "3.01 × 10²³ atoms",
+    "6.02 × 10²³ atoms"
+   ],
+   "answer": 0,
+   "note": "0.0500 × 6.02×10²³ = 3.01×10²². Exponent slips here are the most common Paper 1A error in stoichiometry."
+  },
+  {
+   "id": "c18",
+   "format": "mcq",
+   "stem": "2.00 g of a Group 2 metal reacts with excess water to give 0.0500 mol of H₂. The metal is (M: Mg 24.3, Ca 40.1, Sr 87.6, Ba 137.3):",
+   "choices": [
+    "Magnesium",
+    "Calcium",
+    "Strontium",
+    "Barium"
+   ],
+   "answer": 1,
+   "note": "M + 2H₂O → M(OH)₂ + H₂ gives 1 mol H₂ per mol metal: n(M) = 0.0500 mol → M = 2.00/0.0500 = 40.1 g/mol → calcium."
+  },
+  {
+   "id": "c19",
+   "format": "mcq",
+   "stem": "The concentration of 5.85 g NaCl (M = 58.5) made up to 500 cm³ solution is:",
+   "choices": [
+    "0.100 mol/dm³",
+    "0.200 mol/dm³",
+    "0.500 mol/dm³",
+    "1.00 mol/dm³"
+   ],
+   "answer": 1,
+   "note": "n = 0.100 mol in 0.500 dm³ → c = 0.200 mol/dm³."
+  },
+  {
+   "id": "c20",
+   "format": "mcq",
+   "stem": "Equal masses of CO and CO₂ contain which ratio of molecules CO : CO₂?",
+   "choices": [
+    "1 : 1",
+    "11 : 7",
+    "7 : 11",
+    "44 : 28"
+   ],
+   "answer": 2,
+   "note": "Same mass m: n ∝ 1/M → ratio CO:CO₂ = M(CO₂):M(CO) = 44:28 = 11:7. Inverting the ratio is the trap."
+  },
+  {
+   "id": "c21",
+   "format": "written",
+   "marks": 3,
+   "topic": "structure-1-stoichiometry",
+   "stem": "1.20 g of calcium carbonate is completely dissolved in 50.0 cm³ of 0.500 mol/dm³ hydrochloric acid. Determine which reactant is in excess. (M: CaCO₃ = 100.1)",
+   "markscheme": [
+    "n(CaCO₃) = 1.20/100.1 = 0.0120 mol (1)",
+    "n(HCl) = 0.500 × 0.0500 = 0.0250 mol (1)",
+    "CaCO₃ + 2HCl: acid needed = 2 × 0.0120 = 0.0240 < 0.0250 mol available → acid in excess (1)"
+   ],
+   "tactic": "Limiting-reagent logic: convert both to moles, scale by the equation ratio, compare."
+  },
+  {
+   "id": "c22",
+   "format": "written",
+   "marks": 4,
+   "topic": "structure-1-stoichiometry",
+   "stem": "A 0.250 g sample of an unknown acid H₂X requires 20.00 cm³ of 0.150 mol/dm³ NaOH for complete neutralisation: H₂X + 2NaOH → Na₂X + 2H₂O. Determine the molar mass of H₂X.",
+   "markscheme": [
+    "n(NaOH) = 0.150 × 0.02000 = 3.00×10⁻³ mol (1)",
+    "n(H₂X) = ½ × 3.00×10⁻³ = 1.50×10⁻³ mol (1)",
+    "M = m/n = 0.250/1.50×10⁻³ (1)",
+    "= 167 g/mol (1)"
+   ],
+   "tactic": "Titration back-calculation: always start from the known solution, apply the equation ratio, then M = m/n with the sample mass."
+  },
+  {
+   "id": "chx1",
+   "format": "mcq",
+   "topic": "structure-1-stoichiometry",
+   "stem": "Element X has two isotopes: ⁷⁵X (50%) and ⁷⁷X (50%). Its relative atomic mass is:",
+   "choices": [
+    "75",
+    "76",
+    "77",
+    "78"
+   ],
+   "answer": 1,
+   "note": "Weighted mean: (75×50 + 77×50)/100 = 76. Abundances weight the average — never just average the mass numbers.",
+   "topicLabel": "Structure 1 — Stoichiometry & the particulate nature of matter"
+  },
+  {
+   "id": "chx2",
+   "format": "mcq",
+   "topic": "structure-1-stoichiometry",
+   "stem": "Equal volumes of hydrogen and oxygen gases at the same temperature and pressure contain:",
+   "choices": [
+    "The same number of molecules",
+    "Different numbers of molecules",
+    "The same mass",
+    "The same number of atoms"
+   ],
+   "answer": 0,
+   "note": "Avogadro's law: equal volumes of gases at the same T and P contain equal numbers of MOLECULES — not atoms or mass.",
+   "topicLabel": "Structure 1 — Stoichiometry & the particulate nature of matter"
+  },
+  {
+   "id": "chx3",
+   "format": "mcq",
+   "topic": "structure-1-stoichiometry",
+   "stem": "A compound has the empirical formula CH₂O and a molar mass of 180 g/mol. Its molecular formula is:",
+   "choices": [
+    "C₆H₁₂O₆",
+    "C₃H₆O₃",
+    "CH₂O",
+    "C₅H₁₀O₅"
+   ],
+   "answer": 0,
+   "note": "M(CH₂O) = 30; n = 180/30 = 6 → molecular formula = (CH₂O)₆ = C₆H₁₂O₆ (glucose).",
+   "topicLabel": "Structure 1 — Stoichiometry & the particulate nature of matter"
+  },
+  {
+   "id": "chx4",
+   "format": "mcq",
+   "topic": "structure-1-stoichiometry",
+   "stem": "12 g of carbon reacts with 48 g of oxygen: C + O₂ → CO₂ (M: C 12, O 16). Which reactant is limiting?",
+   "choices": [
+    "Carbon — 1 mol vs 1.5 mol O₂ and the ratio needs 1:1",
+    "Oxygen — 3 mol is not enough",
+    "Neither — both are excess",
+    "Cannot be determined"
+   ],
+   "answer": 0,
+   "note": "n(C) = 1 mol, n(O₂) = 3 mol. Ratio 1:1 → carbon limits (oxygen in excess). Calculate moles of BOTH before deciding.",
+   "topicLabel": "Structure 1 — Stoichiometry & the particulate nature of matter"
+  },
+  {
+   "id": "chx5",
+   "format": "mcq",
+   "topic": "structure-1-stoichiometry",
+   "stem": "The percentage by mass of calcium in CaCO₃ (Ca 40.1, C 12.0, O 16.0) is approximately:",
+   "choices": [
+    "40%",
+    "48%",
+    "12%",
+    "60%"
+   ],
+   "answer": 0,
+   "note": "M(CaCO₃) = 100.1; %Ca = 40.1/100.1 × 100 ≈ 40%. Composition questions start from the molar mass.",
+   "topicLabel": "Structure 1 — Stoichiometry & the particulate nature of matter"
+  },
+  {
+   "id": "chx6",
+   "format": "mcq",
+   "topic": "structure-1-stoichiometry",
+   "stem": "The molar volume of ANY ideal gas at STP (first assessment 2025 data booklet) is approximately:",
+   "choices": [
+    "22.4 dm³/mol",
+    "22.7 dm³/mol",
+    "24.0 dm³/mol",
+    "24.8 dm³/mol"
+   ],
+   "answer": 1,
+   "note": "The 2025+ data booklet value: 22.7 dm³/mol at STP (100 kPa, 273 K). Older books said 22.4 — use the booklet.",
+   "topicLabel": "Structure 1 — Stoichiometry & the particulate nature of matter"
+  },
+  {
+   "id": "chx7",
+   "format": "mcq",
+   "topic": "structure-1-stoichiometry",
+   "stem": "The concentration of a solution in g/dm³ can be converted to mol/dm³ by dividing by:",
+   "choices": [
+    "The molar mass",
+    "The number of ions",
+    "22.7",
+    "The temperature"
+   ],
+   "answer": 0,
+   "note": "c(g/dm³) ÷ M(g/mol) = c(mol/dm³). Watch the direction: g → mol divides by M.",
+   "topicLabel": "Structure 1 — Stoichiometry & the particulate nature of matter"
+  },
+  {
+   "id": "chx8",
+   "format": "mcq",
+   "topic": "structure-1-stoichiometry",
+   "stem": "A 4.0 g sample of helium (M = 4.0 g/mol) contains how many atoms? (Nᴀ = 6.02 × 10²³)",
+   "choices": [
+    "6.02 × 10²³",
+    "3.01 × 10²³",
+    "1.50 × 10²³",
+    "6.02 × 10²´"
+   ],
+   "answer": 0,
+   "note": "n = 4.0/4.0 = 1 mol → 6.02×10²³ atoms. Helium is monatomic — atoms = moles directly.",
+   "topicLabel": "Structure 1 — Stoichiometry & the particulate nature of matter"
+  }
+ ]
 }

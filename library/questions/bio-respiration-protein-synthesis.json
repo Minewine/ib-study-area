@@ -1,72 +1,421 @@
 {
-  "subject": "biology-hl",
-  "topic": "respiration-protein-synthesis",
-  "topicLabel": "C1.2 — Cell respiration & D1.2 — Protein synthesis (Feb–Mar unit)",
-  "items": [
-    {"id": "rs01", "format": "mcq", "topic": "respiration-protein-synthesis", "stem": "ATP is described as the universal energy currency because it:",
-     "choices": ["Stores large amounts of energy for long periods", "Releases small, manageable amounts of energy when hydrolysed to ADP + phosphate", "Is only produced in muscle cells", "Cannot be broken down"], "answer": 1,
-     "note": "ATP hydrolysis releases a small packet of energy usable by every cell \u2014 unlike one big glucose burn. Universal: all life uses ATP."},
-    {"id": "rs02", "format": "mcq", "topic": "respiration-protein-synthesis", "stem": "The overall equation for aerobic respiration is:",
-     "choices": ["glucose \u2192 lactic acid + ATP", "glucose + 6O\u2082 \u2192 6CO\u2082 + 6H\u2082O (+ ATP)", "CO\u2082 + H\u2082O \u2192 glucose + O\u2082", "glucose \u2192 ethanol + CO\u2082"], "answer": 1,
-     "note": "Same equation as photosynthesis reversed. Option 1 is anaerobic in animals; option 4 is anaerobic in yeast."},
-    {"id": "rs03", "format": "mcq", "topic": "respiration-protein-synthesis", "stem": "Where do glycolysis, the Krebs cycle and oxidative phosphorylation occur?",
-     "choices": ["All in the mitochondrial matrix", "Cytoplasm; matrix; inner mitochondrial membrane (cristae)", "Nucleus; cytoplasm; matrix", "All on the cristae"], "answer": 1,
-     "note": "Location questions are near-guaranteed: glycolysis in the cytoplasm (before mitochondria evolved), Krebs in the matrix, ETC on the inner membrane."},
-    {"id": "rs04", "format": "mcq", "topic": "respiration-protein-synthesis", "stem": "Glycolysis produces:",
-     "choices": ["2 pyruvate, net 2 ATP and 2 NADH from one glucose", "36 ATP directly", "One pyruvate and no ATP", "Lactic acid and 2 ATP"], "answer": 0,
-     "note": "Glucose (6C) split into 2 pyruvate (3C). 4 ATP produced, 2 invested \u2192 net 2. Works without oxygen."},
-    {"id": "rs05", "format": "mcq", "topic": "respiration-protein-synthesis", "stem": "The role of oxygen in aerobic respiration is to:",
-     "choices": ["Donate electrons to NADH", "Act as the terminal electron acceptor at the end of the ETC, forming water", "Break down pyruvate in glycolysis", "Pump protons directly"], "answer": 1,
-     "note": "Oxygen combines with electrons and H\u207B at ETC's end \u2192 water. Without O\u2082 the ETC backs up and only anaerobic respiration continues."},
-    {"id": "rs06", "format": "mcq", "topic": "respiration-protein-synthesis", "stem": "In anaerobic respiration in human muscle, pyruvate is converted to:",
-     "choices": ["Ethanol and CO\u2082", "Lactate (lactic acid)", "Acetyl-CoA", "Glucose"], "answer": 1,
-     "note": "Animals: lactate (muscle fatigue). Yeast/plants: ethanol + CO\u2082 (fermentation). Both regenerate NAD\u207A so glycolysis can continue."},
-    {"id": "rs07", "format": "mcq", "topic": "respiration-protein-synthesis", "stem": "Anaerobic respiration releases much less energy than aerobic respiration because:",
-     "choices": ["Glucose is not fully oxidized \u2014 much energy remains in lactate/ethanol", "Oxygen stores energy", "The mitochondria stop working", "ATP is destroyed"], "answer": 0,
-     "note": "Only glycolysis runs (\u2248 2 ATP). Lactate/ethanol still contain most of glucose's original energy."},
-    {"id": "rs08", "format": "mcq", "topic": "respiration-protein-synthesis", "stem": "In a respirometer with potassium hydroxide solution added, the pressure change measures:",
-     "choices": ["CO\u2082 production", "O\u2082 consumption (KOH absorbs the CO\u2082 produced)", "Water production", "ATP concentration"], "answer": 1,
-     "note": "KOH removes CO\u2082, so the only gas change is O\u2082 decrease \u2192 fluid moves toward the organism. Controls: same temperature (water bath), same volume."},
-    {"id": "rs09", "format": "mcq", "topic": "respiration-protein-synthesis", "stem": "Chemiosmosis in oxidative phosphorylation refers to:",
-     "choices": ["Direct substrate-level ATP synthesis", "Protons pumped into the intermembrane space flowing back through ATP synthase", "Glucose crossing the membrane", "Electrons moving through the cytoplasm"], "answer": 1,
-     "note": "ETC pumps H\u207B into the intermembrane space; the gradient drives ATP synthase. That's why cristae (surface area) matter."},
-    {"id": "rs10", "format": "mcq", "topic": "respiration-protein-synthesis", "stem": "NADH and FADH\u2082 produced in respiration:",
-     "choices": ["Carry electrons and hydrogen to the electron transport chain", "Are waste products excreted", "Store energy as glucose", "Transport oxygen"], "answer": 0,
-     "note": "Hydrogen carriers (NADH from glycolysis/Krebs, FADH\u2082 from Krebs) deliver electrons to the ETC \u2014 where oxidative phosphorylation happens."},
-    {"id": "ps01", "format": "mcq", "topic": "respiration-protein-synthesis", "stem": "The correct sequence for gene expression is:",
-     "choices": ["Protein \u2192 RNA \u2192 DNA", "Transcription (DNA \u2192 mRNA) in the nucleus, then translation (mRNA \u2192 protein) at ribosomes", "Translation in the nucleus, then transcription", "DNA copied directly into protein"], "answer": 1,
-     "note": "Eukaryotes: transcription in the nucleus, mRNA exits via pores, translation at ribosomes (free or on rough ER)."},
-    {"id": "ps02", "format": "mcq", "topic": "respiration-protein-synthesis", "stem": "Which enzyme unwinds DNA and joins RNA nucleotides during transcription?",
-     "choices": ["DNA polymerase", "RNA polymerase", "Helicase only", "Ligase"], "answer": 1,
-     "note": "RNA polymerase does both jobs along the template strand, starting at the promoter and moving 3\u2032 \u2192 5\u2032 to build mRNA 5\u2032 \u2192 3\u2032."},
-    {"id": "ps03", "format": "mcq", "topic": "respiration-protein-synthesis", "stem": "One difference between RNA and DNA is that RNA:",
-     "choices": ["Contains ribose and uracil instead of deoxyribose and thymine", "Is always double-stranded", "Contains thymine", "Is never single-stranded"], "answer": 0,
-     "note": "RNA: ribose sugar, uracil pairs with adenine, usually single-stranded. DNA: deoxyribose, thymine, double helix."},
-    {"id": "ps04", "format": "mcq", "topic": "respiration-protein-synthesis", "stem": "A sequence of three mRNA bases coding for one amino acid is a:",
-     "choices": ["Gene", "Codon", "Anticodon", "Triplet of tRNA"], "answer": 1,
-     "note": "mRNA: codon. tRNA: anticodon. DNA: triplet. Three related words \u2014 exams test that you use the right one."},
-    {"id": "ps05", "format": "mcq", "topic": "respiration-protein-synthesis", "stem": "The genetic code is described as universal and degenerate. This means:",
-     "choices": ["The same codons specify the same amino acids in nearly all organisms; several codons can code for the same amino acid", "Each codon codes for many amino acids", "Every organism has a different code", "The code is random"], "answer": 0,
-     "note": "Universality is why a human gene can be expressed in bacteria (GMO insulin). Degeneracy also buffers point mutations."},
-    {"id": "ps06", "format": "mcq", "topic": "respiration-protein-synthesis", "stem": "During translation, the anticodon of tRNA pairs with:",
-     "choices": ["The DNA template strand", "A complementary codon on mRNA", "The amino acid it carries", "The ribosome's subunit"], "answer": 1,
-     "note": "tRNA: one end carries a specific amino acid; the anticodon loop base-pairs with the mRNA codon in the ribosome."},
-    {"id": "ps07", "format": "mcq", "topic": "respiration-protein-synthesis", "stem": "Peptide bonds between amino acids are formed:",
-     "choices": ["By RNA polymerase", "In the ribosome as the polypeptide grows during translation", "In the nucleus during transcription", "By tRNA synthetase"], "answer": 1,
-     "note": "The ribosome catalyses peptide bonds between successive amino acids delivered by tRNAs."},
-    {"id": "ps08", "format": "mcq", "topic": "respiration-protein-synthesis", "stem": "In eukaryotes, the mRNA that leaves the nucleus has had its introns removed by:",
-     "choices": ["Splicing", "Translation", "Replication", "Osmosis"], "answer": 0,
-     "note": "Pre-mRNA contains introns (non-coding) and exons (coding): splicing removes introns, joining exons into mature mRNA. (Bacterial mRNA needs no splicing.)"},
-    {"id": "ps09", "format": "mcq", "topic": "respiration-protein-synthesis", "stem": "The start codon AUG codes for:",
-     "choices": ["Stop", "Methionine \u2014 it also signals the start of translation", "Alanine", "Nothing \u2014 it is a spacer"], "answer": 1,
-     "note": "AUG = methionine/start. Stop codons (UAA, UAG, UGA) do not code for an amino acid \u2014 they release the polypeptide."},
-    {"id": "wp01", "format": "written", "marks": 4, "topic": "respiration-protein-synthesis",
-     "stem": "A respirometer contains a small mammal and KOH solution in a sealed chamber at constant temperature in a water bath. Explain what the movement of the fluid towards the chamber shows, and why temperature control is essential.",
-     "markscheme": ["Respiration consumes O\u2082 and produces CO\u2082 (1)", "KOH absorbs the CO\u2082, so the only gas change is O\u2082 decrease (1)", "Decreased gas volume/pressure \u2192 fluid moves towards the chamber \u2192 rate of movement = O\u2082 consumption rate (1)", "Temperature control: respiration rate depends on enzyme activity; without it, gas expansion from heat would confound the O\u2082 measurement (1)"],
-     "tactic": "Respirometer questions: KOH's job, the direction of movement, and the two controls (temperature, equal volume) \u2014 all three are commonly examined."},
-    {"id": "ps10", "format": "written", "marks": 4, "topic": "respiration-protein-synthesis",
-     "stem": "Explain how the structure of tRNA allows it to fulfil its role in translation.",
-     "markscheme": ["Cloverleaf shape held by base pairing \u2014 compact carrier (1)", "Anticodon: three bases complementary to a specific mRNA codon \u2192 ensures the right amino acid is placed (1)", "3\u2032 end binds one specific amino acid, attached by an activating enzyme (1)", "Delivers amino acids to the ribosome in the sequence dictated by mRNA codons (1)"],
-     "tactic": "Structure\u2013function answer: anticodon pairs with codon (specificity) + amino acid binding site (delivery) + shape. Named parts, not vague 'it helps'."}
-  ]
+ "subject": "biology-hl",
+ "topic": "respiration-protein-synthesis",
+ "topicLabel": "C1.2 — Cell respiration & D1.2 — Protein synthesis (Feb–Mar unit)",
+ "items": [
+  {
+   "id": "rs01",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "ATP is described as the universal energy currency because it:",
+   "choices": [
+    "Stores large amounts of energy for long periods",
+    "Releases small, manageable amounts of energy when hydrolysed to ADP + phosphate",
+    "Is only produced in muscle cells",
+    "Cannot be broken down"
+   ],
+   "answer": 1,
+   "note": "ATP hydrolysis releases a small packet of energy usable by every cell — unlike one big glucose burn. Universal: all life uses ATP."
+  },
+  {
+   "id": "rs02",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "The overall equation for aerobic respiration is:",
+   "choices": [
+    "glucose → lactic acid + ATP",
+    "glucose + 6O₂ → 6CO₂ + 6H₂O (+ ATP)",
+    "CO₂ + H₂O → glucose + O₂",
+    "glucose → ethanol + CO₂"
+   ],
+   "answer": 1,
+   "note": "Same equation as photosynthesis reversed. Option 1 is anaerobic in animals; option 4 is anaerobic in yeast."
+  },
+  {
+   "id": "rs03",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "Where do glycolysis, the Krebs cycle and oxidative phosphorylation occur?",
+   "choices": [
+    "All in the mitochondrial matrix",
+    "Cytoplasm; matrix; inner mitochondrial membrane (cristae)",
+    "Nucleus; cytoplasm; matrix",
+    "All on the cristae"
+   ],
+   "answer": 1,
+   "note": "Location questions are near-guaranteed: glycolysis in the cytoplasm (before mitochondria evolved), Krebs in the matrix, ETC on the inner membrane."
+  },
+  {
+   "id": "rs04",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "Glycolysis produces:",
+   "choices": [
+    "2 pyruvate, net 2 ATP and 2 NADH from one glucose",
+    "36 ATP directly",
+    "One pyruvate and no ATP",
+    "Lactic acid and 2 ATP"
+   ],
+   "answer": 0,
+   "note": "Glucose (6C) split into 2 pyruvate (3C). 4 ATP produced, 2 invested → net 2. Works without oxygen."
+  },
+  {
+   "id": "rs05",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "The role of oxygen in aerobic respiration is to:",
+   "choices": [
+    "Donate electrons to NADH",
+    "Act as the terminal electron acceptor at the end of the ETC, forming water",
+    "Break down pyruvate in glycolysis",
+    "Pump protons directly"
+   ],
+   "answer": 1,
+   "note": "Oxygen combines with electrons and H⁻ at ETC's end → water. Without O₂ the ETC backs up and only anaerobic respiration continues."
+  },
+  {
+   "id": "rs06",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "In anaerobic respiration in human muscle, pyruvate is converted to:",
+   "choices": [
+    "Ethanol and CO₂",
+    "Lactate (lactic acid)",
+    "Acetyl-CoA",
+    "Glucose"
+   ],
+   "answer": 1,
+   "note": "Animals: lactate (muscle fatigue). Yeast/plants: ethanol + CO₂ (fermentation). Both regenerate NAD⁺ so glycolysis can continue."
+  },
+  {
+   "id": "rs07",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "Anaerobic respiration releases much less energy than aerobic respiration because:",
+   "choices": [
+    "Glucose is not fully oxidized — much energy remains in lactate/ethanol",
+    "Oxygen stores energy",
+    "The mitochondria stop working",
+    "ATP is destroyed"
+   ],
+   "answer": 0,
+   "note": "Only glycolysis runs (≈ 2 ATP). Lactate/ethanol still contain most of glucose's original energy."
+  },
+  {
+   "id": "rs08",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "In a respirometer with potassium hydroxide solution added, the pressure change measures:",
+   "choices": [
+    "CO₂ production",
+    "O₂ consumption (KOH absorbs the CO₂ produced)",
+    "Water production",
+    "ATP concentration"
+   ],
+   "answer": 1,
+   "note": "KOH removes CO₂, so the only gas change is O₂ decrease → fluid moves toward the organism. Controls: same temperature (water bath), same volume."
+  },
+  {
+   "id": "rs09",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "Chemiosmosis in oxidative phosphorylation refers to:",
+   "choices": [
+    "Direct substrate-level ATP synthesis",
+    "Protons pumped into the intermembrane space flowing back through ATP synthase",
+    "Glucose crossing the membrane",
+    "Electrons moving through the cytoplasm"
+   ],
+   "answer": 1,
+   "note": "ETC pumps H⁻ into the intermembrane space; the gradient drives ATP synthase. That's why cristae (surface area) matter."
+  },
+  {
+   "id": "rs10",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "NADH and FADH₂ produced in respiration:",
+   "choices": [
+    "Carry electrons and hydrogen to the electron transport chain",
+    "Are waste products excreted",
+    "Store energy as glucose",
+    "Transport oxygen"
+   ],
+   "answer": 0,
+   "note": "Hydrogen carriers (NADH from glycolysis/Krebs, FADH₂ from Krebs) deliver electrons to the ETC — where oxidative phosphorylation happens."
+  },
+  {
+   "id": "ps01",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "The correct sequence for gene expression is:",
+   "choices": [
+    "Protein → RNA → DNA",
+    "Transcription (DNA → mRNA) in the nucleus, then translation (mRNA → protein) at ribosomes",
+    "Translation in the nucleus, then transcription",
+    "DNA copied directly into protein"
+   ],
+   "answer": 1,
+   "note": "Eukaryotes: transcription in the nucleus, mRNA exits via pores, translation at ribosomes (free or on rough ER)."
+  },
+  {
+   "id": "ps02",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "Which enzyme unwinds DNA and joins RNA nucleotides during transcription?",
+   "choices": [
+    "DNA polymerase",
+    "RNA polymerase",
+    "Helicase only",
+    "Ligase"
+   ],
+   "answer": 1,
+   "note": "RNA polymerase does both jobs along the template strand, starting at the promoter and moving 3′ → 5′ to build mRNA 5′ → 3′."
+  },
+  {
+   "id": "ps03",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "One difference between RNA and DNA is that RNA:",
+   "choices": [
+    "Contains ribose and uracil instead of deoxyribose and thymine",
+    "Is always double-stranded",
+    "Contains thymine",
+    "Is never single-stranded"
+   ],
+   "answer": 0,
+   "note": "RNA: ribose sugar, uracil pairs with adenine, usually single-stranded. DNA: deoxyribose, thymine, double helix."
+  },
+  {
+   "id": "ps04",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "A sequence of three mRNA bases coding for one amino acid is a:",
+   "choices": [
+    "Gene",
+    "Codon",
+    "Anticodon",
+    "Triplet of tRNA"
+   ],
+   "answer": 1,
+   "note": "mRNA: codon. tRNA: anticodon. DNA: triplet. Three related words — exams test that you use the right one."
+  },
+  {
+   "id": "ps05",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "The genetic code is described as universal and degenerate. This means:",
+   "choices": [
+    "The same codons specify the same amino acids in nearly all organisms; several codons can code for the same amino acid",
+    "Each codon codes for many amino acids",
+    "Every organism has a different code",
+    "The code is random"
+   ],
+   "answer": 0,
+   "note": "Universality is why a human gene can be expressed in bacteria (GMO insulin). Degeneracy also buffers point mutations."
+  },
+  {
+   "id": "ps06",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "During translation, the anticodon of tRNA pairs with:",
+   "choices": [
+    "The DNA template strand",
+    "A complementary codon on mRNA",
+    "The amino acid it carries",
+    "The ribosome's subunit"
+   ],
+   "answer": 1,
+   "note": "tRNA: one end carries a specific amino acid; the anticodon loop base-pairs with the mRNA codon in the ribosome."
+  },
+  {
+   "id": "ps07",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "Peptide bonds between amino acids are formed:",
+   "choices": [
+    "By RNA polymerase",
+    "In the ribosome as the polypeptide grows during translation",
+    "In the nucleus during transcription",
+    "By tRNA synthetase"
+   ],
+   "answer": 1,
+   "note": "The ribosome catalyses peptide bonds between successive amino acids delivered by tRNAs."
+  },
+  {
+   "id": "ps08",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "In eukaryotes, the mRNA that leaves the nucleus has had its introns removed by:",
+   "choices": [
+    "Splicing",
+    "Translation",
+    "Replication",
+    "Osmosis"
+   ],
+   "answer": 0,
+   "note": "Pre-mRNA contains introns (non-coding) and exons (coding): splicing removes introns, joining exons into mature mRNA. (Bacterial mRNA needs no splicing.)"
+  },
+  {
+   "id": "ps09",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "The start codon AUG codes for:",
+   "choices": [
+    "Stop",
+    "Methionine — it also signals the start of translation",
+    "Alanine",
+    "Nothing — it is a spacer"
+   ],
+   "answer": 1,
+   "note": "AUG = methionine/start. Stop codons (UAA, UAG, UGA) do not code for an amino acid — they release the polypeptide."
+  },
+  {
+   "id": "wp01",
+   "format": "written",
+   "marks": 4,
+   "topic": "respiration-protein-synthesis",
+   "stem": "A respirometer contains a small mammal and KOH solution in a sealed chamber at constant temperature in a water bath. Explain what the movement of the fluid towards the chamber shows, and why temperature control is essential.",
+   "markscheme": [
+    "Respiration consumes O₂ and produces CO₂ (1)",
+    "KOH absorbs the CO₂, so the only gas change is O₂ decrease (1)",
+    "Decreased gas volume/pressure → fluid moves towards the chamber → rate of movement = O₂ consumption rate (1)",
+    "Temperature control: respiration rate depends on enzyme activity; without it, gas expansion from heat would confound the O₂ measurement (1)"
+   ],
+   "tactic": "Respirometer questions: KOH's job, the direction of movement, and the two controls (temperature, equal volume) — all three are commonly examined."
+  },
+  {
+   "id": "ps10",
+   "format": "written",
+   "marks": 4,
+   "topic": "respiration-protein-synthesis",
+   "stem": "Explain how the structure of tRNA allows it to fulfil its role in translation.",
+   "markscheme": [
+    "Cloverleaf shape held by base pairing — compact carrier (1)",
+    "Anticodon: three bases complementary to a specific mRNA codon → ensures the right amino acid is placed (1)",
+    "3′ end binds one specific amino acid, attached by an activating enzyme (1)",
+    "Delivers amino acids to the ribosome in the sequence dictated by mRNA codons (1)"
+   ],
+   "tactic": "Structure–function answer: anticodon pairs with codon (specificity) + amino acid binding site (delivery) + shape. Named parts, not vague 'it helps'."
+  },
+  {
+   "id": "rxx1",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "Glycolysis occurs in the cytoplasm and:",
+   "choices": [
+    "Requires oxygen",
+    "Produces 2 pyruvate, net 2 ATP and 2 NADH from one glucose",
+    "Occurs in the matrix",
+    "Produces ethanol directly in animals"
+   ],
+   "answer": 1,
+   "note": "Glycolysis predates mitochondria — it works without oxygen. 4 ATP produced, 2 invested → net 2.",
+   "topicLabel": "C1.2 — Cell respiration & D1.2 — Protein synthesis (Feb–Mar unit)"
+  },
+  {
+   "id": "rxx2",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "In the link reaction, pyruvate is converted to:",
+   "choices": [
+    "Lactate",
+    "Acetyl-CoA with release of CO₂",
+    "Glucose",
+    "Oxaloacetate"
+   ],
+   "answer": 1,
+   "note": "In the matrix: pyruvate decarboxylated and oxidized → acetyl-CoA + CO₂. Happens twice per glucose (2 pyruvates).",
+   "topicLabel": "C1.2 — Cell respiration & D1.2 — Protein synthesis (Feb–Mar unit)"
+  },
+  {
+   "id": "rxx3",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "Chemiosmosis in respiration refers to:",
+   "choices": [
+    "Protons pumped into the intermembrane space flowing back through ATP synthase",
+    "Glucose crossing membranes",
+    "O₂ dissolving in water",
+    "Electrons moving through the cytoplasm"
+   ],
+   "answer": 0,
+   "note": "The H⁻ gradient between intermembrane space and matrix drives ATP synthase — the cristae multiply the surface area for this.",
+   "topicLabel": "C1.2 — Cell respiration & D1.2 — Protein synthesis (Feb–Mar unit)"
+  },
+  {
+   "id": "rxx4",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "Yeast cells in anaerobic conditions convert pyruvate into:",
+   "choices": [
+    "Lactate",
+    "Ethanol and CO₂",
+    "Acetyl-CoA",
+    "Glycogen"
+   ],
+   "answer": 1,
+   "note": "Fermentation: ethanol + CO₂ (brewing, baking). Animals produce lactate instead. Both regenerate NAD⁺ for glycolysis.",
+   "topicLabel": "C1.2 — Cell respiration & D1.2 — Protein synthesis (Feb–Mar unit)"
+  },
+  {
+   "id": "rxx5",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "In intense exercise, human muscles produce lactate. This allows:",
+   "choices": [
+    "More ATP per glucose than aerobic respiration",
+    "Glycolysis to continue by regenerating NAD⁺",
+    "The use of oxygen directly",
+    "Lactate to be excreted as waste energy"
+   ],
+   "answer": 1,
+   "note": "Without regenerating NAD⁺, glycolysis would stop. Lactate is later converted back in the liver (oxygen debt).",
+   "topicLabel": "C1.2 — Cell respiration & D1.2 — Protein synthesis (Feb–Mar unit)"
+  },
+  {
+   "id": "rxx6",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "During translation, the anticodon of tRNA pairs with:",
+   "choices": [
+    "The DNA template strand",
+    "A complementary codon on mRNA",
+    "Another tRNA",
+    "The ribosome subunit"
+   ],
+   "answer": 1,
+   "note": "The ribosome base-pairs codon with anticodon; peptide bonds join the amino acids the tRNAs carry.",
+   "topicLabel": "C1.2 — Cell respiration & D1.2 — Protein synthesis (Feb–Mar unit)"
+  },
+  {
+   "id": "rxx7",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "The genetic code is universal, meaning:",
+   "choices": [
+    "All organisms share the same DNA bases",
+    "The same codons specify the same amino acids in nearly all organisms",
+    "All organisms have the same proteins",
+    "Translation is identical to transcription"
+   ],
+   "answer": 1,
+   "note": "Universality is why a human gene can be expressed by bacteria — the basis of genetic engineering (e.g. insulin production).",
+   "topicLabel": "C1.2 — Cell respiration & D1.2 — Protein synthesis (Feb–Mar unit)"
+  },
+  {
+   "id": "rxx8",
+   "format": "mcq",
+   "topic": "respiration-protein-synthesis",
+   "stem": "In eukaryotes, introns are removed from pre-mRNA by:",
+   "choices": [
+    "Splicing before the mRNA exits the nucleus",
+    "The ribosome during translation",
+    "DNA polymerase",
+    "tRNA molecules"
+   ],
+   "answer": 0,
+   "note": "Introns (non-coding) are cut out and exons joined → mature mRNA. Alternative splicing lets one gene yield several proteins (HL).",
+   "topicLabel": "C1.2 — Cell respiration & D1.2 — Protein synthesis (Feb–Mar unit)"
+  }
+ ]
 }

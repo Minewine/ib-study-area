@@ -1,75 +1,429 @@
 {
-  "subject": "biology-hl",
-  "topic": "unity-diversity-cells",
-  "topicLabel": "Unity & diversity — Cells, membranes & division",
-  "items": [
-    {"id": "b01", "format": "mcq", "stem": "Which structure is present in prokaryotic cells but absent in eukaryotic cells?",
-     "choices": ["Ribosomes", "Cell wall of peptidoglycan", "Plasma membrane", "Circular DNA free in the cytoplasm"], "answer": 3,
-     "note": "Prokaryotes have naked circular DNA (nucleoid); eukaryotic DNA is linear and enclosed in a nucleus. Both cell types have ribosomes and membranes."},
-    {"id": "b02", "format": "mcq", "stem": "The function of the Golgi apparatus is to:",
-     "choices": ["Synthesise lipids", "Modify, package and secrete proteins", "Generate ATP by aerobic respiration", "Store genetic material"], "answer": 1,
-     "note": "Golgi = protein processing and dispatch. Rough ER synthesises; mitochondria make ATP; the nucleus stores DNA."},
-    {"id": "b03", "format": "mcq", "stem": "Which process moves molecules against their concentration gradient using ATP and membrane proteins?",
-     "choices": ["Simple diffusion", "Facilitated diffusion", "Osmosis", "Active transport"], "answer": 3,
-     "note": "Two keywords define active transport: against the gradient + ATP. Facilitated diffusion uses proteins but no ATP and follows the gradient."},
-    {"id": "b04", "format": "mcq", "stem": "A cell is placed in a hypertonic solution. What happens to a plant cell?",
-     "choices": ["It swells and bursts", "It becomes turgid", "The membrane pulls away from the wall (plasmolysis)", "Nothing changes"], "answer": 2,
-     "note": "Hypertonic = water leaves = plasmolysis in plants, crenation in animals. Hypotonic is when plant cells become turgid."},
-    {"id": "b05", "format": "mcq", "stem": "Which phase of mitosis is characterised by chromosomes aligning on the equator of the cell?",
-     "choices": ["Prophase", "Metaphase", "Anaphase", "Telophase"], "answer": 1,
-     "note": "Metaphase = middle. Anaphase = sister chromatids pulled apart; prophase = condensation + spindle forms."},
-    {"id": "b06", "format": "mcq", "stem": "Cytokinesis in animal cells differs from plant cells because animal cells:",
-     "choices": ["Form a cell plate", "Form a cleavage furrow", "Do not divide their cytoplasm", "Form a new cell wall first"], "answer": 1,
-     "note": "Animals: cleavage furrow pinches the membrane. Plants: cell plate forms from vesicles (they have a wall, no furrow possible)."},
-    {"id": "b07", "format": "mcq", "stem": "Which property of phospholipids causes bilayer formation?",
-     "choices": ["Hydrophilic heads attracted to water, hydrophobic tails away from water", "Both ends are hydrophobic", "Both ends are hydrophilic", "They are fully saturated"], "answer": 0,
-     "note": "Amphipathic nature: heads face the aqueous sides, tails hide inside \u2014 the self-assembling bilayer."},
-    {"id": "b08", "format": "mcq", "stem": "Which statement about the fluid mosaic model is correct?",
-     "choices": ["Proteins are fixed in a rigid membrane", "Cholesterol decreases fluidity at high temperature and increases it at low temperature", "Glycoproteins are found only on the inner face", "Phospholipids cannot move laterally"], "answer": 1,
-     "note": "Cholesterol is the buffer: restrains motion when warm, prevents packing when cold. Glycoproteins face the extracellular side."},
-    {"id": "b09", "format": "mcq", "stem": "Stem cells are characterised by their ability to:",
-     "choices": ["Divide uncontrollably", "Self-renew and differentiate into specialised cells", "Undergo meiosis", "Fix mutations in somatic cells"], "answer": 1,
-     "note": "Two defining properties: self-renewal + potency (differentiation). Link to therapeutic uses (bone marrow transplants, Stargardt's disease trials)."},
-    {"id": "b10", "format": "mcq", "stem": "Which organelle would be most abundant in a pancreatic cell that secretes large amounts of digestive enzyme?",
-     "choices": ["Lysosomes only", "Rough ER and Golgi apparatus", "Chloroplasts", "Central vacuole"], "answer": 1,
-     "note": "Protein secretion chain: ribosomes \u2192 rough ER \u2192 Golgi \u2192 vesicles. Structure\u2013function links are common 1A marks."},
-    {"id": "b11", "format": "mcq", "stem": "Osmosis is best defined as the movement of water:",
-     "choices": ["across a membrane from low to high water potential", "across a partially permeable membrane from high to low water potential", "against a concentration gradient using ATP", "together with solutes through channel proteins"], "answer": 1,
-     "note": "Water moves from higher to lower water potential \u2014 equivalently, toward the higher solute concentration. ATP and channels belong to active transport and facilitated diffusion respectively."},
-    {"id": "b12", "format": "mcq", "stem": "Mitosis produces:",
-     "choices": ["Four genetically different haploid cells", "Two genetically identical diploid cells", "Two genetically different diploid cells", "Gametes for sexual reproduction"], "answer": 1,
-     "note": "Mitosis: 2 identical diploid cells (growth/repair). Meiosis: 4 different haploid cells (gametes). Mixing these up loses easy marks."},
-    {"id": "b13", "format": "mcq", "stem": "Which is evidence supporting the cell theory?",
-     "choices": ["Viruses reproduce inside host cells", "All observed living things are made of one or more cells", "Mitochondria contain DNA", "Crystals grow by division"], "answer": 1,
-     "note": "Cell theory: all living things are composed of cells; the cell is the basic unit; cells come from pre-existing cells. Viruses are the standard exception discussion."},
-    {"id": "b14", "format": "mcq", "stem": "Facilitated diffusion differs from simple diffusion because it:",
-     "choices": ["Requires ATP", "Uses channel or carrier proteins", "Moves water only", "Works against the gradient"], "answer": 1,
-     "note": "Protein-mediated, still passive (down the gradient, no ATP). Particular channels: aquaporins for water."},
-    {"id": "b15", "format": "mcq", "stem": "During which stage of the cell cycle does DNA replication occur?",
-     "choices": ["Mitotic (M) phase", "G1 phase", "S phase", "Cytokinesis"], "answer": 2,
-     "note": "S = synthesis of DNA, between G1 and G2 in interphase. Checkpoints at G1, G2 and during mitosis control progression."},
-    {"id": "b16", "format": "mcq", "stem": "Which structure controls what enters and leaves the cell?",
-     "choices": ["Cell wall", "Plasma membrane", "Nucleus", "Ribosome"], "answer": 1,
-     "note": "The membrane is selectively permeable \u2014 the wall is fully permeable to most small molecules; the membrane is the gatekeeper."},
-    {"id": "b17", "format": "mcq", "stem": "Endocytosis and exocytosis are alike because both:",
-     "choices": ["Are passive", "Require vesicles and ATP", "Use channel proteins", "Occur only in plant cells"], "answer": 1,
-     "note": "Bulk transport of material in membrane vesicles \u2014 active processes requiring ATP."},
-    {"id": "b18", "format": "mcq", "stem": "A magnified cell image shows a nucleus, mitochondria and a cellulose cell wall. The cell is:",
-     "choices": ["A prokaryote", "An animal cell", "A plant cell", "A fungus"], "answer": 2,
-     "note": "Nucleus + cellulose wall + mitochondria = plant. Fungi walls are chitin, not cellulose; prokaryotes have no nucleus."},
-    {"id": "b19", "format": "mcq", "stem": "Differentiated cells specialise because they:",
-     "choices": ["Lose all their genes", "Express different subsets of genes", "Contain different DNA", "Have mutated their genome"], "answer": 1,
-     "note": "All cells share the same genome; differential gene expression creates specialisation. Gene loss is wrong (except mature red blood cells' nuclei loss)."},
-    {"id": "b20", "format": "mcq", "stem": "Which experiment best demonstrates osmosis in living tissue?",
-     "choices": ["Weighing potato strips before and after immersion in sucrose solutions of different concentration", "Heating starch with iodine", "Boiling catalase with acid", "Observing chloroplasts under a microscope"], "answer": 0,
-     "note": "The classic potato/osmometer: mass change vs solution concentration gives an isotonic point. Data questions often reuse this setup in 1B."},
-    {"id": "b21", "format": "written", "marks": 4, "topic": "unity-diversity-cells",
-     "stem": "Explain how the properties of the phospholipid bilayer and membrane proteins together determine what can enter or leave a cell.",
-     "markscheme": ["Hydrophobic core of bilayer blocks large/polar molecules and ions (1)", "Small non-polar molecules (O\u2082, CO\u2082) diffuse freely through the bilayer (1)", "Channel/carrier proteins allow specific polar molecules/ions down the gradient (facilitated diffusion) (1)", "Pump proteins use ATP to move substances against the gradient \u2014 selectivity + control (1)"],
-     "tactic": "Structure\u2013function explanations: name the structure, state its property, then link to the consequence. Markers award per linked step."},
-    {"id": "b22", "format": "written", "marks": 3, "topic": "unity-diversity-cells",
-     "stem": "Potato strips of equal mass were placed in sucrose solutions of 0.0, 0.3 and 0.6 mol/dm\u00B3. After 1 hour masses were +12%, \u22121% and \u221215% respectively. Identify the approximate isotonic concentration and justify your answer.",
-     "markscheme": ["Zero mass change = no net water movement = isotonic (1)", "Mass change crosses from +12% to \u22121% between 0.0 and 0.3, so isotonic point lies slightly below 0.3 mol/dm\u00B3 (1)", "Interpolation: \u2248 0.28 mol/dm\u00B3 (accept 0.25\u20130.30) (1)"],
-     "tactic": "Data-response: state the principle (zero change = equilibrium), then read/interpolate the graph values, quoting units."}
-  ]
+ "subject": "biology-hl",
+ "topic": "unity-diversity-cells",
+ "topicLabel": "Unity & diversity — Cells, membranes & division",
+ "items": [
+  {
+   "id": "b01",
+   "format": "mcq",
+   "stem": "Which structure is present in prokaryotic cells but absent in eukaryotic cells?",
+   "choices": [
+    "Ribosomes",
+    "Cell wall of peptidoglycan",
+    "Plasma membrane",
+    "Circular DNA free in the cytoplasm"
+   ],
+   "answer": 3,
+   "note": "Prokaryotes have naked circular DNA (nucleoid); eukaryotic DNA is linear and enclosed in a nucleus. Both cell types have ribosomes and membranes."
+  },
+  {
+   "id": "b02",
+   "format": "mcq",
+   "stem": "The function of the Golgi apparatus is to:",
+   "choices": [
+    "Synthesise lipids",
+    "Modify, package and secrete proteins",
+    "Generate ATP by aerobic respiration",
+    "Store genetic material"
+   ],
+   "answer": 1,
+   "note": "Golgi = protein processing and dispatch. Rough ER synthesises; mitochondria make ATP; the nucleus stores DNA."
+  },
+  {
+   "id": "b03",
+   "format": "mcq",
+   "stem": "Which process moves molecules against their concentration gradient using ATP and membrane proteins?",
+   "choices": [
+    "Simple diffusion",
+    "Facilitated diffusion",
+    "Osmosis",
+    "Active transport"
+   ],
+   "answer": 3,
+   "note": "Two keywords define active transport: against the gradient + ATP. Facilitated diffusion uses proteins but no ATP and follows the gradient."
+  },
+  {
+   "id": "b04",
+   "format": "mcq",
+   "stem": "A cell is placed in a hypertonic solution. What happens to a plant cell?",
+   "choices": [
+    "It swells and bursts",
+    "It becomes turgid",
+    "The membrane pulls away from the wall (plasmolysis)",
+    "Nothing changes"
+   ],
+   "answer": 2,
+   "note": "Hypertonic = water leaves = plasmolysis in plants, crenation in animals. Hypotonic is when plant cells become turgid."
+  },
+  {
+   "id": "b05",
+   "format": "mcq",
+   "stem": "Which phase of mitosis is characterised by chromosomes aligning on the equator of the cell?",
+   "choices": [
+    "Prophase",
+    "Metaphase",
+    "Anaphase",
+    "Telophase"
+   ],
+   "answer": 1,
+   "note": "Metaphase = middle. Anaphase = sister chromatids pulled apart; prophase = condensation + spindle forms."
+  },
+  {
+   "id": "b06",
+   "format": "mcq",
+   "stem": "Cytokinesis in animal cells differs from plant cells because animal cells:",
+   "choices": [
+    "Form a cell plate",
+    "Form a cleavage furrow",
+    "Do not divide their cytoplasm",
+    "Form a new cell wall first"
+   ],
+   "answer": 1,
+   "note": "Animals: cleavage furrow pinches the membrane. Plants: cell plate forms from vesicles (they have a wall, no furrow possible)."
+  },
+  {
+   "id": "b07",
+   "format": "mcq",
+   "stem": "Which property of phospholipids causes bilayer formation?",
+   "choices": [
+    "Hydrophilic heads attracted to water, hydrophobic tails away from water",
+    "Both ends are hydrophobic",
+    "Both ends are hydrophilic",
+    "They are fully saturated"
+   ],
+   "answer": 0,
+   "note": "Amphipathic nature: heads face the aqueous sides, tails hide inside — the self-assembling bilayer."
+  },
+  {
+   "id": "b08",
+   "format": "mcq",
+   "stem": "Which statement about the fluid mosaic model is correct?",
+   "choices": [
+    "Proteins are fixed in a rigid membrane",
+    "Cholesterol decreases fluidity at high temperature and increases it at low temperature",
+    "Glycoproteins are found only on the inner face",
+    "Phospholipids cannot move laterally"
+   ],
+   "answer": 1,
+   "note": "Cholesterol is the buffer: restrains motion when warm, prevents packing when cold. Glycoproteins face the extracellular side."
+  },
+  {
+   "id": "b09",
+   "format": "mcq",
+   "stem": "Stem cells are characterised by their ability to:",
+   "choices": [
+    "Divide uncontrollably",
+    "Self-renew and differentiate into specialised cells",
+    "Undergo meiosis",
+    "Fix mutations in somatic cells"
+   ],
+   "answer": 1,
+   "note": "Two defining properties: self-renewal + potency (differentiation). Link to therapeutic uses (bone marrow transplants, Stargardt's disease trials)."
+  },
+  {
+   "id": "b10",
+   "format": "mcq",
+   "stem": "Which organelle would be most abundant in a pancreatic cell that secretes large amounts of digestive enzyme?",
+   "choices": [
+    "Lysosomes only",
+    "Rough ER and Golgi apparatus",
+    "Chloroplasts",
+    "Central vacuole"
+   ],
+   "answer": 1,
+   "note": "Protein secretion chain: ribosomes → rough ER → Golgi → vesicles. Structure–function links are common 1A marks."
+  },
+  {
+   "id": "b11",
+   "format": "mcq",
+   "stem": "Osmosis is best defined as the movement of water:",
+   "choices": [
+    "across a membrane from low to high water potential",
+    "across a partially permeable membrane from high to low water potential",
+    "against a concentration gradient using ATP",
+    "together with solutes through channel proteins"
+   ],
+   "answer": 1,
+   "note": "Water moves from higher to lower water potential — equivalently, toward the higher solute concentration. ATP and channels belong to active transport and facilitated diffusion respectively."
+  },
+  {
+   "id": "b12",
+   "format": "mcq",
+   "stem": "Mitosis produces:",
+   "choices": [
+    "Four genetically different haploid cells",
+    "Two genetically identical diploid cells",
+    "Two genetically different diploid cells",
+    "Gametes for sexual reproduction"
+   ],
+   "answer": 1,
+   "note": "Mitosis: 2 identical diploid cells (growth/repair). Meiosis: 4 different haploid cells (gametes). Mixing these up loses easy marks."
+  },
+  {
+   "id": "b13",
+   "format": "mcq",
+   "stem": "Which is evidence supporting the cell theory?",
+   "choices": [
+    "Viruses reproduce inside host cells",
+    "All observed living things are made of one or more cells",
+    "Mitochondria contain DNA",
+    "Crystals grow by division"
+   ],
+   "answer": 1,
+   "note": "Cell theory: all living things are composed of cells; the cell is the basic unit; cells come from pre-existing cells. Viruses are the standard exception discussion."
+  },
+  {
+   "id": "b14",
+   "format": "mcq",
+   "stem": "Facilitated diffusion differs from simple diffusion because it:",
+   "choices": [
+    "Requires ATP",
+    "Uses channel or carrier proteins",
+    "Moves water only",
+    "Works against the gradient"
+   ],
+   "answer": 1,
+   "note": "Protein-mediated, still passive (down the gradient, no ATP). Particular channels: aquaporins for water."
+  },
+  {
+   "id": "b15",
+   "format": "mcq",
+   "stem": "During which stage of the cell cycle does DNA replication occur?",
+   "choices": [
+    "Mitotic (M) phase",
+    "G1 phase",
+    "S phase",
+    "Cytokinesis"
+   ],
+   "answer": 2,
+   "note": "S = synthesis of DNA, between G1 and G2 in interphase. Checkpoints at G1, G2 and during mitosis control progression."
+  },
+  {
+   "id": "b16",
+   "format": "mcq",
+   "stem": "Which structure controls what enters and leaves the cell?",
+   "choices": [
+    "Cell wall",
+    "Plasma membrane",
+    "Nucleus",
+    "Ribosome"
+   ],
+   "answer": 1,
+   "note": "The membrane is selectively permeable — the wall is fully permeable to most small molecules; the membrane is the gatekeeper."
+  },
+  {
+   "id": "b17",
+   "format": "mcq",
+   "stem": "Endocytosis and exocytosis are alike because both:",
+   "choices": [
+    "Are passive",
+    "Require vesicles and ATP",
+    "Use channel proteins",
+    "Occur only in plant cells"
+   ],
+   "answer": 1,
+   "note": "Bulk transport of material in membrane vesicles — active processes requiring ATP."
+  },
+  {
+   "id": "b18",
+   "format": "mcq",
+   "stem": "A magnified cell image shows a nucleus, mitochondria and a cellulose cell wall. The cell is:",
+   "choices": [
+    "A prokaryote",
+    "An animal cell",
+    "A plant cell",
+    "A fungus"
+   ],
+   "answer": 2,
+   "note": "Nucleus + cellulose wall + mitochondria = plant. Fungi walls are chitin, not cellulose; prokaryotes have no nucleus."
+  },
+  {
+   "id": "b19",
+   "format": "mcq",
+   "stem": "Differentiated cells specialise because they:",
+   "choices": [
+    "Lose all their genes",
+    "Express different subsets of genes",
+    "Contain different DNA",
+    "Have mutated their genome"
+   ],
+   "answer": 1,
+   "note": "All cells share the same genome; differential gene expression creates specialisation. Gene loss is wrong (except mature red blood cells' nuclei loss)."
+  },
+  {
+   "id": "b20",
+   "format": "mcq",
+   "stem": "Which experiment best demonstrates osmosis in living tissue?",
+   "choices": [
+    "Weighing potato strips before and after immersion in sucrose solutions of different concentration",
+    "Heating starch with iodine",
+    "Boiling catalase with acid",
+    "Observing chloroplasts under a microscope"
+   ],
+   "answer": 0,
+   "note": "The classic potato/osmometer: mass change vs solution concentration gives an isotonic point. Data questions often reuse this setup in 1B."
+  },
+  {
+   "id": "b21",
+   "format": "written",
+   "marks": 4,
+   "topic": "unity-diversity-cells",
+   "stem": "Explain how the properties of the phospholipid bilayer and membrane proteins together determine what can enter or leave a cell.",
+   "markscheme": [
+    "Hydrophobic core of bilayer blocks large/polar molecules and ions (1)",
+    "Small non-polar molecules (O₂, CO₂) diffuse freely through the bilayer (1)",
+    "Channel/carrier proteins allow specific polar molecules/ions down the gradient (facilitated diffusion) (1)",
+    "Pump proteins use ATP to move substances against the gradient — selectivity + control (1)"
+   ],
+   "tactic": "Structure–function explanations: name the structure, state its property, then link to the consequence. Markers award per linked step."
+  },
+  {
+   "id": "b22",
+   "format": "written",
+   "marks": 3,
+   "topic": "unity-diversity-cells",
+   "stem": "Potato strips of equal mass were placed in sucrose solutions of 0.0, 0.3 and 0.6 mol/dm³. After 1 hour masses were +12%, −1% and −15% respectively. Identify the approximate isotonic concentration and justify your answer.",
+   "markscheme": [
+    "Zero mass change = no net water movement = isotonic (1)",
+    "Mass change crosses from +12% to −1% between 0.0 and 0.3, so isotonic point lies slightly below 0.3 mol/dm³ (1)",
+    "Interpolation: ≈ 0.28 mol/dm³ (accept 0.25–0.30) (1)"
+   ],
+   "tactic": "Data-response: state the principle (zero change = equilibrium), then read/interpolate the graph values, quoting units."
+  },
+  {
+   "id": "ucx1",
+   "format": "mcq",
+   "topic": "unity-diversity-cells",
+   "stem": "A cell image measures 50 mm under a ×500 magnification. Its actual size is:",
+   "choices": [
+    "100 µm",
+    "0.1 mm = 100 µm",
+    "25 mm",
+    "500 µm"
+   ],
+   "answer": 1,
+   "note": "Actual size = image size / magnification = 50 mm / 500 = 0.1 mm = 100 µm. Convert units carefully: 1 mm = 1000 µm.",
+   "topicLabel": "Unity & diversity — Cells, membranes & division"
+  },
+  {
+   "id": "ucx2",
+   "format": "mcq",
+   "topic": "unity-diversity-cells",
+   "stem": "Which features belong to prokaryotic cells?",
+   "choices": [
+    "Nucleus and 80S ribosomes",
+    "Circular naked DNA, 70S ribosomes and a peptidoglycan cell wall",
+    "Mitochondria and linear DNA with histones",
+    "Lysosomes and a nucleus"
+   ],
+   "answer": 1,
+   "note": "Prokaryotes: no nucleus (naked circular DNA in the cytoplasm), 70S ribosomes, peptidoglycan walls, binary fission. No membrane-bound organelles.",
+   "topicLabel": "Unity & diversity — Cells, membranes & division"
+  },
+  {
+   "id": "ucx3",
+   "format": "mcq",
+   "topic": "unity-diversity-cells",
+   "stem": "A defining feature of eukaryotic cells is:",
+   "choices": [
+    "A cell wall of peptidoglycan",
+    "DNA enclosed in a nucleus plus membrane-bound organelles",
+    "Absence of ribosomes",
+    "Circular DNA in the cytoplasm"
+   ],
+   "answer": 1,
+   "note": "Compartmentalization: reactions that conflict (e.g. lysosome digestion vs cytoplasm synthesis) can be separated, and the nucleus protects the DNA.",
+   "topicLabel": "Unity & diversity — Cells, membranes & division"
+  },
+  {
+   "id": "ucx4",
+   "format": "mcq",
+   "topic": "unity-diversity-cells",
+   "stem": "Rough endoplasmic reticulum differs from smooth ER because rough ER has:",
+   "choices": [
+    "Ribosomes on its surface for protein synthesis",
+    "DNA inside",
+    "Enzymes for lipid breakdown",
+    "No connection to the nucleus"
+   ],
+   "answer": 0,
+   "note": "Rough ER = studded with ribosomes → synthesizes proteins for secretion. Smooth ER makes lipids and detoxifies.",
+   "topicLabel": "Unity & diversity — Cells, membranes & division"
+  },
+  {
+   "id": "ucx5",
+   "format": "mcq",
+   "topic": "unity-diversity-cells",
+   "stem": "The Golgi apparatus's main role is:",
+   "choices": [
+    "ATP production",
+    "Modifying, sorting and packaging proteins into vesicles for secretion",
+    "Photosynthesis",
+    "Storing water"
+   ],
+   "answer": 1,
+   "note": "Proteins from the rough ER arrive at the Golgi, are modified (e.g. carbohydrates added) and dispatched in vesicles to the membrane.",
+   "topicLabel": "Unity & diversity — Cells, membranes & division"
+  },
+  {
+   "id": "ucx6",
+   "format": "mcq",
+   "topic": "unity-diversity-cells",
+   "stem": "Lysosomes function by:",
+   "choices": [
+    "Synthesizing proteins",
+    "Containing hydrolytic enzymes that digest worn-out organelles and pathogens",
+    "Producing ATP",
+    "Storing starch"
+   ],
+   "answer": 1,
+   "note": "Hydrolytic enzymes at acidic internal pH. Also recycle cell components (autophagy). A burst releases enzymes → cell self-digestion.",
+   "topicLabel": "Unity & diversity — Cells, membranes & division"
+  },
+  {
+   "id": "ucx7",
+   "format": "mcq",
+   "topic": "unity-diversity-cells",
+   "stem": "A nerve cell and a muscle cell in one organism look completely different but contain the same genes because:",
+   "choices": [
+    "They lost different genes during development",
+    "They express different subsets of the same genome",
+    "Their DNA mutates differently",
+    "Each cell makes its own genes"
+   ],
+   "answer": 1,
+   "note": "Differentiation = selective gene expression. Every nucleus holds the full genome; only the expressed subset differs.",
+   "topicLabel": "Unity & diversity — Cells, membranes & division"
+  },
+  {
+   "id": "ucx8",
+   "format": "mcq",
+   "topic": "unity-diversity-cells",
+   "stem": "In chloroplasts, the light-dependent reactions of photosynthesis occur in the:",
+   "choices": [
+    "Stroma",
+    "Thylakoid membranes stacked into grana",
+    "Outer envelope",
+    "Nucleoid"
+   ],
+   "answer": 1,
+   "note": "Thylakoid membranes hold the photosystems; the stroma (fluid) hosts the Calvin cycle. Structure–function link repeated in the photosynthesis topic.",
+   "topicLabel": "Unity & diversity — Cells, membranes & division"
+  },
+  {
+   "id": "ucx9",
+   "format": "written",
+   "marks": 4,
+   "topic": "unity-diversity-cells",
+   "stem": "Compare prokaryotic and eukaryotic cells, giving three differences and one similarity.",
+   "markscheme": [
+    "Prokaryotes: naked circular DNA in the cytoplasm; eukaryotes: linear DNA with histones inside a nucleus (1)",
+    "Prokaryotes: no membrane-bound organelles; eukaryotes: mitochondria/ER/Golgi etc. (1)",
+    "Both have plasma membranes, ribosomes (70S vs 80S), cytoplasm and DNA as genetic material (1)",
+    "Prokaryotes divide by binary fission; eukaryotes by mitosis/meiosis (1)"
+   ],
+   "tactic": "Compare items: pair every difference (A vs B on the same line). A table format prevents the common error of listing features of one cell only.",
+   "topicLabel": "Unity & diversity — Cells, membranes & division"
+  }
+ ]
 }

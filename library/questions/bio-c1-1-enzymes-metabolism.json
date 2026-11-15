@@ -1,75 +1,433 @@
 {
-  "subject": "biology-hl",
-  "topic": "c1-1-enzymes-metabolism",
-  "topicLabel": "C1.1 — Enzymes & metabolism (Nov unit)",
-  "items": [
-    {"id": "e01", "format": "mcq", "topic": "c1-1-enzymes-metabolism", "stem": "Enzymes speed up reactions by:",
-     "choices": ["Raising the activation energy", "Lowering the activation energy", "Changing the reaction's enthalpy change", "Increasing the temperature of the cell"], "answer": 1,
-     "note": "Catalysts lower activation energy so more collisions succeed. The \u0394G/\u0394H of the reaction and the equilibrium position are unchanged."},
-    {"id": "e02", "format": "mcq", "topic": "c1-1-enzymes-metabolism", "stem": "The specificity of an enzyme is determined by:",
-     "choices": ["Its amino acid sequence folding into a complementary active site", "The substrate's ability to donate electrons", "The number of peptide bonds it contains", "Its molecular mass"], "answer": 0,
-     "note": "The active site's shape and chemical properties (charge, hydrophobicity) select the substrate \u2014 structure determines function."},
-    {"id": "e03", "format": "mcq", "topic": "c1-1-enzymes-metabolism", "stem": "Which model of enzyme action includes a change in the shape of the active site when the substrate binds?",
-     "choices": ["Lock-and-key model", "Induced-fit model", "Fluid mosaic model", "Sliding filament model"], "answer": 1,
-     "note": "Induced fit: binding induces conformational changes that improve catalysis. Lock-and-key has a rigid site \u2014 the older model."},
-    {"id": "e04", "format": "mcq", "topic": "c1-1-enzymes-metabolism", "stem": "An enzyme solution loses catalytic activity permanently after being boiled. The most likely cause is:",
-     "choices": ["Substrate evaporation", "Denaturation of the enzyme's tertiary structure", "A rise in activation energy of the substrate", "Breakage of peptide bonds"], "answer": 1,
-     "note": "Heat breaks hydrogen bonds and other weak interactions, distorting the active site \u2014 denaturation. Peptide (covalent) bonds survive boiling."},
-    {"id": "e05", "format": "mcq", "topic": "c1-1-enzymes-metabolism", "stem": "Above the optimum temperature, enzyme activity falls sharply because:",
-     "choices": ["Substrate freezes", "Increased vibrations break the bonds holding the active site shape", "The enzyme becomes a competitive inhibitor", "pH suddenly changes"], "answer": 1,
-     "note": "Below the optimum, rate rises with kinetic energy; above it, denaturation destroys activity \u2014 the asymmetric curve is a classic 1B data question."},
-    {"id": "e06", "format": "mcq", "topic": "c1-1-enzymes-metabolism", "stem": "An enzyme secreted into the stomach most likely has an optimum pH close to:",
-     "choices": ["2", "7", "9", "11"], "answer": 0,
-     "note": "Each enzyme's optimum matches its environment: stomach \u2248 2, mouth/intestine \u2248 neutral. Changing pH alters charges at the active site."},
-    {"id": "e07", "format": "mcq", "topic": "c1-1-enzymes-metabolism", "stem": "At very high substrate concentration the rate of an enzyme-catalysed reaction plateaus because:",
-     "choices": ["The enzyme denatures", "All active sites are occupied (the enzyme is the limiting factor)", "The substrate runs out", "The products inhibit water"], "answer": 1,
-     "note": "Saturation: rate then depends on enzyme concentration. Reading the plateau on a graph is a common data question in 1B."},
-    {"id": "e08", "format": "mcq", "topic": "c1-1-enzymes-metabolism", "stem": "Which change most reduces the effect of a competitive inhibitor?",
-     "choices": ["Adding more inhibitor", "Increasing the substrate concentration", "Lowering the temperature", "Adding a non-competitive inhibitor"], "answer": 1,
-     "note": "Competitive inhibitors compete for the active site \u2014 flooding with substrate outcompetes them. Non-competitive inhibition is unaffected by [S]."},
-    {"id": "e09", "format": "mcq", "topic": "c1-1-enzymes-metabolism", "stem": "A non-competitive inhibitor differs from a competitive inhibitor because it binds:",
-     "choices": ["The active site with the same shape as the substrate", "An allosteric site, changing the active site's shape", "Directly to DNA", "Only to denatured enzymes"], "answer": 1,
-     "note": "Allosteric binding distorts the active site; raising substrate concentration does not restore rate \u2014 the key experimental distinction."},
-    {"id": "e10", "format": "mcq", "topic": "c1-1-enzymes-metabolism", "stem": "Which quantity is NOT changed by an enzyme?",
-     "choices": ["Rate of the forward reaction", "Activation energy", "The position of equilibrium / \u0394G of the reaction", "The rate at which equilibrium is reached"], "answer": 2,
-     "note": "Enzymes change kinetics, not thermodynamics: same \u0394G, same equilibrium, reached faster. Frequently asked as a distractor set."},
-    {"id": "e11", "format": "mcq", "topic": "c1-1-enzymes-metabolism", "stem": "In a metabolic pathway such as a reaction chain, each step is usually catalysed by:",
-     "choices": ["The same enzyme throughout", "A different specific enzyme", "Ribozymes only", "The product of the final step"], "answer": 1,
-     "note": "One enzyme per step \u2014 which is what makes end-product inhibition possible at a single step."},
-    {"id": "e12", "format": "mcq", "topic": "c1-1-enzymes-metabolism", "stem": "In the pathway from threonine to isoleucine, the final product (isoleucine) inhibits the first enzyme. This is an example of:",
-     "choices": ["Competitive inhibition by a similar substrate", "End-product (negative feedback) inhibition", "Denaturation by product accumulation", "Irreversible enzyme damage"], "answer": 1,
-     "note": "The textbook pathway: when isoleucine is abundant it binds allosterically to the first enzyme, shutting the pathway down \u2014 efficient metabolic regulation."},
-    {"id": "e13", "format": "mcq", "topic": "c1-1-enzymes-metabolism", "stem": "The hydrolysis of starch into glucose is an example of:",
-     "choices": ["Anabolism", "Catabolism", "Photosynthesis", "Condensation"], "answer": 1,
-     "note": "Catabolism breaks large molecules into smaller ones (often hydrolysis); anabolism builds (often condensation) and usually requires energy input."},
-    {"id": "e14", "format": "mcq", "topic": "c1-1-enzymes-metabolism", "stem": "Salivary amylase digests starch in the mouth. It is therefore an example of:",
-     "choices": ["An intracellular enzyme", "An extracellular enzyme", "A ribozyme", "An immobilised enzyme"], "answer": 1,
-     "note": "Extracellular enzymes work outside the cells that made them (digestion is the classic set); most metabolic enzymes work intracellularly."},
-    {"id": "e15", "format": "mcq", "topic": "c1-1-enzymes-metabolism", "stem": "Almost all enzymes are:",
-     "choices": ["Lipids", "Proteins (with a few RNA exceptions)", "Carbohydrates", "Nucleotides"], "answer": 1,
-     "note": "Globular proteins dominate; catalytic RNA (ribozymes) exists \u2014 a favourite 'exception' question."},
-    {"id": "e16", "format": "mcq", "topic": "c1-1-enzymes-metabolism", "stem": "Some enzymes require a non-protein helper to function. An inorganic metal ion serving this role is called a:",
-     "choices": ["Cofactor", "Coenzyme", "Substrate", "Prosthetic inhibitor"], "answer": 0,
-     "note": "Cofactors include inorganic ions (e.g. Zn\u00B2\u207A, Mg\u00B2\u207A); organic helpers are coenzymes (many derived from vitamins)."},
-    {"id": "e17", "format": "mcq", "topic": "c1-1-enzymes-metabolism", "stem": "Enzyme-controlled metabolism in cells proceeds at moderate temperatures rather than high temperatures because:",
-     "choices": ["High temperatures increase activation energy", "Enzymes denature above their optimum", "Water evaporates from substrates", "Cells cannot generate heat"], "answer": 1,
-     "note": "Cells sustain the conditions enzymes need \u2014 aqueous, mild pH, stable temperature. Link back to the denaturation mechanism."},
-    {"id": "e18", "format": "mcq", "topic": "c1-1-enzymes-metabolism", "stem": "Which is an advantage of using immobilised enzymes in industry?",
-     "choices": ["They cannot denature", "They can be reused and easily separated from products", "They work without substrates", "They require boiling temperatures"], "answer": 1,
-     "note": "Immobilisation (on beads/membranes) allows repeated use, easy product separation and often greater heat stability \u2014 e.g. lactose-free milk production."},
-    {"id": "e19", "format": "mcq", "topic": "c1-1-enzymes-metabolism", "stem": "In the catalase-and-hydrogen-peroxide filter paper disk experiment, the reaction rate is measured by:",
-     "choices": ["pH change of the solution", "The time taken for disks to float (rate of O\u2082 production)", "Colour change of iodine", "Mass loss of the enzyme"], "answer": 1,
-     "note": "Catalase decomposes H\u2082O\u2082 to O\u2082 + water; O\u2082 bubbles lift the disks. Your ISL November IA practice on hydrogen peroxide uses exactly this system."},
-    {"id": "e20", "format": "mcq", "topic": "c1-1-enzymes-metabolism", "stem": "In an enzyme experiment, a tube containing boiled enzyme alongside the active-enzyme tube serves as a:",
-     "choices": ["Positive control", "Negative control", "Second data point", "Replicate"], "answer": 1,
-     "note": "Boiled enzyme shows the baseline \u2014 no catalysis \u2014 proving that any change in the active tube is enzyme-dependent. Control design earns IA marks."},
-    {"id": "e21", "format": "written", "marks": 4, "topic": "c1-1-enzymes-metabolism",
-     "stem": "Describe, with reasons, how the rate of an enzyme-catalysed reaction changes as temperature rises from well below the optimum to well above it.",
-     "markscheme": ["Low temperature: rate increases as temperature rises \u2014 molecules gain kinetic energy, more successful collisions (1)", "At the optimum: maximum rate \u2014 highest collision frequency without damage (1)", "Above the optimum: rate falls steeply (1)", "Reason: increased vibration breaks hydrogen bonds, tertiary structure and active site distort (denaturation) \u2014 irreversible (1)"],
-     "tactic": "Temperature-curve questions need both halves: the kinetic-energy rise AND the denaturation fall. A labelled sketch plus reasons is the full-mark shape."},
-    {"id": "e22", "format": "written", "marks": 3, "topic": "c1-1-enzymes-metabolism",
-     "stem": "Distinguish between competitive and non-competitive inhibition of enzymes.",
-     "markscheme": ["Competitive: inhibitor resembles the substrate and binds the active site (1)", "Non-competitive: inhibitor binds an allosteric site, distorting the active site so the substrate binds less effectively (1)", "Effect of substrate concentration: raising [S] reduces competitive inhibition but does not overcome non-competitive inhibition (1)"],
-     "tactic": "Three-part distinction: where each binds, what it does to the active site, and how [S] affects rate. Statins and cyanide make good examples."}
-  ]
+ "subject": "biology-hl",
+ "topic": "c1-1-enzymes-metabolism",
+ "topicLabel": "C1.1 — Enzymes & metabolism (Nov unit)",
+ "items": [
+  {
+   "id": "e01",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "Enzymes speed up reactions by:",
+   "choices": [
+    "Raising the activation energy",
+    "Lowering the activation energy",
+    "Changing the reaction's enthalpy change",
+    "Increasing the temperature of the cell"
+   ],
+   "answer": 1,
+   "note": "Catalysts lower activation energy so more collisions succeed. The ΔG/ΔH of the reaction and the equilibrium position are unchanged."
+  },
+  {
+   "id": "e02",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "The specificity of an enzyme is determined by:",
+   "choices": [
+    "Its amino acid sequence folding into a complementary active site",
+    "The substrate's ability to donate electrons",
+    "The number of peptide bonds it contains",
+    "Its molecular mass"
+   ],
+   "answer": 0,
+   "note": "The active site's shape and chemical properties (charge, hydrophobicity) select the substrate — structure determines function."
+  },
+  {
+   "id": "e03",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "Which model of enzyme action includes a change in the shape of the active site when the substrate binds?",
+   "choices": [
+    "Lock-and-key model",
+    "Induced-fit model",
+    "Fluid mosaic model",
+    "Sliding filament model"
+   ],
+   "answer": 1,
+   "note": "Induced fit: binding induces conformational changes that improve catalysis. Lock-and-key has a rigid site — the older model."
+  },
+  {
+   "id": "e04",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "An enzyme solution loses catalytic activity permanently after being boiled. The most likely cause is:",
+   "choices": [
+    "Substrate evaporation",
+    "Denaturation of the enzyme's tertiary structure",
+    "A rise in activation energy of the substrate",
+    "Breakage of peptide bonds"
+   ],
+   "answer": 1,
+   "note": "Heat breaks hydrogen bonds and other weak interactions, distorting the active site — denaturation. Peptide (covalent) bonds survive boiling."
+  },
+  {
+   "id": "e05",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "Above the optimum temperature, enzyme activity falls sharply because:",
+   "choices": [
+    "Substrate freezes",
+    "Increased vibrations break the bonds holding the active site shape",
+    "The enzyme becomes a competitive inhibitor",
+    "pH suddenly changes"
+   ],
+   "answer": 1,
+   "note": "Below the optimum, rate rises with kinetic energy; above it, denaturation destroys activity — the asymmetric curve is a classic 1B data question."
+  },
+  {
+   "id": "e06",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "An enzyme secreted into the stomach most likely has an optimum pH close to:",
+   "choices": [
+    "2",
+    "7",
+    "9",
+    "11"
+   ],
+   "answer": 0,
+   "note": "Each enzyme's optimum matches its environment: stomach ≈ 2, mouth/intestine ≈ neutral. Changing pH alters charges at the active site."
+  },
+  {
+   "id": "e07",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "At very high substrate concentration the rate of an enzyme-catalysed reaction plateaus because:",
+   "choices": [
+    "The enzyme denatures",
+    "All active sites are occupied (the enzyme is the limiting factor)",
+    "The substrate runs out",
+    "The products inhibit water"
+   ],
+   "answer": 1,
+   "note": "Saturation: rate then depends on enzyme concentration. Reading the plateau on a graph is a common data question in 1B."
+  },
+  {
+   "id": "e08",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "Which change most reduces the effect of a competitive inhibitor?",
+   "choices": [
+    "Adding more inhibitor",
+    "Increasing the substrate concentration",
+    "Lowering the temperature",
+    "Adding a non-competitive inhibitor"
+   ],
+   "answer": 1,
+   "note": "Competitive inhibitors compete for the active site — flooding with substrate outcompetes them. Non-competitive inhibition is unaffected by [S]."
+  },
+  {
+   "id": "e09",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "A non-competitive inhibitor differs from a competitive inhibitor because it binds:",
+   "choices": [
+    "The active site with the same shape as the substrate",
+    "An allosteric site, changing the active site's shape",
+    "Directly to DNA",
+    "Only to denatured enzymes"
+   ],
+   "answer": 1,
+   "note": "Allosteric binding distorts the active site; raising substrate concentration does not restore rate — the key experimental distinction."
+  },
+  {
+   "id": "e10",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "Which quantity is NOT changed by an enzyme?",
+   "choices": [
+    "Rate of the forward reaction",
+    "Activation energy",
+    "The position of equilibrium / ΔG of the reaction",
+    "The rate at which equilibrium is reached"
+   ],
+   "answer": 2,
+   "note": "Enzymes change kinetics, not thermodynamics: same ΔG, same equilibrium, reached faster. Frequently asked as a distractor set."
+  },
+  {
+   "id": "e11",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "In a metabolic pathway such as a reaction chain, each step is usually catalysed by:",
+   "choices": [
+    "The same enzyme throughout",
+    "A different specific enzyme",
+    "Ribozymes only",
+    "The product of the final step"
+   ],
+   "answer": 1,
+   "note": "One enzyme per step — which is what makes end-product inhibition possible at a single step."
+  },
+  {
+   "id": "e12",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "In the pathway from threonine to isoleucine, the final product (isoleucine) inhibits the first enzyme. This is an example of:",
+   "choices": [
+    "Competitive inhibition by a similar substrate",
+    "End-product (negative feedback) inhibition",
+    "Denaturation by product accumulation",
+    "Irreversible enzyme damage"
+   ],
+   "answer": 1,
+   "note": "The textbook pathway: when isoleucine is abundant it binds allosterically to the first enzyme, shutting the pathway down — efficient metabolic regulation."
+  },
+  {
+   "id": "e13",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "The hydrolysis of starch into glucose is an example of:",
+   "choices": [
+    "Anabolism",
+    "Catabolism",
+    "Photosynthesis",
+    "Condensation"
+   ],
+   "answer": 1,
+   "note": "Catabolism breaks large molecules into smaller ones (often hydrolysis); anabolism builds (often condensation) and usually requires energy input."
+  },
+  {
+   "id": "e14",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "Salivary amylase digests starch in the mouth. It is therefore an example of:",
+   "choices": [
+    "An intracellular enzyme",
+    "An extracellular enzyme",
+    "A ribozyme",
+    "An immobilised enzyme"
+   ],
+   "answer": 1,
+   "note": "Extracellular enzymes work outside the cells that made them (digestion is the classic set); most metabolic enzymes work intracellularly."
+  },
+  {
+   "id": "e15",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "Almost all enzymes are:",
+   "choices": [
+    "Lipids",
+    "Proteins (with a few RNA exceptions)",
+    "Carbohydrates",
+    "Nucleotides"
+   ],
+   "answer": 1,
+   "note": "Globular proteins dominate; catalytic RNA (ribozymes) exists — a favourite 'exception' question."
+  },
+  {
+   "id": "e16",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "Some enzymes require a non-protein helper to function. An inorganic metal ion serving this role is called a:",
+   "choices": [
+    "Cofactor",
+    "Coenzyme",
+    "Substrate",
+    "Prosthetic inhibitor"
+   ],
+   "answer": 0,
+   "note": "Cofactors include inorganic ions (e.g. Zn²⁺, Mg²⁺); organic helpers are coenzymes (many derived from vitamins)."
+  },
+  {
+   "id": "e17",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "Enzyme-controlled metabolism in cells proceeds at moderate temperatures rather than high temperatures because:",
+   "choices": [
+    "High temperatures increase activation energy",
+    "Enzymes denature above their optimum",
+    "Water evaporates from substrates",
+    "Cells cannot generate heat"
+   ],
+   "answer": 1,
+   "note": "Cells sustain the conditions enzymes need — aqueous, mild pH, stable temperature. Link back to the denaturation mechanism."
+  },
+  {
+   "id": "e18",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "Which is an advantage of using immobilised enzymes in industry?",
+   "choices": [
+    "They cannot denature",
+    "They can be reused and easily separated from products",
+    "They work without substrates",
+    "They require boiling temperatures"
+   ],
+   "answer": 1,
+   "note": "Immobilisation (on beads/membranes) allows repeated use, easy product separation and often greater heat stability — e.g. lactose-free milk production."
+  },
+  {
+   "id": "e19",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "In the catalase-and-hydrogen-peroxide filter paper disk experiment, the reaction rate is measured by:",
+   "choices": [
+    "pH change of the solution",
+    "The time taken for disks to float (rate of O₂ production)",
+    "Colour change of iodine",
+    "Mass loss of the enzyme"
+   ],
+   "answer": 1,
+   "note": "Catalase decomposes H₂O₂ to O₂ + water; O₂ bubbles lift the disks. Your ISL November IA practice on hydrogen peroxide uses exactly this system."
+  },
+  {
+   "id": "e20",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "In an enzyme experiment, a tube containing boiled enzyme alongside the active-enzyme tube serves as a:",
+   "choices": [
+    "Positive control",
+    "Negative control",
+    "Second data point",
+    "Replicate"
+   ],
+   "answer": 1,
+   "note": "Boiled enzyme shows the baseline — no catalysis — proving that any change in the active tube is enzyme-dependent. Control design earns IA marks."
+  },
+  {
+   "id": "e21",
+   "format": "written",
+   "marks": 4,
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "Describe, with reasons, how the rate of an enzyme-catalysed reaction changes as temperature rises from well below the optimum to well above it.",
+   "markscheme": [
+    "Low temperature: rate increases as temperature rises — molecules gain kinetic energy, more successful collisions (1)",
+    "At the optimum: maximum rate — highest collision frequency without damage (1)",
+    "Above the optimum: rate falls steeply (1)",
+    "Reason: increased vibration breaks hydrogen bonds, tertiary structure and active site distort (denaturation) — irreversible (1)"
+   ],
+   "tactic": "Temperature-curve questions need both halves: the kinetic-energy rise AND the denaturation fall. A labelled sketch plus reasons is the full-mark shape."
+  },
+  {
+   "id": "e22",
+   "format": "written",
+   "marks": 3,
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "Distinguish between competitive and non-competitive inhibition of enzymes.",
+   "markscheme": [
+    "Competitive: inhibitor resembles the substrate and binds the active site (1)",
+    "Non-competitive: inhibitor binds an allosteric site, distorting the active site so the substrate binds less effectively (1)",
+    "Effect of substrate concentration: raising [S] reduces competitive inhibition but does not overcome non-competitive inhibition (1)"
+   ],
+   "tactic": "Three-part distinction: where each binds, what it does to the active site, and how [S] affects rate. Statins and cyanide make good examples."
+  },
+  {
+   "id": "enx1",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "The induced-fit model improves on the lock-and-key model because it explains:",
+   "choices": [
+    "Why enzymes are proteins",
+    "How the active site changes shape on substrate binding, improving catalysis",
+    "Why enzymes denature",
+    "How all substrates fit any enzyme"
+   ],
+   "answer": 1,
+   "note": "Binding induces conformational changes that strain bonds and position groups — increasing catalytic efficiency beyond a rigid lock.",
+   "topicLabel": "C1.1 — Enzymes & metabolism (Nov unit)"
+  },
+  {
+   "id": "enx2",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "With substrate in excess, doubling the enzyme concentration will:",
+   "choices": [
+    "Double the maximum rate",
+    "Halve the rate",
+    "Have no effect",
+    "Denature the enzyme"
+   ],
+   "answer": 0,
+   "note": "Rate ∝ enzyme concentration when substrate is not limiting — more active sites available. The plateau of the [S] curve appears sooner.",
+   "topicLabel": "C1.1 — Enzymes & metabolism (Nov unit)"
+  },
+  {
+   "id": "enx3",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "A competitive inhibitor can be overcome by:",
+   "choices": [
+    "Increasing substrate concentration",
+    "Adding a non-competitive inhibitor",
+    "Heating the mixture",
+    "Adding more inhibitor"
+   ],
+   "answer": 0,
+   "note": "More substrate outcompetes the inhibitor for the active site. Vmax is still reached — only the apparent Km changes.",
+   "topicLabel": "C1.1 — Enzymes & metabolism (Nov unit)"
+  },
+  {
+   "id": "enx4",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "A non-competitive inhibitor binds an allosteric site. Its effect on the rate curve is:",
+   "choices": [
+    "Vmax unchanged, Km increased",
+    "Vmax decreased, Km unchanged",
+    "Both Vmax and Km increased",
+    "No effect at all"
+   ],
+   "answer": 1,
+   "note": "Allosteric binding distorts the active site — fewer functioning enzymes → lower Vmax. Substrate concentration cannot overcome it.",
+   "topicLabel": "C1.1 — Enzymes & metabolism (Nov unit)"
+  },
+  {
+   "id": "enx5",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "End-product inhibition is efficient for the cell because it:",
+   "choices": [
+    "Destroys excess end product",
+    "Prevents over-accumulation of intermediates and wasted energy",
+    "Speeds the whole pathway permanently",
+    "Denatures the first enzyme"
+   ],
+   "answer": 1,
+   "note": "Negative feedback: when the end product is plentiful it inhibits the pathway's first enzyme — resources aren't wasted making more.",
+   "topicLabel": "C1.1 — Enzymes & metabolism (Nov unit)"
+  },
+  {
+   "id": "enx6",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "An enzyme lowers the activation energy but does NOT change:",
+   "choices": [
+    "The rate of reaction",
+    "The energy needed to start the reaction",
+    "The overall ΔG of the reaction",
+    "The frequency of successful collisions"
+   ],
+   "answer": 2,
+   "note": "Catalysts change kinetics (rate, Ea) but not thermodynamics: ΔG, ΔH and the equilibrium position are unchanged.",
+   "topicLabel": "C1.1 — Enzymes & metabolism (Nov unit)"
+  },
+  {
+   "id": "enx7",
+   "format": "mcq",
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "Amylase digesting starch in the mouth is an example of:",
+   "choices": [
+    "Intracellular digestion",
+    "Extracellular digestion",
+    "Phagocytosis",
+    "Endosymbiosis"
+   ],
+   "answer": 1,
+   "note": "Extracellular enzymes act outside the cells that made them (digestive tract). Most metabolic enzymes work intracellularly.",
+   "topicLabel": "C1.1 — Enzymes & metabolism (Nov unit)"
+  },
+  {
+   "id": "enx8",
+   "format": "written",
+   "marks": 3,
+   "topic": "c1-1-enzymes-metabolism",
+   "stem": "A student investigates catalase activity using hydrogen peroxide solutions of different concentrations. State the independent variable, two variables to control, and how the rate could be measured.",
+   "markscheme": [
+    "Independent variable: H₂O₂ concentration (1)",
+    "Controls: volume/concentration of catalase solution, temperature, pH, reaction time (any two) (1)",
+    "Measure O₂ volume over time (gas syringe) or the time for a filter-paper disk to rise (1)"
+   ],
+   "tactic": "This mirrors the ISL November IA practice: name the IV, the controls that keep the test fair, and a quantitative dependent variable with units.",
+   "topicLabel": "C1.1 — Enzymes & metabolism (Nov unit)"
+  }
+ ]
 }

@@ -1,75 +1,435 @@
 {
-  "subject": "chemistry-hl",
-  "topic": "reactivity-1-energetics",
-  "topicLabel": "Reactivity 1 — Energetics (Dec–Jan unit)",
-  "items": [
-    {"id": "r101", "format": "mcq", "topic": "reactivity-1-energetics", "stem": "In an exothermic reaction, the enthalpy change \u0394H is:",
-     "choices": ["Positive and heat is absorbed", "Negative and heat is released", "Positive and heat is released", "Zero"], "answer": 1,
-     "note": "Exothermic: products lower in energy than reactants \u2192 \u0394H < 0, heat released to the surroundings (container feels warm)."},
-    {"id": "r102", "format": "mcq", "topic": "reactivity-1-energetics", "stem": "On an energy profile, the activation energy is the distance from:",
-     "choices": ["Reactants to products", "Reactants to the peak of the curve", "Products to the peak", "Peak to zero"], "answer": 1,
-     "note": "Ea = energy difference between reactants and the transition state (peak). \u0394H is reactants-to-products \u2014 two different arrows on the same diagram."},
-    {"id": "r103", "format": "mcq", "topic": "reactivity-1-energetics", "stem": "A catalyst speeds up a reaction by:",
-     "choices": ["Lowering \u0394H", "Lowering the activation energy", "Raising the temperature", "Increasing the collision frequency only"], "answer": 1,
-     "note": "A catalyst provides an alternative route with lower Ea \u2014 the energy profile's peak drops, but \u0394H stays exactly the same."},
-    {"id": "r104", "format": "mcq", "topic": "reactivity-1-energetics", "stem": "Which process is endothermic?",
-     "choices": ["Combustion of methane", "Neutralisation of an acid by an alkali", "Melting of ice", "Respiration"], "answer": 2,
-     "note": "Melting/evaporation absorb energy to break intermolecular forces. Combustion, neutralisation and respiration release energy."},
-    {"id": "r105", "format": "mcq", "topic": "reactivity-1-energetics", "stem": "100 g of water absorbs 4.18 \u00D7 10\u00B3 J and its temperature rises by 10.0 K. This is consistent with a specific heat capacity of:",
-     "choices": ["4.18 J g\u207B\u00B9 K\u207B\u00B9", "41.8 J g\u207B\u00B9 K\u207B\u00B9", "0.418 J g\u207B\u00B9 K\u207B\u00B9", "418 J g\u207B\u00B9 K\u207B\u00B9"], "answer": 0,
-     "note": "q = mc\u0394T \u2192 c = q/(m\u0394T) = 4180/(100 \u00D7 10.0) = 4.18 J g\u207B\u00B9 K\u207B\u00B9 \u2014 the value to quote from the data booklet for water."},
-    {"id": "r106", "format": "mcq", "topic": "reactivity-1-energetics", "stem": "In a calorimeter, an acid\u2013alkali reaction causes the solution temperature to rise. The reaction is therefore:",
-     "choices": ["Endothermic, \u0394H positive", "Exothermic, \u0394H negative", "Endothermic, \u0394H negative", "Exothermic, \u0394H positive"], "answer": 1,
-     "note": "Rising solution temperature = energy released by the reaction = exothermic = negative \u0394H. The sign is the most-loses-mark detail in these calculations."},
-    {"id": "r107", "format": "mcq", "topic": "reactivity-1-energetics", "stem": "Hess's law states that the enthalpy change of a reaction:",
-     "choices": ["Depends on the route taken", "Is independent of the route taken, depending only on initial and final states", "Is always negative", "Equals the activation energy"], "answer": 1,
-     "note": "Enthalpy is a state function \u2014 which is why energy cycles work: indirect routes give \u0394H values that cannot be measured directly."},
-    {"id": "r108", "format": "mcq", "topic": "reactivity-1-energetics", "stem": "The bond enthalpy of H\u2013Cl is defined as the energy:",
-     "choices": ["Released when H\u2013Cl forms in solution", "Required to break one mole of H\u2013Cl bonds in the gaseous state", "Needed to ionize HCl", "Released per mole of HCl formed from elements"], "answer": 1,
-     "note": "Two conditions matter: gaseous state, and one mole of bonds. Bond enthalpies are averages \u2014 they differ slightly from measured values in real molecules."},
-    {"id": "r109", "format": "mcq", "topic": "reactivity-1-energetics", "stem": "Using average bond enthalpies (H\u2013H 436, Cl\u2013Cl 242, H\u2013Cl 431 kJ/mol), \u0394H for H\u2082 + Cl\u2082 \u2192 2HCl is:",
-     "choices": ["\u2212184 kJ/mol", "+184 kJ/mol", "\u221292 kJ/mol", "+678 kJ/mol"], "answer": 0,
-     "note": "\u0394H = bonds broken \u2212 bonds formed = (436 + 242) \u2212 2(431) = 678 \u2212 862 = \u2212184 kJ/mol. Remember to multiply by the number of each bond type."},
-    {"id": "r110", "format": "mcq", "topic": "reactivity-1-energetics", "stem": "In an exothermic reaction, the energy released on bond formation is:",
-     "choices": ["Less than the energy absorbed in bond breaking", "Greater than the energy absorbed in bond breaking", "Equal to the activation energy", "Always zero"], "answer": 1,
-     "note": "Every reaction breaks then forms bonds: exothermic = forming releases more than breaking costs. Endothermic is the reverse."},
-    {"id": "r111", "format": "mcq", "topic": "reactivity-1-energetics", "stem": "Which species has a standard enthalpy of formation, \u0394H\u00B7f\u00B0, equal to zero by definition?",
-     "choices": ["H\u2082O(l)", "CO\u2082(g)", "O\u2082(g)", "NaCl(s)"], "answer": 2,
-     "note": "An element in its standard state (here O\u2082 gas at 100 kPa, 298 K) is assigned \u0394H\u00B7f\u00B0 = 0 \u2014 the reference point of energy cycles."},
-    {"id": "r112", "format": "mcq", "topic": "reactivity-1-energetics", "stem": "Which change causes an increase in entropy?",
-     "choices": ["Freezing of water", "Condensation of steam", "Sublimation of dry ice (solid CO\u2082 \u2192 gas)", "Precipitation of a solid from solution"], "answer": 2,
-     "note": "Entropy rises with disorder: gas > liquid > solid. Going solid \u2192 gas is the biggest jump; freezing/condensing/precipitating all lower it."},
-    {"id": "r113", "format": "mcq", "topic": "reactivity-1-energetics", "stem": "For the reaction 2SO\u2083 \u2192 2SO\u2082 + O\u2082, \u0394S is positive because:",
-     "choices": ["The reaction is endothermic", "The number of moles of gas increases from 2 to 3", "Sulfur changes oxidation state", "The molecules get smaller"], "answer": 1,
-     "note": "Count gaseous moles: 2 \u2192 3 means more ways to arrange the particles \u2014 positive \u0394S. State symbols decide entropy, not oxidation numbers."},
-    {"id": "r114", "format": "mcq", "topic": "reactivity-1-energetics", "stem": "A reaction is spontaneous when:",
-     "choices": ["\u0394G is positive", "\u0394G is negative", "\u0394H is negative", "\u0394S is positive"], "answer": 1,
-     "note": "\u0394G = \u0394H \u2212 T\u0394S < 0 defines spontaneity. Negative \u0394H alone doesn't guarantee it, and positive \u0394S alone doesn't prevent it \u2014 temperature decides."},
-    {"id": "r115", "format": "mcq", "topic": "reactivity-1-energetics", "stem": "A reaction with \u0394H negative and \u0394S positive is:",
-     "choices": ["Spontaneous only at low temperature", "Spontaneous only at high temperature", "Spontaneous at all temperatures", "Never spontaneous"], "answer": 2,
-     "note": "\u0394G = \u0394H \u2212 T\u0394S: both terms push \u0394G negative \u2192 spontaneous at every temperature. The other three sign combinations are temperature-dependent."},
-    {"id": "r116", "format": "mcq", "topic": "reactivity-1-energetics", "stem": "An endothermic reaction with positive \u0394S becomes spontaneous:",
-     "choices": ["At sufficiently high temperature", "At sufficiently low temperature", "Never", "At all temperatures"], "answer": 0,
-     "note": "\u0394G = \u0394H \u2212 T\u0394S: the favourable T\u0394S term can only outweigh positive \u0394H when T is large enough. Melting ice is the everyday example."},
-    {"id": "r117", "format": "mcq", "topic": "reactivity-1-energetics", "stem": "Enthalpy is best described as:",
-     "choices": ["The temperature of a substance", "The heat energy stored in a system at constant pressure", "The kinetic energy of particles", "The total bond energy of all bonds"], "answer": 1,
-     "note": "Enthalpy (H) is measured as heat exchanged at constant pressure \u2014 which is why calorimetry and \u0394H live together."},
-    {"id": "r118", "format": "mcq", "topic": "reactivity-1-energetics", "stem": "In the equation q = mc\u0394T, the mass m should be:",
-     "choices": ["The mass of the reactant added", "The mass of the solution absorbing the heat", "The mass of the calorimeter", "The molar mass of the product"], "answer": 1,
-     "note": "The thermometer sits in the solution \u2014 m is everything the water/solution heats (usually solution mass \u2248 volume in g). Using only the solute's mass is a classic error."},
-    {"id": "r119", "format": "mcq", "topic": "reactivity-1-energetics", "stem": "If a temperature DECREASES is recorded for a reaction mixture, the reaction was:",
-     "choices": ["Exothermic, \u0394H negative", "Endothermic, \u0394H positive", "At equilibrium", "Catalysed"], "answer": 1,
-     "note": "Falling temperature = the mixture drew heat from its surroundings = endothermic \u2192 positive \u0394H. Read the sign from the thermometer's direction."},
-    {"id": "r120", "format": "mcq", "topic": "reactivity-1-energetics", "stem": "When \u0394G = 0, the system is:",
-     "choices": ["Reacting rapidly", "At equilibrium / the reaction is neither spontaneous in either direction", "Completely reacting", "Always at 0 K"], "answer": 1,
-     "note": "\u0394G = 0 marks the equilibrium point \u2014 the balance between enthalpy and entropy drive. Below it forward, above it reverse."},
-    {"id": "r121", "format": "written", "marks": 4, "topic": "reactivity-1-energetics",
-     "stem": "50.0 cm\u00B3 of 1.00 mol/dm\u00B3 HCl is mixed with 50.0 cm\u00B3 of 1.00 mol/dm\u00B3 NaOH. The temperature of the mixture rises by 6.50 K. Calculate the enthalpy change of neutralisation per mole of water formed (c of the solution = 4.18 J g\u207B\u00B9 K\u207B\u00B9; assume the density of the solution is 1.00 g/cm\u00B3).",
-     "markscheme": ["Mass of solution = 100.0 g (both volumes, density 1.00) (1)", "q = mc\u0394T = 100.0 \u00D7 4.18 \u00D7 6.50 = 2717 J = 2.72 kJ (1)", "n(H\u2082O) = 0.0500 mol (both reagents 0.0500 mol, 1:1) (1)", "\u0394H = \u22122.72/0.0500 = \u221254.3 kJ/mol \u2014 negative because temperature rose (1)"],
-     "tactic": "Neutralisation calorimetry: total solution mass, q = mc\u0394T, divide by moles of WATER formed (not acid), sign from the thermometer. \u221254\u221257 kJ/mol is the accepted range."},
-    {"id": "r122", "format": "written", "marks": 4, "topic": "reactivity-1-energetics",
-     "stem": "For a reaction, \u0394H = +50.0 kJ/mol and \u0394S = +100 J/K/mol. Determine the temperature above which the reaction becomes spontaneous.",
-     "markscheme": ["Convert \u0394S to kJ: +100 J/K/mol = +0.100 kJ/K/mol (1)", "\u0394G = \u0394H \u2212 T\u0394S (1)", "Spontaneous when \u0394G < 0: 50.0 \u2212 0.100T < 0 \u2192 T > 500 K (1)", "Interpretation: entropy-driven reaction, only spontaneous at high temperature (1)"],
-     "tactic": "The unit conversion (\u0394S in J vs \u0394H in kJ) is where most marks die \u2014 convert first, then solve the inequality, then interpret in words."}
-  ]
+ "subject": "chemistry-hl",
+ "topic": "reactivity-1-energetics",
+ "topicLabel": "Reactivity 1 — Energetics (Dec–Jan unit)",
+ "items": [
+  {
+   "id": "r101",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "In an exothermic reaction, the enthalpy change ΔH is:",
+   "choices": [
+    "Positive and heat is absorbed",
+    "Negative and heat is released",
+    "Positive and heat is released",
+    "Zero"
+   ],
+   "answer": 1,
+   "note": "Exothermic: products lower in energy than reactants → ΔH < 0, heat released to the surroundings (container feels warm)."
+  },
+  {
+   "id": "r102",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "On an energy profile, the activation energy is the distance from:",
+   "choices": [
+    "Reactants to products",
+    "Reactants to the peak of the curve",
+    "Products to the peak",
+    "Peak to zero"
+   ],
+   "answer": 1,
+   "note": "Ea = energy difference between reactants and the transition state (peak). ΔH is reactants-to-products — two different arrows on the same diagram."
+  },
+  {
+   "id": "r103",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "A catalyst speeds up a reaction by:",
+   "choices": [
+    "Lowering ΔH",
+    "Lowering the activation energy",
+    "Raising the temperature",
+    "Increasing the collision frequency only"
+   ],
+   "answer": 1,
+   "note": "A catalyst provides an alternative route with lower Ea — the energy profile's peak drops, but ΔH stays exactly the same."
+  },
+  {
+   "id": "r104",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "Which process is endothermic?",
+   "choices": [
+    "Combustion of methane",
+    "Neutralisation of an acid by an alkali",
+    "Melting of ice",
+    "Respiration"
+   ],
+   "answer": 2,
+   "note": "Melting/evaporation absorb energy to break intermolecular forces. Combustion, neutralisation and respiration release energy."
+  },
+  {
+   "id": "r105",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "100 g of water absorbs 4.18 × 10³ J and its temperature rises by 10.0 K. This is consistent with a specific heat capacity of:",
+   "choices": [
+    "4.18 J g⁻¹ K⁻¹",
+    "41.8 J g⁻¹ K⁻¹",
+    "0.418 J g⁻¹ K⁻¹",
+    "418 J g⁻¹ K⁻¹"
+   ],
+   "answer": 0,
+   "note": "q = mcΔT → c = q/(mΔT) = 4180/(100 × 10.0) = 4.18 J g⁻¹ K⁻¹ — the value to quote from the data booklet for water."
+  },
+  {
+   "id": "r106",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "In a calorimeter, an acid–alkali reaction causes the solution temperature to rise. The reaction is therefore:",
+   "choices": [
+    "Endothermic, ΔH positive",
+    "Exothermic, ΔH negative",
+    "Endothermic, ΔH negative",
+    "Exothermic, ΔH positive"
+   ],
+   "answer": 1,
+   "note": "Rising solution temperature = energy released by the reaction = exothermic = negative ΔH. The sign is the most-loses-mark detail in these calculations."
+  },
+  {
+   "id": "r107",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "Hess's law states that the enthalpy change of a reaction:",
+   "choices": [
+    "Depends on the route taken",
+    "Is independent of the route taken, depending only on initial and final states",
+    "Is always negative",
+    "Equals the activation energy"
+   ],
+   "answer": 1,
+   "note": "Enthalpy is a state function — which is why energy cycles work: indirect routes give ΔH values that cannot be measured directly."
+  },
+  {
+   "id": "r108",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "The bond enthalpy of H–Cl is defined as the energy:",
+   "choices": [
+    "Released when H–Cl forms in solution",
+    "Required to break one mole of H–Cl bonds in the gaseous state",
+    "Needed to ionize HCl",
+    "Released per mole of HCl formed from elements"
+   ],
+   "answer": 1,
+   "note": "Two conditions matter: gaseous state, and one mole of bonds. Bond enthalpies are averages — they differ slightly from measured values in real molecules."
+  },
+  {
+   "id": "r109",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "Using average bond enthalpies (H–H 436, Cl–Cl 242, H–Cl 431 kJ/mol), ΔH for H₂ + Cl₂ → 2HCl is:",
+   "choices": [
+    "−184 kJ/mol",
+    "+184 kJ/mol",
+    "−92 kJ/mol",
+    "+678 kJ/mol"
+   ],
+   "answer": 0,
+   "note": "ΔH = bonds broken − bonds formed = (436 + 242) − 2(431) = 678 − 862 = −184 kJ/mol. Remember to multiply by the number of each bond type."
+  },
+  {
+   "id": "r110",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "In an exothermic reaction, the energy released on bond formation is:",
+   "choices": [
+    "Less than the energy absorbed in bond breaking",
+    "Greater than the energy absorbed in bond breaking",
+    "Equal to the activation energy",
+    "Always zero"
+   ],
+   "answer": 1,
+   "note": "Every reaction breaks then forms bonds: exothermic = forming releases more than breaking costs. Endothermic is the reverse."
+  },
+  {
+   "id": "r111",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "Which species has a standard enthalpy of formation, ΔH·f°, equal to zero by definition?",
+   "choices": [
+    "H₂O(l)",
+    "CO₂(g)",
+    "O₂(g)",
+    "NaCl(s)"
+   ],
+   "answer": 2,
+   "note": "An element in its standard state (here O₂ gas at 100 kPa, 298 K) is assigned ΔH·f° = 0 — the reference point of energy cycles."
+  },
+  {
+   "id": "r112",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "Which change causes an increase in entropy?",
+   "choices": [
+    "Freezing of water",
+    "Condensation of steam",
+    "Sublimation of dry ice (solid CO₂ → gas)",
+    "Precipitation of a solid from solution"
+   ],
+   "answer": 2,
+   "note": "Entropy rises with disorder: gas > liquid > solid. Going solid → gas is the biggest jump; freezing/condensing/precipitating all lower it."
+  },
+  {
+   "id": "r113",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "For the reaction 2SO₃ → 2SO₂ + O₂, ΔS is positive because:",
+   "choices": [
+    "The reaction is endothermic",
+    "The number of moles of gas increases from 2 to 3",
+    "Sulfur changes oxidation state",
+    "The molecules get smaller"
+   ],
+   "answer": 1,
+   "note": "Count gaseous moles: 2 → 3 means more ways to arrange the particles — positive ΔS. State symbols decide entropy, not oxidation numbers."
+  },
+  {
+   "id": "r114",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "A reaction is spontaneous when:",
+   "choices": [
+    "ΔG is positive",
+    "ΔG is negative",
+    "ΔH is negative",
+    "ΔS is positive"
+   ],
+   "answer": 1,
+   "note": "ΔG = ΔH − TΔS < 0 defines spontaneity. Negative ΔH alone doesn't guarantee it, and positive ΔS alone doesn't prevent it — temperature decides."
+  },
+  {
+   "id": "r115",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "A reaction with ΔH negative and ΔS positive is:",
+   "choices": [
+    "Spontaneous only at low temperature",
+    "Spontaneous only at high temperature",
+    "Spontaneous at all temperatures",
+    "Never spontaneous"
+   ],
+   "answer": 2,
+   "note": "ΔG = ΔH − TΔS: both terms push ΔG negative → spontaneous at every temperature. The other three sign combinations are temperature-dependent."
+  },
+  {
+   "id": "r116",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "An endothermic reaction with positive ΔS becomes spontaneous:",
+   "choices": [
+    "At sufficiently high temperature",
+    "At sufficiently low temperature",
+    "Never",
+    "At all temperatures"
+   ],
+   "answer": 0,
+   "note": "ΔG = ΔH − TΔS: the favourable TΔS term can only outweigh positive ΔH when T is large enough. Melting ice is the everyday example."
+  },
+  {
+   "id": "r117",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "Enthalpy is best described as:",
+   "choices": [
+    "The temperature of a substance",
+    "The heat energy stored in a system at constant pressure",
+    "The kinetic energy of particles",
+    "The total bond energy of all bonds"
+   ],
+   "answer": 1,
+   "note": "Enthalpy (H) is measured as heat exchanged at constant pressure — which is why calorimetry and ΔH live together."
+  },
+  {
+   "id": "r118",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "In the equation q = mcΔT, the mass m should be:",
+   "choices": [
+    "The mass of the reactant added",
+    "The mass of the solution absorbing the heat",
+    "The mass of the calorimeter",
+    "The molar mass of the product"
+   ],
+   "answer": 1,
+   "note": "The thermometer sits in the solution — m is everything the water/solution heats (usually solution mass ≈ volume in g). Using only the solute's mass is a classic error."
+  },
+  {
+   "id": "r119",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "If a temperature DECREASES is recorded for a reaction mixture, the reaction was:",
+   "choices": [
+    "Exothermic, ΔH negative",
+    "Endothermic, ΔH positive",
+    "At equilibrium",
+    "Catalysed"
+   ],
+   "answer": 1,
+   "note": "Falling temperature = the mixture drew heat from its surroundings = endothermic → positive ΔH. Read the sign from the thermometer's direction."
+  },
+  {
+   "id": "r120",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "When ΔG = 0, the system is:",
+   "choices": [
+    "Reacting rapidly",
+    "At equilibrium / the reaction is neither spontaneous in either direction",
+    "Completely reacting",
+    "Always at 0 K"
+   ],
+   "answer": 1,
+   "note": "ΔG = 0 marks the equilibrium point — the balance between enthalpy and entropy drive. Below it forward, above it reverse."
+  },
+  {
+   "id": "r121",
+   "format": "written",
+   "marks": 4,
+   "topic": "reactivity-1-energetics",
+   "stem": "50.0 cm³ of 1.00 mol/dm³ HCl is mixed with 50.0 cm³ of 1.00 mol/dm³ NaOH. The temperature of the mixture rises by 6.50 K. Calculate the enthalpy change of neutralisation per mole of water formed (c of the solution = 4.18 J g⁻¹ K⁻¹; assume the density of the solution is 1.00 g/cm³).",
+   "markscheme": [
+    "Mass of solution = 100.0 g (both volumes, density 1.00) (1)",
+    "q = mcΔT = 100.0 × 4.18 × 6.50 = 2717 J = 2.72 kJ (1)",
+    "n(H₂O) = 0.0500 mol (both reagents 0.0500 mol, 1:1) (1)",
+    "ΔH = −2.72/0.0500 = −54.3 kJ/mol — negative because temperature rose (1)"
+   ],
+   "tactic": "Neutralisation calorimetry: total solution mass, q = mcΔT, divide by moles of WATER formed (not acid), sign from the thermometer. −54−57 kJ/mol is the accepted range."
+  },
+  {
+   "id": "r122",
+   "format": "written",
+   "marks": 4,
+   "topic": "reactivity-1-energetics",
+   "stem": "For a reaction, ΔH = +50.0 kJ/mol and ΔS = +100 J/K/mol. Determine the temperature above which the reaction becomes spontaneous.",
+   "markscheme": [
+    "Convert ΔS to kJ: +100 J/K/mol = +0.100 kJ/K/mol (1)",
+    "ΔG = ΔH − TΔS (1)",
+    "Spontaneous when ΔG < 0: 50.0 − 0.100T < 0 → T > 500 K (1)",
+    "Interpretation: entropy-driven reaction, only spontaneous at high temperature (1)"
+   ],
+   "tactic": "The unit conversion (ΔS in J vs ΔH in kJ) is where most marks die — convert first, then solve the inequality, then interpret in words."
+  },
+  {
+   "id": "r1x1",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "In an exothermic reaction, the products have:",
+   "choices": [
+    "More energy than the reactants",
+    "Less energy than the reactants — ΔH is negative",
+    "The same energy as the reactants",
+    "No enthalpy"
+   ],
+   "answer": 1,
+   "note": "Energy is released to the surroundings: products sit LOWER on the energy profile. ΔH = H(products) − H(reactants) < 0.",
+   "topicLabel": "Reactivity 1 — Energetics (Dec–Jan unit)"
+  },
+  {
+   "id": "r1x2",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "On an enthalpy level diagram, the activation energy is measured from:",
+   "choices": [
+    "Reactants to products",
+    "Reactants to the peak of the curve",
+    "Products to the peak",
+    "The baseline to the x-axis"
+   ],
+   "answer": 1,
+   "note": "Ea = reactants → transition state (peak). ΔH = reactants → products. Two different arrows — examiners ask for both by name.",
+   "topicLabel": "Reactivity 1 — Energetics (Dec–Jan unit)"
+  },
+  {
+   "id": "r1x3",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "A catalyst speeds up a reaction by:",
+   "choices": [
+    "Increasing the frequency of collisions",
+    "Providing an alternative pathway with lower Ea",
+    "Raising the temperature",
+    "Increasing ΔH"
+   ],
+   "answer": 1,
+   "note": "The catalyst offers a lower-Ea route — more collisions succeed. ΔH and the equilibrium position are unchanged.",
+   "topicLabel": "Reactivity 1 — Energetics (Dec–Jan unit)"
+  },
+  {
+   "id": "r1x4",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "Which process is endothermic?",
+   "choices": [
+    "Combustion of methane",
+    "Neutralization of an acid",
+    "Melting of ice",
+    "Respiration"
+   ],
+   "answer": 2,
+   "note": "Melting absorbs energy to overcome intermolecular forces. Combustion, neutralization and respiration all release heat.",
+   "topicLabel": "Reactivity 1 — Energetics (Dec–Jan unit)"
+  },
+  {
+   "id": "r1x5",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "In a calorimetry experiment, 100 g of solution rises 6.5 K. Using c = 4.18 J g⁻¹ K⁻¹, the heat released is approximately:",
+   "choices": [
+    "0.27 kJ",
+    "2.7 kJ",
+    "27 kJ",
+    "270 kJ"
+   ],
+   "answer": 1,
+   "note": "q = mcΔT = 100 × 4.18 × 6.5 = 2717 J ≈ 2.7 kJ. The mass is the WHOLE solution — not just the solute.",
+   "topicLabel": "Reactivity 1 — Energetics (Dec–Jan unit)"
+  },
+  {
+   "id": "r1x6",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "Hess's law allows enthalpy changes to be calculated indirectly because enthalpy is a:",
+   "choices": [
+    "Rate property",
+    "State function — independent of the route",
+    "Catalytic property",
+    "Function of temperature only"
+   ],
+   "answer": 1,
+   "note": "ΔH depends only on initial and final states. Energy cycles combine routes: ΔH₃ = ΔH₁ + ΔH₂ with signs reversed as needed.",
+   "topicLabel": "Reactivity 1 — Energetics (Dec–Jan unit)"
+  },
+  {
+   "id": "r1x7",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "ΔH for a reaction from bond enthalpies is calculated as:",
+   "choices": [
+    "Bonds formed − bonds broken",
+    "Bonds broken − bonds formed",
+    "Bonds broken + bonds formed",
+    "Bonds formed ÷ bonds broken"
+   ],
+   "answer": 1,
+   "note": "Breaking absorbs (+), forming releases (−): ΔH = Σ(broken) − Σ(formed). Gaseous state required for all bond enthalpies.",
+   "topicLabel": "Reactivity 1 — Energetics (Dec–Jan unit)"
+  },
+  {
+   "id": "r1x8",
+   "format": "mcq",
+   "topic": "reactivity-1-energetics",
+   "stem": "A reaction has ΔH > 0 and ΔS > 0. It becomes spontaneous:",
+   "choices": [
+    "At all temperatures",
+    "Only at high temperatures, where TΔS outweighs ΔH",
+    "Only at low temperatures",
+    "Never"
+   ],
+   "answer": 1,
+   "note": "ΔG = ΔH − TΔS < 0 needs TΔS > ΔH — only large T delivers that for an endothermic, entropy-increasing reaction (e.g. melting ice above 0 °C).",
+   "topicLabel": "Reactivity 1 — Energetics (Dec–Jan unit)"
+  }
+ ]
 }

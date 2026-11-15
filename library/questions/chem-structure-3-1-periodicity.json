@@ -1,75 +1,434 @@
 {
-  "subject": "chemistry-hl",
-  "topic": "structure-3-1-periodicity",
-  "topicLabel": "Structure 3.1 — Periodic table & electron structure (Nov unit)",
-  "items": [
-    {"id": "p01", "format": "mcq", "topic": "structure-3-1-periodicity", "stem": "Which element is in group 17 and period 3?",
-     "choices": ["Fluorine", "Chlorine", "Bromine", "Argon"], "answer": 1,
-     "note": "Periods are rows, groups are columns: group 17 (halogens) + period 3 = chlorine. Fluorine is period 2."},
-    {"id": "p02", "format": "mcq", "topic": "structure-3-1-periodicity", "stem": "How many electrons are in the outer shell of any group 2 element?",
-     "choices": ["1", "2", "3", "8"], "answer": 1,
-     "note": "Group number (1\u201318 s/p block) = number of outer-shell electrons for groups 1\u20132 and 13\u201318. Same valence count is why group members share chemistry."},
-    {"id": "p03", "format": "mcq", "topic": "structure-3-1-periodicity", "stem": "The full electron configuration of sodium (Z = 11) is:",
-     "choices": ["1s\u00B22s\u00B22p\u20763p\u00B9", "1s\u00B22s\u00B22p\u20763s\u00B9", "1s\u00B22s\u00B22p\u2075 3s\u00B2", "1s\u00B22s\u00B22p\u20763s\u00B2"], "answer": 1,
-     "note": "Fill in aufbau order: 1s\u00B2 2s\u00B2 2p\u2076 (10 e\u207B) then 3s\u00B9 \u2014 the 11th electron enters 3s, not 3p."},
-    {"id": "p04", "format": "mcq", "topic": "structure-3-1-periodicity", "stem": "The condensed electron configuration of calcium (Z = 20) is:",
-     "choices": ["[Ne]4s\u00B2", "[Ar]4s\u00B2", "[Ar]3d\u00B2", "[Ne]3s\u00B23p\u2076"], "answer": 1,
-     "note": "18 electrons fill up to argon; the remaining 2 go into 4s (4s fills before 3d). 3d\u00B2 would be titanium."},
-    {"id": "p05", "format": "mcq", "topic": "structure-3-1-periodicity", "stem": "According to the aufbau principle, the sublevel filled immediately after 4s is:",
-     "choices": ["4p", "3d", "4d", "5s"], "answer": 1,
-     "note": "Energy order: \u20263s 3p 4s 3d 4p. The 3d sublevel is filled after 4s \u2014 the source of most transition-metal configuration questions."},
-    {"id": "p06", "format": "mcq", "topic": "structure-3-1-periodicity", "stem": "The Pauli exclusion principle states that an orbital can hold:",
-     "choices": ["One electron only", "At most two electrons with opposite spins", "Two electrons with parallel spins", "Unlimited paired electrons"], "answer": 1,
-     "note": "Pauli: two electrons max per orbital, opposite spins. Hund's rule is the different principle about filling singly first."},
-    {"id": "p07", "format": "mcq", "topic": "structure-3-1-periodicity", "stem": "Nitrogen's 2p\u00B3 configuration has one electron in each 2p orbital. This illustrates:",
-     "choices": ["The aufbau principle", "The Pauli exclusion principle", "Hund's rule", "Heisenberg's principle"], "answer": 2,
-     "note": "Hund's rule: electrons occupy degenerate orbitals singly before pairing \u2014 this extra stability explains the N\u2192O ionization energy anomaly."},
-    {"id": "p08", "format": "mcq", "topic": "structure-3-1-periodicity", "stem": "Which ion has the same electron configuration as neon (Z = 10)?",
-     "choices": ["Na\u207A", "K\u207A", "Cl\u207B", "S\u00B2\u207B"], "answer": 0,
-     "note": "Na\u207A = 11 \u2212 1 = 10 electrons. K\u207A and Cl\u207B have 18 (argon-like); S\u00B2\u207B has 18 too. Count protons minus charge."},
-    {"id": "p09", "format": "mcq", "topic": "structure-3-1-periodicity", "stem": "Isotopes of the same element differ in their number of:",
-     "choices": ["Protons", "Electrons", "Neutrons", "Valence electrons"], "answer": 2,
-     "note": "Same protons (that defines the element), different neutrons. Similar chemistry because electron configuration is unchanged."},
-    {"id": "p10", "format": "mcq", "topic": "structure-3-1-periodicity", "stem": "Moving across period 3 from Na to Cl, the atomic radius:",
-     "choices": ["Increases", "Decreases", "Stays constant", "Doubles"], "answer": 1,
-     "note": "Electrons enter the same main shell while nuclear charge increases \u2014 greater pull, smaller radius. Down a group the radius increases (new shell)."},
-    {"id": "p11", "format": "mcq", "topic": "structure-3-1-periodicity", "stem": "Going down group 2 from Mg to Ba, the first ionization energy:",
-     "choices": ["Increases", "Decreases", "Is unchanged", "First decreases then increases"], "answer": 1,
-     "note": "New shell each period \u2192 outer electron farther away and more shielded \u2192 easier to remove. General downward trend, small local wobbles ignored at SL."},
-    {"id": "p12", "format": "mcq", "topic": "structure-3-1-periodicity", "stem": "The first ionization energy of boron is lower than that of beryllium because:",
-     "choices": ["Boron atoms are larger", "The removed electron in B is in the higher-energy 2p sublevel", "Boron has more protons", "Be has a full 2p sublevel"], "answer": 1,
-     "note": "Be: 2s\u00B2; B: 2s\u00B22p\u00B9. The 2p electron is higher in energy and better shielded \u2014 easier to remove. This is the standard period 2 anomaly."},
-    {"id": "p13", "format": "mcq", "topic": "structure-3-1-periodicity", "stem": "The second ionization energy of sodium is much larger than the first because:",
-     "choices": ["The atom shrinks after the first ionization", "The second electron is removed from the filled inner 2p shell", "Sodium becomes an anion", "Electron affinity increases"], "answer": 1,
-     "note": "After losing 3s\u00B9, Na\u207A has the stable 2p\u2076 configuration; removing from an inner shell needs far more energy. Big IE jumps identify group numbers."},
-    {"id": "p14", "format": "mcq", "topic": "structure-3-1-periodicity", "stem": "Which element has the highest electronegativity?",
-     "choices": ["Oxygen", "Fluorine", "Chlorine", "Nitrogen"], "answer": 1,
-     "note": "Electronegativity increases across a period and decreases down a group \u2014 fluorine is the maximum on the Pauling scale."},
-    {"id": "p15", "format": "mcq", "topic": "structure-3-1-periodicity", "stem": "Which block of the periodic table contains iron (Fe)?",
-     "choices": ["s block", "p block", "d block", "f block"], "answer": 2,
-     "note": "Transition metals fill d sublevels \u2192 d block. The block is determined by which sublevel the last electron enters."},
-    {"id": "p16", "format": "mcq", "topic": "structure-3-1-periodicity", "stem": "Elements in the same group of the periodic table have similar chemical properties because they have:",
-     "choices": ["Similar atomic masses", "The same number of valence electrons", "The same number of neutrons", "The same number of shells"], "answer": 1,
-     "note": "Chemistry is governed by outer-shell electrons. Same shells alone would not group noble gases with alkali metals."},
-    {"id": "p17", "format": "mcq", "topic": "structure-3-1-periodicity", "stem": "The reactivity of group 1 metals with water:",
-     "choices": ["Increases down the group", "Decreases down the group", "Is identical for all of them", "Is greatest for lithium"], "answer": 0,
-     "note": "Down group 1 the outer electron is farther and more shielded \u2192 lost more easily \u2192 more vigorous reaction. For group 17 halogens the trend is the opposite."},
-    {"id": "p18", "format": "mcq", "topic": "structure-3-1-periodicity", "stem": "Which oxide of a period 3 element is amphoteric?",
-     "choices": ["Na\u2082O", "MgO", "Al\u2082O\u2083", "SO\u2083"], "answer": 2,
-     "note": "Acid\u2013basic character of oxides changes across the period: Na\u2082O/MgO basic, Al\u2082O\u2083 amphoteric, oxides of Si\u2013Cl acidic. A favourite data-response question."},
-    {"id": "p19", "format": "mcq", "topic": "structure-3-1-periodicity", "stem": "Which statement about group 18 (noble gases) is correct?",
-     "choices": ["They react vigorously with water", "They have full outer shells and are generally unreactive", "They form diatomic molecules", "They are found in the s block"], "answer": 1,
-     "note": "Full valence shells \u2192 high stability, low reactivity. Monatomic, and helium sits in the s block but the family property holds."},
-    {"id": "p20", "format": "mcq", "topic": "structure-3-1-periodicity", "stem": "How many valence electrons does a group 16 element have?",
-     "choices": ["2", "4", "6", "8"], "answer": 2,
-     "note": "Groups 13\u201318: group number \u2212 10 = valence electrons \u2192 16 \u2212 10 = 6 (oxygen family)."},
-    {"id": "p21", "format": "written", "marks": 3, "topic": "structure-3-1-periodicity",
-     "stem": "Explain why the first ionization energy of oxygen is lower than that of nitrogen.",
-     "markscheme": ["N has 2p\u00B3 \u2014 each 2p orbital singly occupied (half-filled, extra stability) (1)", "O has 2p\u2074 \u2014 the fourth electron must pair in an already-occupied orbital (1)", "Electron\u2013electron repulsion in the pair makes that electron easier to remove \u2192 lower IE for O (1)"],
-     "tactic": "IE anomalies: name the sublevel occupancy, invoke pairing/repulsion (O vs N) or sublevel energy (B vs Be). Two anomalies exist across period 2 \u2014 know both."},
-    {"id": "p22", "format": "written", "marks": 4, "topic": "structure-3-1-periodicity",
-     "stem": "An element X has successive ionization energies (kJ/mol): 577, 1816, 2744, 11577. Deduce the group of the periodic table to which X most likely belongs, giving a reason.",
-     "markscheme": ["Identify the very large jump between the 3rd and 4th ionization energies (1)", "Three electrons removed with relatively low energy \u2192 three valence electrons (1)", "X belongs to group 13 (1)", "The 4th electron comes from the inner, full shell \u2014 much harder to remove (1)"],
-     "tactic": "Successive IE problems: the position of the huge jump = number of valence electrons = group number. Draw the values as a bar chart if unsure."}
-  ]
+ "subject": "chemistry-hl",
+ "topic": "structure-3-1-periodicity",
+ "topicLabel": "Structure 3.1 — Periodic table & electron structure (Nov unit)",
+ "items": [
+  {
+   "id": "p01",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "Which element is in group 17 and period 3?",
+   "choices": [
+    "Fluorine",
+    "Chlorine",
+    "Bromine",
+    "Argon"
+   ],
+   "answer": 1,
+   "note": "Periods are rows, groups are columns: group 17 (halogens) + period 3 = chlorine. Fluorine is period 2."
+  },
+  {
+   "id": "p02",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "How many electrons are in the outer shell of any group 2 element?",
+   "choices": [
+    "1",
+    "2",
+    "3",
+    "8"
+   ],
+   "answer": 1,
+   "note": "Group number (1–18 s/p block) = number of outer-shell electrons for groups 1–2 and 13–18. Same valence count is why group members share chemistry."
+  },
+  {
+   "id": "p03",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "The full electron configuration of sodium (Z = 11) is:",
+   "choices": [
+    "1s²2s²2p⁶3p¹",
+    "1s²2s²2p⁶3s¹",
+    "1s²2s²2p⁵ 3s²",
+    "1s²2s²2p⁶3s²"
+   ],
+   "answer": 1,
+   "note": "Fill in aufbau order: 1s² 2s² 2p⁶ (10 e⁻) then 3s¹ — the 11th electron enters 3s, not 3p."
+  },
+  {
+   "id": "p04",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "The condensed electron configuration of calcium (Z = 20) is:",
+   "choices": [
+    "[Ne]4s²",
+    "[Ar]4s²",
+    "[Ar]3d²",
+    "[Ne]3s²3p⁶"
+   ],
+   "answer": 1,
+   "note": "18 electrons fill up to argon; the remaining 2 go into 4s (4s fills before 3d). 3d² would be titanium."
+  },
+  {
+   "id": "p05",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "According to the aufbau principle, the sublevel filled immediately after 4s is:",
+   "choices": [
+    "4p",
+    "3d",
+    "4d",
+    "5s"
+   ],
+   "answer": 1,
+   "note": "Energy order: …3s 3p 4s 3d 4p. The 3d sublevel is filled after 4s — the source of most transition-metal configuration questions."
+  },
+  {
+   "id": "p06",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "The Pauli exclusion principle states that an orbital can hold:",
+   "choices": [
+    "One electron only",
+    "At most two electrons with opposite spins",
+    "Two electrons with parallel spins",
+    "Unlimited paired electrons"
+   ],
+   "answer": 1,
+   "note": "Pauli: two electrons max per orbital, opposite spins. Hund's rule is the different principle about filling singly first."
+  },
+  {
+   "id": "p07",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "Nitrogen's 2p³ configuration has one electron in each 2p orbital. This illustrates:",
+   "choices": [
+    "The aufbau principle",
+    "The Pauli exclusion principle",
+    "Hund's rule",
+    "Heisenberg's principle"
+   ],
+   "answer": 2,
+   "note": "Hund's rule: electrons occupy degenerate orbitals singly before pairing — this extra stability explains the N→O ionization energy anomaly."
+  },
+  {
+   "id": "p08",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "Which ion has the same electron configuration as neon (Z = 10)?",
+   "choices": [
+    "Na⁺",
+    "K⁺",
+    "Cl⁻",
+    "S²⁻"
+   ],
+   "answer": 0,
+   "note": "Na⁺ = 11 − 1 = 10 electrons. K⁺ and Cl⁻ have 18 (argon-like); S²⁻ has 18 too. Count protons minus charge."
+  },
+  {
+   "id": "p09",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "Isotopes of the same element differ in their number of:",
+   "choices": [
+    "Protons",
+    "Electrons",
+    "Neutrons",
+    "Valence electrons"
+   ],
+   "answer": 2,
+   "note": "Same protons (that defines the element), different neutrons. Similar chemistry because electron configuration is unchanged."
+  },
+  {
+   "id": "p10",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "Moving across period 3 from Na to Cl, the atomic radius:",
+   "choices": [
+    "Increases",
+    "Decreases",
+    "Stays constant",
+    "Doubles"
+   ],
+   "answer": 1,
+   "note": "Electrons enter the same main shell while nuclear charge increases — greater pull, smaller radius. Down a group the radius increases (new shell)."
+  },
+  {
+   "id": "p11",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "Going down group 2 from Mg to Ba, the first ionization energy:",
+   "choices": [
+    "Increases",
+    "Decreases",
+    "Is unchanged",
+    "First decreases then increases"
+   ],
+   "answer": 1,
+   "note": "New shell each period → outer electron farther away and more shielded → easier to remove. General downward trend, small local wobbles ignored at SL."
+  },
+  {
+   "id": "p12",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "The first ionization energy of boron is lower than that of beryllium because:",
+   "choices": [
+    "Boron atoms are larger",
+    "The removed electron in B is in the higher-energy 2p sublevel",
+    "Boron has more protons",
+    "Be has a full 2p sublevel"
+   ],
+   "answer": 1,
+   "note": "Be: 2s²; B: 2s²2p¹. The 2p electron is higher in energy and better shielded — easier to remove. This is the standard period 2 anomaly."
+  },
+  {
+   "id": "p13",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "The second ionization energy of sodium is much larger than the first because:",
+   "choices": [
+    "The atom shrinks after the first ionization",
+    "The second electron is removed from the filled inner 2p shell",
+    "Sodium becomes an anion",
+    "Electron affinity increases"
+   ],
+   "answer": 1,
+   "note": "After losing 3s¹, Na⁺ has the stable 2p⁶ configuration; removing from an inner shell needs far more energy. Big IE jumps identify group numbers."
+  },
+  {
+   "id": "p14",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "Which element has the highest electronegativity?",
+   "choices": [
+    "Oxygen",
+    "Fluorine",
+    "Chlorine",
+    "Nitrogen"
+   ],
+   "answer": 1,
+   "note": "Electronegativity increases across a period and decreases down a group — fluorine is the maximum on the Pauling scale."
+  },
+  {
+   "id": "p15",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "Which block of the periodic table contains iron (Fe)?",
+   "choices": [
+    "s block",
+    "p block",
+    "d block",
+    "f block"
+   ],
+   "answer": 2,
+   "note": "Transition metals fill d sublevels → d block. The block is determined by which sublevel the last electron enters."
+  },
+  {
+   "id": "p16",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "Elements in the same group of the periodic table have similar chemical properties because they have:",
+   "choices": [
+    "Similar atomic masses",
+    "The same number of valence electrons",
+    "The same number of neutrons",
+    "The same number of shells"
+   ],
+   "answer": 1,
+   "note": "Chemistry is governed by outer-shell electrons. Same shells alone would not group noble gases with alkali metals."
+  },
+  {
+   "id": "p17",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "The reactivity of group 1 metals with water:",
+   "choices": [
+    "Increases down the group",
+    "Decreases down the group",
+    "Is identical for all of them",
+    "Is greatest for lithium"
+   ],
+   "answer": 0,
+   "note": "Down group 1 the outer electron is farther and more shielded → lost more easily → more vigorous reaction. For group 17 halogens the trend is the opposite."
+  },
+  {
+   "id": "p18",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "Which oxide of a period 3 element is amphoteric?",
+   "choices": [
+    "Na₂O",
+    "MgO",
+    "Al₂O₃",
+    "SO₃"
+   ],
+   "answer": 2,
+   "note": "Acid–basic character of oxides changes across the period: Na₂O/MgO basic, Al₂O₃ amphoteric, oxides of Si–Cl acidic. A favourite data-response question."
+  },
+  {
+   "id": "p19",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "Which statement about group 18 (noble gases) is correct?",
+   "choices": [
+    "They react vigorously with water",
+    "They have full outer shells and are generally unreactive",
+    "They form diatomic molecules",
+    "They are found in the s block"
+   ],
+   "answer": 1,
+   "note": "Full valence shells → high stability, low reactivity. Monatomic, and helium sits in the s block but the family property holds."
+  },
+  {
+   "id": "p20",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "How many valence electrons does a group 16 element have?",
+   "choices": [
+    "2",
+    "4",
+    "6",
+    "8"
+   ],
+   "answer": 2,
+   "note": "Groups 13–18: group number − 10 = valence electrons → 16 − 10 = 6 (oxygen family)."
+  },
+  {
+   "id": "p21",
+   "format": "written",
+   "marks": 3,
+   "topic": "structure-3-1-periodicity",
+   "stem": "Explain why the first ionization energy of oxygen is lower than that of nitrogen.",
+   "markscheme": [
+    "N has 2p³ — each 2p orbital singly occupied (half-filled, extra stability) (1)",
+    "O has 2p⁴ — the fourth electron must pair in an already-occupied orbital (1)",
+    "Electron–electron repulsion in the pair makes that electron easier to remove → lower IE for O (1)"
+   ],
+   "tactic": "IE anomalies: name the sublevel occupancy, invoke pairing/repulsion (O vs N) or sublevel energy (B vs Be). Two anomalies exist across period 2 — know both."
+  },
+  {
+   "id": "p22",
+   "format": "written",
+   "marks": 4,
+   "topic": "structure-3-1-periodicity",
+   "stem": "An element X has successive ionization energies (kJ/mol): 577, 1816, 2744, 11577. Deduce the group of the periodic table to which X most likely belongs, giving a reason.",
+   "markscheme": [
+    "Identify the very large jump between the 3rd and 4th ionization energies (1)",
+    "Three electrons removed with relatively low energy → three valence electrons (1)",
+    "X belongs to group 13 (1)",
+    "The 4th electron comes from the inner, full shell — much harder to remove (1)"
+   ],
+   "tactic": "Successive IE problems: the position of the huge jump = number of valence electrons = group number. Draw the values as a bar chart if unsure."
+  },
+  {
+   "id": "pdx1",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "Across period 3, the acid–base character of the oxides changes from:",
+   "choices": [
+    "Acidic to basic",
+    "Basic to amphoteric to acidic",
+    "Amphoteric throughout",
+    "Neutral throughout"
+   ],
+   "answer": 1,
+   "note": "Na₂O/MgO basic → Al₂O₃ amphoteric → SiO₂–SO₃ acidic. Metallic character decreases across the period — mirrored in the oxides.",
+   "topicLabel": "Structure 3.1 — Periodic table & electron structure (Nov unit)"
+  },
+  {
+   "id": "pdx2",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "The first ionization energy generally increases across period 3 because:",
+   "choices": [
+    "Shells are added",
+    "Nuclear charge increases while the shell stays the same — electrons are held more tightly",
+    "Atoms get larger",
+    "Electron affinity falls"
+   ],
+   "answer": 1,
+   "note": "Same principal shell, more protons → greater attraction → higher IE. Shielding stays roughly constant across a period.",
+   "topicLabel": "Structure 3.1 — Periodic table & electron structure (Nov unit)"
+  },
+  {
+   "id": "pdx3",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "Going down group 2, the atomic radius increases and the ionization energy decreases because:",
+   "choices": [
+    "Protons are lost",
+    "Each element has an extra shell — more shielding despite more protons",
+    "Nuclear charge decreases",
+    "The nuclei become unstable"
+   ],
+   "answer": 1,
+   "note": "New shell each period: distance + shielding win over the extra protons → outer electron easier to remove.",
+   "topicLabel": "Structure 3.1 — Periodic table & electron structure (Nov unit)"
+  },
+  {
+   "id": "pdx4",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "The elements of group 17 are highly reactive because they:",
+   "choices": [
+    "Lose one electron easily",
+    "Need only one electron to complete their outer shell",
+    "Are large atoms",
+    "Have full outer shells"
+   ],
+   "answer": 1,
+   "note": "Group 17: 7 valence electrons — one short of a full shell ↖ strong oxidizing agents. Reactivity DECREASES down the group.",
+   "topicLabel": "Structure 3.1 — Periodic table & electron structure (Nov unit)"
+  },
+  {
+   "id": "pdx5",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "Iron (Fe) is located in which block of the periodic table?",
+   "choices": [
+    "s block",
+    "p block",
+    "d block",
+    "f block"
+   ],
+   "answer": 2,
+   "note": "The last electron enters a d sublevel → d block (transition metals). Blocks are named for the sublevel being filled.",
+   "topicLabel": "Structure 3.1 — Periodic table & electron structure (Nov unit)"
+  },
+  {
+   "id": "pdx6",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "The condensed electron configuration of calcium (Z = 20) is:",
+   "choices": [
+    "[Ne]4s²",
+    "[Ar]4s²",
+    "[Ar]3d²",
+    "[Ne]3s²"
+   ],
+   "answer": 1,
+   "note": "18 electrons fill to argon; the remaining 2 enter 4s (4s fills before 3d). [Ar]3d² would be titanium.",
+   "topicLabel": "Structure 3.1 — Periodic table & electron structure (Nov unit)"
+  },
+  {
+   "id": "pdx7",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "Which pair of observations supports the particle nature of electrons in atoms?",
+   "choices": [
+    "Continuous spectra from hot gases",
+    "Line (emission) spectra with fixed wavelengths",
+    "Electrons bending around corners",
+    "Equal ionization energies"
+   ],
+   "answer": 1,
+   "note": "Line spectra: electrons drop between fixed energy levels → photons of fixed energy → quantized shells (Bohr).",
+   "topicLabel": "Structure 3.1 — Periodic table & electron structure (Nov unit)"
+  },
+  {
+   "id": "pdx8",
+   "format": "mcq",
+   "topic": "structure-3-1-periodicity",
+   "stem": "Successive ionization energies of an element show a large jump after the third electron. The element is likely in group:",
+   "choices": [
+    "2",
+    "3",
+    "13",
+    "15"
+   ],
+   "answer": 1,
+   "note": "Three electrons removed relatively easily → three valence electrons → group 13 (e.g. aluminium: the 4th electron comes from the filled inner shell).",
+   "topicLabel": "Structure 3.1 — Periodic table & electron structure (Nov unit)"
+  }
+ ]
 }
