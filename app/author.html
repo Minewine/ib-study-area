@@ -24,17 +24,17 @@
   <a href="quiz.html">Quiz</a>
   <a href="cards.html">Cards</a>
   <a href="author.html">Upload</a>
-  <a href="../index.html" style="margin-left:auto">\u2190 Study site</a>
+  <span id="auth-slot"></span><a href="../index.html" style="margin-left:auto">← Study site</a>
 </nav>
 <main>
   <h2>Upload your own content</h2>
-  <p class="muted">Add your own quiz banks and flashcard decks as JSON files (format: <a href="../docs/AUTHORING.md" target="_blank">docs/AUTHORING.md</a> \u2014 templates in <code>library/templates/</code>). Uploaded content is stored in this browser and appears automatically in the Quiz and Cards pickers.</p>
+  <p class="muted">Add your own quiz banks and flashcard decks as JSON files (format: <a href="../docs/AUTHORING.md" target="_blank">docs/AUTHORING.md</a> — templates in <code>library/templates/</code>). Uploaded content is stored in this browser and appears automatically in the Quiz and Cards pickers.</p>
 
   <section class="card">
-    <h3>1 \u00b7 Upload a JSON file</h3>
+    <h3>1 · Upload a JSON file</h3>
     <div class="up-zone" id="drop-zone">
       <p><input type="file" id="file-input" accept=".json,application/json" multiple></p>
-      <p class="muted">or drop .json files here \u00b7 or paste JSON below and press Add</p>
+      <p class="muted">or drop .json files here · or paste JSON below and press Add</p>
       <textarea id="paste-box" placeholder='{"subject": "chemistry-hl", "topic": "...", "topicLabel": "...", "items": [ ... ] }'></textarea>
       <p><button id="paste-add" class="btn">Add pasted JSON</button></p>
     </div>
@@ -42,20 +42,20 @@
   </section>
 
   <section class="card">
-    <h3>2 \u00b7 Manage uploaded content</h3>
+    <h3>2 · Manage uploaded content</h3>
     <div id="manage-quiz"><h3 class="count">Quiz banks</h3><div id="quiz-list"><p class="muted">None uploaded yet.</p></div></div>
     <div id="manage-cards"><h3 class="count">Flashcard decks</h3><div id="deck-list"><p class="muted">None uploaded yet.</p></div></div>
   </section>
 
   <section class="card">
-    <h3>3 \u00b7 Backup &amp; move between devices</h3>
-    <p class="muted">Everything you upload plus all progress lives in this browser. Export it as a file before switching devices \u2014 and import the file on the new one.</p>
+    <h3>3 · Backup &amp; move between devices</h3>
+    <p class="muted">Everything you upload plus all progress lives in this browser. Export it as a file before switching devices — and import the file on the new one.</p>
     <button id="export-btn" class="btn primary">Download my content (JSON)</button>
     <input type="file" id="import-file" accept=".json" style="margin-left:.5rem">
-    <p class="muted" style="margin-top:.5rem">Tip: to make an uploaded bank permanent for all devices, save its JSON into <code>library/questions/</code> (or <code>library/flashcards/</code>) and add one line to the matching <code>manifest.json</code> \u2014 see docs/AUTHORING.md.</p>
+    <p class="muted" style="margin-top:.5rem">Tip: to make an uploaded bank permanent for all devices, save its JSON into <code>library/questions/</code> (or <code>library/flashcards/</code>) and add one line to the matching <code>manifest.json</code> — see docs/AUTHORING.md.</p>
   </section>
 </main>
-<footer>Private family use \u00b7 exams <strong>May 2028</strong> \u00b7 keep this app and its content non-public</footer>
+<footer>Private family use · exams <strong>May 2028</strong> · keep this app and its content non-public</footer>
 
 <script>
 (function () {
@@ -98,7 +98,7 @@
     if (!Array.isArray(deck.cards) || deck.cards.length === 0) return "missing or empty 'cards' array";
     for (const c of deck.cards) {
       if (!c.id) return "a card is missing 'id'";
-      if (existingIds.has(c.id)) return "card id '" + c.id + "' already exists in another deck \u2014 make ids globally unique (e.g. prefix them)";
+      if (existingIds.has(c.id)) return "card id '" + c.id + "' already exists in another deck — make ids globally unique (e.g. prefix them)";
       if (!c.front || !c.back) return "card '" + c.id + "': 'front' and 'back' are both required";
       if (c.type && c.type !== "qa" && c.type !== "term") return "card '" + c.id + "': type must be 'qa' or 'term'";
       existingIds.add(c.id);
@@ -122,33 +122,33 @@
 
   function processContent(text, sourceName) {
     let data;
-    try { data = JSON.parse(text); } catch (e) { return result(false, sourceName + ": invalid JSON \u2014 " + e.message); }
+    try { data = JSON.parse(text); } catch (e) { return result(false, sourceName + ": invalid JSON — " + e.message); }
     if (Array.isArray(data.items)) {
       const err = validateQuizBank(data);
       if (err) return result(false, sourceName + ": " + err);
       const banks = store.get(QBANKS, []);
-      if (banks.some(b => b.name === sourceName)) return result(false, sourceName + ": an upload with this filename already exists \u2014 delete it first or rename the file");
+      if (banks.some(b => b.name === sourceName)) return result(false, sourceName + ": an upload with this filename already exists — delete it first or rename the file");
       const entry = Object.assign({}, data, { name: sourceName, uploaded: new Date().toISOString().slice(0, 10) });
       if (!entry.label) entry.label = data.topicLabel || sourceName;
       if (!entry.subjectLabel) entry.subjectLabel = data.subject;
       banks.push(entry);
       store.set(QBANKS, banks);
-      result(true, sourceName + ": quiz bank saved (" + data.items.length + " items, subject " + data.subject + ") \u2014 it now appears in the Quiz picker.");
+      result(true, sourceName + ": quiz bank saved (" + data.items.length + " items, subject " + data.subject + ") — it now appears in the Quiz picker.");
     } else if (Array.isArray(data.cards)) {
       existingFlashcardIds().then(ids => {
         const err = validateDeck(data, ids);
         if (err) return result(false, sourceName + ": " + err);
         const decks = store.get(FDECKS, []);
-        if (decks.some(d => d.name === sourceName)) return result(false, sourceName + ": an upload with this filename already exists \u2014 delete it first or rename the file");
+        if (decks.some(d => d.name === sourceName)) return result(false, sourceName + ": an upload with this filename already exists — delete it first or rename the file");
         const entry = Object.assign({}, data, { name: sourceName, uploaded: new Date().toISOString().slice(0, 10) });
         if (!entry.subjectLabel) entry.subjectLabel = data.subject;
         decks.push(entry);
         store.set(FDECKS, decks);
-        result(true, sourceName + ": flashcard deck saved (" + data.cards.length + " cards, subject " + data.subject + ") \u2014 it now appears in the Cards picker.");
+        result(true, sourceName + ": flashcard deck saved (" + data.cards.length + " cards, subject " + data.subject + ") — it now appears in the Cards picker.");
         renderManage();
       });
     } else {
-      result(false, sourceName + ": no 'items' or 'cards' array found \u2014 is this a quiz bank or a flashcard deck?");
+      result(false, sourceName + ": no 'items' or 'cards' array found — is this a quiz bank or a flashcard deck?");
     }
   }
 
@@ -157,11 +157,11 @@
     const decks = store.get(FDECKS, []);
     const ql = document.getElementById("quiz-list");
     ql.innerHTML = banks.length ? banks.map((b, i) =>
-      `<div class="fc-manage-item"><span class="name"><strong>${b.name}</strong> \u00b7 ${b.subject} \u00b7 ${b.items.length} items</span><button class="fc-mini" data-kind="quiz" data-i="${i}">Delete</button></div>`).join("")
+      `<div class="fc-manage-item"><span class="name"><strong>${b.name}</strong> · ${b.subject} · ${b.items.length} items</span><button class="fc-mini" data-kind="quiz" data-i="${i}">Delete</button></div>`).join("")
       : "<p class='muted'>None uploaded yet.</p>";
     const dl = document.getElementById("deck-list");
     dl.innerHTML = decks.length ? decks.map((d, i) =>
-      `<div class="fc-manage-item"><span class="name"><strong>${d.name}</strong> \u00b7 ${d.subject} \u00b7 ${d.cards.length} cards</span><button class="fc-mini" data-kind="deck" data-i="${i}">Delete</button></div>`).join("")
+      `<div class="fc-manage-item"><span class="name"><strong>${d.name}</strong> · ${d.subject} · ${d.cards.length} cards</span><button class="fc-mini" data-kind="deck" data-i="${i}">Delete</button></div>`).join("")
       : "<p class='muted'>None uploaded yet.</p>";
     ql.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
       const arr = store.get(QBANKS, []); arr.splice(parseInt(b.dataset.i), 1); store.set(QBANKS, arr); renderManage();
@@ -243,5 +243,6 @@
   renderManage();
 })();
 </script>
+<script src="../assets/auth.js?v=1"></script>
 </body>
 </html>

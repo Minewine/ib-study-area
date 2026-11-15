@@ -52,7 +52,7 @@ main{color:var(--fctext)}
   <a href="quiz.html">Quiz</a>
   <a href="cards.html">Cards</a>
   <a href="author.html">Upload</a>
-  <a href="../index.html" style="margin-left:auto">← Study site</a>
+  <span id="auth-slot"></span><a href="../index.html" style="margin-left:auto">← Study site</a>
 </nav>
 <main>
   <h2>Cards — spaced repetition <button id="fc-theme-btn" class="btn fc-mini" style="float:right">Dark mode</button></h2>
@@ -126,12 +126,13 @@ main{color:var(--fctext)}
   </section>
 </main>
 <footer>Private family study area · exams <strong>May 2028</strong> · keep this site and its library non-public</footer>
-<script src="../assets/flashcards.js?v=5"></script>
+<script src="../assets/flashcards.js?v=6"></script>
 <script>
 document.getElementById("fc-close-editor").addEventListener("click", () => {
   document.getElementById("editor").style.display = "none";
   document.getElementById("setup").style.display = "";
 });
 </script>
+<script src="../assets/auth.js?v=2"></script>
 </body>
 </html>

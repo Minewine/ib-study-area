@@ -7,8 +7,12 @@ touching this site.
 
 - **Static site, no build step.** 16 study-site pages + 4 practice-app pages (`app/`) + 5 asset files + JSON data in `library/`.
 - **Practice app (`app/`)**: `index.html` (launcher), `quiz.html`, `cards.html`, `author.html` (upload/manage/export).
-  Engines resolve content via `PATH_BASE` (`../` when served from `/app/`), so the same engine files serve both layers.
-  Root `quiz.html`/`flashcards.html` are one-line redirect stubs to the app.
+  Engines resolve content via `PATH_BASE` (`../` when served from `/app/`, empty at the root), so the same engine
+  files serve both layers. Root `quiz.html`/`flashcards.html` are one-line redirect stubs to the app.
+- **Hosted deployment**: `server/api.php` (auth + per-user state, PHP sessions, JSON files under the cPanel home)
+  + `tools/build_deploy.py` (assembles `deploy/nevaib/` — original content only). See `server/deploy-notes.md`.
+- **auth.js (`app/assets/`)**: login/logout widget, server pull on load, debounced push on every engine write
+  (engines call `Auth.queueSync()` from their `store.set`). Logged out = localStorage-only fallback.
 - **Vanilla JS, one engine per concern**:
   | File | Owns | Page(s) |
   |---|---|---|

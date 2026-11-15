@@ -137,8 +137,10 @@ without touching the server or any manifest:
    **in that browser** — it appears immediately in the Quiz and Cards pickers.
 
 Notes:
-- Uploaded content is **per device** (localStorage). Use the Upload page's **Download my
-  content** button to back it up, and **Import** on a new device to restore it.
+- Uploaded content is **per device** (localStorage) when the app runs locally. On the hosted
+  copy (rametic.com/nevaib, logged in), uploads and progress **sync to the server** and follow
+  the account across devices. Use the Upload page's **Download my content** button as a backup,
+  and **Import** to restore on a new device.
 - To make an uploaded bank permanent for every device: save its JSON into
   `library/questions/` (or `library/flashcards/`) and add one line to the matching
   `manifest.json` — then delete the upload from the app to avoid duplicates.
