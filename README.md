@@ -50,7 +50,7 @@ ibsystem/
 │   └── MAINTENANCE.md        ← weekly/termly checklists
 ├── index.html … *.html       ← study-site pages (see table above)
 ├── app/                      ← self-contained practice app (quiz + flashcards + upload)
-├── server/                   ← PHP backend + deploy notes for rametic.com/nevaib (accounts + cross-device sync)
+├── server/                   ← PHP backend + deploy notes for rametric.com/nevaib (accounts + cross-device sync)
 ├── assets/
 │   ├── style.css             ← site-wide styles
 │   ├── app.js                ← checklists, progress bars, countdown, this-week

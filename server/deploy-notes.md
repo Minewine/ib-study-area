@@ -1,4 +1,4 @@
-# Deploying the practice app to rametic.com/nevaib
+# Deploying the practice app to rametric.com/nevaib
 
 Target: Namecheap shared hosting (no shell). The deployable folder contains only
 original content — the copyrighted PDF library is **not** part of it and must
@@ -17,13 +17,13 @@ never be uploaded.
    (the marketing site's `deploy.sh`/rsync flow also works for this folder).
 4. Create the accounts (from any terminal, against the live host):
    ```sh
-   curl -X POST "https://rametic.com/nevaib/api/api.php?action=setup" \
+   curl -X POST "https://rametric.com/nevaib/api/api.php?action=setup" \
         -H "Content-Type: application/json" \
         -d '{"setup_key":"<the key>","username":"<her-username>","password":"<a-good-password>"}'
    ```
    Repeat per account. Then **blank `$SETUP_KEY` in the uploaded api.php** (cPanel editor)
    and confirm account creation now returns 403.
-5. Verify: open `https://rametic.com/nevaib/`, log in, run a session, confirm
+5. Verify: open `https://rametric.com/nevaib/`, log in, run a session, confirm
    `~/nevaib-data/state/<user>.json` appears (cPanel file manager, outside public_html).
 
 ## HTTPS
