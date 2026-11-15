@@ -5,30 +5,53 @@
 
 declare(strict_types=1);
 
-session_set_cookie_params(["lifetime" => 60 * 60 * 24 * 30, "path" => "/", "httponly" => true, "secure" => $COOKIE_SECURE, "samesite" => "Lax"]);
+$COOKIE_SECURE = ($_SERVER["HTTPS"] ?? "") !== "" || ($_SERVER["HTTP_X_FORWARDED_PROTO"] ?? "") === "https" || ($_SERVER["SERVER_PORT"] ?? "") === "443";
+// positional form (PHP 7.2 compatible; the array form needs 7.3+). No SameSite
+// attribute on 7.2 — modern browsers treat a SameSite-less cookie as Lax, which
+// is the behaviour we want; cross-origin callers use the token header instead.
+session_set_cookie_params(60 * 60 * 24 * 30, "/", "", $COOKIE_SECURE, true);
 session_start();
 header("Content-Type: application/json; charset=utf-8");
 header("X-Content-Type-Options: nosniff");
 
+// ── CORS: the study site runs on other origins (localhost dev etc.) where
+// cookies can never cross — those callers authenticate by token instead.
+// Preflights carry no credentials, so answer them before any auth logic.
+$ORIGIN = $_SERVER["HTTP_ORIGIN"] ?? "";
+if ($ORIGIN !== "" && (preg_match("/^https:\/\/(www\.)?rametric\.com$/", $ORIGIN)
+    || preg_match("/^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$/", $ORIGIN)
+    // LAN study-site use (DEPLOY.md option A): the token, not CORS, is the auth gate
+    || preg_match("/^http:\/\/(192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+|172\.(1[6-9]|2\d|3[01])\.\d+\.\d+)(:\d+)?$/", $ORIGIN))) {
+    header("Access-Control-Allow-Origin: " . $ORIGIN);
+    header("Vary: Origin");
+}
+if (($_SERVER["REQUEST_METHOD"] ?? "") === "OPTIONS") {
+    header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+    header("Access-Control-Allow-Headers: Content-Type, X-Nevaib-Token");
+    header("Access-Control-Max-Age: 86400");
+    http_response_code(204);
+    exit;
+}
+
 // ── configuration ────────────────────────────────────────────────────────────
 // State directory: OUTSIDE public_html. Adjust to the cPanel home layout:
 //   public_html/nevaib/api/api.php  →  $DATA_DIR = dirname(__DIR__, 3) . "/nevaib-data";
-$DATA_DIR = dirname(__DIR__, 3) . "/nevaib-data";   // cPanel home: ~/nevaib-data (OUTSIDE public_html)
+$DATA_DIR = getenv("NEVAIB_DATA_DIR") ?: (dirname(__DIR__, 3) . "/nevaib-data");   // cPanel home: ~/nevaib-data (OUTSIDE public_html); NEVAIB_DATA_DIR overrides for local testing
 $USERS_FILE = $DATA_DIR . "/users.json";
 $STATE_DIR = $DATA_DIR . "/state";
 $SESSION_NAME = "nevaibsess";
 $MAX_LOGIN_FAILS = 5;
+$TOKEN_TTL = 90 * 86400;  // login tokens expire after 90 days
 // One-time account creation: set a long random key here, create accounts, then blank it.
 $SETUP_KEY = "";  // e.g. "paste-a-long-random-string"; empty = setup disabled
-$COOKIE_SECURE = ($_SERVER["HTTPS"] ?? "") !== "" || ($_SERVER["HTTP_X_FORWARDED_PROTO"] ?? "") === "https" || ($_SERVER["SERVER_PORT"] ?? "") === "443";
 
 // ── helpers ──────────────────────────────────────────────────────────────────
-function fail(string $msg, int $code = 400): never {
+function fail(string $msg, int $code = 400) {   // PHP 7.2 target: no "never" return type (8.1+)
     http_response_code($code);
     echo json_encode(["ok" => false, "error" => $msg]);
     exit;
 }
-function ok(array $data = []): never {
+function ok(array $data = []) {
     echo json_encode(["ok" => true] + $data);
     exit;
 }
@@ -79,6 +102,17 @@ function clear_fails(string $user): void {
     unset($all[$user]);
     file_put_contents($f, json_encode($all), LOCK_EX);
 }
+function tokens(): array {
+    global $DATA_DIR;
+    $f = $DATA_DIR . "/tokens.json";
+    if (!is_file($f)) return [];
+    $d = json_decode(file_get_contents($f), true);
+    return is_array($d) ? $d : [];
+}
+function save_tokens(array $t): void {
+    global $DATA_DIR;
+    file_put_contents($DATA_DIR . "/tokens.json", json_encode($t, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE), LOCK_EX);
+}
 
 data_dir();
 
@@ -125,23 +159,46 @@ if ($action === "login") {
     clear_fails($user);
     session_regenerate_id(true);
     $_SESSION["user"] = $user;
-    ok(["user" => $user]);
+    // token for cross-origin callers — cookies can't cross origins (SameSite)
+    $token = bin2hex(random_bytes(32));
+    $tokens = array_filter(tokens(), function ($e) { return (time() - (int)($e["t"] ?? 0)) < $GLOBALS["TOKEN_TTL"]; }); // prune expired
+    $tokens[hash("sha256", $token)] = ["u" => $user, "t" => time()];
+    $mine = array_keys(array_filter($tokens, function ($e) use ($user) { return ($e["u"] ?? "") === $user; }));
+    if (count($mine) > 8) {   // keep at most 8 tokens per user — drop the oldest
+        usort($mine, function ($a, $b) use ($tokens) { return $tokens[$a]["t"] <=> $tokens[$b]["t"]; });
+        foreach (array_slice($mine, 0, count($mine) - 8) as $h) unset($tokens[$h]);
+    }
+    save_tokens($tokens);
+    ok(["user" => $user, "token" => $token]);
 }
 
 if ($action === "logout") {
+    $tok = (string)($_SERVER["HTTP_X_NEVAIB_TOKEN"] ?? "");
+    if ($tok !== "") {   // retire the presented token alongside the session
+        $tokens = tokens();
+        $h = hash("sha256", $tok);
+        if (isset($tokens[$h])) { unset($tokens[$h]); save_tokens($tokens); }
+    }
     $_SESSION = [];
     session_destroy();
     ok([]);
 }
 
-if ($action === "me") {
-    if (empty($_SESSION["user"])) ok(["user" => null]);
-    ok(["user" => $_SESSION["user"]]);
+// resolve the caller: PHP session, else X-Nevaib-Token header (tokens expire after 90 days)
+$user = $_SESSION["user"] ?? null;
+if (!$user) {
+    $tok = (string)($_SERVER["HTTP_X_NEVAIB_TOKEN"] ?? "");
+    $all = $tok === "" ? [] : tokens();
+    $h = hash("sha256", $tok);
+    if (isset($all[$h]) && (time() - (int)$all[$h]["t"]) < $TOKEN_TTL) $user = (string)$all[$h]["u"];
 }
 
-// everything below requires a session
-if (empty($_SESSION["user"])) fail("not logged in", 401);
-$user = $_SESSION["user"];
+if ($action === "me") {
+    ok(["user" => $user ?: null]);
+}
+
+// everything below requires a resolved user
+if (empty($user)) fail("not logged in", 401);
 
 if ($action === "get-state") {
     $p = state_path($user);

@@ -1,15 +1,29 @@
 /* Practice app — login + cross-device sync.
-   Talks to api/api.php (PHP sessions). Logged in: the server holds the master
-   copy of the app-owned state; every change is pushed (debounced). Logged out:
-   localStorage-only, exactly as before. Keys synced are the app-owned ones —
-   study-site data (checklists etc.) is not part of this payload. */
+   Talks to api/api.php. Same-origin callers use PHP session cookies; on other
+   origins (the study site on localhost etc.) cookies can't cross, so the login
+   token is sent in the X-Nevaib-Token header instead. Logged in: the server
+   holds the master copy of the app-owned state plus "site-state" (study-site
+   checklist ticks + this-week items); every change is pushed (debounced).
+   Logged out: localStorage-only, exactly as before. */
 (function () {
   "use strict";
 
-  const API = "api/api.php";
+  const qsApi = new URLSearchParams(location.search).get("nbapi");
+  const LOCAL_HOST = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
+  // dev-only API override (?nbapi=<url> sets, ?nbapi= resets) — honoured on
+  // localhost pages only so a crafted link can't redirect logins elsewhere
+  const API = (LOCAL_HOST && localStorage.getItem("nb-api")) ||
+    (/^(www\.)?rametric\.com$/.test(location.hostname)
+      ? "/nevaib/api/api.php"
+      : "https://rametric.com/nevaib/api/api.php");
+  if (qsApi !== null && LOCAL_HOST) {
+    if (qsApi === "") localStorage.removeItem("nb-api");
+    else if (qsApi !== localStorage.getItem("nb-api")) localStorage.setItem("nb-api", qsApi);
+  }
+
   const SYNCED_KEYS = [
     "q-userbanks", "fc-userdecks", "fc-state", "fc-user",
-    "fc-deleted", "fc-edits", "quizlog"
+    "fc-deleted", "fc-edits", "quizlog", "site-state"
   ];
   const store = {
     get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v === null ? d : v; } catch (e) { return d; } },
@@ -59,10 +73,12 @@
 
   async function api(action, opts = {}) {
     let url = API + "?action=" + encodeURIComponent(action);
-    const init = { method: opts.method || "GET", credentials: "same-origin" };
+    const init = { method: opts.method || "GET", credentials: "same-origin", headers: {} };
+    const token = localStorage.getItem("nb-token");
+    if (token) init.headers["X-Nevaib-Token"] = token;
     if (opts.body !== undefined) {
       init.method = "POST";
-      init.headers = { "Content-Type": "application/json" };
+      init.headers["Content-Type"] = "application/json";
       init.body = JSON.stringify(opts.body);
     }
     const res = await fetch(url, init);
@@ -76,6 +92,7 @@
     status("Logging in\u2026");
     try {
       const d = await api("login", { method: "POST", body: { username, password } });
+      if (d.token) localStorage.setItem("nb-token", d.token);
       user = d.user;
       renderWidget();
       await pull();
@@ -84,16 +101,58 @@
 
   async function doLogout() {
     try { await api("logout", { method: "POST", body: {} }); } catch (e) {}
+    localStorage.removeItem("nb-token");
     user = null;
     renderWidget();
     status("Logged out \u2014 data stays on this device until next login", "");
+  }
+
+  function hasSiteEntries() {
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (k && (k.startsWith("chk:") || /^week:\d+$/.test(k))) return true;
+    }
+    return false;
+  }
+
+  function collectSiteState() {
+    const ss = { checklists: {}, week: {} };
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (!k) continue;
+      if (k.startsWith("chk:")) {
+        const v = store.get(k, null);
+        if (v !== null) ss.checklists[k] = v;
+      } else if (/^week:\d+$/.test(k)) {
+        const v = store.get(k, null);
+        if (typeof v === "string") ss.week[k] = v; // empty too — clearing must propagate
+      }
+    }
+    return ss;
+  }
+
+  // merge incoming site rows into localStorage; local-only rows are never deleted
+  function distributeSiteState(ss, preferLocal) {
+    let changed = false;
+    if (!ss || typeof ss !== "object") return changed;
+    const put = (k, v) => {
+      if (preferLocal && localStorage.getItem(k) !== null) return;
+      if (JSON.stringify(store.get(k, null)) !== JSON.stringify(v)) { store.set(k, v); changed = true; }
+    };
+    Object.entries(ss.checklists || {}).forEach(([k, v]) => { if (k.startsWith("chk:")) put(k, v); });
+    Object.entries(ss.week || {}).forEach(([k, v]) => { if (/^week:\d+$/.test(k)) put(k, v); });
+    return changed;
   }
 
   async function pull() {
     try {
       const d = await api("get-state");
       if (d.state && typeof d.state === "object") {
-        Object.entries(d.state).forEach(([k, v]) => store.set(k, v));
+        Object.entries(d.state).forEach(([k, v]) => {
+          if (k !== "site-state") store.set(k, v);
+        });
+        if (d.state["site-state"]) distributeSiteState(d.state["site-state"], false);
+        else if (hasSiteEntries()) queueSync(); // server predates site-state — push the migration
         status("Loaded from server \u2713", "good");
         setTimeout(() => location.reload(), 400);
         return true;
@@ -107,6 +166,7 @@
   function collectState() {
     const s = {};
     SYNCED_KEYS.forEach(k => { const v = store.get(k, null); if (v !== null) s[k] = v; });
+    s["site-state"] = collectSiteState(); // always present — stable shape
     return s;
   }
 
@@ -115,7 +175,21 @@
     syncing = true;
     if (!manual) status("Syncing\u2026");
     try {
-      await api("save-state", { method: "PUT", body: { state: collectState() } });
+      // save-state replaces the whole file — probe first and carry over server
+      // keys this device doesn't hold so a fresh device can't wipe them; site
+      // rows merge per-row. A failed probe aborts: pushing blind would replace
+      // the file without those carry-overs.
+      let server = null;
+      const d = await api("get-state");
+      if (d.state && typeof d.state === "object") server = d.state;
+      if (server) distributeSiteState(server["site-state"], true);
+      const payload = collectState();
+      if (server) {
+        SYNCED_KEYS.forEach(k => {
+          if (payload[k] === undefined && server[k] !== undefined) payload[k] = server[k];
+        });
+      }
+      await api("save-state", { method: "PUT", body: { state: payload } });
       dirty = false;
       status("Synced \u2713 " + new Date().toLocaleTimeString(), "good");
     } catch (e) { status("Sync failed \u2014 will retry: " + e.message, "bad"); dirty = true; }
@@ -131,10 +205,13 @@
 
   async function boot() {
     renderWidget();
+    let meOk = false;
     try {
       const d = await api("me");
       user = d.user || null;
+      meOk = true;
     } catch (e) { user = null; }
+    if (meOk && !user && localStorage.getItem("nb-token")) localStorage.removeItem("nb-token"); // genuinely stale
     renderWidget();
     if (user) {
       try {
@@ -142,8 +219,10 @@
         if (d.state && typeof d.state === "object") {
           let changed = false;
           Object.entries(d.state).forEach(([k, v]) => {
+            if (k === "site-state") { if (distributeSiteState(v, false)) changed = true; return; }
             if (JSON.stringify(store.get(k, null)) !== JSON.stringify(v)) { store.set(k, v); changed = true; }
           });
+          if (changed || (!d.state["site-state"] && hasSiteEntries())) queueSync();
           if (changed) setTimeout(() => location.reload(), 300);
           status("Synced \u2713", "good");
         } else {
