@@ -84,6 +84,7 @@ cross-origin token path (the sticky override is localhost-only, by design).
 | `fc-theme` | `flashcards.js` | "light"/"dark" for the Cards page |
 | `q-userbanks` | `app/author.html` + quiz-engine | uploaded quiz banks (per device) |
 | `fc-userdecks` | `app/author.html` + flashcards | uploaded flashcard decks (per device) |
+| `q-errors` | quiz-engine + `practice.html` | missed-question tracker: `{key, subject, topic, topicLabel, format, stem, choices, answer, userAnswer, note, marks, markscheme, tactic, attempts, firstMissed, lastMissed, resolved}` — ids unique per file, key = id or stem hash; synced cross-device when logged in |
 | `nb-token` | `auth.js` | login bearer token (sent as `X-Nevaib-Token`) — cross-origin sync |
 | `nb-api` | `auth.js` | dev-only API override set via `?nbapi=` on localhost pages |
 | `chk:*` / `week:*` | `app.js` | synced inside the `site-state` payload (not as their own keys) |

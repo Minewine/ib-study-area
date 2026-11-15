@@ -6,6 +6,11 @@ features only exist to make that loop easier or more targeted.
 
 ---
 
+## Shipped (2026-11-15)
+
+- [x] Practice app spun out (`app/`) with content upload (author page) and cross-device sync (auth.js + api.php).
+- [x] Automatic error capture: wrong quiz answers stored, review mode re-serves them until correct, unresolved list on the practice page.
+
 ## Short-term (next 2–4 weeks · before the December break)
 
 - [ ] **School email sent → papers integrated.** File arrivals into `library/papers/<subject>/`, add links to `practice.html`, wire one mock per subject into the plan.

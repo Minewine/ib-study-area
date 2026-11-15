@@ -66,6 +66,11 @@ async function init() {
     subj.addEventListener("change", fillTopics);
     fillTopics();
     $("q-start").addEventListener("click", startSession);
+    const rbtn = $("q-review-btn");
+    if (rbtn) {
+      rbtn.addEventListener("click", startReview);
+      updateReviewUI();
+    }
     renderLog();
   }
 
@@ -144,6 +149,8 @@ async function init() {
             if (i === chosen && !right) b.classList.add("wrong");
           });
           session.results.push({ id: it.id, topic: it.topic, topicLabel: it.topicLabel, format: "mcq", got: right ? 1 : 0, max: 1, note: it.note });
+          if (session.review) markReviewResult(it, right);
+          else if (!right) recordError(it, { userChoice: chosen });
           const after = document.createElement("div");
           after.className = "q-note" + (right ? " good" : " bad");
           after.innerHTML = (right ? "✓ Correct. " : "✗ Not quite. ") + esc(it.note || "") +
@@ -165,6 +172,8 @@ async function init() {
         $("q-next").addEventListener("click", () => {
           const got = parseInt($("q-selfscore").value, 10);
           session.results.push({ id: it.id, topic: it.topic, topicLabel: it.topicLabel, format: "written", got, max: it.marks, note: "" });
+          if (session.review) markReviewResult(it, got >= it.marks);
+          else if (got < it.marks) recordError(it, { selfScore: got });
           nextQuestion();
         });
       });
@@ -221,6 +230,7 @@ async function init() {
     $("q-again").addEventListener("click", reset);
     saveLog(pct, got, max, session.label);
     renderLog();
+    updateReviewUI();
   }
 
   function saveLog(pct, got, max, label) {
@@ -244,6 +254,71 @@ async function init() {
       try { if (window.Auth && window.Auth.queueSync) window.Auth.queueSync(); } catch (e) {}
     }
   };
+
+  function getErrors() { return store.get("q-errors", []); }
+
+  function errKeyFor(it) {
+    return it.errKey || it.id || ("stem-" + String(it.stem).slice(0, 48).replace(/\W+/g, "-").toLowerCase());
+  }
+
+  function today() { return new Date().toISOString().slice(0, 10); }
+
+  function recordError(it, extra) {
+    const errs = store.get("q-errors", []);
+    const key = errKeyFor(it);
+    const existing = errs.find(x => x.key === key);
+    if (existing) {
+      existing.attempts = (existing.attempts || 0) + 1;
+      existing.lastMissed = today();
+      existing.resolved = false;
+    } else {
+      errs.push({
+        key, id: it.id || null, subject: session.subject, topic: it.topic || "",
+        topicLabel: it.topicLabel || "", format: it.format, stem: it.stem,
+        choices: it.choices || null, answer: (typeof it.answer === "number" ? it.answer : null),
+        userAnswer: (extra && extra.userChoice !== undefined) ? extra.userChoice : null,
+        note: it.note || "", marks: it.marks || null, markscheme: it.markscheme || null,
+        tactic: it.tactic || "", attempts: 1, firstMissed: today(), lastMissed: today(), resolved: false
+      });
+    }
+    store.set("q-errors", errs);
+  }
+
+  function markReviewResult(it, correct) {
+    const errs = store.get("q-errors", []);
+    const e = errs.find(x => x.key === it.errKey);
+    if (e) {
+      e.attempts = (e.attempts || 0) + 1;
+      e.lastAttempt = today();
+      if (correct) e.resolved = true;
+      store.set("q-errors", errs);
+    }
+  }
+
+  function unresolvedCount() { return getErrors().filter(e => !e.resolved).length; }
+
+  function updateReviewUI() {
+    const btn = $("q-review-btn");
+    const c = $("q-review-count");
+    const n = unresolvedCount();
+    if (btn) btn.disabled = n === 0;
+    if (c) c.textContent = n ? (n + " missed question(s) waiting for review") : "no missed questions waiting";
+  }
+
+  function startReview() {
+    const errs = getErrors().filter(e => !e.resolved);
+    if (!errs.length) { $("q-error").textContent = "No missed questions to review \u2014 well done!"; return; }
+    const items = shuffle(errs).map(e => ({
+      id: e.id, errKey: e.key, format: e.format, stem: e.stem,
+      choices: e.choices, answer: e.answer, note: e.note,
+      marks: e.marks, markscheme: e.markscheme, tactic: e.tactic,
+      topic: e.topic, topicLabel: e.topicLabel, isReview: true
+    }));
+    session = { items, idx: 0, results: [], review: true, subject: null, label: "Error review", requested: items.length, notice: "Reviewing questions you previously missed." };
+    $("setup").style.display = "none";
+    $("runner").style.display = "";
+    renderQuestion();
+  }
 
   function fcSaveFromQuiz(it) {
     const user = store.get("fc-user", []);

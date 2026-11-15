@@ -87,6 +87,10 @@ Rules:
    - `library/flashcards/manifest.json` → `{"file": "library/flashcards/my-new-deck.json", "subject": "biology-hl", "subjectLabel": "Biology HL"}`
 5. **Validate + refresh**: run `python3 -I tools/validate_content.py` (it exits non-zero on any problem), then reload the browser page. Done — the picker picks it up automatically.
 
+Uploaded banks also feed the **error-review loop**: wrong answers from an uploaded bank are stored in the
+missed-question tracker (`q-errors`, synced when logged in), and the Quiz page's “Review past errors” mode
+re-serves them until they're answered correctly.
+
 If the manifest line is missing, the bank simply doesn't appear in the picker (no error).
 If a JSON has a syntax error, the validator names the file and the problem.
 
