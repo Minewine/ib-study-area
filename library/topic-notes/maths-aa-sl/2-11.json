@@ -203,7 +203,7 @@
     ]
    }
   ],
-  "reviewNote": "tf07 says 'horizontal compression of factor ½'; IB wording is 'horizontal stretch with scale factor ½'. tf16 / fc-math-tf-13 (odd/even) are AHL 2.14 and are left unlinked."
+  "reviewNote": "tf07 now uses IB wording ('horizontal stretch with scale factor ½'). tf16 / fc-math-tf-13 (odd/even, AHL 2.14) are retired and left unlinked."
  },
  "syllabusFlags": [
   "Transformations may already have been met in 'Functions and quadratics' (vertex form) and are formalised later; split placement inferred."

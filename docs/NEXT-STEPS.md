@@ -21,18 +21,17 @@ Merge **PR #1 → PR #2 → PR #3**, in that order (each one builds on the previ
 - 28 near-duplicate question pairs: keep or remove (list in PR #1).
 - Whether to keep the Maths course-calendar quiz.
 
-## 5. Content fixes (small, ready to do)
-- **Chemistry bond energies that don't match the current data booklet:**
-  - `periodicity-energetics-review-11`: C–H 412 → 414, C=O 743 → 804, O=O 496 → 498;
-  - `review-22`: C–H 412 → 414;
-  - `review-12`: ΔHf(CH₄) −75 → −74.
-- **"Half-filled stability" wording to correct:** `fc-chem-p-09`, `p21`, `review-21`.
-- **Maths items that are off-syllabus for AA SL** (remove, or relabel as extension):
-  - m03, mnx6, fc-math-n-07, fc-math-st-05 (percentage error, which is an AI topic);
-  - s413, tf16, fc-math-tf-13 (HL only).
-- **Maths wording:** tf07 should read "horizontal stretch, scale factor 1/2".
+## 5. Content fixes
+Done in the `fix/content-corrections` PR (Nov 2026):
+- [x] **Chemistry bond energies** now match the v1.1 data booklet, with answers recomputed: `periodicity-energetics-review-11` (C–H 414, C=O 804, O=O 498 → −808 kJ mol⁻¹), `review-22` (C–H 414 → −124 kJ mol⁻¹), `review-12` (ΔHf(CH₄) −74 → −892 kJ mol⁻¹).
+- [x] **"Half-filled stability" wording** replaced with the pairing-repulsion explanation in `fc-chem-p-09`, `p21`, `review-21` (also the Hund's-rule note in the Structure 3.1 bank and the Cr note in `review-03`).
+- [x] **Off-syllabus Maths items** are now `"retired": true` (with a `retiredReason`). They stay in their files so ids and progress remain valid, but new quiz and card sessions skip them: m03, mnx6, fc-math-n-07, fc-math-st-05 (AI percentage error); s413 (AHL 1.10 counting), tf16, fc-math-tf-13 (AHL 2.14 odd/even).
+- [x] **tf07** reads "horizontal stretch with scale factor ½".
+- [x] **`wp01`**: left as it is on purpose. Progress is keyed `bank#id`, so the two `wp01` items no longer collide; renaming one would orphan any existing q-errors record. The validator warning stays.
+
+Still open:
 - **Maths checklist:** `math-aa-sl.html` uses textbook numbering, not IB numbering. Rebuild it from `library/syllabus/maths-aa-sl.json`.
-- The duplicate quiz id `wp01` in two Biology banks: rename it with a q-errors key migration, or leave it as it is (the validator warns about it).
+- Missed-question review uses the copy saved when the question was missed, so an old miss of a corrected or retired item still shows its old text until it's answered correctly.
 
 ## 6. Fill the practice gaps the notes exposed
 - Flashcards for **B2.1–B2.3** (membranes, organelles, cell specialisation). She studies these next, and they have questions but no cards.
