@@ -280,10 +280,61 @@ if note_files:
         for x in sorted(on_disk - listed):
             fails.append(f"topic-notes/manifest.json: does not list {x}; run tools/import_topic_notes.py")
 
+# ---------- coursework planner (library/coursework/coursework.json) ----------
+# Progress is keyed "<track>.<stage>.<check>" in the synced "cw-progress" key, so ids
+# must be unique and must never be renamed once she has ticked them.
+ID_RE = re.compile(r"^[a-z0-9-]+$")
+DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+total_cw = 0
+cw_path = ROOT / "library/coursework/coursework.json"
+if cw_path.exists():
+    cw, err = load(cw_path)
+    if err:
+        fails.append(f"coursework.json: not valid JSON ({err})")
+        cw = {}
+    if cw.get("schemaVersion") != 1:
+        fails.append("coursework.json: schemaVersion must be 1")
+    if not cw.get("disclaimer"):
+        fails.append("coursework.json: missing disclaimer")
+    track_ids = set()
+    for t in cw.get("tracks", []):
+        tid = t.get("id")
+        if not isinstance(tid, str) or not ID_RE.match(tid) or tid in track_ids:
+            fails.append(f"coursework.json: bad or duplicate track id {tid!r}")
+        track_ids.add(tid)
+        for key in ("label", "facts", "criteria", "stages"):
+            if not t.get(key):
+                fails.append(f"coursework.json track {tid}: missing '{key}'")
+        for c in t.get("criteria", []):
+            if not c.get("name") or not isinstance(c.get("max"), int) or not c.get("focus"):
+                fails.append(f"coursework.json track {tid}: criterion needs name, integer max and focus")
+        stage_ids = set()
+        for st in t.get("stages", []):
+            sid = st.get("id")
+            if not isinstance(sid, str) or not ID_RE.match(sid) or sid in stage_ids:
+                fails.append(f"coursework.json track {tid}: bad or duplicate stage id {sid!r}")
+            stage_ids.add(sid)
+            if not st.get("title") or not st.get("checks"):
+                fails.append(f"coursework.json {tid}.{sid}: needs a title and checks")
+            check_ids = set()
+            for c in st.get("checks", []):
+                cid = c.get("id")
+                if not isinstance(cid, str) or not ID_RE.match(cid) or cid in check_ids or not c.get("text"):
+                    fails.append(f"coursework.json {tid}.{sid}: bad, duplicate or empty check {cid!r}")
+                check_ids.add(cid)
+                total_cw += 1
+            for d in st.get("dates", []):
+                if not DATE_RE.match(str(d.get("date", ""))) or not d.get("label") or not d.get("source"):
+                    fails.append(f"coursework.json {tid}.{sid}: each date needs YYYY-MM-DD date, label and source")
+    for text in strings_in(cw):
+        if re.search(r"(/home/|/workspace/|library/school/|\.pdf\b)", text):
+            fails.append(f"coursework.json: mentions a local path or private file: {text[:60]!r}")
+
 # ---------- report ----------
 print(f"quiz banks: {total_q} items in {len(bank_files) - 1} files")
 print(f"flashcard decks: {total_f} cards in {len(deck_files) - 1} files")
 print(f"topic notes: {total_n} files")
+print(f"coursework planner: {total_cw} self-check items")
 for w in warns:
     print("WARN:", w)
 if fails:

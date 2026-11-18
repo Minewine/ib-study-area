@@ -40,7 +40,7 @@ touching this site.
   without store.js.
 - **Sync model** (`assets/auth.js`): synced keys = `NB.store.SYNCED_KEYS` (`q-userbanks, fc-userdecks, fc-state,
   fc-user, fc-deleted, fc-edits, quizlog, q-errors, tok-objects, ee-ideas, io-issues, ia-debriefs, res-bookmarks,
-  res-notes, res-recent`) **+ `site-state`** (`{checklists: {"chk:…": {c,r}}, week: {"week:0": "…"}}`, built from
+  res-notes, res-recent, cw-progress`) **+ `site-state`** (`{checklists: {"chk:…": {c,r}}, week: {"week:0": "…"}}`, built from
   the per-row keys; rows are tracked individually). Rules, applied on page load, after login and on a 409:
   1. `fc-state`, `q-errors`, `quizlog` merge **per record** (`NB.merge.RECORDS`): `fc-state` per card (newest `t`,
      then `seen`, then `due`), `q-errors` union by `key` (newest `ts`, then last attempt/miss date, then attempts;
@@ -158,6 +158,7 @@ folders it reads the file list from `library/library-manifest.json`.
 | `ee-ideas` | `lists.js` (ee.html) | EE idea-log shortlist blob `{items:[{t, done, a: subject, b: why}]}` |
 | `io-issues` | `lists.js` (french hub) | French IO global-issue bank blob `{items:[{t, done, a: text, b: work}]}` |
 | `ia-debriefs` | `lists.js` (ia.html) | IA practice debrief notes `{nov:{rd,da,ce}, jan:{rd,ace}}` |
+| `cw-progress` | `coursework.js` (app/coursework.html) | coursework planner `{checks: {"<track>.<stage>.<check>": {c, t}}, notes: {"<track>.<stage>": {s, t}}, dates: {"<track>.<stage>": {d, t}}}` — synced and merged **per record** (newest `t`; an untick is `c:false`, never deleted). Ids come from `library/coursework/coursework.json` and must never be renamed |
 | `res-bookmarks` | `library.js` | pinned library resources: array of `subject::path` keys (★ on library rows), newest pin first |
 | `res-notes` | `library.js` | per-resource free-text notes `{subject::path: text}` |
 | `res-recent` | `library.js` | recently opened PDFs: array of `subject::path`, newest first, capped at 20 |

@@ -33,7 +33,7 @@
     "q-userbanks", "fc-userdecks", "fc-state", "fc-user",
     "fc-deleted", "fc-edits", "quizlog", "q-errors",
     "tok-objects", "ee-ideas", "io-issues", "ia-debriefs",
-    "res-bookmarks", "res-notes", "res-recent"
+    "res-bookmarks", "res-notes", "res-recent", "cw-progress"
   ];
   // never synced, never in backups: credentials, sync bookkeeping, caches, safety copies
   const LOCAL_ONLY = ["nb-token", "nb-api", DIRTY_KEY, "nb-sync", SCHEMA_KEY, "fc-seedids"];
@@ -258,6 +258,22 @@
       const at = (e) => [String(e && e.date || ""), e && e.ts || 0];
       out.sort((x, y) => { const p = at(x), q = at(y); return p[0] < q[0] ? 1 : p[0] > q[0] ? -1 : q[1] - p[1]; });
       return out.slice(0, Math.max(20, a.length, b.length));
+    },
+    // coursework planner {checks: {id: {c, t}}, notes: {id: {s, t}}, dates: {id: {d, t}}}
+    // — per record, the newest edit wins (an untick is a record with c:false, so it
+    // survives a merge); records and unknown sections are never dropped
+    "cw-progress": function (a, b) {
+      if (!isObj(a)) return b; if (!isObj(b)) return a;
+      const out = Object.assign({}, b, a);
+      const t = (r) => [r && r.t || 0];
+      new Set(Object.keys(a).concat(Object.keys(b))).forEach(sec => {
+        const x = a[sec], y = b[sec];
+        if (!isObj(x) || !isObj(y)) { out[sec] = isObj(x) ? x : isObj(y) ? y : (x !== undefined ? x : y); return; }
+        const m = Object.assign({}, y);
+        Object.keys(x).forEach(id => { if (!(id in m) || newer(x[id], m[id], t)) m[id] = x[id]; });
+        out[sec] = m;
+      });
+      return out;
     }
   };
 

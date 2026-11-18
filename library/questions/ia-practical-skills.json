@@ -1,0 +1,387 @@
+{
+ "subject": "ia-skills",
+ "topic": "practical-ia-skills",
+ "topicLabel": "Practical & IA skills — design, uncertainties, statistics, evaluation",
+ "status": "draft",
+ "about": "Original practice questions on practical and coursework skills for Biology HL, Chemistry HL (and general data handling). Written for this site; not IB questions and not a prediction of exam questions.",
+ "items": [
+  {
+   "id": "ia01",
+   "format": "mcq",
+   "topic": "variables-design",
+   "stem": "A student measures how the temperature of the water bath affects the time taken for milk to be digested by a protease. Which is the dependent variable?",
+   "choices": [
+    "Time taken for the milk to clear",
+    "Volume of protease solution",
+    "Temperature of the water bath",
+    "Concentration of the milk used in each tube"
+   ],
+   "answer": 0,
+   "note": "The dependent variable is what you measure in response to the change you make. Temperature is the independent variable; volume and concentration are controlled variables."
+  },
+  {
+   "id": "ia02",
+   "format": "mcq",
+   "topic": "variables-design",
+   "stem": "In the same protease investigation, why must the pH be kept constant?",
+   "choices": [
+    "pH has no effect on proteases, so it is easy to fix",
+    "pH also changes enzyme activity, so a change in pH could be mistaken for an effect of temperature",
+    "Keeping pH constant reduces the instrument uncertainty",
+    "pH is the dependent variable, so it has to be recorded at the end of every single trial"
+   ],
+   "answer": 1,
+   "note": "A control variable is anything else that could change the dependent variable. If it drifts, you can no longer say the change was caused by your independent variable."
+  },
+  {
+   "id": "ia03",
+   "format": "mcq",
+   "topic": "variables-design",
+   "stem": "Which research question is the most focused?",
+   "choices": [
+    "What is the best concentration of acid for reacting with calcium carbonate?",
+    "Does concentration matter in chemistry reactions with carbonates?",
+    "How does the concentration of hydrochloric acid (0.20–1.00 mol dm⁻³) affect the initial rate of CO₂ production with 2.0 g calcium carbonate chips at 25 °C?",
+    "How does acid affect the rate of a reaction?"
+   ],
+   "answer": 2,
+   "note": "A focused question names both variables, the range of the independent variable, how the dependent variable is measured and the system studied."
+  },
+  {
+   "id": "ia04",
+   "format": "mcq",
+   "topic": "variables-design",
+   "stem": "A student plans to test only three values of the independent variable. What is the main problem?",
+   "choices": [
+    "It means the control variables cannot be kept constant",
+    "It increases the number of repeats needed for each value, which makes the experiment take too long overall",
+    "It makes the uncertainty of each measurement larger",
+    "Three points are too few to establish the shape of a trend with confidence"
+   ],
+   "answer": 3,
+   "note": "Too few independent-variable values make it hard to tell a straight line from a curve. Five or more values across a wide range is a common aim; check with your teacher what suits your investigation."
+  },
+  {
+   "id": "ia05",
+   "format": "mcq",
+   "topic": "variables-design",
+   "stem": "Why are repeat measurements taken at each value of the independent variable?",
+   "choices": [
+    "To reduce the effect of random error and to show how much the results vary",
+    "To make the instrument more precise",
+    "To remove systematic error",
+    "To extend the range of the independent variable without needing any extra preliminary trials at all"
+   ],
+   "answer": 0,
+   "note": "Averaging repeats reduces random scatter and lets you judge variability. Repeats do not remove a systematic error: every repeat is shifted the same way."
+  },
+  {
+   "id": "ia06",
+   "format": "mcq",
+   "topic": "variables-design",
+   "stem": "Why run a preliminary trial before collecting the real data?",
+   "choices": [
+    "To produce data that can be added to the final results",
+    "To find a range and interval for the independent variable that gives a measurable change",
+    "To find the literature value for the experiment",
+    "To remove the need for a separate risk assessment, since the trial already shows the method is safe to use"
+   ],
+   "answer": 1,
+   "note": "Trials show whether the method works and what range, interval, timing and number of repeats are sensible. Problems found here also feed into your evaluation."
+  },
+  {
+   "id": "ia07",
+   "format": "mcq",
+   "topic": "uncertainties",
+   "stem": "A digital balance reads 2.35 g. With no manufacturer's value given, what uncertainty is usually recorded?",
+   "choices": [
+    "± 0.05 g",
+    "± 0.1 g",
+    "± 0.01 g",
+    "± 0.005 g"
+   ],
+   "answer": 2,
+   "note": "For a digital instrument, the usual convention is the smallest division shown (the last digit), so ± 0.01 g here."
+  },
+  {
+   "id": "ia08",
+   "format": "mcq",
+   "topic": "uncertainties",
+   "stem": "A thermometer has a scale marked every 1 °C. With no manufacturer's value given, what uncertainty is usually recorded for a reading?",
+   "choices": [
+    "± 0.1 °C",
+    "± 2 °C",
+    "± 1 °C",
+    "± 0.5 °C"
+   ],
+   "answer": 3,
+   "note": "For analogue scales the usual convention is half the smallest division. Write the reading to the same decimal place as the uncertainty, e.g. 21.5 ± 0.5 °C."
+  },
+  {
+   "id": "ia09",
+   "format": "mcq",
+   "topic": "uncertainties",
+   "stem": "Initial temperature 21.0 ± 0.5 °C, final temperature 27.5 ± 0.5 °C. What is the temperature change with its uncertainty?",
+   "choices": [
+    "6.5 ± 1.0 °C",
+    "6.5 ± 0.25 °C",
+    "6.5 ± 0.0 °C",
+    "6.5 ± 0.5 °C"
+   ],
+   "answer": 0,
+   "note": "When you add or subtract measurements, add their absolute uncertainties: 0.5 + 0.5 = 1.0 °C."
+  },
+  {
+   "id": "ia10",
+   "format": "mcq",
+   "topic": "uncertainties",
+   "stem": "A volume of 25.00 ± 0.05 cm³ is measured. What is the percentage uncertainty?",
+   "choices": [
+    "2%",
+    "0.2%",
+    "0.05%",
+    "0.02%"
+   ],
+   "answer": 1,
+   "note": "Percentage uncertainty = absolute uncertainty ÷ value × 100 = 0.05 ÷ 25.00 × 100 = 0.2%."
+  },
+  {
+   "id": "ia11",
+   "format": "mcq",
+   "topic": "uncertainties",
+   "stem": "Moles are calculated as concentration × volume. The concentration has a 2.0% uncertainty and the volume 0.5%. What is the percentage uncertainty in the moles?",
+   "choices": [
+    "1.5%",
+    "1.0%",
+    "2.5%",
+    "4.0%"
+   ],
+   "answer": 2,
+   "note": "When you multiply or divide, add the percentage uncertainties: 2.0% + 0.5% = 2.5%."
+  },
+  {
+   "id": "ia12",
+   "format": "mcq",
+   "topic": "uncertainties",
+   "stem": "A student finds an enthalpy change of −48 kJ mol⁻¹; the literature value is −57 kJ mol⁻¹. What is the percentage error?",
+   "choices": [
+    "About 84%",
+    "About 9%",
+    "About 19%",
+    "About 16%"
+   ],
+   "answer": 3,
+   "note": "Percentage error = |experimental − literature| ÷ |literature| × 100 = 9 ÷ 57 × 100 ≈ 15.8%."
+  },
+  {
+   "id": "ia13",
+   "format": "mcq",
+   "topic": "uncertainties",
+   "stem": "The percentage error of a result is 16% but its total percentage uncertainty is only 3%. What does this most likely show?",
+   "choices": [
+    "A systematic error is present that the random uncertainties do not account for",
+    "The result is within its uncertainty, so the method is fine",
+    "More repeats would bring the error below 3%",
+    "The literature value must be wrong, because the experimental uncertainty is so small compared with it"
+   ],
+   "answer": 0,
+   "note": "If the error is much larger than the uncertainty, random error cannot explain it. Look for a systematic cause, such as heat loss in calorimetry, and discuss it in the evaluation."
+  },
+  {
+   "id": "ia14",
+   "format": "mcq",
+   "topic": "uncertainties",
+   "stem": "Which change reduces a systematic error in a calorimetry experiment?",
+   "choices": [
+    "Using a thermometer with more decimal places",
+    "Insulating the cup and adding a lid to reduce heat loss",
+    "Plotting the results on a larger graph with a finer scale so each point can be read off more exactly",
+    "Repeating the experiment five times and averaging"
+   ],
+   "answer": 1,
+   "note": "Systematic errors push every result the same way, so repeats do not reduce them. They are reduced by changing the method. Better resolution reduces random uncertainty, not heat loss."
+  },
+  {
+   "id": "ia15",
+   "format": "mcq",
+   "topic": "statistics",
+   "stem": "A student compares the mean length of leaves from a sunny site and a shaded site (15 leaves each, data roughly normal). Which statistical test fits best?",
+   "choices": [
+    "A chi-squared test",
+    "Pearson's correlation coefficient",
+    "A t-test",
+    "No test: compare the ranges only"
+   ],
+   "answer": 2,
+   "note": "A t-test compares two means of continuous, roughly normally distributed data. Chi-squared is for counts in categories; correlation is for two continuous variables measured together."
+  },
+  {
+   "id": "ia16",
+   "format": "mcq",
+   "topic": "statistics",
+   "stem": "A student counts how many of a snail species are found under rocks versus in open grass, in two habitats, to test for an association. Which test fits best?",
+   "choices": [
+    "A t-test",
+    "Standard deviation",
+    "Pearson's correlation coefficient",
+    "A chi-squared test"
+   ],
+   "answer": 3,
+   "note": "Chi-squared works with frequencies (counts) in categories and tests whether they differ from what you would expect if there were no association."
+  },
+  {
+   "id": "ia17",
+   "format": "mcq",
+   "topic": "statistics",
+   "stem": "A student measures light intensity and the rate of oxygen production at the same time across a range of values and wants to know how strongly the two are linearly related. Which statistic fits?",
+   "choices": [
+    "Pearson's correlation coefficient (r)",
+    "A t-test",
+    "Percentage error",
+    "A chi-squared test"
+   ],
+   "answer": 0,
+   "note": "r measures the strength and direction of a straight-line relationship between two continuous variables. It does not show causation and is misleading for curved relationships."
+  },
+  {
+   "id": "ia18",
+   "format": "mcq",
+   "topic": "statistics",
+   "stem": "A t-test gives p = 0.03 with a significance level of 0.05. What can the student conclude?",
+   "choices": [
+    "The independent variable definitely caused the difference",
+    "The difference between the means is statistically significant, so the null hypothesis is rejected",
+    "The null hypothesis is proved true",
+    "There is a 3% chance that the alternative hypothesis is true"
+   ],
+   "answer": 1,
+   "note": "p < 0.05 means a difference this large would be unlikely if the null hypothesis were true. It does not prove anything, and causation still depends on the experimental design."
+  },
+  {
+   "id": "ia19",
+   "format": "mcq",
+   "topic": "statistics",
+   "stem": "In biology IA work, when is it usual to show the range instead of the standard deviation?",
+   "choices": [
+    "Whenever error bars are drawn on a graph of the processed data",
+    "When there are more than ten repeats",
+    "When there are fewer than five repeats for a value",
+    "When the data are normally distributed"
+   ],
+   "answer": 2,
+   "note": "With very few repeats the standard deviation is unreliable. Five or more repeats is the usual threshold for calculating it; below that, show the range."
+  },
+  {
+   "id": "ia20",
+   "format": "mcq",
+   "topic": "data-handling",
+   "stem": "One repeat is far from the others and the student's notes say the stopwatch was started late. What is the best approach?",
+   "choices": [
+    "Replace it with the average of the other repeats so that the table has no gaps or missing values",
+    "Keep it in the mean because all data must be used",
+    "Delete it from all tables so the data look consistent",
+    "Exclude it from the mean, keep it in the raw data table, and explain why"
+   ],
+   "answer": 3,
+   "note": "Outliers need a stated reason. Show the raw value, explain why it was excluded and, if possible, re-run that measurement. Never change or hide data."
+  },
+  {
+   "id": "ia21",
+   "format": "mcq",
+   "topic": "data-handling",
+   "stem": "Error bars of neighbouring points on a graph overlap a lot. What does this suggest?",
+   "choices": [
+    "The difference between those values may not be meaningful",
+    "The data are definitely wrong",
+    "The uncertainty was calculated incorrectly and should be worked out again",
+    "The independent variable has a large effect"
+   ],
+   "answer": 0,
+   "note": "Heavily overlapping error bars suggest the difference could be due to variability alone. A statistical test can check this, and the conclusion should be phrased with care."
+  },
+  {
+   "id": "ia22",
+   "format": "mcq",
+   "topic": "evaluation-conclusion",
+   "stem": "Which evaluation point is most specific to the investigation?",
+   "choices": [
+    "The experiment should be repeated more times to be sure",
+    "Effervescence made the end of the reaction hard to judge; timing to a fixed gas volume with a gas syringe would remove this judgement",
+    "More accurate equipment should be used next time",
+    "Human error may have affected the results"
+   ],
+   "answer": 1,
+   "note": "Strong evaluation names a weakness of this particular method, says how it affected the data, and gives a realistic improvement that fixes it. Generic statements earn little credit."
+  },
+  {
+   "id": "ia23",
+   "format": "mcq",
+   "topic": "evaluation-conclusion",
+   "stem": "A student tested temperatures from 20 to 40 °C and found the rate kept rising. Which statement is a limitation of the conclusion?",
+   "choices": [
+    "The results show the rate increases with temperature",
+    "The thermometer had an uncertainty of ± 0.5 °C",
+    "The trend cannot be assumed to continue above 40 °C, because no data were collected there",
+    "The enzyme was kept at the same pH throughout, using a buffer solution added to every single tube before timing"
+   ],
+   "answer": 2,
+   "note": "Limitations include how far the conclusion can be stretched beyond the range tested, the system studied and the assumptions made. The trend outside the range is unknown."
+  },
+  {
+   "id": "ia24",
+   "format": "mcq",
+   "topic": "ia-rules",
+   "stem": "In a collaborative sciences IA group, which arrangement is acceptable?",
+   "choices": [
+    "Two students collect one shared set of raw data together, then each submit that same raw data with their own separate conclusions and evaluation",
+    "Three students share one data set and submit one joint report",
+    "Four students each change a different independent variable",
+    "Two students use the same apparatus and independent variable but each measures a different dependent variable and writes their own report"
+   ],
+   "answer": 3,
+   "note": "Groups may have up to three students. Each needs their own question (change a different independent variable, keep the shared one but measure another dependent variable, or use a different subset of shared data). The report, including the method, is written individually."
+  },
+  {
+   "id": "ia25",
+   "format": "mcq",
+   "topic": "ia-rules",
+   "stem": "Which of these counts towards the 3,000-word limit of the sciences IA report?",
+   "choices": [
+    "The discussion of the conclusion",
+    "Data tables",
+    "The bibliography",
+    "Equations and worked calculations"
+   ],
+   "answer": 0,
+   "note": "Charts and diagrams, data tables, equations and calculations, citations, the bibliography and headers are not counted. The written discussion is counted."
+  },
+  {
+   "id": "ia26",
+   "format": "written",
+   "topic": "evaluation-conclusion",
+   "stem": "A student investigated how surface area affects the rate of reaction between marble chips and acid by timing until no more bubbles were seen. Suggest two specific weaknesses of this method and a realistic improvement for each.",
+   "marks": 4,
+   "markscheme": [
+    "Judging 'no more bubbles' is subjective / hard to see exactly (1)",
+    "Improvement: measure gas volume with a gas syringe or mass loss on a balance at fixed time intervals (1)",
+    "Marble chips of the 'same size' still vary in surface area / mass (1)",
+    "Improvement: use a measured mass of sieved chips of a narrow size range, or a powder of known mass (1)",
+    "Accept other specific weaknesses (temperature not controlled as the reaction is exothermic; acid concentration falls during reaction) with a matching improvement."
+   ],
+   "note": "Each weakness should be specific to this method, and each improvement should fix that weakness."
+  },
+  {
+   "id": "ia27",
+   "format": "written",
+   "topic": "uncertainties",
+   "stem": "Calculate the concentration of a solution made by dissolving 1.25 ± 0.01 g of NaCl (M = 58.44 g mol⁻¹) in water to make 250.0 ± 0.3 cm³ of solution. Give the answer with its absolute uncertainty.",
+   "marks": 3,
+   "markscheme": [
+    "n = 1.25 ÷ 58.44 = 0.02139 mol; c = 0.02139 ÷ 0.2500 = 0.0856 mol dm⁻³ (1)",
+    "% uncertainties: 0.01/1.25 = 0.8%; 0.3/250.0 = 0.12%; total ≈ 0.92% (1)",
+    "Absolute uncertainty ≈ 0.0008 mol dm⁻³, so c = 0.0856 ± 0.0008 mol dm⁻³ (1)"
+   ],
+   "note": "For division, add percentage uncertainties, then convert back to an absolute value. Quote the uncertainty to one significant figure and the value to the same decimal place."
+  }
+ ]
+}

@@ -48,7 +48,7 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
   // ── 1. every page loads without console errors ───────────────────────────
   {
     const { page, errors, ctx } = await newCtx(browser);
-    const pages = ["/index.html", "/app/index.html", "/app/notes.html", "/app/quiz.html", "/app/cards.html", "/app/author.html",
+    const pages = ["/index.html", "/app/index.html", "/app/notes.html", "/app/quiz.html", "/app/cards.html", "/app/author.html", "/app/coursework.html",
       ...fs.readdirSync(REPO).filter(f => f.endsWith(".html")).map(f => "/" + f)];
     for (const p of [...new Set(pages)]) {
       errors.length = 0;
@@ -107,6 +107,28 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
     assert.ok(card && (!deck.cardIds || deck.cardIds.includes(card.id)), "first card is one of the note's linked cards");
     assert.deepStrictEqual(errors.filter(e => !/favicon/.test(e)), [], "notes → quiz/cards console errors");
     ok(`${man.notes.length} topic notes render; recall-first reveal; note links start a quiz on exactly the linked questions and cards on the linked deck`);
+    await ctx.close();
+  }
+
+  // ── 1c. coursework planner: three tracks; a tick, a note and a date persist across reloads ──
+  {
+    const { page, errors, ctx } = await newCtx(browser);
+    await page.goto(BASE + "/app/coursework.html?track=chem", { waitUntil: "networkidle0" });
+    assert.strictEqual(await page.$$eval("#cw-tabs button", b => b.length), 3, "three tracks");
+    assert.ok((await page.$eval("#cw-track", e => e.textContent)).includes("Chemistry HL"), "?track=chem opens the chemistry track");
+    await page.click(".cw-stage[open] .cw-checks input[type=checkbox]");
+    await page.type(".cw-stage[open] textarea.cw-note", "ask about titration range");
+    await page.$eval(".cw-stage[open] input[type=date]", (e) => { e.value = "2027-09-20"; e.dispatchEvent(new Event("change")); });
+    await page.click("h2"); // blur → note saved
+    await page.reload({ waitUntil: "networkidle0" });
+    const p = await page.evaluate(() => JSON.parse(localStorage.getItem("cw-progress")));
+    assert.strictEqual(p.checks["chem.topic.c1"].c, true, "tick stored");
+    assert.strictEqual(p.notes["chem.topic"].s, "ask about titration range", "note stored");
+    assert.strictEqual(p.dates["chem.topic"].d, "2027-09-20", "date stored");
+    assert.ok(await page.$eval(".cw-stage .cw-checks input[type=checkbox]", e => e.checked), "tick shown after reload");
+    assert.ok(await page.evaluate(() => !!JSON.parse(localStorage.getItem("nb-dirty") || "{}")["cw-progress"]), "marked for sync");
+    assert.deepStrictEqual(errors.filter(e => !/favicon/.test(e)), [], "coursework console errors");
+    ok("coursework planner: 3 tracks render; tick, note and own date persist across reload and are marked for sync");
     await ctx.close();
   }
 

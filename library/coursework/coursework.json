@@ -1,0 +1,1065 @@
+{
+ "schemaVersion": 1,
+ "title": "Coursework planner",
+ "disclaimer": "A study aid written in our own words. It is not IB material and does not reproduce the official assessment criteria. Criterion names and mark totals are public facts; for the level descriptors, use the official criteria your teacher gives you. All school dates are approximate — always follow your teacher's dates.",
+ "updated": "2026-11-18",
+ "tracks": [
+  {
+   "id": "bio",
+   "subject": "biology-hl",
+   "label": "Biology HL — scientific investigation",
+   "kind": "science",
+   "facts": [
+    "Worth 20% of the final grade, at both SL and HL. The same task and the same four criteria apply in Biology, Chemistry and Physics.",
+    "One task: an open-ended scientific investigation of a research question you write yourself, reported in writing. The data must be quantitative, backed up by qualitative observations where useful.",
+    "Report limit: 3,000 words. Graphs and diagrams, data tables, equations and calculations, citations, the bibliography and headers do not count towards it.",
+    "Put the title, your personal code, the codes of any group members, and the word count at the top. No cover page or contents page is needed.",
+    "Approaches can be lab work, fieldwork, spreadsheet modelling, a database, a simulation, or a mix.",
+    "About 10 hours of class time are planned for it. Your teacher comments on one draft (advice, no editing); the next version you hand in is the final one.",
+    "Group work is optional, in groups of three at most. Each person still needs their own research question: change a different independent variable, keep the shared independent variable but measure another dependent variable, or pick out a different subset of a shared data set. Two students may never hand in the same raw data, and the report — including the method — is written alone.",
+    "Every source must be referenced. Missing or sloppy referencing is treated as academic misconduct.",
+    "Four criteria, 6 marks each, 24 in total: research design, data analysis, conclusion, evaluation.",
+    "Biology tip from the teacher support material, in short: with fewer than five repeats show the range; with five or more, show the standard deviation."
+   ],
+   "criteria": [
+    {
+     "name": "Research design",
+     "max": 6,
+     "focus": "Is your question focused and set in a clear context (system, variables, relevant theory)? Have you explained the choices behind your method — how you measure things, the range and number of values, repeats, and how other variables are kept constant — and described it well enough for someone else to repeat it?"
+    },
+    {
+     "name": "Data analysis",
+     "max": 6,
+     "focus": "Are raw and processed data recorded and presented clearly and precisely (units, headings, sensible decimal places)? Is the processing correct and actually relevant to the question, and have you dealt with uncertainty and variability?"
+    },
+    {
+     "name": "Conclusion",
+     "max": 6,
+     "focus": "Does your conclusion answer your own question, follow from your processed data (including the uncertainties), and get compared with published science you cite properly?"
+    },
+    {
+     "name": "Evaluation",
+     "max": 6,
+     "focus": "Do you pick out weaknesses and limitations that belong to YOUR method (not generic ones), judge which mattered most for your result, and suggest realistic improvements that fix those specific problems?"
+    }
+   ],
+   "stages": [
+    {
+     "id": "topic",
+     "title": "Topic and idea log",
+     "summary": "Collect ideas from lessons and practicals before you commit to one.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "I keep a running list of things from class or practicals that made me curious."
+      },
+      {
+       "id": "c2",
+       "text": "My topic links clearly to something in the course, so I can explain the theory behind it."
+      },
+      {
+       "id": "c3",
+       "text": "I can name the quantity I would change (or compare) and the quantity I would measure."
+      },
+      {
+       "id": "c4",
+       "text": "I have checked the school actually has the equipment, chemicals, organisms or data I would need."
+      },
+      {
+       "id": "c5",
+       "text": "I have a back-up idea in case the first one turns out not to work."
+      },
+      {
+       "id": "b1",
+       "text": "If my idea uses living organisms, I know whether it is allowed under the school's and the IB's experimentation rules (check with your teacher)."
+      }
+     ],
+     "pitfalls": [
+      "Picking a topic because it sounds impressive rather than because you can measure it well in about 10 hours.",
+      "Topics with no numbers to collect: the investigation must produce quantitative data.",
+      "Experiments on animals or people that are not allowed under the IB experimentation guidelines — ask before planning."
+     ],
+     "dates": []
+    },
+    {
+     "id": "rq",
+     "title": "Research question and background",
+     "summary": "Narrow the idea into one focused, testable question and gather the theory around it.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "My question names the independent and dependent variables (or the two variables I am correlating) and the system I study."
+      },
+      {
+       "id": "c2",
+       "text": "It states the range of the independent variable and how the dependent variable is measured."
+      },
+      {
+       "id": "c3",
+       "text": "I can explain in a few sentences the scientific idea that predicts what should happen."
+      },
+      {
+       "id": "c4",
+       "text": "I have written down full details of every source I read, as I read it."
+      },
+      {
+       "id": "c5",
+       "text": "My teacher has agreed the question is feasible and suits the course."
+      }
+     ],
+     "pitfalls": [
+      "A question that is too broad (\"How does temperature affect enzymes?\") instead of naming the enzyme, the range and the measurement.",
+      "Copying wording from a website or an exemplar — similarity checks are strict, and the question must be your own.",
+      "Leaving references until the end and then being unable to find them again."
+     ],
+     "dates": []
+    },
+    {
+     "id": "prelim",
+     "title": "Preliminary trials",
+     "summary": "Quick test runs to find a workable range, interval and timing before the real data collection.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "I ran a short trial to check that the method gives a measurable change."
+      },
+      {
+       "id": "c2",
+       "text": "I used the trial to choose the range and spacing of my independent variable (at least five values is a common target — check with your teacher)."
+      },
+      {
+       "id": "c3",
+       "text": "I decided how many repeats I need from how much the trial results varied."
+      },
+      {
+       "id": "c4",
+       "text": "I noted the problems I hit, because they feed my method changes and my evaluation."
+      }
+     ],
+     "pitfalls": [
+      "Choosing a range so narrow that the trend disappears inside the uncertainty.",
+      "Skipping trials and discovering on the data day that the reaction is too fast or too slow to measure.",
+      "Forgetting that living material varies a lot, so biology usually needs more repeats than chemistry for the same confidence."
+     ],
+     "dates": []
+    },
+    {
+     "id": "method",
+     "title": "Method, safety, ethics and environment",
+     "summary": "Write a method someone else could follow, and deal with risks before you start.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "I list the controlled variables, why each matters, and exactly how I keep it constant (or monitor it)."
+      },
+      {
+       "id": "c2",
+       "text": "My method gives specific equipment, amounts and steps — enough to repeat it, without padding."
+      },
+      {
+       "id": "c3",
+       "text": "I explained why I chose my measuring instruments and how precise they are."
+      },
+      {
+       "id": "c4",
+       "text": "I did a risk assessment and my teacher has checked it."
+      },
+      {
+       "id": "c5",
+       "text": "I considered ethical issues (living things, people's data) and environmental ones (disposal, waste) and wrote down what I did about them."
+      },
+      {
+       "id": "b1",
+       "text": "I said how I keep biological material comparable (same source, age, size, storage)."
+      }
+     ],
+     "pitfalls": [
+      "Listing control variables without saying how they were actually controlled.",
+      "A method written as a story of what happened instead of steps someone could follow.",
+      "If you worked in a group: describing the method in shared words. The method must be written individually."
+     ],
+     "dates": []
+    },
+    {
+     "id": "data",
+     "title": "Data collection",
+     "summary": "Collect enough good data, record everything as it happens, and note what you see.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "I recorded raw data straight into a table with units and the instrument uncertainty in the column headings."
+      },
+      {
+       "id": "c2",
+       "text": "I kept the same number of decimal places for each instrument, matching its precision."
+      },
+      {
+       "id": "c3",
+       "text": "I wrote down qualitative observations (colour changes, bubbles, anything odd) alongside the numbers."
+      },
+      {
+       "id": "c4",
+       "text": "I collected enough repeats and enough independent-variable values to see a trend."
+      },
+      {
+       "id": "c5",
+       "text": "I marked any result that looked wrong at the time, and why, instead of deleting it."
+      }
+     ],
+     "pitfalls": [
+      "Too few repeats, which makes it impossible to judge variability.",
+      "Rounding or tidying raw data before recording it.",
+      "Not having time to re-run a value that went wrong — plan a spare session if you can.",
+      "Biological samples changing during the session (drying out, warming up) — note the time and conditions."
+     ],
+     "dates": [
+      {
+       "date": "2027-06-15",
+       "when": "Tue 15 Jun 2027",
+       "label": "Biology IA experiment day (group 1)",
+       "source": "ISL Year 12 deadline calendar 2026–27"
+      },
+      {
+       "date": "2027-06-17",
+       "when": "Thu 17 Jun 2027",
+       "label": "Biology IA experiment day (group 2)",
+       "source": "ISL Year 12 deadline calendar 2026–27"
+      }
+     ]
+    },
+    {
+     "id": "processing",
+     "title": "Processing, statistics and uncertainties",
+     "summary": "Turn raw data into something that answers the question, and show how reliable it is.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "I show one worked example of each type of calculation."
+      },
+      {
+       "id": "c2",
+       "text": "My graph has labelled axes with units, a sensible scale, and error bars or uncertainty bars where appropriate."
+      },
+      {
+       "id": "c3",
+       "text": "I decided how to handle outliers using a reason I can state, and I show what I did."
+      },
+      {
+       "id": "c4",
+       "text": "Every processing step clearly helps answer my research question (nothing just for decoration)."
+      },
+      {
+       "id": "b1",
+       "text": "With five or more repeats I calculated the standard deviation and showed it as error bars; with fewer I showed the range."
+      },
+      {
+       "id": "b2",
+       "text": "If I use a statistical test, I can say why it fits my data (t-test to compare two means; chi-squared for counts in categories; correlation for two continuous variables)."
+      },
+      {
+       "id": "b3",
+       "text": "I stated my null hypothesis, the significance level and what the test result means for my question."
+      }
+     ],
+     "pitfalls": [
+      "Calculating things that look impressive but don't help answer the question.",
+      "Removing outliers silently. Say which ones, why, and ideally what difference it makes.",
+      "Joining points dot-to-dot instead of drawing a trend line or curve when the theory suggests one.",
+      "Calculating a standard deviation from three repeats, or for data that are clearly not roughly normal.",
+      "Using a correlation coefficient on a curved relationship — r only measures straight-line fit.",
+      "Saying a test 'proves' something. A significant result means the difference is unlikely to be chance alone."
+     ],
+     "dates": []
+    },
+    {
+     "id": "draft",
+     "title": "Writing the draft",
+     "summary": "A complete draft covering all four criteria, under the word limit.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "My conclusion answers the research question directly and quotes my processed values with their uncertainty."
+      },
+      {
+       "id": "c2",
+       "text": "I compared my result with published values or theory, and cited the source."
+      },
+      {
+       "id": "c3",
+       "text": "My evaluation names specific weaknesses of MY method and says which affected the result most."
+      },
+      {
+       "id": "c4",
+       "text": "Each improvement I suggest fixes a weakness I named, and is realistic."
+      },
+      {
+       "id": "c5",
+       "text": "I explained how the range of my data or my assumptions limit how far my conclusion goes."
+      },
+      {
+       "id": "c6",
+       "text": "The word count is under 3,000 and stated at the top, with title and personal code(s)."
+      },
+      {
+       "id": "c7",
+       "text": "I checked my draft against the official criteria my teacher gave me (self-assessment)."
+      }
+     ],
+     "pitfalls": [
+      "Generic evaluation (\"human error\", \"use more accurate equipment\") with no link to your own data.",
+      "A conclusion that claims more than the data show, or ignores the error bars.",
+      "Long background sections that use up the word count without helping the reader."
+     ],
+     "dates": [
+      {
+       "date": "2027-09-06",
+       "when": "early Sep 2027",
+       "label": "Biology IA draft due",
+       "source": "ISL Biology course outline 2026–28"
+      }
+     ]
+    },
+    {
+     "id": "feedback",
+     "title": "Teacher feedback",
+     "summary": "Your teacher reads one draft and gives general advice. Use it well — there is only one round.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "I wrote down the feedback in my own words, as a list of things to fix."
+      },
+      {
+       "id": "c2",
+       "text": "For each comment I know which criterion it is about."
+      },
+      {
+       "id": "c3",
+       "text": "I asked about anything I did not understand (asking for guidance is allowed and not penalised)."
+      },
+      {
+       "id": "c4",
+       "text": "I planned when I will make each change before the final deadline."
+      }
+     ],
+     "pitfalls": [
+      "Expecting the teacher to correct the draft for you — they can point to issues but not edit or write solutions.",
+      "Handing in a half-finished draft: the feedback is only as useful as the draft is complete."
+     ],
+     "dates": []
+    },
+    {
+     "id": "final",
+     "title": "Final version",
+     "summary": "Make the changes, check the details, and hand in. Once submitted, it cannot be taken back.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "I worked through every point from my feedback list."
+      },
+      {
+       "id": "c2",
+       "text": "All sources are cited in the text and listed in the bibliography."
+      },
+      {
+       "id": "c3",
+       "text": "Tables, graphs and units are consistent throughout."
+      },
+      {
+       "id": "c4",
+       "text": "Word count re-checked and stated; title and personal code(s) at the top."
+      },
+      {
+       "id": "c5",
+       "text": "I am confident this is entirely my own work and I can talk about any part of it."
+      }
+     ],
+     "pitfalls": [
+      "Last-minute changes that break consistency between the text, the tables and the graphs.",
+      "Forgetting that the final version is the one you confirm as authentic — there is no later revision."
+     ],
+     "dates": [
+      {
+       "date": "2027-11-08",
+       "when": "early Nov 2027",
+       "label": "Biology IA final due",
+       "source": "ISL Biology course outline 2026–28"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chem",
+   "subject": "chemistry-hl",
+   "label": "Chemistry HL — scientific investigation",
+   "kind": "science",
+   "facts": [
+    "Worth 20% of the final grade, at both SL and HL. The same task and the same four criteria apply in Biology, Chemistry and Physics.",
+    "One task: an open-ended scientific investigation of a research question you write yourself, reported in writing. The data must be quantitative, backed up by qualitative observations where useful.",
+    "Report limit: 3,000 words. Graphs and diagrams, data tables, equations and calculations, citations, the bibliography and headers do not count towards it.",
+    "Put the title, your personal code, the codes of any group members, and the word count at the top. No cover page or contents page is needed.",
+    "Approaches can be lab work, fieldwork, spreadsheet modelling, a database, a simulation, or a mix.",
+    "About 10 hours of class time are planned for it. Your teacher comments on one draft (advice, no editing); the next version you hand in is the final one.",
+    "Group work is optional, in groups of three at most. Each person still needs their own research question: change a different independent variable, keep the shared independent variable but measure another dependent variable, or pick out a different subset of a shared data set. Two students may never hand in the same raw data, and the report — including the method — is written alone.",
+    "Every source must be referenced. Missing or sloppy referencing is treated as academic misconduct.",
+    "Four criteria, 6 marks each, 24 in total: research design, data analysis, conclusion, evaluation.",
+    "Chemistry tip from the teacher support material, in short: every raw measurement gets an uncertainty, and uncertainties are carried through calculations (add absolute uncertainties when adding or subtracting; add percentage uncertainties when multiplying or dividing)."
+   ],
+   "criteria": [
+    {
+     "name": "Research design",
+     "max": 6,
+     "focus": "Is your question focused and set in a clear context (system, variables, relevant theory)? Have you explained the choices behind your method — how you measure things, the range and number of values, repeats, and how other variables are kept constant — and described it well enough for someone else to repeat it?"
+    },
+    {
+     "name": "Data analysis",
+     "max": 6,
+     "focus": "Are raw and processed data recorded and presented clearly and precisely (units, headings, sensible decimal places)? Is the processing correct and actually relevant to the question, and have you dealt with uncertainty and variability?"
+    },
+    {
+     "name": "Conclusion",
+     "max": 6,
+     "focus": "Does your conclusion answer your own question, follow from your processed data (including the uncertainties), and get compared with published science you cite properly?"
+    },
+    {
+     "name": "Evaluation",
+     "max": 6,
+     "focus": "Do you pick out weaknesses and limitations that belong to YOUR method (not generic ones), judge which mattered most for your result, and suggest realistic improvements that fix those specific problems?"
+    }
+   ],
+   "stages": [
+    {
+     "id": "topic",
+     "title": "Topic and idea log",
+     "summary": "Collect ideas from lessons and practicals before you commit to one.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "I keep a running list of things from class or practicals that made me curious."
+      },
+      {
+       "id": "c2",
+       "text": "My topic links clearly to something in the course, so I can explain the theory behind it."
+      },
+      {
+       "id": "c3",
+       "text": "I can name the quantity I would change (or compare) and the quantity I would measure."
+      },
+      {
+       "id": "c4",
+       "text": "I have checked the school actually has the equipment, chemicals, organisms or data I would need."
+      },
+      {
+       "id": "c5",
+       "text": "I have a back-up idea in case the first one turns out not to work."
+      },
+      {
+       "id": "k1",
+       "text": "I checked that the chemicals involved are allowed in school and that waste can be disposed of safely."
+      }
+     ],
+     "pitfalls": [
+      "Picking a topic because it sounds impressive rather than because you can measure it well in about 10 hours.",
+      "Topics with no numbers to collect: the investigation must produce quantitative data.",
+      "Reactions that are too fast, too slow or too hazardous to measure well with school equipment."
+     ],
+     "dates": []
+    },
+    {
+     "id": "rq",
+     "title": "Research question and background",
+     "summary": "Narrow the idea into one focused, testable question and gather the theory around it.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "My question names the independent and dependent variables (or the two variables I am correlating) and the system I study."
+      },
+      {
+       "id": "c2",
+       "text": "It states the range of the independent variable and how the dependent variable is measured."
+      },
+      {
+       "id": "c3",
+       "text": "I can explain in a few sentences the scientific idea that predicts what should happen."
+      },
+      {
+       "id": "c4",
+       "text": "I have written down full details of every source I read, as I read it."
+      },
+      {
+       "id": "c5",
+       "text": "My teacher has agreed the question is feasible and suits the course."
+      }
+     ],
+     "pitfalls": [
+      "A question that is too broad (\"How does temperature affect enzymes?\") instead of naming the enzyme, the range and the measurement.",
+      "Copying wording from a website or an exemplar — similarity checks are strict, and the question must be your own.",
+      "Leaving references until the end and then being unable to find them again."
+     ],
+     "dates": [
+      {
+       "date": "2027-09-01",
+       "when": "Sep 2027",
+       "label": "Chemistry IA work begins (DP2)",
+       "source": "ISL Chemistry course at a glance (approximate timeline)"
+      }
+     ]
+    },
+    {
+     "id": "prelim",
+     "title": "Preliminary trials",
+     "summary": "Quick test runs to find a workable range, interval and timing before the real data collection.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "I ran a short trial to check that the method gives a measurable change."
+      },
+      {
+       "id": "c2",
+       "text": "I used the trial to choose the range and spacing of my independent variable (at least five values is a common target — check with your teacher)."
+      },
+      {
+       "id": "c3",
+       "text": "I decided how many repeats I need from how much the trial results varied."
+      },
+      {
+       "id": "c4",
+       "text": "I noted the problems I hit, because they feed my method changes and my evaluation."
+      }
+     ],
+     "pitfalls": [
+      "Choosing a range so narrow that the trend disappears inside the uncertainty.",
+      "Skipping trials and discovering on the data day that the reaction is too fast or too slow to measure.",
+      "Not testing concentrations first — a solution that is too concentrated can make every reading hit the limit of the instrument."
+     ],
+     "dates": []
+    },
+    {
+     "id": "method",
+     "title": "Method, safety, ethics and environment",
+     "summary": "Write a method someone else could follow, and deal with risks before you start.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "I list the controlled variables, why each matters, and exactly how I keep it constant (or monitor it)."
+      },
+      {
+       "id": "c2",
+       "text": "My method gives specific equipment, amounts and steps — enough to repeat it, without padding."
+      },
+      {
+       "id": "c3",
+       "text": "I explained why I chose my measuring instruments and how precise they are."
+      },
+      {
+       "id": "c4",
+       "text": "I did a risk assessment and my teacher has checked it."
+      },
+      {
+       "id": "c5",
+       "text": "I considered ethical issues (living things, people's data) and environmental ones (disposal, waste) and wrote down what I did about them."
+      },
+      {
+       "id": "k1",
+       "text": "I stated the precision (uncertainty) of each piece of glassware and each instrument I use."
+      }
+     ],
+     "pitfalls": [
+      "Listing control variables without saying how they were actually controlled.",
+      "A method written as a story of what happened instead of steps someone could follow.",
+      "If you worked in a group: describing the method in shared words. The method must be written individually."
+     ],
+     "dates": []
+    },
+    {
+     "id": "data",
+     "title": "Data collection",
+     "summary": "Collect enough good data, record everything as it happens, and note what you see.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "I recorded raw data straight into a table with units and the instrument uncertainty in the column headings."
+      },
+      {
+       "id": "c2",
+       "text": "I kept the same number of decimal places for each instrument, matching its precision."
+      },
+      {
+       "id": "c3",
+       "text": "I wrote down qualitative observations (colour changes, bubbles, anything odd) alongside the numbers."
+      },
+      {
+       "id": "c4",
+       "text": "I collected enough repeats and enough independent-variable values to see a trend."
+      },
+      {
+       "id": "c5",
+       "text": "I marked any result that looked wrong at the time, and why, instead of deleting it."
+      }
+     ],
+     "pitfalls": [
+      "Too few repeats, which makes it impossible to judge variability.",
+      "Rounding or tidying raw data before recording it.",
+      "Not having time to re-run a value that went wrong — plan a spare session if you can.",
+      "Mixing glassware of different precision for the same measurement without saying so."
+     ],
+     "dates": [
+      {
+       "date": "2027-10-01",
+       "when": "Oct 2027",
+       "label": "Chemistry IA lab work",
+       "source": "ISL Chemistry course at a glance (approximate timeline)"
+      }
+     ]
+    },
+    {
+     "id": "processing",
+     "title": "Processing, statistics and uncertainties",
+     "summary": "Turn raw data into something that answers the question, and show how reliable it is.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "I show one worked example of each type of calculation."
+      },
+      {
+       "id": "c2",
+       "text": "My graph has labelled axes with units, a sensible scale, and error bars or uncertainty bars where appropriate."
+      },
+      {
+       "id": "c3",
+       "text": "I decided how to handle outliers using a reason I can state, and I show what I did."
+      },
+      {
+       "id": "c4",
+       "text": "Every processing step clearly helps answer my research question (nothing just for decoration)."
+      },
+      {
+       "id": "k1",
+       "text": "Each raw value has an uncertainty: the manufacturer's value if given, otherwise the smallest division for digital readings and half the smallest division for analogue scales."
+      },
+      {
+       "id": "k2",
+       "text": "I carried uncertainties through my calculations and quote the final answer with an uncertainty to a sensible number of significant figures."
+      },
+      {
+       "id": "k3",
+       "text": "Where a literature value exists, I calculated the percentage error and compared it with my total percentage uncertainty."
+      },
+      {
+       "id": "k4",
+       "text": "If I drew a best-fit line, I considered the steepest and shallowest lines that still fit the uncertainty bars."
+      }
+     ],
+     "pitfalls": [
+      "Calculating things that look impressive but don't help answer the question.",
+      "Removing outliers silently. Say which ones, why, and ideally what difference it makes.",
+      "Joining points dot-to-dot instead of drawing a trend line or curve when the theory suggests one.",
+      "Quoting a result to more significant figures than the data justify.",
+      "Mixing up random error (scatter, reduced by repeats) and systematic error (a consistent shift, not reduced by repeats).",
+      "A percentage error much larger than the percentage uncertainty but no comment on what systematic error could explain it."
+     ],
+     "dates": []
+    },
+    {
+     "id": "draft",
+     "title": "Writing the draft",
+     "summary": "A complete draft covering all four criteria, under the word limit.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "My conclusion answers the research question directly and quotes my processed values with their uncertainty."
+      },
+      {
+       "id": "c2",
+       "text": "I compared my result with published values or theory, and cited the source."
+      },
+      {
+       "id": "c3",
+       "text": "My evaluation names specific weaknesses of MY method and says which affected the result most."
+      },
+      {
+       "id": "c4",
+       "text": "Each improvement I suggest fixes a weakness I named, and is realistic."
+      },
+      {
+       "id": "c5",
+       "text": "I explained how the range of my data or my assumptions limit how far my conclusion goes."
+      },
+      {
+       "id": "c6",
+       "text": "The word count is under 3,000 and stated at the top, with title and personal code(s)."
+      },
+      {
+       "id": "c7",
+       "text": "I checked my draft against the official criteria my teacher gave me (self-assessment)."
+      }
+     ],
+     "pitfalls": [
+      "Generic evaluation (\"human error\", \"use more accurate equipment\") with no link to your own data.",
+      "A conclusion that claims more than the data show, or ignores the error bars.",
+      "Long background sections that use up the word count without helping the reader."
+     ],
+     "dates": []
+    },
+    {
+     "id": "feedback",
+     "title": "Teacher feedback",
+     "summary": "Your teacher reads one draft and gives general advice. Use it well — there is only one round.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "I wrote down the feedback in my own words, as a list of things to fix."
+      },
+      {
+       "id": "c2",
+       "text": "For each comment I know which criterion it is about."
+      },
+      {
+       "id": "c3",
+       "text": "I asked about anything I did not understand (asking for guidance is allowed and not penalised)."
+      },
+      {
+       "id": "c4",
+       "text": "I planned when I will make each change before the final deadline."
+      }
+     ],
+     "pitfalls": [
+      "Expecting the teacher to correct the draft for you — they can point to issues but not edit or write solutions.",
+      "Handing in a half-finished draft: the feedback is only as useful as the draft is complete."
+     ],
+     "dates": []
+    },
+    {
+     "id": "final",
+     "title": "Final version",
+     "summary": "Make the changes, check the details, and hand in. Once submitted, it cannot be taken back.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "I worked through every point from my feedback list."
+      },
+      {
+       "id": "c2",
+       "text": "All sources are cited in the text and listed in the bibliography."
+      },
+      {
+       "id": "c3",
+       "text": "Tables, graphs and units are consistent throughout."
+      },
+      {
+       "id": "c4",
+       "text": "Word count re-checked and stated; title and personal code(s) at the top."
+      },
+      {
+       "id": "c5",
+       "text": "I am confident this is entirely my own work and I can talk about any part of it."
+      }
+     ],
+     "pitfalls": [
+      "Last-minute changes that break consistency between the text, the tables and the graphs.",
+      "Forgetting that the final version is the one you confirm as authentic — there is no later revision."
+     ],
+     "dates": []
+    }
+   ]
+  },
+  {
+   "id": "math",
+   "subject": "math-aa-sl",
+   "label": "Maths AA SL — mathematical exploration",
+   "kind": "maths",
+   "facts": [
+    "Worth 20% of the final grade. A Maths grade cannot be awarded without the exploration.",
+    "A short written report on a topic you choose yourself, focused on the mathematics. It is marked by your teacher and moderated by the IB.",
+    "Five criteria, A to E, 20 marks in total: Presentation (4), Mathematical communication (4), Personal engagement (3), Reflection (3), Use of mathematics (6).",
+    "The IB's usual guideline is about 12–20 pages; confirm the expected length and format with your teacher.",
+    "About 10 hours of class time go to managing the exploration, plus your own time outside class.",
+    "Technology (graphing software, spreadsheets, GeoGebra, CAS) can be used freely, but explain what it did.",
+    "Your teacher gives feedback on a draft and later checks the accuracy of the calculations.",
+    "Cite every source, including websites and software outputs you rely on."
+   ],
+   "criteria": [
+    {
+     "name": "A — Presentation",
+     "max": 4,
+     "focus": "Is the exploration organised and easy to follow from start to finish, with a clear aim and nothing irrelevant or repetitive?"
+    },
+    {
+     "name": "B — Mathematical communication",
+     "max": 4,
+     "focus": "Is the notation, terminology and use of graphs, tables and diagrams correct and consistent, with variables defined?"
+    },
+    {
+     "name": "C — Personal engagement",
+     "max": 3,
+     "focus": "Does the work show your own thinking — your questions, choices and ways of approaching the problem — rather than a textbook walkthrough?"
+    },
+    {
+     "name": "D — Reflection",
+     "max": 3,
+     "focus": "Do you keep stepping back to discuss what results mean, how valid they are, their limitations, and what could come next?"
+    },
+    {
+     "name": "E — Use of mathematics",
+     "max": 6,
+     "focus": "Is the mathematics relevant, at the right level for the course, correct, and properly understood (not just used)? The SL and HL descriptors differ."
+    }
+   ],
+   "stages": [
+    {
+     "id": "topic",
+     "title": "Topic and idea log",
+     "summary": "Look for maths in things you care about and keep a list.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "I keep a list of ideas (from lessons, hobbies, news, other subjects)."
+      },
+      {
+       "id": "c2",
+       "text": "For my favourite idea I can name which parts of the SL course it would use."
+      },
+      {
+       "id": "c3",
+       "text": "The topic gives me room for my own choices, not just repeating a known derivation."
+      },
+      {
+       "id": "c4",
+       "text": "If I need data, I know where it comes from and that there is enough of it."
+      }
+     ],
+     "pitfalls": [
+      "A topic that only uses maths below the level of the course, or so far above it that you can't show real understanding.",
+      "Popular topics retold from a website (golden ratio, famous proofs) without anything of your own added."
+     ],
+     "dates": []
+    },
+    {
+     "id": "rq",
+     "title": "Aim and focus",
+     "summary": "Turn the idea into one clear aim you can state in a sentence.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "I can write my aim in one sentence."
+      },
+      {
+       "id": "c2",
+       "text": "The aim is narrow enough to explore properly in the page guideline."
+      },
+      {
+       "id": "c3",
+       "text": "I wrote a short plan: the techniques I expect to use and, if relevant, how I get data."
+      },
+      {
+       "id": "c4",
+       "text": "My teacher has seen the aim and plan."
+      }
+     ],
+     "pitfalls": [
+      "An aim that is really a topic (\"Bridges\") instead of a question (\"Which curve best models the cable of …?\")."
+     ],
+     "dates": []
+    },
+    {
+     "id": "prelim",
+     "title": "Try the maths first",
+     "summary": "Play with small cases, sketches or a first model before you write anything up.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "I tried simple cases or a rough first model to see if the idea works."
+      },
+      {
+       "id": "c2",
+       "text": "I found the mathematics I still need to learn and where to learn it."
+      },
+      {
+       "id": "c3",
+       "text": "I noted my early choices and why I made them (this becomes evidence of engagement and reflection)."
+      }
+     ],
+     "pitfalls": [
+      "Writing the introduction before you know whether the maths will work."
+     ],
+     "dates": []
+    },
+    {
+     "id": "method",
+     "title": "Plan the structure (and any data)",
+     "summary": "Decide the order of sections and how each step leads to the aim.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "I have an outline: introduction and aim, the main mathematical sections, discussion, conclusion."
+      },
+      {
+       "id": "c2",
+       "text": "If I collect data from people, I considered consent and privacy (check with your teacher)."
+      },
+      {
+       "id": "c3",
+       "text": "I know which software I will use and how I will show its output clearly."
+      }
+     ],
+     "pitfalls": [
+      "A structure that jumps between ideas so the reader loses the thread."
+     ],
+     "dates": []
+    },
+    {
+     "id": "data",
+     "title": "Develop the mathematics",
+     "summary": "Do the main work: derive, model, calculate, test.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "Every variable and symbol is defined the first time it appears."
+      },
+      {
+       "id": "c2",
+       "text": "Key steps are shown and explained, not just stated."
+      },
+      {
+       "id": "c3",
+       "text": "I check my results (substitution, a second method, technology, or a sense check)."
+      },
+      {
+       "id": "c4",
+       "text": "I explain why I chose each method over the alternatives."
+      }
+     ],
+     "pitfalls": [
+      "Pages of routine algebra that add length but not understanding.",
+      "Pasting calculator or software output without explaining what it shows."
+     ],
+     "dates": []
+    },
+    {
+     "id": "processing",
+     "title": "Checking, accuracy and reflection",
+     "summary": "Look back at what the results mean and how far you can trust them.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "Answers are given to a sensible accuracy, with units where needed."
+      },
+      {
+       "id": "c2",
+       "text": "I discussed the assumptions and limitations of my model or method."
+      },
+      {
+       "id": "c3",
+       "text": "I said what the results mean for my aim, not just what the numbers are."
+      },
+      {
+       "id": "c4",
+       "text": "Reflection appears throughout, not only in a final paragraph."
+      }
+     ],
+     "pitfalls": [
+      "Reflection that is only a final paragraph saying what you enjoyed.",
+      "Treating a model as correct without testing it against data or real-world sense."
+     ],
+     "dates": []
+    },
+    {
+     "id": "draft",
+     "title": "Writing the draft",
+     "summary": "A complete, readable draft that a classmate could follow.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "A classmate could follow it without me explaining."
+      },
+      {
+       "id": "c2",
+       "text": "Graphs, tables and diagrams are labelled and referred to in the text."
+      },
+      {
+       "id": "c3",
+       "text": "Notation is correct (no calculator notation like ^ or * in the final text)."
+      },
+      {
+       "id": "c4",
+       "text": "Sources are cited where I used them."
+      },
+      {
+       "id": "c5",
+       "text": "I compared my draft with the official criteria my teacher gave me (self-assessment)."
+      }
+     ],
+     "pitfalls": [
+      "Notation slips (x^2, 3E5) left in the final text.",
+      "A conclusion that does not return to the aim."
+     ],
+     "dates": [
+      {
+       "date": "2027-11-08",
+       "when": "Nov 2027",
+       "label": "Maths IA first draft",
+       "source": "ISL Maths course calendar 2026–28 (based on an older calendar — approximate)"
+      }
+     ]
+    },
+    {
+     "id": "feedback",
+     "title": "Teacher feedback",
+     "summary": "Turn your teacher's comments into a to-do list.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "I listed each comment in my own words and linked it to a criterion."
+      },
+      {
+       "id": "c2",
+       "text": "I asked about anything unclear."
+      },
+      {
+       "id": "c3",
+       "text": "I planned the changes before the final deadline."
+      }
+     ],
+     "pitfalls": [
+      "Fixing only the easy comments and leaving the mathematical ones."
+     ],
+     "dates": []
+    },
+    {
+     "id": "final",
+     "title": "Final version",
+     "summary": "Final checks and submission.",
+     "checks": [
+      {
+       "id": "c1",
+       "text": "Every feedback point is dealt with."
+      },
+      {
+       "id": "c2",
+       "text": "Bibliography complete and all sources cited."
+      },
+      {
+       "id": "c3",
+       "text": "Pages numbered, length within what my teacher expects."
+      },
+      {
+       "id": "c4",
+       "text": "I can explain every step if asked — it is entirely my own work."
+      }
+     ],
+     "pitfalls": [
+      "Last-minute additions that break the flow or introduce errors."
+     ],
+     "dates": [
+      {
+       "date": "2027-12-06",
+       "when": "Dec 2027",
+       "label": "Maths IA final deadline",
+       "source": "ISL Maths course calendar 2026–28 (based on an older calendar — approximate)"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

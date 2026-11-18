@@ -142,5 +142,11 @@
   "subject": "math-aa-sl",
   "subjectLabel": "Math AA SL",
   "label": "Course calendar 2026–28 — teaching order & milestones"
+ },
+ {
+  "file": "library/questions/ia-practical-skills.json",
+  "subject": "ia-skills",
+  "subjectLabel": "Coursework & practical skills",
+  "label": "Practical & IA skills — design, uncertainties, statistics, evaluation"
  }
 ]

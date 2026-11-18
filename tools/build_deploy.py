@@ -26,7 +26,7 @@ OUT = ROOT / "deploy" / "nevaib"
 KEY_FILE = ROOT / "deploy" / ".setup-key"
 ZIP_FILE = ROOT / "deploy" / "nevaib.zip"
 
-PAGES = ["index.html", "notes.html", "quiz.html", "cards.html", "author.html"]
+PAGES = ["index.html", "notes.html", "quiz.html", "cards.html", "author.html", "coursework.html"]
 
 EMPTY_KEY_LINE = (
     '$SETUP_KEY = "";  // e.g. "paste-a-long-random-string"; empty = setup disabled'
@@ -78,6 +78,8 @@ def build(out: Path = OUT, apply_key: bool = True) -> Path:
     copy_tree(ROOT / "library/questions", out / "library/questions")
     copy_tree(ROOT / "library/flashcards", out / "library/flashcards")
     copy_tree(ROOT / "library/topic-notes", out / "library/topic-notes")
+    # coursework planner content (original wording; no IB or school documents)
+    copy_tree(ROOT / "library/coursework", out / "library/coursework")
     # class-week schedule for the home page "Today" panel (dates + IB codes only)
     shutil.copy2(ROOT / "library/class-schedule.json", out / "library/class-schedule.json")
     (out / "docs").mkdir(parents=True, exist_ok=True)
