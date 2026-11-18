@@ -24,3 +24,6 @@ __pycache__/
 *.pyc
 .venv/
 deploy/
+
+# ── Agent session workspace ──
+.zcode/

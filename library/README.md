@@ -12,9 +12,18 @@ Reconstruct it locally like this:
 | `official/` | ❌ | Download from ibo.org (free, public): specimen papers, subject briefs, formula/data booklets, EE guide. See the source list below. | Exact filenames listed in the manifest — hub pages link them directly |
 | `school/` | ❌ | ISL course documents from her teachers (bio course outline, chem at-a-glance, math syllabus content) | `bio-course-outline-2026-28.pdf`, `chem-at-a-glance-m28.pdf`, `math-aa-syllabus-content.pdf` |
 | `notes/` | ❌ | Topic notes per ISL teaching order — keep your local copies private | `<subject>/<section>/<topic>.pdf`; hub checklist rows link each file |
-| `papers/` | ❌ | School-provided past papers + markschemes → one subfolder per subject | Linked from `practice.html` as they arrive |
-| `questions/` | ✅ tracked | — | 7 quiz banks, schema in `docs/DEVELOPMENT.md` |
-| `flashcards/` | ✅ tracked | — | 3 decks, same schema |
+| `papers/` | ❌ | School-provided past papers + markschemes → one subfolder per subject | Surface on `practice.html` + `library.html` once in the manifest |
+| `questions/` | ✅ tracked | — | 24 quiz banks (673 items), schema in `docs/DEVELOPMENT.md` |
+| `flashcards/` | ✅ tracked | — | 24 decks (524 cards), same schema |
+
+## Manifest — `library/library-manifest.json`
+
+`python3 -I tools/build_library_manifest.py` scans `library/{notes,official,school,papers}`
+(`questions/` and `flashcards/` keep their own manifests and are NOT scanned) and writes one entry per
+PDF — `{file, subject, subjectLabel, type, section, label}`, sorted by (type, subject, section, label),
+127 items at last count. Rebuild it after **every** PDF lands or moves: `library.html` (the browse/filter
+page), the dashboard pinned-resources card and the practice papers list all render from this file, so a
+PDF only becomes visible on the site once it is in the manifest.
 
 ## Manifest — `library/official/` (paths the pages link)
 

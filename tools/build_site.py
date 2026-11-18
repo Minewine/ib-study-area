@@ -50,6 +50,51 @@ MATH_SECTIONS = {
     "5-calculus": "5. Calculus",
     "": "Topics",
 }
+# ISL "Course Calendar 2026–2028" — Math AA SL teaching order, by school week.
+# Weeks use the school's 2019/20-based numbering; the calendar sets no absolute
+# dates, so none are invented here. Rows: (weeks, month, what, kind).
+MATH_CALENDAR = [
+    (
+        "Y12 2026/27 (weeks 1–37, Aug–Jun)",
+        [
+            ("2", "Sep", "Prior learning", "teaching"),
+            (
+                "3",
+                "Sep",
+                "Functions &amp; quadratics — continues unlabelled through wk 8",
+                "teaching",
+            ),
+            ("4", "Sep", "Trip week", "event"),
+            ("5", "Sep", "Jeûne fédéral (public holiday)", "event"),
+            ("9", "Oct", "Differentiation", "teaching"),
+            ("13", "Nov", "Circular trig", "teaching"),
+            ("after wk 16", "—", "Winter break", "event"),
+            ("17", "Jan", "Exponentials &amp; logs", "teaching"),
+            ("18", "Jan", "Revision", "revision"),
+            ("19", "Jan", "Y12 exams", "exam"),
+            ("22–25", "Feb–Mar", "Trig equations &amp; functions", "teaching"),
+            ("28", "Apr", "Further differentiation", "teaching"),
+            ("31", "May", "Revision", "revision"),
+            ("32–34", "May–Jun", "Y12 exams", "exam"),
+            ("36–37", "Jun", "Integration, first pass", "teaching"),
+        ],
+    ),
+    (
+        "Y13 2027/28 (weeks 1–37)",
+        [
+            ("1", "Sep", "Integration, continued", "teaching"),
+            ("3", "Sep", "Trip week", "event"),
+            ("4", "Sep", "Jeûne fédéral (public holiday)", "event"),
+            ("5–6", "Oct", "Sequences &amp; binomial", "teaching"),
+            ("9", "Nov", "IA first draft", "ia"),
+            ("11–12", "Nov", "Probability", "teaching"),
+            ("15", "Dec", "IA deadline", "ia"),
+            ("16–18", "Jan", "Revision + Mock exams", "exam"),
+            ("19–20", "Feb", "Statistics", "teaching"),
+            ("23–24+", "Mar", "Revision", "revision"),
+        ],
+    ),
+]
 BIO_SECTIONS = {
     "unity-diversity": "Unity &amp; diversity",
     "form-function": "Form &amp; function",
@@ -173,6 +218,7 @@ BASE = """<!DOCTYPE html>
   <a href="plan.html">Plan</a>
   <a href="deadlines.html">Deadlines</a>
   <a href="flashcards.html">Cards</a><a href="quick-reference.html">Reference</a>
+  <a href="library.html">Library</a>
 </nav>
 <main>
 __CONTENT__
@@ -185,7 +231,7 @@ __CONTENT__
 
 
 # Post-generation patches (folded back in on 2026-11-14; keep in sync with the live pages)
-CANONICAL_NAV = '<nav>\n  <a href="index.html" class="brand">IB Study Area</a>\n  <a href="math-aa-sl.html">Math AA SL</a>\n  <a href="biology-hl.html">Biology HL</a>\n  <a href="chemistry-hl.html">Chemistry HL</a>\n  <a href="history-sl.html">History SL</a>\n  <a href="french-a-langlit.html">French A</a>\n  <a href="english-lit-hl.html">English Lit HL</a>\n  <a href="core.html">Core</a>\n  <a href="practice.html">Practice</a>\n  <a href="ia.html">IA &amp; EE</a>\n  <a href="ee.html">EE</a>\n  <a href="quiz.html">Quiz</a>\n  <a href="plan.html">Plan</a>\n  <a href="deadlines.html">Deadlines</a>\n  <a href="flashcards.html">Cards</a>\n  <a href="quick-reference.html">Reference</a>\n</nav>'
+CANONICAL_NAV = '<nav>\n  <a href="index.html" class="brand">IB Study Area</a>\n  <a href="math-aa-sl.html">Math AA SL</a>\n  <a href="biology-hl.html">Biology HL</a>\n  <a href="chemistry-hl.html">Chemistry HL</a>\n  <a href="history-sl.html">History SL</a>\n  <a href="french-a-langlit.html">French A</a>\n  <a href="english-lit-hl.html">English Lit HL</a>\n  <a href="core.html">Core</a>\n  <a href="practice.html">Practice</a>\n  <a href="ia.html">IA &amp; EE</a>\n  <a href="ee.html">EE</a>\n  <a href="quiz.html">Quiz</a>\n  <a href="plan.html">Plan</a>\n  <a href="deadlines.html">Deadlines</a>\n  <a href="flashcards.html">Cards</a>\n  <a href="quick-reference.html">Reference</a>\n  <a href="library.html">Library</a>\n</nav>'
 
 NEXTUP = (
     '<section class="card"><h3>Next school deadlines</h3><ul id="nextup" class="links"></ul>'
@@ -266,11 +312,15 @@ AUTH_PAGES = (
     "ia.html",
 )
 
-# Per-page engine scripts injected before </body> (tracked lists + debrief notes).
+# Per-page engine scripts injected before </body> (tracked lists + debrief
+# notes; library.js on index/practice drives the pinned-resources card and the
+# papers-intake list).
 EXTRA_SCRIPTS = {
     "core.html": ["assets/lists.js?v=2"],
     "ia.html": ["assets/lists.js?v=2"],
     "french-a-langlit.html": ["assets/lists.js?v=2"],
+    "index.html": ["assets/library.js?v=1"],
+    "practice.html": ["assets/library.js?v=1"],
 }
 
 
@@ -283,7 +333,7 @@ def page(fname, title, content_html, active):
         h = h.replace("</nav>", '  <span id="auth-slot"></span>\n</nav>', 1)
         h = h.replace(
             '<script src="assets/app.js?v=2"></script>',
-            '<script src="assets/app.js?v=2"></script>\n<script src="assets/auth.js?v=4"></script>',
+            '<script src="assets/app.js?v=2"></script>\n<script src="assets/auth.js?v=5"></script>',
             1,
         )
     if fname in EXTRA_SCRIPTS:
@@ -333,6 +383,17 @@ SUBJECTS = {}
 
 # ---------- MATH AA SL ----------
 topics_html, n_math = checklist("math-aa-sl", MATH_SECTIONS)
+math_calendar_html = ""
+for year, rows in MATH_CALENDAR:
+    trs = ""
+    for wks, month, what, kind in rows:
+        label = what if kind == "teaching" else f"<strong>{what}</strong>"
+        trs += f"<tr><td>{wks}</td><td>{month}</td><td>{label}</td></tr>"
+    math_calendar_html += (
+        f"<p><strong>{year}</strong></p>"
+        "<table class='wt'><thead><tr><th>Weeks</th><th>Month</th><th>What's happening</th></tr></thead>"
+        f"<tbody>{trs}</tbody></table>"
+    )
 SUBJECTS["math-aa-sl.html"] = dict(
     title="Math AA SL",
     active="Math AA SL",
@@ -351,6 +412,13 @@ SUBJECTS["math-aa-sl.html"] = dict(
                 ]
             )
             + "<p>Paper 1 discipline: no calculator means exact values, factorising, mental algebra. Practise it that way from day one.</p>"
+        )
+        + card(
+            "<h3>Two-year teaching plan (ISL 2026–28)</h3>"
+            + "<div class='legend'>bold = non-teaching weeks (exams, IA, revision, trips &amp; breaks)</div>"
+            + math_calendar_html
+            + "<p class='muted'>Week numbering as published (source footnote: “based on 2019/2020 calendar”); "
+            "no absolute dates are set yet — milestones as published in the “Course Calendar 2026–2028”.</p>"
         )
         + card(
             "<h3>Syllabus checklist <span class='count'>(topics with notes PDFs)</span></h3>"
@@ -677,7 +745,8 @@ SUBJECTS["practice.html"] = dict(
             "<tr><td>History SL</td><td>Specimen papers only — none exist yet</td><td>All archive papers (old guide)</td></tr>"
             "<tr><td>French A LangLit</td><td>May 2026+ fully; May 2021–Nov 2025 with caveats</td><td>Pre-2021</td></tr>"
             "</tbody></table>"
-            "<p class='muted'>Papers + markschemes come from school (teachers hold them legally) — drop files into <code>library/papers/&lt;subject&gt;/</code> and link them here as they arrive.</p>"
+            "<p class='muted'>Papers + markschemes come from school (teachers hold them legally) — drop files into <code>library/papers/&lt;subject&gt;/</code>, run <code>tools/build_library_manifest.py</code> and they surface below (and on the <a href='library.html'>Library</a> page) as they arrive.</p>"
+            "<div id='papers-list'></div>"
         )
         + card(
             "<h3>Mock schedule — December → January</h3>"
@@ -853,6 +922,8 @@ SUBJECTS["index.html"] = dict(
         )
         + "</div></div></div>"
         + '<section class="card" id="stats"><h3>Progress pulse</h3><div id="stats-body"></div></section>'
+        + '<section class="card" id="res-pinned"><h3>Pinned library resources</h3><div id="res-pins"></div>'
+        + "<p class='muted'>★ rows pinned from the <a href='library.html'>Library</a> — same checklist records as the hubs; pins, ticks and RAG sync when logged in.</p></section>"
         + card(
             "<h3>Subjects</h3><div class='grid'>" + cards_html + "</div>"
             "<p class='muted'>Progress = share of checklist topics marked done/green; updates as she works through the hubs.</p>"
@@ -959,6 +1030,21 @@ li.future{padding:.3rem 0}
 .auth-status.bad{color:#f0a5a5}
 #auth-slot .btn{padding:.2rem .6rem;font-size:.82rem;border:1px solid #3a4d63;border-radius:8px;background:#1e3350;color:#e8eef7;cursor:pointer}
 #auth-slot .btn:hover{background:#26415f}
+
+/* library browser (library.js) */
+nav a.active{background:#26415f;color:#fff}
+.lib-filter{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:.4rem 0 .7rem}
+.lib-filter select,.lib-filter input{font:inherit;font-size:.9rem;border:1px solid var(--line);border-radius:8px;padding:.3rem .5rem;background:#fff;color:var(--ink)}
+.lib-filter select:focus,.lib-filter input:focus{outline:none;border-color:var(--accent)}
+.lib-filter input{flex:1 1 200px;min-width:160px}
+.lib-subj{font-size:1rem;margin:.8rem 0 .2rem}
+.lib-sec{color:var(--muted);font-size:.85rem;margin:.55rem 0 .1rem}
+.lib-pin{border:none;background:none;cursor:pointer;font-size:1.05rem;line-height:1;color:#b9c6d4;padding:.05rem .3rem}
+.lib-pin.on{color:#dfa50f}
+.lib-note-btn{border:1px solid var(--line);background:#fff;color:var(--muted);font:inherit;font-size:.78rem;border-radius:8px;padding:.08rem .5rem;cursor:pointer;white-space:nowrap}
+.lib-note-btn:hover,.lib-note-btn.has{border-color:var(--accent);color:var(--accent)}
+.tnote.lib-note{display:none}
+.tnote.lib-note.open{display:block}
 """
 
 JS = """(function () {

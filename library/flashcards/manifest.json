@@ -113,5 +113,10 @@
   "file": "library/flashcards/english-lit-literary-terms.json",
   "subject": "english-lit-hl",
   "subjectLabel": "English A Lit HL"
+ },
+ {
+  "file": "library/flashcards/math-course-calendar.json",
+  "subject": "math-aa-sl",
+  "subjectLabel": "Math AA SL"
  }
 ]

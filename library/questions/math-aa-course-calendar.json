@@ -1,0 +1,553 @@
+{
+  "subject": "math-aa-sl",
+  "topic": "course-calendar-2026-2028",
+  "topicLabel": "Course calendar 2026–28 — teaching order & milestones",
+  "items": [
+    {
+      "id": "cc-01",
+      "format": "mcq",
+      "stem": "According to the ISL course calendar, what is the first maths teaching of Y12 and in which week does it fall?",
+      "choices": [
+        "Functions & quadratics, wk 3 (Sep)",
+        "Prior learning, wk 2 (Sep)",
+        "Differentiation, wk 9 (Oct)",
+        "Number & algebra, wk 1 (Sep)"
+      ],
+      "answer": 1,
+      "note": "Y12 opens with Prior learning in wk 2 (Sep); Functions & quadratics is the first timetabled unit block but starts wk 3 (Sep), around the wk 4 trip week. Trap: wk 1 carries no labelled teaching in the calendar, and “Number & algebra” is a syllabus topic label, not a calendar entry."
+    },
+    {
+      "id": "cc-02",
+      "format": "mcq",
+      "stem": "Which topic does the calendar start in week 9 of Y12 (October)?",
+      "choices": [
+        "Circular trig",
+        "Integration, first pass",
+        "Differentiation",
+        "Exponentials & logs"
+      ],
+      "answer": 2,
+      "note": "Differentiation begins wk 9 (Oct) — the first calculus teaching of the course. Trap: circular trig is wk 13 (Nov), exponentials & logs wk 17 (Jan), integration wks 36–37 (Jun)."
+    },
+    {
+      "id": "cc-03",
+      "format": "mcq",
+      "stem": "Which topic runs in weeks 22–25 of Y12 (Feb–Mar)?",
+      "choices": [
+        "Circular trig",
+        "Further differentiation",
+        "Trig equations & functions",
+        "Probability"
+      ],
+      "answer": 2,
+      "note": "Trig equations & functions runs wks 22–25 (Feb–Mar). Trap: circular trig is the single wk 13 (Nov) block — same family of topics, different window; further differentiation is wk 28 (Apr)."
+    },
+    {
+      "id": "cc-04",
+      "format": "mcq",
+      "stem": "Which pair of weeks are the Y12 exam windows?",
+      "choices": [
+        "Wk 18 (Jan) and wk 31 (May)",
+        "Wks 16–18 (Jan) and wks 23–24+ (Mar)",
+        "Wk 19 (Jan) and wks 32–34 (May–Jun)",
+        "Wks 19–20 (Feb) and wks 36–37 (Jun)"
+      ],
+      "answer": 2,
+      "note": "Y12 exams run in wk 19 (Jan) and wks 32–34 (May–Jun). Trap: wk 18 and wk 31 are the revision weeks that sit one row above each exam window; wks 16–18 (Jan) and wks 23–24+ (Mar) are Y13 blocks."
+    },
+    {
+      "id": "cc-05",
+      "format": "mcq",
+      "stem": "What is the first teaching block of Y13, in week 1 (September)?",
+      "choices": [
+        "Integration, continued",
+        "Sequences & binomial",
+        "Statistics",
+        "Integration, first pass"
+      ],
+      "answer": 0,
+      "note": "Y13 opens wk 1 (Sep) with Integration, continued — the first pass was wks 36–37 (Jun) of Y12. Trap: “Integration, first pass” is the Y12 June label; sequences & binomial does not start until wks 5–6 (Oct)."
+    },
+    {
+      "id": "cc-06",
+      "format": "mcq",
+      "stem": "In Y13, when is the IA first draft due and when is the IA deadline?",
+      "choices": [
+        "First draft wk 15 (Dec); deadline wk 9 (Nov)",
+        "First draft wk 9 (Nov); deadline wk 15 (Dec)",
+        "First draft wk 9 (Nov); deadline wks 16–18 (Jan)",
+        "First draft wks 11–12 (Nov); deadline wk 15 (Dec)"
+      ],
+      "answer": 1,
+      "note": "IA first draft is wk 9 (Nov); IA deadline is wk 15 (Dec) — six weeks later, with Probability taught wks 11–12 in between. Trap: swapping the two weeks, or reading the wks 16–18 (Jan) revision + mock block as the deadline."
+    },
+    {
+      "id": "cc-07",
+      "format": "mcq",
+      "stem": "When is the Y13 mock exam window?",
+      "choices": [
+        "Wk 18 (Jan)",
+        "Wks 32–34 (May–Jun)",
+        "Wks 16–18 (Jan)",
+        "Wks 23–24+ (Mar)"
+      ],
+      "answer": 2,
+      "note": "Mocks run wks 16–18 (Jan) of Y13, combined with revision in the same block. Trap: wk 18 is the Y12 January revision week; wks 32–34 (May–Jun) are the Y12 exams; wks 23–24+ (Mar) is the later Y13 revision run."
+    },
+    {
+      "id": "cc-08",
+      "format": "mcq",
+      "stem": "In which weeks is Statistics taught in Y13?",
+      "choices": [
+        "Wks 11–12 (Nov)",
+        "Wks 19–20 (Feb)",
+        "Wks 5–6 (Oct)",
+        "Wks 22–25 (Feb–Mar)"
+      ],
+      "answer": 1,
+      "note": "Statistics is wks 19–20 (Feb) of Y13. Trap: wks 11–12 (Nov) is Probability — the other half of syllabus topic 4, taught months earlier; wks 22–25 (Feb–Mar) is the Y12 trig block."
+    },
+    {
+      "id": "cc-09",
+      "format": "mcq",
+      "stem": "In which weeks is Probability taught in Y13?",
+      "choices": [
+        "Wks 19–20 (Feb)",
+        "Wks 16–18 (Jan)",
+        "Wks 11–12 (Nov)",
+        "Wk 9 (Nov)"
+      ],
+      "answer": 2,
+      "note": "Probability is wks 11–12 (Nov) of Y13, between the IA first draft (wk 9) and the IA deadline (wk 15). Trap: Statistics is the wks 19–20 (Feb) block; wk 9 (Nov) is the IA first draft, not a teaching week."
+    },
+    {
+      "id": "cc-10",
+      "format": "written",
+      "marks": 4,
+      "stem": "Using the ISL course calendar, set out the two-year calculus arc for this cohort: name each stage with its year, week(s) and month.",
+      "markscheme": [
+        "Differentiation begins wk 9 of Y12 (Oct) (1)",
+        "Further differentiation in wk 28 of Y12 (Apr) (1)",
+        "Integration, first pass in wks 36–37 of Y12 (Jun) (1)",
+        "Integration, continued in wk 1 of Y13 (Sep) (1)"
+      ],
+      "tactic": "Walk the calendar in order: one differentiation block per Y12 phase (Oct, then Apr), then integration spanning the year boundary (Jun Y12 → Sep Y13). Each stage needs year + week(s) + month for the mark."
+    },
+    {
+      "id": "cc-11",
+      "format": "written",
+      "marks": 4,
+      "stem": "The calendar places revision before every exam block. List each revision window and the exam block it precedes (year, week(s), month).",
+      "markscheme": [
+        "Y12 wk 18 (Jan) precedes the wk 19 (Jan) Y12 exams (1)",
+        "Y12 wk 31 (May) precedes the wks 32–34 (May–Jun) Y12 exams (1)",
+        "Y13 wks 16–18 (Jan) are revision + mock exams combined in one block (1)",
+        "Y13 wks 23–24+ (Mar) is the final revision run before the May 2028 exams (1)"
+      ],
+      "tactic": "Anchor on the exam weeks first (wk 19; wks 32–34; mocks wks 16–18; the May 2028 finals), then read one row above each in the calendar for its revision week. The Y13 January block is the only one where revision and exams share the same weeks."
+    },
+    {
+      "id": "cc-12",
+      "format": "written",
+      "marks": 4,
+      "stem": "Autumn of Y13: sequences & binomial runs wks 5–6 (Oct), the IA first draft is due wk 9 (Nov), Probability runs wks 11–12 (Nov) and the IA deadline is wk 15 (Dec). Using only the calendar, order the autumn Y13 workload and justify the order.",
+      "markscheme": [
+        "Sequences & binomial teaching (wks 5–6, Oct) comes first, so IA drafting must run alongside it to be ready for wk 9 (1)",
+        "IA first draft is due wk 9 (Nov), between the October teaching block and the Probability block (1)",
+        "Probability (wks 11–12, Nov) sits between draft and deadline, so teaching continues while the draft is being marked (1)",
+        "Final IA polish fits after the Probability block (wks 11–12) to hit the wk 15 (Dec) deadline, ahead of the wks 16–18 (Jan) revision + mocks (1)"
+      ],
+      "tactic": "Read the autumn rows in week order (5–6, 9, 11–12, 15) and let the week numbers dictate the sequence: the wk 15 deadline is the fixed point, and the wks 16–18 mocks that follow leave no slack after it."
+    },
+    {
+      "id": "cc-13",
+      "format": "mcq",
+      "stem": "What does the calendar put in week 13 of Y12 (November)?",
+      "choices": [
+        "Exponentials & logs",
+        "Differentiation",
+        "Circular trig",
+        "Trig equations & functions"
+      ],
+      "answer": 2,
+      "note": "Circular trig sits in wk 13 (Nov) of Y12. Trap: differentiation is wk 9 (Oct) — the neighbouring block four weeks earlier — and trig equations & functions is the wks 22–25 (Feb–Mar) block, not the November one."
+    },
+    {
+      "id": "cc-14",
+      "format": "mcq",
+      "stem": "Week 17 of Y12 (January) — which topic?",
+      "choices": [
+        "Exponentials & logs",
+        "Circular trig",
+        "Revision",
+        "Further differentiation"
+      ],
+      "answer": 0,
+      "note": "Exponentials & logs runs in wk 17 (Jan), two weeks before the Y12 exams. Trap: revision is wk 18 and the exams wk 19 — one and two entries later; further differentiation is wk 28 (Apr)."
+    },
+    {
+      "id": "cc-15",
+      "format": "mcq",
+      "stem": "Which topic does week 28 of Y12 (April) carry?",
+      "choices": [
+        "Trig equations & functions",
+        "Integration, first pass",
+        "Revision",
+        "Further differentiation"
+      ],
+      "answer": 3,
+      "note": "Further differentiation is wk 28 (Apr), after the wks 22–25 trig block and before May revision (wk 31). Trap: integration, first pass is wks 36–37 (Jun); the wk 28 slot is still differentiation."
+    },
+    {
+      "id": "cc-16",
+      "format": "mcq",
+      "stem": "Week 31 of Y12 (May) — what is timetabled?",
+      "choices": [
+        "Y12 exams",
+        "Revision",
+        "Further differentiation",
+        "Integration, first pass"
+      ],
+      "answer": 1,
+      "note": "Wk 31 (May) is revision — the single week between further differentiation (wk 28) and the Y12 exams (wks 32–34). Trap: the exams are the next entry, wks 32–34 (May–Jun), not wk 31 itself."
+    },
+    {
+      "id": "cc-17",
+      "format": "mcq",
+      "stem": "Y13 September opens with Integration, continued (wk 1). What interrupts the rest of the month?",
+      "choices": [
+        "The IA first draft",
+        "Trip week (wk 3) and Jeûne fédéral (wk 4)",
+        "Sequences & binomial moved into September",
+        "Nothing — September is uninterrupted teaching"
+      ],
+      "answer": 1,
+      "note": "Y13 September runs Integration, continued (wk 1) → Trip week (wk 3) → Jeûne fédéral (wk 4); the next teaching is sequences & binomial in wks 5–6 (Oct). Trap: the IA first draft is wk 9 (Nov); Y12 runs the same September pair one week later (wks 4–5)."
+    },
+    {
+      "id": "cc-18",
+      "format": "mcq",
+      "stem": "Week 9 of Y13 (November) — which milestone?",
+      "choices": [
+        "Probability",
+        "IA deadline",
+        "Sequences & binomial",
+        "IA first draft"
+      ],
+      "answer": 3,
+      "note": "Wk 9 (Nov) of Y13 is the IA first draft. Trap: the IA deadline is wk 15 (Dec) — six weeks later; Probability does not start until wks 11–12."
+    },
+    {
+      "id": "cc-19",
+      "format": "mcq",
+      "stem": "Week 15 of Y13 (December) — which milestone?",
+      "choices": [
+        "IA deadline",
+        "IA first draft",
+        "Revision + Mock exams",
+        "Statistics"
+      ],
+      "answer": 0,
+      "note": "Wk 15 (Dec) is the IA deadline. Trap: the draft was wk 9 (Nov), and the revision + mock block starts the very next week (wks 16–18) — there is no slack after wk 15."
+    },
+    {
+      "id": "cc-20",
+      "format": "mcq",
+      "stem": "Which labelled entry comes immediately after Circular trig in the Y12 calendar?",
+      "choices": [
+        "Differentiation",
+        "Winter break",
+        "Exponentials & logs",
+        "Trig equations & functions"
+      ],
+      "answer": 1,
+      "note": "The Y12 run is Differentiation (wk 9) → Circular trig (wk 13) → Winter break (after wk 16) → Exponentials & logs (wk 17). Trap: Differentiation comes before circular trig; exponentials & logs follows the winter break, not circular trig directly."
+    },
+    {
+      "id": "cc-21",
+      "format": "mcq",
+      "stem": "Which entry sits immediately before the Y12 January exams (wk 19)?",
+      "choices": [
+        "Exponentials & logs",
+        "Winter break",
+        "Revision",
+        "Trig equations & functions"
+      ],
+      "answer": 2,
+      "note": "Wk 18 (Jan) is revision, the entry directly above the wk 19 exams. Trap: exponentials & logs (wk 17) is the teaching block two entries earlier; winter break is before wk 17."
+    },
+    {
+      "id": "cc-22",
+      "format": "mcq",
+      "stem": "In Y13, which entry follows the trip week immediately?",
+      "choices": [
+        "Integration, continued",
+        "Sequences & binomial",
+        "IA first draft",
+        "Jeûne fédéral (public holiday)"
+      ],
+      "answer": 3,
+      "note": "Y13 September runs: Integration, continued (wk 1) → Trip week (wk 3) → Jeûne fédéral (wk 4) → Sequences & binomial (wks 5–6). Trap: sequences & binomial comes after Jeûne fédéral; in Y12 the pair sits one week later (trip wk 4, then Jeûne fédéral wk 5)."
+    },
+    {
+      "id": "cc-23",
+      "format": "mcq",
+      "stem": "Which entry comes immediately before Integration, first pass (wks 36–37 of Y12)?",
+      "choices": [
+        "Y12 exams (wks 32–34)",
+        "Revision (wk 31)",
+        "Further differentiation (wk 28)",
+        "Winter break"
+      ],
+      "answer": 0,
+      "note": "The Y12 close is: further differentiation (wk 28) → revision (wk 31) → Y12 exams (wks 32–34) → integration, first pass (wks 36–37). Trap: revision precedes the exams, and the exams precede integration — two steps, not one."
+    },
+    {
+      "id": "cc-24",
+      "format": "mcq",
+      "stem": "Which entry follows the Y13 revision + mock block (wks 16–18) immediately?",
+      "choices": [
+        "Revision (wks 23–24+)",
+        "Statistics",
+        "Probability",
+        "IA deadline"
+      ],
+      "answer": 1,
+      "note": "Statistics (wks 19–20, Feb) starts the week after the mocks end — back-to-back. Trap: the wks 23–24+ (Mar) revision comes after Statistics; Probability (wks 11–12) was long before the mocks."
+    },
+    {
+      "id": "cc-25",
+      "format": "mcq",
+      "stem": "Which chronological order is correct for Y12's trig/calculus blocks?",
+      "choices": [
+        "Trig equations & functions → Circular trig → Further differentiation",
+        "Further differentiation → Circular trig → Trig equations & functions",
+        "Circular trig → Trig equations & functions → Further differentiation",
+        "Circular trig → Further differentiation → Trig equations & functions"
+      ],
+      "answer": 2,
+      "note": "Circular trig wk 13 (Nov) → trig equations & functions wks 22–25 (Feb–Mar) → further differentiation wk 28 (Apr). Trap: all three sound like one continuous strand — anchor on the week numbers, not the topic names."
+    },
+    {
+      "id": "cc-26",
+      "format": "mcq",
+      "stem": "In Y13, which order does the calendar actually run?",
+      "choices": [
+        "Mocks → Probability → Statistics",
+        "Probability → Statistics → Mocks",
+        "Statistics → Mocks → Probability",
+        "Probability → Mocks → Statistics"
+      ],
+      "answer": 3,
+      "note": "Probability wks 11–12 (Nov) → revision + mocks wks 16–18 (Jan) → Statistics wks 19–20 (Feb). Trap: assuming the two topic-4 halves sit together — the mock block separates them."
+    },
+    {
+      "id": "cc-27",
+      "format": "mcq",
+      "stem": "Which ordering of the Y13 autumn is correct?",
+      "choices": [
+        "IA first draft → Probability → IA deadline",
+        "Probability → IA first draft → IA deadline",
+        "IA first draft → IA deadline → Probability",
+        "IA deadline → IA first draft → Probability"
+      ],
+      "answer": 0,
+      "note": "Draft wk 9 (Nov) → Probability wks 11–12 (Nov) → deadline wk 15 (Dec). Trap: the deadline cannot come before Probability ends (wk 12) — Probability is taught between the two IA milestones."
+    },
+    {
+      "id": "cc-28",
+      "format": "mcq",
+      "stem": "Within Y12, which order is correct?",
+      "choices": [
+        "Exponentials & logs → Trip week → Y12 Jan exams",
+        "Trip week → Exponentials & logs → Y12 Jan exams",
+        "Y12 Jan exams → Trip week → Exponentials & logs",
+        "Trip week → Y12 Jan exams → Exponentials & logs"
+      ],
+      "answer": 1,
+      "note": "Trip week wk 4 (Sep) → exponentials & logs wk 17 (Jan) → Y12 exams wk 19 (Jan). Trap: exponentials & logs and the exams share January, but the teaching comes two weeks first."
+    },
+    {
+      "id": "cc-29",
+      "format": "mcq",
+      "stem": "How many weeks separate the Y13 IA first draft (wk 9) from the IA deadline (wk 15)?",
+      "choices": [
+        "2 weeks",
+        "4 weeks",
+        "6 weeks",
+        "No gap — consecutive weeks"
+      ],
+      "answer": 2,
+      "note": "Wk 9 (Nov) draft → wk 15 (Dec) deadline = 6 weeks, with Probability (wks 11–12) taught in between. Trap: “no gap” describes deadline → mocks (wk 15 → wk 16), not draft → deadline."
+    },
+    {
+      "id": "cc-30",
+      "format": "mcq",
+      "stem": "How much calendar room is there between the IA deadline (wk 15) and the mock block (wks 16–18)?",
+      "choices": [
+        "Two unlabelled weeks",
+        "A one-week breather",
+        "Six weeks",
+        "None — the mocks start the very next week"
+      ],
+      "answer": 3,
+      "note": "By week number, wk 16 follows wk 15 directly: revision + mocks begin the week after the IA deadline. Trap: assuming a post-deadline wind-down — the calendar gives none."
+    },
+    {
+      "id": "cc-31",
+      "format": "mcq",
+      "stem": "Statistics ends in wk 20 of Y13 and the revision run starts wk 23. What sits between?",
+      "choices": [
+        "Wks 21–22, unlabelled (2 weeks)",
+        "Nothing — revision starts at wk 21",
+        "Six unlabelled weeks",
+        "Wks 21–24, unlabelled (4 weeks)"
+      ],
+      "answer": 0,
+      "note": "Wks 21–22 carry no labelled entry — the only slack in the Y13 spring. Trap: the mocks were back-to-back with Statistics (wks 18 → 19); this two-week gap is the one that isn't."
+    },
+    {
+      "id": "cc-32",
+      "format": "mcq",
+      "stem": "Sequences & binomial ends wk 6 of Y13; the IA first draft is due wk 9. What is between them?",
+      "choices": [
+        "Nothing — the draft follows in wk 7",
+        "Wks 7–8, unlabelled (2 weeks)",
+        "Six unlabelled weeks",
+        "Wks 7–10, unlabelled (4 weeks)"
+      ],
+      "answer": 1,
+      "note": "Wks 7–8 are unlabelled — two working weeks to finish the draft after the October teaching. Trap: the autumn's other gap is draft (wk 9) → Probability (wk 11) — a single unlabelled week (wk 10)."
+    },
+    {
+      "id": "cc-33",
+      "format": "mcq",
+      "stem": "How many labelled teaching blocks does Y12 have?",
+      "choices": [
+        "4",
+        "6",
+        "8",
+        "10"
+      ],
+      "answer": 2,
+      "note": "Eight: prior learning, functions & quadratics, differentiation, circular trig, exponentials & logs, trig equations & functions, further differentiation, integration (first pass). Trap: Y13 has only four — don't carry the count across years."
+    },
+    {
+      "id": "cc-34",
+      "format": "mcq",
+      "stem": "Across both years, how many revision windows does the calendar label?",
+      "choices": [
+        "2",
+        "3",
+        "5",
+        "4"
+      ],
+      "answer": 3,
+      "note": "Four: wk 18 (Jan), wk 31 (May), wks 16–18 (Jan, combined with mocks), wks 23–24+ (Mar). Trap: skipping the Y13 windows because they merge with the mocks, or missing the standalone May week."
+    },
+    {
+      "id": "cc-35",
+      "format": "mcq",
+      "stem": "How many trip weeks appear in the two-year calendar, and in which weeks?",
+      "choices": [
+        "2 — Y12 wk 4 and Y13 wk 3",
+        "2 — Y12 wk 5 and Y13 wk 4",
+        "1 — Y12 only",
+        "3 — Y12 wks 4 and 5, plus Y13 wk 3"
+      ],
+      "answer": 0,
+      "note": "Trip weeks: Y12 wk 4 (Sep) and Y13 wk 3 (Sep). Trap: wk 5 (Y12) and wk 4 (Y13) are the Jeûne fédéral rows — the neighbouring event, one week later each year."
+    },
+    {
+      "id": "cc-36",
+      "format": "mcq",
+      "stem": "Counting individual weeks, how many Y12 exam weeks are there?",
+      "choices": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "answer": 1,
+      "note": "Wk 19 (Jan) + wks 32, 33, 34 (May–Jun) = 4 exam weeks in Y12. Trap: the window count is only 2 (wk 19 + wks 32–34) — the question asks for weeks; Y13's mock weeks (16–18) are labelled mocks, not Y12 exams."
+    },
+    {
+      "id": "cc-37",
+      "format": "mcq",
+      "stem": "How does the Jeûne fédéral week differ between Y12 and Y13?",
+      "choices": [
+        "Same week both years: wk 5",
+        "Same week both years: wk 4",
+        "Y12 wk 5, Y13 wk 4 — a week earlier in Y13",
+        "Y12 wk 4, Y13 wk 5 — a week later in Y13"
+      ],
+      "answer": 2,
+      "note": "Jeûne fédéral is wk 5 of Y12 and wk 4 of Y13. Trap: it is not fixed to one week, and the trip-week pair (Y12 wk 4, Y13 wk 3) mirrors the same one-week shift."
+    },
+    {
+      "id": "cc-38",
+      "format": "mcq",
+      "stem": "Which block closes Y12's teaching, in wks 36–37 (June)?",
+      "choices": [
+        "Integration, first pass",
+        "Y12 exams",
+        "Further differentiation",
+        "Integration, continued"
+      ],
+      "answer": 0,
+      "note": "Wks 36–37 (Jun) carry Integration, first pass — the last labelled teaching of Y12, picked up again in Y13 wk 1. Trap: the Y12 exams (wks 32–34) come just before it; “Integration, continued” is the Y13 label; further differentiation is wk 28 (Apr)."
+    },
+    {
+      "id": "cc-39",
+      "format": "mcq",
+      "stem": "What is unusual about integration's place in the two-year plan?",
+      "choices": [
+        "First pass wks 36–37 (Jun, Y12) → continued wk 1 (Sep, Y13) — it spans the summer break",
+        "It is taught entirely in Y12 (wks 36–37)",
+        "It is taught entirely in Y13 (wk 1)",
+        "It first appears after the Y13 mocks"
+      ],
+      "answer": 0,
+      "note": "Integration, first pass (wks 36–37, Jun Y12) is picked up again as Integration, continued (wk 1, Sep Y13) — the only block that straddles the summer break. Trap: neither year holds the whole integration story."
+    },
+    {
+      "id": "cc-40",
+      "format": "written",
+      "marks": 4,
+      "stem": "The Y12 January exams fall in wk 19. Name every teaching block that must be ready by then, with its calendar week.",
+      "markscheme": [
+        "Prior learning (wk 2, Sep) and functions & quadratics (wk 3, Sep — continues unlabelled through wk 8) (1)",
+        "Differentiation (wk 9, Oct) (1)",
+        "Circular trig (wk 13, Nov) (1)",
+        "Exponentials & logs (wk 17, Jan) — the fifth block; wk 18 is revision, not content (1)"
+      ],
+      "tactic": "Read the Y12 table top-down and stop at wk 19: every labelled teaching row above the exams is examinable — five blocks in all. The wk 18 revision row is the boundary, not a topic."
+    },
+    {
+      "id": "cc-41",
+      "format": "written",
+      "marks": 4,
+      "stem": "After the IA deadline (wk 15 of Y13), the calendar labels only mocks, Statistics and revision for the rest of the year. Set out the final-term plan the calendar dictates.",
+      "markscheme": [
+        "Wks 16–18 (Jan): revision + mock exams — no new content (1)",
+        "Wks 19–20 (Feb): Statistics — the only new teaching left (1)",
+        "Wks 21–22: unlabelled — consolidation room before the final run (1)",
+        "Wks 23–24+ (Mar): revision only, so all new content must close by wk 20 (1)"
+      ],
+      "tactic": "Classify every row after wk 15 as teaching or exam preparation: Statistics is the single teaching row left, and it ends wk 20 — everything after is revision. The plan writes itself: finish Statistics, then switch wholly to revision from wk 23."
+    },
+    {
+      "id": "cc-42",
+      "format": "written",
+      "marks": 4,
+      "stem": "Set out the full Y13 autumn chronology from the calendar (Sept–Jan: wks 1, 3–4, 5–6, 9, 11–12, 15, 16–18) and state what each entry demands.",
+      "markscheme": [
+        "Wk 1 (Sep): Integration, continued — picking up the Y12 wks 36–37 first pass (1)",
+        "Wks 3–4 (Sep): trip week then Jeûne fédéral — the month's interruptions before teaching resumes (1)",
+        "Wks 5–6 (Oct): sequences & binomial, with IA drafting alongside to be ready for the wk 9 (Nov) first draft (1)",
+        "Wks 11–12 (Nov): probability between draft and deadline; wk 15 (Dec): IA deadline, with revision + mocks (wks 16–18) starting the very next week — no slack (1)"
+      ],
+      "tactic": "Walk the rows in week order (1, 3–4, 5–6, 9, 11–12, 15, 16–18) and label each as teaching, interruption or milestone: the two IA milestones (wks 9 and 15) anchor the term, and the deadline→mocks junction leaves no slack."
+    }
+  ]
+}

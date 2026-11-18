@@ -1,6 +1,6 @@
 # Content Plan & Completeness
 
-Status snapshot: **2026-11-15** — quiz banks cover every DP1 unit through the spring (incl. the Feb–Mar queue:
+Status snapshot: **2026-11-18** — quiz banks cover every DP1 unit through the spring (incl. the Feb–Mar queue:
 chem kinetics/equilibrium, bio respiration/protein synthesis — all with matching flashcard decks). The language
 decks now exist too (French terminology 35 cards, English literary terms 42 cards), and the EE/TOK/IO tracked
 lists are live and synced. Update the matrix whenever something is added — the matrix IS the tracking system.
@@ -15,11 +15,11 @@ Legend: ✅ in place · 🟡 partial / needs review · ❌ missing · ➖ not ap
 |---|---|---|---|---|---|---|---|
 | Subject hub (weightings, currency banner) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ Core hub + EE workspace |
 | Notes PDFs linked to checklist | ✅ 28 topics (T1–T2) | ✅ 43 topics (all themes) | ✅ 25 topics (all units) | ❌¹ | ❌² | ❌² | ➖ |
-| Quiz bank | ✅ 6 banks (T1–T5 complete, 168 items) | ✅ 9 banks — every DP1 unit (253) | ✅ 8 banks — every unit + review bank (210) | ❌³ | ➖³ | ➖³ | ➖ |
-| Flashcard deck | ✅ 6 decks (117) | ✅ 8 decks (157) | ✅ 7 decks (133) | ➖³ | ✅ terminology deck (35) | ✅ literary terms (42); quote banks ❌ pending work list | ➖ |
-| Past papers + markschemes (local) | ❌ (school channel) | ❌ (M25/N25/M26 via school) | ❌ (same) | ❌ (specimens only — none exist yet) | ❌ (M26+ via school) | ✅ 2 official specimens | ➖ |
+| Quiz bank | ✅ 7 banks (T1–T5 + course calendar, 210 items) | ✅ 9 banks — every DP1 unit (253) | ✅ 8 banks — every unit + review bank (210) | ❌³ | ➖³ | ➖³ | ➖ |
+| Flashcard deck | ✅ 7 decks (157) | ✅ 8 decks (157) | ✅ 7 decks (133) | ➖³ | ✅ terminology deck (35) | ✅ literary terms (42); quote banks ❌ pending work list | ➖ |
+| Past papers + markschemes (local — manifest-driven intake: drop into `library/papers/<subject>/` → run `tools/build_library_manifest.py` → surfaces on practice.html + library.html) | ❌ (school channel) | ❌ (M25/N25/M26 via school) | ❌ (same) | ❌ (specimens only — none exist yet) | ❌ (M26+ via school) | ✅ 2 official specimens | ➖ |
 | IA support | 🟡 exploration criteria + exemplars (TSM) | ✅ criteria + ISL practice/experiment schedule + **debrief notes (ia.html)** | ✅ same schedule | 🟡 IA rubric noted (30%) | ✅ IO structure + global-issue bank (tracked, synced) | ✅ HL Essay timeline (draft May 11, final Jun 18) | ✅ EE guide FA2027 + workspace (idea shortlist + proposal checklist) + TOK object shortlist |
-| ISL teaching order documented | ❌ (confirm with teacher) | ✅ course outline | ✅ at-a-glance | ❌ | ❌ | ❌ | ➖ |
+| ISL teaching order documented | ✅ course calendar 2026–28 (week-numbered) | ✅ course outline | ✅ at-a-glance | ❌ | ❌ | ❌ | ➖ |
 | Official/school docs filed | ✅ syllabus content | ✅ course outline | ✅ at-a-glance | 🟡 brief only | 🟡 brief only | ✅ 2 specimens | ✅ EE guide + forms |
 
 ¹ No aligned history notes exist anywhere for the new guide — practice comes from the specimen set + teacher materials.
@@ -31,10 +31,10 @@ Legend: ✅ in place · 🟡 partial / needs review · ❌ missing · ➖ not ap
 ## Per-subject priorities (what to add, in order)
 
 ### Mathematics AA SL
-1. **Confirm ISL's unit order** with her teacher/planner (the math bank labels assume the standard T1 → Functions sequence; relabel if needed — content is complete either way).
+1. ~~**Confirm ISL's unit order** with her teacher/planner~~ — ✅ confirmed (2026-11-18): the ISL "Course Calendar 2026–2028" is ingested — week-numbered two-year teaching plan on the math hub, plus a course-calendar quiz bank and deck.
 2. ~~Functions 2.4–2.5, Topic 3, Topic 4, Topic 5 banks~~ — ✅ all built (2026-11-15); math quiz content now covers every SL topic.
 3. ~~Flashcards: trig formulae + exact values deck~~ — ✅ exists (math-topic3-geometry-trig).
-4. Notes: the official syllabus content is filed (`library/school/math-aa-syllabus-content.pdf`) — ISL-specific teaching order when available.
+4. Notes: the official syllabus content is filed (`library/school/math-aa-syllabus-content.pdf`) — ~~ISL-specific teaching order when available~~ ✅ filed: course calendar 2026–28 (week-numbered, on the hub).
 5. Papers: recent TZ2 sessions + markschemes via school → `library/papers/math-aa-sl/`.
 
 ### Biology HL
