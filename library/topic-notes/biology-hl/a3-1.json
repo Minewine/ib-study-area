@@ -1,0 +1,251 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-a3-1",
+ "code": "A3.1",
+ "title": "Diversity of organisms",
+ "theme": "A",
+ "themeLabel": "Unity and diversity",
+ "level": 3,
+ "levelLabel": "Organisms",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "A3.1.1",
+   "A3.1.2",
+   "A3.1.3",
+   "A3.1.4",
+   "A3.1.5",
+   "A3.1.6",
+   "A3.1.7",
+   "A3.1.8",
+   "A3.1.9",
+   "A3.1.10",
+   "A3.1.11"
+  ],
+  "AHL": [
+   "A3.1.12",
+   "A3.1.13",
+   "A3.1.14",
+   "A3.1.15"
+  ]
+ },
+ "bigPicture": "No two organisms are identical, but they fall into species. Defining a species is harder than it sounds; chromosomes and genomes give new ways to compare organisms, and DNA barcoding can identify species from traces in the environment.",
+ "keyIdeas": [
+  {
+   "id": "a31-k1",
+   "ahl": false,
+   "stmt": "A3.1.1",
+   "cue": "Why is variation a defining feature of life?",
+   "answer": "No two individuals are identical in all their traits. Patterns of variation are the basis for naming and classifying organisms."
+  },
+  {
+   "id": "a31-k2",
+   "ahl": false,
+   "stmt": "A3.1.2",
+   "cue": "What was Linnaeus's species concept?",
+   "answer": "The morphological concept: a species is a group of organisms sharing similar traits (appearance)."
+  },
+  {
+   "id": "a31-k3",
+   "ahl": false,
+   "stmt": "A3.1.3",
+   "cue": "How does the binomial system work?",
+   "answer": "Two Latin names: Genus (capital letter) then species (lower case), e.g. Homo sapiens, written in italics (underlined if handwritten). Species in the same genus share similar traits."
+  },
+  {
+   "id": "a31-k4",
+   "ahl": false,
+   "stmt": "A3.1.4",
+   "cue": "What is the biological species concept and its problems?",
+   "answer": "A species is a group that can interbreed to produce fertile offspring. Problems: fossils and asexual organisms can't be tested; some species hybridise; it's impractical to test breeding in the wild. Other species concepts exist."
+  },
+  {
+   "id": "a31-k5",
+   "ahl": false,
+   "stmt": "A3.1.5",
+   "cue": "Why is it hard to tell populations from species?",
+   "answer": "Speciation (one species splitting into two or more) is usually gradual: isolated populations diverge bit by bit, so deciding when they become separate species is often arbitrary."
+  },
+  {
+   "id": "a31-k6",
+   "ahl": false,
+   "stmt": "A3.1.6",
+   "cue": "Do chromosome numbers vary?",
+   "answer": "Yes, widely between species. Humans have 46, chimpanzees 48. Diploid cells have an even number because chromosomes come in pairs."
+  },
+  {
+   "id": "a31-k7",
+   "ahl": false,
+   "stmt": "A3.1.7",
+   "cue": "What is a karyogram and what does it show about human chromosome 2?",
+   "answer": "A karyogram arranges an individual's chromosomes in pairs by length, centromere position and banding pattern. Human chromosome 2 matches two separate ape chromosomes end to end, with remnants of telomeres in the middle and a second inactive centromere: evidence it formed by fusion of two chromosomes from a shared ancestor. This is a testable hypothesis."
+  },
+  {
+   "id": "a31-k8",
+   "ahl": false,
+   "stmt": "A3.1.8",
+   "cue": "How similar are genomes within a species?",
+   "answer": "The genome is all an organism's genetic information. Members of a species share most of it; small differences such as single-nucleotide polymorphisms (SNPs) give diversity."
+  },
+  {
+   "id": "a31-k9",
+   "ahl": false,
+   "stmt": "A3.1.9",
+   "cue": "How do eukaryote genomes differ between species?",
+   "answer": "In total size (amount of DNA) and in base sequence. Differences between species are much larger than within a species."
+  },
+  {
+   "id": "a31-k10",
+   "ahl": false,
+   "stmt": "A3.1.10",
+   "cue": "Does genome size match complexity?",
+   "answer": "Not reliably: data from genome databases show some plants and amphibians have far bigger genomes than humans."
+  },
+  {
+   "id": "a31-k11",
+   "ahl": false,
+   "stmt": "A3.1.11",
+   "cue": "Why is whole genome sequencing useful now and in future?",
+   "answer": "It has become far faster and cheaper. Current uses include research into evolutionary relationships; future uses include personalised medicine (choosing drugs and doses based on a patient's genome)."
+  },
+  {
+   "id": "a31-k12",
+   "ahl": true,
+   "stmt": "A3.1.12",
+   "cue": "Why doesn't the biological species concept suit asexual organisms and bacteria?",
+   "answer": "Asexual organisms don't interbreed at all, and bacteria swap genes between species by horizontal gene transfer, so 'can interbreed' doesn't define them."
+  },
+  {
+   "id": "a31-k13",
+   "ahl": true,
+   "stmt": "A3.1.13",
+   "cue": "Why is chromosome number a shared trait in a species?",
+   "answer": "Hybrids of parents with different chromosome numbers usually can't pair chromosomes in meiosis, so they are infertile (e.g. a mule from a horse with 64 and a donkey with 62)."
+  },
+  {
+   "id": "a31-k14",
+   "ahl": true,
+   "stmt": "A3.1.14",
+   "cue": "How do you make a dichotomous key?",
+   "answer": "A series of numbered pairs of contrasting, observable statements (e.g. 'leaves needle-like / leaves broad'), each leading to another pair or a species name. Build one for local species."
+  },
+  {
+   "id": "a31-k15",
+   "ahl": true,
+   "stmt": "A3.1.15",
+   "cue": "How do eDNA and barcodes reveal biodiversity?",
+   "answer": "Environmental DNA (from water, soil, air) is sequenced; short standard gene regions (barcodes) are matched to a database to identify which species are present. It surveys habitats quickly without catching organisms."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Binomial nomenclature",
+   "def": "Genus + species name, e.g. Homo sapiens."
+  },
+  {
+   "term": "Biological species",
+   "def": "Group that can interbreed and produce fertile offspring."
+  },
+  {
+   "term": "Karyogram",
+   "def": "Image of chromosomes arranged in homologous pairs."
+  },
+  {
+   "term": "Genome",
+   "def": "All the genetic information of an organism."
+  },
+  {
+   "term": "Horizontal gene transfer (AHL)",
+   "def": "Transfer of genes between organisms other than by reproduction."
+  },
+  {
+   "term": "eDNA (AHL)",
+   "def": "DNA collected from the environment, used to detect species."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Using a dichotomous key",
+   "prompt": "1a Wings present → 2; 1b No wings → spider. 2a Two wings → fly; 2b Four wings → 3. 3a Wings scaly → butterfly; 3b Wings clear → bee. Identify an animal with four clear wings.",
+   "steps": [
+    "1: wings present → go to 2.",
+    "2: four wings → go to 3.",
+    "3: clear → bee."
+   ],
+   "answer": "Bee."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Organisms that look alike are the same species.",
+   "right": "Morphology can mislead; cryptic species look alike but don't interbreed."
+  },
+  {
+   "wrong": "Bigger genome means a more complex organism.",
+   "right": "Genome size doesn't track complexity well."
+  },
+  {
+   "wrong": "The species name is written with a capital.",
+   "right": "Only the genus has a capital: Homo sapiens."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Outline",
+   "marks": 3,
+   "prompt": "Outline the challenges of the biological species concept.",
+   "checkpoints": [
+    "Can't apply to asexual organisms / fossils",
+    "Hybrids and gradual speciation blur boundaries",
+    "Bacteria exchange genes horizontally"
+   ]
+  },
+  {
+   "commandTerm": "Evaluate",
+   "marks": 3,
+   "prompt": "Evaluate the evidence that human chromosome 2 formed by fusion.",
+   "checkpoints": [
+    "Banding matches two ape chromosomes",
+    "Telomere sequences and second centromere in middle",
+    "Strong support for testable hypothesis, though indirect"
+   ]
+  },
+  {
+   "commandTerm": "Describe",
+   "marks": 2,
+   "prompt": "Describe how a karyogram is made from chromosomes.",
+   "checkpoints": [
+    "Chromosomes photographed in metaphase",
+    "Arranged in pairs by size, centromere position and banding"
+   ]
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "A3.2",
+   "prompt": "How are species grouped into higher taxa?"
+  },
+  {
+   "to": "A4.1",
+   "prompt": "How do new species arise?"
+  },
+  {
+   "to": "D1.3",
+   "prompt": "How do SNPs arise?"
+  },
+  {
+   "to": "A4.2",
+   "prompt": "How is biodiversity measured?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/unity-diversity/diversity-of-organisms.pdf",
+  "quizBanks": [],
+  "decks": [],
+  "gap": "No quiz or deck covers A3.1. Missing species concepts, binomial naming, karyotypes, genomes, dichotomous keys and eDNA."
+ }
+}

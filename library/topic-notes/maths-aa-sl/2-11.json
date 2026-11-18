@@ -1,0 +1,211 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-2-11",
+ "code": "2.11",
+ "title": "Transformations of graphs",
+ "theme": "2",
+ "themeLabel": "Functions",
+ "hlOnly": false,
+ "islOrder": 11,
+ "islUnits": [
+  "2. Functions and quadratics (Y12 wk 3-8 (Sep-mid Oct 2026))",
+  "6. Trig equations and functions (Y12 wk 23-27 (Mar-Apr 2027))"
+ ],
+ "taughtStatus": "partly taught",
+ "statements": {
+  "SL": [
+   "2.11.1",
+   "2.11.2",
+   "2.11.3",
+   "2.11.4"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "2.11.1",
+   "text": "Translations up/down and left/right"
+  },
+  {
+   "id": "2.11.2",
+   "text": "Reflections in the x-axis and y-axis"
+  },
+  {
+   "id": "2.11.3",
+   "text": "Vertical and horizontal stretches"
+  },
+  {
+   "id": "2.11.4",
+   "text": "Composite transformations and why order matters"
+  }
+ ],
+ "bigPicture": "Transformations let you sketch a new graph from a known one. Changes outside f act on y as written; changes inside act on x in the opposite way.",
+ "keyIdeas": [
+  {
+   "id": "m211-k1",
+   "ahl": false,
+   "stmt": "2.11.1",
+   "cue": "Effect of f(x) + b and f(x − a)?",
+   "answer": "Up b; right a."
+  },
+  {
+   "id": "m211-k2",
+   "ahl": false,
+   "stmt": "2.11.2",
+   "cue": "Effect of −f(x) and f(−x)?",
+   "answer": "Reflection in the x-axis; reflection in the y-axis."
+  },
+  {
+   "id": "m211-k3",
+   "ahl": false,
+   "stmt": "2.11.3",
+   "cue": "Effect of p·f(x) and f(qx)?",
+   "answer": "Vertical stretch factor p; horizontal stretch factor 1/q."
+  },
+  {
+   "id": "m211-k4",
+   "ahl": false,
+   "stmt": "2.11.4",
+   "cue": "Does order matter?",
+   "answer": "Yes, e.g. stretch then translate differs from translate then stretch. Track a point through each step."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "translation",
+   "def": "slide without changing shape"
+  },
+  {
+   "term": "stretch",
+   "def": "scale away from an axis"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Track a point",
+   "prompt": "(2, 5) is on y = f(x). Find its image on y = 3f(x − 1) − 2.",
+   "steps": [
+    "x: +1 → 3",
+    "y: ×3 → 15, −2 → 13"
+   ],
+   "answer": "(3, 13)"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "f(x + 3) moves right 3",
+   "right": "It moves left 3."
+  },
+  {
+   "wrong": "f(2x) stretches by 2",
+   "right": "Horizontal stretch factor ½ (IB says stretch, not 'compression')."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Describe",
+   "marks": 4,
+   "prompt": "Describe fully a sequence of transformations mapping y = x² onto y = 2(x + 1)² − 3.",
+   "solution": [
+    "Translate left 1",
+    "Vertical stretch factor 2",
+    "Translate down 3"
+   ],
+   "answer": "Left 1; vertical stretch ×2; down 3 (stretch before the down shift)",
+   "commonErrors": [
+    "Translating down 3 then stretching (gives −6)",
+    "Left/right confusion"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Sketch",
+   "marks": 3,
+   "prompt": "Sketch y = ln x and y = −ln(x − 2) on the GDC and state the asymptote of the second.",
+   "solution": [
+    "right 2 then reflect in x-axis",
+    "asymptote x = 2"
+   ],
+   "answer": "x = 2",
+   "commonErrors": [
+    "Asymptote x = −2",
+    "Reflecting in y-axis"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [],
+  "memorise": [
+   "All six transformation rules (none are in the booklet)",
+   "Point-tracking check"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "3.7",
+   "prompt": "How do a, b, c, d in a sin(b(x + c)) + d match these transformations?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/2-functions/2-5-transformations-of-graphs.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/math-functions-2-4-to-2-5.json",
+    "itemIds": [
+     "tf02",
+     "tf03",
+     "tf04",
+     "tf05",
+     "tf06",
+     "tf07",
+     "tf08",
+     "tf17",
+     "tf19",
+     "tf21"
+    ]
+   },
+   {
+    "file": "library/questions/math-aa-functions-2-1-to-2-3.json",
+    "itemIds": [
+     "fnx5",
+     "fnx6"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/math-functions-2-1-to-2-3.json",
+    "cardIds": [
+     "fc-math-fn-08"
+    ]
+   },
+   {
+    "file": "library/flashcards/math-functions-2-4-to-2-5.json",
+    "cardIds": [
+     "fc-math-tf-02",
+     "fc-math-tf-03",
+     "fc-math-tf-04",
+     "fc-math-tf-05",
+     "fc-math-tf-06",
+     "fc-math-tf-14",
+     "fc-math-tf-17",
+     "fc-math-tf-18",
+     "fc-math-tf-19"
+    ]
+   }
+  ],
+  "reviewNote": "tf07 says 'horizontal compression of factor ½'; IB wording is 'horizontal stretch with scale factor ½'. tf16 / fc-math-tf-13 (odd/even) are AHL 2.14 and are left unlinked."
+ },
+ "syllabusFlags": [
+  "Transformations may already have been met in 'Functions and quadratics' (vertex form) and are formalised later; split placement inferred."
+ ]
+}

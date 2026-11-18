@@ -1,0 +1,199 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-a3-2",
+ "code": "A3.2",
+ "title": "Classification and cladistics",
+ "theme": "A",
+ "themeLabel": "Unity and diversity",
+ "level": 3,
+ "levelLabel": "Organisms",
+ "hlOnly": true,
+ "statements": {
+  "SL": [],
+  "AHL": [
+   "A3.2.1",
+   "A3.2.2",
+   "A3.2.3",
+   "A3.2.4",
+   "A3.2.5",
+   "A3.2.6",
+   "A3.2.7",
+   "A3.2.8",
+   "A3.2.9"
+  ]
+ },
+ "bigPicture": "Classification organises the immense diversity of life. Modern biology aims for groups (clades) that reflect evolutionary history, built mainly from DNA and protein sequences, which has reshaped the old hierarchy and added three domains above kingdoms.",
+ "keyIdeas": [
+  {
+   "id": "a32-k1",
+   "ahl": true,
+   "stmt": "A3.2.1",
+   "cue": "Why classify organisms?",
+   "answer": "There are so many species that classification is needed to organise them; it then makes further study possible (e.g. predicting features of a newly found species)."
+  },
+  {
+   "id": "a32-k2",
+   "ahl": true,
+   "stmt": "A3.2.2",
+   "cue": "Why is the traditional hierarchy problematic?",
+   "answer": "Kingdom, phylum, class, order, family, genus, species are fixed ranks that don't always match how lineages actually diverged. Cladistics uses unranked clades instead, a paradigm shift."
+  },
+  {
+   "id": "a32-k3",
+   "ahl": true,
+   "stmt": "A3.2.3",
+   "cue": "Why base classification on evolutionary relationships?",
+   "answer": "Then every group shares a common ancestor, so features found in some members can be predicted in others."
+  },
+  {
+   "id": "a32-k4",
+   "ahl": true,
+   "stmt": "A3.2.4",
+   "cue": "What is a clade and what is the best evidence for one?",
+   "answer": "A group of organisms with a common ancestor and all its descendants, sharing characteristics. The most objective evidence is base sequences of genes or amino acid sequences of proteins; morphology can also be used."
+  },
+  {
+   "id": "a32-k5",
+   "ahl": true,
+   "stmt": "A3.2.5",
+   "cue": "What is the molecular clock?",
+   "answer": "Sequence differences accumulate gradually, so the number of differences estimates when two clades diverged. It only gives estimates because mutation rates vary with generation time, population size, selection pressure and other factors."
+  },
+  {
+   "id": "a32-k6",
+   "ahl": true,
+   "stmt": "A3.2.6",
+   "cue": "How are cladograms built from sequences?",
+   "answer": "Compare sequences; group organisms sharing the most similarities. Parsimony picks the tree that explains the data with the fewest sequence changes."
+  },
+  {
+   "id": "a32-k7",
+   "ahl": true,
+   "stmt": "A3.2.7",
+   "cue": "How do you read a cladogram?",
+   "answer": "Root: the base (common ancestor of all). Node: a branching point, representing a hypothetical common ancestor. Terminal branches end in the organisms. A clade is any node plus everything branching from it. Two groups sharing a more recent node are more closely related."
+  },
+  {
+   "id": "a32-k8",
+   "ahl": true,
+   "stmt": "A3.2.8",
+   "cue": "How has cladistics changed classification?",
+   "answer": "It tests whether traditional groups are true clades. The figwort family was found to be several separate lineages, and many species were moved to other families. Similar-looking plants weren't always closely related: earlier views were falsified."
+  },
+  {
+   "id": "a32-k9",
+   "ahl": true,
+   "stmt": "A3.2.9",
+   "cue": "What are the three domains?",
+   "answer": "Bacteria, Archaea and Eukarya, proposed in 1977 by Woese from ribosomal RNA base sequences. Archaea, once grouped with bacteria, turned out to be as different from them as from eukaryotes."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Clade",
+   "def": "A common ancestor and all its descendants."
+  },
+  {
+   "term": "Cladogram",
+   "def": "Branching diagram showing a hypothesis of evolutionary relationships."
+  },
+  {
+   "term": "Node",
+   "def": "Branch point; a hypothetical common ancestor."
+  },
+  {
+   "term": "Molecular clock",
+   "def": "Using sequence differences to estimate time since divergence."
+  },
+  {
+   "term": "Parsimony",
+   "def": "Choosing the tree that needs the fewest changes."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Sequences to cladogram",
+   "prompt": "Number of amino acid differences from species A: B 2, C 8, D 9. Deduce which species is most closely related to A and outline the cladogram.",
+   "steps": [
+    "Fewest differences = most recent common ancestor.",
+    "A and B (2) share the most recent node.",
+    "C and D are more distant and similar to each other (8, 9)."
+   ],
+   "answer": "A and B form a clade; C and D branch off earlier, probably as their own clade."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "A cladogram shows one species evolving into another along a line.",
+   "right": "Terminal species are all living relatives; nodes are hypothetical ancestors."
+  },
+  {
+   "wrong": "Species that look alike must be in the same clade.",
+   "right": "Convergent evolution can make unrelated species look similar."
+  },
+  {
+   "wrong": "The molecular clock gives exact dates.",
+   "right": "It gives estimates because mutation rates vary."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Outline",
+   "marks": 3,
+   "prompt": "Outline the evidence used to place organisms in clades.",
+   "checkpoints": [
+    "Base sequences of genes",
+    "Amino acid sequences of proteins",
+    "Morphological traits (less objective)"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain why the molecular clock gives only estimates.",
+   "checkpoints": [
+    "Mutation rate not constant",
+    "Affected by generation time, population size",
+    "Selection pressure varies"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Discuss",
+   "marks": 4,
+   "prompt": "Discuss the reclassification of organisms into three domains.",
+   "checkpoints": [
+    "Based on rRNA sequences (Woese, 1977)",
+    "Archaea distinct from bacteria",
+    "Added a level above kingdoms",
+    "Paradigm shift; some debate continues"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "A3.1",
+   "prompt": "What is a species?"
+  },
+  {
+   "to": "A4.1",
+   "prompt": "What evidence supports evolution from a common ancestor?"
+  },
+  {
+   "to": "D1.3",
+   "prompt": "Why are some sequences highly conserved?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/unity-diversity/classification-cladistics.pdf",
+  "quizBanks": [],
+  "decks": [],
+  "gap": "No quiz or deck covers A3.2 (HL-only). Missing all content, including cladogram analysis and the molecular clock."
+ }
+}

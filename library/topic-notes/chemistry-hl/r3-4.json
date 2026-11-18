@@ -1,0 +1,386 @@
+{
+ "schemaVersion": 1,
+ "subject": "chemistry-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "chem-r3-4",
+ "code": "R3.4",
+ "title": "Electron-pair sharing reactions",
+ "theme": "R3",
+ "themeLabel": "What are the mechanisms of chemical change?",
+ "hlOnly": false,
+ "islOrder": 22,
+ "islUnits": [
+  "2. Periodicity (Y12 Oct)",
+  "9. Acids and bases (Y12 Jun / Y13 Sep)",
+  "10. Organic chemistry (Y13 Nov-Mar)"
+ ],
+ "taughtStatus": "partly taught (1/13 statements)",
+ "statements": {
+  "SL": [
+   "R3.4.1",
+   "R3.4.2",
+   "R3.4.3",
+   "R3.4.4",
+   "R3.4.5"
+  ],
+  "AHL": [
+   "R3.4.6",
+   "R3.4.7",
+   "R3.4.8",
+   "R3.4.9",
+   "R3.4.10",
+   "R3.4.11",
+   "R3.4.12",
+   "R3.4.13"
+  ]
+ },
+ "bigPicture": "Most organic and many inorganic reactions involve electron pairs. Nucleophiles donate a pair, electrophiles accept one, and curly arrows track the pairs. SL covers which species attack what (substitution of halogenoalkanes, addition to alkenes). HL adds Lewis acid–base theory, complex ions and full mechanisms: SN1/SN2, electrophilic addition including Markovnikov products, and electrophilic substitution of benzene.",
+ "keyIdeas": [
+  {
+   "id": "r34-k1",
+   "ahl": false,
+   "stmt": "R3.4.1",
+   "cue": "What is a nucleophile?",
+   "answer": "An electron-rich species that donates a lone pair to form a bond with an electron-poor atom: OH⁻, CN⁻, H₂O, NH₃. Can be neutral or negative."
+  },
+  {
+   "id": "r34-k2",
+   "ahl": false,
+   "stmt": "R3.4.2",
+   "cue": "What is nucleophilic substitution?",
+   "answer": "A nucleophile replaces a leaving group on a carbon. Halogenoalkane + aqueous OH⁻ → alcohol + halide: C₂H₅Br + OH⁻ → C₂H₅OH + Br⁻. The C–X bond is polar (Cδ+), so the nucleophile attacks that carbon. Full mechanism details are HL only."
+  },
+  {
+   "id": "r34-k3",
+   "ahl": false,
+   "stmt": "R3.4.3",
+   "cue": "What is heterolytic fission?",
+   "answer": "A bond breaks and both electrons go to one fragment, forming a cation and an anion. Curly (double-barbed) arrows show electron-pair movement, from a bond or lone pair to where the pair ends up."
+  },
+  {
+   "id": "r34-k4",
+   "ahl": false,
+   "stmt": "R3.4.4",
+   "cue": "What is an electrophile?",
+   "answer": "An electron-poor species that accepts an electron pair: H⁺, NO₂⁺, the δ+ end of HBr or of a polarised Br₂. Neutral or positive."
+  },
+  {
+   "id": "r34-k5",
+   "ahl": false,
+   "stmt": "R3.4.5",
+   "cue": "How do alkenes react?",
+   "answer": "The C=C is electron-rich, so electrophiles add across it (electrophilic addition). With H₂O (acid catalyst, steam) → alcohol; with Br₂ → dibromoalkane (bromine water decolourises: the test for C=C); with HBr → bromoalkane. SL needs equations, not mechanisms."
+  },
+  {
+   "id": "r34-k6",
+   "ahl": true,
+   "stmt": "R3.4.6",
+   "cue": "What are Lewis acids and bases (AHL)?",
+   "answer": "Lewis acid = electron-pair acceptor (BF₃, AlCl₃, H⁺, metal cations); Lewis base = electron-pair donor (NH₃, H₂O, Cl⁻). Every Brønsted–Lowry base is a Lewis base, but Lewis theory also covers reactions without proton transfer."
+  },
+  {
+   "id": "r34-k7",
+   "ahl": true,
+   "stmt": "R3.4.7",
+   "cue": "What bond forms in a Lewis acid–base reaction (AHL)?",
+   "answer": "A coordination bond: both electrons from the Lewis base, e.g. NH₃ + BF₃ → H₃N→BF₃. Nucleophiles are Lewis bases; electrophiles are Lewis acids."
+  },
+  {
+   "id": "r34-k8",
+   "ahl": true,
+   "stmt": "R3.4.8",
+   "cue": "How do you find the charge on a complex ion (AHL)?",
+   "answer": "Charge = metal ion charge + sum of ligand charges. [Fe(CN)₆] with Fe³⁺ and six CN⁻: 3 − 6 = 3−. [Cu(H₂O)₆]²⁺: water is neutral. Ligands donate lone pairs to the metal (coordination bonds)."
+  },
+  {
+   "id": "r34-k9",
+   "ahl": true,
+   "stmt": "R3.4.9",
+   "cue": "What are SN1 and SN2 (AHL)?",
+   "answer": "SN2 (primary halogenoalkanes): one concerted step, the nucleophile attacks the carbon from the side opposite the leaving group; five-coordinate transition state; rate = k[RX][Nu⁻]; inversion of configuration (stereospecific). SN1 (tertiary): slow ionisation to a carbocation, then fast attack by the nucleophile; rate = k[RX]. Secondary halogenoalkanes can react by both."
+  },
+  {
+   "id": "r34-k10",
+   "ahl": true,
+   "stmt": "R3.4.10",
+   "cue": "How does the leaving group affect rate (AHL)?",
+   "answer": "Rate RI > RBr > RCl because the C–I bond is the weakest (228 vs 285 vs 324 kJ mol⁻¹), so I⁻ leaves most easily. Solvent effects are not assessed."
+  },
+  {
+   "id": "r34-k11",
+   "ahl": true,
+   "stmt": "R3.4.11",
+   "cue": "What is the electrophilic addition mechanism (AHL)?",
+   "answer": "For symmetric alkenes: the π electrons attack the electrophile (Hδ+ of HBr, or Br₂ polarised by the alkene), forming a carbocation and a negative ion, which then attacks the carbocation. With water, H⁺ adds first, then H₂O, then H⁺ is lost (acid regenerated)."
+  },
+  {
+   "id": "r34-k12",
+   "ahl": true,
+   "stmt": "R3.4.12",
+   "cue": "Which product forms with unsymmetrical alkenes (AHL)?",
+   "answer": "The more stable carbocation forms: tertiary > secondary > primary (alkyl groups push electron density, stabilising the + charge). So H adds to the carbon that already has more H atoms (Markovnikov): propene + HBr → mainly 2-bromopropane; propene + H₂O → mainly propan-2-ol."
+  },
+  {
+   "id": "r34-k13",
+   "ahl": true,
+   "stmt": "R3.4.13",
+   "cue": "How does benzene react with electrophiles (AHL)?",
+   "answer": "Electrophilic substitution keeps the stable delocalised ring. The π ring attacks E⁺ (e.g. NO₂⁺ in nitration) forming a positively charged intermediate with the delocalisation broken; loss of H⁺ restores the ring. Formation of the electrophile is not assessed."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Nucleophile",
+   "def": "Electron-pair donor that attacks electron-poor centres."
+  },
+  {
+   "term": "Electrophile",
+   "def": "Electron-pair acceptor that attacks electron-rich centres."
+  },
+  {
+   "term": "Heterolytic fission",
+   "def": "Bond breaking with both electrons going to one fragment."
+  },
+  {
+   "term": "Curly arrow",
+   "def": "Shows movement of an electron pair."
+  },
+  {
+   "term": "Leaving group",
+   "def": "Group that departs with the bonding pair (e.g. Br⁻)."
+  },
+  {
+   "term": "Lewis acid",
+   "def": "Electron-pair acceptor (AHL)."
+  },
+  {
+   "term": "Carbocation",
+   "def": "Ion with a positively charged carbon (AHL)."
+  },
+  {
+   "term": "Markovnikov's rule",
+   "def": "In HX addition, H goes to the carbon with more H atoms, via the more stable carbocation (AHL)."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Predicting products",
+   "prompt": "Give the products of propene with (a) Br₂, (b) H₂O (acid catalyst), (c) HBr; state the major product at HL.",
+   "steps": [
+    "(a) 1,2-dibromopropane.",
+    "(b) propan-2-ol (major) or propan-1-ol.",
+    "(c) 2-bromopropane (major) or 1-bromopropane.",
+    "HL: secondary carbocation more stable than primary → 2-substituted products dominate."
+   ],
+   "answer": "1,2-dibromopropane; propan-2-ol; 2-bromopropane"
+  },
+  {
+   "title": "SN1 vs SN2 (AHL)",
+   "prompt": "Predict the mechanism and rate equation for (a) 1-bromobutane + OH⁻; (b) 2-bromo-2-methylpropane + OH⁻.",
+   "steps": [
+    "(a) Primary: SN2, one step, rate = k[C₄H₉Br][OH⁻].",
+    "(b) Tertiary: SN1, carbocation intermediate (stabilised by three alkyl groups, and the crowded carbon blocks backside attack), rate = k[(CH₃)₃CBr]."
+   ],
+   "answer": "(a) SN2; (b) SN1"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "A nucleophile attacks the halogen atom.",
+   "right": "It attacks the δ+ carbon; the halogen leaves as a halide ion."
+  },
+  {
+   "wrong": "Benzene does addition like an alkene.",
+   "right": "Addition would destroy the stable delocalised ring; it undergoes substitution."
+  },
+  {
+   "wrong": "Curly arrows start at an atom's nucleus or at the positive charge.",
+   "right": "They start at an electron pair (lone pair or bond) and point to where the pair goes."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Deduce",
+   "marks": 2,
+   "prompt": "Deduce the equation for the reaction of 1-chloropropane with aqueous NaOH and name the organic product.",
+   "checkpoints": [
+    "CH₃CH₂CH₂Cl + OH⁻ → CH₃CH₂CH₂OH + Cl⁻",
+    "Propan-1-ol"
+   ]
+  },
+  {
+   "commandTerm": "Describe",
+   "marks": 2,
+   "prompt": "Describe a chemical test to distinguish hexane from hex-1-ene.",
+   "checkpoints": [
+    "Add bromine water",
+    "Hex-1-ene decolourises it (orange → colourless); hexane does not (in the dark)"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 4,
+   "prompt": "Explain, with curly arrows, the SN2 mechanism for bromoethane and hydroxide ions.",
+   "checkpoints": [
+    "Lone pair on OH⁻ attacks δ+ C from the side opposite Br",
+    "Arrow from C–Br bond to Br",
+    "Transition state with partial bonds and negative charge",
+    "Products ethanol + Br⁻; inversion of configuration"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Identify",
+   "marks": 2,
+   "prompt": "Identify the Lewis acid and Lewis base in AlCl₃ + Cl⁻ → AlCl₄⁻.",
+   "checkpoints": [
+    "Lewis acid: AlCl₃ (accepts pair)",
+    "Lewis base: Cl⁻ (donates pair)"
+   ],
+   "ahl": true
+  }
+ ],
+ "paper1A": [
+  {
+   "stem": "Which species is a nucleophile?",
+   "choices": [
+    "H⁺",
+    "NO₂⁺",
+    "NH₃",
+    "BF₃"
+   ],
+   "answer": 2,
+   "why": "Has a lone pair to donate."
+  },
+  {
+   "stem": "What forms when ethene reacts with steam (acid catalyst)?",
+   "choices": [
+    "Ethane",
+    "Ethanol",
+    "Ethanal",
+    "Ethanoic acid"
+   ],
+   "answer": 1,
+   "why": "Electrophilic addition of water."
+  },
+  {
+   "stem": "Which halogenoalkane hydrolyses fastest?",
+   "choices": [
+    "CH₃CH₂F",
+    "CH₃CH₂Cl",
+    "CH₃CH₂Br",
+    "CH₃CH₂I"
+   ],
+   "answer": 3,
+   "why": "Weakest C–X bond.",
+   "ahl": true
+  },
+  {
+   "stem": "What is the charge on [Co(NH₃)₄Cl₂] if cobalt is +3?",
+   "choices": [
+    "0",
+    "1+",
+    "1−",
+    "3+"
+   ],
+   "answer": 1,
+   "why": "3 + 0 − 2 = +1.",
+   "ahl": true
+  },
+  {
+   "stem": "Which is the rate equation for an SN1 reaction of RX with OH⁻?",
+   "choices": [
+    "k[RX]",
+    "k[OH⁻]",
+    "k[RX][OH⁻]",
+    "k[RX]²"
+   ],
+   "answer": 0,
+   "why": "Only RX is in the rate-determining step.",
+   "ahl": true
+  }
+ ],
+ "paper1B": [
+  {
+   "data": "Initial rate data for RBr + OH⁻: doubling [RBr] doubles the rate; doubling [OH⁻] leaves the rate unchanged.",
+   "prompt": "Deduce the rate equation and whether RBr is primary or tertiary.",
+   "answer": "Rate = k[RBr]: first order in RBr, zero order in OH⁻ → SN1 → most likely tertiary.",
+   "ahl": true
+  }
+ ],
+ "assessmentNote": "Paper 1A = multiple choice, no calculator; Paper 1B = data-based questions (format from public sources, confirm with the official guide). All prompts here are original practice, not predictions of exam questions.",
+ "errorHints": [
+  {
+   "category": "knowledge",
+   "hint": "Match reagent to reaction: aqueous OH⁻ substitution; Br₂/HBr/H₂O addition to alkenes."
+  },
+  {
+   "category": "interpretation",
+   "hint": "Classify halogenoalkanes (1°, 2°, 3°) before choosing SN1 or SN2."
+  },
+  {
+   "category": "data-booklet use",
+   "hint": "Quote C–X bond enthalpies from the booklet when explaining leaving-group order."
+  },
+  {
+   "category": "exam communication",
+   "hint": "Curly arrows must start from a lone pair or bond and end at an atom or bond; show charges and partial charges."
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "R3.3",
+   "prompt": "How do radical and ionic mechanisms differ in how bonds break?"
+  },
+  {
+   "to": "S2.2",
+   "prompt": "How does benzene's delocalised structure explain its reactions (AHL)?"
+  },
+  {
+   "to": "R2.2",
+   "prompt": "How do rate equations distinguish SN1 from SN2 (AHL)?"
+  }
+ ],
+ "dataBooklet": [
+  {
+   "section": 12,
+   "title": "Bond enthalpies",
+   "use": "C–X bond enthalpies to explain leaving-group rates (AHL)."
+  },
+  {
+   "section": 9,
+   "title": "First ionization energy, electron affinity and electronegativity",
+   "use": "Electronegativity to identify δ+ carbons."
+  }
+ ],
+ "links": {
+  "checklistKey": "chemistry-hl::library/notes/chemistry-hl/what-are-the-mechanisms-of-chemical-change/electron-pair-sharing-reactions.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/chem-organic-chemistry.json",
+    "itemIds": [
+     "o05",
+     "o09",
+     "o11",
+     "o17",
+     "o19",
+     "o22"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/chem-organic-chemistry.json",
+    "cardIds": [
+     "fc-chem-org-05",
+     "fc-chem-org-09",
+     "fc-chem-org-19"
+    ]
+   }
+  ],
+  "gap": "No items on Lewis acids/bases (R3.4.6–R3.4.7), complex-ion charges (R3.4.8), SN1/SN2 (R3.4.9–R3.4.10), carbocation stability (R3.4.12) or benzene substitution mechanism (R3.4.13); o17 covers benzene substitution only qualitatively.",
+  "reviewNote": "Legacy items not linked: o10 and fc-chem-org-08 (elimination with ethanolic KOH) and o13/fc-chem-org-11 (esterification) are not explicit statements in the current syllabus; esterification is closest to S2.4.6 condensation (AHL). Kept unlinked on purpose."
+ }
+}

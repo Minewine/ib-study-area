@@ -1,0 +1,263 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-d2-3",
+ "code": "D2.3",
+ "title": "Water potential",
+ "theme": "D",
+ "themeLabel": "Continuity and change",
+ "level": 2,
+ "levelLabel": "Cells",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "D2.3.1",
+   "D2.3.2",
+   "D2.3.3",
+   "D2.3.4",
+   "D2.3.5",
+   "D2.3.6",
+   "D2.3.7"
+  ],
+  "AHL": [
+   "D2.3.8",
+   "D2.3.9",
+   "D2.3.10",
+   "D2.3.11"
+  ]
+ },
+ "bigPicture": "Water follows solutes. At HL the same idea becomes numbers: water moves from higher to lower water potential, with Ψw = Ψs + Ψp.",
+ "keyIdeas": [
+  {
+   "id": "d23-k1",
+   "ahl": false,
+   "stmt": "D2.3.1",
+   "cue": "What is solvation?",
+   "answer": "Polar solutes form hydrogen bonds with water. Ions attract the oppositely charged ends of polar water molecules (the δ− O towards cations, the δ+ H towards anions), so a shell of water forms around each particle."
+  },
+  {
+   "id": "d23-k2",
+   "ahl": false,
+   "stmt": "D2.3.2",
+   "cue": "Which way does water move, and which words compare solutions?",
+   "answer": "From the less concentrated to the more concentrated solution, described in terms of solute concentration. Hypertonic means higher solute concentration, hypotonic lower, isotonic equal."
+  },
+  {
+   "id": "d23-k3",
+   "ahl": false,
+   "stmt": "D2.3.3",
+   "cue": "Predict water movement for a cell in hypotonic, hypertonic and isotonic surroundings.",
+   "answer": "Hypotonic surroundings: net movement into the cell. Hypertonic: net movement out. Isotonic: dynamic equilibrium. Water still moves both ways, but there is no net change."
+  },
+  {
+   "id": "d23-k4",
+   "ahl": false,
+   "stmt": "D2.3.4",
+   "cue": "How do you find the isotonic concentration of plant tissue?",
+   "answer": "Soak equal tissue pieces in a range of solute concentrations and measure the % change in mass or length. Plot change against concentration. Where the line crosses zero change is the isotonic concentration. With repeats, calculate the standard deviation (spread) and standard error (precision of the mean) and show error bars."
+  },
+  {
+   "id": "d23-k5",
+   "ahl": false,
+   "stmt": "D2.3.5",
+   "cue": "What happens to cells without a wall?",
+   "answer": "In a hypotonic solution they swell and may burst. In a hypertonic solution they shrink, and red blood cells crenate. Freshwater unicellular organisms remove water with contractile vacuoles. Multicellular animals keep tissue fluid isotonic."
+  },
+  {
+   "id": "d23-k6",
+   "ahl": false,
+   "stmt": "D2.3.6",
+   "cue": "What happens to cells with a wall?",
+   "answer": "In a hypotonic solution water enters, the cell pushes against the wall and becomes turgid (turgor pressure), but the wall stops it bursting. In a hypertonic solution the cell loses water and the membrane pulls away from the wall (plasmolysis)."
+  },
+  {
+   "id": "d23-k7",
+   "ahl": false,
+   "stmt": "D2.3.7",
+   "cue": "Give two medical uses of isotonic solutions.",
+   "answer": "Intravenous fluids (e.g. isotonic saline) don't make blood cells swell or shrink. Organs for transplant are bathed in isotonic solution so their cells neither gain nor lose water."
+  },
+  {
+   "id": "d23-k8",
+   "ahl": true,
+   "stmt": "D2.3.8",
+   "cue": "Define water potential and its reference point.",
+   "answer": "The potential energy of water per unit volume. Absolute values can't be measured, so it is given relative to pure water at atmospheric pressure and 20 °C (0 kPa). The unit is usually kPa."
+  },
+  {
+   "id": "d23-k9",
+   "ahl": true,
+   "stmt": "D2.3.9",
+   "cue": "Which way does water move in terms of water potential, and why?",
+   "answer": "From higher to lower water potential, because water moves to where it has less potential energy."
+  },
+  {
+   "id": "d23-k10",
+   "ahl": true,
+   "stmt": "D2.3.10",
+   "cue": "How do solute and pressure potential combine?",
+   "answer": "Ψw = Ψs + Ψp. Solute potential is zero or negative (more solute makes it more negative). Pressure potential is usually positive in cells (wall pressure), but negative in xylem under tension."
+  },
+  {
+   "id": "d23-k11",
+   "ahl": true,
+   "stmt": "D2.3.11",
+   "cue": "Explain plant tissue in hypotonic and hypertonic solutions using potentials.",
+   "answer": "Hypotonic: the solution's Ψ is higher than the cell's, so water enters. Ψp rises until the cell's Ψw equals the outside Ψ (turgid). Hypertonic: the solution's Ψ is lower, so water leaves. Ψp falls to zero and the cell plasmolyses."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Hypertonic / hypotonic",
+   "def": "Higher / lower solute concentration than the solution it is compared with."
+  },
+  {
+   "term": "Plasmolysis",
+   "def": "Membrane pulling away from the cell wall after water loss."
+  },
+  {
+   "term": "Turgor",
+   "def": "Pressure of cell contents against the wall."
+  },
+  {
+   "term": "Water potential Ψ (AHL)",
+   "def": "Potential energy of water per unit volume, in kPa, relative to pure water."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Water potential calculation (AHL)",
+   "prompt": "A cell has Ψs = −600 kPa and Ψp = +250 kPa. It is placed in a solution of Ψ = −500 kPa. Which way does water move?",
+   "steps": [
+    "Ψw(cell) = −600 + 250 = −350 kPa.",
+    "The solution is −500 kPa, which is lower.",
+    "Water moves from higher to lower Ψ."
+   ],
+   "answer": "Water leaves the cell (−350 kPa to −500 kPa)."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Water moves from high to low concentration.",
+   "right": "Say from lower to higher solute concentration, or from higher to lower water potential."
+  },
+  {
+   "wrong": "In isotonic solution no water moves.",
+   "right": "Water moves equally both ways (dynamic equilibrium)."
+  },
+  {
+   "wrong": "Plant cells burst in pure water.",
+   "right": "The wall resists, so they become turgid instead."
+  },
+  {
+   "wrong": "A more negative Ψ means more water.",
+   "right": "More negative means more solute, so water is drawn in."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Predict",
+   "marks": 2,
+   "prompt": "Predict what happens to a red blood cell placed in distilled water.",
+   "checkpoints": [
+    "Water enters by osmosis (hypotonic surroundings)",
+    "Cell swells and bursts (no wall)"
+   ]
+  },
+  {
+   "commandTerm": "Analyse",
+   "marks": 3,
+   "prompt": "Potato pieces show +8% mass at 0.0, −2% at 0.3 and −10% at 0.6 mol dm⁻³ sucrose. Estimate the isotonic concentration and explain.",
+   "checkpoints": [
+    "About 0.25 mol dm⁻³, where the change is zero",
+    "Below it the solution is hypotonic, so mass increases",
+    "Above it the solution is hypertonic, so mass decreases"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain, in terms of water potential, why a plant cell in a hypertonic solution becomes plasmolysed.",
+   "checkpoints": [
+    "Outside Ψ lower than cell Ψw",
+    "Water leaves the cell",
+    "Ψp falls to zero; membrane pulls away from wall"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "B2.1",
+   "prompt": "How do aquaporins speed up osmosis?"
+  },
+  {
+   "to": "B3.2",
+   "prompt": "How does negative pressure potential move water up the xylem?"
+  },
+  {
+   "to": "D3.3",
+   "prompt": "How do kidneys keep blood isotonic?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/continuity-change/water-potential.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/bio-water-potential-origin-cells.json",
+    "itemIds": [
+     "wp01",
+     "wp02",
+     "wp03",
+     "wp04",
+     "wp05",
+     "wp06",
+     "wp07",
+     "wp08",
+     "wp09",
+     "wp10",
+     "wp11",
+     "wpx1",
+     "wpx2",
+     "wpx3",
+     "wpx4",
+     "wpx5",
+     "wpx6",
+     "wpx9",
+     "oc10",
+     "oc11"
+    ]
+   },
+   {
+    "file": "library/questions/bio-unity-diversity-cells.json",
+    "itemIds": [
+     "b04",
+     "b20",
+     "b22"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/bio-water-potential-origin-cells.json",
+    "cardIds": [
+     "fc-bio-wp-01",
+     "fc-bio-wp-02",
+     "fc-bio-wp-03",
+     "fc-bio-wp-04",
+     "fc-bio-wp-05",
+     "fc-bio-wp-06",
+     "fc-bio-wp-07",
+     "fc-bio-wp-08",
+     "fc-bio-wp-09",
+     "fc-bio-wp-10",
+     "fc-bio-wp-19"
+    ]
+   }
+  ],
+  "gap": "Likely untested: D2.3.1 (solvation). Otherwise well covered."
+ }
+}

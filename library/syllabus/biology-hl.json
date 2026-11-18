@@ -1,0 +1,683 @@
+{
+ "subject": "biology-hl",
+ "subjectLabel": "Biology HL",
+ "guide": "IB Diploma Biology guide, first assessment 2028 (published Feb 2023; updated May 2023, Mar 2024, May 2026). Same syllabus as the first-assessment-2025 edition: identical topic codes, titles, statement numbers and SL/AHL splits; the May 2026 update adds a Biology data booklet and scope clarifications.",
+ "source": "Official guide supplied privately by the family (not in the repo). Public overview: https://www.ibo.org/programmes/diploma-programme/curriculum/sciences/biology/",
+ "note": "Topic codes and titles only. Every SL+HL topic may also contain 'Additional higher level' statements; HL students study all of them.",
+ "themes": [
+  {
+   "key": "A",
+   "label": "Unity and diversity"
+  },
+  {
+   "key": "B",
+   "label": "Form and function"
+  },
+  {
+   "key": "C",
+   "label": "Interaction and interdependence"
+  },
+  {
+   "key": "D",
+   "label": "Continuity and change"
+  }
+ ],
+ "levels": [
+  {
+   "n": 1,
+   "label": "Molecules"
+  },
+  {
+   "n": 2,
+   "label": "Cells"
+  },
+  {
+   "n": 3,
+   "label": "Organisms"
+  },
+  {
+   "n": 4,
+   "label": "Ecosystems"
+  }
+ ],
+ "topics": [
+  {
+   "code": "A1.1",
+   "title": "Water",
+   "theme": "A",
+   "themeLabel": "Unity and diversity",
+   "level": 1,
+   "levelLabel": "Molecules",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/a1-1.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/unity-diversity/water.pdf",
+   "quizBanks": [
+    "library/questions/bio-molecules-water.json"
+   ],
+   "decks": [
+    "library/flashcards/bio-molecules-water.json"
+   ]
+  },
+  {
+   "code": "A1.2",
+   "title": "Nucleic acids",
+   "theme": "A",
+   "themeLabel": "Unity and diversity",
+   "level": 1,
+   "levelLabel": "Molecules",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/a1-2.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/unity-diversity/nucleic-acids.pdf",
+   "quizBanks": [
+    "library/questions/bio-molecules-water.json"
+   ],
+   "decks": [
+    "library/flashcards/bio-molecules-water.json"
+   ]
+  },
+  {
+   "code": "A2.1",
+   "title": "Origins of cells",
+   "theme": "A",
+   "themeLabel": "Unity and diversity",
+   "level": 2,
+   "levelLabel": "Cells",
+   "hlOnly": true,
+   "status": "AHL only",
+   "noteFile": "library/topic-notes/biology-hl/a2-1.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/unity-diversity/origins-of-cells.pdf",
+   "quizBanks": [
+    "library/questions/bio-water-potential-origin-cells.json"
+   ],
+   "decks": [
+    "library/flashcards/bio-water-potential-origin-cells.json"
+   ]
+  },
+  {
+   "code": "A2.2",
+   "title": "Cell structure",
+   "theme": "A",
+   "themeLabel": "Unity and diversity",
+   "level": 2,
+   "levelLabel": "Cells",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/a2-2.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/unity-diversity/cell-structure.pdf",
+   "quizBanks": [
+    "library/questions/bio-unity-diversity-cells.json"
+   ],
+   "decks": []
+  },
+  {
+   "code": "A2.3",
+   "title": "Viruses",
+   "theme": "A",
+   "themeLabel": "Unity and diversity",
+   "level": 2,
+   "levelLabel": "Cells",
+   "hlOnly": true,
+   "status": "AHL only",
+   "noteFile": "library/topic-notes/biology-hl/a2-3.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/unity-diversity/viruses.pdf",
+   "quizBanks": [],
+   "decks": []
+  },
+  {
+   "code": "A3.1",
+   "title": "Diversity of organisms",
+   "theme": "A",
+   "themeLabel": "Unity and diversity",
+   "level": 3,
+   "levelLabel": "Organisms",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/a3-1.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/unity-diversity/diversity-of-organisms.pdf",
+   "quizBanks": [],
+   "decks": []
+  },
+  {
+   "code": "A3.2",
+   "title": "Classification and cladistics",
+   "theme": "A",
+   "themeLabel": "Unity and diversity",
+   "level": 3,
+   "levelLabel": "Organisms",
+   "hlOnly": true,
+   "status": "AHL only",
+   "noteFile": "library/topic-notes/biology-hl/a3-2.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/unity-diversity/classification-cladistics.pdf",
+   "quizBanks": [],
+   "decks": []
+  },
+  {
+   "code": "A4.1",
+   "title": "Evolution and speciation",
+   "theme": "A",
+   "themeLabel": "Unity and diversity",
+   "level": 4,
+   "levelLabel": "Ecosystems",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/a4-1.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/unity-diversity/evolution-speciation.pdf",
+   "quizBanks": [],
+   "decks": []
+  },
+  {
+   "code": "A4.2",
+   "title": "Conservation of biodiversity",
+   "theme": "A",
+   "themeLabel": "Unity and diversity",
+   "level": 4,
+   "levelLabel": "Ecosystems",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/a4-2.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/unity-diversity/conservation-of-biodiversity.pdf",
+   "quizBanks": [],
+   "decks": []
+  },
+  {
+   "code": "B1.1",
+   "title": "Carbohydrates and lipids",
+   "theme": "B",
+   "themeLabel": "Form and function",
+   "level": 1,
+   "levelLabel": "Molecules",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/b1-1.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/form-function/carbohydrates-lipids.pdf",
+   "quizBanks": [
+    "library/questions/bio-molecules-water.json"
+   ],
+   "decks": [
+    "library/flashcards/bio-molecules-water.json"
+   ]
+  },
+  {
+   "code": "B1.2",
+   "title": "Proteins",
+   "theme": "B",
+   "themeLabel": "Form and function",
+   "level": 1,
+   "levelLabel": "Molecules",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/b1-2.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/form-function/proteins.pdf",
+   "quizBanks": [
+    "library/questions/bio-molecules-water.json"
+   ],
+   "decks": [
+    "library/flashcards/bio-molecules-water.json"
+   ]
+  },
+  {
+   "code": "B2.1",
+   "title": "Membranes and membrane transport",
+   "theme": "B",
+   "themeLabel": "Form and function",
+   "level": 2,
+   "levelLabel": "Cells",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/b2-1.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/form-function/membranes-membrane-transport.pdf",
+   "quizBanks": [
+    "library/questions/bio-unity-diversity-cells.json"
+   ],
+   "decks": []
+  },
+  {
+   "code": "B2.2",
+   "title": "Organelles and compartmentalization",
+   "theme": "B",
+   "themeLabel": "Form and function",
+   "level": 2,
+   "levelLabel": "Cells",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/b2-2.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/form-function/organelles-compartmentalisation.pdf",
+   "quizBanks": [
+    "library/questions/bio-unity-diversity-cells.json"
+   ],
+   "decks": []
+  },
+  {
+   "code": "B2.3",
+   "title": "Cell specialization",
+   "theme": "B",
+   "themeLabel": "Form and function",
+   "level": 2,
+   "levelLabel": "Cells",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/b2-3.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/form-function/cell-specialisation.pdf",
+   "quizBanks": [
+    "library/questions/bio-unity-diversity-cells.json"
+   ],
+   "decks": []
+  },
+  {
+   "code": "B3.1",
+   "title": "Gas exchange",
+   "theme": "B",
+   "themeLabel": "Form and function",
+   "level": 3,
+   "levelLabel": "Organisms",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/b3-1.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/form-function/gas-exchange.pdf",
+   "quizBanks": [
+    "library/questions/bio-gas-exchange-transport.json"
+   ],
+   "decks": [
+    "library/flashcards/bio-gas-exchange-transport.json"
+   ]
+  },
+  {
+   "code": "B3.2",
+   "title": "Transport",
+   "theme": "B",
+   "themeLabel": "Form and function",
+   "level": 3,
+   "levelLabel": "Organisms",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/b3-2.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/form-function/transport.pdf",
+   "quizBanks": [
+    "library/questions/bio-gas-exchange-transport.json"
+   ],
+   "decks": [
+    "library/flashcards/bio-gas-exchange-transport.json"
+   ]
+  },
+  {
+   "code": "B3.3",
+   "title": "Muscle and motility",
+   "theme": "B",
+   "themeLabel": "Form and function",
+   "level": 3,
+   "levelLabel": "Organisms",
+   "hlOnly": true,
+   "status": "AHL only",
+   "noteFile": "library/topic-notes/biology-hl/b3-3.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/form-function/muscle-motility.pdf",
+   "quizBanks": [],
+   "decks": []
+  },
+  {
+   "code": "B4.1",
+   "title": "Adaptation to environment",
+   "theme": "B",
+   "themeLabel": "Form and function",
+   "level": 4,
+   "levelLabel": "Ecosystems",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/b4-1.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/form-function/adaptation-to-environment.pdf",
+   "quizBanks": [
+    "library/questions/bio-ecology-adaptations-populations.json"
+   ],
+   "decks": [
+    "library/flashcards/bio-ecology-adaptations-populations.json"
+   ]
+  },
+  {
+   "code": "B4.2",
+   "title": "Ecological niches",
+   "theme": "B",
+   "themeLabel": "Form and function",
+   "level": 4,
+   "levelLabel": "Ecosystems",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/b4-2.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/form-function/ecological-niches.pdf",
+   "quizBanks": [
+    "library/questions/bio-ecology-adaptations-populations.json"
+   ],
+   "decks": [
+    "library/flashcards/bio-ecology-adaptations-populations.json"
+   ]
+  },
+  {
+   "code": "C1.1",
+   "title": "Enzymes and metabolism",
+   "theme": "C",
+   "themeLabel": "Interaction and interdependence",
+   "level": 1,
+   "levelLabel": "Molecules",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/c1-1.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/interaction-interdependence/enzymes-metabolism.pdf",
+   "quizBanks": [
+    "library/questions/bio-c1-1-enzymes-metabolism.json"
+   ],
+   "decks": [
+    "library/flashcards/bio-c1-1-enzymes-metabolism.json"
+   ]
+  },
+  {
+   "code": "C1.2",
+   "title": "Cell respiration",
+   "theme": "C",
+   "themeLabel": "Interaction and interdependence",
+   "level": 1,
+   "levelLabel": "Molecules",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/c1-2.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/interaction-interdependence/cell-respiration.pdf",
+   "quizBanks": [
+    "library/questions/bio-respiration-protein-synthesis.json"
+   ],
+   "decks": [
+    "library/flashcards/bio-respiration-protein-synthesis.json"
+   ]
+  },
+  {
+   "code": "C1.3",
+   "title": "Photosynthesis",
+   "theme": "C",
+   "themeLabel": "Interaction and interdependence",
+   "level": 1,
+   "levelLabel": "Molecules",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/c1-3.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/interaction-interdependence/photosynthesis.pdf",
+   "quizBanks": [
+    "library/questions/bio-photosynthesis-energy.json"
+   ],
+   "decks": [
+    "library/flashcards/bio-photosynthesis-energy-transfer.json"
+   ]
+  },
+  {
+   "code": "C2.1",
+   "title": "Chemical signalling",
+   "theme": "C",
+   "themeLabel": "Interaction and interdependence",
+   "level": 2,
+   "levelLabel": "Cells",
+   "hlOnly": true,
+   "status": "AHL only",
+   "noteFile": "library/topic-notes/biology-hl/c2-1.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/interaction-interdependence/chemical-signalling.pdf",
+   "quizBanks": [],
+   "decks": []
+  },
+  {
+   "code": "C2.2",
+   "title": "Neural signalling",
+   "theme": "C",
+   "themeLabel": "Interaction and interdependence",
+   "level": 2,
+   "levelLabel": "Cells",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/c2-2.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/interaction-interdependence/neural-signalling.pdf",
+   "quizBanks": [],
+   "decks": []
+  },
+  {
+   "code": "C3.1",
+   "title": "Integration of body systems",
+   "theme": "C",
+   "themeLabel": "Interaction and interdependence",
+   "level": 3,
+   "levelLabel": "Organisms",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/c3-1.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/interaction-interdependence/integration-of-body-systems.pdf",
+   "quizBanks": [],
+   "decks": []
+  },
+  {
+   "code": "C3.2",
+   "title": "Defence against disease",
+   "theme": "C",
+   "themeLabel": "Interaction and interdependence",
+   "level": 3,
+   "levelLabel": "Organisms",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/c3-2.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/interaction-interdependence/defence-against-disease.pdf",
+   "quizBanks": [
+    "library/questions/bio-defence-against-disease.json"
+   ],
+   "decks": [
+    "library/flashcards/bio-defence-against-disease.json"
+   ]
+  },
+  {
+   "code": "C4.1",
+   "title": "Populations and communities",
+   "theme": "C",
+   "themeLabel": "Interaction and interdependence",
+   "level": 4,
+   "levelLabel": "Ecosystems",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/c4-1.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/interaction-interdependence/populations-communities.pdf",
+   "quizBanks": [
+    "library/questions/bio-ecology-adaptations-populations.json"
+   ],
+   "decks": [
+    "library/flashcards/bio-ecology-adaptations-populations.json"
+   ]
+  },
+  {
+   "code": "C4.2",
+   "title": "Transfers of energy and matter",
+   "theme": "C",
+   "themeLabel": "Interaction and interdependence",
+   "level": 4,
+   "levelLabel": "Ecosystems",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/c4-2.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/interaction-interdependence/transfer-of-energy-matter.pdf",
+   "quizBanks": [
+    "library/questions/bio-photosynthesis-energy.json"
+   ],
+   "decks": [
+    "library/flashcards/bio-photosynthesis-energy-transfer.json"
+   ]
+  },
+  {
+   "code": "D1.1",
+   "title": "DNA replication",
+   "theme": "D",
+   "themeLabel": "Continuity and change",
+   "level": 1,
+   "levelLabel": "Molecules",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/d1-1.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/continuity-change/dna-replication.pdf",
+   "quizBanks": [],
+   "decks": []
+  },
+  {
+   "code": "D1.2",
+   "title": "Protein synthesis",
+   "theme": "D",
+   "themeLabel": "Continuity and change",
+   "level": 1,
+   "levelLabel": "Molecules",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/d1-2.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/continuity-change/protein-synthesis.pdf",
+   "quizBanks": [
+    "library/questions/bio-respiration-protein-synthesis.json"
+   ],
+   "decks": [
+    "library/flashcards/bio-respiration-protein-synthesis.json"
+   ]
+  },
+  {
+   "code": "D1.3",
+   "title": "Mutation and gene editing",
+   "theme": "D",
+   "themeLabel": "Continuity and change",
+   "level": 1,
+   "levelLabel": "Molecules",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/d1-3.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/continuity-change/mutations-gene-editing.pdf",
+   "quizBanks": [],
+   "decks": []
+  },
+  {
+   "code": "D2.1",
+   "title": "Cell and nuclear division",
+   "theme": "D",
+   "themeLabel": "Continuity and change",
+   "level": 2,
+   "levelLabel": "Cells",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/d2-1.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/continuity-change/cell-nuclear-division.pdf",
+   "quizBanks": [
+    "library/questions/bio-unity-diversity-cells.json"
+   ],
+   "decks": []
+  },
+  {
+   "code": "D2.2",
+   "title": "Gene expression",
+   "theme": "D",
+   "themeLabel": "Continuity and change",
+   "level": 2,
+   "levelLabel": "Cells",
+   "hlOnly": true,
+   "status": "AHL only",
+   "noteFile": "library/topic-notes/biology-hl/d2-2.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/continuity-change/gene-expression.pdf",
+   "quizBanks": [],
+   "decks": []
+  },
+  {
+   "code": "D2.3",
+   "title": "Water potential",
+   "theme": "D",
+   "themeLabel": "Continuity and change",
+   "level": 2,
+   "levelLabel": "Cells",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/d2-3.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/continuity-change/water-potential.pdf",
+   "quizBanks": [
+    "library/questions/bio-water-potential-origin-cells.json"
+   ],
+   "decks": [
+    "library/flashcards/bio-water-potential-origin-cells.json"
+   ]
+  },
+  {
+   "code": "D3.1",
+   "title": "Reproduction",
+   "theme": "D",
+   "themeLabel": "Continuity and change",
+   "level": 3,
+   "levelLabel": "Organisms",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/d3-1.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/continuity-change/reproduction.pdf",
+   "quizBanks": [],
+   "decks": []
+  },
+  {
+   "code": "D3.2",
+   "title": "Inheritance",
+   "theme": "D",
+   "themeLabel": "Continuity and change",
+   "level": 3,
+   "levelLabel": "Organisms",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/d3-2.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/continuity-change/inheritance.pdf",
+   "quizBanks": [],
+   "decks": []
+  },
+  {
+   "code": "D3.3",
+   "title": "Homeostasis",
+   "theme": "D",
+   "themeLabel": "Continuity and change",
+   "level": 3,
+   "levelLabel": "Organisms",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/d3-3.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/continuity-change/homeostasis.pdf",
+   "quizBanks": [],
+   "decks": []
+  },
+  {
+   "code": "D4.1",
+   "title": "Natural selection",
+   "theme": "D",
+   "themeLabel": "Continuity and change",
+   "level": 4,
+   "levelLabel": "Ecosystems",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/d4-1.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/continuity-change/natural-selection.pdf",
+   "quizBanks": [],
+   "decks": []
+  },
+  {
+   "code": "D4.2",
+   "title": "Stability and change",
+   "theme": "D",
+   "themeLabel": "Continuity and change",
+   "level": 4,
+   "levelLabel": "Ecosystems",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/d4-2.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/continuity-change/stability-change.pdf",
+   "quizBanks": [],
+   "decks": []
+  },
+  {
+   "code": "D4.3",
+   "title": "Climate change",
+   "theme": "D",
+   "themeLabel": "Continuity and change",
+   "level": 4,
+   "levelLabel": "Ecosystems",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "noteFile": "library/topic-notes/biology-hl/d4-3.json",
+   "checklistKey": "biology-hl::library/notes/biology-hl/continuity-change/climate-change.pdf",
+   "quizBanks": [],
+   "decks": []
+  }
+ ]
+}

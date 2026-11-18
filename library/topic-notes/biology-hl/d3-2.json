@@ -1,0 +1,330 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-d3-2",
+ "code": "D3.2",
+ "title": "Inheritance",
+ "theme": "D",
+ "themeLabel": "Continuity and change",
+ "level": 3,
+ "levelLabel": "Organisms",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "D3.2.1",
+   "D3.2.2",
+   "D3.2.3",
+   "D3.2.4",
+   "D3.2.5",
+   "D3.2.6",
+   "D3.2.7",
+   "D3.2.8",
+   "D3.2.9",
+   "D3.2.10",
+   "D3.2.11",
+   "D3.2.12",
+   "D3.2.13",
+   "D3.2.14",
+   "D3.2.15"
+  ],
+  "AHL": [
+   "D3.2.16",
+   "D3.2.17",
+   "D3.2.18",
+   "D3.2.19",
+   "D3.2.20",
+   "D3.2.21"
+  ]
+ },
+ "bigPicture": "Each parent passes on one allele of every gene. Dominant, recessive, codominant and sex-linked alleles give predictable ratios that Punnett grids and pedigrees can predict. HL extends this to two genes at once, linkage, recombinants and testing results with chi-squared.",
+ "keyIdeas": [
+  {
+   "id": "d32-k1",
+   "ahl": false,
+   "stmt": "D3.2.1",
+   "cue": "How are genes inherited in a sexual life cycle?",
+   "answer": "Each parent makes haploid gametes; fusion gives a diploid zygote with two copies of every autosomal gene, one from each parent. This is common to all sexually reproducing eukaryotes."
+  },
+  {
+   "id": "d32-k2",
+   "ahl": false,
+   "stmt": "D3.2.2",
+   "cue": "How are genetic crosses done in plants?",
+   "answer": "Transfer pollen (male gametes) to the stigma of a chosen plant; female gametes are in the ovary. Peas can self-fertilise, so for a cross the anthers are removed and pollen transferred by hand. Terms: P (parents), F1 (first offspring), F2 (offspring of F1), Punnett grid. Crosses are widely used to breed new crop and ornamental varieties."
+  },
+  {
+   "id": "d32-k3",
+   "ahl": false,
+   "stmt": "D3.2.3",
+   "cue": "Gene vs allele; homozygous vs heterozygous?",
+   "answer": "A gene is a heritable factor at a particular locus; alleles are its alternative forms. Homozygous: two identical alleles. Heterozygous: two different alleles. Genotype is the combination of alleles."
+  },
+  {
+   "id": "d32-k4",
+   "ahl": false,
+   "stmt": "D3.2.4",
+   "cue": "What decides phenotype?",
+   "answer": "Genotype and environment. Genotype only: ABO blood group, eye colour. Environment only: scars, language spoken. Both: height, skin colour (genes plus nutrition or sun exposure)."
+  },
+  {
+   "id": "d32-k5",
+   "ahl": false,
+   "stmt": "D3.2.5",
+   "cue": "Why do AA and Aa have the same phenotype?",
+   "answer": "The dominant allele usually codes for a functional protein; one copy makes enough product. The recessive allele (often non-functional) only shows when there's no dominant allele."
+  },
+  {
+   "id": "d32-k6",
+   "ahl": false,
+   "stmt": "D3.2.6",
+   "cue": "What is phenotypic plasticity?",
+   "answer": "An organism developing traits suited to its environment by changing gene expression, not genotype, e.g. tanning, muscle growth with training, leaf shape in sun vs shade. Changes may be reversible."
+  },
+  {
+   "id": "d32-k7",
+   "ahl": false,
+   "stmt": "D3.2.7",
+   "cue": "What causes phenylketonuria?",
+   "answer": "A recessive allele of an autosomal gene for the enzyme that converts phenylalanine to tyrosine. Homozygous recessive people build up phenylalanine, which harms brain development unless they follow a low-phenylalanine diet."
+  },
+  {
+   "id": "d32-k8",
+   "ahl": false,
+   "stmt": "D3.2.8",
+   "cue": "How many alleles can a gene have?",
+   "answer": "Any number can exist in the gene pool (new SNPs keep arising), but each diploid individual carries only two."
+  },
+  {
+   "id": "d32-k9",
+   "ahl": false,
+   "stmt": "D3.2.9",
+   "cue": "How is ABO blood group inherited?",
+   "answer": "Three alleles: Iᴬ and Iᴮ are codominant, and both are dominant to i. Group A: IᴬIᴬ or Iᴬi; B: IᴮIᴮ or Iᴮi; AB: IᴬIᴮ; O: ii."
+  },
+  {
+   "id": "d32-k10",
+   "ahl": false,
+   "stmt": "D3.2.10",
+   "cue": "Codominance vs incomplete dominance?",
+   "answer": "Codominance: the heterozygote shows both phenotypes (blood group AB). Incomplete dominance: the heterozygote has an intermediate phenotype (red × white four o'clock flower, Mirabilis jalapa, gives pink)."
+  },
+  {
+   "id": "d32-k11",
+   "ahl": false,
+   "stmt": "D3.2.11",
+   "cue": "How is sex determined in humans?",
+   "answer": "Females XX, males XY. Eggs always carry X; the sperm's X or Y decides the zygote's sex, since the Y chromosome triggers male-typical development. The X carries far more genes than the Y."
+  },
+  {
+   "id": "d32-k12",
+   "ahl": false,
+   "stmt": "D3.2.12",
+   "cue": "How is haemophilia inherited?",
+   "answer": "Recessive allele on the X chromosome (Xʰ). Males have one X, so XʰY has haemophilia. Females need XʰXʰ; XᴴXʰ women are carriers. Affected sons inherit it from their mothers."
+  },
+  {
+   "id": "d32-k13",
+   "ahl": false,
+   "stmt": "D3.2.13",
+   "cue": "How do you analyse a pedigree chart?",
+   "answer": "Squares = male, circles = female, shaded = affected (symbols in the data booklet). Two unaffected parents with an affected child means recessive. Mostly affected males inherited through carrier mothers suggests X-linked. Close relatives are more likely to carry the same recessive alleles, which is why many societies forbid marriage between them."
+  },
+  {
+   "id": "d32-k14",
+   "ahl": false,
+   "stmt": "D3.2.14",
+   "cue": "What causes continuous variation?",
+   "answer": "Polygenic inheritance (many genes each adding a small effect) and/or environment, e.g. skin colour. Continuous variables vary across a range (use mean, median, mode); discrete ones fall into categories (ABO group)."
+  },
+  {
+   "id": "d32-k15",
+   "ahl": false,
+   "stmt": "D3.2.15",
+   "cue": "What does a box-and-whisker plot show?",
+   "answer": "Minimum, lower quartile (Q1), median, upper quartile (Q3), maximum, and outliers: points more than 1.5 × IQR below Q1 or above Q3 (IQR = Q3 − Q1)."
+  },
+  {
+   "id": "d32-k16",
+   "ahl": true,
+   "stmt": "D3.2.16",
+   "cue": "How does meiosis explain segregation and independent assortment?",
+   "answer": "The two alleles of a gene separate into different gametes (segregation) because homologues separate in meiosis I. Genes on different chromosomes assort independently because each bivalent orients randomly at metaphase I."
+  },
+  {
+   "id": "d32-k17",
+   "ahl": true,
+   "stmt": "D3.2.17",
+   "cue": "Where do the 9:3:3:1 and 1:1:1:1 ratios come from?",
+   "answer": "AaBb × AaBb: each parent makes AB, Ab, aB, ab equally; a 4×4 grid gives 9 A_B_ : 3 A_bb : 3 aaB_ : 1 aabb. AaBb × aabb (test cross) gives 1:1:1:1. Valid only for unlinked genes (Mendel's second law)."
+  },
+  {
+   "id": "d32-k18",
+   "ahl": true,
+   "stmt": "D3.2.18",
+   "cue": "What does a gene database show about loci?",
+   "answer": "Each gene has a locus on a chromosome and a polypeptide product. Databases show some gene pairs on different chromosomes and others close together on the same chromosome."
+  },
+  {
+   "id": "d32-k19",
+   "ahl": true,
+   "stmt": "D3.2.19",
+   "cue": "What is gene linkage?",
+   "answer": "Genes close together on the same chromosome tend to be inherited together because they don't assort independently. Write linked genotypes with alleles beside vertical lines for each homologue, e.g. AB | ab."
+  },
+  {
+   "id": "d32-k20",
+   "ahl": true,
+   "stmt": "D3.2.20",
+   "cue": "What are recombinants?",
+   "answer": "Offspring with combinations of alleles not found in either parent. In AaBb × aabb, unlinked genes give 50% recombinants. Linked genes give mostly parental types and only a few recombinants, from crossing over."
+  },
+  {
+   "id": "d32-k21",
+   "ahl": true,
+   "stmt": "D3.2.21",
+   "cue": "How is chi-squared used for dihybrid crosses?",
+   "answer": "Null hypothesis: the results fit the expected ratio (e.g. 9:3:3:1). χ² = Σ(O−E)²/E, df = categories − 1 (3 for four classes, critical value 7.81 at p = 0.05). If χ² is above the critical value, reject the null; a significant deviation may indicate linkage."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Allele",
+   "def": "Alternative form of a gene."
+  },
+  {
+   "term": "Codominance",
+   "def": "Both alleles expressed in the heterozygote."
+  },
+  {
+   "term": "Sex-linked",
+   "def": "Gene carried on a sex chromosome (usually X)."
+  },
+  {
+   "term": "Polygenic",
+   "def": "Trait controlled by many genes."
+  },
+  {
+   "term": "Linkage (AHL)",
+   "def": "Genes on the same chromosome inherited together."
+  },
+  {
+   "term": "Recombinant (AHL)",
+   "def": "Offspring with a new combination of parental alleles."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Haemophilia cross",
+   "prompt": "A carrier woman and an unaffected man have children. Predict the outcomes.",
+   "steps": [
+    "Parents: XᴴXʰ × XᴴY.",
+    "Gametes: Xᴴ, Xʰ and Xᴴ, Y.",
+    "Offspring: XᴴXᴴ, XᴴXʰ, XᴴY, XʰY."
+   ],
+   "answer": "Daughters: 50% carriers, none affected. Sons: 50% chance of haemophilia."
+  },
+  {
+   "title": "Chi-squared on a dihybrid cross (AHL)",
+   "prompt": "Expected 9:3:3:1 from 160 F2 plants; observed 94, 30, 28, 8. Test the fit.",
+   "steps": [
+    "Expected: 90, 30, 30, 10.",
+    "(94−90)²/90 = 0.18; 0; (28−30)²/30 = 0.13; (8−10)²/10 = 0.40.",
+    "χ² = 0.71; df = 3; critical value 7.81."
+   ],
+   "answer": "0.71 < 7.81: accept the null; the results fit a 9:3:3:1 ratio."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Dominant alleles are more common.",
+   "right": "Dominance says nothing about frequency."
+  },
+  {
+   "wrong": "Codominance means a blend.",
+   "right": "Blending is incomplete dominance; codominance shows both."
+  },
+  {
+   "wrong": "Men can be carriers of haemophilia.",
+   "right": "Men with the allele are affected; only women are carriers."
+  },
+  {
+   "wrong": "Linked genes never recombine.",
+   "right": "Crossing over produces some recombinants."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Deduce",
+   "marks": 3,
+   "prompt": "Two group A parents have a group O child. Deduce the parents' genotypes and the chance of another group O child.",
+   "checkpoints": [
+    "Both parents Iᴬi",
+    "Child ii",
+    "Probability 1/4 (25%)"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain why haemophilia is more common in males.",
+   "checkpoints": [
+    "Allele recessive, on the X chromosome",
+    "Males have one X, no second allele to mask it",
+    "Females need two copies"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 4,
+   "prompt": "Explain how meiosis leads to independent assortment of unlinked genes.",
+   "checkpoints": [
+    "Genes on different chromosomes",
+    "Random orientation of bivalents at metaphase I",
+    "Each allele combination equally likely in gametes",
+    "Gives 9:3:3:1 in dihybrid F2"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Distinguish",
+   "marks": 2,
+   "prompt": "Distinguish between the offspring of a test cross with linked and with unlinked genes.",
+   "checkpoints": [
+    "Unlinked: 1:1:1:1, 50% recombinants",
+    "Linked: mostly parental types, few recombinants"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "D2.1",
+   "prompt": "How does meiosis halve the chromosome number?"
+  },
+  {
+   "to": "D1.3",
+   "prompt": "Where do new alleles come from?"
+  },
+  {
+   "to": "D4.1",
+   "prompt": "How do allele frequencies change in populations?"
+  },
+  {
+   "to": "D2.2",
+   "prompt": "How does gene expression produce phenotypic plasticity?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/continuity-change/inheritance.pdf",
+  "quizBanks": [],
+  "decks": [],
+  "gap": "No quiz or deck covers D3.2. Missing all of it, including the Punnett grid, ABO, sex linkage, pedigree, box plot, dihybrid, linkage and chi-squared practice."
+ },
+ "dataBooklet": [
+  "D3.2.13",
+  "D3.2.15"
+ ]
+}

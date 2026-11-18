@@ -1,0 +1,1149 @@
+{
+ "subject": "chemistry-hl",
+ "subjectLabel": "Chemistry HL",
+ "guide": "IB Diploma Chemistry, first assessment 2025 (same syllabus applies to the May 2028 cohort). No official guide PDF supplied yet.",
+ "source": "Statement numbers, HL flags and teaching order: ISL 'DP Chemistry at a glance M28' (private, not in repo). Subtopic titles: public IB subject brief (ibo.org) and MSJChem. Data: IB Chemistry data booklet v1.1 (private, not in repo).",
+ "recheck": "Recheck all codes, titles and SL/AHL splits if the official Chemistry guide is supplied.",
+ "note": "Topic codes, titles and statement numbers only; statement wording is not reproduced.",
+ "themes": [
+  {
+   "key": "S1",
+   "label": "Models of the particulate nature of matter"
+  },
+  {
+   "key": "S2",
+   "label": "Models of bonding and structure"
+  },
+  {
+   "key": "S3",
+   "label": "Classification of matter"
+  },
+  {
+   "key": "R1",
+   "label": "What drives chemical reactions?"
+  },
+  {
+   "key": "R2",
+   "label": "How much, how fast and how far?"
+  },
+  {
+   "key": "R3",
+   "label": "What are the mechanisms of chemical change?"
+  }
+ ],
+ "islUnits": [
+  {
+   "unit": 1,
+   "name": "Atomic theory and kinetic theory",
+   "when": "Y12 Sep"
+  },
+  {
+   "unit": 2,
+   "name": "Periodicity",
+   "when": "Y12 Oct"
+  },
+  {
+   "unit": 3,
+   "name": "Stoichiometry",
+   "when": "Y12 Oct-Nov"
+  },
+  {
+   "unit": 5,
+   "name": "Energetics",
+   "when": "Y12 Dec-Feb"
+  },
+  {
+   "unit": 6,
+   "name": "Kinetics",
+   "when": "Y12 Feb-Mar"
+  },
+  {
+   "unit": 7,
+   "name": "Equilibrium",
+   "when": "Y12 Mar"
+  },
+  {
+   "unit": 8,
+   "name": "Redox",
+   "when": "Y12 Apr-May"
+  },
+  {
+   "unit": 9,
+   "name": "Acids and bases",
+   "when": "Y12 Jun / Y13 Sep"
+  },
+  {
+   "unit": 4,
+   "name": "Bonding",
+   "when": "Y13 Oct-Nov"
+  },
+  {
+   "unit": 10,
+   "name": "Organic chemistry",
+   "when": "Y13 Nov-Mar"
+  }
+ ],
+ "totals": {
+  "subtopics": 22,
+  "SL": 104,
+  "AHL": 61
+ },
+ "topics": [
+  {
+   "code": "S1.1",
+   "title": "Introduction to the particulate nature of matter",
+   "theme": "S1",
+   "themeLabel": "Models of the particulate nature of matter",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "statements": {
+    "SL": [
+     "S1.1.1",
+     "S1.1.2",
+     "S1.1.3"
+    ],
+    "AHL": []
+   },
+   "islOrder": 1,
+   "islUnits": [
+    {
+     "unit": 1,
+     "name": "Atomic theory and kinetic theory",
+     "when": "Y12 Sep",
+     "statements": [
+      "S1.1.1",
+      "S1.1.2",
+      "S1.1.3"
+     ]
+    }
+   ],
+   "notInIslDoc": [],
+   "taughtStatus": "taught",
+   "noteFile": "library/topic-notes/chemistry-hl/s1-1.json",
+   "checklistKey": "chemistry-hl::library/notes/chemistry-hl/models-of-the-particulate-nature-of-matter/introduction-to-the-particulate-nature-of-matter.pdf",
+   "flags": []
+  },
+  {
+   "code": "S1.2",
+   "title": "The nuclear atom",
+   "theme": "S1",
+   "themeLabel": "Models of the particulate nature of matter",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "statements": {
+    "SL": [
+     "S1.2.1",
+     "S1.2.2"
+    ],
+    "AHL": [
+     "S1.2.3"
+    ]
+   },
+   "islOrder": 2,
+   "islUnits": [
+    {
+     "unit": 1,
+     "name": "Atomic theory and kinetic theory",
+     "when": "Y12 Sep",
+     "statements": [
+      "S1.2.1",
+      "S1.2.2",
+      "S1.2.3"
+     ]
+    }
+   ],
+   "notInIslDoc": [],
+   "taughtStatus": "taught",
+   "noteFile": "library/topic-notes/chemistry-hl/s1-2.json",
+   "checklistKey": "chemistry-hl::library/notes/chemistry-hl/models-of-the-particulate-nature-of-matter/the-nuclear-atom.pdf",
+   "flags": []
+  },
+  {
+   "code": "S1.3",
+   "title": "Electron configurations",
+   "theme": "S1",
+   "themeLabel": "Models of the particulate nature of matter",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "statements": {
+    "SL": [
+     "S1.3.1",
+     "S1.3.2",
+     "S1.3.3",
+     "S1.3.4",
+     "S1.3.5"
+    ],
+    "AHL": [
+     "S1.3.6",
+     "S1.3.7"
+    ]
+   },
+   "islOrder": 3,
+   "islUnits": [
+    {
+     "unit": 1,
+     "name": "Atomic theory and kinetic theory",
+     "when": "Y12 Sep",
+     "statements": [
+      "S1.3.1",
+      "S1.3.2",
+      "S1.3.3",
+      "S1.3.4",
+      "S1.3.5",
+      "S1.3.6",
+      "S1.3.7"
+     ]
+    }
+   ],
+   "notInIslDoc": [],
+   "taughtStatus": "taught",
+   "noteFile": "library/topic-notes/chemistry-hl/s1-3.json",
+   "checklistKey": "chemistry-hl::library/notes/chemistry-hl/models-of-the-particulate-nature-of-matter/electronic-configurations.pdf",
+   "flags": []
+  },
+  {
+   "code": "S3.1",
+   "title": "The periodic table: classification of elements",
+   "theme": "S3",
+   "themeLabel": "Classification of matter",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "statements": {
+    "SL": [
+     "S3.1.1",
+     "S3.1.2",
+     "S3.1.3",
+     "S3.1.4",
+     "S3.1.5",
+     "S3.1.6"
+    ],
+    "AHL": [
+     "S3.1.7",
+     "S3.1.8",
+     "S3.1.9",
+     "S3.1.10"
+    ]
+   },
+   "islOrder": 4,
+   "islUnits": [
+    {
+     "unit": 1,
+     "name": "Atomic theory and kinetic theory",
+     "when": "Y12 Sep",
+     "statements": [
+      "S3.1.1",
+      "S3.1.2",
+      "S3.1.7"
+     ]
+    },
+    {
+     "unit": 2,
+     "name": "Periodicity",
+     "when": "Y12 Oct",
+     "statements": [
+      "S3.1.3",
+      "S3.1.4",
+      "S3.1.8",
+      "S3.1.9",
+      "S3.1.10"
+     ]
+    },
+    {
+     "unit": 8,
+     "name": "Redox",
+     "when": "Y12 Apr-May",
+     "statements": [
+      "S3.1.6"
+     ]
+    },
+    {
+     "unit": 9,
+     "name": "Acids and bases",
+     "when": "Y12 Jun / Y13 Sep",
+     "statements": [
+      "S3.1.5"
+     ]
+    }
+   ],
+   "notInIslDoc": [],
+   "taughtStatus": "partly taught (8/10 statements)",
+   "noteFile": "library/topic-notes/chemistry-hl/s3-1.json",
+   "checklistKey": "chemistry-hl::library/notes/chemistry-hl/classification-of-matter/the-periodic-table-classification-of-elements.pdf",
+   "flags": [
+    "Taught across four ISL units (atomic theory, periodicity, redox, acids and bases)."
+   ]
+  },
+  {
+   "code": "S1.4",
+   "title": "Counting particles by mass: the mole",
+   "theme": "S1",
+   "themeLabel": "Models of the particulate nature of matter",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "statements": {
+    "SL": [
+     "S1.4.1",
+     "S1.4.2",
+     "S1.4.3",
+     "S1.4.4",
+     "S1.4.5",
+     "S1.4.6"
+    ],
+    "AHL": []
+   },
+   "islOrder": 5,
+   "islUnits": [
+    {
+     "unit": 3,
+     "name": "Stoichiometry",
+     "when": "Y12 Oct-Nov",
+     "statements": [
+      "S1.4.1",
+      "S1.4.2",
+      "S1.4.3",
+      "S1.4.4",
+      "S1.4.5",
+      "S1.4.6"
+     ]
+    }
+   ],
+   "notInIslDoc": [],
+   "taughtStatus": "in progress",
+   "noteFile": "library/topic-notes/chemistry-hl/s1-4.json",
+   "checklistKey": "chemistry-hl::library/notes/chemistry-hl/models-of-the-particulate-nature-of-matter/counting-particles-by-mass-the-mole.pdf",
+   "flags": [
+    "S1.4.1 (the mole / Avogadro constant) is missing from the ISL document; number and wording taken from public sources. Recheck against the official guide."
+   ]
+  },
+  {
+   "code": "S1.5",
+   "title": "Ideal gases",
+   "theme": "S1",
+   "themeLabel": "Models of the particulate nature of matter",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "statements": {
+    "SL": [
+     "S1.5.1",
+     "S1.5.2",
+     "S1.5.3",
+     "S1.5.4"
+    ],
+    "AHL": []
+   },
+   "islOrder": 6,
+   "islUnits": [
+    {
+     "unit": 3,
+     "name": "Stoichiometry",
+     "when": "Y12 Oct-Nov",
+     "statements": [
+      "S1.5.1",
+      "S1.5.2",
+      "S1.5.3",
+      "S1.5.4"
+     ]
+    }
+   ],
+   "notInIslDoc": [],
+   "taughtStatus": "in progress",
+   "noteFile": "library/topic-notes/chemistry-hl/s1-5.json",
+   "checklistKey": "chemistry-hl::library/notes/chemistry-hl/models-of-the-particulate-nature-of-matter/ideal-gases.pdf",
+   "flags": [
+    "ISL document prints this code as 'S.1.5.1' (typo); read as S1.5.1."
+   ]
+  },
+  {
+   "code": "R2.1",
+   "title": "How much? The amount of chemical change",
+   "theme": "R2",
+   "themeLabel": "How much, how fast and how far?",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "statements": {
+    "SL": [
+     "R2.1.1",
+     "R2.1.2",
+     "R2.1.3",
+     "R2.1.4",
+     "R2.1.5"
+    ],
+    "AHL": []
+   },
+   "islOrder": 7,
+   "islUnits": [
+    {
+     "unit": 3,
+     "name": "Stoichiometry",
+     "when": "Y12 Oct-Nov",
+     "statements": [
+      "R2.1.1",
+      "R2.1.2",
+      "R2.1.3",
+      "R2.1.4",
+      "R2.1.5"
+     ]
+    }
+   ],
+   "notInIslDoc": [],
+   "taughtStatus": "in progress",
+   "noteFile": "library/topic-notes/chemistry-hl/r2-1.json",
+   "checklistKey": "chemistry-hl::library/notes/chemistry-hl/how-much-how-fast-how-far/how-much-the-amount-of-chemical-change.pdf",
+   "flags": []
+  },
+  {
+   "code": "R1.1",
+   "title": "Measuring enthalpy changes",
+   "theme": "R1",
+   "themeLabel": "What drives chemical reactions?",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "statements": {
+    "SL": [
+     "R1.1.1",
+     "R1.1.2",
+     "R1.1.3",
+     "R1.1.4"
+    ],
+    "AHL": []
+   },
+   "islOrder": 8,
+   "islUnits": [
+    {
+     "unit": 5,
+     "name": "Energetics",
+     "when": "Y12 Dec-Feb",
+     "statements": [
+      "R1.1.1",
+      "R1.1.2",
+      "R1.1.3",
+      "R1.1.4"
+     ]
+    }
+   ],
+   "notInIslDoc": [],
+   "taughtStatus": "upcoming",
+   "noteFile": "library/topic-notes/chemistry-hl/r1-1.json",
+   "checklistKey": "chemistry-hl::library/notes/chemistry-hl/what-drives-chemical-reactions/measuring-enthalpy-change.pdf",
+   "flags": [
+    "ISL document lists four statements and no AHL statements; recheck count against the official guide."
+   ]
+  },
+  {
+   "code": "R1.2",
+   "title": "Energy cycles in reactions",
+   "theme": "R1",
+   "themeLabel": "What drives chemical reactions?",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "statements": {
+    "SL": [
+     "R1.2.1",
+     "R1.2.2"
+    ],
+    "AHL": [
+     "R1.2.3",
+     "R1.2.4",
+     "R1.2.5"
+    ]
+   },
+   "islOrder": 9,
+   "islUnits": [
+    {
+     "unit": 5,
+     "name": "Energetics",
+     "when": "Y12 Dec-Feb",
+     "statements": [
+      "R1.2.1",
+      "R1.2.2",
+      "R1.2.3",
+      "R1.2.4",
+      "R1.2.5"
+     ]
+    }
+   ],
+   "notInIslDoc": [],
+   "taughtStatus": "upcoming",
+   "noteFile": "library/topic-notes/chemistry-hl/r1-2.json",
+   "checklistKey": "chemistry-hl::library/notes/chemistry-hl/what-drives-chemical-reactions/energy-cycles-in-reactions.pdf",
+   "flags": []
+  },
+  {
+   "code": "R1.4",
+   "title": "Entropy and spontaneity (additional higher level)",
+   "theme": "R1",
+   "themeLabel": "What drives chemical reactions?",
+   "hlOnly": true,
+   "status": "AHL only",
+   "statements": {
+    "SL": [],
+    "AHL": [
+     "R1.4.1",
+     "R1.4.2",
+     "R1.4.3",
+     "R1.4.4"
+    ]
+   },
+   "islOrder": 10,
+   "islUnits": [
+    {
+     "unit": 5,
+     "name": "Energetics",
+     "when": "Y12 Dec-Feb",
+     "statements": [
+      "R1.4.1",
+      "R1.4.2",
+      "R1.4.3"
+     ]
+    },
+    {
+     "unit": 7,
+     "name": "Equilibrium",
+     "when": "Y12 Mar",
+     "statements": [
+      "R1.4.4"
+     ]
+    }
+   ],
+   "notInIslDoc": [],
+   "taughtStatus": "upcoming",
+   "noteFile": "library/topic-notes/chemistry-hl/r1-4.json",
+   "checklistKey": "chemistry-hl::library/notes/chemistry-hl/what-drives-chemical-reactions/entropy-spontaneity.pdf",
+   "flags": []
+  },
+  {
+   "code": "R2.2",
+   "title": "How fast? The rate of chemical change",
+   "theme": "R2",
+   "themeLabel": "How much, how fast and how far?",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "statements": {
+    "SL": [
+     "R2.2.1",
+     "R2.2.2",
+     "R2.2.3",
+     "R2.2.4",
+     "R2.2.5"
+    ],
+    "AHL": [
+     "R2.2.6",
+     "R2.2.7",
+     "R2.2.8",
+     "R2.2.9",
+     "R2.2.10",
+     "R2.2.11",
+     "R2.2.12",
+     "R2.2.13"
+    ]
+   },
+   "islOrder": 11,
+   "islUnits": [
+    {
+     "unit": 6,
+     "name": "Kinetics",
+     "when": "Y12 Feb-Mar",
+     "statements": [
+      "R2.2.1",
+      "R2.2.2",
+      "R2.2.3",
+      "R2.2.4",
+      "R2.2.5",
+      "R2.2.6",
+      "R2.2.7",
+      "R2.2.8",
+      "R2.2.9",
+      "R2.2.10",
+      "R2.2.11",
+      "R2.2.12",
+      "R2.2.13"
+     ]
+    }
+   ],
+   "notInIslDoc": [],
+   "taughtStatus": "upcoming",
+   "noteFile": "library/topic-notes/chemistry-hl/r2-2.json",
+   "checklistKey": "chemistry-hl::library/notes/chemistry-hl/how-much-how-fast-how-far/how-fast-the-rate-of-chemical-change.pdf",
+   "flags": []
+  },
+  {
+   "code": "R2.3",
+   "title": "How far? The extent of chemical change",
+   "theme": "R2",
+   "themeLabel": "How much, how fast and how far?",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "statements": {
+    "SL": [
+     "R2.3.1",
+     "R2.3.2",
+     "R2.3.3",
+     "R2.3.4"
+    ],
+    "AHL": [
+     "R2.3.5",
+     "R2.3.6",
+     "R2.3.7"
+    ]
+   },
+   "islOrder": 12,
+   "islUnits": [
+    {
+     "unit": 7,
+     "name": "Equilibrium",
+     "when": "Y12 Mar",
+     "statements": [
+      "R2.3.1",
+      "R2.3.2",
+      "R2.3.3",
+      "R2.3.4",
+      "R2.3.5",
+      "R2.3.6",
+      "R2.3.7"
+     ]
+    }
+   ],
+   "notInIslDoc": [],
+   "taughtStatus": "upcoming",
+   "noteFile": "library/topic-notes/chemistry-hl/r2-3.json",
+   "checklistKey": "chemistry-hl::library/notes/chemistry-hl/how-much-how-fast-how-far/how-far-the-extent-of-chemical-change.pdf",
+   "flags": []
+  },
+  {
+   "code": "R3.2",
+   "title": "Electron transfer reactions",
+   "theme": "R3",
+   "themeLabel": "What are the mechanisms of chemical change?",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "statements": {
+    "SL": [
+     "R3.2.1",
+     "R3.2.2",
+     "R3.2.3",
+     "R3.2.4",
+     "R3.2.5",
+     "R3.2.6",
+     "R3.2.7",
+     "R3.2.8",
+     "R3.2.9",
+     "R3.2.10",
+     "R3.2.11"
+    ],
+    "AHL": [
+     "R3.2.12",
+     "R3.2.13",
+     "R3.2.14",
+     "R3.2.15",
+     "R3.2.16"
+    ]
+   },
+   "islOrder": 13,
+   "islUnits": [
+    {
+     "unit": 8,
+     "name": "Redox",
+     "when": "Y12 Apr-May",
+     "statements": [
+      "R3.2.1",
+      "R3.2.2",
+      "R3.2.3",
+      "R3.2.4",
+      "R3.2.5",
+      "R3.2.6",
+      "R3.2.7",
+      "R3.2.8",
+      "R3.2.12",
+      "R3.2.13",
+      "R3.2.14",
+      "R3.2.15",
+      "R3.2.16"
+     ]
+    },
+    {
+     "unit": 10,
+     "name": "Organic chemistry",
+     "when": "Y13 Nov-Mar",
+     "statements": [
+      "R3.2.9",
+      "R3.2.10",
+      "R3.2.11"
+     ]
+    }
+   ],
+   "notInIslDoc": [],
+   "taughtStatus": "upcoming",
+   "noteFile": "library/topic-notes/chemistry-hl/r3-2.json",
+   "checklistKey": "chemistry-hl::library/notes/chemistry-hl/what-are-the-mechanisms-of-chemical-change/electron-transfer-reactions.pdf",
+   "flags": [
+    "AHL statement numbers R3.2.12-16 are line-wrapped in the ISL PDF; numbering reconstructed in sequence. Recheck."
+   ]
+  },
+  {
+   "code": "R3.1",
+   "title": "Proton transfer reactions",
+   "theme": "R3",
+   "themeLabel": "What are the mechanisms of chemical change?",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "statements": {
+    "SL": [
+     "R3.1.1",
+     "R3.1.2",
+     "R3.1.3",
+     "R3.1.4",
+     "R3.1.5",
+     "R3.1.6",
+     "R3.1.7",
+     "R3.1.8"
+    ],
+    "AHL": [
+     "R3.1.9",
+     "R3.1.10",
+     "R3.1.11",
+     "R3.1.12",
+     "R3.1.13",
+     "R3.1.14",
+     "R3.1.15",
+     "R3.1.16",
+     "R3.1.17"
+    ]
+   },
+   "islOrder": 14,
+   "islUnits": [
+    {
+     "unit": 9,
+     "name": "Acids and bases",
+     "when": "Y12 Jun / Y13 Sep",
+     "statements": [
+      "R3.1.1",
+      "R3.1.2",
+      "R3.1.3",
+      "R3.1.4",
+      "R3.1.5",
+      "R3.1.6",
+      "R3.1.7",
+      "R3.1.8",
+      "R3.1.9",
+      "R3.1.10",
+      "R3.1.11",
+      "R3.1.12",
+      "R3.1.13",
+      "R3.1.14",
+      "R3.1.15",
+      "R3.1.16",
+      "R3.1.17"
+     ]
+    }
+   ],
+   "notInIslDoc": [],
+   "taughtStatus": "upcoming",
+   "noteFile": "library/topic-notes/chemistry-hl/r3-1.json",
+   "checklistKey": "chemistry-hl::library/notes/chemistry-hl/what-are-the-mechanisms-of-chemical-change/proton-transfer-reactions.pdf",
+   "flags": [
+    "AHL statement numbers R3.1.10-17 are line-wrapped in the ISL PDF (e.g. 'R3.1.1 / 0 HL'); numbering reconstructed in sequence. Recheck."
+   ]
+  },
+  {
+   "code": "S2.1",
+   "title": "The ionic model",
+   "theme": "S2",
+   "themeLabel": "Models of bonding and structure",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "statements": {
+    "SL": [
+     "S2.1.1",
+     "S2.1.2",
+     "S2.1.3"
+    ],
+    "AHL": []
+   },
+   "islOrder": 15,
+   "islUnits": [
+    {
+     "unit": 3,
+     "name": "Stoichiometry",
+     "when": "Y12 Oct-Nov",
+     "statements": [
+      "S2.1.1",
+      "S2.1.2"
+     ]
+    },
+    {
+     "unit": 4,
+     "name": "Bonding",
+     "when": "Y13 Oct-Nov",
+     "statements": [
+      "S2.1.3"
+     ]
+    }
+   ],
+   "notInIslDoc": [],
+   "taughtStatus": "partly taught (2/3 statements)",
+   "noteFile": "library/topic-notes/chemistry-hl/s2-1.json",
+   "checklistKey": "chemistry-hl::library/notes/chemistry-hl/models-of-bonding-structure/the-ionic-model.pdf",
+   "flags": []
+  },
+  {
+   "code": "S2.2",
+   "title": "The covalent model",
+   "theme": "S2",
+   "themeLabel": "Models of bonding and structure",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "statements": {
+    "SL": [
+     "S2.2.1",
+     "S2.2.2",
+     "S2.2.3",
+     "S2.2.4",
+     "S2.2.5",
+     "S2.2.6",
+     "S2.2.7",
+     "S2.2.8",
+     "S2.2.9",
+     "S2.2.10"
+    ],
+    "AHL": [
+     "S2.2.11",
+     "S2.2.12",
+     "S2.2.13",
+     "S2.2.14",
+     "S2.2.15",
+     "S2.2.16"
+    ]
+   },
+   "islOrder": 16,
+   "islUnits": [
+    {
+     "unit": 4,
+     "name": "Bonding",
+     "when": "Y13 Oct-Nov",
+     "statements": [
+      "S2.2.1",
+      "S2.2.2",
+      "S2.2.3",
+      "S2.2.4",
+      "S2.2.5",
+      "S2.2.6",
+      "S2.2.7",
+      "S2.2.8",
+      "S2.2.9",
+      "S2.2.10",
+      "S2.2.11",
+      "S2.2.12",
+      "S2.2.13",
+      "S2.2.14",
+      "S2.2.15",
+      "S2.2.16"
+     ]
+    }
+   ],
+   "notInIslDoc": [],
+   "taughtStatus": "upcoming",
+   "noteFile": "library/topic-notes/chemistry-hl/s2-2.json",
+   "checklistKey": "chemistry-hl::library/notes/chemistry-hl/models-of-bonding-structure/the-covalent-model.pdf",
+   "flags": []
+  },
+  {
+   "code": "S2.3",
+   "title": "The metallic model",
+   "theme": "S2",
+   "themeLabel": "Models of bonding and structure",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "statements": {
+    "SL": [
+     "S2.3.1",
+     "S2.3.2"
+    ],
+    "AHL": [
+     "S2.3.3"
+    ]
+   },
+   "islOrder": 17,
+   "islUnits": [
+    {
+     "unit": 4,
+     "name": "Bonding",
+     "when": "Y13 Oct-Nov",
+     "statements": [
+      "S2.3.1",
+      "S2.3.2",
+      "S2.3.3"
+     ]
+    }
+   ],
+   "notInIslDoc": [],
+   "taughtStatus": "upcoming",
+   "noteFile": "library/topic-notes/chemistry-hl/s2-3.json",
+   "checklistKey": "chemistry-hl::library/notes/chemistry-hl/models-of-bonding-structure/the-metallic-model.pdf",
+   "flags": []
+  },
+  {
+   "code": "S2.4",
+   "title": "From models to materials",
+   "theme": "S2",
+   "themeLabel": "Models of bonding and structure",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "statements": {
+    "SL": [
+     "S2.4.1",
+     "S2.4.2",
+     "S2.4.3",
+     "S2.4.4",
+     "S2.4.5"
+    ],
+    "AHL": [
+     "S2.4.6"
+    ]
+   },
+   "islOrder": 18,
+   "islUnits": [
+    {
+     "unit": 4,
+     "name": "Bonding",
+     "when": "Y13 Oct-Nov",
+     "statements": [
+      "S2.4.1",
+      "S2.4.2",
+      "S2.4.3"
+     ]
+    },
+    {
+     "unit": 10,
+     "name": "Organic chemistry",
+     "when": "Y13 Nov-Mar",
+     "statements": [
+      "S2.4.4",
+      "S2.4.5",
+      "S2.4.6"
+     ]
+    }
+   ],
+   "notInIslDoc": [],
+   "taughtStatus": "upcoming",
+   "noteFile": "library/topic-notes/chemistry-hl/s2-4.json",
+   "checklistKey": "chemistry-hl::library/notes/chemistry-hl/models-of-bonding-structure/from-models-to-materials.pdf",
+   "flags": [
+    "S2.4.4-6 (polymers) are taught with organic chemistry in Y13."
+   ]
+  },
+  {
+   "code": "S3.2",
+   "title": "Functional groups: classification of organic compounds",
+   "theme": "S3",
+   "themeLabel": "Classification of matter",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "statements": {
+    "SL": [
+     "S3.2.1",
+     "S3.2.2",
+     "S3.2.3",
+     "S3.2.4",
+     "S3.2.5",
+     "S3.2.6"
+    ],
+    "AHL": [
+     "S3.2.7",
+     "S3.2.8",
+     "S3.2.9",
+     "S3.2.10",
+     "S3.2.11",
+     "S3.2.12"
+    ]
+   },
+   "islOrder": 19,
+   "islUnits": [
+    {
+     "unit": 10,
+     "name": "Organic chemistry",
+     "when": "Y13 Nov-Mar",
+     "statements": [
+      "S3.2.1",
+      "S3.2.2",
+      "S3.2.3",
+      "S3.2.4",
+      "S3.2.5",
+      "S3.2.6",
+      "S3.2.7",
+      "S3.2.8",
+      "S3.2.9",
+      "S3.2.10",
+      "S3.2.11",
+      "S3.2.12"
+     ]
+    }
+   ],
+   "notInIslDoc": [],
+   "taughtStatus": "upcoming",
+   "noteFile": "library/topic-notes/chemistry-hl/s3-2.json",
+   "checklistKey": "chemistry-hl::library/notes/chemistry-hl/classification-of-matter/functional-groups-classification-of-organic-compounds.pdf",
+   "flags": [
+    "ISL marks all spectroscopy (MS, IR, 1H NMR: S3.2.8-12) as HL; consistent with public sources. Recheck."
+   ]
+  },
+  {
+   "code": "R1.3",
+   "title": "Energy from fuels",
+   "theme": "R1",
+   "themeLabel": "What drives chemical reactions?",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "statements": {
+    "SL": [
+     "R1.3.1",
+     "R1.3.2",
+     "R1.3.3",
+     "R1.3.4",
+     "R1.3.5"
+    ],
+    "AHL": []
+   },
+   "islOrder": 20,
+   "islUnits": [
+    {
+     "unit": 3,
+     "name": "Stoichiometry",
+     "when": "Y12 Oct-Nov",
+     "statements": [
+      "R1.3.1"
+     ]
+    },
+    {
+     "unit": 8,
+     "name": "Redox",
+     "when": "Y12 Apr-May",
+     "statements": [
+      "R1.3.5"
+     ]
+    },
+    {
+     "unit": 10,
+     "name": "Organic chemistry",
+     "when": "Y13 Nov-Mar",
+     "statements": [
+      "R1.3.2",
+      "R1.3.3",
+      "R1.3.4"
+     ]
+    }
+   ],
+   "notInIslDoc": [],
+   "taughtStatus": "partly taught (1/5 statements)",
+   "noteFile": "library/topic-notes/chemistry-hl/r1-3.json",
+   "checklistKey": "chemistry-hl::library/notes/chemistry-hl/what-drives-chemical-reactions/energy-from-fuels.pdf",
+   "flags": [
+    "Split across ISL units: R1.3.1 stoichiometry, R1.3.5 redox, R1.3.2-4 organic."
+   ]
+  },
+  {
+   "code": "R3.3",
+   "title": "Electron sharing reactions",
+   "theme": "R3",
+   "themeLabel": "What are the mechanisms of chemical change?",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "statements": {
+    "SL": [
+     "R3.3.1",
+     "R3.3.2",
+     "R3.3.3"
+    ],
+    "AHL": []
+   },
+   "islOrder": 21,
+   "islUnits": [
+    {
+     "unit": 10,
+     "name": "Organic chemistry",
+     "when": "Y13 Nov-Mar",
+     "statements": [
+      "R3.3.1",
+      "R3.3.2",
+      "R3.3.3"
+     ]
+    }
+   ],
+   "notInIslDoc": [],
+   "taughtStatus": "upcoming",
+   "noteFile": "library/topic-notes/chemistry-hl/r3-3.json",
+   "checklistKey": "chemistry-hl::library/notes/chemistry-hl/what-are-the-mechanisms-of-chemical-change/electron-sharing-reactions.pdf",
+   "flags": [
+    "ISL document lists three statements; recheck count against the official guide."
+   ]
+  },
+  {
+   "code": "R3.4",
+   "title": "Electron-pair sharing reactions",
+   "theme": "R3",
+   "themeLabel": "What are the mechanisms of chemical change?",
+   "hlOnly": false,
+   "status": "SL + HL",
+   "statements": {
+    "SL": [
+     "R3.4.1",
+     "R3.4.2",
+     "R3.4.3",
+     "R3.4.4",
+     "R3.4.5"
+    ],
+    "AHL": [
+     "R3.4.6",
+     "R3.4.7",
+     "R3.4.8",
+     "R3.4.9",
+     "R3.4.10",
+     "R3.4.11",
+     "R3.4.12",
+     "R3.4.13"
+    ]
+   },
+   "islOrder": 22,
+   "islUnits": [
+    {
+     "unit": 2,
+     "name": "Periodicity",
+     "when": "Y12 Oct",
+     "statements": [
+      "R3.4.8"
+     ]
+    },
+    {
+     "unit": 9,
+     "name": "Acids and bases",
+     "when": "Y12 Jun / Y13 Sep",
+     "statements": [
+      "R3.4.6",
+      "R3.4.7"
+     ]
+    },
+    {
+     "unit": 10,
+     "name": "Organic chemistry",
+     "when": "Y13 Nov-Mar",
+     "statements": [
+      "R3.4.1",
+      "R3.4.2",
+      "R3.4.3",
+      "R3.4.4",
+      "R3.4.5",
+      "R3.4.9",
+      "R3.4.10",
+      "R3.4.11",
+      "R3.4.12",
+      "R3.4.13"
+     ]
+    }
+   ],
+   "notInIslDoc": [],
+   "taughtStatus": "partly taught (1/13 statements)",
+   "noteFile": "library/topic-notes/chemistry-hl/r3-4.json",
+   "checklistKey": "chemistry-hl::library/notes/chemistry-hl/what-are-the-mechanisms-of-chemical-change/electron-pair-sharing-reactions.pdf",
+   "flags": []
+  }
+ ]
+}

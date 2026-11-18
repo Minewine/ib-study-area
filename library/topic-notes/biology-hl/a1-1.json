@@ -1,0 +1,263 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-a1-1",
+ "code": "A1.1",
+ "title": "Water",
+ "theme": "A",
+ "themeLabel": "Unity and diversity",
+ "level": 1,
+ "levelLabel": "Molecules",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "A1.1.1",
+   "A1.1.2",
+   "A1.1.3",
+   "A1.1.4",
+   "A1.1.5",
+   "A1.1.6"
+  ],
+  "AHL": [
+   "A1.1.7",
+   "A1.1.8"
+  ]
+ },
+ "bigPicture": "Almost every property of water that matters to life comes from one fact: water molecules are polar, so they hydrogen-bond to each other and to other polar or charged things.",
+ "keyIdeas": [
+  {
+   "id": "a11-k1",
+   "ahl": false,
+   "stmt": "A1.1.1",
+   "cue": "Why is water called the medium of life?",
+   "answer": "The first cells arose in water, and most life processes still happen in aqueous solution (cytoplasm, blood plasma, sap)."
+  },
+  {
+   "id": "a11-k2",
+   "ahl": false,
+   "stmt": "A1.1.2",
+   "cue": "Why is a water molecule polar, and what is a hydrogen bond?",
+   "answer": "Oxygen pulls the shared electrons of each O–H covalent bond more strongly than hydrogen, so O is δ− and each H is δ+. The molecule is bent, so the charges do not cancel. A hydrogen bond is the weak attraction between a δ+ H of one molecule and the δ− O of a neighbouring molecule. It is between molecules, never inside one."
+  },
+  {
+   "id": "a11-k3",
+   "ahl": false,
+   "stmt": "A1.1.3",
+   "cue": "What is cohesion and what two consequences for organisms must you know?",
+   "answer": "Cohesion is water molecules sticking to each other by hydrogen bonds. (1) Water can be pulled up xylem under tension as an unbroken column. (2) Surface tension lets small animals such as pond skaters use the water surface as a habitat."
+  },
+  {
+   "id": "a11-k4",
+   "ahl": false,
+   "stmt": "A1.1.4",
+   "cue": "What is adhesion and where does it matter?",
+   "answer": "Adhesion is water sticking to other polar or charged surfaces. It causes capillary action: water creeps through narrow soil pores and through the cellulose of plant cell walls."
+  },
+  {
+   "id": "a11-k5",
+   "ahl": false,
+   "stmt": "A1.1.5",
+   "cue": "How do water's solvent properties support metabolism and transport, and why is being insoluble sometimes useful?",
+   "answer": "Polar and charged (hydrophilic) substances such as glucose, amino acids and ions dissolve, so reactions can happen in solution and substances can be carried in blood and sap. Most enzymes work in aqueous solution. Hydrophobic molecules do not dissolve, which is what lets lipids form membranes and stay as separate energy stores."
+  },
+  {
+   "id": "a11-k6",
+   "ahl": false,
+   "stmt": "A1.1.6",
+   "cue": "Compare water and air as a medium for animals: buoyancy, viscosity, thermal conductivity, specific heat capacity.",
+   "answer": "Water is far denser (more buoyant support), more viscous (more drag, so streamlining pays off), conducts heat much faster (aquatic endotherms lose body heat quickly) and has a higher specific heat capacity (water temperature stays stable). Ringed seal: thick blubber insulates and adds buoyancy, and a streamlined body cuts drag. Black-throated loon: legs set far back for swimming power (clumsy on land) and denser, less air-filled bones than most birds, which reduces buoyancy for diving."
+  },
+  {
+   "id": "a11-k7",
+   "ahl": true,
+   "stmt": "A1.1.7",
+   "cue": "Where did Earth's water probably come from, and why did Earth keep it?",
+   "answer": "Leading hypothesis for the syllabus: delivered by asteroids early in Earth's history. It was retained because Earth's gravity holds water vapour and its temperature is low enough for water to condense into liquid oceans."
+  },
+  {
+   "id": "a11-k8",
+   "ahl": true,
+   "stmt": "A1.1.8",
+   "cue": "Why does the search for extraterrestrial life focus on water and the 'Goldilocks zone'?",
+   "answer": "Life as we know it needs liquid water. The Goldilocks (habitable) zone is the range of distances from a star where a planet's surface could be warm enough, but not too warm, for liquid water."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Polar molecule",
+   "def": "Uneven charge distribution: one end partially negative, the other partially positive."
+  },
+  {
+   "term": "Hydrogen bond",
+   "def": "Weak attraction between a δ+ hydrogen and a δ− atom (here O) of another molecule."
+  },
+  {
+   "term": "Cohesion / adhesion",
+   "def": "Water–water attraction / water–other-surface attraction."
+  },
+  {
+   "term": "Hydrophilic / hydrophobic",
+   "def": "Attracted to and dissolves in water / not attracted, does not dissolve."
+  },
+  {
+   "term": "Specific heat capacity",
+   "def": "Energy needed to raise 1 kg of a substance by 1 °C; high for water."
+  },
+  {
+   "term": "Goldilocks zone (AHL)",
+   "def": "Orbital range around a star where liquid surface water is possible."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Draw hydrogen bonding",
+   "prompt": "Draw two water molecules and show one hydrogen bond between them.",
+   "steps": [
+    "Draw each molecule as O with two H attached (bent, not straight).",
+    "Label δ− on each O and δ+ on each H.",
+    "Draw a dashed line from a δ+ H of molecule 1 to the δ− O of molecule 2.",
+    "Label the solid lines 'covalent bond' and the dashed line 'hydrogen bond'."
+   ],
+   "answer": "A correct drawing shows the bent shape, partial charges and a dashed H···O bond between molecules, not inside one."
+  },
+  {
+   "title": "Apply physical properties",
+   "prompt": "A ringed seal and a land mammal of similar size are both at 5 °C, one in water and one in air. Explain which loses heat faster and how the seal copes.",
+   "steps": [
+    "Identify the property: thermal conductivity.",
+    "Water conducts heat about 25 times faster than air, so heat leaves the seal's body faster.",
+    "Link to an adaptation: a thick blubber layer is a poor conductor and insulates the core.",
+    "Add a bonus link: blubber also adds buoyancy and stores energy."
+   ],
+   "answer": "The seal in water loses heat faster because water conducts heat far better than air. Blubber reduces the loss."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Hydrogen bonds hold the H and O together inside a water molecule.",
+   "right": "Covalent bonds hold the molecule together. Hydrogen bonds are between molecules."
+  },
+  {
+   "wrong": "Water is polar because it has an overall charge.",
+   "right": "It is neutral overall. Polarity means the charge is unevenly spread."
+  },
+  {
+   "wrong": "High specific heat capacity means water heats up quickly.",
+   "right": "The opposite: it takes a lot of energy to change water's temperature, so it changes slowly."
+  },
+  {
+   "wrong": "Water dissolves everything.",
+   "right": "Only polar or charged substances. Lipids and many gases (O₂) dissolve poorly, hence membranes and transport proteins such as hemoglobin."
+  },
+  {
+   "wrong": "Cohesion and adhesion are the same thing.",
+   "right": "Cohesion is water to water. Adhesion is water to another polar or charged material. Xylem transport needs both."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Outline",
+   "marks": 2,
+   "prompt": "Outline why water molecules form hydrogen bonds with each other.",
+   "checkpoints": [
+    "Unequal sharing of electrons in O–H bonds, so O is δ−, H is δ+",
+    "Attraction between δ+ H and δ− O of a neighbouring molecule"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain how the cohesive property of water allows water to move up a tall plant.",
+   "checkpoints": [
+    "Hydrogen bonds between water molecules (cohesion)",
+    "Evaporation from leaves pulls water up under tension",
+    "Column does not break, so water is drawn continuously up the xylem"
+   ]
+  },
+  {
+   "commandTerm": "Compare and contrast",
+   "marks": 4,
+   "prompt": "Compare and contrast the physical properties of water and air as habitats for animals.",
+   "checkpoints": [
+    "Water denser: more buoyant support",
+    "Water more viscous: more drag",
+    "Water higher thermal conductivity: faster heat loss",
+    "Water higher specific heat capacity: more stable temperature",
+    "Similarity: both are fluids in which organisms move and exchange gases"
+   ]
+  },
+  {
+   "commandTerm": "Suggest",
+   "marks": 2,
+   "ahl": true,
+   "prompt": "Suggest why planets in a star's Goldilocks zone are priority targets in the search for life.",
+   "checkpoints": [
+    "Liquid water possible there",
+    "Water is the medium for life's chemistry as we know it"
+   ]
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "B2.1",
+   "prompt": "How does water's polarity explain why phospholipids form a bilayer?"
+  },
+  {
+   "to": "B3.2",
+   "prompt": "Which two water properties together explain transport in xylem?"
+  },
+  {
+   "to": "C1.1",
+   "prompt": "Why do almost all enzymes work in aqueous solution?"
+  },
+  {
+   "to": "D2.3",
+   "prompt": "How does dissolving solutes change water potential, and why?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/unity-diversity/water.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/bio-molecules-water.json",
+    "itemIds": [
+     "wm01",
+     "wm02",
+     "wm03",
+     "wm05",
+     "wm06",
+     "wm23",
+     "wm31",
+     "wm32",
+     "wm33",
+     "wmx1",
+     "wmx3",
+     "wmx4",
+     "wm22"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/bio-molecules-water.json",
+    "cardIds": [
+     "fc-bio-wm-01",
+     "fc-bio-wm-02",
+     "fc-bio-wm-03",
+     "fc-bio-wm-04",
+     "fc-bio-wm-05",
+     "fc-bio-wm-07",
+     "fc-bio-wm-08"
+    ]
+   }
+  ],
+  "reviewNote": "Not linked: wm04 and fc-bio-wm-06 (ice floating). Ice density is not named in the 2028 guide for A1.1; keep as enrichment or retag.",
+  "gap": "Likely untested: A1.1.1 (water as the medium for life) and the AHL statements A1.1.7–8 (where Earth's water came from; water and the search for life elsewhere)."
+ },
+ "dataBooklet": [
+  "A1.1.2"
+ ]
+}

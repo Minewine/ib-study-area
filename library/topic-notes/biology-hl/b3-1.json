@@ -1,0 +1,310 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-b3-1",
+ "code": "B3.1",
+ "title": "Gas exchange",
+ "theme": "B",
+ "themeLabel": "Form and function",
+ "level": 3,
+ "levelLabel": "Organisms",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "B3.1.1",
+   "B3.1.2",
+   "B3.1.3",
+   "B3.1.4",
+   "B3.1.5",
+   "B3.1.6",
+   "B3.1.7",
+   "B3.1.8",
+   "B3.1.9",
+   "B3.1.10"
+  ],
+  "AHL": [
+   "B3.1.11",
+   "B3.1.12",
+   "B3.1.13"
+  ]
+ },
+ "bigPicture": "As organisms get bigger, their surface area-to-volume ratio falls, so they need specialised exchange surfaces. Lungs and leaves both maximise surface area and keep concentration gradients steep; HL adds how haemoglobin loads and unloads oxygen.",
+ "keyIdeas": [
+  {
+   "id": "b31-k1",
+   "ahl": false,
+   "stmt": "B3.1.1",
+   "cue": "Why is gas exchange harder for large organisms?",
+   "answer": "Surface area-to-volume ratio falls as size increases, and the distance from the centre to the surface grows, so diffusion across the body surface alone becomes too slow."
+  },
+  {
+   "id": "b31-k2",
+   "ahl": false,
+   "stmt": "B3.1.2",
+   "cue": "What properties do gas-exchange surfaces share?",
+   "answer": "Permeable to gases, thin (short diffusion distance), moist (gases dissolve before diffusing) and a large surface area."
+  },
+  {
+   "id": "b31-k3",
+   "ahl": false,
+   "stmt": "B3.1.3",
+   "cue": "How do animals keep concentration gradients steep?",
+   "answer": "A dense network of blood vessels, continuous blood flow carrying gases away/towards the surface, and ventilation: air in lungs, water over gills."
+  },
+  {
+   "id": "b31-k4",
+   "ahl": false,
+   "stmt": "B3.1.4",
+   "cue": "How are mammalian lungs adapted?",
+   "answer": "Branched bronchioles lead to millions of alveoli (huge surface area); dense capillary beds; thin walls (type I pneumocytes); surfactant from type II pneumocytes reduces surface tension so alveoli don't collapse and stick."
+  },
+  {
+   "id": "b31-k5",
+   "ahl": false,
+   "stmt": "B3.1.5",
+   "cue": "How are the lungs ventilated?",
+   "answer": "Inhale: diaphragm contracts and flattens, external intercostals lift ribs up and out, volume rises, pressure falls, air flows in. Exhale (forced): internal intercostals pull ribs down and abdominal muscles push the diaphragm up; at rest, exhalation is mostly passive recoil."
+  },
+  {
+   "id": "b31-k6",
+   "ahl": false,
+   "stmt": "B3.1.6",
+   "cue": "Name the lung volumes you can measure.",
+   "answer": "Tidal volume (normal breath), vital capacity (maximum breath out after maximum breath in), inspiratory reserve (extra in beyond tidal) and expiratory reserve (extra out beyond tidal). Measured with a spirometer or bell jar."
+  },
+  {
+   "id": "b31-k7",
+   "ahl": false,
+   "stmt": "B3.1.7",
+   "cue": "How is a leaf adapted for gas exchange?",
+   "answer": "Waxy cuticle and epidermis limit water loss; stomata with guard cells control gas entry; air spaces in the spongy mesophyll give a large moist internal surface; veins bring water and remove sugars."
+  },
+  {
+   "id": "b31-k8",
+   "ahl": false,
+   "stmt": "B3.1.8",
+   "cue": "What does a plan diagram of a dicot leaf show?",
+   "answer": "Tissue layers only, no individual cells: upper epidermis (with cuticle), palisade mesophyll, spongy mesophyll with air spaces, lower epidermis with stomata, and vascular bundles (xylem above phloem)."
+  },
+  {
+   "id": "b31-k9",
+   "ahl": false,
+   "stmt": "B3.1.9",
+   "cue": "Why is transpiration a consequence of gas exchange, and what affects its rate?",
+   "answer": "Open stomata let CO₂ in, so water vapour inevitably escapes from moist mesophyll surfaces. Rate rises with higher temperature, light (stomata open), wind, and lower humidity."
+  },
+  {
+   "id": "b31-k10",
+   "ahl": false,
+   "stmt": "B3.1.10",
+   "cue": "How do you measure stomatal density?",
+   "answer": "Count stomata in a field of view of a micrograph or nail-varnish leaf cast, divide by field area (density = number ÷ area, e.g. per mm²). Repeat counts in several fields because biological material varies."
+  },
+  {
+   "id": "b31-k11",
+   "ahl": true,
+   "stmt": "B3.1.11",
+   "cue": "How are foetal and adult haemoglobin adapted?",
+   "answer": "Cooperative binding: each O₂ that binds changes the shape of haemoglobin, making it easier for the next to bind. CO₂ binds allosterically (away from the haem) and lowers affinity. Foetal haemoglobin has a higher O₂ affinity than adult, so it takes O₂ from the mother's blood in the placenta."
+  },
+  {
+   "id": "b31-k12",
+   "ahl": true,
+   "stmt": "B3.1.12",
+   "cue": "What is the Bohr shift?",
+   "answer": "Higher CO₂ (and the acidity it causes) lowers haemoglobin's affinity for O₂, shifting the curve right. In actively respiring tissues, where CO₂ is high, more O₂ is released exactly where it is needed."
+  },
+  {
+   "id": "b31-k13",
+   "ahl": true,
+   "stmt": "B3.1.13",
+   "cue": "Why is the oxygen dissociation curve S-shaped?",
+   "answer": "At low pO₂ the first O₂ binds with difficulty (flat start); once bound, cooperative binding makes further binding easier (steep middle); then haemoglobin approaches saturation (plateau). The curve is in the data booklet."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Surface area-to-volume ratio",
+   "def": "Surface area ÷ volume; falls as an object gets bigger."
+  },
+  {
+   "term": "Surfactant",
+   "def": "Secreted by type II pneumocytes; reduces surface tension in alveoli."
+  },
+  {
+   "term": "Tidal volume",
+   "def": "Volume of air in and out in a normal breath."
+  },
+  {
+   "term": "Vital capacity",
+   "def": "Maximum volume exhaled after a maximum inhalation."
+  },
+  {
+   "term": "Bohr shift (AHL)",
+   "def": "Rightward shift of the O₂ dissociation curve caused by higher CO₂."
+  },
+  {
+   "term": "Cooperative binding (AHL)",
+   "def": "Binding of one O₂ increases haemoglobin's affinity for the next."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Stomatal density",
+   "prompt": "A leaf cast shows 42 stomata in a circular field of view of radius 0.20 mm. Calculate stomatal density.",
+   "steps": [
+    "Area = πr² = 3.14 × 0.20² = 0.126 mm².",
+    "Density = 42 ÷ 0.126.",
+    "= 333 stomata per mm² (3 s.f.)."
+   ],
+   "answer": "≈ 333 mm⁻². Repeat in other fields and average."
+  },
+  {
+   "title": "Lung volumes from a spirometer trace",
+   "prompt": "Tidal breaths go between 2.4 and 2.9 L; the deepest breath in reaches 5.4 L; the deepest breath out reaches 1.2 L. Find tidal volume, IRV, ERV and vital capacity.",
+   "steps": [
+    "Tidal = 2.9 − 2.4 = 0.5 L.",
+    "IRV = 5.4 − 2.9 = 2.5 L.",
+    "ERV = 2.4 − 1.2 = 1.2 L.",
+    "VC = 5.4 − 1.2 = 4.2 L (= TV + IRV + ERV)."
+   ],
+   "answer": "TV 0.5 L, IRV 2.5 L, ERV 1.2 L, VC 4.2 L."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Air is sucked in by the lungs.",
+   "right": "Muscles increase thorax volume, lowering pressure; air is pushed in by higher atmospheric pressure."
+  },
+  {
+   "wrong": "Surfactant helps gases diffuse.",
+   "right": "It reduces surface tension so alveoli don't collapse."
+  },
+  {
+   "wrong": "Plants only respire at night.",
+   "right": "They respire all the time; in daylight photosynthesis just exceeds it."
+  },
+  {
+   "wrong": "Transpiration is the purpose of stomata.",
+   "right": "It is an unavoidable side effect of opening stomata for CO₂."
+  },
+  {
+   "wrong": "The Bohr shift increases oxygen loading in the lungs.",
+   "right": "It increases unloading in respiring tissues, where CO₂ is high."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Explain",
+   "marks": 4,
+   "prompt": "Explain how the alveoli are adapted for gas exchange.",
+   "checkpoints": [
+    "Large total surface area",
+    "Thin walls/type I pneumocytes, short diffusion distance",
+    "Dense capillary network maintains gradient",
+    "Surfactant/moisture prevents collapse, gases dissolve"
+   ]
+  },
+  {
+   "commandTerm": "Describe",
+   "marks": 3,
+   "prompt": "Describe the process of inspiration.",
+   "checkpoints": [
+    "Diaphragm contracts and flattens",
+    "External intercostals contract, ribs up and out",
+    "Volume up, pressure down, air enters"
+   ]
+  },
+  {
+   "commandTerm": "Draw",
+   "marks": 3,
+   "prompt": "Draw a plan diagram of a transverse section of a dicot leaf.",
+   "checkpoints": [
+    "Epidermis with cuticle, palisade and spongy mesophyll",
+    "Air spaces and stomata in lower epidermis",
+    "Vascular bundle with xylem above phloem"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 4,
+   "prompt": "Explain the benefits of the Bohr shift to an exercising muscle.",
+   "checkpoints": [
+    "Muscle respiring fast produces more CO₂",
+    "CO₂ lowers haemoglobin affinity for O₂",
+    "Curve shifts right; more O₂ dissociates",
+    "More O₂ supplied for aerobic respiration"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 2,
+   "prompt": "Explain why foetal haemoglobin has a higher affinity for oxygen than adult haemoglobin.",
+   "checkpoints": [
+    "Allows O₂ transfer from maternal to foetal blood at the placenta",
+    "At the same pO₂, foetal Hb becomes more saturated"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "B3.2",
+   "prompt": "How does the circulation keep gradients steep at the alveoli?"
+  },
+  {
+   "to": "C1.2",
+   "prompt": "Why do respiring cells need a constant O₂ supply?"
+  },
+  {
+   "to": "D2.3",
+   "prompt": "How does water move out of leaf cells during transpiration?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/form-function/gas-exchange.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/bio-gas-exchange-transport.json",
+    "itemIds": [
+     "ge01",
+     "ge02",
+     "ge03",
+     "ge04",
+     "ge05",
+     "ge06",
+     "ge07",
+     "ge08",
+     "tr08",
+     "tr10"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/bio-gas-exchange-transport.json",
+    "cardIds": [
+     "fc-bio-ge-01",
+     "fc-bio-ge-02",
+     "fc-bio-ge-03",
+     "fc-bio-ge-04",
+     "fc-bio-ge-05",
+     "fc-bio-ge-06",
+     "fc-bio-ge-07",
+     "fc-bio-ge-14",
+     "fc-bio-ge-17",
+     "fc-bio-ge-18",
+     "fc-bio-ge-19"
+    ]
+   }
+  ],
+  "gap": "No existing questions on lung volumes, stomatal density, leaf plan diagrams, or any HL haemoglobin content (cooperative binding, foetal Hb, Bohr shift, dissociation curves)."
+ },
+ "dataBooklet": [
+  "B3.1.13"
+ ]
+}

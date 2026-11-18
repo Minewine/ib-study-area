@@ -1,0 +1,266 @@
+{
+ "schemaVersion": 1,
+ "subject": "chemistry-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "chem-r1-4",
+ "code": "R1.4",
+ "title": "Entropy and spontaneity (additional higher level)",
+ "theme": "R1",
+ "themeLabel": "What drives chemical reactions?",
+ "hlOnly": true,
+ "islOrder": 10,
+ "islUnits": [
+  "5. Energetics (Y12 Dec-Feb)",
+  "7. Equilibrium (Y12 Mar)"
+ ],
+ "taughtStatus": "upcoming",
+ "statements": {
+  "SL": [],
+  "AHL": [
+   "R1.4.1",
+   "R1.4.2",
+   "R1.4.3",
+   "R1.4.4"
+  ]
+ },
+ "bigPicture": "A negative ΔH is not the whole story: reactions also tend to spread matter and energy out (entropy). Gibbs energy combines the two, ΔG = ΔH − TΔS, and its sign tells you whether a change is thermodynamically spontaneous at a given temperature, and how far an equilibrium lies.",
+ "keyIdeas": [
+  {
+   "id": "r14-k1",
+   "ahl": true,
+   "stmt": "R1.4.1",
+   "cue": "What is entropy and how do you predict and calculate ΔS?",
+   "answer": "Entropy, S, measures how dispersed matter and energy are: S(gas) ≫ S(liquid) > S(solid). ΔS is positive when gas moles increase, a solid dissolves, or something melts or boils. ΔS⦵ = ΣS⦵(products) − ΣS⦵(reactants), in J K⁻¹ mol⁻¹. Elements do not have S = 0."
+  },
+  {
+   "id": "r14-k2",
+   "ahl": true,
+   "stmt": "R1.4.2",
+   "cue": "How do you use ΔG⦵ = ΔH⦵ − TΔS⦵?",
+   "answer": "Convert ΔS to kJ K⁻¹ mol⁻¹ (÷ 1000) so units match ΔH (kJ mol⁻¹). T in kelvin. The booklet also lists ΔGf⦵ values, which you can use like ΔHf: ΔG = ΣΔGf(products) − ΣΔGf(reactants)."
+  },
+  {
+   "id": "r14-k3",
+   "ahl": true,
+   "stmt": "R1.4.3",
+   "cue": "When is a reaction spontaneous, and at what temperature does it switch?",
+   "answer": "Spontaneous (at constant pressure) when ΔG < 0. ΔH < 0, ΔS > 0: always. ΔH > 0, ΔS < 0: never. Same signs: temperature decides; switch-over at T = ΔH/ΔS (ΔG = 0). ΔG includes both the system's entropy change and the surroundings' (via heat transferred, −ΔH/T). 'Spontaneous' says nothing about rate."
+  },
+  {
+   "id": "r14-k4",
+   "ahl": true,
+   "stmt": "R1.4.4",
+   "cue": "How does ΔG relate to equilibrium?",
+   "answer": "As a reaction proceeds towards equilibrium, ΔG becomes less negative and reaches zero at equilibrium. ΔG = ΔG⦵ + RT ln Q; at equilibrium Q = K and ΔG = 0, so ΔG⦵ = −RT ln K. ΔG⦵ < 0 → K > 1 (products favoured); ΔG⦵ > 0 → K < 1."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Entropy, S",
+   "def": "Measure of the dispersal of matter and energy in a system; J K⁻¹ mol⁻¹."
+  },
+  {
+   "term": "Gibbs energy change, ΔG",
+   "def": "ΔH − TΔS; negative for a spontaneous change at constant T and P."
+  },
+  {
+   "term": "Spontaneous",
+   "def": "Thermodynamically favourable; can happen without continuous outside energy (may still be slow)."
+  },
+  {
+   "term": "Reaction quotient, Q",
+   "def": "Equilibrium expression with non-equilibrium concentrations."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Switch-over temperature",
+   "prompt": "CaCO₃(s) → CaO(s) + CO₂(g): ΔH⦵ = +178 kJ mol⁻¹, ΔS⦵ = +161 J K⁻¹ mol⁻¹. Is it spontaneous at 298 K? Above which temperature does it become spontaneous?",
+   "steps": [
+    "ΔG = 178 − 298 × 0.161 = 178 − 48.0 = +130 kJ mol⁻¹: not spontaneous.",
+    "ΔG = 0 when T = ΔH/ΔS = 178/0.161."
+   ],
+   "answer": "Not at 298 K; spontaneous above ≈ 1106 K (≈ 833 °C)."
+  },
+  {
+   "title": "ΔG⦵ to K",
+   "prompt": "A reaction has ΔG⦵ = −10.0 kJ mol⁻¹ at 298 K. Calculate K.",
+   "steps": [
+    "ln K = −ΔG⦵/RT = 10 000/(8.31 × 298) = 4.04.",
+    "K = e^4.04."
+   ],
+   "answer": "K ≈ 57 (products favoured)"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Spontaneous means fast.",
+   "right": "Spontaneity is about thermodynamics; a spontaneous reaction can be extremely slow (diamond → graphite)."
+  },
+  {
+   "wrong": "You can use ΔS in J with ΔH in kJ directly.",
+   "right": "Convert ΔS to kJ K⁻¹ mol⁻¹ first."
+  },
+  {
+   "wrong": "Exothermic reactions are always spontaneous.",
+   "right": "Not if ΔS is negative and T is high enough that −TΔS outweighs ΔH."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Predict",
+   "marks": 2,
+   "prompt": "Predict the sign of ΔS for 2H₂(g) + O₂(g) → 2H₂O(l), with a reason.",
+   "checkpoints": [
+    "Negative",
+    "3 mol gas become liquid: less dispersal"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Calculate",
+   "marks": 3,
+   "prompt": "For N₂(g) + 3H₂(g) → 2NH₃(g), ΔH⦵ = −92 kJ mol⁻¹ and ΔS⦵ = −199 J K⁻¹ mol⁻¹. Calculate ΔG⦵ at 298 K and the temperature above which it is not spontaneous.",
+   "checkpoints": [
+    "ΔG = −92 − 298(−0.199) = −32.7 kJ mol⁻¹",
+    "T = 92/0.199",
+    "≈ 462 K"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 2,
+   "prompt": "Explain why ΔG becomes zero when a system reaches equilibrium.",
+   "checkpoints": [
+    "No further net change: forward and reverse are balanced",
+    "Q = K, so ΔG = ΔG⦵ + RT ln K = 0"
+   ],
+   "ahl": true
+  }
+ ],
+ "paper1A": [
+  {
+   "stem": "Which change has the largest increase in entropy?",
+   "choices": [
+    "H₂O(l) → H₂O(s)",
+    "NaCl(s) → NaCl(aq)",
+    "H₂O(l) → H₂O(g)",
+    "N₂(g) + 3H₂(g) → 2NH₃(g)"
+   ],
+   "answer": 2,
+   "why": "Liquid to gas is the biggest increase in dispersal.",
+   "ahl": true
+  },
+  {
+   "stem": "A reaction has ΔH = −50 kJ mol⁻¹ and ΔS = −100 J K⁻¹ mol⁻¹. When is it spontaneous?",
+   "choices": [
+    "Always",
+    "Never",
+    "Only below 500 K",
+    "Only above 500 K"
+   ],
+   "answer": 2,
+   "why": "ΔG < 0 while TΔS (in kJ) is smaller than 50, i.e. T < 500 K.",
+   "ahl": true
+  },
+  {
+   "stem": "What does ΔG⦵ > 0 tell you about K?",
+   "choices": [
+    "K = 0",
+    "K < 1",
+    "K = 1",
+    "K > 1"
+   ],
+   "answer": 1,
+   "why": "ΔG⦵ = −RT ln K, so ln K < 0.",
+   "ahl": true
+  }
+ ],
+ "paper1B": [
+  {
+   "data": "Booklet-style data (S⦵ / J K⁻¹ mol⁻¹): C₂H₄(g) +220; H₂(g) +131; C₂H₆(g) +230.",
+   "prompt": "Calculate ΔS⦵ for C₂H₄ + H₂ → C₂H₆ and explain its sign.",
+   "answer": "230 − (220 + 131) = −121 J K⁻¹ mol⁻¹; negative because 2 mol gas become 1 mol gas.",
+   "ahl": true
+  }
+ ],
+ "assessmentNote": "Paper 1A = multiple choice, no calculator; Paper 1B = data-based questions (format from public sources, confirm with the official guide). All prompts here are original practice, not predictions of exam questions.",
+ "errorHints": [
+  {
+   "category": "maths",
+   "hint": "ΔS in J, ΔH in kJ: divide ΔS by 1000; T must be in kelvin."
+  },
+  {
+   "category": "interpretation",
+   "hint": "Decide the temperature dependence from the signs of ΔH and ΔS before calculating."
+  },
+  {
+   "category": "data-booklet use",
+   "hint": "S⦵ of elements is not zero; look them up (the booklet lists compounds; elements' values are given in questions)."
+  },
+  {
+   "category": "exam communication",
+   "hint": "Say 'thermodynamically spontaneous' and add that rate also depends on Ea."
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "R2.3",
+   "prompt": "How does the value of K relate to ΔG⦵?"
+  },
+  {
+   "to": "R3.2",
+   "prompt": "How is ΔG⦵ linked to cell potential (AHL)?"
+  }
+ ],
+ "dataBooklet": [
+  {
+   "section": 1,
+   "title": "Some relevant equations",
+   "use": "ΔG⦵ = ΔH⦵ − TΔS⦵, ΔG = ΔG⦵ + RT ln Q, ΔG⦵ = −RT ln K."
+  },
+  {
+   "section": 13,
+   "title": "Thermodynamic data",
+   "use": "ΔHf⦵, ΔGf⦵ and S⦵ values."
+  },
+  {
+   "section": 2,
+   "title": "Physical constants",
+   "use": "Gas constant R."
+  }
+ ],
+ "links": {
+  "checklistKey": "chemistry-hl::library/notes/chemistry-hl/what-drives-chemical-reactions/entropy-spontaneity.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/chem-reactivity-1-energetics.json",
+    "itemIds": [
+     "r112",
+     "r113",
+     "r114",
+     "r115",
+     "r116",
+     "r120",
+     "r122",
+     "r1x8"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/chem-reactivity-1-energetics.json",
+    "cardIds": [
+     "fc-chem-r1-09",
+     "fc-chem-r1-10",
+     "fc-chem-r1-11",
+     "fc-chem-r1-12"
+    ]
+   }
+  ],
+  "gap": "No items on ΔG = ΔG⦵ + RT ln Q or ΔG⦵ = −RT ln K (R1.4.4)."
+ }
+}

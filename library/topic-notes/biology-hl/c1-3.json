@@ -1,0 +1,365 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-c1-3",
+ "code": "C1.3",
+ "title": "Photosynthesis",
+ "theme": "C",
+ "themeLabel": "Interaction and interdependence",
+ "level": 1,
+ "levelLabel": "Molecules",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "C1.3.1",
+   "C1.3.2",
+   "C1.3.3",
+   "C1.3.4",
+   "C1.3.5",
+   "C1.3.6",
+   "C1.3.7",
+   "C1.3.8"
+  ],
+  "AHL": [
+   "C1.3.9",
+   "C1.3.10",
+   "C1.3.11",
+   "C1.3.12",
+   "C1.3.13",
+   "C1.3.14",
+   "C1.3.15",
+   "C1.3.16",
+   "C1.3.17",
+   "C1.3.18",
+   "C1.3.19"
+  ]
+ },
+ "bigPicture": "Photosynthesis captures light energy and stores it as chemical energy in carbon compounds. Water is split to supply hydrogen (releasing oxygen as waste), and carbon dioxide is fixed into sugars. Almost every food chain on Earth starts here.",
+ "keyIdeas": [
+  {
+   "id": "c13-k1",
+   "ahl": false,
+   "stmt": "C1.3.1",
+   "cue": "What energy transformation happens in photosynthesis?",
+   "answer": "Light energy becomes chemical energy in carbon compounds such as glucose. This supplies most of the chemical energy used by life in ecosystems."
+  },
+  {
+   "id": "c13-k2",
+   "ahl": false,
+   "stmt": "C1.3.2",
+   "cue": "Where does the hydrogen used to make glucose come from? Give the word equation.",
+   "answer": "From splitting water. carbon dioxide + water → glucose + oxygen (light energy needed, chlorophyll present)."
+  },
+  {
+   "id": "c13-k3",
+   "ahl": false,
+   "stmt": "C1.3.3",
+   "cue": "Where does the oxygen released come from, and which organisms release it?",
+   "answer": "From the splitting of water, not from CO₂. Plants, algae and cyanobacteria all release oxygen as a by-product."
+  },
+  {
+   "id": "c13-k4",
+   "ahl": false,
+   "stmt": "C1.3.4",
+   "cue": "How do you separate pigments and identify them?",
+   "answer": "Thin-layer or paper chromatography. Each pigment travels a different distance. Rf = distance moved by pigment ÷ distance moved by solvent front. Identify pigments by colour and Rf (carotene, yellow-orange, runs furthest)."
+  },
+  {
+   "id": "c13-k5",
+   "ahl": false,
+   "stmt": "C1.3.5",
+   "cue": "Why are only some wavelengths absorbed?",
+   "answer": "A photon is absorbed only if its energy matches what's needed to excite an electron in the pigment. Chlorophyll absorbs mostly red and blue and reflects green. An absorption spectrum plots absorbance against wavelength (label colours too). The spectrum chart is in the data booklet."
+  },
+  {
+   "id": "c13-k6",
+   "ahl": false,
+   "stmt": "C1.3.6",
+   "cue": "Absorption spectrum vs action spectrum?",
+   "answer": "Absorption spectrum: how much light each pigment absorbs at each wavelength. Action spectrum: the rate of photosynthesis (O₂ released or CO₂ used) at each wavelength. They are similar in shape because absorbed light drives photosynthesis; they don't match exactly because not all absorbed light energy is used equally efficiently to drive photosynthesis."
+  },
+  {
+   "id": "c13-k7",
+   "ahl": false,
+   "stmt": "C1.3.7",
+   "cue": "How do you vary each limiting factor in an experiment?",
+   "answer": "Light: move the lamp or use filters/dimmers (measure with a light meter). CO₂: different concentrations of sodium hydrogen carbonate solution. Temperature: water bath. Measure rate as O₂ bubbles or volume per minute (e.g. pondweed) or with floating leaf discs. Keep the other two factors constant."
+  },
+  {
+   "id": "c13-k8",
+   "ahl": false,
+   "stmt": "C1.3.8",
+   "cue": "What are CO₂ enrichment experiments and their limits?",
+   "answer": "Plants grown at raised CO₂ to predict growth in the future: in closed greenhouses or in the field with free-air CO₂ enrichment (FACE). Greenhouses control variables well but are unnatural; FACE is realistic but other variables (rain, pests, temperature) can't be controlled."
+  },
+  {
+   "id": "c13-k9",
+   "ahl": true,
+   "stmt": "C1.3.9",
+   "cue": "What is a photosystem?",
+   "answer": "A membrane-bound array of chlorophyll and accessory pigments around a reaction centre (a special chlorophyll). Absorbed energy is passed to the reaction centre, which emits an excited electron. Found in thylakoid membranes and in cyanobacteria."
+  },
+  {
+   "id": "c13-k10",
+   "ahl": true,
+   "stmt": "C1.3.10",
+   "cue": "Why is an array better than single pigment molecules?",
+   "answer": "Many pigments with different absorption peaks catch more wavelengths and funnel energy to one reaction centre. One isolated molecule couldn't carry out any stage of photosynthesis."
+  },
+  {
+   "id": "c13-k11",
+   "ahl": true,
+   "stmt": "C1.3.11",
+   "cue": "What happens in photolysis?",
+   "answer": "In photosystem II, water is split into electrons (replacing those lost by PSII), protons (H⁺, into the thylakoid space) and oxygen (waste). The rise of oxygen from photolysis transformed Earth's atmosphere, rocks and life."
+  },
+  {
+   "id": "c13-k12",
+   "ahl": true,
+   "stmt": "C1.3.12",
+   "cue": "How is ATP made in the thylakoid?",
+   "answer": "Excited electrons pass along a chain of carriers that pump protons into the thylakoid space. Protons flow back through ATP synthase, making ATP (chemiosmosis). Non-cyclic: electrons come from PSII. Cyclic: electrons from PSI loop back to the chain, making ATP but no reduced NADP."
+  },
+  {
+   "id": "c13-k13",
+   "ahl": true,
+   "stmt": "C1.3.13",
+   "cue": "How is NADP reduced?",
+   "answer": "Electrons excited in PSI (two per NADP) plus an H⁺ from the stroma reduce NADP to reduced NADP (NADPH). Use one pair of terms consistently."
+  },
+  {
+   "id": "c13-k14",
+   "ahl": true,
+   "stmt": "C1.3.14",
+   "cue": "Where in the thylakoid does each light-dependent event happen?",
+   "answer": "Photolysis: inside face (thylakoid space). Proton gradient: high H⁺ in the thylakoid space. ATP synthase and NADP reduction: stroma face. Photosystems and carriers: in the membrane."
+  },
+  {
+   "id": "c13-k15",
+   "ahl": true,
+   "stmt": "C1.3.15",
+   "cue": "What does Rubisco do, and why is there so much of it?",
+   "answer": "Rubisco fixes CO₂ onto RuBP (5C), making two glycerate 3-phosphate (GP, 3C). It is the most abundant enzyme on Earth because it is slow and works poorly at low CO₂, so the stroma needs a high concentration of it."
+  },
+  {
+   "id": "c13-k16",
+   "ahl": true,
+   "stmt": "C1.3.16",
+   "cue": "How is GP converted to triose phosphate?",
+   "answer": "GP is reduced to triose phosphate (TP) using reduced NADP (hydrogen) and ATP (energy), both from the light-dependent reactions."
+  },
+  {
+   "id": "c13-k17",
+   "ahl": true,
+   "stmt": "C1.3.17",
+   "cue": "How is RuBP regenerated?",
+   "answer": "Five TP (5 × 3C = 15C) are rearranged into three RuBP (3 × 5C = 15C), using ATP. So for glucose, five-sixths of all TP must be recycled; only one in six leaves the cycle."
+  },
+  {
+   "id": "c13-k18",
+   "ahl": true,
+   "stmt": "C1.3.18",
+   "cue": "How are other carbon compounds made?",
+   "answer": "All carbon in a plant is fixed in the Calvin cycle. Glucose, starch, cellulose, lipids and amino acids are made by pathways from cycle intermediates; amino acids and nucleotides also need mineral ions (nitrate, phosphate)."
+  },
+  {
+   "id": "c13-k19",
+   "ahl": true,
+   "stmt": "C1.3.19",
+   "cue": "How do the two stages depend on each other?",
+   "answer": "No light: no ATP or reduced NADP, so GP can't be reduced and the Calvin cycle stops. No CO₂: no fixation, so NADP isn't recycled, NADP runs out, electrons have nowhere to go and PSII stops working."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Photolysis (AHL)",
+   "def": "Light-driven splitting of water in PSII into electrons, H⁺ and O₂."
+  },
+  {
+   "term": "Rf value",
+   "def": "Distance moved by pigment ÷ distance moved by solvent front."
+  },
+  {
+   "term": "Limiting factor",
+   "def": "The factor in shortest supply, which sets the rate of the process."
+  },
+  {
+   "term": "Action spectrum",
+   "def": "Rate of photosynthesis plotted against wavelength."
+  },
+  {
+   "term": "Rubisco (AHL)",
+   "def": "Enzyme that fixes CO₂ onto RuBP."
+  },
+  {
+   "term": "Photosystem (AHL)",
+   "def": "Membrane array of pigments with a reaction centre that emits excited electrons."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Calculate an Rf value",
+   "prompt": "The solvent front moved 8.0 cm. A yellow-orange pigment moved 7.6 cm and a blue-green one 3.6 cm. Calculate the Rf of each.",
+   "steps": [
+    "Rf = pigment distance ÷ solvent distance.",
+    "Yellow-orange: 7.6 ÷ 8.0 = 0.95.",
+    "Blue-green: 3.6 ÷ 8.0 = 0.45."
+   ],
+   "answer": "0.95 (carotene likely) and 0.45 (chlorophyll a likely). Rf has no units."
+  },
+  {
+   "title": "Count the Calvin cycle carbons (AHL)",
+   "prompt": "How many turns of the Calvin cycle are needed to make one glucose, and how many TP are made?",
+   "steps": [
+    "Each turn fixes one CO₂.",
+    "Glucose has 6 C, so 6 turns.",
+    "6 CO₂ + 6 RuBP → 12 GP → 12 TP.",
+    "10 TP regenerate 6 RuBP; 2 TP (6 C) make one glucose."
+   ],
+   "answer": "6 turns and 12 TP; 10 of the 12 (five-sixths) are recycled."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "The oxygen released comes from carbon dioxide.",
+   "right": "It comes from water, split by photolysis."
+  },
+  {
+   "wrong": "Plants are green because they absorb green light.",
+   "right": "They reflect (and transmit) green light; red and blue are absorbed."
+  },
+  {
+   "wrong": "The Calvin cycle is 'dark reactions' that happen at night.",
+   "right": "It runs in the light, because it needs ATP and reduced NADP made in the light; it stops soon after dark."
+  },
+  {
+   "wrong": "Increasing light always increases the rate.",
+   "right": "Only until another factor (CO₂ or temperature) becomes limiting and the graph levels off."
+  },
+  {
+   "wrong": "Rf can be bigger than 1.",
+   "right": "A pigment can't travel further than the solvent, so Rf is always between 0 and 1."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain why the rate of photosynthesis levels off at high light intensity.",
+   "checkpoints": [
+    "Another factor becomes limiting",
+    "Named: CO₂ concentration or temperature",
+    "Increasing light then has no effect on rate"
+   ]
+  },
+  {
+   "commandTerm": "Distinguish",
+   "marks": 2,
+   "prompt": "Distinguish between an absorption spectrum and an action spectrum.",
+   "checkpoints": [
+    "Absorption: light absorbed per wavelength by pigments",
+    "Action: rate of photosynthesis per wavelength"
+   ]
+  },
+  {
+   "commandTerm": "Describe",
+   "marks": 4,
+   "prompt": "Describe how to investigate the effect of CO₂ concentration on the rate of photosynthesis.",
+   "checkpoints": [
+    "Pondweed/leaf discs in different NaHCO₃ concentrations",
+    "Light intensity and temperature kept constant",
+    "Rate measured as O₂ bubbles/volume or disc rise time",
+    "Repeats at each concentration"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 6,
+   "prompt": "Explain how ATP and reduced NADP are produced in the light-dependent reactions.",
+   "checkpoints": [
+    "Light excites electrons in PSII; photolysis replaces them, releasing O₂ and H⁺",
+    "Electrons pass along carriers, pumping H⁺ into thylakoid space",
+    "Proton gradient drives ATP synthase (chemiosmosis)",
+    "Electrons re-excited in PSI",
+    "PSI electrons plus H⁺ reduce NADP",
+    "Cyclic route makes ATP only"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain why the Calvin cycle stops soon after a plant is placed in darkness.",
+   "checkpoints": [
+    "No light-dependent reactions, so no ATP/reduced NADP",
+    "GP can't be reduced to TP",
+    "RuBP not regenerated, so CO₂ fixation stops"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "C1.2",
+   "prompt": "Compare chemiosmosis in mitochondria and chloroplasts."
+  },
+  {
+   "to": "C4.2",
+   "prompt": "Why does almost all ecosystem energy start as sunlight?"
+  },
+  {
+   "to": "D4.3",
+   "prompt": "How might rising CO₂ change future photosynthesis rates?"
+  },
+  {
+   "to": "B2.2",
+   "prompt": "How is the chloroplast's structure suited to its function?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/interaction-interdependence/photosynthesis.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/bio-photosynthesis-energy.json",
+    "itemIds": [
+     "ph01",
+     "ph02",
+     "ph03",
+     "ph04",
+     "ph05",
+     "ph06",
+     "ph07",
+     "ph08",
+     "ph09",
+     "ph15"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/bio-photosynthesis-energy-transfer.json",
+    "cardIds": [
+     "fc-bio-ph-01",
+     "fc-bio-ph-02",
+     "fc-bio-ph-03",
+     "fc-bio-ph-04",
+     "fc-bio-ph-05",
+     "fc-bio-ph-06",
+     "fc-bio-ph-07",
+     "fc-bio-ph-08",
+     "fc-bio-ph-09",
+     "fc-bio-ph-10",
+     "fc-bio-ph-18",
+     "fc-bio-ph-19"
+    ]
+   }
+  ],
+  "gap": "No existing questions on action spectra, CO₂ enrichment (FACE), photosystems, cyclic photophosphorylation or RuBP regeneration."
+ },
+ "dataBooklet": [
+  "C1.3.5"
+ ]
+}

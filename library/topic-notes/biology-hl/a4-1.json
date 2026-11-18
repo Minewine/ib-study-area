@@ -1,0 +1,226 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-a4-1",
+ "code": "A4.1",
+ "title": "Evolution and speciation",
+ "theme": "A",
+ "themeLabel": "Unity and diversity",
+ "level": 4,
+ "levelLabel": "Ecosystems",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "A4.1.1",
+   "A4.1.2",
+   "A4.1.3",
+   "A4.1.4",
+   "A4.1.5",
+   "A4.1.6",
+   "A4.1.7"
+  ],
+  "AHL": [
+   "A4.1.8",
+   "A4.1.9",
+   "A4.1.10",
+   "A4.1.11"
+  ]
+ },
+ "bigPicture": "Evolution is a change in the heritable characteristics of a population. DNA sequences, selective breeding and homologous structures all point to common ancestry. New species arise only when existing species split, usually after populations are reproductively isolated.",
+ "keyIdeas": [
+  {
+   "id": "a41-k1",
+   "ahl": false,
+   "stmt": "A4.1.1",
+   "cue": "What is evolution?",
+   "answer": "A change in the heritable characteristics of a population over generations. Acquired, non-genetic changes don't count (this separates Darwin's view from Lamarck's). The theory explains and predicts so much that it's unlikely ever to be falsified, though like all science it can't be formally proved."
+  },
+  {
+   "id": "a41-k2",
+   "ahl": false,
+   "stmt": "A4.1.2",
+   "cue": "How do sequences provide evidence?",
+   "answer": "Species share DNA, RNA and protein sequences with differences that increase with time since divergence, which is strong evidence of common ancestry."
+  },
+  {
+   "id": "a41-k3",
+   "ahl": false,
+   "stmt": "A4.1.3",
+   "cue": "How does selective breeding provide evidence?",
+   "answer": "Domestic breeds and crop varieties differ hugely from each other and from their wild ancestors (e.g. dog breeds from wolves; cabbage, broccoli and kale from wild mustard), showing how fast heritable change can happen."
+  },
+  {
+   "id": "a41-k4",
+   "ahl": false,
+   "stmt": "A4.1.4",
+   "cue": "What are homologous structures?",
+   "answer": "Structures with the same basic plan but different functions, inherited from a common ancestor, e.g. the pentadactyl limb (one bone, two bones, wrist bones, five digits) in human arms, bat wings, whale flippers and horse legs."
+  },
+  {
+   "id": "a41-k5",
+   "ahl": false,
+   "stmt": "A4.1.5",
+   "cue": "What are analogous structures?",
+   "answer": "Structures with the same function but different evolutionary origins, produced by convergent evolution, e.g. wings of birds and insects, or eyes of octopuses and vertebrates."
+  },
+  {
+   "id": "a41-k6",
+   "ahl": false,
+   "stmt": "A4.1.6",
+   "cue": "How do new species appear?",
+   "answer": "Only by splitting of an existing species into two or more. Speciation increases the number of species; extinction decreases it. Gradual change within one lineage isn't speciation."
+  },
+  {
+   "id": "a41-k7",
+   "ahl": false,
+   "stmt": "A4.1.7",
+   "cue": "What roles do isolation and differential selection play?",
+   "answer": "Reproductive isolation (often geographical) stops gene flow; different selection pressures on each side then make the populations diverge. Bonobos and common chimpanzees were separated by the Congo River and diverged."
+  },
+  {
+   "id": "a41-k8",
+   "ahl": true,
+   "stmt": "A4.1.8",
+   "cue": "Sympatric vs allopatric speciation?",
+   "answer": "Allopatric: populations separated geographically. Sympatric: in the same area, separated by behavioural isolation (different courtship) or temporal isolation (breeding at different times). Both need reproductive isolation."
+  },
+  {
+   "id": "a41-k9",
+   "ahl": true,
+   "stmt": "A4.1.9",
+   "cue": "What is adaptive radiation?",
+   "answer": "Rapid diversification of one ancestral species into many species adapted to different vacant niches, e.g. Darwin's finches in the Galápagos with different beaks. Because they use different niches they can coexist without competing, increasing biodiversity."
+  },
+  {
+   "id": "a41-k10",
+   "ahl": true,
+   "stmt": "A4.1.10",
+   "cue": "What stops alleles mixing between species?",
+   "answer": "Barriers to hybridisation, such as courtship behaviour that only attracts the same species, and sterility of hybrids, e.g. a mule (horse × donkey) is sterile."
+  },
+  {
+   "id": "a41-k11",
+   "ahl": true,
+   "stmt": "A4.1.11",
+   "cue": "How can plants speciate abruptly?",
+   "answer": "Hybridisation between species plus polyploidy (doubling of chromosome sets) gives offspring that can't breed with either parent: a new species in one generation. Knotweeds/smartweeds (Persicaria) include many species formed this way."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Evolution",
+   "def": "Change in heritable characteristics of a population."
+  },
+  {
+   "term": "Homologous structure",
+   "def": "Similar structure from common ancestry, possibly different function."
+  },
+  {
+   "term": "Analogous structure",
+   "def": "Same function, different evolutionary origin."
+  },
+  {
+   "term": "Speciation",
+   "def": "Splitting of one species into two or more."
+  },
+  {
+   "term": "Allopatric (AHL)",
+   "def": "Speciation with geographical separation."
+  },
+  {
+   "term": "Polyploidy (AHL)",
+   "def": "Having more than two sets of chromosomes."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Homologous or analogous?",
+   "prompt": "Classify: (a) human arm and whale flipper; (b) butterfly wing and bird wing.",
+   "steps": [
+    "(a) Same bone pattern, different function: common ancestry.",
+    "(b) Same function, different structure and origin: convergence."
+   ],
+   "answer": "(a) Homologous; (b) analogous."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Species change gradually into new species without splitting.",
+   "right": "New species only arise by splitting of an existing species."
+  },
+  {
+   "wrong": "Analogous structures show close relationship.",
+   "right": "They arise by convergent evolution in unrelated groups."
+  },
+  {
+   "wrong": "Evolution is 'just a theory', so unproven.",
+   "right": "A scientific theory is a well-tested explanation with enormous supporting evidence."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Outline",
+   "marks": 3,
+   "prompt": "Outline how homologous structures provide evidence for evolution.",
+   "checkpoints": [
+    "Same basic structure (pentadactyl limb)",
+    "Different functions in different species",
+    "Explained by descent from a common ancestor"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain how geographical isolation can lead to speciation.",
+   "checkpoints": [
+    "Populations separated, no gene flow",
+    "Different selection pressures/mutations",
+    "Diverge until can't interbreed (e.g. bonobos/chimps)"
+   ]
+  },
+  {
+   "commandTerm": "Distinguish",
+   "marks": 2,
+   "prompt": "Distinguish between allopatric and sympatric speciation.",
+   "checkpoints": [
+    "Allopatric: geographical separation",
+    "Sympatric: same area; behavioural/temporal isolation"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain how polyploidy can cause abrupt speciation in plants.",
+   "checkpoints": [
+    "Hybridisation between species",
+    "Chromosome doubling gives fertile polyploid",
+    "Can't breed with parent species; new species at once"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "D4.1",
+   "prompt": "How does natural selection change allele frequencies?"
+  },
+  {
+   "to": "A3.1",
+   "prompt": "How is a species defined?"
+  },
+  {
+   "to": "A3.2",
+   "prompt": "How are cladograms used to show evolutionary relationships?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/unity-diversity/evolution-speciation.pdf",
+  "quizBanks": [],
+  "decks": [],
+  "gap": "No quiz or deck covers A4.1. Missing evidence for evolution, homologous/analogous structures, speciation, adaptive radiation and polyploidy."
+ }
+}

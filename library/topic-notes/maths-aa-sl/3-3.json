@@ -1,0 +1,165 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-3-3",
+ "code": "3.3",
+ "title": "Applications of trigonometry",
+ "theme": "3",
+ "themeLabel": "Geometry and trigonometry",
+ "hlOnly": false,
+ "islOrder": 19,
+ "islUnits": [
+  "4. Circular trig (Y12 wk 13-16 (late Nov-Dec 2026))"
+ ],
+ "taughtStatus": "next (from ~23 Nov 2026)",
+ "statements": {
+  "SL": [
+   "3.3.1",
+   "3.3.2",
+   "3.3.3"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "3.3.1",
+   "text": "Pythagoras and trigonometry in context"
+  },
+  {
+   "id": "3.3.2",
+   "text": "Angles of elevation and depression; bearings"
+  },
+  {
+   "id": "3.3.3",
+   "text": "Drawing labelled diagrams from a written description"
+  }
+ ],
+ "bigPicture": "Applied trigonometry is mostly about drawing the right diagram from words: elevations, depressions and bearings.",
+ "keyIdeas": [
+  {
+   "id": "m33-k1",
+   "ahl": false,
+   "stmt": "3.3.1",
+   "cue": "Elevation vs depression?",
+   "answer": "Both measured from the horizontal: up to the object (elevation) or down to it (depression)."
+  },
+  {
+   "id": "m33-k2",
+   "ahl": false,
+   "stmt": "3.3.2",
+   "cue": "Bearing rules?",
+   "answer": "Clockwise from north, three digits (e.g. 070°); back-bearing = bearing ± 180°."
+  },
+  {
+   "id": "m33-k3",
+   "ahl": false,
+   "stmt": "3.3.3",
+   "cue": "First step for a worded problem?",
+   "answer": "Draw and label a diagram with north lines and right angles marked."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "bearing",
+   "def": "angle clockwise from north, three figures"
+  },
+  {
+   "term": "angle of depression",
+   "def": "angle below the horizontal"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Elevation",
+   "prompt": "From 40 m away, the top of a tree is at 28° elevation. Height?",
+   "steps": [
+    "tan 28° = h/40"
+   ],
+   "answer": "h ≈ 21.3 m"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Depression measured from the vertical",
+   "right": "Always from the horizontal."
+  },
+  {
+   "wrong": "Bearing 70°",
+   "right": "Write 070°."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Find",
+   "marks": 3,
+   "prompt": "A ship sails 5 km on bearing 090° then 12 km on 180°. Find its distance from the start and the bearing back to the start.",
+   "solution": [
+    "right angle at turn: d = 13",
+    "angle at start: tan⁻¹(12/5) ≈ 67.4° below east → 157.4° from start",
+    "back-bearing = 337.4°"
+   ],
+   "answer": "13 km; 337°",
+   "commonErrors": [
+    "Giving 157° (bearing from start, not back)",
+    "Missing the right angle"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Find",
+   "marks": 4,
+   "prompt": "From A, a boat is at bearing 040°, 8 km; from A a buoy is at bearing 110°, 5 km. Find boat-to-buoy distance.",
+   "solution": [
+    "angle at A = 70°",
+    "d² = 64 + 25 − 80 cos 70°"
+   ],
+   "answer": "d ≈ 7.85 km",
+   "commonErrors": [
+    "Using 150° as the angle",
+    "Degree mode"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [],
+  "memorise": [
+   "Bearing conventions; elevation/depression definitions (not printed)"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "3.2",
+   "prompt": "Which rule is needed when the triangle in the diagram is not right-angled?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/3-geometry-trigonometry/3-3-trigonometry.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/math-aa-topic3-geometry-trig.json",
+    "itemIds": [
+     "gt11",
+     "gt12",
+     "gt22"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/math-topic3-geometry-trig.json",
+    "cardIds": [
+     "fc-math-gt-12",
+     "fc-math-gt-13"
+    ]
+   }
+  ]
+ }
+}

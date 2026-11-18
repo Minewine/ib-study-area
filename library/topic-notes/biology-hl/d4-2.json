@@ -1,0 +1,261 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-d4-2",
+ "code": "D4.2",
+ "title": "Stability and change",
+ "theme": "D",
+ "themeLabel": "Continuity and change",
+ "level": 4,
+ "levelLabel": "Ecosystems",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "D4.2.1",
+   "D4.2.2",
+   "D4.2.3",
+   "D4.2.4",
+   "D4.2.5",
+   "D4.2.6",
+   "D4.2.7",
+   "D4.2.8",
+   "D4.2.9",
+   "D4.2.10",
+   "D4.2.11"
+  ],
+  "AHL": [
+   "D4.2.12",
+   "D4.2.13",
+   "D4.2.14",
+   "D4.2.15"
+  ]
+ },
+ "bigPicture": "Natural ecosystems can stay stable for very long periods if energy, nutrients, genetic diversity and climate stay within limits. Human pressures such as deforestation, unsustainable harvesting, fertilisers and pollutants can push them past tipping points. HL adds ecological succession.",
+ "keyIdeas": [
+  {
+   "id": "d42-k1",
+   "ahl": false,
+   "stmt": "D4.2.1",
+   "cue": "What is ecosystem stability?",
+   "answer": "The ability of an ecosystem to persist over long periods. Some ecosystems, such as the Daintree rainforest in Australia or some deserts, have continued for millions of years."
+  },
+  {
+   "id": "d42-k2",
+   "ahl": false,
+   "stmt": "D4.2.2",
+   "cue": "What does stability require?",
+   "answer": "A supply of energy, recycling of nutrients, genetic diversity, and climate staying within the tolerance of the species."
+  },
+  {
+   "id": "d42-k3",
+   "ahl": false,
+   "stmt": "D4.2.3",
+   "cue": "Why is the Amazon a possible tipping point?",
+   "answer": "The rainforest generates much of its own rain: transpiration releases water vapour, which cools the air, drives air flows and falls as rain further inland. If too much forest is cleared, rainfall could drop so far that the remaining forest turns to savanna. The minimum area needed is uncertain. Percentage change = (new − original) ÷ original × 100."
+  },
+  {
+   "id": "d42-k4",
+   "ahl": false,
+   "stmt": "D4.2.4",
+   "cue": "How can a mesocosm model ecosystem stability?",
+   "answer": "A small, controlled ecosystem, ideally a sealed glass vessel (energy in, no matter in or out), often aquatic, used to test how variables such as light or nutrients affect stability."
+  },
+  {
+   "id": "d42-k5",
+   "ahl": false,
+   "stmt": "D4.2.5",
+   "cue": "What is a keystone species?",
+   "answer": "A species with a disproportionately large effect on its community relative to its numbers, e.g. sea otters controlling sea urchins and so protecting kelp forests. Removing it can collapse the ecosystem."
+  },
+  {
+   "id": "d42-k6",
+   "ahl": false,
+   "stmt": "D4.2.6",
+   "cue": "How is harvesting judged sustainable?",
+   "answer": "Sustainable if the harvesting rate is lower than the replacement rate. Terrestrial plant example: selective logging with replanting. Marine fish example: North Sea cod, assessed with stock surveys, catch data and age structure to set quotas."
+  },
+  {
+   "id": "d42-k7",
+   "ahl": false,
+   "stmt": "D4.2.7",
+   "cue": "What affects the sustainability of agriculture?",
+   "answer": "Soil erosion, leaching of nutrients, supply of fertilisers and other inputs, pollution from agrochemicals, and carbon footprint (machinery, fertiliser manufacture, transport)."
+  },
+  {
+   "id": "d42-k8",
+   "ahl": false,
+   "stmt": "D4.2.8",
+   "cue": "How does eutrophication happen?",
+   "answer": "Nitrate and phosphate fertilisers leach into water and cause algal blooms. Algae die and are decomposed by bacteria, which use lots of oxygen (high biochemical oxygen demand, BOD), so oxygen falls and fish and other animals die."
+  },
+  {
+   "id": "d42-k9",
+   "ahl": false,
+   "stmt": "D4.2.9",
+   "cue": "What is biomagnification?",
+   "answer": "Persistent toxins such as DDT and mercury aren't broken down or excreted and become more concentrated in the tissues of organisms at each higher trophic level. Top predators (e.g. ospreys, tuna) get the highest doses."
+  },
+  {
+   "id": "d42-k10",
+   "ahl": false,
+   "stmt": "D4.2.10",
+   "cue": "How does plastic pollution affect the oceans?",
+   "answer": "Plastics aren't biodegradable, so they persist. Macroplastics entangle animals and are swallowed (turtles mistaking bags for jellyfish, albatross chicks fed plastic). Microplastics are eaten by plankton and filter feeders and pass up food chains."
+  },
+  {
+   "id": "d42-k11",
+   "ahl": false,
+   "stmt": "D4.2.11",
+   "cue": "What is rewilding?",
+   "answer": "Restoring natural processes by reintroducing apex predators and keystone species, reconnecting habitats over large areas, and minimising human impact. Hinewai Reserve (New Zealand) let native forest regenerate naturally through gorse with minimal intervention."
+  },
+  {
+   "id": "d42-k12",
+   "ahl": true,
+   "stmt": "D4.2.12",
+   "cue": "What causes ecological succession?",
+   "answer": "Changes in abiotic factors (e.g. soil formation) and biotic factors (species altering their environment) cause communities to replace one another over time."
+  },
+  {
+   "id": "d42-k13",
+   "ahl": true,
+   "stmt": "D4.2.13",
+   "cue": "What changes in primary succession?",
+   "answer": "Starting from bare rock or sand (e.g. a retreating glacier or a sand dune): pioneer species (lichens, mosses) then larger plants. Plant size, primary production, species diversity, food-web complexity and nutrient cycling all increase."
+  },
+  {
+   "id": "d42-k14",
+   "ahl": true,
+   "stmt": "D4.2.14",
+   "cue": "What is cyclical succession?",
+   "answer": "A repeating cycle of communities rather than a single fixed climax, e.g. heathland where heather ages, dies and regenerates in a cycle, or forests where fires regularly reset the community."
+  },
+  {
+   "id": "d42-k15",
+   "ahl": true,
+   "stmt": "D4.2.15",
+   "cue": "What are climax communities and arrested succession?",
+   "answer": "Under given conditions succession tends towards a particular climax community (e.g. deciduous forest). Human activity can arrest it: livestock grazing keeps land as grassland, and draining wetlands stops their natural development."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Tipping point",
+   "def": "Threshold beyond which an ecosystem changes to a different state."
+  },
+  {
+   "term": "Keystone species",
+   "def": "Species with a disproportionate effect on its community."
+  },
+  {
+   "term": "Eutrophication",
+   "def": "Nutrient enrichment of water leading to algal blooms and oxygen loss."
+  },
+  {
+   "term": "Biomagnification",
+   "def": "Increasing toxin concentration up a food chain."
+  },
+  {
+   "term": "Succession (AHL)",
+   "def": "Sequential change in communities over time."
+  },
+  {
+   "term": "Climax community (AHL)",
+   "def": "Relatively stable final community of a succession."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Percentage deforestation",
+   "prompt": "An area had 4.0 million km² of rainforest; now 3.3 million km². Calculate the percentage change.",
+   "steps": [
+    "Change = 3.3 − 4.0 = −0.7.",
+    "−0.7 ÷ 4.0 = −0.175.",
+    "× 100 = −17.5%."
+   ],
+   "answer": "A 17.5% decrease."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Eutrophication kills fish because algae are poisonous.",
+   "right": "Decomposition of dead algae uses up oxygen (high BOD)."
+  },
+  {
+   "wrong": "Biomagnification means the toxin is made by the predator.",
+   "right": "The toxin accumulates from food at each level."
+  },
+  {
+   "wrong": "Sustainable means no harvesting.",
+   "right": "Harvest rate must be below replacement rate."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Explain",
+   "marks": 4,
+   "prompt": "Explain how fertiliser use can lead to fish deaths in a lake.",
+   "checkpoints": [
+    "Nitrate/phosphate leaching",
+    "Algal bloom",
+    "Algae die; decomposers increase BOD",
+    "Oxygen depletion kills fish"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain why mercury concentrations are highest in top predators.",
+   "checkpoints": [
+    "Mercury not excreted/broken down; stored in tissues",
+    "Each consumer eats many prey",
+    "Concentration increases at each trophic level"
+   ]
+  },
+  {
+   "commandTerm": "Outline",
+   "marks": 3,
+   "prompt": "Outline why the Amazon rainforest may reach a tipping point.",
+   "checkpoints": [
+    "Transpiration produces much of the rainfall",
+    "Deforestation reduces rainfall/cooling",
+    "Below a critical area, forest becomes savanna"
+   ]
+  },
+  {
+   "commandTerm": "Outline",
+   "marks": 4,
+   "prompt": "Outline the changes during primary succession.",
+   "checkpoints": [
+    "Pioneer species colonise bare ground",
+    "Soil forms; larger plants establish",
+    "Biomass/primary production increase",
+    "Diversity, food web complexity and nutrient cycling increase"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "C4.2",
+   "prompt": "How do energy flow and nutrient cycling sustain ecosystems?"
+  },
+  {
+   "to": "A4.2",
+   "prompt": "How do human activities cause ecosystem loss?"
+  },
+  {
+   "to": "D4.3",
+   "prompt": "How does climate change threaten ecosystem stability?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/continuity-change/stability-change.pdf",
+  "quizBanks": [],
+  "decks": [],
+  "gap": "No quiz or deck covers D4.2. Missing everything, including stability, tipping points, keystone species, sustainability, eutrophication, biomagnification, plastics, rewilding and succession."
+ }
+}

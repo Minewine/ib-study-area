@@ -1,0 +1,346 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-b3-2",
+ "code": "B3.2",
+ "title": "Transport",
+ "theme": "B",
+ "themeLabel": "Form and function",
+ "level": 3,
+ "levelLabel": "Organisms",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "B3.2.1",
+   "B3.2.2",
+   "B3.2.3",
+   "B3.2.4",
+   "B3.2.5",
+   "B3.2.6",
+   "B3.2.7",
+   "B3.2.8",
+   "B3.2.9",
+   "B3.2.10"
+  ],
+  "AHL": [
+   "B3.2.11",
+   "B3.2.12",
+   "B3.2.13",
+   "B3.2.14",
+   "B3.2.15",
+   "B3.2.16",
+   "B3.2.17",
+   "B3.2.18"
+  ]
+ },
+ "bigPicture": "Mass transport carries materials too far for diffusion. In animals, the heart pumps blood through arteries, capillaries and veins, each shaped for its job; in plants, transpiration pulls water up the xylem and phloem carries sugars from sources to sinks.",
+ "keyIdeas": [
+  {
+   "id": "b32-k1",
+   "ahl": false,
+   "stmt": "B3.2.1",
+   "cue": "How are capillaries adapted for exchange?",
+   "answer": "Highly branched and narrow, giving a huge surface area close to every cell; walls one cell thick; some are fenestrated (with pores) where exchange must be fast, e.g. kidney, intestine."
+  },
+  {
+   "id": "b32-k2",
+   "ahl": false,
+   "stmt": "B3.2.2",
+   "cue": "How do you tell an artery from a vein in a micrograph?",
+   "answer": "Artery: thick wall relative to a small, round lumen. Vein: thin wall relative to a large, often irregular lumen."
+  },
+  {
+   "id": "b32-k3",
+   "ahl": false,
+   "stmt": "B3.2.3",
+   "cue": "How are arteries adapted?",
+   "answer": "Thick layers of smooth muscle and elastic tissue withstand high pressure; elastic fibres stretch with each pulse and recoil, keeping pressure up and evening out flow; muscle can narrow or widen the vessel."
+  },
+  {
+   "id": "b32-k4",
+   "ahl": false,
+   "stmt": "B3.2.4",
+   "cue": "How do you measure pulse rate?",
+   "answer": "Feel the radial (wrist) or carotid (neck) pulse with fingertips, count beats for 30 s and double it (or 60 s). Compare with a digital monitor."
+  },
+  {
+   "id": "b32-k5",
+   "ahl": false,
+   "stmt": "B3.2.5",
+   "cue": "How are veins adapted?",
+   "answer": "Valves prevent backflow at low pressure; thin, flexible walls are squeezed by surrounding skeletal muscles to push blood back towards the heart."
+  },
+  {
+   "id": "b32-k6",
+   "ahl": false,
+   "stmt": "B3.2.6",
+   "cue": "What causes coronary occlusion and what happens?",
+   "answer": "Fatty plaques (atherosclerosis) narrow the coronary arteries; a clot may block them. Heart muscle beyond the blockage gets no O₂ and dies (heart attack). Epidemiological data show correlations with risk factors such as saturated fat, smoking and blood pressure, but correlation, even strong, does not prove cause."
+  },
+  {
+   "id": "b32-k7",
+   "ahl": false,
+   "stmt": "B3.2.7",
+   "cue": "How does water move from roots to leaves?",
+   "answer": "Water evaporates from leaf cell walls and is replaced by capillary action, creating tension (negative pressure) in the xylem. The tension pulls water up; cohesion between water molecules (hydrogen bonds) keeps the column continuous."
+  },
+  {
+   "id": "b32-k8",
+   "ahl": false,
+   "stmt": "B3.2.8",
+   "cue": "How are xylem vessels adapted?",
+   "answer": "Dead, with no cell contents, and no end walls, so flow is unimpeded; lignified walls resist collapse under tension; pits let water move in and out sideways."
+  },
+  {
+   "id": "b32-k9",
+   "ahl": false,
+   "stmt": "B3.2.9",
+   "cue": "What does a dicot stem section show?",
+   "answer": "Epidermis outside, cortex, and vascular bundles in a ring: xylem towards the centre, phloem towards the outside. Annotate functions (support, water transport, sugar transport, protection)."
+  },
+  {
+   "id": "b32-k10",
+   "ahl": false,
+   "stmt": "B3.2.10",
+   "cue": "What does a dicot root section show?",
+   "answer": "Epidermis (with root hairs), wide cortex, and a central vascular cylinder: xylem often in an X or star shape with phloem between its arms."
+  },
+  {
+   "id": "b32-k11",
+   "ahl": true,
+   "stmt": "B3.2.11",
+   "cue": "How is tissue fluid formed and reabsorbed?",
+   "answer": "High pressure at the arteriole end forces plasma out through capillary walls (pressure filtration). At the venule end pressure is lower, so most fluid drains back into the capillaries."
+  },
+  {
+   "id": "b32-k12",
+   "ahl": true,
+   "stmt": "B3.2.12",
+   "cue": "How do plasma and tissue fluid differ?",
+   "answer": "Tissue fluid is similar to plasma but has almost no large plasma proteins (too big to filter out). Cells take O₂, glucose and other nutrients from it and release CO₂ and wastes into it."
+  },
+  {
+   "id": "b32-k13",
+   "ahl": true,
+   "stmt": "B3.2.13",
+   "cue": "What happens to excess tissue fluid?",
+   "answer": "It drains into lymph ducts, which have thin walls with gaps and valves. Lymph returns to the blood circulation near the heart."
+  },
+  {
+   "id": "b32-k14",
+   "ahl": true,
+   "stmt": "B3.2.14",
+   "cue": "Single vs double circulation?",
+   "answer": "Bony fish: heart → gills → body → heart (one pass, low pressure to the body). Mammals: heart → lungs → heart → body → heart; the second pump restores high pressure for the body circuit."
+  },
+  {
+   "id": "b32-k15",
+   "ahl": true,
+   "stmt": "B3.2.15",
+   "cue": "How is the heart adapted to pump blood at pressure?",
+   "answer": "Cardiac muscle contracts without fatigue; the sinoatrial node (pacemaker) starts each beat; thin-walled atria pump to ventricles; thick-walled ventricles (left thickest) pump to arteries; atrioventricular and semilunar valves keep flow one way; the septum separates oxygenated and deoxygenated blood; coronary vessels supply the muscle. Flow: vena cava → right atrium → right ventricle → pulmonary artery; pulmonary vein → left atrium → left ventricle → aorta."
+  },
+  {
+   "id": "b32-k16",
+   "ahl": true,
+   "stmt": "B3.2.16",
+   "cue": "Describe the cardiac cycle on the left side.",
+   "answer": "SA node fires; atria contract (atrial systole), pushing blood into the ventricles. Ventricles contract (ventricular systole): AV valve shuts when ventricle pressure exceeds atrium; semilunar valve opens when it exceeds aorta. Diastole: ventricle relaxes, semilunar valve shuts, AV valve opens and the heart refills. Systolic/diastolic pressure (e.g. 120/80 mmHg) are the peak and lowest arterial pressures."
+  },
+  {
+   "id": "b32-k17",
+   "ahl": true,
+   "stmt": "B3.2.17",
+   "cue": "What is root pressure?",
+   "answer": "Root cells actively pump mineral ions into the xylem; water follows by osmosis, creating positive pressure that pushes water up. Important when transpiration is low, e.g. high humidity or in spring before leaves open."
+  },
+  {
+   "id": "b32-k18",
+   "ahl": true,
+   "stmt": "B3.2.18",
+   "cue": "How are phloem sieve tubes and companion cells adapted?",
+   "answer": "Sieve tube elements have sieve plates, little cytoplasm, few organelles and no nucleus, so sap flows easily. Companion cells have many mitochondria to load sugars actively, and are linked to sieve tubes by plasmodesmata. Sugars are loaded at sources (leaves) and unloaded at sinks (roots, fruits)."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Lumen",
+   "def": "The space inside a vessel through which blood flows."
+  },
+  {
+   "term": "Transpiration pull",
+   "def": "Tension in xylem created by evaporation from leaves."
+  },
+  {
+   "term": "Cohesion",
+   "def": "Attraction between water molecules via hydrogen bonds."
+  },
+  {
+   "term": "Tissue fluid (AHL)",
+   "def": "Fluid filtered from plasma that bathes cells."
+  },
+  {
+   "term": "Sinoatrial node (AHL)",
+   "def": "Pacemaker in the right atrium that starts each heartbeat."
+  },
+  {
+   "term": "Translocation (AHL)",
+   "def": "Movement of sap with sugars in phloem from source to sink."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Pulse rate",
+   "prompt": "A student counts 19 radial pulses in 15 s. Calculate heart rate.",
+   "steps": [
+    "Rate = beats ÷ time × 60.",
+    "19 ÷ 15 × 60 = 76."
+   ],
+   "answer": "76 beats per minute (count for longer for accuracy)."
+  },
+  {
+   "title": "Interpret a correlation",
+   "prompt": "Countries with higher saturated fat intake have higher coronary heart disease rates (r = 0.85). Can you conclude saturated fat causes CHD?",
+   "steps": [
+    "r = 0.85 is a strong positive correlation.",
+    "But correlation doesn't show cause.",
+    "Other factors (smoking, exercise, wealth, diagnosis rates) may vary with fat intake."
+   ],
+   "answer": "No: it supports the hypothesis but needs controlled or mechanistic evidence for causation."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Veins carry deoxygenated blood, arteries oxygenated.",
+   "right": "Arteries carry blood away from the heart; the pulmonary artery carries deoxygenated blood and pulmonary vein oxygenated."
+  },
+  {
+   "wrong": "Water is pushed up the xylem from the roots.",
+   "right": "Mainly it is pulled up by tension from transpiration; root pressure helps only when transpiration is low."
+  },
+  {
+   "wrong": "The heart's valves are opened by muscles.",
+   "right": "They open and close because of pressure differences."
+  },
+  {
+   "wrong": "Capillary walls are thin to let blood cells out.",
+   "right": "They are thin for short diffusion distance; red cells stay inside."
+  },
+  {
+   "wrong": "Tissue fluid is the same as plasma.",
+   "right": "It lacks most of the large plasma proteins."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Distinguish",
+   "marks": 3,
+   "prompt": "Distinguish between the structure of arteries and veins.",
+   "checkpoints": [
+    "Arteries: thick muscular/elastic walls",
+    "Arteries: narrow lumen, no valves",
+    "Veins: thin walls, wide lumen, valves"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 4,
+   "prompt": "Explain how water is transported from roots to leaves.",
+   "checkpoints": [
+    "Evaporation from leaf cell walls (transpiration)",
+    "Creates tension/negative pressure in xylem",
+    "Cohesion keeps a continuous column",
+    "Adhesion/capillary action; lignified xylem withstands tension"
+   ]
+  },
+  {
+   "commandTerm": "Evaluate",
+   "marks": 3,
+   "prompt": "Evaluate the claim that high cholesterol intake causes coronary heart disease, using epidemiological data.",
+   "checkpoints": [
+    "Correlation supports association",
+    "Correlation does not prove causation",
+    "Confounding factors / need for controlled studies"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 4,
+   "prompt": "Explain the action of the heart valves during one cardiac cycle on the left side.",
+   "checkpoints": [
+    "Atrial systole: AV valve open",
+    "Ventricle pressure > atrium: AV valve closes",
+    "Ventricle pressure > aorta: semilunar valve opens",
+    "Diastole: semilunar valve closes, AV valve opens"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Outline",
+   "marks": 3,
+   "prompt": "Outline how tissue fluid forms and returns to the blood.",
+   "checkpoints": [
+    "High pressure at arteriole end filters plasma out",
+    "Large proteins stay in blood",
+    "Lower pressure at venule end lets fluid return; excess into lymph"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "B3.1",
+   "prompt": "How is blood flow important for maintaining gas-exchange gradients?"
+  },
+  {
+   "to": "D2.3",
+   "prompt": "How does water potential explain root pressure?"
+  },
+  {
+   "to": "C4.2",
+   "prompt": "How do sugars from photosynthesis reach sinks?"
+  },
+  {
+   "to": "A1.1",
+   "prompt": "How do water's cohesive properties make transpiration pull possible?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/form-function/transport.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/bio-gas-exchange-transport.json",
+    "itemIds": [
+     "tr01",
+     "tr02",
+     "tr03",
+     "tr04",
+     "tr05",
+     "tr06",
+     "tr07",
+     "tr09",
+     "tr11"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/bio-gas-exchange-transport.json",
+    "cardIds": [
+     "fc-bio-ge-08",
+     "fc-bio-ge-09",
+     "fc-bio-ge-10",
+     "fc-bio-ge-11",
+     "fc-bio-ge-12",
+     "fc-bio-ge-13",
+     "fc-bio-ge-15",
+     "fc-bio-ge-16"
+    ]
+   }
+  ],
+  "gap": "No existing questions on veins' valves, pulse measurement, coronary occlusion, stem/root sections, tissue fluid, lymph, the cardiac cycle, root pressure or sieve tube adaptations."
+ }
+}

@@ -1,0 +1,195 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-a2-3",
+ "code": "A2.3",
+ "title": "Viruses",
+ "theme": "A",
+ "themeLabel": "Unity and diversity",
+ "level": 2,
+ "levelLabel": "Cells",
+ "hlOnly": true,
+ "statements": {
+  "SL": [],
+  "AHL": [
+   "A2.3.1",
+   "A2.3.2",
+   "A2.3.3",
+   "A2.3.4",
+   "A2.3.5",
+   "A2.3.6"
+  ]
+ },
+ "bigPicture": "Viruses are tiny packages of nucleic acid in a protein coat that can only reproduce inside a host cell. They are very diverse, probably arose more than once, and some evolve so fast that vaccines and drugs struggle to keep up.",
+ "keyIdeas": [
+  {
+   "id": "a23-k1",
+   "ahl": true,
+   "stmt": "A2.3.1",
+   "cue": "What features do all viruses share?",
+   "answer": "Small, fixed size; DNA or RNA as genetic material; a protein capsid; no cytoplasm; few or no enzymes of their own."
+  },
+  {
+   "id": "a23-k2",
+   "ahl": true,
+   "stmt": "A2.3.2",
+   "cue": "How diverse are viruses?",
+   "answer": "Very: genetic material may be DNA or RNA, single- or double-stranded; some are enveloped in host membrane (coronaviruses, HIV) and others aren't (bacteriophage lambda, with a head and tail). Shapes vary from helical to icosahedral to complex."
+  },
+  {
+   "id": "a23-k3",
+   "ahl": true,
+   "stmt": "A2.3.3",
+   "cue": "Describe the lytic cycle (lambda phage).",
+   "answer": "Attachment to the bacterium; injection of DNA; the host is taken over to replicate viral DNA and make capsid proteins (viruses depend on the host for energy, nutrients and protein synthesis); assembly of new phages; lysis of the cell, releasing them. The diagram is in the data booklet."
+  },
+  {
+   "id": "a23-k4",
+   "ahl": true,
+   "stmt": "A2.3.4",
+   "cue": "Describe the lysogenic cycle (lambda phage).",
+   "answer": "After injection, phage DNA integrates into the bacterial chromosome as a prophage and is copied whenever the cell divides, without harming it. Later (e.g. under stress) it can leave the chromosome and enter the lytic cycle. The diagram is in the data booklet."
+  },
+  {
+   "id": "a23-k5",
+   "ahl": true,
+   "stmt": "A2.3.5",
+   "cue": "What is the evidence that viruses have several origins?",
+   "answer": "Their huge diversity suggests different origins (e.g. escaped genes from cells, or reduced parasitic cells). Their common features could be convergent evolution, because all are extreme obligate parasites. Viruses use the same genetic code as living organisms, linking them to cells."
+  },
+  {
+   "id": "a23-k6",
+   "ahl": true,
+   "stmt": "A2.3.6",
+   "cue": "Why do some viruses evolve so fast, and what are the consequences?",
+   "answer": "Short generation times, huge numbers of copies, and high mutation rates (especially RNA viruses, whose polymerases don't proofread). Influenza: antigens change by mutation (drift) and by mixing of strains (shift), so a new vaccine is needed every year. HIV: mutates within a patient, escaping antibodies and developing drug resistance, so combinations of antiretroviral drugs are used."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Capsid",
+   "def": "Protein coat around viral nucleic acid."
+  },
+  {
+   "term": "Envelope",
+   "def": "Outer membrane taken from the host cell."
+  },
+  {
+   "term": "Lytic cycle",
+   "def": "Virus replicates and bursts (lyses) the host cell."
+  },
+  {
+   "term": "Lysogenic cycle",
+   "def": "Viral DNA integrates into the host chromosome and is passed on."
+  },
+  {
+   "term": "Prophage",
+   "def": "Phage DNA integrated into a bacterial chromosome."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Why a new flu vaccine each year?",
+   "prompt": "Explain why the influenza vaccine must be updated annually while the measles vaccine doesn't change.",
+   "steps": [
+    "Influenza is an RNA virus with a high mutation rate.",
+    "Its surface antigens change, so memory cells/antibodies from last year no longer bind well.",
+    "Measles antigens are much more stable."
+   ],
+   "answer": "Rapid antigen change in flu means the vaccine must match the current strains."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Viruses are living cells.",
+   "right": "They have no cytoplasm or metabolism and can't reproduce outside a host."
+  },
+  {
+   "wrong": "All viruses have DNA.",
+   "right": "Many have RNA (e.g. influenza, HIV, coronaviruses)."
+  },
+  {
+   "wrong": "Antibiotics kill viruses.",
+   "right": "Antibiotics target bacterial structures that viruses don't have."
+  },
+  {
+   "wrong": "In the lysogenic cycle the cell is destroyed immediately.",
+   "right": "The viral DNA lies dormant and is copied with the host until it switches to lytic."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Outline",
+   "marks": 4,
+   "prompt": "Outline the lytic cycle of bacteriophage lambda.",
+   "checkpoints": [
+    "Attachment to host",
+    "Injection of DNA",
+    "Replication of viral DNA and synthesis of proteins using host machinery",
+    "Assembly and lysis/release"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Distinguish",
+   "marks": 3,
+   "prompt": "Distinguish between the lytic and lysogenic cycles.",
+   "checkpoints": [
+    "Lytic: immediate replication and lysis",
+    "Lysogenic: DNA integrates as prophage",
+    "Lysogenic: copied with host DNA, can switch to lytic"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 4,
+   "prompt": "Explain the consequences of rapid evolution in HIV for treatment.",
+   "checkpoints": [
+    "High mutation rate (RNA, reverse transcriptase errors)",
+    "Many copies/short generation time",
+    "Antigens change; immune escape; drug resistance",
+    "Combination antiretroviral therapy; vaccine hard to develop"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "C3.2",
+   "prompt": "How does the immune system fight viral infection?"
+  },
+  {
+   "to": "D4.1",
+   "prompt": "How does natural selection act on viral populations?"
+  },
+  {
+   "to": "A2.2",
+   "prompt": "How do viruses differ from prokaryotic cells?"
+  },
+  {
+   "to": "D1.2",
+   "prompt": "How does a virus hijack host translation?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/unity-diversity/viruses.pdf",
+  "quizBanks": [],
+  "decks": [
+   {
+    "file": "library/flashcards/bio-defence-against-disease.json",
+    "cardIds": [
+     "fc-bio-im-13"
+    ]
+   }
+  ],
+  "gap": "No quiz bank covers A2.3 (HL-only); one card (fc-bio-im-13, antibiotics vs viruses) is related. No questions on viral structure, lytic/lysogenic cycles, viral origins or rapid evolution."
+ },
+ "dataBooklet": [
+  "A2.3.3",
+  "A2.3.4"
+ ]
+}

@@ -1,0 +1,207 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-b4-1",
+ "code": "B4.1",
+ "title": "Adaptation to environment",
+ "theme": "B",
+ "themeLabel": "Form and function",
+ "level": 4,
+ "levelLabel": "Ecosystems",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "B4.1.1",
+   "B4.1.2",
+   "B4.1.3",
+   "B4.1.4",
+   "B4.1.5",
+   "B4.1.6",
+   "B4.1.7",
+   "B4.1.8"
+  ],
+  "AHL": []
+ },
+ "bigPicture": "Where a species can live is set by its adaptations to abiotic conditions. Each species has a range of tolerance for factors like temperature and water, and on a global scale temperature and rainfall decide which biome develops.",
+ "keyIdeas": [
+  {
+   "id": "b41-k1",
+   "ahl": false,
+   "stmt": "B4.1.1",
+   "cue": "What is a habitat?",
+   "answer": "The place where an organism, population, species or community lives. Describing it can include the geographical location, the physical conditions and the type of ecosystem."
+  },
+  {
+   "id": "b41-k2",
+   "ahl": false,
+   "stmt": "B4.1.2",
+   "cue": "Give two examples of plants adapted to harsh abiotic habitats.",
+   "answer": "Marram grass (Ammophila arenaria) on sand dunes: rolled leaves with sunken stomata and hairs trap humid air, deep and spreading roots, and growth stimulated by burial in sand. Red mangrove (Rhizophora mangle) in swamps: prop/stilt roots for support in soft mud, lenticels and aerial roots for oxygen in waterlogged soil, salt exclusion at the roots and salt excretion from leaves."
+  },
+  {
+   "id": "b41-k3",
+   "ahl": false,
+   "stmt": "B4.1.3",
+   "cue": "Which abiotic variables affect where species live?",
+   "answer": "Plants: light, temperature, water, soil pH, mineral nutrients, salinity. Animals: temperature, water availability, oxygen, salinity, pH. Adaptations give each species a range of tolerance for each variable."
+  },
+  {
+   "id": "b41-k4",
+   "ahl": false,
+   "stmt": "B4.1.4",
+   "cue": "What is a range of tolerance, and how do you investigate it?",
+   "answer": "The span of a limiting factor within which a species can survive; it is most abundant near its optimum and absent beyond its limits. Use a transect across a gradient (e.g. shore, woodland edge), record species presence or abundance at intervals and measure the abiotic variable (sensors/data loggers for light, temperature, humidity), then look for correlation."
+  },
+  {
+   "id": "b41-k5",
+   "ahl": false,
+   "stmt": "B4.1.5",
+   "cue": "What conditions do coral reefs need?",
+   "answer": "Shallow water (light for the zooxanthellae, usually under ~50 m), clear water, warm temperature (roughly 23–29 °C), normal marine salinity and slightly alkaline pH (about 8.2; acidification harms calcification)."
+  },
+  {
+   "id": "b41-k6",
+   "ahl": false,
+   "stmt": "B4.1.6",
+   "cue": "What determines which terrestrial biome forms?",
+   "answer": "Mainly temperature and rainfall. For a given combination, one natural ecosystem type tends to develop. A climate graph with mean temperature on one axis and rainfall on the other shows where each biome sits."
+  },
+  {
+   "id": "b41-k7",
+   "ahl": false,
+   "stmt": "B4.1.7",
+   "cue": "What is a biome? Name the six to know.",
+   "answer": "A group of ecosystems with similar communities because they share similar abiotic conditions, and their species show convergent evolution. Tropical forest (hot, wet all year), temperate forest (mild, seasonal, moderate rain), taiga (cold winters, short summers, conifers), grassland (moderate rain, seasonal drought), tundra (very cold, short growing season, permafrost), hot desert (very low rainfall, hot days)."
+  },
+  {
+   "id": "b41-k8",
+   "ahl": false,
+   "stmt": "B4.1.8",
+   "cue": "How are species adapted to hot deserts and tropical rainforests?",
+   "answer": "Desert: saguaro cactus stores water in a swollen stem, spines instead of leaves, CAM (stomata open at night); fennec fox has large ears to lose heat and is active at night; camels tolerate dehydration. Rainforest: emergent trees have buttress roots and drip-tip leaves to shed water; epiphytes grow on branches to reach light; many animals live in the canopy (e.g. spider monkeys with prehensile tails)."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Habitat",
+   "def": "The place where an organism or community lives."
+  },
+  {
+   "term": "Range of tolerance",
+   "def": "Span of an abiotic factor in which a species can survive."
+  },
+  {
+   "term": "Transect",
+   "def": "A line along which samples are taken to study a gradient."
+  },
+  {
+   "term": "Biome",
+   "def": "Group of ecosystems with similar climate and similar communities."
+  },
+  {
+   "term": "Convergent evolution",
+   "def": "Unrelated species evolving similar features in similar environments."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Interpreting transect data",
+   "prompt": "Along a beach-to-dune transect, marram grass cover is 0% at 0–5 m, 60% at 10–20 m and 10% at 40 m; soil salinity falls with distance. Describe and suggest an explanation.",
+   "steps": [
+    "Describe: absent near the sea, peaks in the middle, declines inland.",
+    "Low cover near the sea: salinity/spray above tolerance.",
+    "Decline inland: competition from other plants as conditions become less harsh.",
+    "Correlation, not proof: other variables (sand movement, wind) also change."
+   ],
+   "answer": "Marram has a range of tolerance; it dominates where conditions are harsh but not extreme."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Organisms adapt during their lifetime to a new habitat.",
+   "right": "Adaptations are inherited features that evolved by natural selection; individuals don't evolve."
+  },
+  {
+   "wrong": "A biome is a single ecosystem.",
+   "right": "It is a group of similar ecosystems spread around the world."
+  },
+  {
+   "wrong": "Correlation in transect data proves the abiotic factor causes the distribution.",
+   "right": "It shows an association; other factors could be responsible."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Describe",
+   "marks": 3,
+   "prompt": "Describe how to use a transect to investigate the effect of light intensity on the distribution of a plant species.",
+   "checkpoints": [
+    "Lay transect across light gradient (e.g. woodland edge)",
+    "Quadrats at regular intervals; record % cover/abundance",
+    "Measure light at each point with a meter; repeat transects"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain how marram grass is adapted to sand dunes.",
+   "checkpoints": [
+    "Rolled leaves/sunken stomata/hairs reduce water loss",
+    "Deep and extensive roots reach water and anchor in loose sand",
+    "Growth stimulated by burial"
+   ]
+  },
+  {
+   "commandTerm": "Outline",
+   "marks": 3,
+   "prompt": "Outline the conditions required for coral reef formation.",
+   "checkpoints": [
+    "Shallow, clear water for light",
+    "Warm temperature range",
+    "Normal salinity and slightly alkaline pH"
+   ]
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "B4.2",
+   "prompt": "How do adaptations define a species' niche?"
+  },
+  {
+   "to": "D4.1",
+   "prompt": "How did these adaptations arise by natural selection?"
+  },
+  {
+   "to": "D4.3",
+   "prompt": "How will climate change shift biome boundaries?"
+  },
+  {
+   "to": "C4.1",
+   "prompt": "How is a species' distribution affected by competition?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/form-function/adaptation-to-environment.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/bio-ecology-adaptations-populations.json",
+    "itemIds": [
+     "ec04",
+     "ec13"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/bio-ecology-adaptations-populations.json",
+    "cardIds": [
+     "fc-bio-ec-05"
+    ]
+   }
+  ],
+  "gap": "No existing questions on habitats, the set examples (marram grass, mangroves), ranges of tolerance, transects, coral reef conditions, biomes or desert/rainforest adaptations."
+ }
+}

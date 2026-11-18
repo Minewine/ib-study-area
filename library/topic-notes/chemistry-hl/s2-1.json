@@ -1,0 +1,241 @@
+{
+ "schemaVersion": 1,
+ "subject": "chemistry-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "chem-s2-1",
+ "code": "S2.1",
+ "title": "The ionic model",
+ "theme": "S2",
+ "themeLabel": "Models of bonding and structure",
+ "hlOnly": false,
+ "islOrder": 15,
+ "islUnits": [
+  "3. Stoichiometry (Y12 Oct-Nov)",
+  "4. Bonding (Y13 Oct-Nov)"
+ ],
+ "taughtStatus": "partly taught (2/3 statements)",
+ "statements": {
+  "SL": [
+   "S2.1.1",
+   "S2.1.2",
+   "S2.1.3"
+  ],
+  "AHL": []
+ },
+ "bigPicture": "When a metal meets a non-metal, electrons transfer: the metal becomes a positive ion, the non-metal a negative ion, and the oppositely charged ions attract in every direction to form a giant lattice. That lattice explains why ionic compounds are hard, high-melting, and conduct only when molten or dissolved.",
+ "keyIdeas": [
+  {
+   "id": "s21-k1",
+   "ahl": false,
+   "stmt": "S2.1.1",
+   "cue": "How do atoms form ions, and how do you predict the charge?",
+   "answer": "Metals lose electrons → cations; non-metals gain electrons → anions, usually reaching a noble-gas configuration. Group 1 → 1+, 2 → 2+, 13 → 3+, 15 → 3−, 16 → 2−, 17 → 1−. Transition elements can form ions of different charges (Fe²⁺/Fe³⁺, Cu⁺/Cu²⁺)."
+  },
+  {
+   "id": "s21-k2",
+   "ahl": false,
+   "stmt": "S2.1.2",
+   "cue": "How are ionic formulas and names worked out?",
+   "answer": "Charges must total zero: Al³⁺ + O²⁻ → Al₂O₃. Name the cation first, then the anion; simple anions end in -ide (chloride, oxide). Learn: ammonium NH₄⁺, hydroxide OH⁻, nitrate NO₃⁻, hydrogencarbonate HCO₃⁻, carbonate CO₃²⁻, sulfate SO₄²⁻, phosphate PO₄³⁻. Use brackets for more than one polyatomic ion: Ca(OH)₂, (NH₄)₂SO₄."
+  },
+  {
+   "id": "s21-k3",
+   "ahl": false,
+   "stmt": "S2.1.3",
+   "cue": "Why do ionic compounds have their properties?",
+   "answer": "A 3D lattice of ions held by strong, non-directional electrostatic attraction; the formula is an empirical ratio. High melting/boiling points and low volatility (much energy to separate ions). Conduct when molten or aqueous (ions free to move), not as solids. Often soluble in polar solvents like water (ions attracted to polar water molecules), insoluble in non-polar solvents. Lattice enthalpy measures bond strength: larger for higher ionic charges and smaller ions (MgO ≫ NaCl)."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Cation",
+   "def": "Positive ion."
+  },
+  {
+   "term": "Anion",
+   "def": "Negative ion."
+  },
+  {
+   "term": "Ionic bond",
+   "def": "Electrostatic attraction between oppositely charged ions."
+  },
+  {
+   "term": "Lattice",
+   "def": "Regular 3D arrangement of ions."
+  },
+  {
+   "term": "Lattice enthalpy",
+   "def": "Energy needed to separate one mole of an ionic solid into gaseous ions."
+  },
+  {
+   "term": "Polyatomic ion",
+   "def": "Charged group of covalently bonded atoms, e.g. SO₄²⁻."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Formulas from ions",
+   "prompt": "Write formulas for aluminium sulfate and ammonium phosphate.",
+   "steps": [
+    "Al³⁺ and SO₄²⁻: lowest common multiple 6 → 2 Al³⁺, 3 SO₄²⁻.",
+    "NH₄⁺ and PO₄³⁻: 3 NH₄⁺ per PO₄³⁻."
+   ],
+   "answer": "Al₂(SO₄)₃; (NH₄)₃PO₄"
+  },
+  {
+   "title": "Comparing lattice strength",
+   "prompt": "Which has the higher melting point, NaF or MgO? Explain.",
+   "steps": [
+    "MgO: Mg²⁺ and O²⁻ (charges 2+/2−); NaF: 1+/1−.",
+    "Mg²⁺ smaller than Na⁺ too.",
+    "Higher charge, smaller ions → stronger attraction (booklet lattice enthalpies: MgO 3791, NaF 930 kJ mol⁻¹)."
+   ],
+   "answer": "MgO"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Solid ionic compounds conduct because they contain ions.",
+   "right": "Ions in a solid are fixed in place; they must be mobile (molten or dissolved) to conduct."
+  },
+  {
+   "wrong": "NaCl exists as NaCl molecules.",
+   "right": "It is a giant lattice; NaCl is just the simplest ratio."
+  },
+  {
+   "wrong": "Ionic bonds are directional, like covalent bonds.",
+   "right": "Each ion attracts all neighbouring oppositely charged ions in every direction."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain why magnesium oxide has a very high melting point and conducts electricity only when molten.",
+   "checkpoints": [
+    "Giant lattice of Mg²⁺ and O²⁻ with strong electrostatic attraction",
+    "Much energy needed to overcome it",
+    "Ions fixed in solid, mobile when molten"
+   ]
+  },
+  {
+   "commandTerm": "Deduce",
+   "marks": 2,
+   "prompt": "Deduce the formula of iron(III) hydroxide and calcium nitrate.",
+   "checkpoints": [
+    "Fe(OH)₃",
+    "Ca(NO₃)₂"
+   ]
+  }
+ ],
+ "paper1A": [
+  {
+   "stem": "What is the formula of ammonium carbonate?",
+   "choices": [
+    "NH₄CO₃",
+    "(NH₄)₂CO₃",
+    "NH₄(CO₃)₂",
+    "(NH₃)₂CO₃"
+   ],
+   "answer": 1,
+   "why": "2 × (1+) balances 2−."
+  },
+  {
+   "stem": "Which ion would group 16 sulfur form?",
+   "choices": [
+    "S⁶⁺",
+    "S²⁺",
+    "S²⁻",
+    "S⁶⁻"
+   ],
+   "answer": 2,
+   "why": "Gains two electrons."
+  },
+  {
+   "stem": "Which statement explains why NaCl(aq) conducts electricity?",
+   "choices": [
+    "Delocalised electrons",
+    "Mobile ions",
+    "Free Na atoms",
+    "Polar molecules"
+   ],
+   "answer": 1,
+   "why": "Ions move in solution."
+  }
+ ],
+ "paper1B": [
+  {
+   "data": "Lattice enthalpies (kJ mol⁻¹, booklet): NaF 930, NaCl 790, NaBr 754, NaI 705; MgCl₂ 2540.",
+   "prompt": "Describe and explain the trend from NaF to NaI and why MgCl₂ is much larger.",
+   "answer": "Decreases as the halide ion gets larger (charges further apart, weaker attraction). Mg²⁺ has double the charge and is smaller than Na⁺, so attraction is much stronger."
+  }
+ ],
+ "assessmentNote": "Paper 1A = multiple choice, no calculator; Paper 1B = data-based questions (format from public sources, confirm with the official guide). All prompts here are original practice, not predictions of exam questions.",
+ "errorHints": [
+  {
+   "category": "knowledge",
+   "hint": "Memorise the seven polyatomic ions with charges."
+  },
+  {
+   "category": "data-booklet use",
+   "hint": "Support explanations of melting point trends with lattice enthalpy values from the booklet."
+  },
+  {
+   "category": "exam communication",
+   "hint": "Say 'mobile ions' (not 'free electrons') when explaining conduction in ionic compounds."
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "R1.2",
+   "prompt": "How is lattice enthalpy found from a Born–Haber cycle (AHL)?"
+  },
+  {
+   "to": "S2.4",
+   "prompt": "Where do ionic compounds sit on the bonding triangle?"
+  }
+ ],
+ "dataBooklet": [
+  {
+   "section": 16,
+   "title": "Lattice enthalpies",
+   "use": "Lattice enthalpies to compare ionic bond strength."
+  },
+  {
+   "section": 10,
+   "title": "Atomic and ionic radii",
+   "use": "Ionic radii."
+  }
+ ],
+ "links": {
+  "checklistKey": "chemistry-hl::library/notes/chemistry-hl/models-of-bonding-structure/the-ionic-model.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/chem-structure-2-bonding.json",
+    "itemIds": [
+     "b01",
+     "b13",
+     "b20"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/chem-structure-2-bonding.json",
+    "cardIds": [
+     "fc-chem-s2-01",
+     "fc-chem-s2-11"
+    ]
+   },
+   {
+    "file": "library/flashcards/chem-structure-3-1-periodicity.json",
+    "cardIds": [
+     "fc-chem-p-12"
+    ]
+   }
+  ],
+  "gap": "No items on naming/formulas with polyatomic ions or on lattice enthalpy trends."
+ }
+}

@@ -1,0 +1,454 @@
+{
+ "schemaVersion": 1,
+ "subject": "chemistry-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "chem-r3-2",
+ "code": "R3.2",
+ "title": "Electron transfer reactions",
+ "theme": "R3",
+ "themeLabel": "What are the mechanisms of chemical change?",
+ "hlOnly": false,
+ "islOrder": 13,
+ "islUnits": [
+  "8. Redox (Y12 Apr-May)",
+  "10. Organic chemistry (Y13 Nov-Mar)"
+ ],
+ "taughtStatus": "upcoming",
+ "statements": {
+  "SL": [
+   "R3.2.1",
+   "R3.2.2",
+   "R3.2.3",
+   "R3.2.4",
+   "R3.2.5",
+   "R3.2.6",
+   "R3.2.7",
+   "R3.2.8",
+   "R3.2.9",
+   "R3.2.10",
+   "R3.2.11"
+  ],
+  "AHL": [
+   "R3.2.12",
+   "R3.2.13",
+   "R3.2.14",
+   "R3.2.15",
+   "R3.2.16"
+  ]
+ },
+ "bigPicture": "Redox reactions move electrons from one species to another: whatever loses electrons is oxidised, whatever gains them is reduced. Keeping track with oxidation states and half-equations lets you balance them, predict which metals and halogens react, and understand batteries, fuel cells, electrolysis and the oxidation and reduction of organic compounds.",
+ "keyIdeas": [
+  {
+   "id": "r32-k1",
+   "ahl": false,
+   "stmt": "R3.2.1",
+   "cue": "How are oxidation and reduction defined, and what are oxidising and reducing agents?",
+   "answer": "Oxidation: loss of electrons, increase in oxidation state, gain of oxygen or loss of hydrogen. Reduction: the reverse. The oxidising agent is reduced (it takes electrons); the reducing agent is oxidised. Use oxidation states to spot redox: if no oxidation state changes (e.g. neutralisation, precipitation), it is not redox. Names show oxidation states with Roman numerals: iron(III) oxide, manganate(VII)."
+  },
+  {
+   "id": "r32-k2",
+   "ahl": false,
+   "stmt": "R3.2.2",
+   "cue": "How do you write and combine half-equations in acid?",
+   "answer": "Balance the main atom, then O with H₂O, then H with H⁺, then charge with e⁻. Multiply so electrons cancel, then add. Example: MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O and Fe²⁺ → Fe³⁺ + e⁻ (× 5) give MnO₄⁻ + 8H⁺ + 5Fe²⁺ → Mn²⁺ + 5Fe³⁺ + 4H₂O."
+  },
+  {
+   "id": "r32-k3",
+   "ahl": false,
+   "stmt": "R3.2.3",
+   "cue": "How do position and displacement show ease of oxidation and reduction?",
+   "answer": "Metals are oxidised more easily down a group (outer electron further away) and towards the left; halogens are reduced less easily down group 17. A more reactive metal displaces a less reactive metal's ion from solution (Zn + Cu²⁺ → Zn²⁺ + Cu). You interpret data given in the question; no activity series to memorise."
+  },
+  {
+   "id": "r32-k4",
+   "ahl": false,
+   "stmt": "R3.2.4",
+   "cue": "What happens when acids react with reactive metals?",
+   "answer": "Salt + hydrogen: Mg + 2HCl → MgCl₂ + H₂; Zn + H₂SO₄ → ZnSO₄ + H₂. The metal is oxidised and H⁺ is reduced."
+  },
+  {
+   "id": "r32-k5",
+   "ahl": false,
+   "stmt": "R3.2.5",
+   "cue": "Where do oxidation and reduction happen in cells?",
+   "answer": "Oxidation always at the anode, reduction always at the cathode. In a voltaic cell the anode is negative; in an electrolytic cell the anode is positive (connected to the + terminal)."
+  },
+  {
+   "id": "r32-k6",
+   "ahl": false,
+   "stmt": "R3.2.6",
+   "cue": "How does a primary (voltaic) cell work?",
+   "answer": "Two half-cells (metal in its ion solution) joined by a wire and a salt bridge. The more reactive metal is the anode; electrons flow through the external wire from anode to cathode. Ions move through the salt bridge to keep each solution neutral (anions towards the anode, cations towards the cathode). Chemical energy → electrical energy from a spontaneous reaction."
+  },
+  {
+   "id": "r32-k7",
+   "ahl": false,
+   "stmt": "R3.2.7",
+   "cue": "What is a secondary (rechargeable) cell, and how do the cell types compare?",
+   "answer": "Its redox reaction can be reversed by applying electrical energy; when charging, the electrode reactions run backwards (lithium-ion, lead–acid). Primary cells: cheap, single-use, waste. Secondary: reusable, but cost more and can degrade. Fuel cells: continuous supply of fuel, efficient, water as the only product with H₂, but need fuel storage and expensive catalysts."
+  },
+  {
+   "id": "r32-k8",
+   "ahl": false,
+   "stmt": "R3.2.8",
+   "cue": "How does an electrolytic cell work for a molten salt?",
+   "answer": "A DC supply forces a non-spontaneous reaction. Ions move through the molten electrolyte (current is carried by ions in the liquid and by electrons in the wires). Molten NaCl: cathode (−) Na⁺ + e⁻ → Na; anode (+) 2Cl⁻ → Cl₂ + 2e⁻."
+  },
+  {
+   "id": "r32-k9",
+   "ahl": false,
+   "stmt": "R3.2.9",
+   "cue": "How are alcohols oxidised?",
+   "answer": "With an acidified oxidising agent (e.g. dichromate, orange → green). Primary alcohol → aldehyde (distil it off as it forms) → carboxylic acid (heat under reflux so the aldehyde stays and is oxidised further). Secondary alcohol → ketone. Tertiary alcohols are not oxidised under these conditions. Know the distillation and reflux set-ups; names of specific reagents and mechanisms are not assessed."
+  },
+  {
+   "id": "r32-k10",
+   "ahl": false,
+   "stmt": "R3.2.10",
+   "cue": "How are carbonyls and acids reduced?",
+   "answer": "Hydride ions (H⁻ from a reducing agent) reduce carboxylic acids to primary alcohols via the aldehyde, and ketones to secondary alcohols. Mechanisms and named reagents not needed."
+  },
+  {
+   "id": "r32-k11",
+   "ahl": false,
+   "stmt": "R3.2.11",
+   "cue": "What is hydrogenation?",
+   "answer": "Adding H₂ across C=C or C≡C (with a metal catalyst such as Ni) lowers the degree of unsaturation: alkyne → alkene → alkane. This is reduction."
+  },
+  {
+   "id": "r32-k12",
+   "ahl": true,
+   "stmt": "R3.2.12",
+   "cue": "What is the standard hydrogen electrode (AHL)?",
+   "answer": "H₂ gas at 100 kPa bubbling over platinum in 1 mol dm⁻³ H⁺ at 298 K, assigned E⦵ = 0.00 V. Every other half-cell's standard electrode potential is measured against it. More positive E⦵ = species more easily reduced (stronger oxidising agent); more negative = metal more easily oxidised."
+  },
+  {
+   "id": "r32-k13",
+   "ahl": true,
+   "stmt": "R3.2.13",
+   "cue": "How do you calculate E⦵cell and predict spontaneity (AHL)?",
+   "answer": "E⦵cell = E⦵(cathode, reduction) − E⦵(anode, oxidation), using booklet values without multiplying by coefficients. Positive E⦵cell → spontaneous as written; negative → the reverse is spontaneous."
+  },
+  {
+   "id": "r32-k14",
+   "ahl": true,
+   "stmt": "R3.2.14",
+   "cue": "How are ΔG⦵ and E⦵cell related (AHL)?",
+   "answer": "ΔG⦵ = −nFE⦵cell, with n = moles of electrons transferred, F = 9.65 × 10⁴ C mol⁻¹. Gives J mol⁻¹; divide by 1000. Positive E⦵cell ↔ negative ΔG⦵."
+  },
+  {
+   "id": "r32-k15",
+   "ahl": true,
+   "stmt": "R3.2.15",
+   "cue": "What is produced when aqueous solutions are electrolysed (AHL)?",
+   "answer": "Water competes: at the cathode, H₂O can be reduced to H₂ + OH⁻ (E⦵ −0.83 V) instead of reactive metal ions; at the anode, H₂O can be oxidised to O₂ + H⁺. Dilute NaCl(aq): H₂ at the cathode, mainly O₂ at the anode; concentrated NaCl(aq): H₂ and Cl₂. CuSO₄(aq) with inert electrodes: Cu at the cathode, O₂ at the anode (solution loses its blue colour); with copper electrodes the anode dissolves (Cu → Cu²⁺) and the colour stays."
+  },
+  {
+   "id": "r32-k16",
+   "ahl": true,
+   "stmt": "R3.2.16",
+   "cue": "How does electroplating work (AHL)?",
+   "answer": "Object to be plated is the cathode; the plating metal is the anode; electrolyte contains the plating metal's ions. Cathode: Ag⁺ + e⁻ → Ag; anode: Ag → Ag⁺ + e⁻. Electrolyte concentration stays constant."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Oxidation",
+   "def": "Loss of electrons / increase in oxidation state."
+  },
+  {
+   "term": "Reduction",
+   "def": "Gain of electrons / decrease in oxidation state."
+  },
+  {
+   "term": "Oxidising agent",
+   "def": "Species that accepts electrons and is itself reduced."
+  },
+  {
+   "term": "Anode",
+   "def": "Electrode where oxidation occurs."
+  },
+  {
+   "term": "Cathode",
+   "def": "Electrode where reduction occurs."
+  },
+  {
+   "term": "Salt bridge",
+   "def": "Ionic connection between half-cells that completes the circuit and balances charge."
+  },
+  {
+   "term": "Reflux",
+   "def": "Heating with a vertical condenser so vapours return to the flask."
+  },
+  {
+   "term": "Standard electrode potential, E⦵",
+   "def": "Potential of a half-cell relative to the standard hydrogen electrode (AHL)."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Balancing a redox equation",
+   "prompt": "Write the overall equation for acidified dichromate oxidising Fe²⁺.",
+   "steps": [
+    "Reduction: Cr₂O₇²⁻ + 14H⁺ + 6e⁻ → 2Cr³⁺ + 7H₂O.",
+    "Oxidation: Fe²⁺ → Fe³⁺ + e⁻, multiplied by 6.",
+    "Add and cancel electrons."
+   ],
+   "answer": "Cr₂O₇²⁻ + 14H⁺ + 6Fe²⁺ → 2Cr³⁺ + 6Fe³⁺ + 7H₂O"
+  },
+  {
+   "title": "Cell potential and ΔG (AHL)",
+   "prompt": "Calculate E⦵cell and ΔG⦵ for Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s), using E⦵(Zn²⁺/Zn) = −0.76 V and E⦵(Cu²⁺/Cu) = +0.34 V.",
+   "steps": [
+    "Cu²⁺ is reduced (cathode); Zn is oxidised (anode).",
+    "E⦵cell = 0.34 − (−0.76) = +1.10 V.",
+    "ΔG⦵ = −2 × 9.65 × 10⁴ × 1.10 = −2.12 × 10⁵ J mol⁻¹."
+   ],
+   "answer": "E⦵cell = +1.10 V; ΔG⦵ = −212 kJ mol⁻¹ (spontaneous)"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "The anode is always negative.",
+   "right": "In a voltaic cell it is negative; in an electrolytic cell it is positive. Oxidation at the anode is what's constant."
+  },
+  {
+   "wrong": "Electrons flow through the salt bridge.",
+   "right": "Electrons flow through the external wire; ions move through the salt bridge."
+  },
+  {
+   "wrong": "Multiply E⦵ by the coefficient when the half-equation is multiplied.",
+   "right": "E⦵ values are intensive; never multiply them."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Deduce",
+   "marks": 2,
+   "prompt": "Deduce the oxidation state of each atom in H₂O₂ and state what happens to oxygen when H₂O₂ decomposes to H₂O and O₂.",
+   "checkpoints": [
+    "H +1, O −1",
+    "O both oxidised (to 0) and reduced (to −2): disproportionation"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain the direction of electron flow and ion movement in a Zn/Cu voltaic cell.",
+   "checkpoints": [
+    "Zn more easily oxidised: anode, electrons leave Zn through the wire to Cu",
+    "Cu²⁺ reduced at the Cu cathode",
+    "Salt bridge: anions to the Zn half-cell, cations to the Cu half-cell"
+   ]
+  },
+  {
+   "commandTerm": "Outline",
+   "marks": 3,
+   "prompt": "Outline how to make ethanal, rather than ethanoic acid, from ethanol.",
+   "checkpoints": [
+    "Acidified dichromate (oxidising agent), warm",
+    "Distil the aldehyde off as it forms",
+    "Prevents further oxidation to the acid (which reflux would allow)"
+   ]
+  },
+  {
+   "commandTerm": "Predict",
+   "marks": 2,
+   "prompt": "Use E⦵ values to predict whether Br₂ will oxidise I⁻ (E⦵ Br₂/Br⁻ +1.09 V; I₂/I⁻ +0.54 V).",
+   "checkpoints": [
+    "E⦵cell = 1.09 − 0.54 = +0.55 V",
+    "Positive, so yes: spontaneous"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Deduce",
+   "marks": 2,
+   "prompt": "Deduce the products of electrolysing concentrated NaCl(aq) with inert electrodes.",
+   "checkpoints": [
+    "Cathode: H₂ (water reduced; OH⁻ forms)",
+    "Anode: Cl₂ (high Cl⁻ concentration)"
+   ],
+   "ahl": true
+  }
+ ],
+ "paper1A": [
+  {
+   "stem": "In Mg + Cu²⁺ → Mg²⁺ + Cu, which is the reducing agent?",
+   "choices": [
+    "Mg",
+    "Cu²⁺",
+    "Mg²⁺",
+    "Cu"
+   ],
+   "answer": 0,
+   "why": "Mg loses electrons and is oxidised."
+  },
+  {
+   "stem": "What is the oxidation state of S in Na₂S₂O₃?",
+   "choices": [
+    "+2",
+    "+4",
+    "+5",
+    "+6"
+   ],
+   "answer": 0,
+   "why": "2(+1) + 2x + 3(−2) = 0, so x = +2."
+  },
+  {
+   "stem": "Which alcohol is NOT oxidised by acidified dichromate?",
+   "choices": [
+    "Propan-1-ol",
+    "Propan-2-ol",
+    "Butan-2-ol",
+    "2-methylpropan-2-ol"
+   ],
+   "answer": 3,
+   "why": "Tertiary alcohol."
+  },
+  {
+   "stem": "E⦵: Ag⁺/Ag +0.80 V, Ni²⁺/Ni −0.26 V. What is E⦵cell for a Ni/Ag cell?",
+   "choices": [
+    "+0.54 V",
+    "+1.06 V",
+    "+1.86 V",
+    "−1.06 V"
+   ],
+   "answer": 1,
+   "why": "0.80 − (−0.26).",
+   "ahl": true
+  },
+  {
+   "stem": "In electroplating a spoon with silver, the spoon is the:",
+   "choices": [
+    "anode, positive",
+    "cathode, negative",
+    "anode, negative",
+    "salt bridge"
+   ],
+   "answer": 1,
+   "why": "Ag⁺ is reduced onto the cathode.",
+   "ahl": true
+  }
+ ],
+ "paper1B": [
+  {
+   "data": "Displacement results (✓ = reaction): metal W in X²⁺(aq) ✓, in Y²⁺(aq) ✓; metal X in W²⁺(aq) ✗, in Y²⁺(aq) ✓; metal Y in W²⁺ ✗, in X²⁺ ✗.",
+   "prompt": "Rank W, X and Y in order of ease of oxidation and justify.",
+   "answer": "W > X > Y: W displaces both others; X displaces only Y; Y displaces neither."
+  },
+  {
+   "data": "Selected E⦵/V: Mg²⁺/Mg −2.37; Fe²⁺/Fe −0.45; Cu²⁺/Cu +0.34; Cl₂/Cl⁻ +1.36.",
+   "prompt": "Identify the strongest oxidising agent and the strongest reducing agent, and the pair of half-cells giving the largest E⦵cell.",
+   "answer": "Strongest oxidising agent Cl₂; strongest reducing agent Mg; Mg/Cl₂ gives 1.36 − (−2.37) = +3.73 V.",
+   "ahl": true
+  }
+ ],
+ "assessmentNote": "Paper 1A = multiple choice, no calculator; Paper 1B = data-based questions (format from public sources, confirm with the official guide). All prompts here are original practice, not predictions of exam questions.",
+ "errorHints": [
+  {
+   "category": "knowledge",
+   "hint": "Oxidising agent = reduced; reducing agent = oxidised. Anode = oxidation in every cell."
+  },
+  {
+   "category": "maths",
+   "hint": "Balance half-equations in order O (H₂O), H (H⁺), charge (e⁻); check charges balance."
+  },
+  {
+   "category": "data-booklet use",
+   "hint": "E⦵ values in the booklet are reductions: reverse the anode half-equation but subtract its E⦵, don't change its sign twice."
+  },
+  {
+   "category": "exam communication",
+   "hint": "For organic oxidation give the conditions (distil vs reflux) and the colour change of dichromate."
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "S3.1",
+   "prompt": "How do oxidation states vary across the periodic table?"
+  },
+  {
+   "to": "R1.3",
+   "prompt": "How does a fuel cell convert a fuel's chemical energy into electricity?"
+  },
+  {
+   "to": "R1.4",
+   "prompt": "How is E⦵cell linked to ΔG⦵ and K (AHL)?"
+  }
+ ],
+ "dataBooklet": [
+  {
+   "section": 19,
+   "title": "Standard reduction potentials",
+   "use": "Standard reduction potentials (AHL; also useful for SL displacement data)."
+  },
+  {
+   "section": 1,
+   "title": "Some relevant equations",
+   "use": "ΔG⦵ = −nFE⦵ (AHL)."
+  },
+  {
+   "section": 2,
+   "title": "Physical constants",
+   "use": "Faraday constant (AHL)."
+  }
+ ],
+ "links": {
+  "checklistKey": "chemistry-hl::library/notes/chemistry-hl/what-are-the-mechanisms-of-chemical-change/electron-transfer-reactions.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/chem-reactivity-3-redox-acids-bases.json",
+    "itemIds": [
+     "r301",
+     "r302",
+     "r303",
+     "r304",
+     "r305",
+     "r306",
+     "r307",
+     "r308",
+     "r318",
+     "r321"
+    ]
+   },
+   {
+    "file": "library/questions/chem-organic-chemistry.json",
+    "itemIds": [
+     "o07",
+     "o08"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/chem-reactivity-3-redox-acids-bases.json",
+    "cardIds": [
+     "fc-chem-r3-01",
+     "fc-chem-r3-02",
+     "fc-chem-r3-03",
+     "fc-chem-r3-04",
+     "fc-chem-r3-05",
+     "fc-chem-r3-06",
+     "fc-chem-r3-14",
+     "fc-chem-r3-19"
+    ]
+   },
+   {
+    "file": "library/flashcards/chem-organic-chemistry.json",
+    "cardIds": [
+     "fc-chem-org-07",
+     "fc-chem-org-15",
+     "fc-chem-org-16",
+     "fc-chem-org-18"
+    ]
+   }
+  ],
+  "gap": "No items on fuel or secondary cells, electrolysis of molten salts, reduction with hydride (R3.2.10), hydrogenation (R3.2.11), or any AHL electrochemistry: E⦵, ΔG = −nFE, aqueous electrolysis, electroplating (R3.2.12–R3.2.16)."
+ },
+ "syllabusFlags": [
+  "AHL statement numbers R3.2.12-16 are line-wrapped in the ISL PDF; numbering reconstructed in sequence. Recheck."
+ ]
+}

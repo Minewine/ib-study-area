@@ -1,0 +1,200 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-d2-2",
+ "code": "D2.2",
+ "title": "Gene expression",
+ "theme": "D",
+ "themeLabel": "Continuity and change",
+ "level": 2,
+ "levelLabel": "Cells",
+ "hlOnly": true,
+ "statements": {
+  "SL": [],
+  "AHL": [
+   "D2.2.1",
+   "D2.2.2",
+   "D2.2.3",
+   "D2.2.4",
+   "D2.2.5",
+   "D2.2.6",
+   "D2.2.7",
+   "D2.2.8",
+   "D2.2.9",
+   "D2.2.10",
+   "D2.2.11"
+  ]
+ },
+ "bigPicture": "Every cell has the same genome but expresses a different set of genes. Transcription factors, mRNA lifetime and epigenetic tags decide which genes are used, and the environment can shift those tags without changing the DNA sequence.",
+ "keyIdeas": [
+  {
+   "id": "d22-k1",
+   "ahl": true,
+   "stmt": "D2.2.1",
+   "cue": "What is gene expression?",
+   "answer": "The way information in a gene affects the phenotype, usually through transcription, translation and the action of the protein (e.g. an enzyme)."
+  },
+  {
+   "id": "d22-k2",
+   "ahl": true,
+   "stmt": "D2.2.2",
+   "cue": "How is transcription regulated?",
+   "answer": "Proteins called transcription factors bind to specific DNA sequences: promoters, where RNA polymerase binds, and enhancers, which can be some distance away. This increases or decreases transcription."
+  },
+  {
+   "id": "d22-k3",
+   "ahl": true,
+   "stmt": "D2.2.3",
+   "cue": "How does mRNA breakdown regulate translation?",
+   "answer": "Nucleases break mRNA down. In human cells mRNA can last from minutes to days, and the longer it lasts the more protein is made."
+  },
+  {
+   "id": "d22-k4",
+   "ahl": true,
+   "stmt": "D2.2.4",
+   "cue": "What is epigenesis?",
+   "answer": "The development of patterns of differentiation in a multicellular organism through changes in gene expression. The DNA base sequence is unchanged, so the phenotype changes but not the genotype."
+  },
+  {
+   "id": "d22-k5",
+   "ahl": true,
+   "stmt": "D2.2.5",
+   "cue": "Genome vs transcriptome vs proteome?",
+   "answer": "Genome: all the DNA of an organism. Transcriptome: all the RNA transcribed in a cell at a given time. Proteome: all the proteins made. No cell expresses all its genes, and the pattern decides how it differentiates."
+  },
+  {
+   "id": "d22-k6",
+   "ahl": true,
+   "stmt": "D2.2.6",
+   "cue": "Give two epigenetic tags and their effects.",
+   "answer": "Methylation of cytosine in a promoter represses transcription of that gene. Methylation of amino acids in histones can repress or activate transcription."
+  },
+  {
+   "id": "d22-k7",
+   "ahl": true,
+   "stmt": "D2.2.7",
+   "cue": "How can epigenetic changes be inherited?",
+   "answer": "If tags such as DNA methylation or histone modifications stay in place through mitosis or meiosis, a changed phenotype can pass to daughter cells or offspring without any change to the DNA sequence."
+  },
+  {
+   "id": "d22-k8",
+   "ahl": true,
+   "stmt": "D2.2.8",
+   "cue": "Give an environmental effect on gene expression.",
+   "answer": "Exposure to air pollution is associated with changes in the methyl tags on DNA."
+  },
+  {
+   "id": "d22-k9",
+   "ahl": true,
+   "stmt": "D2.2.9",
+   "cue": "Why are ligers and tigons different?",
+   "answer": "Most, but not all, epigenetic tags are removed from eggs and sperm. Some imprinted genes keep tags that depend on which parent they came from. A liger (lion father, tigress mother) grows much larger than either parent, while a tigon (tiger father, lioness mother) doesn't, because growth genes are imprinted differently in each species."
+  },
+  {
+   "id": "d22-k10",
+   "ahl": true,
+   "stmt": "D2.2.10",
+   "cue": "What do monozygotic twin studies show?",
+   "answer": "Identical twins have the same genome, so differences between them (which often increase with age) show the environment's effect on gene expression, e.g. different methylation patterns."
+  },
+  {
+   "id": "d22-k11",
+   "ahl": true,
+   "stmt": "D2.2.11",
+   "cue": "Give external factors that change gene expression.",
+   "answer": "A hormone, e.g. a steroid hormone binding a receptor that changes transcription of target genes. A biochemical in bacteria: lactose switches on the genes for lactose use in E. coli (operon names not required)."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Transcription factor",
+   "def": "Protein that binds DNA to regulate transcription."
+  },
+  {
+   "term": "Epigenetic tag",
+   "def": "Chemical mark (e.g. methyl group) changing gene expression, not sequence."
+  },
+  {
+   "term": "Transcriptome",
+   "def": "All RNA transcribed in a cell at a given time."
+  },
+  {
+   "term": "Proteome",
+   "def": "All proteins produced by a cell or organism."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Interpret a twin study",
+   "prompt": "Twin A smokes and twin B doesn't. At age 50 their methylation patterns differ much more than at age 3. Explain.",
+   "steps": [
+    "Same genome, so the differences aren't genetic.",
+    "Environmental factors (smoking) alter methyl tags.",
+    "Changes build up over a lifetime.",
+    "So gene expression and phenotype diverge."
+   ],
+   "answer": "The environment causes epigenetic differences that increase with age."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Epigenetic changes are mutations.",
+   "right": "They change gene expression, not the base sequence."
+  },
+  {
+   "wrong": "All cells express all their genes at low levels.",
+   "right": "Cells express only a subset. That is what makes cell types differ."
+  },
+  {
+   "wrong": "Methylation always switches genes off.",
+   "right": "Promoter methylation represses, but histone methylation can activate or repress."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Distinguish",
+   "marks": 3,
+   "prompt": "Distinguish between genome, transcriptome and proteome.",
+   "checkpoints": [
+    "Genome: all genes/DNA, the same in all cells",
+    "Transcriptome: RNA made at a given time; varies",
+    "Proteome: proteins made; varies with cell type"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain how DNA methylation can control gene expression.",
+   "checkpoints": [
+    "Methyl groups added to cytosine in the promoter",
+    "Transcription factors / RNA polymerase can't bind",
+    "Gene silenced without a sequence change; can be inherited through mitosis"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "D1.2",
+   "prompt": "Where do transcription factors bind?"
+  },
+  {
+   "to": "B2.3",
+   "prompt": "How do expression gradients cause differentiation?"
+  },
+  {
+   "to": "D3.2",
+   "prompt": "Why don't epigenetic effects follow Mendel's ratios?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/continuity-change/gene-expression.pdf",
+  "quizBanks": [],
+  "decks": [],
+  "gap": "No quiz bank or deck covers D2.2 (HL-only)."
+ }
+}

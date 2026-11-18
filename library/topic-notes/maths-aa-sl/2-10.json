@@ -1,0 +1,161 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-2-10",
+ "code": "2.10",
+ "title": "Solving equations graphically and analytically",
+ "theme": "2",
+ "themeLabel": "Functions",
+ "hlOnly": false,
+ "islOrder": 10,
+ "islUnits": [
+  "2. Functions and quadratics (Y12 wk 3-8 (Sep-mid Oct 2026))",
+  "5. Exp and logs (Y12 wk 17 (Jan 2027))"
+ ],
+ "taughtStatus": "partly taught",
+ "statements": {
+  "SL": [
+   "2.10.1",
+   "2.10.2",
+   "2.10.3"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "2.10.1",
+   "text": "Choosing an analytic or a graphical method"
+  },
+  {
+   "id": "2.10.2",
+   "text": "Using technology when no algebraic method exists"
+  },
+  {
+   "id": "2.10.3",
+   "text": "Applying graphs and equations to real contexts"
+  }
+ ],
+ "bigPicture": "Choose the method: algebra when an exact answer exists and is asked for (Paper 1); the GDC when no algebraic method exists or a decimal is fine (Paper 2).",
+ "keyIdeas": [
+  {
+   "id": "m210-k1",
+   "ahl": false,
+   "stmt": "2.10.1",
+   "cue": "When must you solve analytically?",
+   "answer": "When the question says 'exact', 'show that', or it is Paper 1."
+  },
+  {
+   "id": "m210-k2",
+   "ahl": false,
+   "stmt": "2.10.2",
+   "cue": "How do you solve e^x = 3 − x?",
+   "answer": "No algebraic method: GDC intersection of y = e^x and y = 3 − x (x ≈ 0.792)."
+  },
+  {
+   "id": "m210-k3",
+   "ahl": false,
+   "stmt": "2.10.3",
+   "cue": "What extra step does a context need?",
+   "answer": "Check solutions fit the domain/context and answer in the units asked."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "analytic",
+   "def": "by algebra, exact"
+  },
+  {
+   "term": "graphical",
+   "def": "by plotting, usually with the GDC"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Graphical",
+   "prompt": "Solve x² = 2^x.",
+   "steps": [
+    "GDC intersections",
+    "x = 2, x = 4, x ≈ −0.767"
+   ],
+   "answer": "Three solutions"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Only the obvious roots exist",
+   "right": "x² = 2^x also has a negative root."
+  },
+  {
+   "wrong": "GDC answers are exact",
+   "right": "Give 3 s.f. unless exact."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Solve",
+   "marks": 3,
+   "prompt": "Solve exactly x − 6/x = 1, x ≠ 0.",
+   "solution": [
+    "x² − x − 6 = 0",
+    "(x − 3)(x + 2) = 0"
+   ],
+   "answer": "x = 3 or x = −2",
+   "commonErrors": [
+    "Multiplying through incorrectly",
+    "Losing a root"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Solve",
+   "marks": 3,
+   "prompt": "Solve ln x = 4 − x² for x > 0.",
+   "solution": [
+    "GDC intersect",
+    "x ≈ 1.84"
+   ],
+   "answer": "x ≈ 1.84",
+   "commonErrors": [
+    "Window too narrow",
+    "Including x ≤ 0"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [],
+  "memorise": [
+   "Command terms 'exact', 'show that', 'hence'",
+   "GDC solve/intersect workflow"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "2.4",
+   "prompt": "Which GDC feature finds intersections, and which finds zeros?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/2-functions/2-4-further-functions-graphs.pdf",
+  "quizBanks": [],
+  "decks": [
+   {
+    "file": "library/flashcards/math-functions-2-1-to-2-3.json",
+    "cardIds": [
+     "fc-math-fn-17",
+     "fc-math-fn-18"
+    ]
+   }
+  ]
+ },
+ "syllabusFlags": [
+  "Skill spans every unit; ISL placement is an assumption."
+ ]
+}

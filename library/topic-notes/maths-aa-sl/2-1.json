@@ -1,0 +1,179 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-2-1",
+ "code": "2.1",
+ "title": "Equations of straight lines",
+ "theme": "2",
+ "themeLabel": "Functions",
+ "hlOnly": false,
+ "islOrder": 3,
+ "islUnits": [
+  "2. Functions and quadratics (Y12 wk 3-8 (Sep-mid Oct 2026))"
+ ],
+ "taughtStatus": "taught",
+ "statements": {
+  "SL": [
+   "2.1.1",
+   "2.1.2"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "2.1.1",
+   "text": "Gradient, intercepts and the three common forms of a line"
+  },
+  {
+   "id": "2.1.2",
+   "text": "Parallel lines share a gradient; perpendicular gradients multiply to -1"
+  }
+ ],
+ "bigPicture": "A straight line is fixed by its gradient and one point. Lines are the simplest functions, and tangents and normals in calculus are built on them.",
+ "keyIdeas": [
+  {
+   "id": "m21-k1",
+   "ahl": false,
+   "stmt": "2.1.1",
+   "cue": "Name three forms of a line.",
+   "answer": "y = mx + c (gradient, y-intercept); ax + by + d = 0 (general); y − y1 = m(x − x1) (point-gradient)."
+  },
+  {
+   "id": "m21-k2",
+   "ahl": false,
+   "stmt": "2.1.2",
+   "cue": "Gradient rule for parallel and perpendicular lines?",
+   "answer": "Parallel: m1 = m2. Perpendicular: m1·m2 = −1, i.e. negative reciprocal."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "gradient",
+   "def": "change in y divided by change in x"
+  },
+  {
+   "term": "intercept",
+   "def": "where a line crosses an axis"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Perpendicular line",
+   "prompt": "Find the line through (4, 1) perpendicular to y = 2x − 3.",
+   "steps": [
+    "m = −1/2",
+    "y − 1 = −½(x − 4)",
+    "y = −½x + 3"
+   ],
+   "answer": "y = −0.5x + 3, or x + 2y − 6 = 0"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Perpendicular gradient of 2 is −2",
+   "right": "It is −1/2: flip and change sign."
+  },
+  {
+   "wrong": "Gradient = Δx/Δy",
+   "right": "Gradient is rise over run, Δy/Δx."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Find",
+   "marks": 4,
+   "prompt": "A(1, 3), B(5, 11). Find the equation of the perpendicular bisector of AB in the form ax + by + d = 0.",
+   "solution": [
+    "m_AB = 8/4 = 2, so perpendicular m = −½",
+    "Midpoint (3, 7)",
+    "y − 7 = −½(x − 3)",
+    "2y − 14 = −x + 3"
+   ],
+   "answer": "x + 2y − 17 = 0",
+   "commonErrors": [
+    "Using A instead of the midpoint",
+    "Not clearing fractions to integer a, b, d"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Find",
+   "marks": 3,
+   "prompt": "Lines y = 0.4x + 2.1 and y = −1.3x + 7.2 meet at P. Find P.",
+   "solution": [
+    "Use GDC intersect or solve 1.7x = 5.1",
+    "x = 3, y = 3.3"
+   ],
+   "answer": "P(3, 3.3)",
+   "commonErrors": [
+    "Rounding mid-calculation",
+    "Reading the wrong intersection on a cluttered window"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [
+   {
+    "section": "SL 2.1",
+    "item": "y = mx + c, ax + by + d = 0 and point-gradient form; gradient formula"
+   }
+  ],
+  "memorise": [
+   "Parallel/perpendicular gradient conditions (not printed)"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "5.4",
+   "prompt": "How does the point-gradient form become the tangent equation y − f(a) = f′(a)(x − a)?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/2-functions/2-1-linear-functions-graphs.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/math-aa-functions-2-1-to-2-3.json",
+    "itemIds": [
+     "f08",
+     "f09",
+     "f19",
+     "f23",
+     "f30",
+     "fnx1",
+     "fn01"
+    ]
+   },
+   {
+    "file": "library/questions/math-aa-topic3-geometry-trig.json",
+    "itemIds": [
+     "gt03"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/math-functions-2-1-to-2-3.json",
+    "cardIds": [
+     "fc-math-fn-01",
+     "fc-math-fn-02",
+     "fc-math-fn-03",
+     "fc-math-fn-04"
+    ]
+   },
+   {
+    "file": "library/flashcards/math-topic3-geometry-trig.json",
+    "cardIds": [
+     "fc-math-gt-03"
+    ]
+   }
+  ]
+ }
+}

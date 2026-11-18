@@ -1,0 +1,206 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-a4-2",
+ "code": "A4.2",
+ "title": "Conservation of biodiversity",
+ "theme": "A",
+ "themeLabel": "Unity and diversity",
+ "level": 4,
+ "levelLabel": "Ecosystems",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "A4.2.1",
+   "A4.2.2",
+   "A4.2.3",
+   "A4.2.4",
+   "A4.2.5",
+   "A4.2.6",
+   "A4.2.7",
+   "A4.2.8"
+  ],
+  "AHL": []
+ },
+ "bigPicture": "Biodiversity covers genes, species and ecosystems. Humans are causing a sixth mass extinction through habitat loss, over-exploitation, pollution and invasive species, and conservation needs several approaches working together.",
+ "keyIdeas": [
+  {
+   "id": "a42-k1",
+   "ahl": false,
+   "stmt": "A4.2.1",
+   "cue": "What are the three levels of biodiversity?",
+   "answer": "Ecosystem diversity (variety of habitats/ecosystems), species diversity (number and evenness of species) and genetic diversity (variety of alleles within species)."
+  },
+  {
+   "id": "a42-k2",
+   "ahl": false,
+   "stmt": "A4.2.2",
+   "cue": "How does today's biodiversity compare with the past?",
+   "answer": "Millions of species have been described but many more await discovery. Fossil evidence suggests more species are alive now than at any time before. Species counts depend on how organisms are classified ('lumpers' vs 'splitters')."
+  },
+  {
+   "id": "a42-k3",
+   "ahl": false,
+   "stmt": "A4.2.3",
+   "cue": "What causes human-driven species extinction? Give case studies.",
+   "answer": "North Island giant moa (New Zealand): flightless megafauna hunted to extinction by the first human settlers within about 200 years. Caribbean monk seal: hunted for oil and meat, and fish stocks over-exploited; last seen in the 1950s. Local example (suggested): the gravenche (Coregonus hiemalis), a whitefish found only in Lake Geneva, lost to overfishing and pollution in the early 20th century. Check with her teacher which local example ISL uses."
+  },
+  {
+   "id": "a42-k4",
+   "ahl": false,
+   "stmt": "A4.2.4",
+   "cue": "What causes ecosystem loss? Give case studies.",
+   "answer": "Human causes: clearance for agriculture, logging, drainage, urbanisation. Mixed dipterocarp forest in Southeast Asia: logged for timber and cleared for oil-palm plantations. Local example (suggested): Swiss wetlands and raised bogs, most of which were drained in the 19th and 20th centuries (e.g. the Grand Marais/Seeland)."
+  },
+  {
+   "id": "a42-k5",
+   "ahl": false,
+   "stmt": "A4.2.5",
+   "cue": "What is the evidence for a biodiversity crisis?",
+   "answer": "Reports such as IPBES assessments; reliable, repeated surveys across many habitats showing falls in species richness and evenness and population sizes (e.g. Living Planet Index). Surveys must be repeated over time to show change; citizen science helps."
+  },
+  {
+   "id": "a42-k6",
+   "ahl": false,
+   "stmt": "A4.2.6",
+   "cue": "What causes the current biodiversity crisis?",
+   "answer": "Human population growth overall, plus over-exploitation (hunting, overfishing), urbanisation, deforestation and land clearance for agriculture, pollution, and the spread of pests, diseases and invasive species through global transport."
+  },
+  {
+   "id": "a42-k7",
+   "ahl": false,
+   "stmt": "A4.2.7",
+   "cue": "Why are several conservation approaches needed?",
+   "answer": "No single method is enough and species differ. In situ: protecting species in natural habitats and managing nature reserves; rewilding and restoring degraded ecosystems. Ex situ: zoos and botanic gardens; storing germ plasm in seed banks (e.g. Svalbard) and tissue banks."
+  },
+  {
+   "id": "a42-k8",
+   "ahl": false,
+   "stmt": "A4.2.8",
+   "cue": "What is the EDGE of Existence programme?",
+   "answer": "It prioritises species that are both Evolutionarily Distinct (few close relatives, so their loss removes a lot of unique evolutionary history) and Globally Endangered, e.g. the pangolins, the aye-aye. Choosing priorities raises ethical, economic and political questions."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Biodiversity",
+   "def": "Variety of life at genetic, species and ecosystem levels."
+  },
+  {
+   "term": "Species richness",
+   "def": "Number of species in an area."
+  },
+  {
+   "term": "Species evenness",
+   "def": "How equal the population sizes of each species are."
+  },
+  {
+   "term": "In situ conservation",
+   "def": "Protecting species in their natural habitat."
+  },
+  {
+   "term": "Ex situ conservation",
+   "def": "Protecting species outside their natural habitat."
+  },
+  {
+   "term": "Rewilding",
+   "def": "Restoring natural processes and species to degraded land."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Richness vs evenness",
+   "prompt": "Site A: 3 species with 33, 33, 34 individuals. Site B: 3 species with 90, 5, 5. Compare their biodiversity.",
+   "steps": [
+    "Richness: both have 3 species.",
+    "Evenness: A very even, B dominated by one species.",
+    "Higher evenness means higher diversity."
+   ],
+   "answer": "Same richness, but site A is more diverse because it is more even."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Extinction today is mainly natural.",
+   "right": "The current (sixth) mass extinction is driven by humans."
+  },
+  {
+   "wrong": "Zoos alone can save species.",
+   "right": "Ex situ methods support but can't replace habitat protection."
+  },
+  {
+   "wrong": "Biodiversity means number of species only.",
+   "right": "It includes genetic and ecosystem diversity too."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Outline",
+   "marks": 4,
+   "prompt": "Outline the causes of the current biodiversity crisis.",
+   "checkpoints": [
+    "Human population growth",
+    "Over-exploitation/hunting",
+    "Habitat loss: deforestation, agriculture, urbanisation",
+    "Pollution, invasive species, disease"
+   ]
+  },
+  {
+   "commandTerm": "Compare and contrast",
+   "marks": 3,
+   "prompt": "Compare and contrast in situ and ex situ conservation.",
+   "checkpoints": [
+    "Both aim to prevent extinction",
+    "In situ protects habitat/whole ecosystem",
+    "Ex situ: zoos, seed banks; useful when habitat lost"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain the rationale of the EDGE programme.",
+   "checkpoints": [
+    "Prioritises evolutionarily distinct species",
+    "That are globally endangered",
+    "Maximises the evolutionary history conserved"
+   ]
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "C4.1",
+   "prompt": "How do invasive species outcompete endemic species?"
+  },
+  {
+   "to": "D4.3",
+   "prompt": "How does climate change threaten biodiversity?"
+  },
+  {
+   "to": "A3.1",
+   "prompt": "How does eDNA help survey biodiversity?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/unity-diversity/conservation-of-biodiversity.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/bio-ecology-adaptations-populations.json",
+    "itemIds": [
+     "ec11"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/bio-ecology-adaptations-populations.json",
+    "cardIds": [
+     "fc-bio-ec-11"
+    ]
+   }
+  ],
+  "gap": "Only one question and one card (in situ vs ex situ). Missing biodiversity levels, extinction and ecosystem-loss case studies, evidence and causes of the crisis, and EDGE."
+ }
+}

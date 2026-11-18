@@ -205,6 +205,23 @@ def official_links():
 OFF = official_links()
 
 
+def topic_note_links():
+    """checklist key -> app/notes.html deep link, from library/topic-notes (committed)."""
+    out = {}
+    for f in sorted((ROOT / "library" / "topic-notes").glob("*/*.json")):
+        try:
+            n = json.loads(f.read_text(encoding="utf-8"))
+        except ValueError:
+            continue
+        key = (n.get("links") or {}).get("checklistKey")
+        if key and key not in out:
+            out[key] = f"app/notes.html?subject={n['subject']}&amp;topic={f.stem}"
+    return out
+
+
+NOTE_LINKS = topic_note_links()
+
+
 def checklist(subject, section_names):
     blocks = []
     idx = 0
@@ -220,7 +237,8 @@ def checklist(subject, section_names):
                 f'<select class="rag" aria-label="confidence">'
                 f'<option value="">–</option><option value="r">red</option>'
                 f'<option value="a">amber</option><option value="g">green</option></select>'
-                f'<a href="{html.escape(rel)}" target="_blank">notes&nbsp;PDF</a></div>'
+                + (f'<a href="{NOTE_LINKS[key]}">study&nbsp;notes</a>' if key in NOTE_LINKS else "")
+                + f'<a href="{html.escape(rel)}" target="_blank">notes&nbsp;PDF</a></div>'
             )
             idx += 1
         blocks.append(
@@ -254,7 +272,7 @@ BASE = """<!DOCTYPE html>
   <a href="quiz.html">Quiz</a>
   <a href="plan.html">Plan</a>
   <a href="deadlines.html">Deadlines</a>
-  <a href="flashcards.html">Cards</a><a href="quick-reference.html">Reference</a>
+  <a href="flashcards.html">Cards</a><a href="app/notes.html">Notes</a><a href="quick-reference.html">Reference</a>
   <a href="library.html">Library</a>
 </nav>
 <main>
@@ -269,7 +287,7 @@ __CONTENT__
 
 
 # Post-generation patches (folded back in on 2026-11-14; keep in sync with the live pages)
-CANONICAL_NAV = '<nav>\n  <a href="index.html" class="brand">IB Study Area</a>\n  <a href="math-aa-sl.html">Math AA SL</a>\n  <a href="biology-hl.html">Biology HL</a>\n  <a href="chemistry-hl.html">Chemistry HL</a>\n  <a href="history-sl.html">History SL</a>\n  <a href="french-a-langlit.html">French A</a>\n  <a href="english-lit-hl.html">English Lit HL</a>\n  <a href="core.html">Core</a>\n  <a href="practice.html">Practice</a>\n  <a href="ia.html">IA &amp; EE</a>\n  <a href="ee.html">EE</a>\n  <a href="quiz.html">Quiz</a>\n  <a href="plan.html">Plan</a>\n  <a href="deadlines.html">Deadlines</a>\n  <a href="flashcards.html">Cards</a>\n  <a href="quick-reference.html">Reference</a>\n  <a href="library.html">Library</a>\n</nav>'
+CANONICAL_NAV = '<nav>\n  <a href="index.html" class="brand">IB Study Area</a>\n  <a href="math-aa-sl.html">Math AA SL</a>\n  <a href="biology-hl.html">Biology HL</a>\n  <a href="chemistry-hl.html">Chemistry HL</a>\n  <a href="history-sl.html">History SL</a>\n  <a href="french-a-langlit.html">French A</a>\n  <a href="english-lit-hl.html">English Lit HL</a>\n  <a href="core.html">Core</a>\n  <a href="practice.html">Practice</a>\n  <a href="ia.html">IA &amp; EE</a>\n  <a href="ee.html">EE</a>\n  <a href="quiz.html">Quiz</a>\n  <a href="plan.html">Plan</a>\n  <a href="deadlines.html">Deadlines</a>\n  <a href="flashcards.html">Cards</a>\n  <a href="app/notes.html">Notes</a>\n  <a href="quick-reference.html">Reference</a>\n  <a href="library.html">Library</a>\n</nav>'
 
 NEXTUP = (
     '<section class="card"><h3>Next school deadlines</h3><ul id="nextup" class="links"></ul>'

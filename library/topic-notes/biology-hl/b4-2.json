@@ -1,0 +1,264 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-b4-2",
+ "code": "B4.2",
+ "title": "Ecological niches",
+ "theme": "B",
+ "themeLabel": "Form and function",
+ "level": 4,
+ "levelLabel": "Ecosystems",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "B4.2.1",
+   "B4.2.2",
+   "B4.2.3",
+   "B4.2.4",
+   "B4.2.5",
+   "B4.2.6",
+   "B4.2.7",
+   "B4.2.8",
+   "B4.2.9",
+   "B4.2.10",
+   "B4.2.11",
+   "B4.2.12",
+   "B4.2.13"
+  ],
+  "AHL": []
+ },
+ "bigPicture": "A niche is a species' whole way of life: where it lives, what it tolerates, and how it gets food. Modes of nutrition vary enormously, feeding adaptations shape predator–prey and plant–herbivore battles, and no two species can share exactly the same niche for long.",
+ "keyIdeas": [
+  {
+   "id": "b42-k1",
+   "ahl": false,
+   "stmt": "B4.2.1",
+   "cue": "What is an ecological niche?",
+   "answer": "The role of a species in its ecosystem: all its biotic and abiotic interactions that affect growth, survival and reproduction, including how it obtains food."
+  },
+  {
+   "id": "b42-k2",
+   "ahl": false,
+   "stmt": "B4.2.2",
+   "cue": "Obligate anaerobe vs facultative anaerobe vs obligate aerobe?",
+   "answer": "Obligate anaerobes are poisoned by or can't use oxygen and live only without it. Facultative anaerobes respire aerobically when oxygen is present but can survive without it. Obligate aerobes need oxygen to survive."
+  },
+  {
+   "id": "b42-k3",
+   "ahl": false,
+   "stmt": "B4.2.3",
+   "cue": "Which organisms photosynthesise?",
+   "answer": "Plants, algae and several groups of prokaryotes (e.g. cyanobacteria). They are autotrophs using light energy."
+  },
+  {
+   "id": "b42-k4",
+   "ahl": false,
+   "stmt": "B4.2.4",
+   "cue": "What is holozoic nutrition?",
+   "answer": "The way all animals feed: food is ingested, digested inside the body, absorbed and assimilated. All animals are heterotrophs."
+  },
+  {
+   "id": "b42-k5",
+   "ahl": false,
+   "stmt": "B4.2.5",
+   "cue": "What is a mixotroph?",
+   "answer": "An organism, e.g. Euglena and many ocean plankton protists, that can both photosynthesise and feed heterotrophically. Obligate mixotrophs need both modes; facultative ones can survive on either."
+  },
+  {
+   "id": "b42-k6",
+   "ahl": false,
+   "stmt": "B4.2.6",
+   "cue": "What is saprotrophic nutrition?",
+   "answer": "Some fungi and bacteria secrete enzymes onto dead organic matter, digest it outside their cells and absorb the products. They are decomposers."
+  },
+  {
+   "id": "b42-k7",
+   "ahl": false,
+   "stmt": "B4.2.7",
+   "cue": "How do archaea obtain energy?",
+   "answer": "Archaea are one of the three domains of life and are very diverse: some use light, some oxidise inorganic chemicals, others oxidise carbon compounds to make ATP. No named examples or biochemistry needed."
+  },
+  {
+   "id": "b42-k8",
+   "ahl": false,
+   "stmt": "B4.2.8",
+   "cue": "How does dentition show diet in hominids?",
+   "answer": "Herbivores: large, flat, thick-enamelled molars for grinding tough plants and strong jaw muscles (Paranthropus robustus, with a skull crest for muscle attachment). Omnivores: smaller molars, varied teeth and smaller jaws (Homo sapiens, Homo floresiensis). Diet is deduced from skulls by comparison with living mammals."
+  },
+  {
+   "id": "b42-k9",
+   "ahl": false,
+   "stmt": "B4.2.9",
+   "cue": "How do herbivores and plants adapt to each other?",
+   "answer": "Insects have piercing (aphids) or chewing (caterpillars) mouthparts. Plants defend with thorns, spines, hairs and toxic secondary compounds in leaves and seeds. Some herbivores evolve ways to detoxify these toxins."
+  },
+  {
+   "id": "b42-k10",
+   "ahl": false,
+   "stmt": "B4.2.10",
+   "cue": "How do predators and prey adapt?",
+   "answer": "Chemical (venom in snakes; toxins and warning colours in prey such as poison dart frogs), physical (claws, speed, camouflage, armour), behavioural (pack hunting, ambush; herding, alarm calls, playing dead)."
+  },
+  {
+   "id": "b42-k11",
+   "ahl": false,
+   "stmt": "B4.2.11",
+   "cue": "How do forest plants harvest light?",
+   "answer": "Canopy trees grow tall trunks; lianas climb other trees rooted in the ground; epiphytes grow on branches; strangler figs start as epiphytes and send roots down, eventually enclosing the host; shade-tolerant shrubs and herbs on the floor have large, thin leaves rich in chlorophyll."
+  },
+  {
+   "id": "b42-k12",
+   "ahl": false,
+   "stmt": "B4.2.12",
+   "cue": "Fundamental vs realised niche?",
+   "answer": "Fundamental: the full range a species could occupy given its adaptations and tolerance limits. Realised: the smaller part it actually occupies because of competition with other species."
+  },
+  {
+   "id": "b42-k13",
+   "ahl": false,
+   "stmt": "B4.2.13",
+   "cue": "What is competitive exclusion?",
+   "answer": "Two species can't share an identical niche indefinitely. Either one is eliminated from the area, or both are restricted to part of their fundamental niche, so each niche is unique."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Niche",
+   "def": "A species' role and interactions in its ecosystem."
+  },
+  {
+   "term": "Holozoic",
+   "def": "Ingest, digest internally, absorb, assimilate."
+  },
+  {
+   "term": "Mixotroph",
+   "def": "Uses both autotrophic and heterotrophic nutrition."
+  },
+  {
+   "term": "Saprotroph",
+   "def": "Digests dead matter externally and absorbs the products."
+  },
+  {
+   "term": "Competitive exclusion",
+   "def": "Two species can't occupy the same niche indefinitely."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Classic competition data",
+   "prompt": "Two Paramecium species grow well alone. Grown together, one species' population falls to zero after 16 days. Explain.",
+   "steps": [
+    "Alone, each reaches its own carrying capacity.",
+    "Together they compete for the same food (same niche).",
+    "The more efficient competitor outcompetes the other.",
+    "This is competitive exclusion."
+   ],
+   "answer": "One species is excluded because their niches overlap completely."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "A niche is just where an organism lives.",
+   "right": "That is the habitat; the niche is its whole role, including food and interactions."
+  },
+  {
+   "wrong": "All bacteria are decomposers.",
+   "right": "Some are; others photosynthesise, are chemoautotrophs or are pathogens."
+  },
+  {
+   "wrong": "Facultative anaerobes need no oxygen at all.",
+   "right": "They can survive without it but use it when available."
+  },
+  {
+   "wrong": "Competition always kills one species.",
+   "right": "Both can coexist by narrowing to their realised niches."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Distinguish",
+   "marks": 2,
+   "prompt": "Distinguish between fundamental and realised niche.",
+   "checkpoints": [
+    "Fundamental: potential range based on tolerance/adaptations",
+    "Realised: actual range, reduced by competition"
+   ]
+  },
+  {
+   "commandTerm": "Compare and contrast",
+   "marks": 3,
+   "prompt": "Compare and contrast holozoic and saprotrophic nutrition.",
+   "checkpoints": [
+    "Both heterotrophic",
+    "Holozoic: ingestion and internal digestion",
+    "Saprotrophic: external digestion by secreted enzymes, then absorption"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 4,
+   "prompt": "Explain how plants in a tropical forest are adapted to obtain light.",
+   "checkpoints": [
+    "Canopy trees grow tall",
+    "Lianas climb using other trees",
+    "Epiphytes/strangler figs grow on branches",
+    "Shade-tolerant plants on the floor with large thin leaves"
+   ]
+  },
+  {
+   "commandTerm": "Suggest",
+   "marks": 2,
+   "prompt": "Suggest how the skull of Paranthropus robustus indicates its diet.",
+   "checkpoints": [
+    "Large flat molars for grinding tough plant food",
+    "Sagittal crest/large jaw muscles for powerful chewing"
+   ]
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "B4.1",
+   "prompt": "How do tolerance ranges set the fundamental niche?"
+  },
+  {
+   "to": "C4.1",
+   "prompt": "What happens when an invasive species enters an occupied niche?"
+  },
+  {
+   "to": "A3.1",
+   "prompt": "How are the three domains defined?"
+  },
+  {
+   "to": "C4.2",
+   "prompt": "Where do decomposers fit in energy flow?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/form-function/ecological-niches.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/bio-ecology-adaptations-populations.json",
+    "itemIds": [
+     "ec01",
+     "ec02",
+     "ec12"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/bio-ecology-adaptations-populations.json",
+    "cardIds": [
+     "fc-bio-ec-01",
+     "fc-bio-ec-02",
+     "fc-bio-ec-03",
+     "fc-bio-ec-15"
+    ]
+   }
+  ],
+  "gap": "No existing questions on oxygen tolerance groups, modes of nutrition (holozoic, mixotrophic, saprotrophic, archaea), hominid dentition, herbivory/predation adaptations or light-harvesting in forests."
+ }
+}

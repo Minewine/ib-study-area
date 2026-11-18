@@ -1,0 +1,215 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-b3-3",
+ "code": "B3.3",
+ "title": "Muscle and motility",
+ "theme": "B",
+ "themeLabel": "Form and function",
+ "level": 3,
+ "levelLabel": "Organisms",
+ "hlOnly": true,
+ "statements": {
+  "SL": [],
+  "AHL": [
+   "B3.3.1",
+   "B3.3.2",
+   "B3.3.3",
+   "B3.3.4",
+   "B3.3.5",
+   "B3.3.6",
+   "B3.3.7",
+   "B3.3.8",
+   "B3.3.9",
+   "B3.3.10"
+  ]
+ },
+ "bigPicture": "Movement is a feature of all living things. In animals, muscles shorten as actin and myosin filaments slide past each other, pulling on skeletons that act as levers. Because muscles can only pull, they work in antagonistic pairs.",
+ "keyIdeas": [
+  {
+   "id": "b33-k1",
+   "ahl": true,
+   "stmt": "B3.3.1",
+   "cue": "Why is movement a universal feature of life?",
+   "answer": "All organisms move in some way. Motile species move from place to place (e.g. a dolphin); sessile species stay fixed but move parts of themselves (e.g. a sunflower tracking the sun, sea anemone tentacles)."
+  },
+  {
+   "id": "b33-k2",
+   "ahl": true,
+   "stmt": "B3.3.2",
+   "cue": "Explain the sliding filament model.",
+   "answer": "A sarcomere (between Z lines) contains thin actin and thick myosin filaments. Myosin heads bind to actin, forming cross-bridges, pivot (power stroke) to pull actin towards the centre, then detach using ATP and re-attach further along. The filaments slide past each other, so the sarcomere shortens (filaments themselves don't shorten). The diagram is in the data booklet."
+  },
+  {
+   "id": "b33-k3",
+   "ahl": true,
+   "stmt": "B3.3.3",
+   "cue": "How do titin and antagonistic muscles help relaxation?",
+   "answer": "Titin, a huge elastic protein, helps the sarcomere recoil after stretching and prevents overstretching. Muscles can only exert force by contracting, so antagonistic pairs are needed: when one contracts it stretches the other (e.g. biceps and triceps)."
+  },
+  {
+   "id": "b33-k4",
+   "ahl": true,
+   "stmt": "B3.3.4",
+   "cue": "What is a motor unit?",
+   "answer": "One motor neuron plus all the muscle fibres it stimulates, connected by neuromuscular junctions. All fibres in a unit contract together."
+  },
+  {
+   "id": "b33-k5",
+   "ahl": true,
+   "stmt": "B3.3.5",
+   "cue": "How do skeletons help movement?",
+   "answer": "They anchor muscles and act as levers that multiply force or movement. Arthropods have exoskeletons (muscles attach inside); vertebrates have endoskeletons."
+  },
+  {
+   "id": "b33-k6",
+   "ahl": true,
+   "stmt": "B3.3.6",
+   "cue": "How does the hip joint work?",
+   "answer": "Synovial ball-and-socket joint between the femur (head) and pelvis (socket). Cartilage reduces friction and absorbs shock; synovial fluid lubricates; ligaments hold bone to bone; tendons attach muscles to bones; muscles provide movement."
+  },
+  {
+   "id": "b33-k7",
+   "ahl": true,
+   "stmt": "B3.3.7",
+   "cue": "How do you measure a joint's range of motion?",
+   "answer": "Measure joint angles in several planes with a goniometer or image analysis software. The hip moves in more planes than a hinge joint like the knee or elbow."
+  },
+  {
+   "id": "b33-k8",
+   "ahl": true,
+   "stmt": "B3.3.8",
+   "cue": "How do intercostal muscles show antagonistic action?",
+   "answer": "The external and internal intercostals have fibres in different orientations, so they move the ribcage in opposite directions (up and out vs down and in). When one layer contracts it stretches the other, storing potential energy in titin."
+  },
+  {
+   "id": "b33-k9",
+   "ahl": true,
+   "stmt": "B3.3.9",
+   "cue": "Why do animals move from place to place?",
+   "answer": "Foraging for food (e.g. bees), escaping danger (gazelles from cheetahs), finding a mate (male frogs moving to ponds) and migration (Arctic terns, wildebeest)."
+  },
+  {
+   "id": "b33-k10",
+   "ahl": true,
+   "stmt": "B3.3.10",
+   "cue": "How are marine mammals adapted for swimming?",
+   "answer": "Streamlined body, limbs modified into flippers, a tail fluke moved up and down, and a blowhole and breath control allowing breathing at the surface between long dives."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Sarcomere",
+   "def": "Repeating contractile unit of a myofibril between Z lines."
+  },
+  {
+   "term": "Cross-bridge",
+   "def": "Attachment of a myosin head to actin."
+  },
+  {
+   "term": "Antagonistic muscles",
+   "def": "Pair of muscles producing opposite movements."
+  },
+  {
+   "term": "Motor unit",
+   "def": "A motor neuron and the muscle fibres it controls."
+  },
+  {
+   "term": "Synovial joint",
+   "def": "Freely movable joint with a fluid-filled capsule."
+  },
+  {
+   "term": "Titin",
+   "def": "Giant elastic protein that helps sarcomeres recoil."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Sarcomere changes",
+   "prompt": "In contraction, a sarcomere shortens from 2.5 µm to 2.0 µm. What happens to the A band, I band and H zone?",
+   "steps": [
+    "A band = length of myosin: unchanged.",
+    "I band (actin only): shorter.",
+    "H zone (myosin only): shorter or disappears."
+   ],
+   "answer": "Only the I band and H zone shorten, because the filaments slide rather than shrink."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Actin and myosin filaments shorten in contraction.",
+   "right": "They slide past each other; their lengths stay the same."
+  },
+  {
+   "wrong": "Muscles can push.",
+   "right": "Muscles only pull; antagonistic pairs give opposite movements."
+  },
+  {
+   "wrong": "Ligaments attach muscle to bone.",
+   "right": "Tendons do; ligaments join bone to bone."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Explain",
+   "marks": 4,
+   "prompt": "Explain how a sarcomere shortens.",
+   "checkpoints": [
+    "Myosin heads bind actin (cross-bridges)",
+    "Power stroke pulls actin towards centre",
+    "ATP used to detach myosin",
+    "Repeated cycles; filaments slide, Z lines move closer"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Outline",
+   "marks": 4,
+   "prompt": "Outline the roles of the structures in the hip joint.",
+   "checkpoints": [
+    "Cartilage reduces friction",
+    "Synovial fluid lubricates",
+    "Ligaments hold femur and pelvis together",
+    "Tendons attach muscles; muscles move bones"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Describe",
+   "marks": 3,
+   "prompt": "Describe adaptations of marine mammals for swimming.",
+   "checkpoints": [
+    "Streamlined body",
+    "Flippers and tail fluke (up-and-down)",
+    "Airway changes/blowhole for breathing between dives"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "C2.2",
+   "prompt": "How does a motor neuron stimulate a muscle fibre?"
+  },
+  {
+   "to": "B3.1",
+   "prompt": "How do intercostal muscles ventilate the lungs?"
+  },
+  {
+   "to": "C1.2",
+   "prompt": "Why do muscles need large amounts of ATP?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/form-function/muscle-motility.pdf",
+  "quizBanks": [],
+  "decks": [],
+  "gap": "No quiz or deck covers B3.3 (HL-only). Missing everything, including the sliding filament model, joints, motor units and locomotion."
+ },
+ "dataBooklet": [
+  "B3.3.2"
+ ]
+}

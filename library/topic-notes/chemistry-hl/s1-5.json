@@ -1,0 +1,255 @@
+{
+ "schemaVersion": 1,
+ "subject": "chemistry-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "chem-s1-5",
+ "code": "S1.5",
+ "title": "Ideal gases",
+ "theme": "S1",
+ "themeLabel": "Models of the particulate nature of matter",
+ "hlOnly": false,
+ "islOrder": 6,
+ "islUnits": [
+  "3. Stoichiometry (Y12 Oct-Nov)"
+ ],
+ "taughtStatus": "in progress",
+ "statements": {
+  "SL": [
+   "S1.5.1",
+   "S1.5.2",
+   "S1.5.3",
+   "S1.5.4"
+  ],
+  "AHL": []
+ },
+ "bigPicture": "An ideal gas is a model: point particles that never attract each other and bounce perfectly. Real gases come close at high temperature and low pressure, and the model gives one simple equation, PV = nRT, linking pressure, volume, temperature and amount.",
+ "keyIdeas": [
+  {
+   "id": "s15-k1",
+   "ahl": false,
+   "stmt": "S1.5.1",
+   "cue": "What does the ideal gas model assume?",
+   "answer": "Particles in constant random motion; their own volume is negligible compared with the container; no intermolecular forces; collisions are perfectly elastic (no loss of kinetic energy)."
+  },
+  {
+   "id": "s15-k2",
+   "ahl": false,
+   "stmt": "S1.5.2",
+   "cue": "When and why do real gases deviate?",
+   "answer": "At low temperature, particles move slowly so attractions matter; at high pressure, particles are crowded so their own volume is no longer negligible. Deviation is greatest for polar or large molecules. No maths needed."
+  },
+  {
+   "id": "s15-k3",
+   "ahl": false,
+   "stmt": "S1.5.3",
+   "cue": "How do P, V and T relate for a fixed amount of gas?",
+   "answer": "At constant T, V ∝ 1/P (a curve; V against 1/P is a straight line). At constant P, V ∝ T in kelvin (a straight line through the origin at 0 K). At constant V, P ∝ T. Molar volume of an ideal gas at STP (273.15 K, 100 kPa) = 22.7 dm³ mol⁻¹. Law names are not assessed."
+  },
+  {
+   "id": "s15-k4",
+   "ahl": false,
+   "stmt": "S1.5.4",
+   "cue": "How do you use PV = nRT and the combined gas law?",
+   "answer": "PV = nRT in SI units: P in Pa, V in m³, T in K, R = 8.31 J K⁻¹ mol⁻¹. Conversions: kPa × 1000; dm³ ÷ 1000; cm³ × 10⁻⁶. For a fixed amount changing conditions: P₁V₁/T₁ = P₂V₂/T₂. Rearrange to M = mRT/(PV) to find molar mass."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Ideal gas",
+   "def": "Model gas obeying PV = nRT exactly: no forces, negligible particle volume."
+  },
+  {
+   "term": "Elastic collision",
+   "def": "Collision with no loss of total kinetic energy."
+  },
+  {
+   "term": "STP",
+   "def": "273.15 K and 100 kPa (data booklet)."
+  },
+  {
+   "term": "Molar volume",
+   "def": "Volume of one mole of gas; 22.7 dm³ mol⁻¹ for an ideal gas at STP."
+  },
+  {
+   "term": "Gas constant, R",
+   "def": "8.31 J K⁻¹ mol⁻¹."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Molar mass from gas data",
+   "prompt": "0.500 g of a gas occupies 300 cm³ at 25 °C and 101 kPa. Find its molar mass.",
+   "steps": [
+    "SI units: V = 3.00 × 10⁻⁴ m³; P = 1.01 × 10⁵ Pa; T = 298 K.",
+    "n = PV/RT = (1.01 × 10⁵ × 3.00 × 10⁻⁴)/(8.31 × 298) = 0.0122 mol.",
+    "M = m/n = 0.500/0.0122."
+   ],
+   "answer": "≈ 40.9 g mol⁻¹"
+  },
+  {
+   "title": "Combined gas law",
+   "prompt": "A balloon holds 2.00 dm³ at 20 °C and 100 kPa. Find its volume at −10 °C and 80.0 kPa.",
+   "steps": [
+    "V₂ = P₁V₁T₂/(T₁P₂) = 100 × 2.00 × 263/(293 × 80.0).",
+    "Units of P and V only need to match on both sides here; T must be in K."
+   ],
+   "answer": "2.24 dm³"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Doubling the Celsius temperature doubles the volume.",
+   "right": "Only a doubling of the kelvin temperature does that."
+  },
+  {
+   "wrong": "Any units work in PV = nRT.",
+   "right": "With R = 8.31, use Pa and m³. kPa with dm³ also works (the factors of 1000 cancel), but mixing kPa and m³ does not."
+  },
+  {
+   "wrong": "Real gases deviate most at high temperature.",
+   "right": "They deviate most at low temperature and high pressure."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Explain",
+   "marks": 2,
+   "prompt": "Explain why nitrogen behaves less like an ideal gas at 100 K than at 300 K.",
+   "checkpoints": [
+    "Lower kinetic energy at 100 K",
+    "Intermolecular attractions are no longer negligible, so volume/pressure is less than predicted"
+   ]
+  },
+  {
+   "commandTerm": "Calculate",
+   "marks": 2,
+   "prompt": "Calculate the volume, in dm³, occupied by 0.25 mol of an ideal gas at STP.",
+   "checkpoints": [
+    "0.25 × 22.7",
+    "= 5.7 dm³"
+   ]
+  },
+  {
+   "commandTerm": "Sketch",
+   "marks": 2,
+   "prompt": "Sketch a graph of volume against temperature (K) for a fixed amount of gas at constant pressure.",
+   "checkpoints": [
+    "Straight line",
+    "Passes through the origin (extrapolates to 0 K)"
+   ]
+  }
+ ],
+ "paper1A": [
+  {
+   "stem": "Which conditions make a real gas behave most like an ideal gas?",
+   "choices": [
+    "High T, high P",
+    "High T, low P",
+    "Low T, high P",
+    "Low T, low P"
+   ],
+   "answer": 1,
+   "why": "Fast particles, far apart."
+  },
+  {
+   "stem": "A fixed mass of gas at constant volume is heated from 200 K to 400 K. The pressure:",
+   "choices": [
+    "halves",
+    "stays the same",
+    "doubles",
+    "quadruples"
+   ],
+   "answer": 2,
+   "why": "P ∝ T (kelvin)."
+  },
+  {
+   "stem": "What volume does 2.0 g of H₂ (M = 2.0 g mol⁻¹) occupy at STP?",
+   "choices": [
+    "2.27 dm³",
+    "11.4 dm³",
+    "22.7 dm³",
+    "45.4 dm³"
+   ],
+   "answer": 2,
+   "why": "1.0 mol × 22.7 dm³ mol⁻¹."
+  }
+ ],
+ "paper1B": [
+  {
+   "data": "Pressure–volume data for a gas at constant temperature: P/kPa 50, 100, 200, 400; V/cm³ 96, 48, 24, 12.",
+   "prompt": "Show the data fit the ideal model and state the graph that gives a straight line.",
+   "answer": "P × V = 4800 kPa cm³ every time, so V ∝ 1/P; plotting V against 1/P gives a straight line through the origin."
+  }
+ ],
+ "assessmentNote": "Paper 1A = multiple choice, no calculator; Paper 1B = data-based questions (format from public sources, confirm with the official guide). All prompts here are original practice, not predictions of exam questions.",
+ "errorHints": [
+  {
+   "category": "maths",
+   "hint": "Unit conversion is the main mark-loser: Pa, m³, K. Write the converted values before substituting."
+  },
+  {
+   "category": "data-booklet use",
+   "hint": "Use 22.7 dm³ mol⁻¹ (100 kPa STP), not the older 22.4."
+  },
+  {
+   "category": "interpretation",
+   "hint": "Check whether a graph uses °C or K before deciding whether it should pass through the origin."
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "S1.1",
+   "prompt": "How does the kinetic molecular model explain gas pressure?"
+  },
+  {
+   "to": "R2.2",
+   "prompt": "Why does increasing gas pressure increase reaction rate?"
+  }
+ ],
+ "dataBooklet": [
+  {
+   "section": 1,
+   "title": "Some relevant equations",
+   "use": "PV = nRT and the combined gas law."
+  },
+  {
+   "section": 2,
+   "title": "Physical constants",
+   "use": "R and molar volume at STP."
+  },
+  {
+   "section": 4,
+   "title": "Unit conversions and standard conditions",
+   "use": "STP definition and dm³/m³ conversions."
+  }
+ ],
+ "links": {
+  "checklistKey": "chemistry-hl::library/notes/chemistry-hl/models-of-the-particulate-nature-of-matter/ideal-gases.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/chem-structure-1-stoichiometry.json",
+    "itemIds": [
+     "c10",
+     "c13",
+     "chx6",
+     "chx12"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/chem-structure-1-stoichiometry.json",
+    "cardIds": [
+     "fc-chem-s1-04",
+     "fc-chem-s1-08"
+    ]
+   }
+  ],
+  "gap": "No items on real-gas deviation (S1.5.1–S1.5.2) or on P–V–T graphs; PV = nRT covered by c10 and a flashcard."
+ },
+ "syllabusFlags": [
+  "ISL document prints this code as 'S.1.5.1' (typo); read as S1.5.1."
+ ]
+}

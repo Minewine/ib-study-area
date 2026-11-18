@@ -1,0 +1,201 @@
+{
+ "schemaVersion": 1,
+ "subject": "chemistry-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "chem-r3-3",
+ "code": "R3.3",
+ "title": "Electron sharing reactions",
+ "theme": "R3",
+ "themeLabel": "What are the mechanisms of chemical change?",
+ "hlOnly": false,
+ "islOrder": 21,
+ "islUnits": [
+  "10. Organic chemistry (Y13 Nov-Mar)"
+ ],
+ "taughtStatus": "upcoming",
+ "statements": {
+  "SL": [
+   "R3.3.1",
+   "R3.3.2",
+   "R3.3.3"
+  ],
+  "AHL": []
+ },
+ "bigPicture": "Some reactions run on single electrons. Radicals, species with an unpaired electron, form when a bond splits evenly, and they are so reactive that they set off chain reactions, such as the substitution of alkanes by halogens in UV light.",
+ "keyIdeas": [
+  {
+   "id": "r33-k1",
+   "ahl": false,
+   "stmt": "R3.3.1",
+   "cue": "What is a radical?",
+   "answer": "A species with an unpaired electron, shown with a dot: Cl•, •CH₃. Very reactive because the electron seeks to pair."
+  },
+  {
+   "id": "r33-k2",
+   "ahl": false,
+   "stmt": "R3.3.2",
+   "cue": "How are radicals formed?",
+   "answer": "Homolytic fission: a covalent bond breaks and each atom keeps one electron. Halogen molecules split in UV light or heat: Cl₂ → 2Cl• (initiation). Show single-electron movement with fish-hook (single-barbed) arrows."
+  },
+  {
+   "id": "r33-k3",
+   "ahl": false,
+   "stmt": "R3.3.3",
+   "cue": "How do alkanes react with halogens?",
+   "answer": "Alkanes are unreactive because C–C and C–H bonds are strong and almost non-polar. In UV light: initiation Cl₂ → 2Cl•; propagation Cl• + CH₄ → HCl + •CH₃, then •CH₃ + Cl₂ → CH₃Cl + Cl• (radical regenerated); termination: two radicals combine (Cl• + Cl• → Cl₂; •CH₃ + Cl• → CH₃Cl; •CH₃ + •CH₃ → C₂H₆). Gives a mixture of products, including further substitution (CH₂Cl₂, CHCl₃, CCl₄)."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Radical",
+   "def": "Species with an unpaired electron."
+  },
+  {
+   "term": "Homolytic fission",
+   "def": "Bond breaking where each fragment gets one electron."
+  },
+  {
+   "term": "Initiation",
+   "def": "Step that creates radicals."
+  },
+  {
+   "term": "Propagation",
+   "def": "Step where a radical reacts and makes another radical."
+  },
+  {
+   "term": "Termination",
+   "def": "Step where two radicals join, removing radicals."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Mechanism",
+   "prompt": "Write the mechanism for ethane + bromine in UV light to form bromoethane.",
+   "steps": [
+    "Initiation: Br₂ → 2Br•.",
+    "Propagation: Br• + C₂H₆ → HBr + •C₂H₅; •C₂H₅ + Br₂ → C₂H₅Br + Br•.",
+    "Termination: e.g. •C₂H₅ + Br• → C₂H₅Br; 2•C₂H₅ → C₄H₁₀."
+   ],
+   "answer": "Radical chain substitution"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Propagation removes radicals.",
+   "right": "Propagation keeps the number of radicals the same; termination removes them."
+  },
+  {
+   "wrong": "Only one product forms.",
+   "right": "Further substitution and termination give a mixture."
+  },
+  {
+   "wrong": "UV breaks C–H bonds to start the reaction.",
+   "right": "UV splits the weaker halogen–halogen bond."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Explain",
+   "marks": 2,
+   "prompt": "Explain why alkanes are generally unreactive.",
+   "checkpoints": [
+    "Strong C–C and C–H bonds",
+    "Bonds are essentially non-polar, so not attacked by nucleophiles/electrophiles"
+   ]
+  },
+  {
+   "commandTerm": "Outline",
+   "marks": 3,
+   "prompt": "Outline the three stages of the reaction between methane and chlorine with one equation for each.",
+   "checkpoints": [
+    "Initiation Cl₂ → 2Cl•",
+    "Propagation, e.g. Cl• + CH₄ → HCl + •CH₃",
+    "Termination, e.g. •CH₃ + Cl• → CH₃Cl"
+   ]
+  }
+ ],
+ "paper1A": [
+  {
+   "stem": "Which is a termination step?",
+   "choices": [
+    "Cl₂ → 2Cl•",
+    "Cl• + CH₄ → HCl + •CH₃",
+    "•CH₃ + Cl₂ → CH₃Cl + Cl•",
+    "•CH₃ + •CH₃ → C₂H₆"
+   ],
+   "answer": 3,
+   "why": "Two radicals combine."
+  },
+  {
+   "stem": "What type of bond breaking starts the chlorination of methane?",
+   "choices": [
+    "Heterolytic fission of C–H",
+    "Homolytic fission of Cl–Cl",
+    "Heterolytic fission of Cl–Cl",
+    "Homolytic fission of C–H"
+   ],
+   "answer": 1,
+   "why": "UV splits Cl–Cl evenly."
+  }
+ ],
+ "paper1B": [
+  {
+   "data": "Bond enthalpies (kJ mol⁻¹, booklet): C–H 414, Cl–Cl 242, Br–Br 193.",
+   "prompt": "Explain which bond UV light breaks in initiation.",
+   "answer": "The halogen–halogen bond: it is much weaker than C–H, so UV photons have enough energy to split Cl–Cl (or Br–Br) homolytically."
+  }
+ ],
+ "assessmentNote": "Paper 1A = multiple choice, no calculator; Paper 1B = data-based questions (format from public sources, confirm with the official guide). All prompts here are original practice, not predictions of exam questions.",
+ "errorHints": [
+  {
+   "category": "knowledge",
+   "hint": "Radical dots go on the atom with the unpaired electron (•CH₃, not CH₃•H)."
+  },
+  {
+   "category": "exam communication",
+   "hint": "Label each step (initiation/propagation/termination) and use fish-hook arrows if asked for mechanisms."
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "R3.4",
+   "prompt": "How does heterolytic fission differ from homolytic fission?"
+  },
+  {
+   "to": "R2.2",
+   "prompt": "Why does UV light act like a trigger rather than a catalyst?"
+  }
+ ],
+ "dataBooklet": [
+  {
+   "section": 12,
+   "title": "Bond enthalpies",
+   "use": "Bond enthalpies showing Cl–Cl is weaker than C–H."
+  }
+ ],
+ "links": {
+  "checklistKey": "chemistry-hl::library/notes/chemistry-hl/what-are-the-mechanisms-of-chemical-change/electron-sharing-reactions.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/chem-organic-chemistry.json",
+    "itemIds": [
+     "o15"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/chem-organic-chemistry.json",
+    "cardIds": [
+     "fc-chem-org-12"
+    ]
+   }
+  ],
+  "gap": "One quiz item (o15) and one flashcard; no items on termination products or fish-hook notation."
+ },
+ "syllabusFlags": [
+  "ISL document lists three statements; recheck count against the official guide."
+ ]
+}

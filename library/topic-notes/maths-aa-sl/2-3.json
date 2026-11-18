@@ -1,0 +1,146 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-2-3",
+ "code": "2.3",
+ "title": "Graphs of functions",
+ "theme": "2",
+ "themeLabel": "Functions",
+ "hlOnly": false,
+ "islOrder": 5,
+ "islUnits": [
+  "2. Functions and quadratics (Y12 wk 3-8 (Sep-mid Oct 2026))"
+ ],
+ "taughtStatus": "taught",
+ "statements": {
+  "SL": [
+   "2.3.1",
+   "2.3.2"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "2.3.1",
+   "text": "Sketching from given information or a context; copying a GDC graph onto paper"
+  },
+  {
+   "id": "2.3.2",
+   "text": "Graphing functions, including sums and differences, with technology"
+  }
+ ],
+ "bigPicture": "A good sketch communicates shape and key points, not exact scale. Paper 2 expects her to transfer a GDC graph to paper with the right features labelled.",
+ "keyIdeas": [
+  {
+   "id": "m23-k1",
+   "ahl": false,
+   "stmt": "2.3.1",
+   "cue": "What must a sketch show?",
+   "answer": "Correct shape, intercepts, turning points, asymptotes (dashed) and the domain endpoints, labelled with coordinates."
+  },
+  {
+   "id": "m23-k2",
+   "ahl": false,
+   "stmt": "2.3.2",
+   "cue": "How do you graph f + g with technology?",
+   "answer": "Enter both, or enter y = f(x) + g(x) directly; use a sensible window."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "sketch",
+   "def": "shows shape and key features; not to scale"
+  },
+  {
+   "term": "draw",
+   "def": "accurate, to scale, ruled axes"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Screen to paper",
+   "prompt": "Sketch y = x³ − 3x for −2 ≤ x ≤ 2.",
+   "steps": [
+    "GDC: zeros x = 0, ±√3 ≈ ±1.73",
+    "max (−1, 2), min (1, −2)",
+    "endpoints (−2, −2), (2, 2)"
+   ],
+   "answer": "S-shaped curve with labelled points"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "A sketch needs a grid",
+   "right": "It needs labelled features, not a scale."
+  },
+  {
+   "wrong": "Copy only the visible window",
+   "right": "Respect the given domain; adjust the window."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Sketch",
+   "marks": 3,
+   "prompt": "Sketch y = (x − 1)(x + 3) showing intercepts and vertex.",
+   "solution": [
+    "Roots x = 1, −3",
+    "y-intercept −3",
+    "Vertex at x = −1, y = −4"
+   ],
+   "answer": "Upward parabola through (−3,0), (1,0), (0,−3), vertex (−1,−4)",
+   "commonErrors": [
+    "Wrong sign of roots",
+    "Forgetting y-intercept"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Sketch",
+   "marks": 4,
+   "prompt": "Sketch y = 2^x − x² for −2 ≤ x ≤ 5, labelling all x-intercepts.",
+   "solution": [
+    "GDC zeros: x ≈ −0.767, 2, 4",
+    "Note endpoint values"
+   ],
+   "answer": "Curve with intercepts −0.767, 2, 4",
+   "commonErrors": [
+    "Missing the negative root because of the window",
+    "Missing x = 4"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [],
+  "memorise": [
+   "What 'sketch' vs 'draw' require (command terms)"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "2.4",
+   "prompt": "Which key features (2.4) should every sketch label?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/2-functions/2-3-functions-toolkit.pdf",
+  "quizBanks": [],
+  "decks": [
+   {
+    "file": "library/flashcards/math-functions-2-1-to-2-3.json",
+    "cardIds": [
+     "fc-math-fn-16",
+     "fc-math-fn-15"
+    ]
+   }
+  ]
+ }
+}

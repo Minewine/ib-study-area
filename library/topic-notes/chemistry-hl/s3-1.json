@@ -1,0 +1,437 @@
+{
+ "schemaVersion": 1,
+ "subject": "chemistry-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "chem-s3-1",
+ "code": "S3.1",
+ "title": "The periodic table: classification of elements",
+ "theme": "S3",
+ "themeLabel": "Classification of matter",
+ "hlOnly": false,
+ "islOrder": 4,
+ "islUnits": [
+  "1. Atomic theory and kinetic theory (Y12 Sep)",
+  "2. Periodicity (Y12 Oct)",
+  "8. Redox (Y12 Apr-May)",
+  "9. Acids and bases (Y12 Jun / Y13 Sep)"
+ ],
+ "taughtStatus": "partly taught (8/10 statements)",
+ "statements": {
+  "SL": [
+   "S3.1.1",
+   "S3.1.2",
+   "S3.1.3",
+   "S3.1.4",
+   "S3.1.5",
+   "S3.1.6"
+  ],
+  "AHL": [
+   "S3.1.7",
+   "S3.1.8",
+   "S3.1.9",
+   "S3.1.10"
+  ]
+ },
+ "bigPicture": "The periodic table is ordered by atomic number, and its layout comes straight from electron configurations: the period is the outer shell, the group is the number of valence electrons, and the block is the sublevel being filled. That structure produces regular trends (periodicity) in size, ionization energy and electronegativity, in metal/non-metal behaviour, and in the special properties of the transition elements.",
+ "keyIdeas": [
+  {
+   "id": "s31-k1",
+   "ahl": false,
+   "stmt": "S3.1.1",
+   "cue": "What are periods, groups and blocks?",
+   "answer": "Periods are rows; groups are columns numbered 1–18. The s, p, d and f blocks are named after the sublevel holding the highest-energy electron. Metals are on the left and centre, non-metals top right, metalloids (e.g. B, Si, Ge, As) along the staircase between them. The data booklet has a full periodic table."
+  },
+  {
+   "id": "s31-k2",
+   "ahl": false,
+   "stmt": "S3.1.2",
+   "cue": "How do you get the configuration from the position (and back)?",
+   "answer": "Period number = outer occupied main level. Group 1–2: valence electrons = group number; groups 13–18: group number minus 10. Learn the group names alkali metals (1), halogens (17), noble gases (18) and transition elements (d block). Example: period 3, group 16 → [Ne]3s²3p⁴ (sulfur)."
+  },
+  {
+   "id": "s31-k3",
+   "ahl": false,
+   "stmt": "S3.1.3",
+   "cue": "What are the trends in atomic radius, ionic radius, IE, electron affinity and electronegativity?",
+   "answer": "Across a period: nuclear charge rises with the same shielding, so radius decreases while IE and electronegativity increase. Down a group: an extra shell, so radius increases and IE and electronegativity decrease. Positive ions are smaller than their atoms (a shell is lost); negative ions are larger (more electron repulsion). Electron affinity (energy change when a gaseous atom gains an electron) generally becomes more exothermic across a period."
+  },
+  {
+   "id": "s31-k4",
+   "ahl": false,
+   "stmt": "S3.1.4",
+   "cue": "How do groups 1 and 17 behave?",
+   "answer": "Group 1 metals react with water to give a hydroxide and hydrogen, e.g. 2Na + 2H₂O → 2NaOH + H₂; reactivity increases down the group because the outer electron is further from the nucleus and lost more easily. Halogens are less reactive down group 17 because an incoming electron is attracted less strongly. A more reactive halogen displaces a less reactive halide: Cl₂ + 2KBr → 2KCl + Br₂."
+  },
+  {
+   "id": "s31-k5",
+   "ahl": false,
+   "stmt": "S3.1.5",
+   "cue": "How do oxides change from basic to acidic?",
+   "answer": "Metal oxides are basic (Na₂O + H₂O → 2NaOH; MgO gives Mg(OH)₂), Al₂O₃ is amphoteric, and non-metal oxides are acidic (CO₂ + H₂O ⇌ H₂CO₃; SO₃ + H₂O → H₂SO₄; SO₂ gives H₂SO₃). Sulfur and nitrogen oxides cause acid rain; extra dissolved CO₂ causes ocean acidification."
+  },
+  {
+   "id": "s31-k6",
+   "ahl": false,
+   "stmt": "S3.1.6",
+   "cue": "What is an oxidation state and how is it assigned?",
+   "answer": "The charge an atom would carry if all its bonds were ionic, written sign first (+2, −1). Elements = 0. In a compound the sum is 0; in an ion it equals the charge. O is usually −2 (−1 in peroxides), H usually +1 (−1 in metal hydrides such as NaH). Roman numerals name oxidation states: iron(III) chloride. Names like nitrate/nitrite and sulfate/sulfite are also accepted."
+  },
+  {
+   "id": "s31-k7",
+   "ahl": true,
+   "stmt": "S3.1.7",
+   "cue": "Why does first IE dip at group 13 and group 16 (AHL)?",
+   "answer": "Be → B: boron's electron is removed from 2p, a higher-energy sublevel than 2s, so it is easier to remove. N → O: oxygen's removed electron is in a doubly occupied 2p orbital; repulsion between the paired electrons raises its energy so it is easier to remove. These dips are evidence for sublevels. Explain in terms of the electron's energy, not 'special stability'."
+  },
+  {
+   "id": "s31-k8",
+   "ahl": true,
+   "stmt": "S3.1.8",
+   "cue": "What properties are typical of transition elements (AHL)?",
+   "answer": "Incomplete d sublevel in the atom or a common ion. Typical properties: several oxidation states, high melting points, magnetic behaviour, use as catalysts, coloured compounds, and ligands binding to their ions to make complex ions. (Zn is d-block but not a transition element: Zn²⁺ is 3d¹⁰.)"
+  },
+  {
+   "id": "s31-k9",
+   "ahl": true,
+   "stmt": "S3.1.9",
+   "cue": "Why do transition elements have variable oxidation states (AHL)?",
+   "answer": "4s and 3d electrons are close in energy, so successive IEs rise gradually, without a huge jump, and different numbers of electrons can be lost. When forming ions, remove 4s electrons before 3d: Mn [Ar]3d⁵4s² → Mn²⁺ [Ar]3d⁵."
+  },
+  {
+   "id": "s31-k10",
+   "ahl": true,
+   "stmt": "S3.1.10",
+   "cue": "Why are transition-metal complexes coloured (AHL)?",
+   "answer": "Ligands split the d sublevel into two energy groups. A d electron absorbs a photon of visible light matching the gap and is promoted. The solution shows the complementary colour of the light absorbed: use the colour wheel (opposite colours) and c = fλ to find the wavelength or frequency absorbed. You do not need to know specific splitting patterns."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Group",
+   "def": "Vertical column; same number of valence electrons."
+  },
+  {
+   "term": "Period",
+   "def": "Horizontal row; same outer main energy level."
+  },
+  {
+   "term": "Electronegativity",
+   "def": "Ability of an atom to attract a shared pair of electrons in a covalent bond."
+  },
+  {
+   "term": "Electron affinity",
+   "def": "Energy change when one mole of gaseous atoms each gains an electron."
+  },
+  {
+   "term": "Amphoteric",
+   "def": "Can react as both an acid and a base (e.g. Al₂O₃)."
+  },
+  {
+   "term": "Oxidation state",
+   "def": "Charge an atom would have if all bonds were ionic."
+  },
+  {
+   "term": "Ligand",
+   "def": "Species that donates a lone pair to a metal ion, forming a coordination bond (AHL)."
+  },
+  {
+   "term": "Transition element",
+   "def": "Element with an incomplete d sublevel in the atom or a common ion (AHL)."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Oxidation states",
+   "prompt": "Find the oxidation state of Cr in Cr₂O₇²⁻ and of S in SO₃²⁻.",
+   "steps": [
+    "Cr₂O₇²⁻: 2x + 7(−2) = −2, so 2x = 12, x = +6.",
+    "SO₃²⁻: x + 3(−2) = −2, so x = +4."
+   ],
+   "answer": "Cr +6 (dichromate(VI)); S +4 (sulfite, sulfate(IV))."
+  },
+  {
+   "title": "Colour wheel (AHL)",
+   "prompt": "An aqueous complex absorbs most strongly at about 600 nm (orange). Predict its colour and calculate the frequency absorbed.",
+   "steps": [
+    "Orange is absorbed, so the complementary colour, blue, is observed.",
+    "f = c/λ = 3.00 × 10⁸ / 600 × 10⁻⁹ = 5.00 × 10¹⁴ s⁻¹."
+   ],
+   "answer": "Blue; 5.00 × 10¹⁴ Hz."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Atoms get bigger across a period because they have more electrons.",
+   "right": "Radius decreases across a period: the extra electrons go into the same shell while nuclear charge rises."
+  },
+  {
+   "wrong": "O has a lower IE than N because half-filled sublevels are especially stable.",
+   "right": "Explain by the removed electron's energy: in O it is paired, and pair repulsion makes it easier to remove."
+  },
+  {
+   "wrong": "A complex that looks blue absorbs blue light.",
+   "right": "It absorbs the complementary colour (orange) and transmits/reflects blue."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain why atomic radius decreases from Na to Cl.",
+   "checkpoints": [
+    "Nuclear charge/number of protons increases",
+    "Electrons added to the same main level, so shielding about the same",
+    "Greater attraction pulls outer electrons closer"
+   ]
+  },
+  {
+   "commandTerm": "Describe",
+   "marks": 2,
+   "prompt": "Describe what you would see when chlorine water is added to potassium iodide solution, and write the equation.",
+   "checkpoints": [
+    "Colourless → yellow-brown/brown solution (iodine formed)",
+    "Cl₂ + 2KI → 2KCl + I₂"
+   ]
+  },
+  {
+   "commandTerm": "Deduce",
+   "marks": 2,
+   "prompt": "Deduce equations for the reactions of MgO and SO₂ with water and classify each oxide.",
+   "checkpoints": [
+    "MgO + H₂O → Mg(OH)₂: basic",
+    "SO₂ + H₂O → H₂SO₃: acidic"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain why the first IE of aluminium is lower than that of magnesium.",
+   "checkpoints": [
+    "Al's outer electron is in 3p; Mg's is in 3s",
+    "3p is higher in energy/further from the nucleus and slightly shielded by 3s",
+    "So less energy is needed to remove it"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "State",
+   "marks": 2,
+   "prompt": "Give the condensed configurations of Fe²⁺ and Cu²⁺.",
+   "checkpoints": [
+    "Fe²⁺ [Ar]3d⁶",
+    "Cu²⁺ [Ar]3d⁹"
+   ],
+   "ahl": true
+  }
+ ],
+ "paper1A": [
+  {
+   "stem": "Which element is in period 4 and group 15?",
+   "choices": [
+    "P",
+    "As",
+    "Sb",
+    "Ge"
+   ],
+   "answer": 1,
+   "why": "Period 4, five valence electrons: arsenic."
+  },
+  {
+   "stem": "Which oxide gives an acidic solution in water?",
+   "choices": [
+    "Na₂O",
+    "MgO",
+    "CaO",
+    "SO₂"
+   ],
+   "answer": 3,
+   "why": "Non-metal oxide: forms H₂SO₃."
+  },
+  {
+   "stem": "What is the oxidation state of hydrogen in CaH₂?",
+   "choices": [
+    "−2",
+    "−1",
+    "0",
+    "+1"
+   ],
+   "answer": 1,
+   "why": "Metal hydride: H is −1 (Ca is +2)."
+  },
+  {
+   "stem": "Which ion has the smallest radius?",
+   "choices": [
+    "Na⁺",
+    "Mg²⁺",
+    "F⁻",
+    "O²⁻"
+   ],
+   "answer": 1,
+   "why": "All have 10 electrons; Mg²⁺ has the most protons."
+  },
+  {
+   "stem": "Which property is NOT typical of transition elements?",
+   "choices": [
+    "Coloured compounds",
+    "Variable oxidation states",
+    "Low melting points",
+    "Catalytic activity"
+   ],
+   "answer": 2,
+   "why": "They have high melting points.",
+   "ahl": true
+  }
+ ],
+ "paper1B": [
+  {
+   "data": "First IE (kJ mol⁻¹) across period 3: Na 496, Mg 738, Al 578, Si 787, P 1012, S 1000, Cl 1251, Ar 1520.",
+   "prompt": "Describe the general trend and identify the two places where it breaks.",
+   "answer": "General increase across the period (rising nuclear charge, same shell). Falls from Mg to Al (3p electron, higher energy) and from P to S (paired 3p electron, repulsion)."
+  },
+  {
+   "data": "A solution of [Ni(H₂O)₆]²⁺ absorbs strongly near 400 nm and 700 nm and weakly in between.",
+   "prompt": "Use the colour wheel to suggest the colour of the solution.",
+   "answer": "It absorbs violet and red light; the transmitted middle of the spectrum is green, so it appears green.",
+   "ahl": true
+  }
+ ],
+ "assessmentNote": "Paper 1A = multiple choice, no calculator; Paper 1B = data-based questions (format from public sources, confirm with the official guide). All prompts here are original practice, not predictions of exam questions.",
+ "errorHints": [
+  {
+   "category": "knowledge",
+   "hint": "Learn the oxide equations for Na, Mg, C and S and the two oxidation-state exceptions (peroxides, metal hydrides)."
+  },
+  {
+   "category": "interpretation",
+   "hint": "When reading IE or radius data, state the general trend before explaining any exceptions."
+  },
+  {
+   "category": "data-booklet use",
+   "hint": "Take electronegativity, IE and radius values from the booklet tables rather than recalling them."
+  },
+  {
+   "category": "exam communication",
+   "hint": "Use the triad 'nuclear charge – distance/shells – shielding' in every trend explanation."
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "S1.3",
+   "prompt": "How does electron configuration explain the block structure of the periodic table?"
+  },
+  {
+   "to": "R3.2",
+   "prompt": "How do oxidation states help you spot redox reactions?"
+  },
+  {
+   "to": "R3.4",
+   "prompt": "How do ligands form coordination bonds to transition-metal ions (AHL)?"
+  }
+ ],
+ "dataBooklet": [
+  {
+   "section": 7,
+   "title": "The periodic table",
+   "use": "Periodic table: blocks, groups 1–18, Ar values."
+  },
+  {
+   "section": 9,
+   "title": "First ionization energy, electron affinity and electronegativity",
+   "use": "First IE, electron affinity and electronegativity values for trend questions."
+  },
+  {
+   "section": 10,
+   "title": "Atomic and ionic radii",
+   "use": "Atomic and ionic radii."
+  },
+  {
+   "section": 8,
+   "title": "Melting and boiling points of the elements",
+   "use": "Melting and boiling points for trend data."
+  },
+  {
+   "section": 15,
+   "title": "Colour wheel",
+   "use": "Colour wheel for complementary colours (AHL)."
+  },
+  {
+   "section": 1,
+   "title": "Some relevant equations",
+   "use": "c = fλ for wavelength/frequency of absorbed light."
+  }
+ ],
+ "links": {
+  "checklistKey": "chemistry-hl::library/notes/chemistry-hl/classification-of-matter/the-periodic-table-classification-of-elements.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/chem-structure-3-1-periodicity.json",
+    "itemIds": [
+     "p01",
+     "p02",
+     "p08",
+     "p10",
+     "p11",
+     "p12",
+     "p14",
+     "p15",
+     "p16",
+     "p17",
+     "p18",
+     "p19",
+     "p20",
+     "p21",
+     "pdx1",
+     "pdx2",
+     "pdx3",
+     "pdx4",
+     "pdx5"
+    ]
+   },
+   {
+    "file": "library/questions/chem-periodicity-energetics-review.json",
+    "itemIds": [
+     "periodicity-energetics-review-01",
+     "periodicity-energetics-review-04",
+     "periodicity-energetics-review-06",
+     "periodicity-energetics-review-07",
+     "periodicity-energetics-review-15",
+     "periodicity-energetics-review-16",
+     "periodicity-energetics-review-21"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/chem-structure-3-1-periodicity.json",
+    "cardIds": [
+     "fc-chem-p-01",
+     "fc-chem-p-05",
+     "fc-chem-p-06",
+     "fc-chem-p-07",
+     "fc-chem-p-08",
+     "fc-chem-p-09",
+     "fc-chem-p-11",
+     "fc-chem-p-12",
+     "fc-chem-p-15",
+     "fc-chem-p-16",
+     "fc-chem-p-17",
+     "fc-chem-p-18"
+    ]
+   },
+   {
+    "file": "library/flashcards/chem-reactivity-3-redox-acids-bases.json",
+    "cardIds": [
+     "fc-chem-r3-03",
+     "fc-chem-r3-14"
+    ]
+   }
+  ],
+  "gap": "No quiz items or flashcards on transition-element properties, complex-ion colour or the colour wheel (S3.1.8–S3.1.10, AHL); oxide/water equations (S3.1.5) only partly covered (p18, pdx1, fc-chem-p-15).",
+  "reviewNote": "fc-chem-p-09 and p21 use 'half-filled extra stability' for N > O; the ISL course guidance asks for explanations based on the energy of the electron removed. Suggest rewording (not changed here)."
+ },
+ "syllabusFlags": [
+  "Taught across four ISL units (atomic theory, periodicity, redox, acids and bases)."
+ ]
+}

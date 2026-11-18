@@ -1,0 +1,247 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-b1-2",
+ "code": "B1.2",
+ "title": "Proteins",
+ "theme": "B",
+ "themeLabel": "Form and function",
+ "level": 1,
+ "levelLabel": "Molecules",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "B1.2.1",
+   "B1.2.2",
+   "B1.2.3",
+   "B1.2.4",
+   "B1.2.5"
+  ],
+  "AHL": [
+   "B1.2.6",
+   "B1.2.7",
+   "B1.2.8",
+   "B1.2.9",
+   "B1.2.10",
+   "B1.2.11",
+   "B1.2.12"
+  ]
+ },
+ "bigPicture": "20 amino acids in any order and any length give almost unlimited proteins. The sequence decides the folding, and the folding decides the function.",
+ "keyIdeas": [
+  {
+   "id": "b12-k1",
+   "ahl": false,
+   "stmt": "B1.2.1",
+   "cue": "Describe the general structure of an amino acid.",
+   "answer": "A central (alpha) carbon bonded to an amine group (–NH₂), a carboxyl group (–COOH), a hydrogen atom and a variable R-group. You need to recognise it, not draw it."
+  },
+  {
+   "id": "b12-k2",
+   "ahl": false,
+   "stmt": "B1.2.2",
+   "cue": "How are dipeptides formed?",
+   "answer": "Condensation between the carboxyl group of one amino acid and the amine group of the next forms a peptide bond and releases water. Word equation: amino acid + amino acid → dipeptide + water."
+  },
+  {
+   "id": "b12-k3",
+   "ahl": false,
+   "stmt": "B1.2.3",
+   "cue": "Essential vs non-essential amino acids, and why vegans must plan?",
+   "answer": "Essential amino acids can't be made by the body and must come from food. Non-essential ones can be made from other amino acids. Single plant foods may be low in some essential amino acids, so vegans combine sources."
+  },
+  {
+   "id": "b12-k4",
+   "ahl": false,
+   "stmt": "B1.2.4",
+   "cue": "Why is the variety of polypeptides effectively infinite?",
+   "answer": "20 amino acids are coded for, chains can be any length (a few to thousands) and in any order, so there are 20ⁿ possible sequences for n amino acids."
+  },
+  {
+   "id": "b12-k5",
+   "ahl": false,
+   "stmt": "B1.2.5",
+   "cue": "How do pH and temperature affect proteins?",
+   "answer": "High temperature breaks the weak bonds holding the 3D shape. pH changes alter the charges on R-groups, disrupting ionic and hydrogen bonds. Either can cause denaturation, a loss of shape and function that is usually permanent."
+  },
+  {
+   "id": "b12-k6",
+   "ahl": true,
+   "stmt": "B1.2.6",
+   "cue": "How do R-groups create diversity?",
+   "answer": "R-groups are hydrophobic or hydrophilic. Hydrophilic ones are polar or charged (acidic or basic). Their properties decide how the chain folds and what it does."
+  },
+  {
+   "id": "b12-k7",
+   "ahl": true,
+   "stmt": "B1.2.7",
+   "cue": "How does primary structure determine conformation?",
+   "answer": "The exact sequence and position of each amino acid decide how the chain folds. So a protein has a precise, repeatable 3D shape, and one change can alter it."
+  },
+  {
+   "id": "b12-k8",
+   "ahl": true,
+   "stmt": "B1.2.8",
+   "cue": "What are secondary structures and what holds them?",
+   "answer": "α-helices and β-pleated sheets, stabilised by hydrogen bonds at regular intervals between C=O and N–H groups of the backbone."
+  },
+  {
+   "id": "b12-k9",
+   "ahl": true,
+   "stmt": "B1.2.9",
+   "cue": "Which bonds hold tertiary structure?",
+   "answer": "Hydrogen bonds, ionic bonds (between R-groups made charged by gaining or losing H⁺), disulfide covalent bonds (between two cysteines) and hydrophobic interactions."
+  },
+  {
+   "id": "b12-k10",
+   "ahl": true,
+   "stmt": "B1.2.10",
+   "cue": "How do polar and non-polar amino acids position themselves?",
+   "answer": "In soluble globular proteins, hydrophobic amino acids cluster in the core and hydrophilic ones face the water. Integral membrane proteins have hydrophobic regions that sit in the bilayer."
+  },
+  {
+   "id": "b12-k11",
+   "ahl": true,
+   "stmt": "B1.2.11",
+   "cue": "What is quaternary structure? Conjugated vs non-conjugated?",
+   "answer": "More than one polypeptide chain combined. Non-conjugated: only polypeptides (insulin, collagen). Conjugated: includes a non-polypeptide part, e.g. haemoglobin with four haem groups. Cryo-electron microscopy can image single protein molecules."
+  },
+  {
+   "id": "b12-k12",
+   "ahl": true,
+   "stmt": "B1.2.12",
+   "cue": "How do globular and fibrous shapes fit function?",
+   "answer": "Globular proteins are rounded, often soluble and have a precise binding shape. Insulin binds its receptor. Fibrous proteins are long, insoluble and strong. Collagen's triple helix gives tensile strength in skin, tendons and bone."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Peptide bond",
+   "def": "Covalent bond between carboxyl and amine groups formed by condensation."
+  },
+  {
+   "term": "Denaturation",
+   "def": "Loss of a protein's 3D shape (and function) without breaking peptide bonds."
+  },
+  {
+   "term": "Disulfide bond (AHL)",
+   "def": "Covalent S–S bond between two cysteine R-groups."
+  },
+  {
+   "term": "Conjugated protein (AHL)",
+   "def": "Protein with a non-polypeptide component, e.g. haem in haemoglobin."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Count possibilities",
+   "prompt": "How many different tripeptides can be made from the 20 amino acids?",
+   "steps": [
+    "Each of 3 positions can be any of 20.",
+    "20 × 20 × 20."
+   ],
+   "answer": "8000 (20³)."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Denaturation breaks peptide bonds.",
+   "right": "It breaks the weaker bonds holding the shape. The primary sequence is unchanged."
+  },
+  {
+   "wrong": "Primary structure includes hydrogen bonds.",
+   "right": "Primary structure is just the sequence. Hydrogen bonds hold secondary (and some tertiary) structure."
+  },
+  {
+   "wrong": "All proteins have quaternary structure.",
+   "right": "Only those made of more than one chain or with a prosthetic group."
+  },
+  {
+   "wrong": "Essential amino acids are the important ones.",
+   "right": "'Essential' only means they must be eaten."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Outline",
+   "marks": 2,
+   "prompt": "Outline the formation of a dipeptide.",
+   "checkpoints": [
+    "Condensation between carboxyl and amine groups",
+    "Peptide bond forms and water is released"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 4,
+   "prompt": "Explain how the tertiary structure of a protein is stabilised.",
+   "checkpoints": [
+    "Folding determined by sequence of R-groups",
+    "Hydrogen bonds and ionic bonds between R-groups",
+    "Disulfide bonds between cysteines",
+    "Hydrophobic R-groups clustered inside"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Compare and contrast",
+   "marks": 3,
+   "prompt": "Compare and contrast collagen and insulin.",
+   "checkpoints": [
+    "Both proteins with quaternary structure",
+    "Collagen fibrous and insoluble; insulin globular and soluble",
+    "Collagen structural (strength); insulin a hormone binding a receptor"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "C1.1",
+   "prompt": "Why does denaturation stop an enzyme working?"
+  },
+  {
+   "to": "D1.2",
+   "prompt": "How does the genetic code fix a protein's primary structure?"
+  },
+  {
+   "to": "B2.1",
+   "prompt": "Why do integral proteins have hydrophobic regions?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/form-function/proteins.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/bio-molecules-water.json",
+    "itemIds": [
+     "wm15",
+     "wm16",
+     "wm17",
+     "wm24",
+     "wm25",
+     "wm26",
+     "wm27",
+     "wmx7"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/bio-molecules-water.json",
+    "cardIds": [
+     "fc-bio-wm-18",
+     "fc-bio-wm-19",
+     "fc-bio-wm-20"
+    ]
+   }
+  ],
+  "gap": "Likely untested: B1.2.5 (pH and temperature effects on protein structure) and AHL B1.2.6 (R-group diversity)."
+ },
+ "dataBooklet": [
+  "B1.2.1"
+ ]
+}

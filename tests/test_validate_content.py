@@ -61,3 +61,31 @@ def test_fails_on_broken_content(tmp_path):
     assert r.returncode == 1
     for msg in ("zz-bad.json: duplicate ids", "item q2: bad answer index", "zz-broken.json: not valid JSON"):
         assert msg in r.stdout, msg
+
+
+def test_topic_note_with_unknown_linked_id_fails(tmp_path):
+    root = copy_library(tmp_path)
+    shutil.copytree(ROOT / "library" / "topic-notes", root / "library" / "topic-notes")
+    assert run(root).returncode == 0
+    f = root / "library" / "topic-notes" / "biology-hl" / "c1-1.json"
+    note = json.loads(f.read_text(encoding="utf-8"))
+    note["links"]["quizBanks"] = [{"file": "library/questions/bio-c1-1-enzymes-metabolism.json", "itemIds": ["e01", "no-such-id"]}]
+    note["links"]["decks"].append({"file": "library/flashcards/missing.json", "cardIds": None})
+    f.write_text(json.dumps(note), encoding="utf-8")
+    r = run(root)
+    assert r.returncode == 1
+    assert "linked id 'no-such-id' not found" in r.stdout
+    assert "linked file 'library/flashcards/missing.json' does not exist" in r.stdout
+
+
+def test_topic_note_missing_required_field_fails(tmp_path):
+    root = copy_library(tmp_path)
+    shutil.copytree(ROOT / "library" / "topic-notes", root / "library" / "topic-notes")
+    f = root / "library" / "topic-notes" / "chemistry-hl" / "s1-4.json"
+    note = json.loads(f.read_text(encoding="utf-8"))
+    del note["code"]
+    note["paper1A"][0]["answer"] = 9
+    f.write_text(json.dumps(note), encoding="utf-8")
+    r = run(root)
+    assert r.returncode == 1
+    assert "'code' missing" in r.stdout and "paper1A[0] answer index out of range" in r.stdout

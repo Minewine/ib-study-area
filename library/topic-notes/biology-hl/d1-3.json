@@ -1,0 +1,212 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-d1-3",
+ "code": "D1.3",
+ "title": "Mutation and gene editing",
+ "theme": "D",
+ "themeLabel": "Continuity and change",
+ "level": 1,
+ "levelLabel": "Molecules",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "D1.3.1",
+   "D1.3.2",
+   "D1.3.3",
+   "D1.3.4",
+   "D1.3.5",
+   "D1.3.6",
+   "D1.3.7"
+  ],
+  "AHL": [
+   "D1.3.8",
+   "D1.3.9",
+   "D1.3.10"
+  ]
+ },
+ "bigPicture": "Mutations are random changes to DNA. Most are neutral or harmful, but they are the original source of all genetic variation. HL adds tools that change genes on purpose, knockout and CRISPR–Cas9, and why some sequences barely change over millions of years.",
+ "keyIdeas": [
+  {
+   "id": "d13-k1",
+   "ahl": false,
+   "stmt": "D1.3.1",
+   "cue": "What are the three types of gene mutation?",
+   "answer": "Substitution (one base replaced), insertion (bases added) and deletion (bases removed)."
+  },
+  {
+   "id": "d13-k2",
+   "ahl": false,
+   "stmt": "D1.3.2",
+   "cue": "What are the consequences of a substitution?",
+   "answer": "It creates a SNP. Because the code is degenerate, the new codon may code for the same amino acid (silent), a different one (missense, e.g. sickle cell: GAG→GTG, glutamic acid→valine) or a stop codon (nonsense)."
+  },
+  {
+   "id": "d13-k3",
+   "ahl": false,
+   "stmt": "D1.3.3",
+   "cue": "What do insertions and deletions do?",
+   "answer": "If not in multiples of three they cause a frameshift: every codon after the change is altered, so the polypeptide usually stops working. Large insertions or deletions also usually destroy function."
+  },
+  {
+   "id": "d13-k4",
+   "ahl": false,
+   "stmt": "D1.3.4",
+   "cue": "What causes mutations?",
+   "answer": "Mutagens, e.g. chemicals (benzene, nitrosamines, compounds in tobacco smoke) and radiation (UV, X-rays, gamma rays), plus errors in DNA replication or repair."
+  },
+  {
+   "id": "d13-k5",
+   "ahl": false,
+   "stmt": "D1.3.5",
+   "cue": "Are mutations random?",
+   "answer": "Yes: they can happen anywhere in the genome, though some bases mutate more often. No natural mechanism makes a deliberate change to a particular base to produce a useful trait."
+  },
+  {
+   "id": "d13-k6",
+   "ahl": false,
+   "stmt": "D1.3.6",
+   "cue": "Germ cell vs somatic cell mutations?",
+   "answer": "Germ cell (gamete-forming) mutations can be inherited by offspring. Somatic mutations aren't passed on but can cause cancer in that individual."
+  },
+  {
+   "id": "d13-k7",
+   "ahl": false,
+   "stmt": "D1.3.7",
+   "cue": "Why is mutation important for evolution?",
+   "answer": "It is the original source of all new alleles. Most mutations are neutral or harmful to an individual, but in a species over the long term they provide the variation natural selection acts on."
+  },
+  {
+   "id": "d13-k8",
+   "ahl": true,
+   "stmt": "D1.3.8",
+   "cue": "What is a gene knockout?",
+   "answer": "Deliberately making a gene inoperative to find out its function from what changes. Libraries of knockout organisms exist for model species (e.g. mice)."
+  },
+  {
+   "id": "d13-k9",
+   "ahl": true,
+   "stmt": "D1.3.9",
+   "cue": "How is CRISPR–Cas9 used in gene editing?",
+   "answer": "A guide RNA matching the target sequence leads the Cas9 enzyme there, where it cuts both DNA strands; the cell's repair can disable the gene or insert a new sequence. Example: editing patients' own blood stem cells to treat sickle cell disease (approved as Casgevy in 2023). It raises ethical issues and is regulated differently across countries."
+  },
+  {
+   "id": "d13-k10",
+   "ahl": true,
+   "stmt": "D1.3.10",
+   "cue": "Why are some sequences highly conserved?",
+   "answer": "Conserved: similar across a species or group; highly conserved: similar over long evolutionary time. Hypotheses: the gene product's function is so essential that almost any change is selected against, or that region has a slower mutation rate."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Substitution",
+   "def": "One base replaced by another."
+  },
+  {
+   "term": "Frameshift",
+   "def": "Insertion/deletion shifting the reading frame."
+  },
+  {
+   "term": "Mutagen",
+   "def": "Agent that increases mutation rate."
+  },
+  {
+   "term": "Germ cell",
+   "def": "Cell that gives rise to gametes."
+  },
+  {
+   "term": "Gene knockout (AHL)",
+   "def": "Making a gene inoperative to study its function."
+  },
+  {
+   "term": "CRISPR–Cas9 (AHL)",
+   "def": "Gene-editing system using guide RNA and the Cas9 nuclease."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Predict a mutation's effect",
+   "prompt": "The template strand TAC CTT GGA changes to TAC CTC GGA. Use the codon table to predict the effect.",
+   "steps": [
+    "mRNA before: AUG GAA CCU (Met–Glu–Pro).",
+    "mRNA after: AUG GAG CCU.",
+    "GAG also codes for Glu."
+   ],
+   "answer": "Silent: no change to the polypeptide, because the code is degenerate."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Mutations happen because the organism needs them.",
+   "right": "Mutations are random; selection then acts on them."
+  },
+  {
+   "wrong": "All mutations are harmful.",
+   "right": "Most are neutral; some are harmful, a few beneficial."
+  },
+  {
+   "wrong": "Somatic mutations are passed to children.",
+   "right": "Only germ cell mutations are inherited."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain why a deletion of one base usually has a bigger effect than a substitution.",
+   "checkpoints": [
+    "Deletion causes frameshift",
+    "All codons after it change",
+    "Substitution changes at most one amino acid (or none, degeneracy)"
+   ]
+  },
+  {
+   "commandTerm": "Distinguish",
+   "marks": 2,
+   "prompt": "Distinguish between mutations in germ cells and in somatic cells.",
+   "checkpoints": [
+    "Germ: inherited by offspring",
+    "Somatic: not inherited; may cause cancer"
+   ]
+  },
+  {
+   "commandTerm": "Outline",
+   "marks": 3,
+   "prompt": "Outline how CRISPR–Cas9 is used to edit a gene.",
+   "checkpoints": [
+    "Guide RNA complementary to target",
+    "Cas9 cuts DNA at target",
+    "Repair disables gene or inserts new sequence"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "D1.2",
+   "prompt": "How does the genetic code's degeneracy affect mutations?"
+  },
+  {
+   "to": "D2.1",
+   "prompt": "How can mutations lead to cancer?"
+  },
+  {
+   "to": "D4.1",
+   "prompt": "How does natural selection act on new alleles?"
+  },
+  {
+   "to": "A3.2",
+   "prompt": "How are conserved sequences used to build cladograms?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/continuity-change/mutations-gene-editing.pdf",
+  "quizBanks": [],
+  "decks": [],
+  "gap": "No quiz or deck covers D1.3. Missing mutation types, causes, consequences, knockout, CRISPR and conserved sequences."
+ }
+}

@@ -1,0 +1,191 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-5-8",
+ "code": "5.8",
+ "title": "Stationary points, optimisation and inflexion",
+ "theme": "5",
+ "themeLabel": "Calculus",
+ "hlOnly": false,
+ "islOrder": 17,
+ "islUnits": [
+  "3. Differentiation (Y12 wk 9-12 (late Oct-Nov 2026))",
+  "7. Further differentiation (Y12 wk 28-30 (Apr-May 2027))"
+ ],
+ "taughtStatus": "in progress",
+ "statements": {
+  "SL": [
+   "5.8.1",
+   "5.8.2",
+   "5.8.3",
+   "5.8.4"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "5.8.1",
+   "text": "Local maxima and minima"
+  },
+  {
+   "id": "5.8.2",
+   "text": "First- and second-derivative tests"
+  },
+  {
+   "id": "5.8.3",
+   "text": "Optimisation in context"
+  },
+  {
+   "id": "5.8.4",
+   "text": "Points of inflexion with zero and non-zero gradient"
+  }
+ ],
+ "bigPicture": "Stationary points are where f′ = 0; testing tells maximum from minimum. Optimisation turns a worded problem into one function to maximise or minimise.",
+ "keyIdeas": [
+  {
+   "id": "m58-k1",
+   "ahl": false,
+   "stmt": "5.8.1",
+   "cue": "How do you find and classify stationary points?",
+   "answer": "Solve f′(x) = 0; then check the sign of f′ either side, or f″: f″ > 0 minimum, f″ < 0 maximum, f″ = 0 inconclusive."
+  },
+  {
+   "id": "m58-k2",
+   "ahl": false,
+   "stmt": "5.8.2",
+   "cue": "First-derivative test?",
+   "answer": "+ to −: maximum; − to +: minimum; no change: stationary inflexion."
+  },
+  {
+   "id": "m58-k3",
+   "ahl": false,
+   "stmt": "5.8.3",
+   "cue": "Optimisation steps?",
+   "answer": "Define variables, use the constraint to write one function of one variable, differentiate, set = 0, justify max/min, answer the question in context."
+  },
+  {
+   "id": "m58-k4",
+   "ahl": false,
+   "stmt": "5.8.4",
+   "cue": "Inflexion points?",
+   "answer": "Where concavity changes: f″ changes sign. If f′ = 0 too it is a stationary inflexion; otherwise non-stationary."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "local maximum",
+   "def": "higher than nearby points"
+  },
+  {
+   "term": "concavity",
+   "def": "sign of f″"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Classify",
+   "prompt": "f(x) = x³ − 6x² + 9x + 1.",
+   "steps": [
+    "f′ = 3(x − 1)(x − 3)",
+    "f″ = 6x − 12: f″(1) < 0, f″(3) > 0"
+   ],
+   "answer": "max (1, 5), min (3, 1)"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "f″ = 0 means inflexion",
+   "right": "Need a sign change in f″ (e.g. x⁴ at 0 is a minimum)."
+  },
+  {
+   "wrong": "Giving x when asked for the maximum value",
+   "right": "Give f at that x."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Find",
+   "marks": 6,
+   "prompt": "An open box has a square base side x and volume 32 cm³. Find x minimising the outer surface area.",
+   "solution": [
+    "h = 32/x²",
+    "A = x² + 4xh = x² + 128/x",
+    "A′ = 2x − 128/x² = 0 → x³ = 64",
+    "A″ = 2 + 256/x³ > 0"
+   ],
+   "answer": "x = 4 cm (A = 48 cm²)",
+   "commonErrors": [
+    "Counting a lid",
+    "Not justifying minimum"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Find",
+   "marks": 4,
+   "prompt": "f(x) = x e^(−x/2), x ≥ 0. Use the GDC to find the maximum point and the non-stationary inflexion point.",
+   "solution": [
+    "max at x = 2, f = 2/e ≈ 0.736",
+    "inflexion where f″ = 0: x = 4, f ≈ 0.541"
+   ],
+   "answer": "max (2, 0.736); inflexion (4, 0.541)",
+   "commonErrors": [
+    "Reading the max of f′",
+    "Missing inflexion because f′ ≠ 0 there"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [],
+  "memorise": [
+   "Both tests for classification",
+   "Inflexion conditions",
+   "Optimisation template"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "5.9",
+   "prompt": "Where do maximum displacement and maximum velocity come from in kinematics?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/5-calculus/5-5-optimisation.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/math-aa-topic5-calculus.json",
+    "itemIds": [
+     "c506",
+     "c509",
+     "c515",
+     "c516",
+     "c520",
+     "c521"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/math-topic5-calculus.json",
+    "cardIds": [
+     "fc-math-ca-06",
+     "fc-math-ca-07",
+     "fc-math-ca-18",
+     "fc-math-ca-19"
+    ]
+   }
+  ],
+  "reviewNote": "Assumed taught inside ISL 'Differentiation' for polynomials; e^x/ln/trig optimisation follows in 'Further differentiation' (Apr 2027). x e^(−x/2) in the GDC prompt uses 5.6 rules - fine for GDC but flag if not yet taught."
+ },
+ "syllabusFlags": [
+  "Stationary points of polynomials are usually taught inside 'Differentiation' - assumed in progress; optimisation with e^x, ln x, trig comes in 'Further differentiation'."
+ ]
+}
