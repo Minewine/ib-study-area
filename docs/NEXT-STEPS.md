@@ -35,8 +35,8 @@ Still open:
 
 ## 6. Fill the practice gaps the notes exposed
 - ~~Flashcards for **B2.1–B2.3**~~ Done (Nov 2026): 52 cards in `bio-b2-1/2/3-*.json`, linked from the notes.
-- Questions for **Chemistry S1.1** (her first topic has none). Cards done (Nov 2026): 18 in `chem-s1-1-particulate-nature.json`.
-- Turn the **Chemistry Paper 1A prompts** in the notes (`paper1A`, about 81) into quiz items in a calculator-free bank.
+- ~~Questions for **Chemistry S1.1**~~ Cards done (Nov 2026): 18 in `chem-s1-1-particulate-nature.json`. Questions: 8 calculator-free S1.1 items in `chem-p1a-structure-1` and one data item in `chem-p1b-data-practice` (`feat/exam-practice`).
+- ~~Turn the Chemistry Paper 1A prompts into quiz items~~ Done in `feat/exam-practice`: four calculator-free `chem-p1a-*` banks, plus Paper 1B-style banks `chem-p1b-data-practice` and `chem-p1b-experimental-skills`, and the Biology `bio-data-response-unfamiliar` bank. Topic notes don't link to these banks yet.
 - The 15 Biology topics with no questions or cards (mostly DP2): see the Biology notes Page.
 - Maths: AA papers have no multiple choice, so convert the mostly-MCQ maths banks to typed answers (roadmap H9).
 

@@ -7,7 +7,7 @@
   const PATH_BASE = location.pathname.includes("/app/") ? "../" : "";
 
   const $ = (id) => document.getElementById(id);
-  const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const esc = (window.NB && window.NB.escapeHtml) || ((s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;"));
   const shuffle = (a) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
   // Bank id = file name without folder/extension ("library/questions/bio-x.json" -> "bio-x");
@@ -31,6 +31,8 @@
 
   let session = null;
   let BANKS = {};
+  // confidence helpers (assets/confidence.js); the no-op fallback only covers a stale cached page
+  const C = (window.NB && window.NB.conf) || { tally: () => ({ sure: 0, sureRight: 0, guess: 0, guessRight: 0 }), confidentWrong: () => [], logField: () => null, describe: () => "", applyToError: (r) => r, confidentWrongErrors: () => [] };
 
 const FALLBACK_BANKS = {
     "biology-hl": { label: "Biology HL", banks: [
@@ -87,7 +89,7 @@ async function init() {
     $("q-start").addEventListener("click", startSession);
     const rbtn = $("q-review-btn");
     if (rbtn) {
-      rbtn.addEventListener("click", startReview);
+      rbtn.addEventListener("click", () => startReview(false));
       updateReviewUI();
     }
     renderLog();
@@ -115,7 +117,8 @@ async function init() {
     const data = await res.json();
     // untagged items inherit the bank's topic (else they'd all pool under "undefined").
     // Retired items (off-syllabus, kept so ids and progress stay valid) never enter a session.
-    return data.items.filter(isActive).map(it => ({ ...it, topic: it.topic || data.topic || bid, topicLabel: data.topicLabel, bank: b.label, bankId: bid }));
+    // Item-level topicLabel (mixed-topic banks such as the Paper 1A/1B sets) wins over the bank's.
+    return data.items.filter(isActive).map(it => ({ ...it, topic: it.topic || data.topic || bid, topicLabel: it.topicLabel || data.topicLabel, bank: b.label, bankId: bid, paperStyle: it.paperStyle || data.paperStyle || null, calculatorFree: !!(it.calculatorFree || data.calculatorFree) }));
   }
 
   // Deep link from a topic note: quiz.html?from=<bankId>[:id1,id2…]&from=…&label=…&n=20
@@ -176,67 +179,90 @@ async function init() {
     const prog = $("q-progress");
     prog.textContent = (session.fromLink ? session.label + " · " : "") + `Question ${session.idx + 1} / ${session.items.length}`;
     const box = $("q-box");
-    const topicTag = `<div class="q-topic">${esc(it.topicLabel || "")} · ${it.format === "mcq" ? "multiple choice" : `written — ${it.marks} marks`}</div>`;
+    const style = it.calculatorFree ? " · calculator-free practice" : (it.paperStyle === "1B" ? " · data-based practice (calculator allowed)" : "");
+    const topicTag = `<div class="q-topic">${esc(it.topicLabel || "")} · ${it.format === "mcq" ? "multiple choice" : `written — ${esc(it.marks)} marks`}${style}</div>`;
     let html = topicTag + `<div class="q-stem">${esc(it.stem)}</div>`;
     if (it.format === "mcq") {
       // data-i is always the ORIGINAL choice index, so marking, stored answers and
       // q-errors.userAnswer keep the authored indexing; only the display order changes.
       const order = choiceOrder(it);
       html += `<div class="q-choices">` + order.map((i, pos) =>
-        `<button class="choice" data-i="${i}">${String.fromCharCode(65 + pos)}. ${esc(it.choices[i])}</button>`).join("") + `</div>`;
+        `<button class="choice" data-i="${i}">${String.fromCharCode(65 + pos)}. ${esc(it.choices[i])}</button>`).join("") + `</div>` +
+        `<div class="q-conf" id="q-conf"><span class="muted">Pick an answer, then say how sure you are:</span> ` +
+        `<button id="q-sure" class="btn" disabled>Check \u2014 I'm sure</button><button id="q-guess" class="btn" disabled>Check \u2014 I'm guessing</button></div>`;
     } else {
       html += `<textarea id="q-answer" rows="4" placeholder="Work through it here, then self-mark against the markscheme…"></textarea>
-               <div class="q-actions"><button id="q-reveal" class="btn">Reveal markscheme</button></div>
+               <div class="q-actions q-conf"><span class="muted">Before you look: how sure are you of your answer?</span> <button id="q-reveal" class="btn">Reveal \u2014 I'm sure</button><button id="q-reveal-guess" class="btn">Reveal \u2014 I'm guessing</button></div>
                <div id="q-ms" class="q-ms" style="display:none">
                  <ol>${it.markscheme.map(m => `<li>${esc(m)}</li>`).join("")}</ol>
                  <p class="muted">Self-score honestly — the gap analysis only works if you don't inflate.</p>
-                 <div class="q-score">Score: <select id="q-selfscore">${Array.from({ length: (it.marks || 1) + 1 }, (_, k) => `<option value="${k}">${k} / ${it.marks}</option>`).join("")}</select></div>
+                 <div class="q-score">Score: <select id="q-selfscore">${Array.from({ length: (it.marks || 1) + 1 }, (_, k) => `<option value="${k}">${k} / ${esc(it.marks)}</option>`).join("")}</select></div>
                  <div class="q-actions"><button id="q-fc" class="btn">＋ Flashcard</button><button id="q-next" class="btn primary">Next question</button></div>
                </div>`;
     }
     box.innerHTML = html;
 
     if (it.format === "mcq") {
-      box.querySelectorAll(".choice").forEach(btn => {
+      let picked = null;
+      const choices = box.querySelectorAll(".choice");
+      choices.forEach(btn => {
         btn.addEventListener("click", () => {
-          const chosen = parseInt(btn.dataset.i, 10);
-          const right = chosen === it.answer;
-          box.querySelectorAll(".choice").forEach((b) => {
-            const i = parseInt(b.dataset.i, 10);
-            b.disabled = true;
-            if (i === it.answer) b.classList.add("correct");
-            if (i === chosen && !right) b.classList.add("wrong");
-          });
-          session.results.push({ id: it.id, topic: it.topic, topicLabel: it.topicLabel, format: "mcq", got: right ? 1 : 0, max: 1, note: it.note, tactic: it.tactic || "" });
-          if (session.review) markReviewResult(it, right);
-          else if (!right) recordError(it, { userChoice: chosen });
-          const after = document.createElement("div");
-          after.className = "q-note" + (right ? " good" : " bad");
-          after.innerHTML = (right ? "✓ Correct. " : "✗ Not quite. ") + esc(it.note || "") +
-            `<div class="q-actions"><button id="q-fc" class="btn">＋ Flashcard</button><button id="q-next" class="btn primary">Next question</button></div>`;
-          box.appendChild(after);
-          $("q-next").addEventListener("click", nextQuestion);
-    const fcBtn = document.getElementById("q-fc");
-    if (fcBtn) fcBtn.addEventListener("click", () => { fcSaveFromQuiz(it); fcBtn.textContent = "\u2713 Saved to Cards"; fcBtn.disabled = true; });
-
+          picked = parseInt(btn.dataset.i, 10);
+          choices.forEach(b => b.classList.toggle("picked", b === btn));
+          $("q-sure").disabled = false; $("q-guess").disabled = false;
         });
       });
-    } else {
-      $("q-reveal").addEventListener("click", () => {
-        $("q-ms").style.display = "";
-        $("q-reveal").disabled = true;
-    const fcBtn = document.getElementById("q-fc");
-    if (fcBtn) fcBtn.addEventListener("click", () => { fcSaveFromQuiz(it); fcBtn.textContent = "\u2713 Saved to Cards"; fcBtn.disabled = true; });
-
-        $("q-next").addEventListener("click", () => {
-          const got = parseInt($("q-selfscore").value, 10);
-          session.results.push({ id: it.id, topic: it.topic, topicLabel: it.topicLabel, format: "written", got, max: it.marks, note: "", tactic: it.tactic || "" });
-          if (session.review) markReviewResult(it, got >= it.marks);
-          else if (got < it.marks) recordError(it, { selfScore: got });
-          nextQuestion();
+      const check = (conf) => {
+        if (picked === null) return;
+        const chosen = picked;
+        const right = chosen === it.answer;
+        $("q-sure").disabled = true; $("q-guess").disabled = true;
+        $("q-conf").style.display = "none";
+        choices.forEach((b) => {
+          const i = parseInt(b.dataset.i, 10);
+          b.disabled = true;
+          b.classList.remove("picked");
+          if (i === it.answer) b.classList.add("correct");
+          if (i === chosen && !right) b.classList.add("wrong");
         });
+        session.results.push(resultFor(it, "mcq", right ? 1 : 0, 1, conf));
+        if (session.review) markReviewResult(it, right, conf);
+        else if (!right) recordError(it, { userChoice: chosen, conf });
+        const after = document.createElement("div");
+        after.className = "q-note" + (right ? " good" : " bad");
+        after.innerHTML = (right ? "\u2713 Correct. " : "\u2717 Not quite. ") + (!right && conf === "sure" ? "<strong>You were sure \u2014 this goes on your \u201cconfident but wrong\u201d list.</strong> " : "") + esc(it.note || "") +
+          `<div class="q-actions"><button id="q-fc" class="btn">\uff0b Flashcard</button><button id="q-next" class="btn primary">Next question</button></div>`;
+        box.appendChild(after);
+        $("q-next").addEventListener("click", nextQuestion);
+        const fcBtn = document.getElementById("q-fc");
+        if (fcBtn) fcBtn.addEventListener("click", () => { fcSaveFromQuiz(it); fcBtn.textContent = "\u2713 Saved to Cards"; fcBtn.disabled = true; });
+      };
+      $("q-sure").addEventListener("click", () => check("sure"));
+      $("q-guess").addEventListener("click", () => check("guess"));
+    } else {
+      let conf = null;
+      const reveal = (c) => {
+        conf = c;
+        $("q-ms").style.display = "";
+        $("q-reveal").disabled = true; $("q-reveal-guess").disabled = true;
+      };
+      $("q-reveal").addEventListener("click", () => reveal("sure"));
+      $("q-reveal-guess").addEventListener("click", () => reveal("guess"));
+      const fcBtn = document.getElementById("q-fc");
+      if (fcBtn) fcBtn.addEventListener("click", () => { fcSaveFromQuiz(it); fcBtn.textContent = "\u2713 Saved to Cards"; fcBtn.disabled = true; });
+      $("q-next").addEventListener("click", () => {
+        const got = parseInt($("q-selfscore").value, 10);
+        session.results.push(resultFor(it, "written", got, it.marks, conf));
+        if (session.review) markReviewResult(it, got >= it.marks, conf);
+        else if (got < it.marks) recordError(it, { selfScore: got, conf });
+        nextQuestion();
       });
     }
+  }
+
+  // one result per answered question; conf is "sure" | "guess" (null only for a stale page)
+  function resultFor(it, format, got, max, conf) {
+    return { id: it.id, key: errKeyFor(it), stem: String(it.stem || ""), topic: it.topic, topicLabel: it.topicLabel, format, got, max, note: format === "mcq" ? it.note : "", tactic: it.tactic || "", conf: conf || null };
   }
 
   function nextQuestion() {
@@ -276,10 +302,19 @@ async function init() {
     if (!advice.length && pct >= 70) advice.push("Solid session — move the topic green in the subject checklist and turn 2 tricky items into flashcards anyway.");
     advice.push("Missed questions are saved automatically \u2014 retry them with \u201cReview past errors\u201d in a few days.");
 
+    const t = C.tally(res);
+    const calib = (t.sure + t.guess)
+      ? `<p class="muted">Confidence: ${C.describe(t)}.</p>` : "";
+    const falseConf = C.confidentWrong(res);
+    const falseHtml = falseConf.length
+      ? `<div class="currency"><strong>Confident but wrong (${falseConf.length}):</strong> you marked these \u201csure\u201d and lost marks. They are the best ones to re-study first.<ul class="links">${falseConf.map(r => `<li>${esc(r.topicLabel || "")}${r.topicLabel ? " \u2014 " : ""}${esc(String(r.stem).slice(0, 140))}</li>`).join("")}</ul></div>`
+      : ((t.sure) ? `<p>\u2713 Everything you marked \u201csure\u201d was right.</p>` : "");
+
     $("summary").innerHTML = `
       <h3>Session summary — ${esc(session.label)}</h3>
       <div class="big">${got} / ${max} <span class="muted">(${pct}%)</span></div>
       ${session.notice ? `<p class="muted">${esc(session.notice)}</p>` : ""}
+      ${calib}${falseHtml}
       <h3>Topic breakdown</h3>
       <ul class="links">${okTopics.join("") || "<li class='muted'>—</li>"}</ul>
       ${flags.length ? `<div class="currency"><strong>Weak-topic flags:</strong><ul class="links">${flags.join("")}</ul></div>` : `<p>✓ No topic fell below 70% this session.</p>`}
@@ -287,14 +322,21 @@ async function init() {
       <h3>What to do next</h3><ul>${advice.map(a => `<li>${esc(a)}</li>`).join("")}</ul>
       <div class="q-actions"><button class="btn primary" id="q-again">New session</button></div>`;
     $("q-again").addEventListener("click", reset);
-    saveLog(pct, got, max, session.label);
+    saveLog(pct, got, max, session.label, byTopic, session.subject, C.logField(res));
     renderLog();
     updateReviewUI();
   }
 
-  function saveLog(pct, got, max, label) {
+  function saveLog(pct, got, max, label, byTopic, subject, conf) {
     const log = store.get("quizlog", []);
-    log.unshift({ date: today(), label, pct, got, max, ts: Date.now() }); // local date; ts keeps two identical sessions distinct in the sync merge
+    // per-topic breakdown {topic: {l: label, g: got, m: max}} feeds the parent weekly summary
+    const topics = {};
+    Object.entries(byTopic || {}).forEach(([k, v]) => { if (k && k !== "undefined") topics[k] = { l: v.label, g: v.got, m: v.max }; });
+    const entry = { date: today(), label, pct, got, max, ts: Date.now() }; // local date; ts keeps two identical sessions distinct in the sync merge
+    if (subject) entry.subject = subject;
+    if (Object.keys(topics).length) entry.topics = topics;
+    if (conf) entry.conf = conf; // {sure, sureRight, guess, guessRight}; absent on older entries
+    log.unshift(entry);
     store.set("quizlog", log.slice(0, 20));
   }
   function renderLog() {
@@ -302,7 +344,7 @@ async function init() {
     if (!el) return;
     const log = store.get("quizlog", []);
     el.innerHTML = log.length
-      ? log.slice(0, 8).map(e => `<li>${e.date} — ${esc(e.label)}: <strong>${e.got}/${e.max} (${e.pct}%)</strong></li>`).join("")
+      ? log.slice(0, 8).map(e => { const c = C.describe(e.conf); return `<li>${esc(e.date)} — ${esc(e.label)}: <strong>${esc(e.got)}/${esc(e.max)} (${esc(e.pct)}%)</strong>${c ? ` <span class="muted">(${esc(c)})</span>` : ""}</li>`; }).join("")
       : "<li class='muted'>No sessions yet.</li>";
   }
 
@@ -374,6 +416,8 @@ async function init() {
       existing.lastMissed = today();
       existing.resolved = false;
       existing.ts = Date.now();
+      if (extra && extra.userChoice !== undefined) existing.userAnswer = extra.userChoice; // latest wrong choice
+      C.applyToError(existing, extra && extra.conf, true);
     } else {
       errs.push({
         key, id: it.id || null, bankId: it.bankId || null, subject: session.subject, topic: it.topic || "",
@@ -384,17 +428,19 @@ async function init() {
         tactic: it.tactic || "", attempts: 1, firstMissed: today(), lastMissed: today(), resolved: false,
         ts: Date.now()
       });
+      C.applyToError(errs[errs.length - 1], extra && extra.conf, true);
     }
     store.set("q-errors", errs);
   }
 
-  function markReviewResult(it, correct) {
+  function markReviewResult(it, correct, conf) {
     const errs = store.get("q-errors", []);
     const e = errs.find(x => x.key === it.errKey);
     if (e) {
       e.attempts = (e.attempts || 0) + 1;
       e.lastAttempt = today();
       if (correct) e.resolved = true;
+      C.applyToError(e, conf, !correct);
       e.ts = Date.now();
       store.set("q-errors", errs);
     }
@@ -408,10 +454,24 @@ async function init() {
     const n = unresolvedCount();
     if (btn) btn.disabled = n === 0;
     if (c) c.textContent = n ? (n + " missed question(s) waiting for review") : "no missed questions waiting";
+    renderConfidentWrong();
   }
 
-  function startReview() {
-    const errs = getErrors().filter(e => !e.resolved);
+  // setup panel: unresolved misses that were answered "sure" (false confidence to target)
+  function renderConfidentWrong() {
+    const box = $("q-confwrong");
+    if (!box) return;
+    const list = C.confidentWrongErrors(getErrors());
+    if (!list.length) { box.innerHTML = "<p class='muted'>Nothing here. When you mark an answer \u201csure\u201d and get it wrong, it is listed here until you get it right in a review.</p>"; return; }
+    box.innerHTML = `<p class="muted">${list.length} question(s) you were sure about but got wrong. Review these first.</p>` +
+      `<ul class="links">${list.slice(0, 8).map(e => `<li>${esc(String(e.topicLabel || ""))}${e.topicLabel ? " \u2014 " : ""}${esc(String(e.stem || "").slice(0, 120))}</li>`).join("")}</ul>` +
+      (list.length > 8 ? `<p class="muted">\u2026and ${list.length - 8} more.</p>` : "") +
+      `<button id="q-confwrong-btn" class="btn">Review confident-but-wrong (${list.length})</button>`;
+    $("q-confwrong-btn").addEventListener("click", () => startReview(true));
+  }
+
+  function startReview(confidentOnly) {
+    const errs = confidentOnly === true ? C.confidentWrongErrors(getErrors()) : getErrors().filter(e => !e.resolved);
     if (!errs.length) { $("q-error").textContent = "No missed questions to review \u2014 well done!"; return; }
     const items = shuffle(errs).map(e => ({
       id: e.id, errKey: e.key, format: e.format, stem: e.stem,
@@ -419,7 +479,8 @@ async function init() {
       marks: e.marks, markscheme: e.markscheme, tactic: e.tactic,
       topic: e.topic, topicLabel: e.topicLabel, subject: e.subject || null, isReview: true
     }));
-    session = { items, idx: 0, results: [], review: true, subject: null, label: "Error review", requested: items.length, notice: "Reviewing questions you previously missed." };
+    const label = confidentOnly === true ? "Confident-but-wrong review" : "Error review";
+    session = { items, idx: 0, results: [], review: true, subject: null, label, requested: items.length, notice: confidentOnly === true ? "Reviewing questions you were sure about but got wrong." : "Reviewing questions you previously missed." };
     $("setup").style.display = "none";
     $("runner").style.display = "";
     renderQuestion();

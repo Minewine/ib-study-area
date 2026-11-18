@@ -44,6 +44,7 @@
     "res-bookmarks": { type: arrOf(isStr), label: "pinned resources" },
     "res-notes": { type: isObj, label: "resource notes" },
     "res-recent": { type: arrOf(isStr), label: "recently opened" },
+    "pp-scores": { type: Array.isArray, record: (r) => isObj(r) && isStr(r.id) && r.id !== "" && (r.deleted === true || (isStr(r.date) && typeof r.score === "number" && typeof r.max === "number")), label: "past-paper scores" },
     "fc-theme": { type: (v) => v === "dark" || v === "light", label: "theme" },
     "lib-filters": { type: isObj, label: "library filters" }
   };

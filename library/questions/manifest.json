@@ -144,6 +144,48 @@
   "label": "Course calendar 2026–28 — teaching order & milestones"
  },
  {
+  "file": "library/questions/chem-p1a-structure-1.json",
+  "subject": "chemistry-hl",
+  "subjectLabel": "Chemistry HL",
+  "label": "Paper 1A-style calculator-free practice — Structure 1"
+ },
+ {
+  "file": "library/questions/chem-p1a-structure-2-3.json",
+  "subject": "chemistry-hl",
+  "subjectLabel": "Chemistry HL",
+  "label": "Paper 1A-style calculator-free practice — Structure 2–3"
+ },
+ {
+  "file": "library/questions/chem-p1a-reactivity-1-2.json",
+  "subject": "chemistry-hl",
+  "subjectLabel": "Chemistry HL",
+  "label": "Paper 1A-style calculator-free practice — Reactivity 1–2"
+ },
+ {
+  "file": "library/questions/chem-p1a-reactivity-3.json",
+  "subject": "chemistry-hl",
+  "subjectLabel": "Chemistry HL",
+  "label": "Paper 1A-style calculator-free practice — Reactivity 3"
+ },
+ {
+  "file": "library/questions/chem-p1b-data-practice.json",
+  "subject": "chemistry-hl",
+  "subjectLabel": "Chemistry HL",
+  "label": "Paper 1B-style data practice (calculator allowed)"
+ },
+ {
+  "file": "library/questions/chem-p1b-experimental-skills.json",
+  "subject": "chemistry-hl",
+  "subjectLabel": "Chemistry HL",
+  "label": "Paper 1B-style experimental skills — uncertainties, graphs, evaluation (calculator allowed)"
+ },
+ {
+  "file": "library/questions/bio-data-response-unfamiliar.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL",
+  "label": "Data response & extended answers — unfamiliar contexts (A1–A2, B1–B2, C1.1, D2.3)"
+ },
+ {
   "file": "library/questions/ia-practical-skills.json",
   "subject": "ia-skills",
   "subjectLabel": "Coursework & practical skills",

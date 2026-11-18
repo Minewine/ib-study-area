@@ -18,6 +18,15 @@
 (function () {
   "use strict";
   const NB = window.NB = window.NB || {};
+  // NB.escapeHtml: the one escaper for any string built into innerHTML — text AND
+  // attribute contexts (escapes & < > " '). Content (questions, cards, notes) is plain
+  // text by design, so everything content- or user-derived goes through it.
+  if (!NB.escapeHtml) {
+    NB.escapeHtml = function (s) {
+      return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+    };
+  }
   if (NB.store) return;
 
   const SCHEMA_KEY = "nb-schema";
@@ -33,7 +42,7 @@
     "q-userbanks", "fc-userdecks", "fc-state", "fc-user",
     "fc-deleted", "fc-edits", "quizlog", "q-errors",
     "tok-objects", "ee-ideas", "io-issues", "ia-debriefs",
-    "res-bookmarks", "res-notes", "res-recent", "cw-progress"
+    "res-bookmarks", "res-notes", "res-recent", "pp-scores", "cw-progress"
   ];
   // never synced, never in backups: credentials, sync bookkeeping, caches, safety copies
   const LOCAL_ONLY = ["nb-token", "nb-api", DIRTY_KEY, "nb-sync", SCHEMA_KEY, "fc-seedids"];
@@ -274,6 +283,19 @@
         out[sec] = m;
       });
       return out;
+    },
+    // past-paper scores [ {id, date, subject, paper, score, max, notes, ts} | {id, deleted, ts} ]:
+    // union by id, newest ts wins (a deletion is a newer tombstone, so it isn't undone by an older copy)
+    "pp-scores": function (a, b) {
+      if (!Array.isArray(a)) return b; if (!Array.isArray(b)) return a;
+      const byId = new Map();
+      b.forEach(r => { if (r && r.id) byId.set(r.id, r); });
+      a.forEach(r => {
+        if (!r || !r.id) return;
+        const cur = byId.get(r.id);
+        if (!cur || (r.ts || 0) > (cur.ts || 0)) byId.set(r.id, r);
+      });
+      return Array.from(byId.values());
     }
   };
 

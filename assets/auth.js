@@ -51,7 +51,7 @@
   let syncing = false;
   let legacyServer = null;
 
-  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+  function esc(s) { return window.NB && window.NB.escapeHtml ? window.NB.escapeHtml(s) : String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;"); }
 
   function status(text, cls) {
     const s = document.getElementById("auth-status");
@@ -132,7 +132,7 @@
   }
 
   /* Merge the server copy into this device. Never overwrites newer local work:
-     - fc-state / q-errors / quizlog merge per record (newest wins, nothing dropped);
+     - fc-state / q-errors / quizlog / pp-scores merge per record (newest wins, nothing dropped);
      - any other key or checklist row this device changed since its last sync
        (persisted nb-dirty marker) keeps the local value and is pushed;
      - untouched keys take the server value (so deletions made elsewhere stick);

@@ -50,6 +50,8 @@ Stack: static HTML, vanilla JS, JSON content, browser localStorage, one PHP file
   - coursework planner (`cw-progress`: per-item ticks, stage notes and her own dates, merged per record);
   - `res-*`;
   - user cards and banks (`fc-user`, `fc-userdecks`, `q-userbanks`, `fc-deleted`, `fc-edits`).
+  - `pp-scores` (past-paper score log on the Quiz page; records keyed by `id`, deletions kept as `{id, deleted, ts}` tombstones, merged per record by newest `ts`).
+  - Confidence ratings: quiz results carry `conf` (`sure`/`guess`); `quizlog` entries may have a `conf` tally and `q-errors` records `lastConf`/`sureWrong`. Older records without these fields stay valid.
 - **When logged in, the server holds one JSON state file per user.** Every save:
   - takes a per-user lock;
   - copies the previous version to `state/history/<user>/` (newest 30 kept);

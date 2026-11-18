@@ -54,7 +54,7 @@
   });
   const statsBody = document.getElementById('stats-body');
   if (statsBody) {
-    const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const esc = (window.NB && window.NB.escapeHtml) || ((s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;"));
     const d = new Date();
     const today = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
     let html = '';
@@ -65,7 +65,7 @@
         const raw = String(e.label || '');
         const label = raw.length > 30 ? raw.slice(0, 29) + '…' : raw;
         pcts.push(e.pct);
-        return '<div class="stat-row"><span class="stat-date">' + esc((e.date || '').slice(5)) + '</span><span class="stat-label">' + esc(label) + '</span><span class="bar mini"></span><span class="pct">' + e.pct + '%</span></div>';
+        return '<div class="stat-row"><span class="stat-date">' + esc((e.date || '').slice(5)) + '</span><span class="stat-label">' + esc(label) + '</span><span class="bar mini"></span><span class="pct">' + esc(e.pct) + '%</span></div>';
       }).join('');
     } else {
       html += '<p class="muted">No quiz sessions yet — run one in the practice app.</p>';

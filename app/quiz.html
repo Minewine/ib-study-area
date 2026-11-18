@@ -3,17 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- security: see server/deploy-notes.md "Security headers" -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://rametric.com https://www.rametric.com http://localhost:* http://127.0.0.1:*; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Quiz — Practice</title>
 <link rel="stylesheet" href="../assets/style.css">
 <style>
 .q-topic{color:var(--muted);font-size:.85rem;margin-bottom:.4rem}
-.q-stem{font-size:1.05rem;font-weight:600;margin:.3rem 0 .8rem}
+.q-stem{font-size:1.05rem;font-weight:600;margin:.3rem 0 .8rem;white-space:pre-line}
 .q-choices{display:grid;gap:.45rem}
 .choice{text-align:left;padding:.55rem .7rem;border:1px solid var(--line);border-radius:10px;background:#fff;font:inherit;cursor:pointer}
 .choice:hover{border-color:var(--accent)}
 .choice.correct{background:#e9f6ee;border-color:#2e8b57}
 .choice.wrong{background:#fdeaea;border-color:#c23b3b}
 .choice:disabled{cursor:default;opacity:.92}
+.choice.picked{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent) inset}
+.q-conf{margin-top:.7rem;display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
+.pp-error{color:#c23b3b;font-size:.9rem;min-height:1.1rem}
+.pp-table{width:100%;border-collapse:collapse;margin-top:.6rem;font-size:.92rem}
+.pp-table th,.pp-table td{text-align:left;padding:.3rem .4rem;border-bottom:1px solid var(--line);vertical-align:top}
+.setup-grid input{width:100%;padding:.4rem;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff;box-sizing:border-box}
 textarea{width:100%;font:inherit;padding:.5rem;border:1px solid var(--line);border-radius:10px;margin-top:.3rem}
 .q-ms{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:.7rem .9rem;margin-top:.6rem}
 .q-ms ol{margin:.2rem 0 .5rem 1.2rem}
@@ -45,14 +54,15 @@ textarea{width:100%;font:inherit;padding:.5rem;border:1px solid var(--line);bord
 
   <section class="card" id="setup">
     <h3>Set up a session</h3>
-    <p class="muted">Pick a subject, topic and format. Sessions run <strong>20 questions</strong> (10 for a quick pass): MCQs are marked instantly; written answers are self-marked against the markscheme, and the summary flags weak topics with study advice.</p>
+    <p class="muted">Pick a subject, topic and format. Sessions run <strong>20 questions</strong> (10 for a quick pass): MCQs are marked instantly; written answers are self-marked against the markscheme, and the summary flags weak topics with study advice. Before each answer is revealed you say whether you are <strong>sure</strong> or <strong>guessing</strong>, so the summary can show where you felt confident but were wrong.</p>
+    <p class="muted">Chemistry HL also has <strong>Paper 1A-style calculator-free practice</strong> (multiple choice, no calculator) and <strong>Paper 1B-style data practice</strong> (short data-based questions). These are original practice questions written for the 2025 syllabus. They are not IB past-paper questions and do not predict what will be on the exam.</p>
     <div class="setup-grid">
       <div><label for="q-subject">Subject</label><select id="q-subject"></select></div>
       <div><label for="q-topic">Topic</label><select id="q-topic"></select></div>
       <div><label for="q-format">Format</label>
         <select id="q-format">
           <option value="mixed">Mixed (MCQ + written)</option>
-          <option value="mcq">MCQ only (Paper 1A style)</option>
+          <option value="mcq">MCQ only (multiple choice)</option>
           <option value="written">Written only (mark-scheme marking)</option>
         </select></div>
       <div><label for="q-length">Session length</label>
@@ -62,6 +72,8 @@ textarea{width:100%;font:inherit;padding:.5rem;border:1px solid var(--line);bord
     <button id="q-start" class="btn primary">Start session</button>
     <button id="q-review-btn" class="btn">Review past errors</button>
     <span id="q-review-count" class="muted"></span>
+    <h3>Confident but wrong</h3>
+    <div id="q-confwrong"></div>
     <h3>Recent sessions</h3>
     <ul class="links" id="q-log"></ul>
     <h3>Extending the banks</h3>
@@ -75,11 +87,18 @@ textarea{width:100%;font:inherit;padding:.5rem;border:1px solid var(--line);bord
 
   <section class="card" id="summary" style="display:none"></section>
 
+  <section class="card" id="papers">
+    <h3>Past-paper scores</h3>
+    <div id="pp-panel"></div>
+  </section>
+
   <p><a href="../plan.html">← How sessions fit the weekly plan</a></p>
 </main>
 <footer>Private family study area · exams <strong>May 2028</strong> · keep this site and its library non-public</footer>
-<script src="../assets/store.js?v=2"></script>
-<script src="../assets/quiz-engine.js?v=13"></script>
-<script src="../assets/auth.js?v=7"></script>
+<script src="../assets/store.js?v=4"></script>
+<script src="../assets/confidence.js?v=1"></script>
+<script src="../assets/quiz-engine.js?v=16"></script>
+<script src="../assets/papers.js?v=1"></script>
+<script src="../assets/auth.js?v=9"></script>
 </body>
 </html>
