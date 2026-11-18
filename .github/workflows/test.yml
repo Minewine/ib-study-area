@@ -1,0 +1,33 @@
+# GitHub Actions workflow — copy to .github/workflows/test.yml to enable.
+# (Not committed there: the token used to push this branch lacks the 'workflow' scope.)
+name: tests
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: PHP (runner image ships php-cli)
+        run: php -v
+      - name: Python tests (incl. PHP API tests against php -S)
+        run: uv run pytest -q
+      - name: JavaScript tests
+        run: node --test tests/js/*.test.js
+      - name: Syntax checks
+        run: |
+          for f in assets/*.js; do node --check "$f"; done
+          for f in server/*.php tools/*.php; do php -l "$f"; done
+      - name: Content validator
+        run: python3 -I tools/validate_content.py
