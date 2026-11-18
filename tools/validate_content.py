@@ -85,6 +85,8 @@ for b in bank_files:
             )
         if not it.get("stem"):
             fails.append(f"quiz bank {b.name} item {it.get('id')}: missing stem")
+        if "retired" in it and (it["retired"] is not True or not it.get("retiredReason")):
+            fails.append(f"quiz bank {b.name} item {it.get('id')}: 'retired' must be true and come with a 'retiredReason'")
     # exact duplicates (same stem, choices and key) inflate counts and topic stats
     seen_items = {}
     for it in d.get("items", []):
@@ -171,6 +173,8 @@ for d in deck_files:
             fails.append(f"deck {d.name} card {cid}: front and back are both required")
         if c.get("type") not in ("qa", "term"):
             fails.append(f"deck {d.name} card {cid}: type must be 'qa' or 'term'")
+        if "retired" in c and (c["retired"] is not True or not c.get("retiredReason")):
+            fails.append(f"deck {d.name} card {cid}: 'retired' must be true and come with a 'retiredReason'")
     for text in strings_in(data):
         for ch, why in CORRUPT_CHARS.items():
             if ch in text:
@@ -204,6 +208,17 @@ def ids_in(path, key):
     if err or not isinstance(data, dict):
         return None
     return {x.get("id") for x in data.get(key, []) if isinstance(x, dict)}
+
+
+_retired_cache = {}
+
+
+def retired_ids(path, key):
+    if path not in _retired_cache:
+        data, err = load(path)
+        items = data.get(key, []) if not err and isinstance(data, dict) else []
+        _retired_cache[path] = {x.get("id") for x in items if isinstance(x, dict) and x.get("retired") is True}
+    return _retired_cache[path]
 
 
 notes_dir = ROOT / "library" / "topic-notes"
@@ -245,6 +260,8 @@ for f in note_files:
             for x in ln.get(idkey) or []:
                 if x not in id_cache[path]:
                     fails.append(f"note {rel}: linked id '{x}' not found in {ln['file']}")
+                elif x in retired_ids(path, listkey):
+                    warns.append(f"note {rel}: links retired id '{x}' in {ln['file']} (it is never served)")
     for text in strings_in(n):
         if PRIVATE_PATH.search(text):
             fails.append(f"note {rel}: mentions a local path: {text[:60]!r}")

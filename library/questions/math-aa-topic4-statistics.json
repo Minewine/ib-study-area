@@ -39,7 +39,7 @@
     {"id": "s412", "format": "mcq", "topic": "statistics-probability-4-1-to-4-6", "stem": "Given P(A \u2229 B) = 0.12 and P(B) = 0.4, the conditional probability P(A | B) is:",
      "choices": ["0.3", "0.12", "0.48", "0.28"], "answer": 0,
      "note": "P(A | B) = P(A\u2229B)/P(B) = 0.12/0.4 = 0.3. Read it as: the chance of A given that B has happened."},
-    {"id": "s413", "format": "mcq", "topic": "statistics-probability-4-1-to-4-6", "stem": "The number of ways of choosing 3 students from a group of 8 is:",
+    {"id": "s413", "retired": true, "retiredReason": "AA HL only (counting principles and combinations, AHL 1.10)", "format": "mcq", "topic": "statistics-probability-4-1-to-4-6", "stem": "The number of ways of choosing 3 students from a group of 8 is:",
      "choices": ["24", "56", "336", "512"], "answer": 1,
      "note": "Combinations: 8C3 = 8!/(3!5!) = 56. Order doesn't matter \u2192 combinations, not permutations (that would be 336)."},
     {"id": "s414", "format": "mcq", "topic": "statistics-probability-4-1-to-4-6", "stem": "5C2 (5 choose 2) equals:",

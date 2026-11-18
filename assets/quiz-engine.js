@@ -25,6 +25,10 @@
     return shuffle(idx);
   }
 
+  // "retired": true marks an item that stays in its bank (so its id, q-errors records and
+  // note links remain valid) but is no longer served in new sessions.
+  const isActive = (it) => !(it && it.retired === true);
+
   let session = null;
   let BANKS = {};
   // confidence helpers (assets/confidence.js); the no-op fallback only covers a stale cached page
@@ -107,13 +111,14 @@ async function init() {
 
   async function bankItems(b) {
     const bid = bankIdFor(b);
-    if (b.inline) return (b.items || []).map(it => ({ ...it, topic: it.topic || b.topic || bid, topicLabel: it.topicLabel || b.topicLabel, bank: b.label, bankId: bid }));
+    if (b.inline) return (b.items || []).filter(isActive).map(it => ({ ...it, topic: it.topic || b.topic || bid, topicLabel: it.topicLabel || b.topicLabel, bank: b.label, bankId: bid }));
     const res = await fetch(PATH_BASE + b.file + "?cb=" + Date.now(), { cache: "no-store" });
     if (!res.ok) throw new Error(res.status + " " + b.file);
     const data = await res.json();
-    // untagged items inherit the bank's topic (else they'd all pool under "undefined")
-    // item-level topicLabel (mixed-topic banks such as the Paper 1A/1B sets) wins over the bank's
-    return data.items.map(it => ({ ...it, topic: it.topic || data.topic || bid, topicLabel: it.topicLabel || data.topicLabel, bank: b.label, bankId: bid, paperStyle: it.paperStyle || data.paperStyle || null, calculatorFree: !!(it.calculatorFree || data.calculatorFree) }));
+    // untagged items inherit the bank's topic (else they'd all pool under "undefined").
+    // Retired items (off-syllabus, kept so ids and progress stay valid) never enter a session.
+    // Item-level topicLabel (mixed-topic banks such as the Paper 1A/1B sets) wins over the bank's.
+    return data.items.filter(isActive).map(it => ({ ...it, topic: it.topic || data.topic || bid, topicLabel: it.topicLabel || data.topicLabel, bank: b.label, bankId: bid, paperStyle: it.paperStyle || data.paperStyle || null, calculatorFree: !!(it.calculatorFree || data.calculatorFree) }));
   }
 
   // Deep link from a topic note: quiz.html?from=<bankId>[:id1,id2…]&from=…&label=…&n=20
@@ -486,6 +491,10 @@ async function init() {
     $("setup").style.display = "";
     session = null;
   }
+
+  // test hook (node --test loads this file in a vm)
+  window.NB = window.NB || {};
+  window.NB.quizEngine = { isActive, bankItems };
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();

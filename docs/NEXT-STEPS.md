@@ -21,28 +21,27 @@ Merge **PR #1 → PR #2 → PR #3**, in that order (each one builds on the previ
 - 28 near-duplicate question pairs: keep or remove (list in PR #1).
 - Whether to keep the Maths course-calendar quiz.
 
-## 5. Content fixes (small, ready to do)
-- **Chemistry bond energies that don't match the current data booklet:**
-  - `periodicity-energetics-review-11`: C–H 412 → 414, C=O 743 → 804, O=O 496 → 498;
-  - `review-22`: C–H 412 → 414;
-  - `review-12`: ΔHf(CH₄) −75 → −74.
-- **"Half-filled stability" wording to correct:** `fc-chem-p-09`, `p21`, `review-21`.
-- **Maths items that are off-syllabus for AA SL** (remove, or relabel as extension):
-  - m03, mnx6, fc-math-n-07, fc-math-st-05 (percentage error, which is an AI topic);
-  - s413, tf16, fc-math-tf-13 (HL only).
-- **Maths wording:** tf07 should read "horizontal stretch, scale factor 1/2".
+## 5. Content fixes
+Done in the `fix/content-corrections` PR (Nov 2026):
+- [x] **Chemistry bond energies** now match the v1.1 data booklet, with answers recomputed: `periodicity-energetics-review-11` (C–H 414, C=O 804, O=O 498 → −808 kJ mol⁻¹), `review-22` (C–H 414 → −124 kJ mol⁻¹), `review-12` (ΔHf(CH₄) −74 → −892 kJ mol⁻¹).
+- [x] **"Half-filled stability" wording** replaced with the pairing-repulsion explanation in `fc-chem-p-09`, `p21`, `review-21` (also the Hund's-rule note in the Structure 3.1 bank and the Cr note in `review-03`).
+- [x] **Off-syllabus Maths items** are now `"retired": true` (with a `retiredReason`). They stay in their files so ids and progress remain valid, but new quiz and card sessions skip them: m03, mnx6, fc-math-n-07, fc-math-st-05 (AI percentage error); s413 (AHL 1.10 counting), tf16, fc-math-tf-13 (AHL 2.14 odd/even).
+- [x] **tf07** reads "horizontal stretch with scale factor ½".
+- [x] **`wp01`**: left as it is on purpose. Progress is keyed `bank#id`, so the two `wp01` items no longer collide; renaming one would orphan any existing q-errors record. The validator warning stays.
+
+Still open:
 - **Maths checklist:** `math-aa-sl.html` uses textbook numbering, not IB numbering. Rebuild it from `library/syllabus/maths-aa-sl.json`.
-- The duplicate quiz id `wp01` in two Biology banks: rename it with a q-errors key migration, or leave it as it is (the validator warns about it).
+- Missed-question review uses the copy saved when the question was missed, so an old miss of a corrected or retired item still shows its old text until it's answered correctly.
 
 ## 6. Fill the practice gaps the notes exposed
-- Flashcards for **B2.1–B2.3** (membranes, organelles, cell specialisation). She studies these next, and they have questions but no cards.
-- Questions and cards for **Chemistry S1.1** (her first topic has none).
+- ~~Flashcards for **B2.1–B2.3**~~ Done (Nov 2026): 52 cards in `bio-b2-1/2/3-*.json`, linked from the notes.
+- ~~Questions for **Chemistry S1.1**~~ Cards done (Nov 2026): 18 in `chem-s1-1-particulate-nature.json`. Questions: 8 calculator-free S1.1 items in `chem-p1a-structure-1` and one data item in `chem-p1b-data-practice` (`feat/exam-practice`).
 - ~~Turn the Chemistry Paper 1A prompts into quiz items~~ Done in `feat/exam-practice`: four calculator-free `chem-p1a-*` banks, plus Paper 1B-style banks `chem-p1b-data-practice` and `chem-p1b-experimental-skills`, and the Biology `bio-data-response-unfamiliar` bank. Topic notes don't link to these banks yet.
 - The 15 Biology topics with no questions or cards (mostly DP2): see the Biology notes Page.
 - Maths: AA papers have no multiple choice, so convert the mostly-MCQ maths banks to typed answers (roadmap H9).
 
 ## 7. Notes still to write
-- **Maths AA SL: 27 subtopics remain:** 1.2–1.4, 1.6, 1.8, 1.9, 2.8, 3.7, 3.8, 4.1–4.12, 5.5–5.7, 5.9–5.11 (taught from March 2027). Write them before each unit and import them with `tools/import_topic_notes.py`.
+- ~~**Maths AA SL: 27 subtopics remain**~~ Done (Nov 2026): all 51 SL subtopics now have draft notes. Have her teacher check them before each unit. Still missing practice items for 1.6 (proof), 4.5, 4.7 and 4.10 (see each note's `links.gap`).
 - **History, English, French:** later. Waiting on ISL's History topics and case studies and the English and French work lists.
 - Have teachers check the flagged details: Biology statins and voltage-gated channels; local case studies; Chemistry codes, once the official guide is supplied (`syllabusFlags`).
 
@@ -58,3 +57,8 @@ Merge **PR #1 → PR #2 → PR #3**, in that order (each one builds on the previ
   - escape the remaining `innerHTML` sink in `practice.html` (missed-question rendering);
   - per-IP plus per-account brute-force limits.
 - **Known sync limits:** if two devices edit the same list blob, the last one wins (the server history keeps the other version). A device's first sync after the upgrade unions both sides, so an item deleted elsewhere can come back once.
+
+## 9. "Today" panel (practice home page)
+- Built in the `feat/today-plan` PR: due cards, a 6-question quiz on the weakest topic, and this week's class units from `library/class-schedule.json`.
+- **Check the schedule with her once a month.** The dates are estimates made from the ISL course calendars, and editing them is one JSON line per unit.
+- Add the **Year 13 (2027-28)** units once ISL publishes the DP2 calendars (the current Maths one is based on an older year).

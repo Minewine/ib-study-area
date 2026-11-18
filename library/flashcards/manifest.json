@@ -50,6 +50,11 @@
   "subjectLabel": "Chemistry HL"
  },
  {
+  "file": "library/flashcards/chem-s1-1-particulate-nature.json",
+  "subject": "chemistry-hl",
+  "subjectLabel": "Chemistry HL"
+ },
+ {
   "file": "library/flashcards/math-number-algebra.json",
   "subject": "math-aa-sl",
   "subjectLabel": "Math AA SL"
@@ -81,6 +86,21 @@
  },
  {
   "file": "library/flashcards/bio-ecology-adaptations-populations.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL"
+ },
+ {
+  "file": "library/flashcards/bio-b2-1-membranes-transport.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL"
+ },
+ {
+  "file": "library/flashcards/bio-b2-2-organelles.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL"
+ },
+ {
+  "file": "library/flashcards/bio-b2-3-cell-specialization.json",
   "subject": "biology-hl",
   "subjectLabel": "Biology HL"
  },
