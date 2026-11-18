@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- security: see server/deploy-notes.md "Security headers" -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://rametric.com https://www.rametric.com http://localhost:* http://127.0.0.1:*; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Upload — Practice</title>
 <link rel="stylesheet" href="../assets/style.css">
 <style>
@@ -123,7 +126,7 @@
 </main>
 <footer>Private family use · exams <strong>May 2028</strong> · keep this app and its content non-public</footer>
 
-<script src="../assets/store.js?v=1"></script>
+<script src="../assets/store.js?v=2"></script>
 <script src="../assets/backup.js?v=1"></script>
 <script>
 (function () {
@@ -227,11 +230,11 @@
     const decks = store.get(FDECKS, []);
     const ql = document.getElementById("quiz-list");
     ql.innerHTML = banks.length ? banks.map((b, i) =>
-      `<div class="fc-manage-item"><span class="name"><strong>${esc(b.name)}</strong> · ${esc(b.subject)} · ${b.items.length} items</span><button class="fc-mini" data-kind="quiz" data-i="${i}" data-act="export">Export .json</button><button class="fc-mini" data-kind="quiz" data-i="${i}" data-act="del">Delete</button></div>`).join("")
+      `<div class="fc-manage-item"><span class="name"><strong>${esc(b.name)}</strong> · ${esc(b.subject)} · ${esc(b.items.length)} items</span><button class="fc-mini" data-kind="quiz" data-i="${i}" data-act="export">Export .json</button><button class="fc-mini" data-kind="quiz" data-i="${i}" data-act="del">Delete</button></div>`).join("")
       : "<p class='muted'>None uploaded yet.</p>";
     const dl = document.getElementById("deck-list");
     dl.innerHTML = decks.length ? decks.map((d, i) =>
-      `<div class="fc-manage-item"><span class="name"><strong>${esc(d.name)}</strong> · ${esc(d.subject)} · ${d.cards.length} cards</span><button class="fc-mini" data-kind="deck" data-i="${i}">Delete</button></div>`).join("")
+      `<div class="fc-manage-item"><span class="name"><strong>${esc(d.name)}</strong> · ${esc(d.subject)} · ${esc(d.cards.length)} cards</span><button class="fc-mini" data-kind="deck" data-i="${i}">Delete</button></div>`).join("")
       : "<p class='muted'>None uploaded yet.</p>";
     ql.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
       const arr = store.get(QBANKS, []);
@@ -308,7 +311,7 @@
   // ---------- quiz item editor ----------
   let editIdx = -1; // index of the item being edited, -1 = add mode
 
-  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+  function esc(s) { return window.NB && window.NB.escapeHtml ? window.NB.escapeHtml(s) : String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;"); }
   function bankLabel(b) { return b.label || b.topicLabel || b.name; }
   function editorBank() { return store.get(QBANKS, [])[parseInt(document.getElementById("ed-bank").value)]; }
 
@@ -455,6 +458,6 @@
   renderManage();
 })();
 </script>
-<script src="../assets/auth.js?v=7"></script>
+<script src="../assets/auth.js?v=8"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@
   const PATH_BASE = location.pathname.includes("/app/") ? "../" : "";
 
   const $ = (id) => document.getElementById(id);
-  const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const esc = (window.NB && window.NB.escapeHtml) || ((s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;"));
   const shuffle = (a) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
   // Bank id = file name without folder/extension ("library/questions/bio-x.json" -> "bio-x");
@@ -176,7 +176,7 @@ async function init() {
     const prog = $("q-progress");
     prog.textContent = (session.fromLink ? session.label + " · " : "") + `Question ${session.idx + 1} / ${session.items.length}`;
     const box = $("q-box");
-    const topicTag = `<div class="q-topic">${esc(it.topicLabel || "")} · ${it.format === "mcq" ? "multiple choice" : `written — ${it.marks} marks`}</div>`;
+    const topicTag = `<div class="q-topic">${esc(it.topicLabel || "")} · ${it.format === "mcq" ? "multiple choice" : `written — ${esc(it.marks)} marks`}</div>`;
     let html = topicTag + `<div class="q-stem">${esc(it.stem)}</div>`;
     if (it.format === "mcq") {
       // data-i is always the ORIGINAL choice index, so marking, stored answers and
@@ -190,7 +190,7 @@ async function init() {
                <div id="q-ms" class="q-ms" style="display:none">
                  <ol>${it.markscheme.map(m => `<li>${esc(m)}</li>`).join("")}</ol>
                  <p class="muted">Self-score honestly — the gap analysis only works if you don't inflate.</p>
-                 <div class="q-score">Score: <select id="q-selfscore">${Array.from({ length: (it.marks || 1) + 1 }, (_, k) => `<option value="${k}">${k} / ${it.marks}</option>`).join("")}</select></div>
+                 <div class="q-score">Score: <select id="q-selfscore">${Array.from({ length: (it.marks || 1) + 1 }, (_, k) => `<option value="${k}">${k} / ${esc(it.marks)}</option>`).join("")}</select></div>
                  <div class="q-actions"><button id="q-fc" class="btn">＋ Flashcard</button><button id="q-next" class="btn primary">Next question</button></div>
                </div>`;
     }
@@ -302,7 +302,7 @@ async function init() {
     if (!el) return;
     const log = store.get("quizlog", []);
     el.innerHTML = log.length
-      ? log.slice(0, 8).map(e => `<li>${e.date} — ${esc(e.label)}: <strong>${e.got}/${e.max} (${e.pct}%)</strong></li>`).join("")
+      ? log.slice(0, 8).map(e => `<li>${esc(e.date)} — ${esc(e.label)}: <strong>${esc(e.got)}/${esc(e.max)} (${esc(e.pct)}%)</strong></li>`).join("")
       : "<li class='muted'>No sessions yet.</li>";
   }
 
