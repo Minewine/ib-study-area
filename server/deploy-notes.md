@@ -95,6 +95,16 @@ over plain HTTP.
   used by non-rametric.com origins (localhost study site, LAN) where cookies can't cross.
 - `~/nevaib-data/login-fails.json` — brute-force guard (auto-clears on success).
 
+- `~/nevaib-data/state/history/<user>/<UTC>-r<rev>.json` — the previous 30 versions of each
+  state file (written by every save; files are copies of the state file before the save).
+- `~/nevaib-data/state/<user>.json.lock` — empty lock file used to serialise saves.
+
+**Per-user export (no PHP upload needed):** logged in, open
+`https://rametric.com/nevaib/api/api.php?action=export` — downloads `{state, rev, history list}` for
+that account; `?action=history` lists previous versions and `?action=history&name=<file>` returns one.
+The Cards page backup file can restore an export (it reads `nevaib-server-export`). This covers the
+student's data; `users.json`/`tokens.json` still need the recipe below.
+
 **Backup recipe (verified 2026-11-15):** the cPanel **File Manager UI is disabled** on this
 account (and `FileMan` UAPI + most file APIs are stripped), so the documented
 "cPanel → download the folder" route does not exist. Working path: upload a

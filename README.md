@@ -17,7 +17,7 @@ Status snapshot: **2026-11-15** — hosted at **rametric.com/nevaib (live, verif
 | Core | `core.html` | TOK (exhibition 33% / essay 67%), **new EE guide** (first assessment 2027), CAS + TOK exhibition object shortlist (tracked, synced) |
 | EE workspace | `ee.html` | Idea-log shortlist (tracked, synced), one-page proposal checklist mapped to the new-EE criteria, DP1 timeline, reflection-session guidance |
 | Quiz engine | `quiz.html` | 20-question sessions, filtered by subject/topic/format; instant MCQ marking; written answers self-marked against markschemes; weak-topic flags + tactics; "＋ Flashcard" button on every answer |
-| Flashcards | `flashcards.html` | Leitner spaced repetition (1/2/4/8/16-day boxes), flip UI, keyboard shortcuts, dark mode, editor, export/import |
+| Flashcards | `flashcards.html` | Leitner spaced repetition (1/2/4/8/16-day boxes), flip UI, keyboard shortcuts, dark mode, editor, full backup / restore |
 | Practice | `practice.html` | Mock protocol, printable error log, missed-question tracker, paper-alignment table per subject, Dec–Jan mock schedule, manifest-driven papers list |
 | Library | `library.html` | Filterable/searchable browser over every library PDF (notes · official · school · papers) from `library/library-manifest.json`; ★ pin resources (dashboard card), private per-resource notes, recently-opened tracking — all synced |
 | IA & EE | `ia.html` | IA/EE criteria per subject, milestone timeline, **practice-IA debrief notes** (Nov hydrogen-peroxide + Jan beetroot/osmosis — saved + synced) |
@@ -32,11 +32,11 @@ Content totals: **127 PDFs** in the library (indexed by `library/library-manifes
 
 - **Static HTML + vanilla JS.** No framework, no dependencies, no build step.
 - **Data** = JSON files in `library/` (question banks, flashcard decks, deadlines array).
-- **State** = browser `localStorage` (checklist ticks, SRS boxes, quiz logs, missed questions, this-week items) — synced across devices when logged in (merged per record for SRS boxes and missed questions); logged out it stays on the device, and Export/Import on the Cards page moves it.
+- **State** = browser `localStorage` (checklist ticks, SRS boxes, quiz logs, missed questions, this-week items) — synced across devices when logged in (merged per record for SRS boxes and missed questions); logged out it stays on the device and syncs at the next login. Full backup / restore (merge by default) on the Cards page; the server keeps the last 30 versions.
 - **Python 3** used only for one-off scripts (extraction, site generation) — always run with `-I`.
 - **Must be served over HTTP** for the quiz/flashcards to load their JSON (`fetch()` fails on `file://`):
   ```bash
-  python3 -m http.server 8017 --bind 0.0.0.0 --directory ~/Projects/ibsystem
+  ./dev.sh start      # http://127.0.0.1:8018 — site + local API; ./dev.sh help for test/validate/build/deploy
   ```
 - Deployment + privacy (basic auth) → [DEPLOY.md](DEPLOY.md).
 
@@ -58,7 +58,9 @@ ibsystem/
 │   ├── style.css             ← site-wide styles
 │   ├── app.js                ← checklists, progress bars, countdown, this-week
 │   ├── quiz-engine.js        ← quiz sessions + flashcard hook
-│   ├── flashcards.js         ← SRS engine + editor + export/import
+│   ├── store.js              ← shared storage layer (NB.store): schema, migrations, sync markers, snapshots
+│   ├── backup.js             ← full backup + validated, merge-by-default restore
+│   ├── flashcards.js         ← SRS engine + editor
 │   ├── lists.js              ← tracked lists + debrief notes (synced blobs)
 │   ├── library.js            ← library browser: manifest filter/search, pins/notes/recent tracking
 │   └── deadlines.js          ← deadline data + timeline renderers

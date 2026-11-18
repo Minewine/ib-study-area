@@ -1,0 +1,8 @@
+{
+  "name": "nevaib-e2e",
+  "private": true,
+  "description": "Headless-Chrome end-to-end checks (test-only; the app itself has no dependencies). Run: ./dev.sh e2e",
+  "devDependencies": {
+    "puppeteer-core": "^23.11.1"
+  }
+}

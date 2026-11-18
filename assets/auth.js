@@ -17,14 +17,14 @@
   const LOCAL_HOST = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
   // dev-only API override (?nbapi=<url> sets, ?nbapi= resets) — honoured on
   // localhost pages only so a crafted link can't redirect logins elsewhere
+  if (qsApi !== null && LOCAL_HOST) { // applied before API is read, so it works on the first load
+    if (qsApi === "") localStorage.removeItem("nb-api");
+    else if (qsApi !== localStorage.getItem("nb-api")) localStorage.setItem("nb-api", qsApi);
+  }
   const API = (LOCAL_HOST && localStorage.getItem("nb-api")) ||
     (/^(www\.)?rametric\.com$/.test(location.hostname)
       ? "/nevaib/api/api.php"
       : "https://rametric.com/nevaib/api/api.php");
-  if (qsApi !== null && LOCAL_HOST) {
-    if (qsApi === "") localStorage.removeItem("nb-api");
-    else if (qsApi !== localStorage.getItem("nb-api")) localStorage.setItem("nb-api", qsApi);
-  }
 
   const NB = window.NB || {};
   const S = NB.store;   // assets/store.js — must load first
