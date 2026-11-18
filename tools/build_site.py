@@ -333,7 +333,7 @@ def page(fname, title, content_html, active):
         h = h.replace("</nav>", '  <span id="auth-slot"></span>\n</nav>', 1)
         h = h.replace(
             '<script src="assets/app.js?v=2"></script>',
-            '<script src="assets/app.js?v=2"></script>\n<script src="assets/auth.js?v=5"></script>',
+            '<script src="assets/app.js?v=2"></script>\n<script src="assets/auth.js?v=6"></script>',
             1,
         )
     if fname in EXTRA_SCRIPTS:

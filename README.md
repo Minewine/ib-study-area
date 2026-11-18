@@ -26,13 +26,13 @@ Status snapshot: **2026-11-15** — hosted at **rametric.com/nevaib (live, verif
 | Reference | `quick-reference.html` | Formula/data booklets, command terms, GDC exam-mode, citation |
 | Redirect | `sixth-subject.html` | The sixth subject is English A Literature HL → redirects to its hub |
 
-Content totals: **127 PDFs** in the library (indexed by `library/library-manifest.json` — rebuilt with `tools/build_library_manifest.py` after any PDF lands) · **631 quiz questions** (23 banks) · **484 flashcards** (23 decks — now incl. French terminology + English literary terms).
+Content totals: **127 PDFs** in the library (indexed by `library/library-manifest.json` — rebuilt with `tools/build_library_manifest.py` after any PDF lands) · **658 quiz questions** (24 banks) · **524 flashcards** (24 decks — now incl. French terminology + English literary terms).
 
 ## Tech stack (deliberately boring)
 
 - **Static HTML + vanilla JS.** No framework, no dependencies, no build step.
 - **Data** = JSON files in `library/` (question banks, flashcard decks, deadlines array).
-- **State** = browser `localStorage` (checklist ticks, SRS boxes, quiz logs, this-week items) — per device; Export/Import on the Cards page moves it.
+- **State** = browser `localStorage` (checklist ticks, SRS boxes, quiz logs, missed questions, this-week items) — synced across devices when logged in (merged per record for SRS boxes and missed questions); logged out it stays on the device, and Export/Import on the Cards page moves it.
 - **Python 3** used only for one-off scripts (extraction, site generation) — always run with `-I`.
 - **Must be served over HTTP** for the quiz/flashcards to load their JSON (`fetch()` fails on `file://`):
   ```bash
@@ -66,8 +66,8 @@ ibsystem/
 │   ├── official/             ← 21 PDFs from ibo.org (guides, specimens, briefs, booklets, EE guide)
 │   ├── school/               ← ISL course documents (bio outline, chem at-a-glance, math syllabus)
 │   ├── notes/                ← 103 topic PDFs, organised by ISL teaching order
-│   ├── questions/            ← 23 quiz banks (631 items) — schema in DEVELOPMENT.md
-│   ├── flashcards/           ← 23 decks (484 cards) — schema in DEVELOPMENT.md
+│   ├── questions/            ← 24 quiz banks (658 items) — schema in DEVELOPMENT.md
+│   ├── flashcards/           ← 24 decks (524 cards) — schema in DEVELOPMENT.md
 │   ├── papers/               ← (empty) school-provided past papers land here
 │   └── library-manifest.json ← auto-built index of every PDF (127 items) — rebuild after changes
 ├── source-archives/          ← original downloaded ZIPs (kept as provenance; deletable once confident)

@@ -5,7 +5,7 @@ touching this site.
 
 ## Architecture
 
-- **Static site, no build step.** 18 study-site pages + 4 practice-app pages (`app/`, LIVE on rametric.com/nevaib) + 8 asset files + JSON data in `library/` (23 quiz banks / 631 items, 23 flashcard decks / 484 cards, and the PDF manifest `library/library-manifest.json` / 127 items). The engines build their pickers from `library/questions/manifest.json` + `library/flashcards/manifest.json`; the Library browser reads `library/library-manifest.json`.
+- **Static site, no build step.** 18 study-site pages + 4 practice-app pages (`app/`, LIVE on rametric.com/nevaib) + 8 asset files + JSON data in `library/` (24 quiz banks / 658 items, 24 flashcard decks / 524 cards, and the PDF manifest `library/library-manifest.json` / 127 items). The engines build their pickers from `library/questions/manifest.json` + `library/flashcards/manifest.json`; the Library browser reads `library/library-manifest.json`.
 - **Practice app (`app/`)**: `index.html` (launcher), `quiz.html`, `cards.html`, `author.html` (upload/manage/export).
   Engines resolve content via `PATH_BASE` (`../` when served from `/app/`, empty at the root), so the same engine
   files serve both layers. Root `quiz.html`/`flashcards.html` are one-line redirect stubs to the app.
@@ -27,18 +27,24 @@ touching this site.
   5 fails → 5-min lockout (`login-fails.json`). Accounts: key-protected `action=setup`. CORS: whitelisted origins
   (rametric.com, localhost/127.0.0.1, LAN 192.168/10/172.16-31) get `Access-Control-Allow-Origin`; OPTIONS
   preflights answer 204 before auth.
-- **Sync model**: last-write-wins on the whole synced payload (`q-userbanks, fc-userdecks, fc-state, fc-user,
-  fc-deleted, fc-edits, quizlog, tok-objects, ee-ideas, io-issues, ia-debriefs, res-bookmarks, res-notes,
-  res-recent` **+ `site-state`**). On load, the server state replaces local per key; every engine
+- **Sync model**: synced keys `q-userbanks, fc-userdecks, fc-state, fc-user, fc-deleted, fc-edits, quizlog,
+  q-errors, tok-objects, ee-ideas, io-issues, ia-debriefs, res-bookmarks, res-notes, res-recent` **+ `site-state`**.
+  `fc-state` and `q-errors` merge **per record** (`MERGERS` in auth.js): `fc-state` per card id (newest `t`
+  wins; legacy entries without `t` rank by `seen`, then `due`), `q-errors` as a union by `key` (newest `ts`
+  wins; legacy records rank by last attempt/miss date, then attempts; a legacy record whose key was renamed —
+  see `legacyKey` — is dropped instead of resurrected). Ties keep the server value. Every other key is
+  last-write-wins per blob. On load, server and local values are merged per key (server wins for plain
+  blobs) and a push is queued when the device held newer/extra records; every engine
   write triggers a debounced (2 s) push; retry loop every 15 s while dirty. Login triggers one reload so engines
   re-read restored state. `site-state` = `{checklists: {"chk:…": {c,r}}, week: {"week:0": "…"}}` — one batched
   object built from the per-row localStorage keys on push, distributed back to per-row keys on pull; **rows merge
-  per-row** (server wins on pull; local-only rows survive; a push first re-fetches and merges server rows it lacks
-  — never pushes blind, since `save-state` replaces the whole per-user file). First login on an empty account
+  per-row** (server wins on pull; local-only rows survive; a push first re-fetches, folds server records in via `MERGERS`
+  and carries over every server key the payload lacks — never pushes blind). `save-state` itself also keeps
+  stored top-level keys the request omits, so an older cached client can't wipe a key it doesn't know. First login on an empty account
   pushes the local state up (migration, no data loss).
 - **Cache-busting convention**: engine script tags carry `?v=N` — bump N in the referencing pages whenever an engine
-  file changes. auth.js is at `?v=5` on the eleven study-site auth pages (dashboard, hubs, core, ia, ee, library)
-  and still `?v=4` on the four app pages; `app.js` is at `?v=2` everywhere it loads; `deadlines.js` is at `?v=2`
+  file changes. auth.js is at `?v=6` everywhere it loads (study-site auth pages and the
+  four app pages); `quiz-engine.js` is at `?v=10`, `flashcards.js` at `?v=7`; `app.js` is at `?v=2` everywhere it loads; `deadlines.js` is at `?v=2`
   (index + deadlines); `lists.js` is at `?v=2` (core, ia, french hub, ee); `library.js` is at `?v=1`
   (library.html, index, practice). Bank/deck/manifest fetches use `?cb=Date.now()` + `cache: no-store`.
 - **Vanilla JS, one engine per concern**:
@@ -82,14 +88,14 @@ cross-origin token path (the sticky override is localhost-only, by design).
 | `chk:<subject>::<path>` | `app.js` | syllabus checklist row: `{c: bool, r: "r/a/g"}` |
 | `week:0` … `week:4` | `app.js` | dashboard this-week items |
 | `quizlog` | `quiz-engine.js` | last 20 session summaries `{date, label, got, max, pct}` |
-| `fc-state` | `flashcards.js` | per-card SRS state `{box: 1–5, due: "YYYY-MM-DD", seen}` |
+| `fc-state` | `flashcards.js` | per-card SRS state `{box: 1–5, due: "YYYY-MM-DD", seen, t}` — `t` = last-review ms timestamp (absent on older entries), used by the sync merge |
 | `fc-user` | both | user-created cards (quiz hook + editor), full card objects |
 | `fc-deleted` | `flashcards.js` | seeded card ids the user deleted (override) |
 | `fc-edits` | `flashcards.js` | edits to seeded cards `{id: {front, back, tags}}` |
 | `fc-theme` | `flashcards.js` | "light"/"dark" for the Cards page |
 | `q-userbanks` | `app/author.html` + quiz-engine | uploaded quiz banks (per device) |
 | `fc-userdecks` | `app/author.html` + flashcards | uploaded flashcard decks (per device) |
-| `q-errors` | quiz-engine + `practice.html` | missed-question tracker: `{key, subject, topic, topicLabel, format, stem, choices, answer, userAnswer, note, marks, markscheme, tactic, attempts, firstMissed, lastMissed, resolved}` — ids unique per file, key = id or stem hash; synced cross-device when logged in |
+| `q-errors` | quiz-engine + `practice.html` | missed-question tracker: `{key, subject, topic, topicLabel, format, stem, choices, answer, userAnswer, note, marks, markscheme, tactic, attempts, firstMissed, lastMissed, resolved}` + `id, bankId, ts, lastAttempt, legacyKey` — key = `"<bankId>#<id>"` (bankId = bank file name without `.json`, `user:<slug>` for uploaded banks; ids are only unique per file). Older records keyed by bare id / stem hash are renamed when their bank loads in a session (same id AND same stem), keeping `legacyKey`; unmatched old records stay as they are and remain reviewable. `ts` = last-change ms timestamp for the sync merge. Synced cross-device when logged in |
 | `nb-token` | `auth.js` | login bearer token (sent as `X-Nevaib-Token`) — cross-origin sync |
 | `nb-api` | `auth.js` | dev-only API override set via `?nbapi=` on localhost pages |
 | `chk:*` / `week:*` | `app.js` | synced inside the `site-state` payload (not as their own keys) |
@@ -103,8 +109,8 @@ cross-origin token path (the sticky override is localhost-only, by design).
 | `lib-filters` | `library.js` | library browser filter state `{subject, type, q}` — device-local, NOT synced |
 
 `tok-objects`, `ee-ideas`, `io-issues`, `ia-debriefs` and the three `res-*` blobs are plain synced keys (in
-`auth.js` `SYNCED_KEYS`, last-write-wins per blob). `q-errors` is deliberately NOT synced (device-local, rendered by practice.html's
-inline script — now folded into the generator).
+`auth.js` `SYNCED_KEYS`, last-write-wins per blob). `q-errors` is synced and merged per record (see Sync model);
+practice.html's inline script (folded into the generator) renders it.
 
 ## Data schemas
 
@@ -187,7 +193,7 @@ is gone).
 Rules:
 - Any hand-edit to one of the 10 generated pages must ALSO be folded into the generator
   (template or PATCHES entry) — otherwise the next regeneration reverts it.
-- Auth widget (auth-slot + `auth.js?v=4` tag) is injected by `page()` for the `AUTH_PAGES` set
+- Auth widget (auth-slot + `auth.js?v=6` tag) is injected by `page()` for the `AUTH_PAGES` set
   (index, 5 hubs, core, ia); `english-lit-hl.html` and `ee.html` carry the same markup
   hand-authored. Keep them in sync. Core/ia/ee load auth.js because their lists/notes sync.
 - Per-page engine scripts go through `EXTRA_SCRIPTS` (lists.js on core/ia/french; library.js on index

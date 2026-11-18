@@ -23,13 +23,13 @@
 </nav>
 <main>
   <h2>Practice</h2>
-  <p class="muted">The quiz + flashcard layer of the study area, self-contained. Works on any device with the link — progress is stored per device (use the Cards page export/import to move it).</p>
+  <p class="muted">The quiz + flashcard layer of the study area, self-contained. Works on any device with the link — log in (top right) and your quiz history, missed questions and flashcard reviews sync across devices. Logged out, progress stays on this device (the Cards page export/import can move it).</p>
 
   <div class="big-links">
     <a href="quiz.html"><strong>Quiz →</strong><span>20-question sessions by subject/topic. MCQs marked instantly; written answers self-marked against markschemes; weak-topic flags at the end.</span></a>
     <a href="cards.html"><strong>Flashcards →</strong><span>Spaced repetition (Leitner boxes). Due-today tracking, mastery %, keyboard shortcuts (space flips, 1/2/3 rates).</span></a>
     <a href="author.html"><strong>Upload content →</strong><span>Add your own quiz banks and flashcard decks (JSON files), manage them, and back up everything you've created.</span></a>
-    <a href="../index.html"><strong>Study site →</strong><span>Subject hubs, syllabus checklists, deadlines, plan, reference — the full study area.</span></a>
+    <!-- study-site-only --><a href="../index.html"><strong>Study site →</strong><span>Subject hubs, syllabus checklists, deadlines, plan, reference — the full study area.</span></a><!-- /study-site-only -->
   </div>
 
   <section class="card">
@@ -37,12 +37,12 @@
     <ul>
       <li><strong>When a unit closes</strong> at school → run a mixed 20-question session on that unit the same week.</li>
       <li><strong>Two quiz sessions + one flashcards session</strong> per week is the target; cards due today come first.</li>
-      <li><strong>Every lost mark</strong> goes in the error log (study site → Practice page) with a topic tag — retried after 1 week, then 1 month.</li>
-      <li><strong>Missed something?</strong> The session summary flags weak topics — turn them into flashcards from the quiz (\uFF0B Flashcard button) and drill.</li>
+      <li><strong>Every missed question</strong> is saved automatically — retry them with <em>Review past errors</em> on the <a href="quiz.html">Quiz</a> page until they stick.</li>
+      <li><strong>Missed something?</strong> The session summary flags weak topics — turn them into flashcards from the quiz (＋ Flashcard button) and drill.</li>
     </ul>
   </section>
 </main>
 <footer>Private family use · exams <strong>May 2028</strong> · keep this app and its content non-public</footer>
-<script src="../assets/auth.js?v=4"></script>
+<script src="../assets/auth.js?v=6"></script>
 </body>
 </html>

@@ -40,9 +40,9 @@ Find the machine's IP (`hostname -I`), then on any phone/laptop on the same Wi-F
 
 ## Notes on behaviour
 
-- **Progress (checklists, quiz log, "this week") lives in the browser's localStorage** —
-  per device, not per account. Her phone and laptop keep separate progress; syncing would
-  need the Google-Sheet upgrade later.
+- **Progress (checklists, quiz log, missed questions, flashcard boxes, "this week") lives in the
+  browser's localStorage** and syncs across devices through the login (`auth.js` → `api.php`);
+  logged out it stays on that device.
 - PDFs open in new tabs from every page.
 - The site works offline from disk too — `index.html` opens fine via `file://`.
 
