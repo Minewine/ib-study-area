@@ -184,5 +184,11 @@
   "subject": "biology-hl",
   "subjectLabel": "Biology HL",
   "label": "Data response & extended answers — unfamiliar contexts (A1–A2, B1–B2, C1.1, D2.3)"
+ },
+ {
+  "file": "library/questions/ia-practical-skills.json",
+  "subject": "ia-skills",
+  "subjectLabel": "Coursework & practical skills",
+  "label": "Practical & IA skills — design, uncertainties, statistics, evaluation"
  }
 ]

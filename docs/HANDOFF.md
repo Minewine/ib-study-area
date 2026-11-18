@@ -31,6 +31,7 @@ Stack: static HTML, vanilla JS, JSON content, browser localStorage, one PHP file
 | Server: accounts, tokens, atomic per-user state with revision, last 30 versions, export | `server/api.php` |
 | Full backup and validated, merge-by-default restore with undo | `assets/backup.js` (Cards and Upload pages) |
 | Topic notes viewer | `app/notes.html`, `assets/notes.js` |
+| Coursework planner (Bio/Chem scientific investigation, Maths exploration: stages, self-checks, pitfalls, approximate ISL dates) | `app/coursework.html`, `assets/coursework.js`, `library/coursework/coursework.json`; skills quiz `library/questions/ia-practical-skills.json` |
 | Quiz / cards engines (both accept `?from=` deep links from notes) | `assets/quiz-engine.js`, `assets/flashcards.js` |
 | Checklist rows, tracked lists, library browser | `assets/app.js`, `assets/lists.js`, `assets/library.js` |
 | Content | `library/questions/*.json`, `library/flashcards/*.json`, `library/topic-notes/<subject>/*.json`, `library/syllabus/*.json` |
@@ -46,6 +47,7 @@ Stack: static HTML, vanilla JS, JSON content, browser localStorage, one PHP file
   - `chk:*` checklist rows;
   - `week:*`;
   - lists (`tok-objects`, `ee-ideas`, `io-issues`, `ia-debriefs`);
+  - coursework planner (`cw-progress`: per-item ticks, stage notes and her own dates, merged per record);
   - `res-*`;
   - user cards and banks (`fc-user`, `fc-userdecks`, `q-userbanks`, `fc-deleted`, `fc-edits`).
   - `pp-scores` (past-paper score log on the Quiz page; records keyed by `id`, deletions kept as `{id, deleted, ts}` tombstones, merged per record by newest `ts`).

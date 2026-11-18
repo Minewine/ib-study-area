@@ -40,6 +40,7 @@
     "ee-ideas": { type: (v) => isObj(v) && Array.isArray(v.items), label: "EE idea log" },
     "io-issues": { type: (v) => isObj(v) && Array.isArray(v.items), label: "IO issues list" },
     "ia-debriefs": { type: isObj, label: "IA debrief notes" },
+    "cw-progress": { type: (v) => isObj(v) && ["checks", "notes", "dates"].every(s => v[s] === undefined || isObj(v[s])), label: "coursework planner" },
     "res-bookmarks": { type: arrOf(isStr), label: "pinned resources" },
     "res-notes": { type: isObj, label: "resource notes" },
     "res-recent": { type: arrOf(isStr), label: "recently opened" },

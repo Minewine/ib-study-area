@@ -279,7 +279,7 @@ BASE = """<!DOCTYPE html>
 __CONTENT__
 </main>
 <footer>Private family study area · exams <strong>May 2028</strong> · keep this site and its library non-public</footer>
-<script src="assets/store.js?v=3"></script>
+<script src="assets/store.js?v=4"></script>
 <script src="assets/app.js?v=4"></script>
 </body>
 </html>
@@ -402,7 +402,7 @@ def page(fname, title, content_html, active):
     if fname == "index.html":
         h = h.replace(
             '<script src="assets/app.js?v=4"></script>',
-            '<script src="assets/deadlines.js?v=3"></script>\n<script src="assets/app.js?v=4"></script>',
+            '<script src="assets/deadlines.js?v=4"></script>\n<script src="assets/app.js?v=4"></script>',
             1,
         )
     out.write_text(h, encoding="utf-8")
@@ -825,6 +825,7 @@ SUBJECTS["ia.html"] = dict(
         h2("Internal Assessment &amp; Extended Essay")
         + card(
             "<h3>DP1 rule: collect, don't write</h3><p>Keep an <strong>idea log</strong> — every lab observation, curiosity or real-world question noted in 2 minutes. It becomes the IA/exploration/EE shortlist in DP2. Never start writing before the school timeline says so.</p>"
+            "<p><a href='app/coursework.html'>Coursework planner →</a> stage-by-stage self-checks, pitfalls and school dates for the Bio/Chem investigations and the Maths exploration (ticks and notes sync when logged in).</p>"
         )
         + card(
             "<h3>Sciences IA — scientific investigation (Bio/Chem HL, 20%)</h3>"
