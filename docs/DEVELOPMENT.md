@@ -74,7 +74,7 @@ touching this site.
   opt-in for the keys in the file; "Undo last restore" brings the snapshot back.
 - **Cache-busting convention**: engine script tags carry `?v=N` — bump N in the referencing pages whenever an engine
   file changes. `store.js` `?v=1` (first script on every storing page), `backup.js` `?v=1` (cards, author),
-  `auth.js` `?v=7`, `quiz-engine.js` `?v=11`, `flashcards.js` `?v=8`, `app.js` `?v=3`, `lists.js` `?v=3`
+  `auth.js` `?v=7`, `quiz-engine.js` `?v=12`, `flashcards.js` `?v=9`, `notes.js` `?v=1` (app/notes.html), `app.js` `?v=3`, `lists.js` `?v=3`
   (core, ia, french hub, ee, library), `library.js` `?v=2` (library.html, index, practice), `deadlines.js` `?v=2`
   (index + deadlines). Bank/deck/manifest fetches use `?cb=Date.now()` + `cache: no-store`.
 - **Vanilla JS, one engine per concern**:
@@ -233,6 +233,42 @@ the practice papers list all render from this one file.
 
 ### Deadlines (`assets/deadlines.js` → `DEADLINES` array)
 `{ d: "YYYY-MM-DD", t: "label", tag: "sciences|ee|tok|core|exams|langlit|university|sixth" }`
+
+### Topic notes (`library/topic-notes/<subject>/<code>.json`, schema v1)
+
+One file per syllabus topic, original wording, organised by the official topic codes. Viewer: `app/notes.html` +
+`assets/notes.js` (subject → theme → topic; `?subject=biology-hl&topic=c1-1` deep-links one note). Listed in
+`library/topic-notes/manifest.json` (`{schemaVersion, subjects: {id: {label, syllabus, themes}}, notes: [{file, id,
+subject, code, title, theme, themeLabel, hlOnly, status}]}`), generated — never hand-edit it. Syllabus maps
+(codes, titles, statement numbers, teaching order; no guide text) live in `library/syllabus/<subject>.json`.
+
+| field | purpose |
+|---|---|
+| `schemaVersion` (1), `id`, `subject`, `code`, `title`, `theme`, `themeLabel` | required identity + placement |
+| `level`/`levelLabel` (Biology), `hlOnly`, `status`, `islOrder`/`islUnits`/`taughtStatus` | placement, school order |
+| `statements.SL` / `statements.AHL` | statement numbers only |
+| `bigPicture` | 1–2 sentence anchor |
+| `keyIdeas[] {id, ahl, stmt, cue, answer}` | recall-first pairs: cue shown, answer revealed on demand |
+| `keyTerms[] {term, def}` | "+ card" adds a personal flashcard to `fc-user` (synced) |
+| `workedExamples[] {title, prompt, steps[], answer}` | steps revealed one at a time |
+| `misconceptions[] {wrong, right}`, `errorHints[] {category, hint}` | common mistakes |
+| `practice[] {commandTerm, marks, prompt, checkpoints[]}` | self-check points written by us — **not IB markschemes** (label kept on the page) |
+| `paper1A[] {stem, choices, answer, why}`, `paper1B[] {data, prompt, answer}` | Chemistry calculator-free MCQ / data prompts |
+| `dataBooklet` (strings or `{section, title, use}`), `formulaBooklet {given[], memorise[], note}` | booklet pointers |
+| `linkingQuestions[] {to, prompt}` | cross-topic links (clickable when `to` has a note) |
+| `links {checklistKey, quizBanks[{file, itemIds\|null}], decks[{file, cardIds\|null}], gap}` | `null` ids = whole bank/deck |
+
+**Authoring flow:** drafts are written outside the repo (with the private guides alongside), then
+`python3 -I tools/import_topic_notes.py <draft-dir>` copies the per-topic JSON (never `sources/` or `_build/`,
+and it refuses any file mentioning a local path), copies `syllabus-*.json` to `library/syllabus/`, and rebuilds the
+manifest. Then `./dev.sh validate` (checks required fields, list-item shapes, Paper 1A answer indices, that every
+linked bank/deck file and every linked question/card id exists, manifest ↔ files, no local paths) and
+`python3 -I tools/build_site.py` (adds "study notes" links to checklist rows whose key matches `links.checklistKey`).
+
+**Deep links into practice:** `quiz.html?from=<bankId>[:id1,id2]&from=…&label=…&n=20` starts a session on exactly
+those questions (bank id = file name without `.json`; unknown ids are skipped and reported in the notice).
+`cards.html?from=<deckId>[:ids]&label=…&n=20` starts a card session on those cards: due first, then new, then the rest.
+`notes-last` (`{subject, topic}`) remembers the last opened note — device-local, not synced.
 
 ## Generator
 

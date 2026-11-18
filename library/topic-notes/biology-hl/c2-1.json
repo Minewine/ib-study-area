@@ -1,0 +1,248 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-c2-1",
+ "code": "C2.1",
+ "title": "Chemical signalling",
+ "theme": "C",
+ "themeLabel": "Interaction and interdependence",
+ "level": 2,
+ "levelLabel": "Cells",
+ "hlOnly": true,
+ "statements": {
+  "SL": [],
+  "AHL": [
+   "C2.1.1",
+   "C2.1.2",
+   "C2.1.3",
+   "C2.1.4",
+   "C2.1.5",
+   "C2.1.6",
+   "C2.1.7",
+   "C2.1.8",
+   "C2.1.9",
+   "C2.1.10",
+   "C2.1.11",
+   "C2.1.12",
+   "C2.1.13",
+   "C2.1.14"
+  ]
+ },
+ "bigPicture": "Cells communicate with chemical signals (ligands) that bind to specific receptors. Some receptors sit in the membrane and trigger a cascade inside the cell; others are inside the cell and switch genes on. This topic is HL-only.",
+ "keyIdeas": [
+  {
+   "id": "c21-k1",
+   "ahl": true,
+   "stmt": "C2.1.1",
+   "cue": "What is a receptor?",
+   "answer": "A protein with a binding site for a specific signalling chemical, the ligand. Binding changes the receptor's shape and triggers a response."
+  },
+  {
+   "id": "c21-k2",
+   "ahl": true,
+   "stmt": "C2.1.2",
+   "cue": "What is quorum sensing?",
+   "answer": "Bacteria release a signalling molecule; as the population grows its concentration rises, and above a threshold it switches on genes in all cells together. Vibrio fischeri produces light (bioluminescence) only when dense, e.g. in a squid's light organ."
+  },
+  {
+   "id": "c21-k3",
+   "ahl": true,
+   "stmt": "C2.1.3",
+   "cue": "What are the categories of animal signalling chemicals?",
+   "answer": "Hormones (from endocrine glands, carried in blood to distant targets), neurotransmitters (across synapses), cytokines (small proteins acting locally between cells, e.g. in immunity) and calcium ions (signals inside cells, e.g. triggering vesicle release)."
+  },
+  {
+   "id": "c21-k4",
+   "ahl": true,
+   "stmt": "C2.1.4",
+   "cue": "Why are signalling chemicals so chemically diverse?",
+   "answer": "Many different signals are needed, each with specific receptors. Hormones include amines (adrenaline, thyroxin), proteins/peptides (insulin) and steroids (oestradiol, testosterone). Neurotransmitters include amino acids (glutamate, GABA), peptides (endorphins), amines (dopamine) and nitric oxide."
+  },
+  {
+   "id": "c21-k5",
+   "ahl": true,
+   "stmt": "C2.1.5",
+   "cue": "Local vs distant signalling?",
+   "answer": "Neurotransmitters diffuse across a tiny synaptic gap and act locally and fast; hormones travel in the blood and act on distant target cells all over the body."
+  },
+  {
+   "id": "c21-k6",
+   "ahl": true,
+   "stmt": "C2.1.6",
+   "cue": "Transmembrane vs intracellular receptors?",
+   "answer": "Transmembrane receptors have a band of hydrophobic amino acids in the membrane and bind hydrophilic ligands (e.g. insulin, adrenaline) that stay outside the cell. Intracellular receptors (in cytoplasm or nucleus) bind hydrophobic ligands, such as steroids, that cross the membrane."
+  },
+  {
+   "id": "c21-k7",
+   "ahl": true,
+   "stmt": "C2.1.7",
+   "cue": "What is signal transduction?",
+   "answer": "Binding of the ligand to a receptor starts a sequence of reactions inside the cell, leading to a response."
+  },
+  {
+   "id": "c21-k8",
+   "ahl": true,
+   "stmt": "C2.1.8",
+   "cue": "How does the acetylcholine receptor work?",
+   "answer": "It is a ligand-gated ion channel. Acetylcholine binding opens the channel, positive ions (Na⁺) diffuse in, changing the membrane potential, which may trigger an action potential."
+  },
+  {
+   "id": "c21-k9",
+   "ahl": true,
+   "stmt": "C2.1.9",
+   "cue": "What are G protein-coupled receptors?",
+   "answer": "Transmembrane receptors that, when a ligand binds, activate a G protein on the inside of the membrane, which passes the signal on. Humans have hundreds of different GPCRs."
+  },
+  {
+   "id": "c21-k10",
+   "ahl": true,
+   "stmt": "C2.1.10",
+   "cue": "How does adrenaline's receptor work?",
+   "answer": "Adrenaline binds a GPCR; the G protein activates adenylyl cyclase, which converts ATP to cyclic AMP (cAMP). cAMP is the second messenger that activates enzymes (e.g. those breaking down glycogen in liver cells)."
+  },
+  {
+   "id": "c21-k11",
+   "ahl": true,
+   "stmt": "C2.1.11",
+   "cue": "How does insulin's receptor work?",
+   "answer": "Insulin binds a receptor with tyrosine kinase activity, causing phosphorylation of tyrosines on the inside of the cell. This starts a chain of reactions ending with vesicles carrying glucose transporters fusing with the membrane, so the cell takes up more glucose."
+  },
+  {
+   "id": "c21-k12",
+   "ahl": true,
+   "stmt": "C2.1.12",
+   "cue": "How do intracellular receptors affect gene expression?",
+   "answer": "A steroid (oestradiol, progesterone, testosterone) passes through the membrane and binds its receptor, activating it. The hormone–receptor complex binds specific DNA sequences and promotes transcription of target genes."
+  },
+  {
+   "id": "c21-k13",
+   "ahl": true,
+   "stmt": "C2.1.13",
+   "cue": "What do oestradiol and progesterone do to target cells?",
+   "answer": "Oestradiol acts on hypothalamus cells that secrete GnRH (affecting FSH and LH release). Progesterone acts on endometrium cells, maintaining the thickened uterine lining."
+  },
+  {
+   "id": "c21-k14",
+   "ahl": true,
+   "stmt": "C2.1.14",
+   "cue": "How are signalling pathways regulated by feedback?",
+   "answer": "Negative feedback: the response reduces the signal, e.g. falling blood glucose reduces insulin secretion. Positive feedback: the response increases the signal, e.g. oxytocin causing contractions that cause more oxytocin release in childbirth."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Ligand",
+   "def": "A signalling chemical that binds to a receptor."
+  },
+  {
+   "term": "Quorum sensing",
+   "def": "Bacterial signalling that depends on population density."
+  },
+  {
+   "term": "Second messenger",
+   "def": "Molecule inside a cell (e.g. cAMP) that relays a signal."
+  },
+  {
+   "term": "GPCR",
+   "def": "G protein-coupled receptor."
+  },
+  {
+   "term": "Tyrosine kinase",
+   "def": "Enzyme that phosphorylates tyrosine residues."
+  },
+  {
+   "term": "Cytokine",
+   "def": "Small protein signal acting between nearby cells."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Choose the receptor type",
+   "prompt": "Predict whether testosterone and glucagon use transmembrane or intracellular receptors.",
+   "steps": [
+    "Testosterone is a steroid: hydrophobic, crosses the membrane.",
+    "Glucagon is a peptide: hydrophilic, can't cross.",
+    "Hydrophobic ligands use intracellular receptors; hydrophilic ones use transmembrane receptors."
+   ],
+   "answer": "Testosterone: intracellular. Glucagon: transmembrane."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "All hormones enter their target cells.",
+   "right": "Only hydrophobic hormones (steroids) enter; others bind membrane receptors."
+  },
+  {
+   "wrong": "cAMP is the hormone.",
+   "right": "cAMP is a second messenger made inside the cell."
+  },
+  {
+   "wrong": "Quorum sensing means bacteria count each other.",
+   "right": "It is the concentration of a signal molecule that switches genes on."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Compare and contrast",
+   "marks": 4,
+   "prompt": "Compare and contrast the mechanisms of action of insulin and oestradiol.",
+   "checkpoints": [
+    "Both bind specific receptors",
+    "Insulin: transmembrane, tyrosine kinase",
+    "Oestradiol: intracellular, crosses membrane",
+    "Insulin: cascade to GLUT vesicles; oestradiol: changes transcription"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Outline",
+   "marks": 4,
+   "prompt": "Outline the action of adrenaline on a liver cell.",
+   "checkpoints": [
+    "Binds G protein-coupled receptor",
+    "G protein activated",
+    "cAMP produced as second messenger",
+    "Enzymes activated; glycogen broken down"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Describe",
+   "marks": 3,
+   "prompt": "Describe quorum sensing in Vibrio fischeri.",
+   "checkpoints": [
+    "Bacteria secrete signal molecule",
+    "Concentration rises with density",
+    "Above threshold, genes for bioluminescence switched on"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "C2.2",
+   "prompt": "How do neurotransmitters cross synapses?"
+  },
+  {
+   "to": "D3.3",
+   "prompt": "How does insulin control blood glucose?"
+  },
+  {
+   "to": "D3.1",
+   "prompt": "How do sex hormones regulate the menstrual cycle?"
+  },
+  {
+   "to": "C3.1",
+   "prompt": "How does adrenaline prepare the body for activity?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/interaction-interdependence/chemical-signalling.pdf",
+  "quizBanks": [],
+  "decks": [],
+  "gap": "No quiz or deck covers C2.1 (HL-only). Missing everything, including receptor types, second messengers, insulin/adrenaline mechanisms and quorum sensing."
+ }
+}

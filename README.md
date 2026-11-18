@@ -17,6 +17,7 @@ Status snapshot: **2026-11-15** — hosted at **rametric.com/nevaib (live, verif
 | Core | `core.html` | TOK (exhibition 33% / essay 67%), **new EE guide** (first assessment 2027), CAS + TOK exhibition object shortlist (tracked, synced) |
 | EE workspace | `ee.html` | Idea-log shortlist (tracked, synced), one-page proposal checklist mapped to the new-EE criteria, DP1 timeline, reflection-session guidance |
 | Quiz engine | `quiz.html` | 20-question sessions, filtered by subject/topic/format; instant MCQ marking; written answers self-marked against markschemes; weak-topic flags + tactics; "＋ Flashcard" button on every answer |
+| Topic notes | `app/notes.html` | 86 original notes (Biology HL 40, Chemistry HL 22, Maths AA SL 24) by syllabus code: recall-first key ideas, key terms (+ card), common mistakes, worked examples, practice prompts (self-check points, not IB markschemes), booklet pointers, one-tap quiz/flashcards on the linked items; linked from every matching checklist row |
 | Flashcards | `flashcards.html` | Leitner spaced repetition (1/2/4/8/16-day boxes), flip UI, keyboard shortcuts, dark mode, editor, full backup / restore |
 | Practice | `practice.html` | Mock protocol, printable error log, missed-question tracker, paper-alignment table per subject, Dec–Jan mock schedule, manifest-driven papers list |
 | Library | `library.html` | Filterable/searchable browser over every library PDF (notes · official · school · papers) from `library/library-manifest.json`; ★ pin resources (dashboard card), private per-resource notes, recently-opened tracking — all synced |
@@ -96,10 +97,34 @@ Rule of thumb: **IB guides & ISL course documents are the authority on content a
 mirrors/notes are supplements.** Never trust a PDF without checking the guide-edition
 banner on its hub.
 
+## Get it onto your laptop
+
+Your copy lives at `~/Projects/ibsystem`. To try the newest work (PR #3, which also contains PRs #1 and #2):
+
+```bash
+cd ~/Projects/ibsystem
+git status                      # must say "working tree clean"; if not: git stash
+git fetch origin && git switch feat/topic-notes && git pull
+./dev.sh test                   # all tests (needs python3 + uv, node ≥ 18, php)
+./dev.sh start                  # open http://127.0.0.1:8018/app/notes.html
+```
+
+After the pull requests are merged on GitHub (order: #1 → #2 → #3):
+
+```bash
+cd ~/Projects/ibsystem
+git switch main && git pull
+./dev.sh test && ./dev.sh start
+```
+
+Full handoff: [docs/HANDOFF.md](docs/HANDOFF.md) · what to do next: [docs/NEXT-STEPS.md](docs/NEXT-STEPS.md).
+
 ## Docs index
 
 | Doc | Use it for |
 |---|---|
+| [docs/HANDOFF.md](docs/HANDOFF.md) | Start here: what the system is, architecture, data/sync, what was done, links to the audit Pages |
+| [docs/NEXT-STEPS.md](docs/NEXT-STEPS.md) | Prioritised next steps: merges, deploy, content fixes, roadmap |
 | [docs/CONTENT-PLAN.md](docs/CONTENT-PLAN.md) | What content exists, what's missing, per-subject priorities, completeness matrix |
 | [docs/ROADMAP.md](docs/ROADMAP.md) | Feature roadmap: next 2–4 weeks / 2–3 months / later |
 | [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md) | Architecture, data schemas, localStorage keys, gotchas, recipes |

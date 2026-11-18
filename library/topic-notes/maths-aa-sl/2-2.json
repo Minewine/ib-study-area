@@ -1,0 +1,175 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-2-2",
+ "code": "2.2",
+ "title": "Functions: domain, range and inverse (informal)",
+ "theme": "2",
+ "themeLabel": "Functions",
+ "hlOnly": false,
+ "islOrder": 4,
+ "islUnits": [
+  "2. Functions and quadratics (Y12 wk 3-8 (Sep-mid Oct 2026))"
+ ],
+ "taughtStatus": "taught",
+ "statements": {
+  "SL": [
+   "2.2.1",
+   "2.2.2",
+   "2.2.3"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "2.2.1",
+   "text": "What makes a relation a function; domain, range, graph and function notation"
+  },
+  {
+   "id": "2.2.2",
+   "text": "Functions as models of real situations"
+  },
+  {
+   "id": "2.2.3",
+   "text": "An inverse undoes a function; its graph is the reflection in y=x"
+  }
+ ],
+ "bigPicture": "A function gives exactly one output per input. Its domain (allowed inputs) and range (outputs) matter as much as the rule; an inverse runs the function backwards.",
+ "keyIdeas": [
+  {
+   "id": "m22-k1",
+   "ahl": false,
+   "stmt": "2.2.1",
+   "cue": "When is a relation a function?",
+   "answer": "Each x in the domain maps to exactly one y (vertical-line test)."
+  },
+  {
+   "id": "m22-k2",
+   "ahl": false,
+   "stmt": "2.2.2",
+   "cue": "Why do models restrict the domain?",
+   "answer": "Inputs must make sense in context, e.g. time t ≥ 0, number of items n ∈ ℕ."
+  },
+  {
+   "id": "m22-k3",
+   "ahl": false,
+   "stmt": "2.2.3",
+   "cue": "How are the graphs of f and f⁻¹ related?",
+   "answer": "Reflections in y = x; domain of f⁻¹ = range of f."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "domain",
+   "def": "set of allowed inputs"
+  },
+  {
+   "term": "range",
+   "def": "set of outputs produced"
+  },
+  {
+   "term": "f⁻¹",
+   "def": "inverse function, not 1/f"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Domain and range",
+   "prompt": "f(x) = √(x − 2) + 1. State domain and range.",
+   "steps": [
+    "x − 2 ≥ 0",
+    "√ ≥ 0 so f ≥ 1"
+   ],
+   "answer": "Domain x ≥ 2; range f(x) ≥ 1"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "f⁻¹(x) = 1/f(x)",
+   "right": "The −1 is notation for inverse, not a power."
+  },
+  {
+   "wrong": "Range = all y",
+   "right": "Check minimum/maximum values and asymptotes."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "State",
+   "marks": 3,
+   "prompt": "f(x) = 1/(x − 3) + 2. Write down the largest possible domain and the range.",
+   "solution": [
+    "x ≠ 3 (division by zero)",
+    "1/(x−3) never equals 0, so f ≠ 2"
+   ],
+   "answer": "Domain x ≠ 3; range y ≠ 2",
+   "commonErrors": [
+    "Excluding x = −3",
+    "Forgetting the range restriction"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Sketch",
+   "marks": 3,
+   "prompt": "Sketch y = f(x) = x³ + 1 and y = f⁻¹(x) on the same axes for −2 ≤ x ≤ 2, showing the line y = x.",
+   "solution": [
+    "Plot f on GDC",
+    "Reflect key points: (0,1)→(1,0), (−1,0)→(0,−1)",
+    "f⁻¹(x) = ∛(x − 1)"
+   ],
+   "answer": "Two curves symmetric about y = x",
+   "commonErrors": [
+    "Reflecting in the x-axis instead",
+    "Not labelling intercepts"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [],
+  "memorise": [
+   "Vertical-line test; domain of f⁻¹ = range of f",
+   "Usual domain exclusions: division by 0, even root of negative, log of non-positive"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "2.5",
+   "prompt": "Why must x² be restricted to x ≥ 0 before it has an inverse?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/2-functions/2-3-functions-toolkit.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/math-aa-functions-2-1-to-2-3.json",
+    "itemIds": [
+     "f01",
+     "f02",
+     "f06",
+     "f17",
+     "f18",
+     "fnx7",
+     "f20"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/math-functions-2-1-to-2-3.json",
+    "cardIds": [
+     "fc-math-fn-09",
+     "fc-math-fn-10"
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,317 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-d3-1",
+ "code": "D3.1",
+ "title": "Reproduction",
+ "theme": "D",
+ "themeLabel": "Continuity and change",
+ "level": 3,
+ "levelLabel": "Organisms",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "D3.1.1",
+   "D3.1.2",
+   "D3.1.3",
+   "D3.1.4",
+   "D3.1.5",
+   "D3.1.6",
+   "D3.1.7",
+   "D3.1.8",
+   "D3.1.9",
+   "D3.1.10",
+   "D3.1.11",
+   "D3.1.12"
+  ],
+  "AHL": [
+   "D3.1.13",
+   "D3.1.14",
+   "D3.1.15",
+   "D3.1.16",
+   "D3.1.17",
+   "D3.1.18",
+   "D3.1.19",
+   "D3.1.20"
+  ]
+ },
+ "bigPicture": "Sexual reproduction combines alleles from two parents to make variable offspring. In humans it depends on precisely timed hormones, from the menstrual cycle to childbirth; in flowering plants it depends on pollination and on mechanisms that favour crossing between different plants.",
+ "keyIdeas": [
+  {
+   "id": "d31-k1",
+   "ahl": false,
+   "stmt": "D3.1.1",
+   "cue": "Sexual vs asexual reproduction: what's the advantage of each?",
+   "answer": "Asexual: one parent, genetically identical offspring, fast; good when the parent is already well adapted to a stable environment. Sexual: two parents, new combinations of alleles, so variation that lets a species adapt if the environment changes."
+  },
+  {
+   "id": "d31-k2",
+   "ahl": false,
+   "stmt": "D3.1.2",
+   "cue": "What roles do meiosis and fertilisation play?",
+   "answer": "Meiosis breaks up the parents' combinations of alleles and halves the chromosome number; fusion of gametes (fertilisation) creates new combinations and restores diploidy."
+  },
+  {
+   "id": "d31-k3",
+   "ahl": false,
+   "stmt": "D3.1.3",
+   "cue": "What is the key difference between male and female gametes, and what follows from it?",
+   "answer": "The male gamete travels to the female one, so sperm are small and mobile with few food reserves, while eggs are large with food reserves. So males produce vast numbers of gametes and females far fewer, leading to different reproductive strategies."
+  },
+  {
+   "id": "d31-k4",
+   "ahl": false,
+   "stmt": "D3.1.4",
+   "cue": "Name the structures of the human reproductive systems and their functions.",
+   "answer": "Male: testis (sperm and testosterone), scrotum (keeps testes cooler), epididymis (sperm storage/maturation), sperm duct, seminal vesicle and prostate (fluid), urethra, penis. Female: ovary (eggs, oestradiol, progesterone), oviduct (fertilisation site), uterus (embryo development), endometrium, cervix, vagina."
+  },
+  {
+   "id": "d31-k5",
+   "ahl": false,
+   "stmt": "D3.1.5",
+   "cue": "How do hormones control the menstrual cycle?",
+   "answer": "FSH from the pituitary stimulates follicle growth; the follicle secretes oestradiol, which thickens the endometrium. Rising oestradiol triggers an LH surge (positive feedback), causing ovulation. The corpus luteum then secretes progesterone (and oestradiol), maintaining the endometrium and inhibiting FSH and LH (negative feedback). If there's no pregnancy the corpus luteum breaks down, progesterone falls and menstruation begins."
+  },
+  {
+   "id": "d31-k6",
+   "ahl": false,
+   "stmt": "D3.1.6",
+   "cue": "What happens at fertilisation?",
+   "answer": "The sperm's membrane fuses with the egg membrane and the sperm nucleus enters; its tail and mitochondria are destroyed. Both nuclear membranes break down and all the chromosomes take part in a joint mitosis, giving a two-cell embryo with diploid nuclei."
+  },
+  {
+   "id": "d31-k7",
+   "ahl": false,
+   "stmt": "D3.1.7",
+   "cue": "How are hormones used in IVF?",
+   "answer": "The woman's normal hormone secretion is first suspended (down-regulation), then large doses of FSH-like hormones induce superovulation so many eggs mature; an hCG/LH injection completes maturation before the eggs are collected."
+  },
+  {
+   "id": "d31-k8",
+   "ahl": false,
+   "stmt": "D3.1.8",
+   "cue": "How do flowering plants reproduce sexually?",
+   "answer": "Male gametes form inside pollen grains and female gametes inside ovules. Pollination transfers pollen to a stigma; a pollen tube grows down the style to the ovule, and fertilisation produces an embryo inside a seed. It is sexual even when the plant is hermaphrodite."
+  },
+  {
+   "id": "d31-k9",
+   "ahl": false,
+   "stmt": "D3.1.9",
+   "cue": "Draw/label an insect-pollinated flower.",
+   "answer": "Petals (coloured to attract insects), sepals (protect bud), stamen = anther (makes pollen) + filament, carpel = stigma (sticky, catches pollen) + style + ovary (contains ovules), nectary (reward)."
+  },
+  {
+   "id": "d31-k10",
+   "ahl": false,
+   "stmt": "D3.1.10",
+   "cue": "How is cross-pollination promoted?",
+   "answer": "Pollen and stigma maturing at different times, separate male and female flowers, or separate male and female plants; and animals or wind carrying pollen between plants."
+  },
+  {
+   "id": "d31-k11",
+   "ahl": false,
+   "stmt": "D3.1.11",
+   "cue": "Why does self-incompatibility matter?",
+   "answer": "Self-pollination leads to inbreeding, reducing genetic diversity and vigour. In many species genetic mechanisms block fertilisation by the plant's own pollen, so gametes come from different plants."
+  },
+  {
+   "id": "d31-k12",
+   "ahl": false,
+   "stmt": "D3.1.12",
+   "cue": "How are seeds dispersed and how do they germinate?",
+   "answer": "Dispersal moves seeds (not pollen) away from the parent, by wind, water, animals or explosion. Germination needs water, oxygen and a suitable temperature: water activates enzymes (e.g. gibberellin triggers amylase) that mobilise stored food for the growing embryo."
+  },
+  {
+   "id": "d31-k13",
+   "ahl": true,
+   "stmt": "D3.1.13",
+   "cue": "What triggers puberty?",
+   "answer": "The hypothalamus increases release of GnRH, which makes the pituitary release more LH and FSH. These stimulate the gonads to make steroid sex hormones (testosterone, oestradiol), which cause the changes of puberty."
+  },
+  {
+   "id": "d31-k14",
+   "ahl": true,
+   "stmt": "D3.1.14",
+   "cue": "Compare spermatogenesis and oogenesis.",
+   "answer": "Both: mitosis, growth, two meiotic divisions, differentiation. Sperm: four small sperm per cell, millions per day from puberty. Eggs: unequal division gives one large egg (most cytoplasm) and small polar bodies; few eggs, released roughly monthly."
+  },
+  {
+   "id": "d31-k15",
+   "ahl": true,
+   "stmt": "D3.1.15",
+   "cue": "How is polyspermy prevented?",
+   "answer": "The acrosome reaction releases enzymes so one sperm can penetrate the zona pellucida. After fusion the cortical reaction releases granule contents that harden the zona pellucida, blocking other sperm."
+  },
+  {
+   "id": "d31-k16",
+   "ahl": true,
+   "stmt": "D3.1.16",
+   "cue": "What is a blastocyst?",
+   "answer": "A hollow ball of cells formed about 5–7 days after fertilisation, which implants into the endometrium."
+  },
+  {
+   "id": "d31-k17",
+   "ahl": true,
+   "stmt": "D3.1.17",
+   "cue": "How does a pregnancy test work?",
+   "answer": "The embryo (later the placenta) secretes hCG. Monoclonal antibodies on the test strip bind hCG in urine, giving a coloured line."
+  },
+  {
+   "id": "d31-k18",
+   "ahl": true,
+   "stmt": "D3.1.18",
+   "cue": "What does the placenta do?",
+   "answer": "Its villi give a large surface area for exchange: O₂, glucose, amino acids and antibodies pass to the foetus; CO₂ and urea pass to the mother. It lets the foetus stay in the uterus until a later stage of development."
+  },
+  {
+   "id": "d31-k19",
+   "ahl": true,
+   "stmt": "D3.1.19",
+   "cue": "How are pregnancy and birth controlled?",
+   "answer": "Progesterone, first from the corpus luteum and then from the placenta, maintains the pregnancy. At term progesterone falls, allowing oxytocin release; oxytocin causes contractions, which stimulate more oxytocin (positive feedback) until birth."
+  },
+  {
+   "id": "d31-k20",
+   "ahl": true,
+   "stmt": "D3.1.20",
+   "cue": "What happened with HRT and heart disease?",
+   "answer": "Early epidemiological studies found less coronary heart disease in women taking HRT and assumed a cause. Randomised controlled trials later showed HRT slightly increased the risk. The original correlation was probably because women on HRT tended to be wealthier and healthier."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Gamete",
+   "def": "Haploid sex cell (sperm, egg, or plant gamete)."
+  },
+  {
+   "term": "Corpus luteum",
+   "def": "Remains of the follicle after ovulation; secretes progesterone."
+  },
+  {
+   "term": "Pollination",
+   "def": "Transfer of pollen from anther to stigma."
+  },
+  {
+   "term": "Self-incompatibility",
+   "def": "Mechanism stopping a plant's own pollen fertilising it."
+  },
+  {
+   "term": "hCG (AHL)",
+   "def": "Hormone from the embryo; detected in pregnancy tests."
+  },
+  {
+   "term": "Polyspermy (AHL)",
+   "def": "Fertilisation of an egg by more than one sperm."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Read a menstrual cycle graph",
+   "prompt": "On a hormone graph, LH peaks sharply on day 14 and progesterone is highest on days 18–24. Explain both.",
+   "steps": [
+    "High oestradiol before day 14 has a positive feedback effect on LH.",
+    "The LH surge triggers ovulation on day 14.",
+    "The corpus luteum forms after ovulation and secretes progesterone."
+   ],
+   "answer": "LH surge = ovulation; progesterone high in the luteal phase to maintain the endometrium."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Pollination and fertilisation are the same.",
+   "right": "Pollination transfers pollen; fertilisation is fusion of gametes in the ovule."
+  },
+  {
+   "wrong": "Seed dispersal is pollination.",
+   "right": "Dispersal moves seeds; pollination moves pollen."
+  },
+  {
+   "wrong": "Hermaphrodite plants reproduce asexually.",
+   "right": "They still reproduce sexually: gametes fuse."
+  },
+  {
+   "wrong": "Progesterone triggers childbirth.",
+   "right": "A fall in progesterone allows oxytocin to trigger it."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Explain",
+   "marks": 5,
+   "prompt": "Explain the roles of hormones in the menstrual cycle.",
+   "checkpoints": [
+    "FSH stimulates follicle development",
+    "Oestradiol thickens endometrium",
+    "Positive feedback: oestradiol causes LH surge, ovulation",
+    "Corpus luteum secretes progesterone, maintains endometrium",
+    "Negative feedback on FSH/LH; progesterone fall causes menstruation"
+   ]
+  },
+  {
+   "commandTerm": "Draw",
+   "marks": 4,
+   "prompt": "Draw an annotated diagram of an insect-pollinated flower.",
+   "checkpoints": [
+    "Anther and filament (stamen)",
+    "Stigma, style, ovary with ovules",
+    "Petals and sepals",
+    "Functions annotated"
+   ]
+  },
+  {
+   "commandTerm": "Outline",
+   "marks": 3,
+   "prompt": "Outline the methods that promote cross-pollination.",
+   "checkpoints": [
+    "Different maturation times of anther and stigma",
+    "Separate male/female flowers or plants",
+    "Self-incompatibility genes"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain how pregnancy is maintained and how childbirth begins.",
+   "checkpoints": [
+    "Progesterone from corpus luteum then placenta",
+    "Fall in progesterone at term",
+    "Oxytocin causes contractions; positive feedback"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "D2.1",
+   "prompt": "How does meiosis produce haploid gametes?"
+  },
+  {
+   "to": "C2.1",
+   "prompt": "How do steroid hormones act on target cells?"
+  },
+  {
+   "to": "D3.3",
+   "prompt": "How does feedback in reproduction compare with homeostasis?"
+  },
+  {
+   "to": "C3.2",
+   "prompt": "Where are monoclonal antibodies used?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/continuity-change/reproduction.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/bio-defence-against-disease.json",
+    "itemIds": [
+     "im14"
+    ]
+   }
+  ],
+  "decks": [],
+  "gap": "No quiz or deck covers D3.1 except im14 (pregnancy test). Missing everything else, including the menstrual cycle, fertilisation, IVF, flowers and pollination."
+ }
+}

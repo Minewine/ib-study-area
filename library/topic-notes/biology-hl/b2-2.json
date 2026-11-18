@@ -1,0 +1,200 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-b2-2",
+ "code": "B2.2",
+ "title": "Organelles and compartmentalization",
+ "theme": "B",
+ "themeLabel": "Form and function",
+ "level": 2,
+ "levelLabel": "Cells",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "B2.2.1",
+   "B2.2.2",
+   "B2.2.3"
+  ],
+  "AHL": [
+   "B2.2.4",
+   "B2.2.5",
+   "B2.2.6",
+   "B2.2.7",
+   "B2.2.8",
+   "B2.2.9"
+  ]
+ },
+ "bigPicture": "Membranes split a eukaryotic cell into compartments, so each organelle can hold the right enzymes at the right concentration and keep incompatible reactions apart.",
+ "keyIdeas": [
+  {
+   "id": "b22-k1",
+   "ahl": false,
+   "stmt": "B2.2.1",
+   "cue": "What counts as an organelle? How was each one studied?",
+   "answer": "An organelle is a discrete subunit adapted to a function: nuclei, vesicles, ribosomes and the plasma membrane count. The cell wall, cytoskeleton and cytoplasm don't. Studying individual organelles became possible with ultracentrifuges and cell fractionation, an example of new techniques driving progress."
+  },
+  {
+   "id": "b22-k2",
+   "ahl": false,
+   "stmt": "B2.2.2",
+   "cue": "Why keep the nucleus separate from the cytoplasm?",
+   "answer": "Transcription and translation are separated, so mRNA can be modified (processed) before it meets ribosomes. In prokaryotes, ribosomes can start on mRNA immediately."
+  },
+  {
+   "id": "b22-k3",
+   "ahl": false,
+   "stmt": "B2.2.3",
+   "cue": "What are the advantages of compartments in the cytoplasm?",
+   "answer": "Enzymes and substrates are concentrated where needed, and incompatible processes are kept apart. Lysosomes hold digestive enzymes that would damage the cell. Phagocytic vacuoles fuse with lysosomes to digest what was engulfed."
+  },
+  {
+   "id": "b22-k4",
+   "ahl": true,
+   "stmt": "B2.2.4",
+   "cue": "How is the mitochondrion adapted for ATP production?",
+   "answer": "Double membrane with a small intermembrane space, so a proton gradient builds quickly. Cristae give a large inner-membrane area for electron transport chains and ATP synthase. The matrix holds the Krebs cycle enzymes and substrates together."
+  },
+  {
+   "id": "b22-k5",
+   "ahl": true,
+   "stmt": "B2.2.5",
+   "cue": "How is the chloroplast adapted for photosynthesis?",
+   "answer": "Large area of thylakoid membrane carrying photosystems. Small fluid volume inside thylakoids, so a proton gradient builds fast. The stroma holds the Calvin cycle enzymes and substrates together."
+  },
+  {
+   "id": "b22-k6",
+   "ahl": true,
+   "stmt": "B2.2.6",
+   "cue": "Why does the nucleus have a double membrane with pores?",
+   "answer": "Pores let mRNA out and proteins (e.g. enzymes, histones) in, while keeping DNA inside. The membrane breaks into vesicles during mitosis and meiosis so the spindle can reach the chromosomes, then re-forms afterwards."
+  },
+  {
+   "id": "b22-k7",
+   "ahl": true,
+   "stmt": "B2.2.7",
+   "cue": "Free ribosomes vs ribosomes on rough ER?",
+   "answer": "Free ribosomes make proteins for use within the cytoplasm. Ribosomes on rough ER make proteins that go into the ER for transport to other organelles, the membrane or secretion."
+  },
+  {
+   "id": "b22-k8",
+   "ahl": true,
+   "stmt": "B2.2.8",
+   "cue": "What does the Golgi apparatus do?",
+   "answer": "It receives proteins from the rough ER in vesicles, processes them (e.g. adds carbohydrate) and packages them into vesicles for secretion."
+  },
+  {
+   "id": "b22-k9",
+   "ahl": true,
+   "stmt": "B2.2.9",
+   "cue": "How do vesicles form, and what is clathrin's role?",
+   "answer": "Vesicles are small membrane sacs that carry materials. Clathrin proteins assemble into a cage-like coat on a patch of membrane, curving it into a pit that pinches off as a vesicle (e.g. in endocytosis)."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Organelle",
+   "def": "Discrete subunit of a cell adapted to a specific function."
+  },
+  {
+   "term": "Cell fractionation",
+   "def": "Breaking cells and separating organelles by centrifugation."
+  },
+  {
+   "term": "Cristae (AHL)",
+   "def": "Folds of the inner mitochondrial membrane."
+  },
+  {
+   "term": "Clathrin (AHL)",
+   "def": "Protein that coats membrane to form vesicles."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Trace a secreted protein (AHL)",
+   "prompt": "Trace the path of a digestive enzyme from gene to secretion in a pancreatic cell.",
+   "steps": [
+    "Transcription in the nucleus; mRNA leaves through a nuclear pore.",
+    "Translation by ribosomes on rough ER; the protein enters the ER.",
+    "A vesicle carries it to the Golgi for processing.",
+    "A secretory vesicle fuses with the plasma membrane (exocytosis)."
+   ],
+   "answer": "Nucleus → rough ER → vesicle → Golgi → vesicle → exocytosis."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Ribosomes aren't organelles because they have no membrane.",
+   "right": "The syllabus counts ribosomes as organelles."
+  },
+  {
+   "wrong": "Prokaryotes process mRNA before translation like eukaryotes.",
+   "right": "Without a nucleus, translation can start while transcription is still going."
+  },
+  {
+   "wrong": "The Golgi makes proteins.",
+   "right": "Ribosomes make proteins. The Golgi modifies and packages them."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain the advantages of compartmentalisation in eukaryotic cells.",
+   "checkpoints": [
+    "Enzymes and substrates concentrated",
+    "Incompatible reactions separated",
+    "Example: lysosome enzymes kept away from cytoplasm"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 4,
+   "prompt": "Explain how the structure of the mitochondrion is adapted to its function.",
+   "checkpoints": [
+    "Double membrane / small intermembrane space for a steep proton gradient",
+    "Cristae increase surface area",
+    "For electron transport chains and ATP synthase",
+    "Matrix contains Krebs cycle enzymes"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "C1.2",
+   "prompt": "Where in the mitochondrion does each stage of respiration happen?"
+  },
+  {
+   "to": "D1.2",
+   "prompt": "Why can eukaryotes splice mRNA before translation?"
+  },
+  {
+   "to": "B2.1",
+   "prompt": "How do vesicles fuse with membranes?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/form-function/organelles-compartmentalisation.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/bio-unity-diversity-cells.json",
+    "itemIds": [
+     "b02",
+     "b10",
+     "b26",
+     "b27",
+     "b32",
+     "ucx4",
+     "ucx5",
+     "ucx6",
+     "ucx8"
+    ]
+   }
+  ],
+  "decks": [],
+  "gap": "No flashcard deck covers B2.2 yet."
+ }
+}

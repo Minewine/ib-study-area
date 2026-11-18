@@ -1,0 +1,190 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-3-1",
+ "code": "3.1",
+ "title": "Three-dimensional geometry",
+ "theme": "3",
+ "themeLabel": "Geometry and trigonometry",
+ "hlOnly": false,
+ "islOrder": 2,
+ "islUnits": [
+  "1. Prior learning (Y12 wk 2 (early Sep 2026))",
+  "4. Circular trig (Y12 wk 13-16 (late Nov-Dec 2026))"
+ ],
+ "taughtStatus": "partly taught (2D prior learning); 3D next",
+ "statements": {
+  "SL": [
+   "3.1.1",
+   "3.1.2",
+   "3.1.3"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "3.1.1",
+   "text": "Distance and midpoint in 3D"
+  },
+  {
+   "id": "3.1.2",
+   "text": "Volume and surface area of pyramids, cones, spheres, hemispheres and combinations"
+  },
+  {
+   "id": "3.1.3",
+   "text": "Angle between two intersecting lines, and between a line and a plane"
+  }
+ ],
+ "bigPicture": "Coordinate geometry and solids extend to 3D. Most 3D angle problems reduce to finding a right-angled triangle inside the shape.",
+ "keyIdeas": [
+  {
+   "id": "m31-k1",
+   "ahl": false,
+   "stmt": "3.1.1",
+   "cue": "Distance and midpoint in 3D?",
+   "answer": "d = √(Δx² + Δy² + Δz²); midpoint = average each coordinate."
+  },
+  {
+   "id": "m31-k2",
+   "ahl": false,
+   "stmt": "3.1.2",
+   "cue": "Which solid formulas are given?",
+   "answer": "Pyramid, cone (volume and curved area), sphere (volume and surface) are in the booklet; a hemisphere is half a sphere plus a circle if the flat face counts."
+  },
+  {
+   "id": "m31-k3",
+   "ahl": false,
+   "stmt": "3.1.3",
+   "cue": "How do you find the angle between a line and a plane?",
+   "answer": "Drop a perpendicular from the line to the plane, then use trig in the right-angled triangle formed with the line's projection."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "projection",
+   "def": "shadow of a line on a plane"
+  },
+  {
+   "term": "slant height",
+   "def": "l in πrl, from apex to the base edge"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Cuboid diagonal angle",
+   "prompt": "Cuboid 4 × 3 × 12. Find the angle between the space diagonal and the base.",
+   "steps": [
+    "base diagonal = 5",
+    "tan θ = 12/5"
+   ],
+   "answer": "θ ≈ 67.4°"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Cone surface = πrl only",
+   "right": "Total surface adds the base πr²."
+  },
+  {
+   "wrong": "Angle with plane uses the slant edge",
+   "right": "Use the line and its projection on the plane."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Find",
+   "marks": 3,
+   "prompt": "A(1, −2, 3), B(5, 2, 1). Find AB and the midpoint.",
+   "solution": [
+    "Δ = (4, 4, −2)",
+    "AB = √36 = 6",
+    "M = (3, 0, 2)"
+   ],
+   "answer": "AB = 6; M(3, 0, 2)",
+   "commonErrors": [
+    "Subtracting a coordinate the wrong way and squaring a sign error (harmless) but averaging wrongly",
+    "Dropping z"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Find",
+   "marks": 4,
+   "prompt": "A solid is a cylinder (r = 3 cm, h = 10 cm) topped by a hemisphere. Find the total volume and the total exposed surface area.",
+   "solution": [
+    "V = π·9·10 + ⅔π·27 = 108π",
+    "S = π·9 (base) + 2π·3·10 + 2π·9 = 87π"
+   ],
+   "answer": "V ≈ 339 cm³; S ≈ 273 cm²",
+   "commonErrors": [
+    "Using full sphere area 4πr²",
+    "Counting the hidden circle"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [
+   {
+    "section": "SL 3.1",
+    "item": "3D distance and midpoint; volumes of pyramid, cone, sphere; curved area of cone; sphere surface"
+   },
+   {
+    "section": "Prior learning",
+    "item": "2D distance/midpoint, cuboid, cylinder, prism areas and volumes"
+   }
+  ],
+  "memorise": [
+   "Hemisphere = half sphere (not printed separately)",
+   "Pythagoras in 3D; locating the right angle for line-plane angles"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "3.2",
+   "prompt": "Which trig ratio do you use once the right-angled triangle is found?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/3-geometry-trigonometry/3-2-geometry-of-3d-shapes.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/math-aa-topic3-geometry-trig.json",
+    "itemIds": [
+     "gt01",
+     "gt02",
+     "gt04",
+     "gt05"
+    ]
+   },
+   {
+    "file": "library/questions/math-aa-functions-2-1-to-2-3.json",
+    "itemIds": [
+     "fnx2"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/math-topic3-geometry-trig.json",
+    "cardIds": [
+     "fc-math-gt-01",
+     "fc-math-gt-02",
+     "fc-math-gt-04",
+     "fc-math-gt-05",
+     "fc-math-gt-06"
+    ]
+   }
+  ]
+ },
+ "syllabusFlags": [
+  "Distance/midpoint in 2D are prior learning (unit 1); 3D solids and angles assumed in 'Circular trig' - inferred."
+ ]
+}

@@ -1,0 +1,269 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-a1-2",
+ "code": "A1.2",
+ "title": "Nucleic acids",
+ "theme": "A",
+ "themeLabel": "Unity and diversity",
+ "level": 1,
+ "levelLabel": "Molecules",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "A1.2.1",
+   "A1.2.2",
+   "A1.2.3",
+   "A1.2.4",
+   "A1.2.5",
+   "A1.2.6",
+   "A1.2.7",
+   "A1.2.8",
+   "A1.2.9",
+   "A1.2.10"
+  ],
+  "AHL": [
+   "A1.2.11",
+   "A1.2.12",
+   "A1.2.13",
+   "A1.2.14",
+   "A1.2.15"
+  ]
+ },
+ "bigPicture": "DNA and RNA are polymers of nucleotides. A strong sugar–phosphate backbone carries a variable sequence of bases, and complementary base pairing lets that sequence be copied and read.",
+ "keyIdeas": [
+  {
+   "id": "a12-k1",
+   "ahl": false,
+   "stmt": "A1.2.1",
+   "cue": "What is the genetic material of all living organisms?",
+   "answer": "DNA. Some viruses use RNA, but viruses are not considered living."
+  },
+  {
+   "id": "a12-k2",
+   "ahl": false,
+   "stmt": "A1.2.2",
+   "cue": "What are the parts of a nucleotide and how are they drawn?",
+   "answer": "A phosphate (circle), a pentose sugar (pentagon) and a nitrogenous base (rectangle). The phosphate attaches to one side of the sugar and the base to another."
+  },
+  {
+   "id": "a12-k3",
+   "ahl": false,
+   "stmt": "A1.2.3",
+   "cue": "What forms the backbone?",
+   "answer": "Covalent bonds between the phosphate of one nucleotide and the sugar of the next make a continuous, strong sugar–phosphate chain. The bases stick out from it."
+  },
+  {
+   "id": "a12-k4",
+   "ahl": false,
+   "stmt": "A1.2.4",
+   "cue": "Name the bases.",
+   "answer": "DNA: adenine, thymine, guanine, cytosine. RNA: adenine, uracil, guanine, cytosine."
+  },
+  {
+   "id": "a12-k5",
+   "ahl": false,
+   "stmt": "A1.2.5",
+   "cue": "How is RNA built?",
+   "answer": "Nucleotides are linked by condensation into a single strand. You should be able to draw a short RNA chain."
+  },
+  {
+   "id": "a12-k6",
+   "ahl": false,
+   "stmt": "A1.2.6",
+   "cue": "Describe DNA structure.",
+   "answer": "Two antiparallel strands held together by hydrogen bonds between complementary bases: A with T and G with C, twisted into a double helix. You don't need to draw the helix."
+  },
+  {
+   "id": "a12-k7",
+   "ahl": false,
+   "stmt": "A1.2.7",
+   "cue": "Three differences between DNA and RNA.",
+   "answer": "DNA has two strands, RNA usually one. DNA has thymine, RNA has uracil. DNA has deoxyribose (no –OH on carbon 2), RNA has ribose (–OH on carbon 2)."
+  },
+  {
+   "id": "a12-k8",
+   "ahl": false,
+   "stmt": "A1.2.8",
+   "cue": "Why does complementary base pairing matter?",
+   "answer": "It is based on hydrogen bonding, and each base can pair with only one partner, so each strand is a template. This allows accurate replication (DNA to DNA) and expression (DNA to mRNA to protein)."
+  },
+  {
+   "id": "a12-k9",
+   "ahl": false,
+   "stmt": "A1.2.9",
+   "cue": "Why can DNA store limitless information?",
+   "answer": "Any base can follow any other, and molecules can be any length, so the number of possible sequences is 4ⁿ for n bases. A huge amount of information fits in a tiny volume."
+  },
+  {
+   "id": "a12-k10",
+   "ahl": false,
+   "stmt": "A1.2.10",
+   "cue": "Why is the shared genetic code evidence for common ancestry?",
+   "answer": "Almost all organisms use the same codons for the same amino acids. This is best explained by descent from a common ancestor, not by independent origins."
+  },
+  {
+   "id": "a12-k11",
+   "ahl": true,
+   "stmt": "A1.2.11",
+   "cue": "What does 5′→3′ directionality mean and why does it matter?",
+   "answer": "Each strand has a 5′ end (phosphate) and a 3′ end (sugar –OH). Nucleotides are only added to the 3′ end, so replication, transcription and translation all have a direction, and the two DNA strands run in opposite directions."
+  },
+  {
+   "id": "a12-k12",
+   "ahl": true,
+   "stmt": "A1.2.12",
+   "cue": "Why does purine–pyrimidine pairing stabilise the helix?",
+   "answer": "A purine (A or G, two rings) always pairs with a pyrimidine (T or C, one ring). A–T and G–C pairs are the same width, so the helix has a constant diameter whatever the sequence."
+  },
+  {
+   "id": "a12-k13",
+   "ahl": true,
+   "stmt": "A1.2.13",
+   "cue": "Describe a nucleosome.",
+   "answer": "DNA wrapped around a core of eight histone proteins, with one further histone attached to the linker DNA that holds it in place. Molecular visualisation software is used to study it."
+  },
+  {
+   "id": "a12-k14",
+   "ahl": true,
+   "stmt": "A1.2.14",
+   "cue": "How did Hershey and Chase show DNA is the genetic material?",
+   "answer": "Bacteriophages were labelled with ³⁵S (in protein, not DNA) or ³²P (in DNA, not protein), then allowed to infect bacteria, which were then shaken and centrifuged. ³²P ended up in the bacterial pellet and ³⁵S in the liquid, so DNA, not protein, entered the cells. It only became possible once radioisotopes were available."
+  },
+  {
+   "id": "a12-k15",
+   "ahl": true,
+   "stmt": "A1.2.15",
+   "cue": "What did Chargaff's data show?",
+   "answer": "In every species tested, A ≈ T and G ≈ C, but the proportions differed between species. This falsified the tetranucleotide hypothesis, which predicted equal amounts of all four bases in a repeating unit. It is an example of falsification answering the problem of induction."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Nucleotide",
+   "def": "Monomer of nucleic acids: phosphate + pentose + base."
+  },
+  {
+   "term": "Antiparallel",
+   "def": "The two strands run in opposite 5′→3′ directions."
+  },
+  {
+   "term": "Complementary base pairing",
+   "def": "A–T (A–U in RNA) and G–C, held by hydrogen bonds."
+  },
+  {
+   "term": "Nucleosome (AHL)",
+   "def": "DNA wound around a histone octamer."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Use Chargaff's rule",
+   "prompt": "A DNA sample has 30% adenine. Deduce the percentages of T, G and C.",
+   "steps": [
+    "A = T, so T = 30%.",
+    "A + T = 60%, so G + C = 40%.",
+    "G = C, so each is 20%."
+   ],
+   "answer": "T 30%, G 20%, C 20%."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "The backbone is held by hydrogen bonds.",
+   "right": "The backbone is covalent. Hydrogen bonds join the two strands."
+  },
+  {
+   "wrong": "A pairs with U in DNA.",
+   "right": "A pairs with T in DNA. U replaces T only in RNA."
+  },
+  {
+   "wrong": "Viruses prove some living things use RNA as genetic material.",
+   "right": "Viruses aren't considered living. All living organisms use DNA."
+  },
+  {
+   "wrong": "Chargaff showed all four bases are equal.",
+   "right": "He showed A = T and G = C, with ratios varying between species."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Draw",
+   "marks": 3,
+   "prompt": "Draw a section of DNA with two complementary pairs.",
+   "checkpoints": [
+    "Correct symbols for phosphate, sugar and base",
+    "Antiparallel strands linked by sugar–phosphate backbones",
+    "A–T and G–C pairs joined by hydrogen bonds"
+   ]
+  },
+  {
+   "commandTerm": "Distinguish",
+   "marks": 3,
+   "prompt": "Distinguish between the structure of DNA and RNA.",
+   "checkpoints": [
+    "Double vs single strand",
+    "Deoxyribose vs ribose",
+    "Thymine vs uracil"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain how the Hershey–Chase experiment showed DNA is the genetic material.",
+   "checkpoints": [
+    "³²P labels DNA and ³⁵S labels protein",
+    "Only ³²P found inside bacteria / in the pellet",
+    "So DNA, not protein, enters and directs new virus production"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "D1.1",
+   "prompt": "How does antiparallel structure affect replication of each strand?"
+  },
+  {
+   "to": "D1.2",
+   "prompt": "How is the base sequence read to make a protein?"
+  },
+  {
+   "to": "A2.1",
+   "prompt": "Why might RNA have been the first genetic material?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/unity-diversity/nucleic-acids.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/bio-molecules-water.json",
+    "itemIds": [
+     "wm18",
+     "wm19",
+     "wm20",
+     "wm29",
+     "wm30",
+     "wmx8"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/bio-molecules-water.json",
+    "cardIds": [
+     "fc-bio-wm-21",
+     "fc-bio-wm-22",
+     "fc-bio-wm-23"
+    ]
+   }
+  ],
+  "gap": "Thin coverage: DNA as genetic material, bases as a code, RNA condensation, sequence diversity, the universal code, and all AHL statements (nucleosomes, Hershey–Chase, Chargaff)."
+ },
+ "dataBooklet": [
+  "A1.2.2"
+ ]
+}

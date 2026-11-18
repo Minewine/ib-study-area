@@ -1,0 +1,336 @@
+{
+ "schemaVersion": 1,
+ "subject": "chemistry-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "chem-s1-4",
+ "code": "S1.4",
+ "title": "Counting particles by mass: the mole",
+ "theme": "S1",
+ "themeLabel": "Models of the particulate nature of matter",
+ "hlOnly": false,
+ "islOrder": 5,
+ "islUnits": [
+  "3. Stoichiometry (Y12 Oct-Nov)"
+ ],
+ "taughtStatus": "in progress",
+ "statements": {
+  "SL": [
+   "S1.4.1",
+   "S1.4.2",
+   "S1.4.3",
+   "S1.4.4",
+   "S1.4.5",
+   "S1.4.6"
+  ],
+  "AHL": []
+ },
+ "bigPicture": "Atoms are far too small to count one by one, so chemists count them in moles: fixed, enormous batches of 6.02 × 10²³. The mole links what you can weigh or measure (mass, solution volume, gas volume) to the number of particles that actually react.",
+ "keyIdeas": [
+  {
+   "id": "s14-k1",
+   "ahl": false,
+   "stmt": "S1.4.1",
+   "cue": "What is a mole?",
+   "answer": "The SI unit of amount of substance. One mole contains exactly NA = 6.02 × 10²³ elementary entities (atoms, molecules, ions, electrons, formula units: always say which). Number of particles N = n × NA."
+  },
+  {
+   "id": "s14-k2",
+   "ahl": false,
+   "stmt": "S1.4.2",
+   "cue": "What are Ar and Mr?",
+   "answer": "Masses compared with 1/12 of a carbon-12 atom. Mr = sum of the Ar values in the formula, using the booklet's two-decimal values. Both have no units. Example: Mr(H₂SO₄) = 2(1.01) + 32.07 + 4(16.00) = 98.09."
+  },
+  {
+   "id": "s14-k3",
+   "ahl": false,
+   "stmt": "S1.4.3",
+   "cue": "How are mass, moles and molar mass linked?",
+   "answer": "Molar mass M has units g mol⁻¹ and the same number as Mr. n = m/M. Chain: mass ↔ moles ↔ number of particles (× or ÷ NA)."
+  },
+  {
+   "id": "s14-k4",
+   "ahl": false,
+   "stmt": "S1.4.4",
+   "cue": "Empirical vs molecular formula: how do you find them?",
+   "answer": "Empirical = simplest whole-number ratio; molecular = actual numbers of atoms. From % by mass: assume 100 g, divide each mass by Ar, divide by the smallest, round or scale to whole numbers. Molecular formula = empirical × (M ÷ empirical-formula mass)."
+  },
+  {
+   "id": "s14-k5",
+   "ahl": false,
+   "stmt": "S1.4.5",
+   "cue": "How is molar concentration defined?",
+   "answer": "c = n/V with V in dm³, units mol dm⁻³; square brackets mean concentration, e.g. [NaOH]. g dm⁻³ = mol dm⁻³ × M. Remember 1 dm³ = 1000 cm³. Dilution keeps moles constant: c₁V₁ = c₂V₂."
+  },
+  {
+   "id": "s14-k6",
+   "ahl": false,
+   "stmt": "S1.4.6",
+   "cue": "What is Avogadro's law and how is it used?",
+   "answer": "Equal volumes of any gases at the same temperature and pressure hold the same number of molecules. So for gases, volume ratios equal mole ratios: in N₂ + 3H₂ → 2NH₃, 10 cm³ N₂ reacts with 30 cm³ H₂ to give 20 cm³ NH₃."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Mole",
+   "def": "Amount of substance containing 6.02 × 10²³ specified particles."
+  },
+  {
+   "term": "Avogadro constant, NA",
+   "def": "6.02 × 10²³ mol⁻¹."
+  },
+  {
+   "term": "Molar mass, M",
+   "def": "Mass of one mole of a substance, g mol⁻¹."
+  },
+  {
+   "term": "Empirical formula",
+   "def": "Simplest whole-number ratio of atoms."
+  },
+  {
+   "term": "Molecular formula",
+   "def": "Actual number of atoms of each element in a molecule."
+  },
+  {
+   "term": "Molar concentration",
+   "def": "Amount of solute per dm³ of solution, mol dm⁻³."
+  },
+  {
+   "term": "Water of crystallisation",
+   "def": "Water bonded within a hydrated salt's lattice, e.g. CuSO₄·5H₂O."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Empirical to molecular formula",
+   "prompt": "A compound is 85.6% C and 14.4% H by mass, M = 56.1 g mol⁻¹. Find both formulas.",
+   "steps": [
+    "In 100 g: C 85.6/12.01 = 7.13 mol; H 14.4/1.01 = 14.3 mol.",
+    "Divide by 7.13: C 1, H 2.0 → CH₂ (mass 14.03).",
+    "56.1 / 14.03 = 4."
+   ],
+   "answer": "Empirical CH₂; molecular C₄H₈."
+  },
+  {
+   "title": "Concentration conversion",
+   "prompt": "What mass of Na₂CO₃ (M = 105.99 g mol⁻¹) is needed for 250.0 cm³ of 0.100 mol dm⁻³ solution?",
+   "steps": [
+    "V = 0.2500 dm³; n = cV = 0.100 × 0.2500 = 0.0250 mol.",
+    "m = nM = 0.0250 × 105.99."
+   ],
+   "answer": "2.65 g"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "1 mol of H₂O contains 6.02 × 10²³ atoms.",
+   "right": "It contains 6.02 × 10²³ molecules and three times as many atoms (1.81 × 10²⁴)."
+  },
+  {
+   "wrong": "Volume in cm³ goes straight into n = cV.",
+   "right": "Divide cm³ by 1000 to get dm³ first."
+  },
+  {
+   "wrong": "Empirical-formula ratios like 1 : 1.5 can be rounded to 1 : 2.",
+   "right": "Multiply up: 1 : 1.5 becomes 2 : 3. Round only values within about 0.1 of a whole number."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Calculate",
+   "marks": 2,
+   "prompt": "Calculate the number of oxygen atoms in 4.40 g of CO₂ (M = 44.01 g mol⁻¹).",
+   "checkpoints": [
+    "n(CO₂) = 0.100 mol; n(O) = 0.200 mol",
+    "0.200 × 6.02 × 10²³ = 1.20 × 10²³ atoms"
+   ]
+  },
+  {
+   "commandTerm": "Determine",
+   "marks": 3,
+   "prompt": "A hydrated salt MgSO₄·xH₂O loses 51.2% of its mass on heating to constant mass. Determine x (M MgSO₄ = 120.38, H₂O = 18.02).",
+   "checkpoints": [
+    "Per 100 g: 48.8 g MgSO₄ = 0.405 mol; 51.2 g H₂O = 2.84 mol",
+    "Ratio 2.84/0.405 = 7.0",
+    "x = 7"
+   ]
+  },
+  {
+   "commandTerm": "Calculate",
+   "marks": 2,
+   "prompt": "25.0 cm³ of 2.00 mol dm⁻³ HCl is diluted to 500.0 cm³. Calculate the new concentration.",
+   "checkpoints": [
+    "c₂ = c₁V₁/V₂ = 2.00 × 25.0/500.0",
+    "= 0.100 mol dm⁻³"
+   ]
+  }
+ ],
+ "paper1A": [
+  {
+   "stem": "How many moles of ions are in 0.10 mol of Al₂(SO₄)₃?",
+   "choices": [
+    "0.10",
+    "0.20",
+    "0.50",
+    "1.70"
+   ],
+   "answer": 2,
+   "why": "Each formula unit gives 2 Al³⁺ + 3 SO₄²⁻ = 5 ions."
+  },
+  {
+   "stem": "What is the empirical formula of a compound with molecular formula C₆H₁₂O₆?",
+   "choices": [
+    "CHO",
+    "CH₂O",
+    "C₂H₄O₂",
+    "C₃H₆O₃"
+   ],
+   "answer": 1,
+   "why": "Divide by 6."
+  },
+  {
+   "stem": "What volume of 0.50 mol dm⁻³ NaOH contains 0.010 mol?",
+   "choices": [
+    "5.0 cm³",
+    "20 cm³",
+    "50 cm³",
+    "200 cm³"
+   ],
+   "answer": 1,
+   "why": "V = n/c = 0.020 dm³."
+  },
+  {
+   "stem": "At the same T and p, 20 cm³ of CH₄ is burned: CH₄ + 2O₂ → CO₂ + 2H₂O(l). What volume of O₂ reacts?",
+   "choices": [
+    "10 cm³",
+    "20 cm³",
+    "40 cm³",
+    "60 cm³"
+   ],
+   "answer": 2,
+   "why": "Gas volume ratio = mole ratio 1 : 2."
+  }
+ ],
+ "paper1B": [
+  {
+   "data": "Heating hydrated copper(II) sulfate. Crucible 20.00 g; crucible + hydrated salt 22.50 g; crucible after heating to constant mass 21.60 g. M(CuSO₄) = 159.62, M(H₂O) = 18.02.",
+   "prompt": "Determine x in CuSO₄·xH₂O and suggest why heating to constant mass matters.",
+   "answer": "Anhydrous 1.60 g = 0.01002 mol; water 0.90 g = 0.0499 mol; ratio ≈ 5, so x = 5. Constant mass shows all water has been driven off; otherwise x comes out too low."
+  }
+ ],
+ "assessmentNote": "Paper 1A = multiple choice, no calculator; Paper 1B = data-based questions (format from public sources, confirm with the official guide). All prompts here are original practice, not predictions of exam questions.",
+ "errorHints": [
+  {
+   "category": "maths",
+   "hint": "Convert cm³ to dm³; keep 3 significant figures and do not round mid-calculation."
+  },
+  {
+   "category": "knowledge",
+   "hint": "Say which particle you are counting: molecules, atoms or ions."
+  },
+  {
+   "category": "data-booklet use",
+   "hint": "Use two-decimal Ar values from the booklet (Cl 35.45, not 35.5) unless the question gives values."
+  },
+  {
+   "category": "exam communication",
+   "hint": "Show each step with units; method marks are often given even if the final answer slips."
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "R2.1",
+   "prompt": "How does the mole ratio in an equation let you predict reacting masses?"
+  },
+  {
+   "to": "S1.5",
+   "prompt": "Why do all ideal gases have the same molar volume at a given T and p?"
+  }
+ ],
+ "dataBooklet": [
+  {
+   "section": 1,
+   "title": "Some relevant equations",
+   "use": "n = m/M and n = CV."
+  },
+  {
+   "section": 2,
+   "title": "Physical constants",
+   "use": "Avogadro constant."
+  },
+  {
+   "section": 7,
+   "title": "The periodic table",
+   "use": "Ar values to two decimal places."
+  },
+  {
+   "section": 4,
+   "title": "Unit conversions and standard conditions",
+   "use": "1 dm³ = 1000 cm³."
+  },
+  {
+   "section": 3,
+   "title": "Metric (SI) multipliers",
+   "use": "SI prefixes (m, μ, k)."
+  }
+ ],
+ "links": {
+  "checklistKey": "chemistry-hl::library/notes/chemistry-hl/models-of-the-particulate-nature-of-matter/counting-particles-by-mass-the-mole.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/chem-structure-1-stoichiometry.json",
+    "itemIds": [
+     "c01",
+     "c02",
+     "c03",
+     "c04",
+     "c08",
+     "c09",
+     "c12",
+     "c14",
+     "c15",
+     "c16",
+     "c17",
+     "c19",
+     "c20",
+     "chx2",
+     "chx3",
+     "chx5",
+     "chx7",
+     "chx8",
+     "chx10",
+     "chx11",
+     "chx13",
+     "chx14",
+     "chx15",
+     "chx16",
+     "chx17",
+     "chx18"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/chem-structure-1-stoichiometry.json",
+    "cardIds": [
+     "fc-chem-s1-01",
+     "fc-chem-s1-02",
+     "fc-chem-s1-03",
+     "fc-chem-s1-05",
+     "fc-chem-s1-10",
+     "fc-chem-s1-11",
+     "fc-chem-s1-12",
+     "fc-chem-s1-13",
+     "fc-chem-s1-15",
+     "fc-chem-s1-16",
+     "fc-chem-s1-17"
+    ]
+   }
+  ],
+  "gap": "Good coverage of S1.4.1–S1.4.6. No gaps found."
+ },
+ "syllabusFlags": [
+  "S1.4.1 (the mole / Avogadro constant) is missing from the ISL document; number and wording taken from public sources. Recheck against the official guide."
+ ]
+}

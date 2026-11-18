@@ -61,7 +61,7 @@
         const res = await fetch(PATH_BASE + r.file + "?cb=" + Date.now(), { cache: "no-store" });
         if (!res.ok) throw new Error(res.status + " " + r.file);
         const d = await res.json();
-        DECKS.push({ subject: d.subject || r.subject, subjectLabel: r.subjectLabel, topic: d.topic, topicLabel: d.topicLabel, cards: d.cards || [] });
+        DECKS.push({ id: String(r.file).split("/").pop().replace(/\.json$/i, ""), subject: d.subject || r.subject, subjectLabel: r.subjectLabel, topic: d.topic, topicLabel: d.topicLabel, cards: d.cards || [] });
       } catch (e) { console.warn("deck failed:", r.file, e); }
     }
     store.get("fc-userdecks", []).forEach(ud => {
@@ -77,7 +77,7 @@
       for (const c of d.cards) {
         if (deleted.includes(c.id)) continue;
         const e = edits[c.id];
-        CARDS.push(Object.assign({}, c, e || {}, { subject: d.subject, subjectLabel: d.subjectLabel, topic: d.topic, topicLabel: d.topicLabel, seed: true }));
+        CARDS.push(Object.assign({}, c, e || {}, { deck: d.id || null, subject: d.subject, subjectLabel: d.subjectLabel, topic: d.topic, topicLabel: d.topicLabel, seed: true }));
       }
     }
     for (const c of user) {
@@ -132,8 +132,21 @@
     return queue;
   }
 
-  function startSession() {
-    const queue = buildQueue();
+  // Deep link from a topic note: cards.html?from=<deckId>[:id1,id2…]&from=…&label=…&n=20
+  // Due cards first, then new ones, then the rest (lowest box first).
+  function linkQueue(params) {
+    const wanted = params.getAll("from").map(f => { const [deck, ids] = f.split(":"); return { deck, ids: ids ? ids.split(",").filter(Boolean) : null }; });
+    const n = Math.max(1, parseInt(params.get("n") || "20", 10) || 20);
+    const st = store.get("fc-state", {});
+    const pool = CARDS.filter(c => wanted.some(w => c.deck === w.deck && (!w.ids || w.ids.includes(c.id))));
+    const due = pool.filter(c => st[c.id] && st[c.id].due <= todayISO());
+    const fresh = shuffle(pool.filter(c => !st[c.id]));
+    const rest = pool.filter(c => st[c.id] && st[c.id].due > todayISO()).sort((a, b) => st[a.id].box - st[b.id].box);
+    return due.concat(fresh, rest).slice(0, n);
+  }
+
+  function startSession(e, linked) {
+    const queue = linked || buildQueue();
     if (!queue.length) { $("fc-error").textContent = "Nothing to study for that filter \u2014 try another mode or topic."; return; }
     $("fc-error").textContent = "";
     session = { queue, idx: 0, flipped: false, ratings: { again: 0, hard: 0, easy: 0 } };
@@ -385,6 +398,14 @@
     });
   }
 
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", () => { loadDecks().then(fillSetup); });
-  else loadDecks().then(fillSetup);
+  function fromLink() {
+    const params = new URLSearchParams(location.search);
+    if (!params.getAll("from").length) return;
+    const q = linkQueue(params);
+    if (!q.length) { $("fc-error").textContent = "None of the cards linked from that note could be found."; return; }
+    startSession(null, q);
+  }
+  const boot = () => loadDecks().then(fillSetup).then(fromLink);
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
 })();

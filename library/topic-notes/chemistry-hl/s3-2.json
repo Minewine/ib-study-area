@@ -1,0 +1,391 @@
+{
+ "schemaVersion": 1,
+ "subject": "chemistry-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "chem-s3-2",
+ "code": "S3.2",
+ "title": "Functional groups: classification of organic compounds",
+ "theme": "S3",
+ "themeLabel": "Classification of matter",
+ "hlOnly": false,
+ "islOrder": 19,
+ "islUnits": [
+  "10. Organic chemistry (Y13 Nov-Mar)"
+ ],
+ "taughtStatus": "upcoming",
+ "statements": {
+  "SL": [
+   "S3.2.1",
+   "S3.2.2",
+   "S3.2.3",
+   "S3.2.4",
+   "S3.2.5",
+   "S3.2.6"
+  ],
+  "AHL": [
+   "S3.2.7",
+   "S3.2.8",
+   "S3.2.9",
+   "S3.2.10",
+   "S3.2.11",
+   "S3.2.12"
+  ]
+ },
+ "bigPicture": "Organic chemistry is sorted by functional groups: the reactive part of the molecule that gives a family (homologous series) its typical properties. Learn the groups, the naming rules and the kinds of isomer, then (HL) use mass spectrometry, IR and ¹H NMR spectra together to work out an unknown structure.",
+ "keyIdeas": [
+  {
+   "id": "s32-k1",
+   "ahl": false,
+   "stmt": "S3.2.1",
+   "cue": "Which types of formula are used?",
+   "answer": "Empirical (simplest ratio), molecular (actual atoms, C₄H₁₀), full structural (every bond), condensed (CH₃CH₂CH₂CH₃), skeletal (zig-zag lines, C and H on C not drawn) and stereochemical (wedges and dashes; only draw these when asked). Be able to convert between molecular, structural and skeletal; 3D models help."
+  },
+  {
+   "id": "s32-k2",
+   "ahl": false,
+   "stmt": "S3.2.2",
+   "cue": "Which functional groups must you know?",
+   "answer": "Halogeno –X; hydroxyl –OH; carbonyl C=O (aldehyde –CHO, ketone C–CO–C); carboxyl –COOH; alkoxy –OR (ethers); amino –NH₂; amido –CONH₂; ester –COO–; phenyl –C₆H₅. Saturated = only C–C single bonds; unsaturated = contains C=C or C≡C."
+  },
+  {
+   "id": "s32-k3",
+   "ahl": false,
+   "stmt": "S3.2.3",
+   "cue": "What is a homologous series?",
+   "answer": "A family with the same functional group and general formula, where each member differs by CH₂: alkanes CₙH₂ₙ₊₂, alkenes CₙH₂ₙ, alkynes CₙH₂ₙ₋₂, halogenoalkanes, alcohols CₙH₂ₙ₊₁OH, aldehydes, ketones, carboxylic acids, ethers, amines, amides, esters. Members have similar chemical properties."
+  },
+  {
+   "id": "s32-k4",
+   "ahl": false,
+   "stmt": "S3.2.4",
+   "cue": "Why do boiling points rise along a series?",
+   "answer": "Each extra CH₂ adds electrons and surface area, so London forces get stronger and the boiling point rises steadily. Branching lowers the boiling point (less surface contact)."
+  },
+  {
+   "id": "s32-k5",
+   "ahl": false,
+   "stmt": "S3.2.5",
+   "cue": "How do you name compounds (IUPAC)?",
+   "answer": "Find the longest chain containing the functional group (up to 6 C: meth-, eth-, prop-, but-, pent-, hex-). Number from the end that gives the functional group (or branch) the lowest number. Add substituent prefixes (methyl, chloro; di/tri for repeats) in alphabetical order. Suffixes: -ane, -ene, -ol, -al, -one, -oic acid; halogens as prefixes. Examples: 2-methylbutane, but-2-ene, propan-2-ol, butanone, 2-chloropropane."
+  },
+  {
+   "id": "s32-k6",
+   "ahl": false,
+   "stmt": "S3.2.6",
+   "cue": "What are structural isomers?",
+   "answer": "Same molecular formula, different connectivity. Chain (branched vs straight), position (functional group in a different place) and functional group isomers (propanal vs propanone). Primary/secondary/tertiary: the carbon bearing –OH or –X is bonded to 1, 2 or 3 other carbons; for amines, count the carbons on N."
+  },
+  {
+   "id": "s32-k7",
+   "ahl": true,
+   "stmt": "S3.2.7",
+   "cue": "What are stereoisomers (AHL)?",
+   "answer": "Same connectivity, different spatial arrangement. Cis-trans isomerism: restricted rotation about C=C (or in a ring) with two different groups on each carbon; cis = same side. Optical isomerism: a chiral carbon has four different groups; the two enantiomers are non-superimposable mirror images that rotate plane-polarised light equally in opposite directions; a racemic mixture (50 : 50) is optically inactive. Enantiomers behave differently in chiral environments (e.g. drugs and enzymes). Draw with wedge-dash bonds."
+  },
+  {
+   "id": "s32-k8",
+   "ahl": true,
+   "stmt": "S3.2.8",
+   "cue": "How is mass spectrometry used for organic molecules (AHL)?",
+   "answer": "The molecular ion M⁺ (highest significant m/z) gives Mr. Fragment peaks come from bonds breaking: the difference from M tells you what was lost (15 = CH₃, 17 = OH, 29 = C₂H₅ or CHO, 45 = COOH; see booklet)."
+  },
+  {
+   "id": "s32-k9",
+   "ahl": true,
+   "stmt": "S3.2.9",
+   "cue": "What does an IR spectrum tell you (AHL)?",
+   "answer": "Bonds absorb IR at characteristic wavenumbers (cm⁻¹). Key bands: broad O–H 3200–3600 (alcohol); very broad O–H 2500–3000 (carboxylic acid); C=O 1700–1750; C=C 1620–1680. Greenhouse gases (CO₂, H₂O, CH₄) absorb IR because their vibrations change the dipole."
+  },
+  {
+   "id": "s32-k10",
+   "ahl": true,
+   "stmt": "S3.2.10",
+   "cue": "What does ¹H NMR tell you (AHL)?",
+   "answer": "Number of signals = number of different hydrogen environments. Chemical shift (ppm, relative to TMS at 0) shows the type of environment (booklet table). Integration (relative peak areas) gives the ratio of H atoms in each environment."
+  },
+  {
+   "id": "s32-k11",
+   "ahl": true,
+   "stmt": "S3.2.11",
+   "cue": "How does splitting add detail (AHL)?",
+   "answer": "n + 1 rule: a signal from H with n equivalent H on neighbouring carbons splits into n + 1 peaks: singlet (0 neighbours), doublet (1), triplet (2), quartet (3). Ethyl group = triplet (CH₃) + quartet (CH₂). OH usually appears as a singlet."
+  },
+  {
+   "id": "s32-k12",
+   "ahl": true,
+   "stmt": "S3.2.12",
+   "cue": "How do you combine techniques (AHL)?",
+   "answer": "Use empirical formula and MS for the molecular formula; IR for functional groups; ¹H NMR for the carbon skeleton and environments. Check that the final structure fits every piece of data."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Functional group",
+   "def": "Atom or group that gives a series its characteristic reactions."
+  },
+  {
+   "term": "Homologous series",
+   "def": "Family with the same functional group and general formula, differing by CH₂."
+  },
+  {
+   "term": "Structural isomers",
+   "def": "Same molecular formula, different connectivity."
+  },
+  {
+   "term": "Chiral carbon",
+   "def": "Carbon bonded to four different groups (AHL)."
+  },
+  {
+   "term": "Enantiomers",
+   "def": "Non-superimposable mirror-image molecules (AHL)."
+  },
+  {
+   "term": "Molecular ion",
+   "def": "M⁺; gives the molar mass (AHL)."
+  },
+  {
+   "term": "Chemical shift",
+   "def": "Position of an NMR signal (ppm) reflecting the H environment (AHL)."
+  },
+  {
+   "term": "Integration trace",
+   "def": "Relative area of NMR signals = ratio of H atoms (AHL)."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Naming",
+   "prompt": "Name CH₃CH(OH)CH₂CH₃ and CH₃CH₂CH(CH₃)CH₂CH₃.",
+   "steps": [
+    "Longest chain with OH = 4 C, OH on C2 from the nearer end.",
+    "Second: longest chain 5 C, methyl on C3."
+   ],
+   "answer": "Butan-2-ol; 3-methylpentane"
+  },
+  {
+   "title": "Combining spectra (AHL)",
+   "prompt": "C₃H₆O: IR strong band at 1715 cm⁻¹, no broad 3200–3600 band; ¹H NMR one singlet; MS M⁺ 58 and a large peak at 43.",
+   "steps": [
+    "IR: C=O, no O–H → aldehyde or ketone.",
+    "One NMR signal → all H equivalent → propanone (CH₃COCH₃); propanal would give three signals.",
+    "58 − 43 = 15: loss of CH₃."
+   ],
+   "answer": "Propanone"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Branched isomers have higher boiling points.",
+   "right": "Branching reduces surface contact and London forces, so boiling points are lower."
+  },
+  {
+   "wrong": "Number of NMR peaks in a split cluster = number of H on that carbon.",
+   "right": "Splitting depends on H on the neighbouring carbons (n + 1 rule)."
+  },
+  {
+   "wrong": "A racemic mixture contains no chiral molecules.",
+   "right": "It contains equal amounts of both enantiomers, so rotations cancel."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Identify",
+   "marks": 2,
+   "prompt": "Identify the functional groups in CH₃COOCH₂CH₃ and H₂NCH₂COOH.",
+   "checkpoints": [
+    "Ester",
+    "Amino and carboxyl"
+   ]
+  },
+  {
+   "commandTerm": "Draw",
+   "marks": 3,
+   "prompt": "Draw and name the three structural isomers of C₅H₁₂.",
+   "checkpoints": [
+    "Pentane",
+    "2-methylbutane",
+    "2,2-dimethylpropane"
+   ]
+  },
+  {
+   "commandTerm": "Deduce",
+   "marks": 2,
+   "prompt": "Deduce the number of signals and their splitting in the ¹H NMR spectrum of ethanoic acid.",
+   "checkpoints": [
+    "Two signals (CH₃ and COOH), ratio 3 : 1",
+    "Both singlets (no H on neighbouring C)"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 2,
+   "prompt": "Explain why butan-2-ol shows optical isomerism but propan-2-ol does not.",
+   "checkpoints": [
+    "C2 in butan-2-ol has four different groups (H, OH, CH₃, C₂H₅): chiral",
+    "C2 in propan-2-ol has two CH₃ groups: not chiral"
+   ],
+   "ahl": true
+  }
+ ],
+ "paper1A": [
+  {
+   "stem": "What is the name of CH₃CH₂CH₂CHO?",
+   "choices": [
+    "Butanone",
+    "Butanal",
+    "Butan-1-ol",
+    "Butanoic acid"
+   ],
+   "answer": 1,
+   "why": "–CHO on a 4-carbon chain."
+  },
+  {
+   "stem": "Which pair are functional group isomers?",
+   "choices": [
+    "Propan-1-ol and propan-2-ol",
+    "Butane and methylpropane",
+    "Propanal and propanone",
+    "Ethanol and methanol"
+   ],
+   "answer": 2,
+   "why": "Same formula C₃H₆O, different groups."
+  },
+  {
+   "stem": "Which alcohol is tertiary?",
+   "choices": [
+    "Butan-1-ol",
+    "Butan-2-ol",
+    "2-methylpropan-2-ol",
+    "2-methylpropan-1-ol"
+   ],
+   "answer": 2,
+   "why": "C–OH carbon bonded to three carbons."
+  },
+  {
+   "stem": "How many signals are in the ¹H NMR spectrum of propan-2-ol?",
+   "choices": [
+    "2",
+    "3",
+    "4",
+    "8"
+   ],
+   "answer": 1,
+   "why": "Two equivalent CH₃, one CH, one OH.",
+   "ahl": true
+  },
+  {
+   "stem": "Which compound has a chiral carbon?",
+   "choices": [
+    "CH₃CH₂CH₂Cl",
+    "CH₃CHClCH₃",
+    "CH₃CHClCH₂CH₃",
+    "CH₂ClCH₂Cl"
+   ],
+   "answer": 2,
+   "why": "C2 has H, Cl, CH₃, C₂H₅.",
+   "ahl": true
+  }
+ ],
+ "paper1B": [
+  {
+   "data": "Unknown X, C₂H₄O₂. IR: very broad 2500–3000 cm⁻¹ and strong 1710 cm⁻¹. ¹H NMR: singlet at 2.1 ppm (3H), singlet at 11.5 ppm (1H).",
+   "prompt": "Identify X, using the booklet IR and NMR tables.",
+   "answer": "Carboxylic acid O–H and C=O; NMR: CH₃ next to C=O and COOH proton (9.0–13.0 ppm). X is ethanoic acid, CH₃COOH.",
+   "ahl": true
+  }
+ ],
+ "assessmentNote": "Paper 1A = multiple choice, no calculator; Paper 1B = data-based questions (format from public sources, confirm with the official guide). All prompts here are original practice, not predictions of exam questions.",
+ "errorHints": [
+  {
+   "category": "knowledge",
+   "hint": "Learn suffixes and which groups are prefixes (halogens, methyl)."
+  },
+  {
+   "category": "interpretation",
+   "hint": "In NMR, count environments first, then integration, then splitting from neighbours."
+  },
+  {
+   "category": "data-booklet use",
+   "hint": "Match IR bands and NMR shifts to the booklet ranges, quoting the range used."
+  },
+  {
+   "category": "exam communication",
+   "hint": "Show the full name with locants and hyphens/commas: 2,2-dimethylpropane."
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "S2.2",
+   "prompt": "How do intermolecular forces explain boiling-point trends in a series?"
+  },
+  {
+   "to": "R3.4",
+   "prompt": "How does the functional group decide the reaction type?"
+  },
+  {
+   "to": "S1.2",
+   "prompt": "How is mass spectrometry of atoms related to MS of molecules (AHL)?"
+  }
+ ],
+ "dataBooklet": [
+  {
+   "section": 20,
+   "title": "Infrared data",
+   "use": "IR absorption wavenumbers (AHL)."
+  },
+  {
+   "section": 21,
+   "title": "1H NMR data",
+   "use": "¹H NMR chemical shifts (AHL)."
+  },
+  {
+   "section": 22,
+   "title": "Mass spectral fragments lost",
+   "use": "Mass fragments lost (AHL)."
+  },
+  {
+   "section": 7,
+   "title": "The periodic table",
+   "use": "Ar values for molar masses."
+  }
+ ],
+ "links": {
+  "checklistKey": "chemistry-hl::library/notes/chemistry-hl/classification-of-matter/functional-groups-classification-of-organic-compounds.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/chem-organic-chemistry.json",
+    "itemIds": [
+     "o01",
+     "o02",
+     "o03",
+     "o04",
+     "o06",
+     "o16",
+     "o18",
+     "o20",
+     "o21"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/chem-organic-chemistry.json",
+    "cardIds": [
+     "fc-chem-org-01",
+     "fc-chem-org-02",
+     "fc-chem-org-03",
+     "fc-chem-org-04",
+     "fc-chem-org-06",
+     "fc-chem-org-14"
+    ]
+   }
+  ],
+  "gap": "No items on stereoisomerism (S3.2.7), mass spectra of organic compounds (S3.2.8) or ¹H NMR (S3.2.10–S3.2.12); IR only on o16 and one flashcard."
+ },
+ "syllabusFlags": [
+  "ISL marks all spectroscopy (MS, IR, 1H NMR: S3.2.8-12) as HL; consistent with public sources. Recheck."
+ ]
+}

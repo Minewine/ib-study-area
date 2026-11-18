@@ -48,7 +48,7 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
   // ── 1. every page loads without console errors ───────────────────────────
   {
     const { page, errors, ctx } = await newCtx(browser);
-    const pages = ["/index.html", "/app/index.html", "/app/quiz.html", "/app/cards.html", "/app/author.html",
+    const pages = ["/index.html", "/app/index.html", "/app/notes.html", "/app/quiz.html", "/app/cards.html", "/app/author.html",
       ...fs.readdirSync(REPO).filter(f => f.endsWith(".html")).map(f => "/" + f)];
     for (const p of [...new Set(pages)]) {
       errors.length = 0;
@@ -57,6 +57,56 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
       assert.deepStrictEqual(bad, [], p + " console errors: " + bad.join(" | "));
     }
     ok(`${new Set(pages).size} pages load with no console errors / failed requests`);
+    await ctx.close();
+  }
+
+  // ── 1b. topic notes: every note renders; note links start the right quiz / cards ──
+  {
+    const { page, errors, ctx } = await newCtx(browser);
+    const man = JSON.parse(fs.readFileSync(`${REPO}/library/topic-notes/manifest.json`, "utf8"));
+    for (const n of man.notes) {
+      const topic = path.basename(n.file, ".json");
+      await page.goto(`${BASE}/app/notes.html?subject=${n.subject}&topic=${topic}`, { waitUntil: "networkidle0" });
+      await page.waitForSelector("#nt-title");
+      assert.strictEqual(await page.$eval("#nt-title", e => e.textContent), `${n.code} ${n.title}`);
+    }
+    assert.deepStrictEqual(errors.filter(e => !/favicon/.test(e)), [], "notes console errors");
+    // recall-first: answers hidden until revealed
+    await page.goto(`${BASE}/app/notes.html?subject=chemistry-hl&topic=s1-4`, { waitUntil: "networkidle0" });
+    await page.waitForSelector(".nt-idea");
+    assert.ok(await page.$eval(".nt-idea .nt-answer", e => e.hidden), "key-idea answer hidden at first");
+    await page.click(".nt-idea > button");
+    assert.ok(!(await page.$eval(".nt-idea .nt-answer", e => e.hidden)), "revealed on demand");
+    assert.match(await page.$eval(".nt-label", e => e.textContent), /not IB markschemes/);
+    const note = JSON.parse(fs.readFileSync(`${REPO}/library/topic-notes/chemistry-hl/s1-4.json`, "utf8"));
+    const qb = note.links.quizBanks[0], want = new Set(qb.itemIds);
+    const bankItems = bank(path.basename(qb.file, ".json")).items;
+    const stemToId = Object.fromEntries(bankItems.map(i => [i.stem, i.id]));
+    await page.goto(await page.$eval("#nt-quiz", a => a.href), { waitUntil: "networkidle0" });
+    await page.waitForSelector("#q-box .q-stem");
+    const notice = await page.evaluate(() => document.getElementById("runner").innerText);
+    assert.match(notice, /S1\.4/, "session labelled with the note");
+    const seen = [];
+    for (let q = 0; q < Math.min(20, want.size); q++) {
+      const stem = await page.$eval("#q-box .q-stem", e => e.textContent);
+      seen.push(stemToId[stem]);
+      if (await page.$("#q-box .choice")) await page.click("#q-box .choice");
+      else { await page.click("#q-reveal"); await page.select("#q-selfscore", "0"); }
+      await page.click("#q-next");
+    }
+    assert.ok(seen.every(id => want.has(id)), "every question comes from the note's linked ids: " + seen.join(","));
+    assert.strictEqual(new Set(seen).size, seen.length, "no repeats");
+    const deck = note.links.decks[0];
+    await page.goto(`${BASE}/app/notes.html?subject=chemistry-hl&topic=s1-4`, { waitUntil: "networkidle0" });
+    await page.waitForSelector("#nt-cards");
+    await page.goto(await page.$eval("#nt-cards", a => a.href), { waitUntil: "networkidle0" });
+    await page.waitForFunction(() => document.getElementById("runner").style.display !== "none");
+    const front = await page.$eval("#fc-front", e => e.textContent);
+    const deckCards = JSON.parse(fs.readFileSync(`${REPO}/${deck.file}`, "utf8")).cards;
+    const card = deckCards.find(c => c.front === front);
+    assert.ok(card && (!deck.cardIds || deck.cardIds.includes(card.id)), "first card is one of the note's linked cards");
+    assert.deepStrictEqual(errors.filter(e => !/favicon/.test(e)), [], "notes → quiz/cards console errors");
+    ok(`${man.notes.length} topic notes render; recall-first reveal; note links start a quiz on exactly the linked questions and cards on the linked deck`);
     await ctx.close();
   }
 

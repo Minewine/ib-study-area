@@ -5,7 +5,7 @@ Output: deploy/nevaib/  +  deploy/nevaib.zip  (push with tools/push_deploy.py,
 or upload manually via cPanel/SFTP)
 
 Contents: the practice app pages, engines, style, ORIGINAL quiz banks +
-flashcard decks + manifests + authoring doc + api.php. The copyrighted PDF
+flashcard decks + topic notes + manifests + authoring doc + api.php. The copyrighted PDF
 folders (library/official|school|notes|papers) are NOT included — they stay
 local-only. Study-site links are stripped (the deployed app is standalone).
 
@@ -26,7 +26,7 @@ OUT = ROOT / "deploy" / "nevaib"
 KEY_FILE = ROOT / "deploy" / ".setup-key"
 ZIP_FILE = ROOT / "deploy" / "nevaib.zip"
 
-PAGES = ["index.html", "quiz.html", "cards.html", "author.html"]
+PAGES = ["index.html", "notes.html", "quiz.html", "cards.html", "author.html"]
 
 EMPTY_KEY_LINE = (
     '$SETUP_KEY = "";  // e.g. "paste-a-long-random-string"; empty = setup disabled'
@@ -77,6 +77,7 @@ def build(out: Path = OUT, apply_key: bool = True) -> Path:
     # original content only
     copy_tree(ROOT / "library/questions", out / "library/questions")
     copy_tree(ROOT / "library/flashcards", out / "library/flashcards")
+    copy_tree(ROOT / "library/topic-notes", out / "library/topic-notes")
     (out / "docs").mkdir(parents=True, exist_ok=True)
     shutil.copy2(ROOT / "docs/AUTHORING.md", out / "docs/AUTHORING.md")
     # backend

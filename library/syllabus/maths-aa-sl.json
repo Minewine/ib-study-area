@@ -1,0 +1,2141 @@
+{
+ "subject": "maths-aa-sl",
+ "guide": "Mathematics: analysis and approaches guide, first assessment 2021 (applies to May 2028)",
+ "excluded": "New AA guide (first assessment May 2029) not used.",
+ "statusAsOf": "2026-11-18",
+ "counts": {
+  "1": 9,
+  "2": 11,
+  "3": 8,
+  "4": 12,
+  "5": 11
+ },
+ "note": "Content-point ids (e.g. 2.6.3) are our own split of each subtopic, not official IB numbering.",
+ "islUnits": [
+  {
+   "unit": 1,
+   "name": "Prior learning",
+   "when": "Y12 wk 2 (early Sep 2026)",
+   "status": "taught"
+  },
+  {
+   "unit": 2,
+   "name": "Functions and quadratics",
+   "when": "Y12 wk 3-8 (Sep-mid Oct 2026)",
+   "status": "taught"
+  },
+  {
+   "unit": 3,
+   "name": "Differentiation",
+   "when": "Y12 wk 9-12 (late Oct-Nov 2026)",
+   "status": "in progress"
+  },
+  {
+   "unit": 4,
+   "name": "Circular trig",
+   "when": "Y12 wk 13-16 (late Nov-Dec 2026)",
+   "status": "next (from ~23 Nov 2026)"
+  },
+  {
+   "unit": 5,
+   "name": "Exp and logs",
+   "when": "Y12 wk 17 (Jan 2027)",
+   "status": "later"
+  },
+  {
+   "unit": 6,
+   "name": "Trig equations and functions",
+   "when": "Y12 wk 23-27 (Mar-Apr 2027)",
+   "status": "later"
+  },
+  {
+   "unit": 7,
+   "name": "Further differentiation",
+   "when": "Y12 wk 28-30 (Apr-May 2027)",
+   "status": "later"
+  },
+  {
+   "unit": 8,
+   "name": "Integration",
+   "when": "Y12 wk 37 (Jun 2027) + Y13 wk 1-6 (Sep-Oct 2027)",
+   "status": "later"
+  },
+  {
+   "unit": 9,
+   "name": "Sequences etc, binomial",
+   "when": "Y13 wk 7-11 (Oct-Nov 2027)",
+   "status": "later"
+  },
+  {
+   "unit": 10,
+   "name": "Probability",
+   "when": "Y13 wk 12-15 (Nov-Dec 2027)",
+   "status": "later"
+  },
+  {
+   "unit": 11,
+   "name": "Statistics",
+   "when": "Y13 wk 19-22 (Feb-Mar 2028)",
+   "status": "later"
+  }
+ ],
+ "topics": [
+  {
+   "code": "1.1",
+   "title": "Scientific notation",
+   "topic": "1",
+   "topicLabel": "Number and algebra",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "1.1.1",
+     "1.1.2"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "1.1.1",
+     "text": "Write numbers as a×10^k with 1≤a<10 and k an integer"
+    },
+    {
+     "id": "1.1.2",
+     "text": "Multiply, divide, add and compare numbers in this form, by hand and on the GDC"
+    }
+   ],
+   "islOrder": 1,
+   "islUnits": [
+    {
+     "unit": 1,
+     "name": "Prior learning",
+     "when": "Y12 wk 2 (early Sep 2026)"
+    }
+   ],
+   "taughtStatus": "taught (prior learning)",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/1-number-algebra/1-1-number-toolkit.pdf",
+   "flags": []
+  },
+  {
+   "code": "1.2",
+   "title": "Arithmetic sequences and series",
+   "topic": "1",
+   "topicLabel": "Number and algebra",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "1.2.1",
+     "1.2.2",
+     "1.2.3"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "1.2.1",
+     "text": "General term of a sequence with constant difference"
+    },
+    {
+     "id": "1.2.2",
+     "text": "Sum of the first n terms; sigma notation"
+    },
+    {
+     "id": "1.2.3",
+     "text": "Modelling with arithmetic patterns, including data that is only approximately arithmetic"
+    }
+   ],
+   "islOrder": 35,
+   "islUnits": [
+    {
+     "unit": 9,
+     "name": "Sequences etc, binomial",
+     "when": "Y13 wk 7-11 (Oct-Nov 2027)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/1-number-algebra/1-3-sequences-series.pdf",
+   "flags": []
+  },
+  {
+   "code": "1.3",
+   "title": "Geometric sequences and series",
+   "topic": "1",
+   "topicLabel": "Number and algebra",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "1.3.1",
+     "1.3.2",
+     "1.3.3"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "1.3.1",
+     "text": "General term of a sequence with constant ratio"
+    },
+    {
+     "id": "1.3.2",
+     "text": "Sum of the first n terms; sigma notation"
+    },
+    {
+     "id": "1.3.3",
+     "text": "Applications (growth, decay, repeated percentage change)"
+    }
+   ],
+   "islOrder": 36,
+   "islUnits": [
+    {
+     "unit": 9,
+     "name": "Sequences etc, binomial",
+     "when": "Y13 wk 7-11 (Oct-Nov 2027)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/1-number-algebra/1-3-sequences-series.pdf",
+   "flags": []
+  },
+  {
+   "code": "1.4",
+   "title": "Financial applications of geometric sequences",
+   "topic": "1",
+   "topicLabel": "Number and algebra",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "1.4.1",
+     "1.4.2"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "1.4.1",
+     "text": "Compound interest with k compounding periods per year"
+    },
+    {
+     "id": "1.4.2",
+     "text": "Annual depreciation as a negative rate; solving for time, rate or value (GDC finance solver allowed)"
+    }
+   ],
+   "islOrder": 23,
+   "islUnits": [
+    {
+     "unit": 9,
+     "name": "Sequences etc, binomial",
+     "when": "Y13 wk 7-11 (Oct-Nov 2027)"
+    },
+    {
+     "unit": 5,
+     "name": "Exp and logs",
+     "when": "Y12 wk 17 (Jan 2027)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/1-number-algebra/1-3-sequences-series.pdf",
+   "flags": [
+    "ISL calendar has no separate finance unit; placed with 'Sequences etc' (geometric sequences) and touched in 'Exp and logs' - inferred."
+   ]
+  },
+  {
+   "code": "1.5",
+   "title": "Integer exponents and introduction to logarithms",
+   "topic": "1",
+   "topicLabel": "Number and algebra",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "1.5.1",
+     "1.5.2",
+     "1.5.3"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "1.5.1",
+     "text": "Index laws for integer powers"
+    },
+    {
+     "id": "1.5.2",
+     "text": "Logarithm as the inverse of exponentiation; bases 10 and e"
+    },
+    {
+     "id": "1.5.3",
+     "text": "Evaluating logarithms numerically with technology"
+    }
+   ],
+   "islOrder": 24,
+   "islUnits": [
+    {
+     "unit": 5,
+     "name": "Exp and logs",
+     "when": "Y12 wk 17 (Jan 2027)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/1-number-algebra/1-2-exponentials-logs.pdf",
+   "flags": []
+  },
+  {
+   "code": "1.6",
+   "title": "Simple deductive proof",
+   "topic": "1",
+   "topicLabel": "Number and algebra",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "1.6.1",
+     "1.6.2"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "1.6.1",
+     "text": "Numerical and algebraic deductive arguments"
+    },
+    {
+     "id": "1.6.2",
+     "text": "Setting out a proof from the left-hand side to the right-hand side; equals versus identity symbols"
+    }
+   ],
+   "islOrder": 37,
+   "islUnits": [
+    {
+     "unit": 9,
+     "name": "Sequences etc, binomial",
+     "when": "Y13 wk 7-11 (Oct-Nov 2027)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/1-number-algebra/1-4-proof-reasoning.pdf",
+   "flags": [
+    "No ISL unit names proof explicitly; assumed to sit in 'Sequences etc' (Y13) - inferred."
+   ]
+  },
+  {
+   "code": "1.7",
+   "title": "Rational exponents, laws of logarithms and exponential equations",
+   "topic": "1",
+   "topicLabel": "Number and algebra",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "1.7.1",
+     "1.7.2",
+     "1.7.3",
+     "1.7.4"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "1.7.1",
+     "text": "Index laws with fractional powers"
+    },
+    {
+     "id": "1.7.2",
+     "text": "Product, quotient and power laws of logarithms"
+    },
+    {
+     "id": "1.7.3",
+     "text": "Changing the base of a logarithm"
+    },
+    {
+     "id": "1.7.4",
+     "text": "Solving exponential equations, including by taking logs"
+    }
+   ],
+   "islOrder": 25,
+   "islUnits": [
+    {
+     "unit": 5,
+     "name": "Exp and logs",
+     "when": "Y12 wk 17 (Jan 2027)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/1-number-algebra/1-2-exponentials-logs.pdf",
+   "flags": []
+  },
+  {
+   "code": "1.8",
+   "title": "Infinite geometric series",
+   "topic": "1",
+   "topicLabel": "Number and algebra",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "1.8.1",
+     "1.8.2"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "1.8.1",
+     "text": "Condition for a geometric series to converge"
+    },
+    {
+     "id": "1.8.2",
+     "text": "Sum to infinity and its uses"
+    }
+   ],
+   "islOrder": 38,
+   "islUnits": [
+    {
+     "unit": 9,
+     "name": "Sequences etc, binomial",
+     "when": "Y13 wk 7-11 (Oct-Nov 2027)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/1-number-algebra/1-3-sequences-series.pdf",
+   "flags": []
+  },
+  {
+   "code": "1.9",
+   "title": "The binomial theorem",
+   "topic": "1",
+   "topicLabel": "Number and algebra",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "1.9.1",
+     "1.9.2"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "1.9.1",
+     "text": "Expanding (a+b)^n for natural n"
+    },
+    {
+     "id": "1.9.2",
+     "text": "Binomial coefficients from Pascal's triangle and nCr; finding a given term or coefficient"
+    }
+   ],
+   "islOrder": 39,
+   "islUnits": [
+    {
+     "unit": 9,
+     "name": "Sequences etc, binomial",
+     "when": "Y13 wk 7-11 (Oct-Nov 2027)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/1-number-algebra/1-5-binomial-theorem.pdf",
+   "flags": []
+  },
+  {
+   "code": "2.1",
+   "title": "Equations of straight lines",
+   "topic": "2",
+   "topicLabel": "Functions",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "2.1.1",
+     "2.1.2"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "2.1.1",
+     "text": "Gradient, intercepts and the three common forms of a line"
+    },
+    {
+     "id": "2.1.2",
+     "text": "Parallel lines share a gradient; perpendicular gradients multiply to -1"
+    }
+   ],
+   "islOrder": 3,
+   "islUnits": [
+    {
+     "unit": 2,
+     "name": "Functions and quadratics",
+     "when": "Y12 wk 3-8 (Sep-mid Oct 2026)"
+    }
+   ],
+   "taughtStatus": "taught",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/2-functions/2-1-linear-functions-graphs.pdf",
+   "flags": []
+  },
+  {
+   "code": "2.2",
+   "title": "Functions: domain, range and inverse (informal)",
+   "topic": "2",
+   "topicLabel": "Functions",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "2.2.1",
+     "2.2.2",
+     "2.2.3"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "2.2.1",
+     "text": "What makes a relation a function; domain, range, graph and function notation"
+    },
+    {
+     "id": "2.2.2",
+     "text": "Functions as models of real situations"
+    },
+    {
+     "id": "2.2.3",
+     "text": "An inverse undoes a function; its graph is the reflection in y=x"
+    }
+   ],
+   "islOrder": 4,
+   "islUnits": [
+    {
+     "unit": 2,
+     "name": "Functions and quadratics",
+     "when": "Y12 wk 3-8 (Sep-mid Oct 2026)"
+    }
+   ],
+   "taughtStatus": "taught",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/2-functions/2-3-functions-toolkit.pdf",
+   "flags": []
+  },
+  {
+   "code": "2.3",
+   "title": "Graphs of functions",
+   "topic": "2",
+   "topicLabel": "Functions",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "2.3.1",
+     "2.3.2"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "2.3.1",
+     "text": "Sketching from given information or a context; copying a GDC graph onto paper"
+    },
+    {
+     "id": "2.3.2",
+     "text": "Graphing functions, including sums and differences, with technology"
+    }
+   ],
+   "islOrder": 5,
+   "islUnits": [
+    {
+     "unit": 2,
+     "name": "Functions and quadratics",
+     "when": "Y12 wk 3-8 (Sep-mid Oct 2026)"
+    }
+   ],
+   "taughtStatus": "taught",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/2-functions/2-3-functions-toolkit.pdf",
+   "flags": []
+  },
+  {
+   "code": "2.4",
+   "title": "Key features of graphs",
+   "topic": "2",
+   "topicLabel": "Functions",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "2.4.1",
+     "2.4.2"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "2.4.1",
+     "text": "Maxima, minima, intercepts, symmetry, vertex, zeros and asymptotes"
+    },
+    {
+     "id": "2.4.2",
+     "text": "Intersections of two graphs found with technology"
+    }
+   ],
+   "islOrder": 6,
+   "islUnits": [
+    {
+     "unit": 2,
+     "name": "Functions and quadratics",
+     "when": "Y12 wk 3-8 (Sep-mid Oct 2026)"
+    }
+   ],
+   "taughtStatus": "taught",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/2-functions/2-3-functions-toolkit.pdf",
+   "flags": []
+  },
+  {
+   "code": "2.5",
+   "title": "Composite and inverse functions",
+   "topic": "2",
+   "topicLabel": "Functions",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "2.5.1",
+     "2.5.2",
+     "2.5.3"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "2.5.1",
+     "text": "Forming composite functions and reading the order correctly"
+    },
+    {
+     "id": "2.5.2",
+     "text": "The identity function"
+    },
+    {
+     "id": "2.5.3",
+     "text": "Finding an inverse algebraically, including domain restrictions"
+    }
+   ],
+   "islOrder": 7,
+   "islUnits": [
+    {
+     "unit": 2,
+     "name": "Functions and quadratics",
+     "when": "Y12 wk 3-8 (Sep-mid Oct 2026)"
+    }
+   ],
+   "taughtStatus": "taught",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/2-functions/2-3-functions-toolkit.pdf",
+   "flags": []
+  },
+  {
+   "code": "2.6",
+   "title": "The quadratic function",
+   "topic": "2",
+   "topicLabel": "Functions",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "2.6.1",
+     "2.6.2",
+     "2.6.3"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "2.6.1",
+     "text": "Standard form: y-intercept and axis of symmetry"
+    },
+    {
+     "id": "2.6.2",
+     "text": "Factorised form: x-intercepts"
+    },
+    {
+     "id": "2.6.3",
+     "text": "Vertex form: vertex and completing the square"
+    }
+   ],
+   "islOrder": 8,
+   "islUnits": [
+    {
+     "unit": 2,
+     "name": "Functions and quadratics",
+     "when": "Y12 wk 3-8 (Sep-mid Oct 2026)"
+    }
+   ],
+   "taughtStatus": "taught",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/2-functions/2-2-quadratic-functions-graphs.pdf",
+   "flags": []
+  },
+  {
+   "code": "2.7",
+   "title": "Quadratic equations, inequalities and the discriminant",
+   "topic": "2",
+   "topicLabel": "Functions",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "2.7.1",
+     "2.7.2",
+     "2.7.3"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "2.7.1",
+     "text": "Solving quadratic equations by factorising, completing the square or the formula"
+    },
+    {
+     "id": "2.7.2",
+     "text": "Solving quadratic inequalities"
+    },
+    {
+     "id": "2.7.3",
+     "text": "Discriminant and the nature of the roots"
+    }
+   ],
+   "islOrder": 9,
+   "islUnits": [
+    {
+     "unit": 2,
+     "name": "Functions and quadratics",
+     "when": "Y12 wk 3-8 (Sep-mid Oct 2026)"
+    }
+   ],
+   "taughtStatus": "taught",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/2-functions/2-2-quadratic-functions-graphs.pdf",
+   "flags": []
+  },
+  {
+   "code": "2.8",
+   "title": "Reciprocal and simple rational functions",
+   "topic": "2",
+   "topicLabel": "Functions",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "2.8.1",
+     "2.8.2",
+     "2.8.3"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "2.8.1",
+     "text": "Graph of 1/x and the fact that it is its own inverse"
+    },
+    {
+     "id": "2.8.2",
+     "text": "Graphs of (ax+b)/(cx+d)"
+    },
+    {
+     "id": "2.8.3",
+     "text": "Vertical and horizontal asymptotes"
+    }
+   ],
+   "islOrder": 27,
+   "islUnits": [
+    {
+     "unit": 6,
+     "name": "Trig equations and functions",
+     "when": "Y12 wk 23-27 (Mar-Apr 2027)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/2-functions/2-4-further-functions-graphs.pdf",
+   "flags": [
+    "Not named in the ISL calendar; assumed in 'Trig equations and functions' (Mar 2027) because the existing bank calls 2.4-2.5 'next unit' - inferred."
+   ]
+  },
+  {
+   "code": "2.9",
+   "title": "Exponential and logarithmic functions",
+   "topic": "2",
+   "topicLabel": "Functions",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "2.9.1",
+     "2.9.2",
+     "2.9.3"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "2.9.1",
+     "text": "Graphs of a^x (a>0) and e^x"
+    },
+    {
+     "id": "2.9.2",
+     "text": "Graphs of log_a x and ln x (x>0) as inverses of exponentials"
+    },
+    {
+     "id": "2.9.3",
+     "text": "Exponential growth and decay models"
+    }
+   ],
+   "islOrder": 26,
+   "islUnits": [
+    {
+     "unit": 5,
+     "name": "Exp and logs",
+     "when": "Y12 wk 17 (Jan 2027)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/2-functions/2-4-further-functions-graphs.pdf",
+   "flags": []
+  },
+  {
+   "code": "2.10",
+   "title": "Solving equations graphically and analytically",
+   "topic": "2",
+   "topicLabel": "Functions",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "2.10.1",
+     "2.10.2",
+     "2.10.3"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "2.10.1",
+     "text": "Choosing an analytic or a graphical method"
+    },
+    {
+     "id": "2.10.2",
+     "text": "Using technology when no algebraic method exists"
+    },
+    {
+     "id": "2.10.3",
+     "text": "Applying graphs and equations to real contexts"
+    }
+   ],
+   "islOrder": 10,
+   "islUnits": [
+    {
+     "unit": 2,
+     "name": "Functions and quadratics",
+     "when": "Y12 wk 3-8 (Sep-mid Oct 2026)"
+    },
+    {
+     "unit": 5,
+     "name": "Exp and logs",
+     "when": "Y12 wk 17 (Jan 2027)"
+    }
+   ],
+   "taughtStatus": "partly taught",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/2-functions/2-4-further-functions-graphs.pdf",
+   "flags": [
+    "Skill spans every unit; ISL placement is an assumption."
+   ]
+  },
+  {
+   "code": "2.11",
+   "title": "Transformations of graphs",
+   "topic": "2",
+   "topicLabel": "Functions",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "2.11.1",
+     "2.11.2",
+     "2.11.3",
+     "2.11.4"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "2.11.1",
+     "text": "Translations up/down and left/right"
+    },
+    {
+     "id": "2.11.2",
+     "text": "Reflections in the x-axis and y-axis"
+    },
+    {
+     "id": "2.11.3",
+     "text": "Vertical and horizontal stretches"
+    },
+    {
+     "id": "2.11.4",
+     "text": "Composite transformations and why order matters"
+    }
+   ],
+   "islOrder": 11,
+   "islUnits": [
+    {
+     "unit": 2,
+     "name": "Functions and quadratics",
+     "when": "Y12 wk 3-8 (Sep-mid Oct 2026)"
+    },
+    {
+     "unit": 6,
+     "name": "Trig equations and functions",
+     "when": "Y12 wk 23-27 (Mar-Apr 2027)"
+    }
+   ],
+   "taughtStatus": "partly taught",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/2-functions/2-5-transformations-of-graphs.pdf",
+   "flags": [
+    "Transformations may already have been met in 'Functions and quadratics' (vertex form) and are formalised later; split placement inferred."
+   ]
+  },
+  {
+   "code": "3.1",
+   "title": "Three-dimensional geometry",
+   "topic": "3",
+   "topicLabel": "Geometry and trigonometry",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "3.1.1",
+     "3.1.2",
+     "3.1.3"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "3.1.1",
+     "text": "Distance and midpoint in 3D"
+    },
+    {
+     "id": "3.1.2",
+     "text": "Volume and surface area of pyramids, cones, spheres, hemispheres and combinations"
+    },
+    {
+     "id": "3.1.3",
+     "text": "Angle between two intersecting lines, and between a line and a plane"
+    }
+   ],
+   "islOrder": 2,
+   "islUnits": [
+    {
+     "unit": 1,
+     "name": "Prior learning",
+     "when": "Y12 wk 2 (early Sep 2026)"
+    },
+    {
+     "unit": 4,
+     "name": "Circular trig",
+     "when": "Y12 wk 13-16 (late Nov-Dec 2026)"
+    }
+   ],
+   "taughtStatus": "partly taught (2D prior learning); 3D next",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/3-geometry-trigonometry/3-2-geometry-of-3d-shapes.pdf",
+   "flags": [
+    "Distance/midpoint in 2D are prior learning (unit 1); 3D solids and angles assumed in 'Circular trig' - inferred."
+   ]
+  },
+  {
+   "code": "3.2",
+   "title": "Right-angled and non-right-angled trigonometry",
+   "topic": "3",
+   "topicLabel": "Geometry and trigonometry",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "3.2.1",
+     "3.2.2"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "3.2.1",
+     "text": "sin, cos and tan ratios in right-angled triangles"
+    },
+    {
+     "id": "3.2.2",
+     "text": "Sine rule, cosine rule and the ½ab sin C area formula"
+    }
+   ],
+   "islOrder": 18,
+   "islUnits": [
+    {
+     "unit": 4,
+     "name": "Circular trig",
+     "when": "Y12 wk 13-16 (late Nov-Dec 2026)"
+    }
+   ],
+   "taughtStatus": "next (from ~23 Nov 2026)",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/3-geometry-trigonometry/3-3-trigonometry.pdf",
+   "flags": []
+  },
+  {
+   "code": "3.3",
+   "title": "Applications of trigonometry",
+   "topic": "3",
+   "topicLabel": "Geometry and trigonometry",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "3.3.1",
+     "3.3.2",
+     "3.3.3"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "3.3.1",
+     "text": "Pythagoras and trigonometry in context"
+    },
+    {
+     "id": "3.3.2",
+     "text": "Angles of elevation and depression; bearings"
+    },
+    {
+     "id": "3.3.3",
+     "text": "Drawing labelled diagrams from a written description"
+    }
+   ],
+   "islOrder": 19,
+   "islUnits": [
+    {
+     "unit": 4,
+     "name": "Circular trig",
+     "when": "Y12 wk 13-16 (late Nov-Dec 2026)"
+    }
+   ],
+   "taughtStatus": "next (from ~23 Nov 2026)",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/3-geometry-trigonometry/3-3-trigonometry.pdf",
+   "flags": []
+  },
+  {
+   "code": "3.4",
+   "title": "Radians, arcs and sectors",
+   "topic": "3",
+   "topicLabel": "Geometry and trigonometry",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "3.4.1",
+     "3.4.2",
+     "3.4.3"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "3.4.1",
+     "text": "Radian measure and converting degrees"
+    },
+    {
+     "id": "3.4.2",
+     "text": "Arc length"
+    },
+    {
+     "id": "3.4.3",
+     "text": "Sector area"
+    }
+   ],
+   "islOrder": 20,
+   "islUnits": [
+    {
+     "unit": 4,
+     "name": "Circular trig",
+     "when": "Y12 wk 13-16 (late Nov-Dec 2026)"
+    }
+   ],
+   "taughtStatus": "next (from ~23 Nov 2026)",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/3-geometry-trigonometry/3-4-further-trigonometry.pdf",
+   "flags": []
+  },
+  {
+   "code": "3.5",
+   "title": "The unit circle and exact values",
+   "topic": "3",
+   "topicLabel": "Geometry and trigonometry",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "3.5.1",
+     "3.5.2",
+     "3.5.3"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "3.5.1",
+     "text": "cos and sin as coordinates on the unit circle; tan as sin/cos"
+    },
+    {
+     "id": "3.5.2",
+     "text": "Exact values at 0, π/6, π/4, π/3, π/2 and their multiples"
+    },
+    {
+     "id": "3.5.3",
+     "text": "The ambiguous case of the sine rule"
+    }
+   ],
+   "islOrder": 21,
+   "islUnits": [
+    {
+     "unit": 4,
+     "name": "Circular trig",
+     "when": "Y12 wk 13-16 (late Nov-Dec 2026)"
+    }
+   ],
+   "taughtStatus": "next (from ~23 Nov 2026)",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/3-geometry-trigonometry/3-4-further-trigonometry.pdf",
+   "flags": []
+  },
+  {
+   "code": "3.6",
+   "title": "Trigonometric identities",
+   "topic": "3",
+   "topicLabel": "Geometry and trigonometry",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "3.6.1",
+     "3.6.2",
+     "3.6.3"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "3.6.1",
+     "text": "The Pythagorean identity"
+    },
+    {
+     "id": "3.6.2",
+     "text": "Double-angle identities for sin and cos"
+    },
+    {
+     "id": "3.6.3",
+     "text": "Finding one ratio from another (using sign and quadrant)"
+    }
+   ],
+   "islOrder": 22,
+   "islUnits": [
+    {
+     "unit": 4,
+     "name": "Circular trig",
+     "when": "Y12 wk 13-16 (late Nov-Dec 2026)"
+    },
+    {
+     "unit": 6,
+     "name": "Trig equations and functions",
+     "when": "Y12 wk 23-27 (Mar-Apr 2027)"
+    }
+   ],
+   "taughtStatus": "next (from ~23 Nov 2026)",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/3-geometry-trigonometry/3-6-trigonometric-equations-identities.pdf",
+   "flags": [
+    "Pythagorean identity probably met in 'Circular trig'; double-angle identities probably in 'Trig equations and functions' - inferred."
+   ]
+  },
+  {
+   "code": "3.7",
+   "title": "Circular functions and their graphs",
+   "topic": "3",
+   "topicLabel": "Geometry and trigonometry",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "3.7.1",
+     "3.7.2",
+     "3.7.3"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "3.7.1",
+     "text": "Graphs, amplitude and period of sin, cos and tan"
+    },
+    {
+     "id": "3.7.2",
+     "text": "Functions of the form a sin(b(x+c))+d and transformations"
+    },
+    {
+     "id": "3.7.3",
+     "text": "Periodic models in real contexts"
+    }
+   ],
+   "islOrder": 28,
+   "islUnits": [
+    {
+     "unit": 6,
+     "name": "Trig equations and functions",
+     "when": "Y12 wk 23-27 (Mar-Apr 2027)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/3-geometry-trigonometry/3-5-trigonometric-functions-graphs.pdf",
+   "flags": []
+  },
+  {
+   "code": "3.8",
+   "title": "Solving trigonometric equations",
+   "topic": "3",
+   "topicLabel": "Geometry and trigonometry",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "3.8.1",
+     "3.8.2"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "3.8.1",
+     "text": "Solving on a finite interval, graphically and analytically"
+    },
+    {
+     "id": "3.8.2",
+     "text": "Equations that become quadratics in sin x, cos x or tan x"
+    }
+   ],
+   "islOrder": 29,
+   "islUnits": [
+    {
+     "unit": 6,
+     "name": "Trig equations and functions",
+     "when": "Y12 wk 23-27 (Mar-Apr 2027)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/3-geometry-trigonometry/3-6-trigonometric-equations-identities.pdf",
+   "flags": []
+  },
+  {
+   "code": "4.1",
+   "title": "Populations, samples and data",
+   "topic": "4",
+   "topicLabel": "Statistics and probability",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "4.1.1",
+     "4.1.2",
+     "4.1.3",
+     "4.1.4"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "4.1.1",
+     "text": "Population, sample, random sample; discrete and continuous data"
+    },
+    {
+     "id": "4.1.2",
+     "text": "Reliability of sources and bias in sampling"
+    },
+    {
+     "id": "4.1.3",
+     "text": "Interpreting outliers"
+    },
+    {
+     "id": "4.1.4",
+     "text": "Sampling methods and how well they work"
+    }
+   ],
+   "islOrder": 47,
+   "islUnits": [
+    {
+     "unit": 11,
+     "name": "Statistics",
+     "when": "Y13 wk 19-22 (Feb-Mar 2028)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/4-statistics-probability/4-1-statistics-toolkit.pdf",
+   "flags": []
+  },
+  {
+   "code": "4.2",
+   "title": "Presenting data",
+   "topic": "4",
+   "topicLabel": "Statistics and probability",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "4.2.1",
+     "4.2.2",
+     "4.2.3"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "4.2.1",
+     "text": "Frequency tables and histograms"
+    },
+    {
+     "id": "4.2.2",
+     "text": "Cumulative frequency graphs: median, quartiles, percentiles, range, IQR"
+    },
+    {
+     "id": "4.2.3",
+     "text": "Box-and-whisker diagrams"
+    }
+   ],
+   "islOrder": 48,
+   "islUnits": [
+    {
+     "unit": 11,
+     "name": "Statistics",
+     "when": "Y13 wk 19-22 (Feb-Mar 2028)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/4-statistics-probability/4-1-statistics-toolkit.pdf",
+   "flags": []
+  },
+  {
+   "code": "4.3",
+   "title": "Measures of centre and spread",
+   "topic": "4",
+   "topicLabel": "Statistics and probability",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "4.3.1",
+     "4.3.2",
+     "4.3.3",
+     "4.3.4"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "4.3.1",
+     "text": "Mean, median and mode; estimating a mean from grouped data; modal class"
+    },
+    {
+     "id": "4.3.2",
+     "text": "IQR, standard deviation and variance (by GDC)"
+    },
+    {
+     "id": "4.3.3",
+     "text": "Effect of adding or multiplying all data by a constant"
+    },
+    {
+     "id": "4.3.4",
+     "text": "Quartiles of discrete data"
+    }
+   ],
+   "islOrder": 49,
+   "islUnits": [
+    {
+     "unit": 11,
+     "name": "Statistics",
+     "when": "Y13 wk 19-22 (Feb-Mar 2028)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/4-statistics-probability/4-1-statistics-toolkit.pdf",
+   "flags": []
+  },
+  {
+   "code": "4.4",
+   "title": "Correlation and regression of y on x",
+   "topic": "4",
+   "topicLabel": "Statistics and probability",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "4.4.1",
+     "4.4.2",
+     "4.4.3",
+     "4.4.4"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "4.4.1",
+     "text": "Scatter diagrams and linear correlation; Pearson's r"
+    },
+    {
+     "id": "4.4.2",
+     "text": "Lines of best fit by eye through the mean point"
+    },
+    {
+     "id": "4.4.3",
+     "text": "Regression line of y on x by GDC; predicting y"
+    },
+    {
+     "id": "4.4.4",
+     "text": "Meaning of the gradient and intercept in context"
+    }
+   ],
+   "islOrder": 50,
+   "islUnits": [
+    {
+     "unit": 11,
+     "name": "Statistics",
+     "when": "Y13 wk 19-22 (Feb-Mar 2028)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/4-statistics-probability/4-2-correlation-regression.pdf",
+   "flags": []
+  },
+  {
+   "code": "4.5",
+   "title": "Basic probability",
+   "topic": "4",
+   "topicLabel": "Statistics and probability",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "4.5.1",
+     "4.5.2",
+     "4.5.3"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "4.5.1",
+     "text": "Trial, outcome, equally likely outcomes, relative frequency, sample space, event"
+    },
+    {
+     "id": "4.5.2",
+     "text": "P(A)=n(A)/n(U) and complementary events"
+    },
+    {
+     "id": "4.5.3",
+     "text": "Expected number of occurrences"
+    }
+   ],
+   "islOrder": 40,
+   "islUnits": [
+    {
+     "unit": 10,
+     "name": "Probability",
+     "when": "Y13 wk 12-15 (Nov-Dec 2027)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/4-statistics-probability/4-3-probability.pdf",
+   "flags": []
+  },
+  {
+   "code": "4.6",
+   "title": "Combined, conditional and independent events",
+   "topic": "4",
+   "topicLabel": "Statistics and probability",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "4.6.1",
+     "4.6.2",
+     "4.6.3",
+     "4.6.4"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "4.6.1",
+     "text": "Venn, tree and sample-space diagrams and tables of outcomes"
+    },
+    {
+     "id": "4.6.2",
+     "text": "Combined and mutually exclusive events"
+    },
+    {
+     "id": "4.6.3",
+     "text": "Conditional probability from diagrams and tables"
+    },
+    {
+     "id": "4.6.4",
+     "text": "Independent events"
+    }
+   ],
+   "islOrder": 41,
+   "islUnits": [
+    {
+     "unit": 10,
+     "name": "Probability",
+     "when": "Y13 wk 12-15 (Nov-Dec 2027)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/4-statistics-probability/4-3-probability.pdf",
+   "flags": []
+  },
+  {
+   "code": "4.7",
+   "title": "Discrete random variables",
+   "topic": "4",
+   "topicLabel": "Statistics and probability",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "4.7.1",
+     "4.7.2"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "4.7.1",
+     "text": "Discrete random variables and their probability distributions"
+    },
+    {
+     "id": "4.7.2",
+     "text": "Expected value and fair games"
+    }
+   ],
+   "islOrder": 42,
+   "islUnits": [
+    {
+     "unit": 10,
+     "name": "Probability",
+     "when": "Y13 wk 12-15 (Nov-Dec 2027)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/4-statistics-probability/4-4-probability-distributions.pdf",
+   "flags": []
+  },
+  {
+   "code": "4.8",
+   "title": "The binomial distribution",
+   "topic": "4",
+   "topicLabel": "Statistics and probability",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "4.8.1",
+     "4.8.2",
+     "4.8.3"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "4.8.1",
+     "text": "Conditions for a binomial model"
+    },
+    {
+     "id": "4.8.2",
+     "text": "Binomial probabilities (GDC)"
+    },
+    {
+     "id": "4.8.3",
+     "text": "Mean np and variance np(1-p)"
+    }
+   ],
+   "islOrder": 43,
+   "islUnits": [
+    {
+     "unit": 10,
+     "name": "Probability",
+     "when": "Y13 wk 12-15 (Nov-Dec 2027)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/4-statistics-probability/4-5-binomial-distribution.pdf",
+   "flags": []
+  },
+  {
+   "code": "4.9",
+   "title": "The normal distribution",
+   "topic": "4",
+   "topicLabel": "Statistics and probability",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "4.9.1",
+     "4.9.2",
+     "4.9.3"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "4.9.1",
+     "text": "Shape and properties of the normal curve"
+    },
+    {
+     "id": "4.9.2",
+     "text": "Sketching and shading the region"
+    },
+    {
+     "id": "4.9.3",
+     "text": "Normal probabilities and inverse normal by GDC"
+    }
+   ],
+   "islOrder": 44,
+   "islUnits": [
+    {
+     "unit": 10,
+     "name": "Probability",
+     "when": "Y13 wk 12-15 (Nov-Dec 2027)"
+    },
+    {
+     "unit": 11,
+     "name": "Statistics",
+     "when": "Y13 wk 19-22 (Feb-Mar 2028)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/4-statistics-probability/4-6-normal-distribution.pdf",
+   "flags": [
+    "ISL calendar lists Probability (Nov-Dec Y13) and Statistics (Feb Y13); which one carries the normal distribution is not stated."
+   ]
+  },
+  {
+   "code": "4.10",
+   "title": "Regression of x on y",
+   "topic": "4",
+   "topicLabel": "Statistics and probability",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "4.10.1",
+     "4.10.2"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "4.10.1",
+     "text": "The regression line of x on y"
+    },
+    {
+     "id": "4.10.2",
+     "text": "Choosing the right line for a prediction"
+    }
+   ],
+   "islOrder": 51,
+   "islUnits": [
+    {
+     "unit": 11,
+     "name": "Statistics",
+     "when": "Y13 wk 19-22 (Feb-Mar 2028)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/4-statistics-probability/4-2-correlation-regression.pdf",
+   "flags": []
+  },
+  {
+   "code": "4.11",
+   "title": "Formal conditional probability and independence",
+   "topic": "4",
+   "topicLabel": "Statistics and probability",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "4.11.1",
+     "4.11.2"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "4.11.1",
+     "text": "Using the formula for P(A|B)"
+    },
+    {
+     "id": "4.11.2",
+     "text": "Testing independence with conditional probabilities"
+    }
+   ],
+   "islOrder": 45,
+   "islUnits": [
+    {
+     "unit": 10,
+     "name": "Probability",
+     "when": "Y13 wk 12-15 (Nov-Dec 2027)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/4-statistics-probability/4-3-probability.pdf",
+   "flags": []
+  },
+  {
+   "code": "4.12",
+   "title": "Standardisation and inverse normal with unknown parameters",
+   "topic": "4",
+   "topicLabel": "Statistics and probability",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "4.12.1",
+     "4.12.2"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "4.12.1",
+     "text": "z-values"
+    },
+    {
+     "id": "4.12.2",
+     "text": "Finding an unknown mean or standard deviation from given probabilities"
+    }
+   ],
+   "islOrder": 46,
+   "islUnits": [
+    {
+     "unit": 10,
+     "name": "Probability",
+     "when": "Y13 wk 12-15 (Nov-Dec 2027)"
+    },
+    {
+     "unit": 11,
+     "name": "Statistics",
+     "when": "Y13 wk 19-22 (Feb-Mar 2028)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/4-statistics-probability/4-6-normal-distribution.pdf",
+   "flags": [
+    "See 4.9 - placement between Probability and Statistics not stated."
+   ]
+  },
+  {
+   "code": "5.1",
+   "title": "Limits and the derivative",
+   "topic": "5",
+   "topicLabel": "Calculus",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "5.1.1",
+     "5.1.2"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "5.1.1",
+     "text": "Informal idea of a limit (gradient of chords approaching the tangent)"
+    },
+    {
+     "id": "5.1.2",
+     "text": "Derivative as gradient function and as rate of change; notation"
+    }
+   ],
+   "islOrder": 12,
+   "islUnits": [
+    {
+     "unit": 3,
+     "name": "Differentiation",
+     "when": "Y12 wk 9-12 (late Oct-Nov 2026)"
+    }
+   ],
+   "taughtStatus": "in progress",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/5-calculus/5-1-differentiation.pdf",
+   "flags": []
+  },
+  {
+   "code": "5.2",
+   "title": "Increasing and decreasing functions",
+   "topic": "5",
+   "topicLabel": "Calculus",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "5.2.1",
+     "5.2.2"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "5.2.1",
+     "text": "Increasing/decreasing intervals from the sign of f'(x)"
+    },
+    {
+     "id": "5.2.2",
+     "text": "Reading f'(x)>0, =0, <0 from graphs"
+    }
+   ],
+   "islOrder": 13,
+   "islUnits": [
+    {
+     "unit": 3,
+     "name": "Differentiation",
+     "when": "Y12 wk 9-12 (late Oct-Nov 2026)"
+    }
+   ],
+   "taughtStatus": "in progress",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/5-calculus/5-1-differentiation.pdf",
+   "flags": []
+  },
+  {
+   "code": "5.3",
+   "title": "Differentiating polynomials",
+   "topic": "5",
+   "topicLabel": "Calculus",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "5.3.1",
+     "5.3.2"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "5.3.1",
+     "text": "Derivative of ax^n for integer n"
+    },
+    {
+     "id": "5.3.2",
+     "text": "Differentiating sums of such terms, including negative powers"
+    }
+   ],
+   "islOrder": 14,
+   "islUnits": [
+    {
+     "unit": 3,
+     "name": "Differentiation",
+     "when": "Y12 wk 9-12 (late Oct-Nov 2026)"
+    }
+   ],
+   "taughtStatus": "in progress",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/5-calculus/5-1-differentiation.pdf",
+   "flags": []
+  },
+  {
+   "code": "5.4",
+   "title": "Tangents and normals",
+   "topic": "5",
+   "topicLabel": "Calculus",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "5.4.1",
+     "5.4.2"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "5.4.1",
+     "text": "Equation of the tangent at a given point"
+    },
+    {
+     "id": "5.4.2",
+     "text": "Equation of the normal at a given point"
+    }
+   ],
+   "islOrder": 15,
+   "islUnits": [
+    {
+     "unit": 3,
+     "name": "Differentiation",
+     "when": "Y12 wk 9-12 (late Oct-Nov 2026)"
+    }
+   ],
+   "taughtStatus": "in progress",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/5-calculus/5-1-differentiation.pdf",
+   "flags": []
+  },
+  {
+   "code": "5.5",
+   "title": "Introduction to integration",
+   "topic": "5",
+   "topicLabel": "Calculus",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "5.5.1",
+     "5.5.2",
+     "5.5.3",
+     "5.5.4"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "5.5.1",
+     "text": "Anti-differentiation of polynomial terms"
+    },
+    {
+     "id": "5.5.2",
+     "text": "Using a boundary condition to find the constant"
+    },
+    {
+     "id": "5.5.3",
+     "text": "Definite integrals with technology"
+    },
+    {
+     "id": "5.5.4",
+     "text": "Area between a curve and the x-axis when the curve is above the axis"
+    }
+   ],
+   "islOrder": 32,
+   "islUnits": [
+    {
+     "unit": 8,
+     "name": "Integration",
+     "when": "Y12 wk 37 (Jun 2027) + Y13 wk 1-6 (Sep-Oct 2027)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/5-calculus/5-3-integration.pdf",
+   "flags": []
+  },
+  {
+   "code": "5.6",
+   "title": "Further differentiation rules",
+   "topic": "5",
+   "topicLabel": "Calculus",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "5.6.1",
+     "5.6.2",
+     "5.6.3",
+     "5.6.4"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "5.6.1",
+     "text": "Derivatives of x^n, sin x, cos x, e^x and ln x"
+    },
+    {
+     "id": "5.6.2",
+     "text": "Sums and multiples"
+    },
+    {
+     "id": "5.6.3",
+     "text": "Chain rule"
+    },
+    {
+     "id": "5.6.4",
+     "text": "Product and quotient rules"
+    }
+   ],
+   "islOrder": 30,
+   "islUnits": [
+    {
+     "unit": 7,
+     "name": "Further differentiation",
+     "when": "Y12 wk 28-30 (Apr-May 2027)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/5-calculus/5-2-further-differentiation.pdf",
+   "flags": []
+  },
+  {
+   "code": "5.7",
+   "title": "The second derivative",
+   "topic": "5",
+   "topicLabel": "Calculus",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "5.7.1",
+     "5.7.2"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "5.7.1",
+     "text": "Second derivative notation and meaning"
+    },
+    {
+     "id": "5.7.2",
+     "text": "Linking the graphs of f, f' and f''; concavity"
+    }
+   ],
+   "islOrder": 16,
+   "islUnits": [
+    {
+     "unit": 7,
+     "name": "Further differentiation",
+     "when": "Y12 wk 28-30 (Apr-May 2027)"
+    },
+    {
+     "unit": 3,
+     "name": "Differentiation",
+     "when": "Y12 wk 9-12 (late Oct-Nov 2026)"
+    }
+   ],
+   "taughtStatus": "partly in progress",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/5-calculus/5-2-further-differentiation.pdf",
+   "flags": [
+    "Second derivative may be introduced in 'Differentiation' (stationary-point test) - partly in progress."
+   ]
+  },
+  {
+   "code": "5.8",
+   "title": "Stationary points, optimisation and inflexion",
+   "topic": "5",
+   "topicLabel": "Calculus",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "5.8.1",
+     "5.8.2",
+     "5.8.3",
+     "5.8.4"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "5.8.1",
+     "text": "Local maxima and minima"
+    },
+    {
+     "id": "5.8.2",
+     "text": "First- and second-derivative tests"
+    },
+    {
+     "id": "5.8.3",
+     "text": "Optimisation in context"
+    },
+    {
+     "id": "5.8.4",
+     "text": "Points of inflexion with zero and non-zero gradient"
+    }
+   ],
+   "islOrder": 17,
+   "islUnits": [
+    {
+     "unit": 3,
+     "name": "Differentiation",
+     "when": "Y12 wk 9-12 (late Oct-Nov 2026)"
+    },
+    {
+     "unit": 7,
+     "name": "Further differentiation",
+     "when": "Y12 wk 28-30 (Apr-May 2027)"
+    }
+   ],
+   "taughtStatus": "in progress",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/5-calculus/5-5-optimisation.pdf",
+   "flags": [
+    "Stationary points of polynomials are usually taught inside 'Differentiation' - assumed in progress; optimisation with e^x, ln x, trig comes in 'Further differentiation'."
+   ]
+  },
+  {
+   "code": "5.9",
+   "title": "Kinematics",
+   "topic": "5",
+   "topicLabel": "Calculus",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "5.9.1",
+     "5.9.2"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "5.9.1",
+     "text": "Displacement, velocity and acceleration as derivatives"
+    },
+    {
+     "id": "5.9.2",
+     "text": "Displacement versus total distance from integrals of velocity"
+    }
+   ],
+   "islOrder": 31,
+   "islUnits": [
+    {
+     "unit": 7,
+     "name": "Further differentiation",
+     "when": "Y12 wk 28-30 (Apr-May 2027)"
+    },
+    {
+     "unit": 8,
+     "name": "Integration",
+     "when": "Y12 wk 37 (Jun 2027) + Y13 wk 1-6 (Sep-Oct 2027)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/5-calculus/5-6-kinematics.pdf",
+   "flags": []
+  },
+  {
+   "code": "5.10",
+   "title": "Indefinite integrals and reverse chain rule",
+   "topic": "5",
+   "topicLabel": "Calculus",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "5.10.1",
+     "5.10.2",
+     "5.10.3"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "5.10.1",
+     "text": "Antiderivatives of x^n, sin x, cos x, 1/x and e^x"
+    },
+    {
+     "id": "5.10.2",
+     "text": "Composites with a linear inner function ax+b"
+    },
+    {
+     "id": "5.10.3",
+     "text": "Integration by inspection or substitution for k g'(x) f(g(x))"
+    }
+   ],
+   "islOrder": 33,
+   "islUnits": [
+    {
+     "unit": 8,
+     "name": "Integration",
+     "when": "Y12 wk 37 (Jun 2027) + Y13 wk 1-6 (Sep-Oct 2027)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/5-calculus/5-4-further-integration.pdf",
+   "flags": []
+  },
+  {
+   "code": "5.11",
+   "title": "Definite integrals and areas",
+   "topic": "5",
+   "topicLabel": "Calculus",
+   "hlOnly": false,
+   "statements": {
+    "SL": [
+     "5.11.1",
+     "5.11.2",
+     "5.11.3"
+    ],
+    "AHL": []
+   },
+   "points": [
+    {
+     "id": "5.11.1",
+     "text": "Evaluating definite integrals by hand"
+    },
+    {
+     "id": "5.11.2",
+     "text": "Areas where the curve goes below the x-axis, without technology"
+    },
+    {
+     "id": "5.11.3",
+     "text": "Area between two curves"
+    }
+   ],
+   "islOrder": 34,
+   "islUnits": [
+    {
+     "unit": 8,
+     "name": "Integration",
+     "when": "Y12 wk 37 (Jun 2027) + Y13 wk 1-6 (Sep-Oct 2027)"
+    }
+   ],
+   "taughtStatus": "later",
+   "checklistKey": "math-aa-sl::library/notes/math-aa-sl/5-calculus/5-4-further-integration.pdf",
+   "flags": []
+  }
+ ]
+}

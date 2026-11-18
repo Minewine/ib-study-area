@@ -1,0 +1,327 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-c1-1",
+ "code": "C1.1",
+ "title": "Enzymes and metabolism",
+ "theme": "C",
+ "themeLabel": "Interaction and interdependence",
+ "level": 1,
+ "levelLabel": "Molecules",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "C1.1.1",
+   "C1.1.2",
+   "C1.1.3",
+   "C1.1.4",
+   "C1.1.5",
+   "C1.1.6",
+   "C1.1.7",
+   "C1.1.8",
+   "C1.1.9",
+   "C1.1.10"
+  ],
+  "AHL": [
+   "C1.1.11",
+   "C1.1.12",
+   "C1.1.13",
+   "C1.1.14",
+   "C1.1.15",
+   "C1.1.16",
+   "C1.1.17"
+  ]
+ },
+ "bigPicture": "Enzymes make metabolism fast enough and controllable. Shape decides everything: the active site's shape and chemistry give specificity, changing that shape (denaturation, allosteric binding) changes the rate.",
+ "keyIdeas": [
+  {
+   "id": "c11-k1",
+   "ahl": false,
+   "stmt": "C1.1.1",
+   "cue": "Why do cells need catalysts?",
+   "answer": "Without enzymes, most reactions at body temperature would be far too slow for life. Enzymes speed them up and are not used up."
+  },
+  {
+   "id": "c11-k2",
+   "ahl": false,
+   "stmt": "C1.1.2",
+   "cue": "Define metabolism and say why it needs so many enzymes.",
+   "answer": "The whole network of interacting, enzyme-catalysed reactions in an organism. Each enzyme is specific, so thousands are needed, and controlling particular enzymes controls the network."
+  },
+  {
+   "id": "c11-k3",
+   "ahl": false,
+   "stmt": "C1.1.3",
+   "cue": "Anabolism vs catabolism, with examples.",
+   "answer": "Anabolism builds macromolecules by condensation (protein synthesis, glycogen formation, photosynthesis). Catabolism breaks them down: hydrolysis in digestion, oxidation of substrates in respiration."
+  },
+  {
+   "id": "c11-k4",
+   "ahl": false,
+   "stmt": "C1.1.4",
+   "cue": "How can a few amino acids make an active site work?",
+   "answer": "Enzymes are globular proteins. The active site is only a few amino acids, but the folding of the whole chain (its 3D structure) positions them with the right shape and chemistry for catalysis."
+  },
+  {
+   "id": "c11-k5",
+   "ahl": false,
+   "stmt": "C1.1.5",
+   "cue": "What is induced fit?",
+   "answer": "When the substrate binds, both the substrate and the active site change shape slightly, which strains bonds and helps the reaction."
+  },
+  {
+   "id": "c11-k6",
+   "ahl": false,
+   "stmt": "C1.1.6",
+   "cue": "Why does molecular motion matter?",
+   "answer": "The substrate and active site must collide in the right orientation. Usually both move in solution, but sometimes one is fixed: large substrates may be immobile, and some enzymes are embedded in membranes."
+  },
+  {
+   "id": "c11-k7",
+   "ahl": false,
+   "stmt": "C1.1.7",
+   "cue": "Link active site, specificity and denaturation.",
+   "answer": "Specificity comes from the shape and chemistry of the active site matching the substrate. Denaturation (by heat or extreme pH) breaks the bonds that hold the 3D structure, changing the active site so the substrate no longer fits. It is usually permanent."
+  },
+  {
+   "id": "c11-k8",
+   "ahl": false,
+   "stmt": "C1.1.8",
+   "cue": "Describe and explain the effects of temperature, pH and substrate concentration.",
+   "answer": "Temperature: rate rises as more kinetic energy means more frequent successful collisions, up to an optimum, then falls steeply as the enzyme denatures. pH: there is an optimum, and on either side changed charges in the active site reduce binding (extremes denature). Substrate concentration: rate rises, then plateaus once all active sites are occupied."
+  },
+  {
+   "id": "c11-k9",
+   "ahl": false,
+   "stmt": "C1.1.9",
+   "cue": "How do you measure the rate of an enzyme reaction?",
+   "answer": "Amount of product made or substrate used per unit time, e.g. volume of O₂ from catalase per second. Use the initial rate (gradient at the start), before substrate runs low."
+  },
+  {
+   "id": "c11-k10",
+   "ahl": false,
+   "stmt": "C1.1.10",
+   "cue": "What exactly does an enzyme change on an energy diagram?",
+   "answer": "It lowers the activation energy, the energy needed to break bonds in the substrate. It does not change the energy of the reactants or products, so the overall energy released or absorbed is the same."
+  },
+  {
+   "id": "c11-k11",
+   "ahl": true,
+   "stmt": "C1.1.11",
+   "cue": "Intracellular vs extracellular enzymes: examples.",
+   "answer": "Intracellular: glycolysis (cytoplasm) and the Krebs cycle (mitochondrial matrix). Extracellular: digestive enzymes secreted into the gut."
+  },
+  {
+   "id": "c11-k12",
+   "ahl": true,
+   "stmt": "C1.1.12",
+   "cue": "Why does metabolism always release heat, and who uses it?",
+   "answer": "No energy transfer is 100% efficient, so some energy is always lost as heat. Mammals and birds (endotherms) rely on this heat to keep a constant body temperature."
+  },
+  {
+   "id": "c11-k13",
+   "ahl": true,
+   "stmt": "C1.1.13",
+   "cue": "Linear vs cyclical pathways: examples.",
+   "answer": "Linear: a chain from starting substrate to end product (glycolysis). Cyclical: the starting molecule is regenerated each turn (Krebs cycle, Calvin cycle)."
+  },
+  {
+   "id": "c11-k14",
+   "ahl": true,
+   "stmt": "C1.1.14",
+   "cue": "How does a non-competitive inhibitor work?",
+   "answer": "It binds to an allosteric site (not the active site). Only specific molecules fit that site. Binding changes the enzyme's shape so the active site no longer works, and more substrate does not restore the maximum rate."
+  },
+  {
+   "id": "c11-k15",
+   "ahl": true,
+   "stmt": "C1.1.15",
+   "cue": "How does a competitive inhibitor work? Give the example.",
+   "answer": "It resembles the substrate and binds reversibly to the active site, blocking it. High substrate concentration out-competes it, so the maximum rate can still be reached. Example: statins competitively inhibit an enzyme in cholesterol synthesis (HMG-CoA reductase)."
+  },
+  {
+   "id": "c11-k16",
+   "ahl": true,
+   "stmt": "C1.1.16",
+   "cue": "Explain feedback inhibition using the isoleucine pathway.",
+   "answer": "Bacteria make isoleucine from threonine in several steps. When isoleucine builds up, it binds an allosteric site on the first enzyme (threonine deaminase) and inhibits it, so production slows. When levels fall, it unbinds and the pathway restarts. This is negative feedback."
+  },
+  {
+   "id": "c11-k17",
+   "ahl": true,
+   "stmt": "C1.1.17",
+   "cue": "What is mechanism-based inhibition and how does penicillin show it?",
+   "answer": "An irreversible inhibition: the inhibitor binds the active site and is chemically changed there, permanently blocking it. Penicillin does this to bacterial transpeptidases that build cell walls. Resistant bacteria have altered transpeptidases that penicillin cannot bind."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Active site",
+   "def": "Region of an enzyme where the substrate binds and the reaction is catalysed."
+  },
+  {
+   "term": "Denaturation",
+   "def": "Change in 3D structure that destroys the active site; usually irreversible."
+  },
+  {
+   "term": "Activation energy",
+   "def": "Energy needed to start a reaction by breaking bonds; enzymes lower it."
+  },
+  {
+   "term": "Optimum",
+   "def": "Condition (temperature or pH) giving the maximum rate."
+  },
+  {
+   "term": "Initial rate",
+   "def": "Gradient of a product–time graph at time zero."
+  },
+  {
+   "term": "Allosteric site (AHL)",
+   "def": "Binding site on an enzyme other than the active site."
+  },
+  {
+   "term": "Feedback inhibition (AHL)",
+   "def": "End product of a pathway inhibits an enzyme early in that pathway."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Initial rate from catalase data",
+   "prompt": "Catalase is added to H₂O₂. O₂ collected (cm³) at 0, 10, 20, 30, 40, 50 s: 0, 6.0, 10.5, 13.5, 15.0, 15.5. Estimate the initial rate and explain why the rate falls.",
+   "steps": [
+    "Initial rate uses the steepest early part: 6.0 cm³ ÷ 10 s = 0.60 cm³ s⁻¹ (a tangent at t = 0 would give a slightly higher, more accurate value).",
+    "Later intervals give 0.45, 0.30, 0.15, 0.05 cm³ s⁻¹: the rate keeps falling.",
+    "Reason: H₂O₂ is being used up, so substrate concentration falls and there are fewer enzyme–substrate collisions per second.",
+    "It is not because the enzyme is used up: enzymes are not consumed."
+   ],
+   "answer": "About 0.6 cm³ O₂ s⁻¹. The rate falls as substrate concentration falls."
+  },
+  {
+   "title": "Identify the inhibitor from a graph (AHL)",
+   "prompt": "Rate vs substrate concentration: the uninhibited curve plateaus at 100 units. With inhibitor P the curve rises more slowly but reaches about 100 at very high substrate. With inhibitor Q it plateaus at about 50. Deduce each type.",
+   "steps": [
+    "P: the maximum is still reached at high substrate, so substrate out-competes the inhibitor: competitive.",
+    "Q: the maximum is lowered whatever the substrate level, so some enzymes are out of action: non-competitive (allosteric).",
+    "State the mechanism: P binds the active site; Q binds an allosteric site and changes the active site's shape."
+   ],
+   "answer": "P competitive, Q non-competitive."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "High temperature kills enzymes.",
+   "right": "Enzymes are not alive. They denature."
+  },
+  {
+   "wrong": "Low temperature denatures enzymes.",
+   "right": "Cold slows them (fewer collisions) and is reversible. Heat denatures."
+  },
+  {
+   "wrong": "All enzymes have an optimum of 37 °C and pH 7.",
+   "right": "Optima vary, e.g. stomach protease works best around pH 2."
+  },
+  {
+   "wrong": "Enzymes provide the activation energy.",
+   "right": "They lower the activation energy needed."
+  },
+  {
+   "wrong": "The plateau at high substrate is because the substrate runs out.",
+   "right": "The active sites are saturated. Enzyme concentration has become the limiting factor."
+  },
+  {
+   "wrong": "Non-competitive inhibitors compete for the active site.",
+   "right": "They bind an allosteric site. Only competitive inhibitors use the active site."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Sketch",
+   "marks": 3,
+   "prompt": "Sketch a graph showing the effect of temperature on the rate of an enzyme-catalysed reaction.",
+   "checkpoints": [
+    "Axes labelled (temperature, rate)",
+    "Gradual rise to an optimum peak",
+    "Steeper fall after the optimum"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 4,
+   "prompt": "Explain the effect of increasing substrate concentration on the rate of an enzyme-catalysed reaction.",
+   "checkpoints": [
+    "Rate increases at first",
+    "More frequent enzyme–substrate collisions",
+    "Plateau at high concentration",
+    "All active sites occupied (saturation): enzyme concentration becomes limiting"
+   ]
+  },
+  {
+   "commandTerm": "Distinguish",
+   "marks": 3,
+   "ahl": true,
+   "prompt": "Distinguish between competitive and non-competitive inhibition.",
+   "checkpoints": [
+    "Competitive binds active site; non-competitive binds allosteric site",
+    "Competitive inhibitor resembles substrate",
+    "Competitive overcome by high substrate; non-competitive is not (lower maximum rate)"
+   ]
+  },
+  {
+   "commandTerm": "Outline",
+   "marks": 3,
+   "ahl": true,
+   "prompt": "Outline how end-product inhibition controls the synthesis of isoleucine.",
+   "checkpoints": [
+    "Isoleucine is the end product of a pathway starting from threonine",
+    "Excess isoleucine binds an allosteric site on the first enzyme (threonine deaminase)",
+    "Pathway slows; it restarts when isoleucine falls (negative feedback)"
+   ]
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "B1.2",
+   "prompt": "Which levels of protein structure make the active site?"
+  },
+  {
+   "to": "C1.2",
+   "prompt": "Where do the linear and cyclical pathways of respiration happen?"
+  },
+  {
+   "to": "C3.2",
+   "prompt": "Why does penicillin harm bacteria but not human cells?"
+  },
+  {
+   "to": "D3.3",
+   "prompt": "How does keeping body temperature constant protect enzyme activity?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/interaction-interdependence/enzymes-metabolism.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/bio-c1-1-enzymes-metabolism.json",
+    "itemIds": null
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/bio-c1-1-enzymes-metabolism.json",
+    "cardIds": null
+   }
+  ],
+  "ahlItems": [
+   "e08",
+   "e09",
+   "e12",
+   "e22",
+   "enx3",
+   "enx4",
+   "enx5"
+  ],
+  "gap": "Well covered: 30 questions and 19 cards across SL and AHL."
+ }
+}

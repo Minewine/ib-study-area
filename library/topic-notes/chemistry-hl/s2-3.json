@@ -1,0 +1,205 @@
+{
+ "schemaVersion": 1,
+ "subject": "chemistry-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "chem-s2-3",
+ "code": "S2.3",
+ "title": "The metallic model",
+ "theme": "S2",
+ "themeLabel": "Models of bonding and structure",
+ "hlOnly": false,
+ "islOrder": 17,
+ "islUnits": [
+  "4. Bonding (Y13 Oct-Nov)"
+ ],
+ "taughtStatus": "upcoming",
+ "statements": {
+  "SL": [
+   "S2.3.1",
+   "S2.3.2"
+  ],
+  "AHL": [
+   "S2.3.3"
+  ]
+ },
+ "bigPicture": "Metals are a lattice of positive ions held together by a sea of delocalised electrons. Because those electrons can move and the bonding has no fixed direction, metals conduct, can be hammered into shape and are strong; the more charge and the smaller the ion, the stronger the bond.",
+ "keyIdeas": [
+  {
+   "id": "s23-k1",
+   "ahl": false,
+   "stmt": "S2.3.1",
+   "cue": "How does the metallic bond explain metal properties?",
+   "answer": "Electrostatic attraction between a lattice of cations and delocalised electrons. Electrical conductivity: delocalised electrons move when a voltage is applied. Thermal conductivity: mobile electrons and vibrating ions pass energy along. Malleable and ductile: layers of ions can slide without breaking the bonding, as the electrons still hold them. Link uses to properties (Cu for wiring, Al for pans)."
+  },
+  {
+   "id": "s23-k2",
+   "ahl": false,
+   "stmt": "S2.3.2",
+   "cue": "What affects the strength of a metallic bond?",
+   "answer": "Higher cation charge (more delocalised electrons) and smaller ionic radius → stronger bond → higher melting point. Across period 3: Na < Mg < Al. Down group 1: melting point falls as ions get larger."
+  },
+  {
+   "id": "s23-k3",
+   "ahl": true,
+   "stmt": "S2.3.3",
+   "cue": "Why do transition elements have high melting points and good conductivity (AHL)?",
+   "answer": "Both 3d and 4s electrons can delocalise, giving more delocalised electrons per atom and smaller, more highly charged ions, so stronger metallic bonding. Their chemical properties are in R3.4/S3.1."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Metallic bond",
+   "def": "Attraction between a lattice of cations and delocalised electrons."
+  },
+  {
+   "term": "Delocalised electrons",
+   "def": "Electrons not tied to one atom; free to move through the structure."
+  },
+  {
+   "term": "Malleable",
+   "def": "Can be hammered into shape without breaking."
+  },
+  {
+   "term": "Ductile",
+   "def": "Can be drawn into wires."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Comparing melting points",
+   "prompt": "Explain why magnesium (650 °C) melts at a higher temperature than sodium (98 °C).",
+   "steps": [
+    "Mg²⁺ has a higher charge than Na⁺ and is smaller.",
+    "Mg contributes two delocalised electrons per atom; Na one.",
+    "Stronger attraction between cations and delocalised electrons."
+   ],
+   "answer": "Stronger metallic bonding in Mg"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Metals conduct because ions move.",
+   "right": "In solid metals the delocalised electrons carry the current; ions are fixed."
+  },
+  {
+   "wrong": "Hammering breaks metallic bonds.",
+   "right": "Layers slide but the delocalised electrons keep bonding them: the bond is non-directional."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Explain",
+   "marks": 2,
+   "prompt": "Explain why metals are malleable.",
+   "checkpoints": [
+    "Layers of cations can slide over each other",
+    "Delocalised electrons still hold them; bonding non-directional"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 2,
+   "prompt": "Explain the trend in melting point from Na to Al.",
+   "checkpoints": [
+    "Ion charge increases and radius decreases",
+    "More delocalised electrons, stronger attraction"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 2,
+   "prompt": "Explain why iron has a much higher melting point than calcium.",
+   "checkpoints": [
+    "Fe can delocalise 3d as well as 4s electrons",
+    "More delocalised electrons and smaller ion → stronger metallic bond"
+   ],
+   "ahl": true
+  }
+ ],
+ "paper1A": [
+  {
+   "stem": "Which metal has the strongest metallic bonding?",
+   "choices": [
+    "Na",
+    "K",
+    "Mg",
+    "Al"
+   ],
+   "answer": 3,
+   "why": "Highest charge, smallest ion."
+  },
+  {
+   "stem": "What carries the charge when a solid metal conducts?",
+   "choices": [
+    "Cations",
+    "Anions",
+    "Delocalised electrons",
+    "Protons"
+   ],
+   "answer": 2,
+   "why": "Electrons are mobile."
+  }
+ ],
+ "paper1B": [
+  {
+   "data": "Melting points (°C): Li 180, Na 98, K 63, Rb 39.",
+   "prompt": "Describe and explain the trend.",
+   "answer": "Decreases down group 1: ionic radius increases, so the attraction between the 1+ ions and the delocalised electrons weakens."
+  }
+ ],
+ "assessmentNote": "Paper 1A = multiple choice, no calculator; Paper 1B = data-based questions (format from public sources, confirm with the official guide). All prompts here are original practice, not predictions of exam questions.",
+ "errorHints": [
+  {
+   "category": "knowledge",
+   "hint": "Metallic bond = cations + delocalised electrons; not 'atoms sharing electrons'."
+  },
+  {
+   "category": "exam communication",
+   "hint": "Use both factors, charge and radius, when explaining melting-point trends."
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "S2.4",
+   "prompt": "How do alloys change a metal's properties?"
+  },
+  {
+   "to": "S3.1",
+   "prompt": "How does metallic character change across the periodic table?"
+  }
+ ],
+ "dataBooklet": [
+  {
+   "section": 8,
+   "title": "Melting and boiling points of the elements",
+   "use": "Melting points of the elements for trend questions."
+  },
+  {
+   "section": 10,
+   "title": "Atomic and ionic radii",
+   "use": "Ionic radii."
+  }
+ ],
+ "links": {
+  "checklistKey": "chemistry-hl::library/notes/chemistry-hl/models-of-bonding-structure/the-metallic-model.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/chem-structure-2-bonding.json",
+    "itemIds": [
+     "b11"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/chem-structure-2-bonding.json",
+    "cardIds": [
+     "fc-chem-s2-03"
+    ]
+   }
+  ],
+  "gap": "Only one quiz item (b11) and one flashcard; nothing on metallic bond strength trends (S2.3.2) or transition metals (S2.3.3, AHL)."
+ }
+}

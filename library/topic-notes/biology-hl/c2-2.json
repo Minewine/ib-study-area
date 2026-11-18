@@ -1,0 +1,276 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-c2-2",
+ "code": "C2.2",
+ "title": "Neural signalling",
+ "theme": "C",
+ "themeLabel": "Interaction and interdependence",
+ "level": 2,
+ "levelLabel": "Cells",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "C2.2.1",
+   "C2.2.2",
+   "C2.2.3",
+   "C2.2.4",
+   "C2.2.5",
+   "C2.2.6",
+   "C2.2.7"
+  ],
+  "AHL": [
+   "C2.2.8",
+   "C2.2.9",
+   "C2.2.10",
+   "C2.2.11",
+   "C2.2.12",
+   "C2.2.13",
+   "C2.2.14",
+   "C2.2.15",
+   "C2.2.16"
+  ]
+ },
+ "bigPicture": "Neurons carry information as electrical impulses: sodium and potassium ions flowing through channels change the voltage across the membrane. At synapses, chemicals carry the signal across the gap. HL adds how action potentials work in detail, myelin, drugs that interfere, and summation.",
+ "keyIdeas": [
+  {
+   "id": "c22-k1",
+   "ahl": false,
+   "stmt": "C2.2.1",
+   "cue": "What is the structure of a neuron?",
+   "answer": "A cell body (cytoplasm and nucleus) with nerve fibres: many short dendrites and usually one long axon. Impulses are conducted along these fibres. An example neuron is in the data booklet."
+  },
+  {
+   "id": "c22-k2",
+   "ahl": false,
+   "stmt": "C2.2.2",
+   "cue": "How is the resting potential generated?",
+   "answer": "The sodium–potassium pump uses ATP to move 3 Na⁺ out and 2 K⁺ in. More positive charge leaves than enters, and some K⁺ leaks back out, so the inside is negative (about −70 mV): the membrane is polarised."
+  },
+  {
+   "id": "c22-k3",
+   "ahl": false,
+   "stmt": "C2.2.3",
+   "cue": "What is a nerve impulse?",
+   "answer": "An action potential, a rapid reversal of membrane potential, that travels along the fibre. It is electrical because positive ions move."
+  },
+  {
+   "id": "c22-k4",
+   "ahl": false,
+   "stmt": "C2.2.4",
+   "cue": "What affects nerve impulse speed?",
+   "answer": "Larger diameter conducts faster: squid giant axons are much faster than small unmyelinated fibres. Myelinated fibres are far faster than unmyelinated ones. Data on speed vs diameter can be analysed with correlation coefficients (r, and r² for how much variation is explained)."
+  },
+  {
+   "id": "c22-k5",
+   "ahl": false,
+   "stmt": "C2.2.5",
+   "cue": "What is a synapse?",
+   "answer": "A junction between two neurons or between a neuron and an effector (e.g. muscle). In chemical synapses signals pass one way only, from presynaptic to postsynaptic."
+  },
+  {
+   "id": "c22-k6",
+   "ahl": false,
+   "stmt": "C2.2.6",
+   "cue": "How is a neurotransmitter released?",
+   "answer": "An impulse depolarises the presynaptic membrane; calcium channels open and Ca²⁺ enters; Ca²⁺ acts as a signal causing vesicles to fuse with the membrane and release neurotransmitter by exocytosis."
+  },
+  {
+   "id": "c22-k7",
+   "ahl": false,
+   "stmt": "C2.2.7",
+   "cue": "How is an excitatory postsynaptic potential generated?",
+   "answer": "Neurotransmitter (e.g. acetylcholine) diffuses across the cleft and binds to receptor proteins on the postsynaptic membrane, opening channels so Na⁺ enters and depolarises it. Acetylcholine works at many synapses, including neuromuscular junctions; acetylcholinesterase then breaks it down."
+  },
+  {
+   "id": "c22-k8",
+   "ahl": true,
+   "stmt": "C2.2.8",
+   "cue": "What happens during an action potential?",
+   "answer": "Stimulus brings the membrane to threshold (about −50 mV); voltage-gated Na⁺ channels open, Na⁺ rushes in, depolarisation to about +30 mV. Then Na⁺ channels close and voltage-gated K⁺ channels open, K⁺ leaves, repolarisation (briefly overshooting, hyperpolarisation). The pump restores the gradients."
+  },
+  {
+   "id": "c22-k9",
+   "ahl": true,
+   "stmt": "C2.2.9",
+   "cue": "How does an action potential propagate?",
+   "answer": "Na⁺ entering at one point diffuses along inside the axon (and positive charge outside moves the other way): these local currents bring the next region to threshold, so the impulse moves along. The region behind is refractory, so it moves one way."
+  },
+  {
+   "id": "c22-k10",
+   "ahl": true,
+   "stmt": "C2.2.10",
+   "cue": "How do you read an oscilloscope trace?",
+   "answer": "Flat line at −70 mV = resting potential; steep rise to +30 mV = depolarisation; fall = repolarisation; dip below −70 = hyperpolarisation; return to rest. Count peaks per second to find impulse frequency."
+  },
+  {
+   "id": "c22-k11",
+   "ahl": true,
+   "stmt": "C2.2.11",
+   "cue": "What is saltatory conduction?",
+   "answer": "In myelinated fibres, ion channels and pumps are clustered at the gaps (nodes of Ranvier). The action potential jumps from node to node, so it is much faster."
+  },
+  {
+   "id": "c22-k12",
+   "ahl": true,
+   "stmt": "C2.2.12",
+   "cue": "How do neonicotinoids and cocaine affect synapses?",
+   "answer": "Neonicotinoids (insecticides) bind irreversibly to acetylcholine receptors in insects and aren't broken down, blocking transmission. Cocaine blocks dopamine reuptake, so dopamine stays in the cleft and keeps stimulating the postsynaptic neuron."
+  },
+  {
+   "id": "c22-k13",
+   "ahl": true,
+   "stmt": "C2.2.13",
+   "cue": "What does an inhibitory neurotransmitter do?",
+   "answer": "It opens channels (e.g. for Cl⁻ in, or K⁺ out) so the postsynaptic membrane becomes hyperpolarised (more negative), making an action potential less likely."
+  },
+  {
+   "id": "c22-k14",
+   "ahl": true,
+   "stmt": "C2.2.14",
+   "cue": "What is summation?",
+   "answer": "A postsynaptic neuron receives inputs from many presynaptic neurons. Excitatory and inhibitory potentials add up; only if the total reaches threshold does an action potential fire (all-or-nothing)."
+  },
+  {
+   "id": "c22-k15",
+   "ahl": true,
+   "stmt": "C2.2.15",
+   "cue": "How is pain detected?",
+   "answer": "Free nerve endings in the skin have channels for positive ions that open in response to heat, acid or chemicals such as capsaicin. Cations enter, threshold is reached and impulses travel to the brain, where pain is perceived."
+  },
+  {
+   "id": "c22-k16",
+   "ahl": true,
+   "stmt": "C2.2.16",
+   "cue": "What is consciousness, biologically?",
+   "answer": "An emergent property arising from the interaction of huge numbers of neurons in the brain, not from any single neuron."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Resting potential",
+   "def": "About −70 mV across a neuron's membrane when not conducting."
+  },
+  {
+   "term": "Action potential",
+   "def": "Rapid depolarisation and repolarisation that travels along a neuron."
+  },
+  {
+   "term": "Synapse",
+   "def": "Junction across which a neurotransmitter carries a signal."
+  },
+  {
+   "term": "Threshold potential (AHL)",
+   "def": "Potential (about −50 mV) at which voltage-gated Na⁺ channels open."
+  },
+  {
+   "term": "Saltatory conduction (AHL)",
+   "def": "Jumping of impulses between nodes of Ranvier."
+  },
+  {
+   "term": "Summation (AHL)",
+   "def": "Adding of postsynaptic potentials from many inputs."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Impulse frequency from a trace (AHL)",
+   "prompt": "An oscilloscope trace shows 12 action potentials in 0.04 s. Calculate the frequency.",
+   "steps": [
+    "Frequency = number ÷ time.",
+    "12 ÷ 0.04 = 300."
+   ],
+   "answer": "300 impulses per second. A stronger stimulus raises frequency, not peak size."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "A stronger stimulus gives a bigger action potential.",
+   "right": "Action potentials are all-or-nothing; stronger stimuli raise frequency."
+  },
+  {
+   "wrong": "Ions flow through the pump during an action potential.",
+   "right": "Ions flow through voltage-gated channels; the pump restores gradients."
+  },
+  {
+   "wrong": "Myelin speeds impulses by conducting electricity.",
+   "right": "It insulates, so impulses jump from node to node."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain how a resting potential is maintained.",
+   "checkpoints": [
+    "Na⁺/K⁺ pump uses ATP",
+    "3 Na⁺ out, 2 K⁺ in",
+    "K⁺ leakage; inside negative"
+   ]
+  },
+  {
+   "commandTerm": "Describe",
+   "marks": 4,
+   "prompt": "Describe synaptic transmission at a cholinergic synapse.",
+   "checkpoints": [
+    "Depolarisation opens Ca²⁺ channels; Ca²⁺ enters",
+    "Vesicles release acetylcholine by exocytosis",
+    "ACh binds receptors, Na⁺ enters, postsynaptic depolarisation",
+    "ACh broken down by acetylcholinesterase"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 5,
+   "prompt": "Explain the changes in membrane potential during an action potential.",
+   "checkpoints": [
+    "Threshold reached",
+    "Voltage-gated Na⁺ channels open, Na⁺ in, depolarisation",
+    "Na⁺ channels close, K⁺ channels open",
+    "K⁺ out, repolarisation/hyperpolarisation",
+    "Na⁺/K⁺ pump restores resting potential"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Outline",
+   "marks": 2,
+   "prompt": "Outline how cocaine affects synaptic transmission.",
+   "checkpoints": [
+    "Blocks dopamine reuptake",
+    "Dopamine remains in cleft, prolonged stimulation"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "B2.1",
+   "prompt": "How do pumps and channels create ion gradients?"
+  },
+  {
+   "to": "C3.1",
+   "prompt": "How are neurons organised in reflex arcs?"
+  },
+  {
+   "to": "C2.1",
+   "prompt": "How do neurotransmitter receptors change membrane potential?"
+  },
+  {
+   "to": "B3.3",
+   "prompt": "How does a motor neuron trigger muscle contraction?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/interaction-interdependence/neural-signalling.pdf",
+  "quizBanks": [],
+  "decks": [],
+  "gap": "No quiz or deck covers C2.2. Missing everything, including the neuron, resting/action potentials, synapses, myelin and summation."
+ },
+ "dataBooklet": [
+  "C2.2.1"
+ ]
+}

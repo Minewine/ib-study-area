@@ -1,0 +1,327 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-c4-1",
+ "code": "C4.1",
+ "title": "Populations and communities",
+ "theme": "C",
+ "themeLabel": "Interaction and interdependence",
+ "level": 4,
+ "levelLabel": "Ecosystems",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "C4.1.1",
+   "C4.1.2",
+   "C4.1.3",
+   "C4.1.4",
+   "C4.1.5",
+   "C4.1.6",
+   "C4.1.7",
+   "C4.1.8",
+   "C4.1.9",
+   "C4.1.10",
+   "C4.1.11",
+   "C4.1.12",
+   "C4.1.13",
+   "C4.1.14",
+   "C4.1.15",
+   "C4.1.16",
+   "C4.1.17",
+   "C4.1.18"
+  ],
+  "AHL": []
+ },
+ "bigPicture": "Populations grow until resources run short. Density-dependent factors like competition, predation and disease push numbers back towards the carrying capacity, while interactions between species, from mutualism to parasitism, shape whole communities.",
+ "keyIdeas": [
+  {
+   "id": "c41-k1",
+   "ahl": false,
+   "stmt": "C4.1.1",
+   "cue": "What is a population?",
+   "answer": "A group of organisms of the same species living and interacting in an area, normally interbreeding. Reproductive isolation separates one population from another of the same species."
+  },
+  {
+   "id": "c41-k2",
+   "ahl": false,
+   "stmt": "C4.1.2",
+   "cue": "Why estimate population size, and why sample randomly?",
+   "answer": "Counting every individual is usually impossible. Random sampling avoids bias, but any sample gives sampling error: the difference between the estimate and the true population size."
+  },
+  {
+   "id": "c41-k3",
+   "ahl": false,
+   "stmt": "C4.1.3",
+   "cue": "How does random quadrat sampling work?",
+   "answer": "For sessile organisms: place quadrats at random coordinates, count individuals in each, find the mean per quadrat and scale up to the whole area. The standard deviation of the mean (from a calculator) shows the spread; the formula isn't needed."
+  },
+  {
+   "id": "c41-k4",
+   "ahl": false,
+   "stmt": "C4.1.4",
+   "cue": "How does capture–mark–release–recapture work?",
+   "answer": "For motile animals: catch and mark M, release them, later catch N, of which R are marked. Estimate = M × N ÷ R. Assumes marks aren't lost and don't affect survival, marked animals mix fully, and no births, deaths or migration between samples."
+  },
+  {
+   "id": "c41-k5",
+   "ahl": false,
+   "stmt": "C4.1.5",
+   "cue": "What is carrying capacity?",
+   "answer": "The maximum population size an environment can support sustainably. It is limited by resources such as food, water, space, nesting sites or light."
+  },
+  {
+   "id": "c41-k6",
+   "ahl": false,
+   "stmt": "C4.1.6",
+   "cue": "How do density-dependent factors control population size?",
+   "answer": "As density rises, competition for resources, predation and the spread of pathogens and pests all increase, raising deaths or lowering births. This negative feedback pushes the population back towards carrying capacity. Density-independent factors (e.g. floods, frost) cause fluctuations regardless of density."
+  },
+  {
+   "id": "c41-k7",
+   "ahl": false,
+   "stmt": "C4.1.7–C4.1.8",
+   "cue": "Describe a sigmoid growth curve and how you would model it.",
+   "answer": "Exponential phase: plenty of resources, few limiting factors, births far exceed deaths. Transitional phase: limiting factors increase, growth slows. Plateau: births ≈ deaths at carrying capacity. No lag phase is expected in the IB model. Model it by growing yeast or duckweed and counting over time; the curve is an idealised simplification."
+  },
+  {
+   "id": "c41-k8",
+   "ahl": false,
+   "stmt": "C4.1.9",
+   "cue": "Intraspecific competition vs cooperation?",
+   "answer": "Members of a species compete because they need the same resources (food, mates, territory, light). They can also cooperate, e.g. hunting in wolf packs, meerkat sentinels, honeybee colonies."
+  },
+  {
+   "id": "c41-k9",
+   "ahl": false,
+   "stmt": "C4.1.10",
+   "cue": "What is a community?",
+   "answer": "All the interacting populations of all species in an area: plants, animals, fungi and bacteria."
+  },
+  {
+   "id": "c41-k10",
+   "ahl": false,
+   "stmt": "C4.1.11",
+   "cue": "Name the interspecific relationships with examples.",
+   "answer": "Herbivory (deer on grass), predation (lynx on hare), interspecific competition (red vs grey squirrels), mutualism (both benefit), parasitism (tapeworm in human: one benefits, host harmed), pathogenicity (bacterium causing tuberculosis)."
+  },
+  {
+   "id": "c41-k11",
+   "ahl": false,
+   "stmt": "C4.1.12",
+   "cue": "Give the three mutualism examples and the benefits.",
+   "answer": "Root nodules in legumes: Rhizobium fixes nitrogen for the plant; the plant gives sugars and a low-oxygen home. Orchid mycorrhizae: fungus supplies minerals and (for seedlings) sugars; it gets carbon from the adult orchid. Zooxanthellae in hard corals: algae supply sugars from photosynthesis; the coral gives shelter, CO₂ and nutrients."
+  },
+  {
+   "id": "c41-k12",
+   "ahl": false,
+   "stmt": "C4.1.13",
+   "cue": "Why can introduced species become invasive?",
+   "answer": "An introduced species may acquire resources better than endemic species (faster growth, fewer predators or diseases in the new range, broad diet) and outcompete them. Learn one local example, e.g. Japanese knotweed in Switzerland."
+  },
+  {
+   "id": "c41-k13",
+   "ahl": false,
+   "stmt": "C4.1.14",
+   "cue": "How can interspecific competition be tested?",
+   "answer": "If one species does better when the other is absent, competition is indicated but not proven. Approaches: laboratory experiments, field observations by random sampling, and field removal experiments. Both experiments and observations can test hypotheses."
+  },
+  {
+   "id": "c41-k14",
+   "ahl": false,
+   "stmt": "C4.1.15",
+   "cue": "How do you use chi-squared for species association?",
+   "answer": "Record presence/absence of two species in many quadrats; build a 2×2 contingency table; calculate expected values (row total × column total ÷ grand total); χ² = Σ(O−E)²/E; compare with the critical value (df = 1, p = 0.05, 3.84). A significant negative association may indicate competition."
+  },
+  {
+   "id": "c41-k15",
+   "ahl": false,
+   "stmt": "C4.1.16",
+   "cue": "How do predator–prey cycles show density-dependent control?",
+   "answer": "More prey → more food → predators increase (with a delay) → prey are eaten faster and decline → predators starve and decline → prey recover. Example: lynx and snowshoe hare."
+  },
+  {
+   "id": "c41-k16",
+   "ahl": false,
+   "stmt": "C4.1.17",
+   "cue": "Top-down vs bottom-up control?",
+   "answer": "Top-down: populations are controlled by predators above them. Bottom-up: controlled by the availability of resources (producers, nutrients) below them. Both happen, but one usually dominates in a community."
+  },
+  {
+   "id": "c41-k17",
+   "ahl": false,
+   "stmt": "C4.1.18",
+   "cue": "What are allelopathy and antibiotic secretion?",
+   "answer": "Both release chemicals into the environment to deter competitors. Allelopathy: plants, e.g. black walnut releases juglone, which inhibits nearby plant growth. Antibiotics: microbes, e.g. Penicillium fungus secretes penicillin, killing competing bacteria."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Carrying capacity",
+   "def": "Maximum population an environment can sustainably support."
+  },
+  {
+   "term": "Lincoln index",
+   "def": "Population estimate = M × N ÷ R."
+  },
+  {
+   "term": "Density-dependent factor",
+   "def": "A limiting factor whose effect increases with population density."
+  },
+  {
+   "term": "Mutualism",
+   "def": "Interaction that benefits both species."
+  },
+  {
+   "term": "Sessile",
+   "def": "Fixed in one place; doesn't move."
+  },
+  {
+   "term": "Allelopathy",
+   "def": "Plants releasing chemicals that inhibit competitors."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Lincoln index",
+   "prompt": "40 snails are marked and released. Later 50 are caught, of which 8 are marked. Estimate the population.",
+   "steps": [
+    "M = 40, N = 50, R = 8.",
+    "Population = M × N ÷ R = 40 × 50 ÷ 8.",
+    "= 250."
+   ],
+   "answer": "About 250 snails."
+  },
+  {
+   "title": "Chi-squared expected value",
+   "prompt": "In 50 quadrats, species A is in 30 and species B in 20; both occur together in 6. Calculate the expected number of quadrats with both.",
+   "steps": [
+    "Expected = (row total × column total) ÷ grand total.",
+    "= 30 × 20 ÷ 50.",
+    "= 12."
+   ],
+   "answer": "Expected 12 but observed 6: fewer together than chance, suggesting a negative association."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "A sigmoid curve starts with a lag phase.",
+   "right": "The IB model doesn't expect a lag phase; growth is exponential from the start."
+  },
+  {
+   "wrong": "Density-independent factors keep the population at carrying capacity.",
+   "right": "Only density-dependent factors act as negative feedback."
+  },
+  {
+   "wrong": "A significant chi-squared result proves competition.",
+   "right": "It shows an association; competition is one possible explanation."
+  },
+  {
+   "wrong": "Parasitism and pathogenicity are the same.",
+   "right": "Pathogens cause disease; many parasites live on/in hosts without being classed as pathogens."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Explain",
+   "marks": 4,
+   "prompt": "Explain the shape of a sigmoid population growth curve.",
+   "checkpoints": [
+    "Exponential phase: abundant resources, births >> deaths",
+    "Transitional: limiting factors increase, growth slows",
+    "Plateau: births = deaths at carrying capacity",
+    "Density-dependent factors e.g. competition, predation, disease"
+   ]
+  },
+  {
+   "commandTerm": "Calculate",
+   "marks": 2,
+   "prompt": "In a capture–recapture study, 60 beetles were marked; 45 were recaptured, of which 9 were marked. Estimate the population.",
+   "checkpoints": [
+    "60 × 45 ÷ 9",
+    "= 300"
+   ]
+  },
+  {
+   "commandTerm": "Outline",
+   "marks": 3,
+   "prompt": "Outline the assumptions of the Lincoln index.",
+   "checkpoints": [
+    "Marks not lost and don't affect survival/behaviour",
+    "Marked individuals mix randomly with the population",
+    "No births, deaths, immigration or emigration between samples"
+   ]
+  },
+  {
+   "commandTerm": "Describe",
+   "marks": 3,
+   "prompt": "Describe one example of mutualism, stating the benefit to each organism.",
+   "checkpoints": [
+    "Named example (e.g. Rhizobium in legume root nodules)",
+    "Benefit to partner 1 (fixed nitrogen)",
+    "Benefit to partner 2 (sugars/habitat)"
+   ]
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "B4.2",
+   "prompt": "Why can't two species share the same niche?"
+  },
+  {
+   "to": "C4.2",
+   "prompt": "How do feeding relationships move energy through a community?"
+  },
+  {
+   "to": "A4.2",
+   "prompt": "How do invasive species threaten biodiversity?"
+  },
+  {
+   "to": "D4.1",
+   "prompt": "How does intraspecific competition drive natural selection?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/interaction-interdependence/populations-communities.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/bio-ecology-adaptations-populations.json",
+    "itemIds": [
+     "ec03",
+     "ec05",
+     "ec06",
+     "ec07",
+     "ec08",
+     "ec09",
+     "ec10",
+     "ec14",
+     "ec15",
+     "ec16",
+     "ec17"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/bio-ecology-adaptations-populations.json",
+    "cardIds": [
+     "fc-bio-ec-04",
+     "fc-bio-ec-06",
+     "fc-bio-ec-07",
+     "fc-bio-ec-08",
+     "fc-bio-ec-09",
+     "fc-bio-ec-10",
+     "fc-bio-ec-12",
+     "fc-bio-ec-13",
+     "fc-bio-ec-14",
+     "fc-bio-ec-16",
+     "fc-bio-ec-17",
+     "fc-bio-ec-18"
+    ]
+   }
+  ],
+  "gap": "No existing questions on sampling error, cooperation, the set mutualism examples, tests for competition, chi-squared, top-down/bottom-up control or allelopathy/antibiotics."
+ }
+}

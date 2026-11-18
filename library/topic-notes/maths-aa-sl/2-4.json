@@ -1,0 +1,150 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-2-4",
+ "code": "2.4",
+ "title": "Key features of graphs",
+ "theme": "2",
+ "themeLabel": "Functions",
+ "hlOnly": false,
+ "islOrder": 6,
+ "islUnits": [
+  "2. Functions and quadratics (Y12 wk 3-8 (Sep-mid Oct 2026))"
+ ],
+ "taughtStatus": "taught",
+ "statements": {
+  "SL": [
+   "2.4.1",
+   "2.4.2"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "2.4.1",
+   "text": "Maxima, minima, intercepts, symmetry, vertex, zeros and asymptotes"
+  },
+  {
+   "id": "2.4.2",
+   "text": "Intersections of two graphs found with technology"
+  }
+ ],
+ "bigPicture": "Key features summarise a graph: where it turns, crosses, repeats or approaches a line. Finding them by GDC is a core Paper 2 skill; recognising them by algebra is Paper 1.",
+ "keyIdeas": [
+  {
+   "id": "m24-k1",
+   "ahl": false,
+   "stmt": "2.4.1",
+   "cue": "List the key features to look for.",
+   "answer": "Max/min (turning points), x- and y-intercepts (zeros), symmetry, vertex, vertical/horizontal asymptotes."
+  },
+  {
+   "id": "m24-k2",
+   "ahl": false,
+   "stmt": "2.4.2",
+   "cue": "How do you find where f(x) = g(x) on the GDC?",
+   "answer": "Graph both and use intersect, or graph f − g and find zeros. Check every intersection in the domain."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "zero",
+   "def": "x-value where f(x) = 0"
+  },
+  {
+   "term": "asymptote",
+   "def": "line the graph approaches but does not reach (in the limit)"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Intersections",
+   "prompt": "Find where y = e^x meets y = x + 2.",
+   "steps": [
+    "GDC intersect twice",
+    "x ≈ −1.84 and x ≈ 1.15"
+   ],
+   "answer": "(−1.84, 0.159) and (1.15, 3.15)"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "One intersection on screen = one solution",
+   "right": "Zoom out; there may be more."
+  },
+  {
+   "wrong": "Turning point means zero",
+   "right": "A turning point is where the graph changes direction, not where it crosses."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Write down",
+   "marks": 2,
+   "prompt": "For f(x) = −2(x − 3)² + 8, write down the vertex and the y-intercept.",
+   "solution": [
+    "vertex (3, 8)",
+    "f(0) = −18 + 8"
+   ],
+   "answer": "(3, 8); (0, −10)",
+   "commonErrors": [
+    "Vertex (−3, 8)",
+    "f(0) = −2·9 = −18 only"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Find",
+   "marks": 3,
+   "prompt": "Find the coordinates of the local maximum of y = x³ − 4x² + 2.",
+   "solution": [
+    "GDC maximum",
+    "x = 0, y = 2 (min at x = 8/3)"
+   ],
+   "answer": "(0, 2)",
+   "commonErrors": [
+    "Reporting the minimum",
+    "Rounding x = 0 oddly"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [],
+  "memorise": [
+   "How to read asymptotes and symmetry from equations"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "5.8",
+   "prompt": "How will calculus confirm maxima and minima you now find by GDC?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/2-functions/2-3-functions-toolkit.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/math-aa-functions-2-1-to-2-3.json",
+    "itemIds": [
+     "f07"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/math-functions-2-1-to-2-3.json",
+    "cardIds": [
+     "fc-math-fn-19"
+    ]
+   }
+  ]
+ }
+}

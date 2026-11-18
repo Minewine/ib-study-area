@@ -1,0 +1,331 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-b2-1",
+ "code": "B2.1",
+ "title": "Membranes and membrane transport",
+ "theme": "B",
+ "themeLabel": "Form and function",
+ "level": 2,
+ "levelLabel": "Cells",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "B2.1.1",
+   "B2.1.2",
+   "B2.1.3",
+   "B2.1.4",
+   "B2.1.5",
+   "B2.1.6",
+   "B2.1.7",
+   "B2.1.8",
+   "B2.1.9",
+   "B2.1.10"
+  ],
+  "AHL": [
+   "B2.1.11",
+   "B2.1.12",
+   "B2.1.13",
+   "B2.1.14",
+   "B2.1.15",
+   "B2.1.16",
+   "B2.1.17"
+  ]
+ },
+ "bigPicture": "A membrane is a hydrophobic barrier with protein doors. What crosses depends on size and polarity (simple diffusion) or on which proteins are present (selective transport).",
+ "keyIdeas": [
+  {
+   "id": "b21-k1",
+   "ahl": false,
+   "stmt": "B2.1.1",
+   "cue": "Why do phospholipids form a bilayer in water?",
+   "answer": "They are amphipathic: a hydrophilic phosphate head and two hydrophobic fatty-acid tails. In water they arrange themselves spontaneously into a continuous double layer, heads facing the water on both sides and tails hidden in the middle."
+  },
+  {
+   "id": "b21-k2",
+   "ahl": false,
+   "stmt": "B2.1.2",
+   "cue": "Why is the bilayer a barrier, and to what?",
+   "answer": "Its hydrophobic core lets very little through if it is charged, polar or large: ions, glucose, amino acids, proteins. So it separates two watery compartments."
+  },
+  {
+   "id": "b21-k3",
+   "ahl": false,
+   "stmt": "B2.1.3",
+   "cue": "What crosses by simple diffusion? Give the syllabus example.",
+   "answer": "Small, non-polar molecules slip between phospholipids, moving down their concentration gradient with no protein and no ATP. Examples: O₂ and CO₂."
+  },
+  {
+   "id": "b21-k4",
+   "ahl": false,
+   "stmt": "B2.1.4",
+   "cue": "Integral vs peripheral proteins?",
+   "answer": "Integral proteins are embedded in the bilayer (often spanning it, transmembrane). Peripheral proteins sit on one surface, usually attached to integral proteins or lipid heads."
+  },
+  {
+   "id": "b21-k5",
+   "ahl": false,
+   "stmt": "B2.1.5",
+   "cue": "Explain osmosis in terms of particles. Where do aquaporins fit?",
+   "answer": "Water molecules move randomly in both directions across the membrane, but the solute cannot cross. On the side with more solute, fewer water molecules are free to cross per second, so there is a net movement of water from lower to higher solute concentration. Aquaporins are channel proteins that greatly increase the membrane's permeability to water."
+  },
+  {
+   "id": "b21-k6",
+   "ahl": false,
+   "stmt": "B2.1.6",
+   "cue": "How do channel proteins give selectivity?",
+   "answer": "Each channel is a pore with a specific diameter and charged lining, so only particular ions fit. Many are gated and let ions diffuse (passively, down the gradient) only when open."
+  },
+  {
+   "id": "b21-k7",
+   "ahl": false,
+   "stmt": "B2.1.7",
+   "cue": "What makes a pump different from a channel?",
+   "answer": "Pumps use energy from ATP to change shape and move specific particles against their concentration gradient (active transport)."
+  },
+  {
+   "id": "b21-k8",
+   "ahl": false,
+   "stmt": "B2.1.8",
+   "cue": "Which transport is selective and which is not?",
+   "answer": "Facilitated diffusion and active transport are selective, because they depend on specific proteins. Simple diffusion is not: it depends only on size and hydrophobicity."
+  },
+  {
+   "id": "b21-k9",
+   "ahl": false,
+   "stmt": "B2.1.9",
+   "cue": "Glycoproteins and glycolipids: where are the carbohydrates and what do they do?",
+   "answer": "Short carbohydrate chains attached to proteins or lipids, always on the outside (extracellular) face. Roles: cell recognition (e.g. self vs non-self, ABO blood-group antigens) and cell adhesion."
+  },
+  {
+   "id": "b21-k10",
+   "ahl": false,
+   "stmt": "B2.1.10",
+   "cue": "What must a fluid mosaic diagram show?",
+   "answer": "Phospholipid bilayer, integral and peripheral proteins, glycoproteins with outward carbohydrate, cholesterol among the tails, and labels for the hydrophilic and hydrophobic regions."
+  },
+  {
+   "id": "b21-k11",
+   "ahl": true,
+   "stmt": "B2.1.11",
+   "cue": "How does fatty-acid saturation affect membrane fluidity? Give a habitat example.",
+   "answer": "Cis double bonds in unsaturated tails make kinks, so the tails pack loosely: lower melting point, more fluid at cool temperatures. Saturated tails pack tightly: more rigid, stronger at high temperature. Example: fish and other ectotherms in cold water have a higher proportion of unsaturated fatty acids in their membranes than warm-water species."
+  },
+  {
+   "id": "b21-k12",
+   "ahl": true,
+   "stmt": "B2.1.12",
+   "cue": "What does cholesterol do to an animal membrane?",
+   "answer": "It sits between phospholipids (OH group by the heads, rings among the tails) and acts as a fluidity buffer. At high temperature it restrains phospholipid movement (less fluid). At low temperature it stops the tails packing and stiffening."
+  },
+  {
+   "id": "b21-k13",
+   "ahl": true,
+   "stmt": "B2.1.13",
+   "cue": "Why does fluidity matter for vesicles? One example each of endocytosis and exocytosis.",
+   "answer": "Membranes can pinch off and fuse because the lipids flow. Endocytosis: a white blood cell engulfing a bacterium (phagocytosis). Exocytosis: pancreatic cells secreting digestive enzymes, or neurotransmitter release at a synapse."
+  },
+  {
+   "id": "b21-k14",
+   "ahl": true,
+   "stmt": "B2.1.14",
+   "cue": "Give a neurotransmitter-gated and a voltage-gated channel.",
+   "answer": "Nicotinic acetylcholine receptor: acetylcholine binds, the channel opens and Na⁺ (the main ion) flows in, causing depolarisation. Voltage-gated Na⁺ and K⁺ channels in axons open in response to a change in membrane potential."
+  },
+  {
+   "id": "b21-k15",
+   "ahl": true,
+   "stmt": "B2.1.15",
+   "cue": "Sodium–potassium pump: what moves, which way, and why does it matter?",
+   "answer": "An exchange transporter. Per ATP, 3 Na⁺ go out and 2 K⁺ come in, both against their gradients. This keeps Na⁺ high outside and K⁺ high inside and gives a net loss of positive charge, so it helps create the negative resting membrane potential."
+  },
+  {
+   "id": "b21-k16",
+   "ahl": true,
+   "stmt": "B2.1.16",
+   "cue": "Why is sodium-dependent glucose cotransport called 'indirect' active transport?",
+   "answer": "The cotransporter uses no ATP itself. Na⁺ flows into the cell down the gradient made by the Na⁺/K⁺ pump and carries glucose in with it, against glucose's gradient. Used in glucose absorption in the small intestine and glucose reabsorption in the nephron."
+  },
+  {
+   "id": "b21-k17",
+   "ahl": true,
+   "stmt": "B2.1.17",
+   "cue": "What holds cells together in tissues?",
+   "answer": "Cell-adhesion molecules (CAMs) in the membrane bind neighbouring cells. Different CAMs form different kinds of cell–cell junction (details not required)."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Amphipathic",
+   "def": "Having both hydrophilic and hydrophobic parts."
+  },
+  {
+   "term": "Simple / facilitated diffusion",
+   "def": "Passive net movement down a gradient, through the bilayer / through a protein channel."
+  },
+  {
+   "term": "Active transport",
+   "def": "Movement against a gradient using energy (from ATP, directly or indirectly)."
+  },
+  {
+   "term": "Osmosis",
+   "def": "Net movement of water across a partially permeable membrane towards higher solute concentration."
+  },
+  {
+   "term": "Aquaporin",
+   "def": "Channel protein specific for water."
+  },
+  {
+   "term": "Membrane potential (AHL)",
+   "def": "Voltage across a membrane caused by unequal ion distribution."
+  },
+  {
+   "term": "Symporter / cotransporter (AHL)",
+   "def": "Protein moving two substances the same way at once."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Read the transport graph",
+   "prompt": "Uptake rate is plotted against outside concentration for substances X and Y. X rises in a straight line; Y rises and then levels off. Adding cyanide (which stops aerobic respiration) has no effect on X and sharply reduces Y. Deduce how each crosses.",
+   "steps": [
+    "Straight line, no limit: no protein to saturate, so simple diffusion (X).",
+    "Plateau: a limited number of protein channels or pumps are all in use (saturation), so protein-mediated transport (Y).",
+    "Cyanide cuts ATP supply. Y falls, so Y needs ATP: active transport by a pump.",
+    "X unaffected by cyanide, confirming it is passive."
+   ],
+   "answer": "X: simple diffusion. Y: active transport through pump proteins."
+  },
+  {
+   "title": "Predict fluidity (AHL)",
+   "prompt": "Predict how the membranes of a bacterium change if it is moved from 37 °C to 15 °C, and explain why.",
+   "steps": [
+    "Cold makes saturated tails pack tightly, so the membrane would stiffen.",
+    "A stiff membrane hinders transport proteins and vesicle formation.",
+    "Prediction: the bacterium increases the proportion of unsaturated fatty acids.",
+    "Kinked tails pack loosely and restore fluidity."
+   ],
+   "answer": "More unsaturated fatty acids in its membranes, to keep them fluid at the lower temperature."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Osmosis is water moving from high to low concentration.",
+   "right": "Say 'from lower to higher solute concentration' (or higher to lower water potential). 'Concentration' alone is ambiguous."
+  },
+  {
+   "wrong": "Facilitated diffusion uses ATP because it uses a protein.",
+   "right": "It is passive: the protein provides a route, the gradient provides the energy."
+  },
+  {
+   "wrong": "Glycoproteins face both sides of the membrane.",
+   "right": "Carbohydrate chains face the outside of the cell only."
+  },
+  {
+   "wrong": "Cholesterol makes membranes more fluid.",
+   "right": "It moderates fluidity: less fluid when warm, less rigid when cold."
+  },
+  {
+   "wrong": "The Na⁺/K⁺ pump moves 3 K⁺ in and 2 Na⁺ out.",
+   "right": "3 Na⁺ out, 2 K⁺ in. Memory cue: 'salt goes out, three to two'."
+  },
+  {
+   "wrong": "The glucose cotransporter hydrolyses ATP.",
+   "right": "It uses the Na⁺ gradient. ATP is spent by the Na⁺/K⁺ pump elsewhere in the membrane."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Draw",
+   "marks": 4,
+   "prompt": "Draw the fluid mosaic model of a plasma membrane.",
+   "checkpoints": [
+    "Bilayer with heads out, tails in",
+    "Integral (transmembrane) and peripheral protein",
+    "Glycoprotein with carbohydrate on outer face",
+    "Cholesterol among tails",
+    "Hydrophilic and hydrophobic regions labelled"
+   ]
+  },
+  {
+   "commandTerm": "Distinguish",
+   "marks": 3,
+   "prompt": "Distinguish between facilitated diffusion and active transport.",
+   "checkpoints": [
+    "FD down gradient, AT against",
+    "FD passive, AT uses ATP",
+    "FD through channel proteins, AT through pump proteins"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain why ions cannot cross a membrane by simple diffusion.",
+   "checkpoints": [
+    "Ions are charged, so hydrophilic",
+    "Hydrophobic core of tails repels or blocks them",
+    "They need channel or pump proteins"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 4,
+   "ahl": true,
+   "prompt": "Explain how the sodium–potassium pump enables glucose absorption in the small intestine.",
+   "checkpoints": [
+    "Pump moves Na⁺ out using ATP, keeping Na⁺ low inside",
+    "Na⁺ gradient into the cell",
+    "Cotransporter lets Na⁺ in down its gradient together with glucose",
+    "Glucose moves against its gradient: indirect active transport"
+   ]
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "A1.1",
+   "prompt": "Which property of water drives bilayer self-assembly?"
+  },
+  {
+   "to": "D2.3",
+   "prompt": "How does water potential predict osmosis across this membrane?"
+  },
+  {
+   "to": "C2.2",
+   "prompt": "How do pumps and gated channels together produce a nerve impulse?"
+  },
+  {
+   "to": "C3.2",
+   "prompt": "How do membrane glycoproteins let the immune system tell self from non-self?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/form-function/membranes-membrane-transport.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/bio-unity-diversity-cells.json",
+    "itemIds": [
+     "b03",
+     "b07",
+     "b08",
+     "b11",
+     "b14",
+     "b16",
+     "b17",
+     "b21"
+    ]
+   },
+   {
+    "file": "library/questions/bio-water-potential-origin-cells.json",
+    "itemIds": [
+     "oc08",
+     "oc09"
+    ]
+   }
+  ],
+  "decks": [],
+  "gap": "No flashcard deck covers B2.1 yet; the January unit needs one."
+ }
+}

@@ -87,6 +87,8 @@ async function init() {
       updateReviewUI();
     }
     renderLog();
+    const params = new URLSearchParams(location.search);
+    if (params.getAll("from").length) await startFromLink(params);
   }
 
   function fillTopics() {
@@ -101,6 +103,47 @@ async function init() {
     });
   }
 
+  async function bankItems(b) {
+    const bid = bankIdFor(b);
+    if (b.inline) return (b.items || []).map(it => ({ ...it, topic: it.topic || b.topic || bid, topicLabel: it.topicLabel || b.topicLabel, bank: b.label, bankId: bid }));
+    const res = await fetch(PATH_BASE + b.file + "?cb=" + Date.now(), { cache: "no-store" });
+    if (!res.ok) throw new Error(res.status + " " + b.file);
+    const data = await res.json();
+    // untagged items inherit the bank's topic (else they'd all pool under "undefined")
+    return data.items.map(it => ({ ...it, topic: it.topic || data.topic || bid, topicLabel: data.topicLabel, bank: b.label, bankId: bid }));
+  }
+
+  // Deep link from a topic note: quiz.html?from=<bankId>[:id1,id2…]&from=…&label=…&n=20
+  // (no ids = the whole bank). Unknown banks/ids are skipped and reported.
+  async function startFromLink(params) {
+    const wanted = params.getAll("from").map(f => { const [bank, ids] = f.split(":"); return { bank, ids: ids ? ids.split(",").filter(Boolean) : null }; });
+    const n = Math.max(1, parseInt(params.get("n") || "20", 10) || 20);
+    let items = [], subject = null, missing = 0;
+    try {
+      for (const w of wanted) {
+        let found = null;
+        for (const [key, s] of Object.entries(BANKS)) { const b = s.banks.find(x => !x.inline && bankIdFor(x) === w.bank); if (b) { found = b; subject = subject || key; break; } }
+        if (!found) { missing += w.ids ? w.ids.length : 1; continue; }
+        const all = await bankItems(found);
+        const pick = w.ids ? all.filter(it => w.ids.includes(it.id)) : all;
+        if (w.ids) missing += w.ids.length - pick.length;
+        items = items.concat(pick);
+      }
+    } catch (e) { $("q-error").textContent = "Could not load question bank: " + e.message; return false; }
+    if (!items.length) { $("q-error").textContent = "None of the questions linked from that note could be found."; return false; }
+    migrateErrorKeys(items);
+    shuffle(items);
+    const use = items.slice(0, n);
+    const label = (params.get("label") || "Topic quiz").slice(0, 80);
+    const bits = [`${label}: ${use.length} of ${items.length} linked question${items.length === 1 ? "" : "s"}.`];
+    if (missing) bits.push(`${missing} linked item(s) not found.`);
+    session = { items: use, idx: 0, results: [], subject, label, requested: use.length, fromLink: true, notice: bits.join(" ") };
+    $("setup").style.display = "none";
+    $("runner").style.display = "";
+    renderQuestion();
+    return true;
+  }
+
   async function startSession() {
     const key = $("q-subject").value;
     const pick = $("q-topic").value;
@@ -110,19 +153,7 @@ async function init() {
     $("q-error").textContent = "";
     let items = [];
     try {
-      for (const b of chosen) {
-        if (b.inline) {
-          const bid = bankIdFor(b);
-          items = items.concat((b.items || []).map(it => ({ ...it, topic: it.topic || b.topic || bid, topicLabel: it.topicLabel || b.topicLabel, bank: b.label, bankId: bid })));
-          continue;
-        }
-        const res = await fetch(PATH_BASE + b.file + "?cb=" + Date.now(), { cache: "no-store" });
-        if (!res.ok) throw new Error(res.status + " " + b.file);
-        const data = await res.json();
-        const bid = bankIdFor(b);
-        // untagged items inherit the bank's topic (else they'd all pool under "undefined")
-        items = items.concat(data.items.map(it => ({ ...it, topic: it.topic || data.topic || bid, topicLabel: data.topicLabel, bank: b.label, bankId: bid })));
-      }
+      for (const b of chosen) items = items.concat(await bankItems(b));
     } catch (e) { $("q-error").textContent = "Could not load question bank: " + e.message; return; }
     migrateErrorKeys(items);
     if (format !== "mixed") items = items.filter(it => it.format === format);
@@ -138,7 +169,7 @@ async function init() {
   function renderQuestion() {
     const it = session.items[session.idx];
     const prog = $("q-progress");
-    prog.textContent = `Question ${session.idx + 1} / ${session.items.length}`;
+    prog.textContent = (session.fromLink ? session.label + " · " : "") + `Question ${session.idx + 1} / ${session.items.length}`;
     const box = $("q-box");
     const topicTag = `<div class="q-topic">${esc(it.topicLabel || "")} · ${it.format === "mcq" ? "multiple choice" : `written — ${it.marks} marks`}</div>`;
     let html = topicTag + `<div class="q-stem">${esc(it.stem)}</div>`;

@@ -1,0 +1,241 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-d4-3",
+ "code": "D4.3",
+ "title": "Climate change",
+ "theme": "D",
+ "themeLabel": "Continuity and change",
+ "level": 4,
+ "levelLabel": "Ecosystems",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "D4.3.1",
+   "D4.3.2",
+   "D4.3.3",
+   "D4.3.4",
+   "D4.3.5",
+   "D4.3.6",
+   "D4.3.7",
+   "D4.3.8"
+  ],
+  "AHL": [
+   "D4.3.9",
+   "D4.3.10",
+   "D4.3.11",
+   "D4.3.12"
+  ]
+ },
+ "bigPicture": "Burning fossil fuels and other human activities have raised carbon dioxide and methane, warming the planet. Positive feedback can accelerate warming, polar and reef habitats are being lost, and species are shifting their ranges. HL adds carbon sequestration, phenology and evolution driven by climate change.",
+ "keyIdeas": [
+  {
+   "id": "d43-k1",
+   "ahl": false,
+   "stmt": "D4.3.1",
+   "cue": "What are the human causes of climate change?",
+   "answer": "Increased atmospheric CO₂ (burning fossil fuels, deforestation, cement) and methane (livestock, rice paddies, landfill, fossil fuel extraction). Both are greenhouse gases that trap heat."
+  },
+  {
+   "id": "d43-k2",
+   "ahl": false,
+   "stmt": "D4.3.2",
+   "cue": "Name positive feedback cycles in global warming.",
+   "answer": "Warmer oceans release CO₂ from the deep ocean; melting snow and ice reduce reflection, so more sunlight is absorbed; thawing permafrost and warming peat decompose faster, releasing CO₂ and methane; more droughts and forest fires release CO₂. Each warms the planet further."
+  },
+  {
+   "id": "d43-k3",
+   "ahl": false,
+   "stmt": "D4.3.3",
+   "cue": "Why are boreal forests a possible tipping point?",
+   "answer": "Warmer temperatures and less winter snow cause drought, lower primary production and forest browning; fires become more frequent and intense, burning 'legacy' carbon stored for centuries. The taiga can switch from a net carbon sink to a net source."
+  },
+  {
+   "id": "d43-k4",
+   "ahl": false,
+   "stmt": "D4.3.4",
+   "cue": "How does melting ice change polar habitats?",
+   "answer": "Early break-up of landfast ice in the Antarctic threatens emperor penguin breeding colonies (chicks need ice until they fledge). Loss of Arctic sea ice removes the resting and feeding platforms walruses use."
+  },
+  {
+   "id": "d43-k5",
+   "ahl": false,
+   "stmt": "D4.3.5",
+   "cue": "How does warming affect ocean upwelling?",
+   "answer": "Warmer surface water forms a stable layer that prevents nutrient-rich deep water rising, reducing primary production and energy flow through marine food chains."
+  },
+  {
+   "id": "d43-k6",
+   "ahl": false,
+   "stmt": "D4.3.6",
+   "cue": "What range shifts are happening?",
+   "answer": "Species move towards the poles and uphill as temperatures rise. Tropical montane birds in New Guinea have moved upslope; North American tree species are contracting in the south and spreading north."
+  },
+  {
+   "id": "d43-k7",
+   "ahl": false,
+   "stmt": "D4.3.7",
+   "cue": "Why are coral reefs at risk of collapse?",
+   "answer": "Higher CO₂ acidifies seawater, suppressing calcification of coral skeletons. Higher water temperature causes coral bleaching (corals expel their zooxanthellae). Loss of corals collapses the whole reef ecosystem."
+  },
+  {
+   "id": "d43-k8",
+   "ahl": false,
+   "stmt": "D4.3.8",
+   "cue": "How can carbon be sequestered by ecosystems?",
+   "answer": "Afforestation (planting new forest), forest regeneration, and restoring peat-forming wetlands (waterlogged soils store carbon as undecomposed matter). Scientists debate whether fast-growing non-native plantations or native rewilding is better."
+  },
+  {
+   "id": "d43-k9",
+   "ahl": true,
+   "stmt": "D4.3.9",
+   "cue": "What is phenology?",
+   "answer": "The study of the timing of biological events such as flowering, budburst, bud set, bird migration and nesting. Timing is cued by photoperiod (day length) and/or temperature."
+  },
+  {
+   "id": "d43-k10",
+   "ahl": true,
+   "stmt": "D4.3.10",
+   "cue": "How does climate change disrupt synchrony?",
+   "answer": "If one species uses temperature as a cue and another uses photoperiod, warming shifts one but not the other. Example: Arctic mouse-ear chickweed now grows earlier in spring with warmer temperatures, but migrating reindeer arrive at the same time, cued by day length, missing the peak food supply."
+  },
+  {
+   "id": "d43-k11",
+   "ahl": true,
+   "stmt": "D4.3.11",
+   "cue": "Why are insects having more life cycles per year?",
+   "answer": "Warmer temperatures speed development, so species such as the spruce bark beetle (Ips typographus) complete more generations per year, causing larger outbreaks that kill spruce forests."
+  },
+  {
+   "id": "d43-k12",
+   "ahl": true,
+   "stmt": "D4.3.12",
+   "cue": "How is climate change causing evolution?",
+   "answer": "Tawny owls come in grey and brown forms. Grey owls are better camouflaged against snow; as winters have less snow, brown owls survive better, so the brown allele has become more common (e.g. in Finland)."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Greenhouse gas",
+   "def": "Gas that absorbs and re-emits infrared radiation (e.g. CO₂, methane)."
+  },
+  {
+   "term": "Positive feedback",
+   "def": "A change that causes further change in the same direction."
+  },
+  {
+   "term": "Tipping point",
+   "def": "Threshold beyond which change becomes self-sustaining."
+  },
+  {
+   "term": "Coral bleaching",
+   "def": "Loss of zooxanthellae from corals under heat stress."
+  },
+  {
+   "term": "Phenology (AHL)",
+   "def": "Study of the timing of seasonal biological events."
+  },
+  {
+   "term": "Carbon sequestration (AHL)",
+   "def": "Long-term capture and storage of carbon."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Interpreting range shift data",
+   "prompt": "A bird's lower range limit moved from 1 200 m to 1 350 m altitude over 40 years while mean temperature rose 0.6 °C. Calculate the rate of shift and comment.",
+   "steps": [
+    "Shift = 1 350 − 1 200 = 150 m.",
+    "Rate = 150 ÷ 40 = 3.75 m per year.",
+    "Consistent with tracking cooler temperatures upslope."
+   ],
+   "answer": "About 3.75 m per year upslope; correlation with warming, not proof of cause on its own."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "The ozone hole causes global warming.",
+   "right": "Warming is caused by greenhouse gases trapping infrared radiation."
+  },
+  {
+   "wrong": "Coral bleaching is caused by acidification.",
+   "right": "Bleaching is caused by high temperature; acidification reduces calcification."
+  },
+  {
+   "wrong": "All species respond to warming in the same way.",
+   "right": "Different cues (temperature vs day length) cause mismatches."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Outline",
+   "marks": 4,
+   "prompt": "Outline positive feedback mechanisms that accelerate global warming.",
+   "checkpoints": [
+    "Loss of ice reduces albedo",
+    "Permafrost thaw releases methane/CO₂",
+    "Warmer oceans release CO₂",
+    "More fires and drought release CO₂"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain how climate change threatens coral reefs.",
+   "checkpoints": [
+    "CO₂ causes ocean acidification",
+    "Reduced calcification",
+    "Higher temperatures cause bleaching; reef collapse"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain how climate change can disrupt synchrony between species.",
+   "checkpoints": [
+    "Different cues: temperature vs photoperiod",
+    "Warming shifts temperature-cued events only",
+    "Mismatch, e.g. reindeer arrive after chickweed peak"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain how climate change has caused evolution in tawny owls.",
+   "checkpoints": [
+    "Grey and brown variants",
+    "Less snow reduces grey owl survival/camouflage advantage",
+    "Brown allele frequency increases"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "C4.2",
+   "prompt": "How does combustion change the carbon cycle?"
+  },
+  {
+   "to": "D4.2",
+   "prompt": "How can tipping points destabilise ecosystems?"
+  },
+  {
+   "to": "D4.1",
+   "prompt": "How does natural selection respond to changing environments?"
+  },
+  {
+   "to": "B4.1",
+   "prompt": "How will biome distribution change?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/continuity-change/climate-change.pdf",
+  "quizBanks": [],
+  "decks": [],
+  "gap": "No quiz or deck covers D4.3. Missing everything, including causes, feedbacks, tipping points, habitat change, range shifts, coral reefs, sequestration and phenology."
+ }
+}

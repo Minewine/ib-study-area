@@ -1,0 +1,178 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-3-6",
+ "code": "3.6",
+ "title": "Trigonometric identities",
+ "theme": "3",
+ "themeLabel": "Geometry and trigonometry",
+ "hlOnly": false,
+ "islOrder": 22,
+ "islUnits": [
+  "4. Circular trig (Y12 wk 13-16 (late Nov-Dec 2026))",
+  "6. Trig equations and functions (Y12 wk 23-27 (Mar-Apr 2027))"
+ ],
+ "taughtStatus": "next (from ~23 Nov 2026)",
+ "statements": {
+  "SL": [
+   "3.6.1",
+   "3.6.2",
+   "3.6.3"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "3.6.1",
+   "text": "The Pythagorean identity"
+  },
+  {
+   "id": "3.6.2",
+   "text": "Double-angle identities for sin and cos"
+  },
+  {
+   "id": "3.6.3",
+   "text": "Finding one ratio from another (using sign and quadrant)"
+  }
+ ],
+ "bigPicture": "Identities link sin, cos and tan so you can find one from another or simplify expressions. The double-angle identities return in calculus and trig equations.",
+ "keyIdeas": [
+  {
+   "id": "m36-k1",
+   "ahl": false,
+   "stmt": "3.6.1",
+   "cue": "Pythagorean identity?",
+   "answer": "cos²θ + sin²θ = 1."
+  },
+  {
+   "id": "m36-k2",
+   "ahl": false,
+   "stmt": "3.6.2",
+   "cue": "Double-angle identities?",
+   "answer": "sin 2θ = 2 sin θ cos θ; cos 2θ = cos²θ − sin²θ = 2cos²θ − 1 = 1 − 2sin²θ."
+  },
+  {
+   "id": "m36-k3",
+   "ahl": false,
+   "stmt": "3.6.3",
+   "cue": "Find tan θ from sin θ = 3/5, θ obtuse?",
+   "answer": "cos θ = −4/5 (Q2), tan θ = −3/4."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "identity",
+   "def": "true for every value of the variable (≡)"
+  },
+  {
+   "term": "double angle",
+   "def": "2θ forms"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Double angle",
+   "prompt": "sin θ = 1/3, θ acute. Find sin 2θ exactly.",
+   "steps": [
+    "cos θ = √(8/9) = 2√2/3",
+    "sin 2θ = 2·(1/3)·(2√2/3)"
+   ],
+   "answer": "4√2/9"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "sin 2θ = 2 sin θ",
+   "right": "It is 2 sin θ cos θ."
+  },
+  {
+   "wrong": "Ignoring quadrant when taking square roots",
+   "right": "Choose sign from the quadrant."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Show that",
+   "marks": 4,
+   "prompt": "Show that (sin θ + cos θ)² ≡ 1 + sin 2θ.",
+   "solution": [
+    "LHS = sin²θ + 2 sin θ cos θ + cos²θ",
+    "= 1 + 2 sin θ cos θ",
+    "= 1 + sin 2θ = RHS"
+   ],
+   "answer": "Proved LHS → RHS",
+   "commonErrors": [
+    "Working on both sides at once",
+    "Missing the cross term"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Find",
+   "marks": 3,
+   "prompt": "cos θ = −0.4 with π < θ < 3π/2. Find sin θ and cos 2θ.",
+   "solution": [
+    "sin θ = −√0.84 ≈ −0.917",
+    "cos 2θ = 2(0.16) − 1"
+   ],
+   "answer": "sin θ ≈ −0.917; cos 2θ = −0.68",
+   "commonErrors": [
+    "Positive sin in Q3",
+    "cos 2θ = 2cos θ"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [
+   {
+    "section": "SL 3.5",
+    "item": "tan θ = sin θ/cos θ"
+   },
+   {
+    "section": "SL 3.6",
+    "item": "Pythagorean identity; double-angle identities for sin and cos"
+   }
+  ],
+  "memorise": [
+   "Choosing the right cos 2θ form",
+   "Quadrant signs when rooting"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "3.8",
+   "prompt": "Which cos 2θ form turns an equation into a quadratic in sin x?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/3-geometry-trigonometry/3-6-trigonometric-equations-identities.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/math-aa-topic3-geometry-trig.json",
+    "itemIds": [
+     "gt17",
+     "gt19"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/math-topic3-geometry-trig.json",
+    "cardIds": [
+     "fc-math-gt-19"
+    ]
+   }
+  ]
+ },
+ "syllabusFlags": [
+  "Pythagorean identity probably met in 'Circular trig'; double-angle identities probably in 'Trig equations and functions' - inferred."
+ ]
+}

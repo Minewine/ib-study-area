@@ -1,0 +1,459 @@
+{
+ "schemaVersion": 1,
+ "subject": "chemistry-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "chem-s2-2",
+ "code": "S2.2",
+ "title": "The covalent model",
+ "theme": "S2",
+ "themeLabel": "Models of bonding and structure",
+ "hlOnly": false,
+ "islOrder": 16,
+ "islUnits": [
+  "4. Bonding (Y13 Oct-Nov)"
+ ],
+ "taughtStatus": "upcoming",
+ "statements": {
+  "SL": [
+   "S2.2.1",
+   "S2.2.2",
+   "S2.2.3",
+   "S2.2.4",
+   "S2.2.5",
+   "S2.2.6",
+   "S2.2.7",
+   "S2.2.8",
+   "S2.2.9",
+   "S2.2.10"
+  ],
+  "AHL": [
+   "S2.2.11",
+   "S2.2.12",
+   "S2.2.13",
+   "S2.2.14",
+   "S2.2.15",
+   "S2.2.16"
+  ]
+ },
+ "bigPicture": "In covalent bonds, atoms share electron pairs. Counting those pairs gives Lewis formulas; letting the pairs repel gives molecular shapes (VSEPR); comparing electronegativities gives polarity; and polarity plus size decides the intermolecular forces that control boiling points, solubility and chromatography. HL adds resonance, formal charge, expanded octets, sigma/pi bonds and hybridisation.",
+ "keyIdeas": [
+  {
+   "id": "s22-k1",
+   "ahl": false,
+   "stmt": "S2.2.1",
+   "cue": "How do you draw Lewis formulas?",
+   "answer": "Show every valence electron as dots, crosses or lines: bonding pairs and lone pairs. Most atoms reach an octet; some have fewer (BF₃: B has 6; BeCl₂: Be has 4). Include charges and brackets for ions (NH₄⁺, CO₃²⁻). Up to four electron pairs around each atom at SL."
+  },
+  {
+   "id": "s22-k2",
+   "ahl": false,
+   "stmt": "S2.2.2",
+   "cue": "How are bond number, length and strength related?",
+   "answer": "Single, double, triple bonds share 1, 2, 3 pairs. More shared pairs → shorter and stronger: C≡C (120 pm, 839 kJ mol⁻¹) < C=C (134 pm, 614) < C–C (154 pm, 346)."
+  },
+  {
+   "id": "s22-k3",
+   "ahl": false,
+   "stmt": "S2.2.3",
+   "cue": "What is a coordination (dative) bond?",
+   "answer": "A covalent bond where both shared electrons come from the same atom: NH₃ + H⁺ → NH₄⁺; H₂O + H⁺ → H₃O⁺; CO has one. Ligands bond to transition-metal ions this way (AHL, R3.4.8)."
+  },
+  {
+   "id": "s22-k4",
+   "ahl": false,
+   "stmt": "S2.2.4",
+   "cue": "How does VSEPR predict shapes?",
+   "answer": "Count electron domains (bonds of any order count as one; lone pairs count as one) around the central atom. 2 linear 180°; 3 trigonal planar 120°; 4 tetrahedral 109.5°. Lone pairs repel more than bonding pairs, shrinking angles: NH₃ trigonal pyramidal ≈107°, H₂O bent ≈105°. Always name two things: the geometry of the electron domains and the shape of the atoms (molecular geometry)."
+  },
+  {
+   "id": "s22-k5",
+   "ahl": false,
+   "stmt": "S2.2.5",
+   "cue": "What makes a bond polar?",
+   "answer": "A difference in electronegativity: the more electronegative atom carries δ−. Show with partial charges or a dipole arrow. Use booklet electronegativity values."
+  },
+  {
+   "id": "s22-k6",
+   "ahl": false,
+   "stmt": "S2.2.6",
+   "cue": "When is a molecule polar?",
+   "answer": "When bond dipoles do not cancel because of shape. CO₂ (linear), BF₃ (trigonal planar) and CH₄ (tetrahedral) are non-polar despite polar bonds; H₂O, NH₃ and CHCl₃ are polar."
+  },
+  {
+   "id": "s22-k7",
+   "ahl": false,
+   "stmt": "S2.2.7",
+   "cue": "What are covalent network structures?",
+   "answer": "Giant lattices of covalently bonded atoms. Diamond: each C bonded to 4 others, tetrahedral, very hard, no conduction. Graphite: layers of hexagons, each C bonded to 3, delocalised electrons conduct, layers slide (lubricant). Graphene: a single graphite layer, strong and conducting. Fullerene C₆₀: molecular spheres, low melting, poor conductor. Silicon is diamond-like; SiO₂ has each Si bonded to 4 O, hard and high melting."
+  },
+  {
+   "id": "s22-k8",
+   "ahl": false,
+   "stmt": "S2.2.8",
+   "cue": "What intermolecular forces exist?",
+   "answer": "'Van der Waals forces' covers London (dispersion), dipole–induced dipole and dipole–dipole. London forces exist between all molecules and grow with number of electrons and surface contact. Dipole–dipole between polar molecules. Hydrogen bonding: H bonded to N, O or F attracted to a lone pair on N, O or F of a neighbouring molecule."
+  },
+  {
+   "id": "s22-k9",
+   "ahl": false,
+   "stmt": "S2.2.9",
+   "cue": "How do intermolecular forces explain physical properties?",
+   "answer": "For similar molar mass, London < dipole–dipole < hydrogen bonding. Stronger forces → higher boiling point, lower volatility. Simple molecular substances don't conduct (no ions or delocalised electrons). 'Like dissolves like': polar/H-bonding substances dissolve in water; non-polar in non-polar solvents."
+  },
+  {
+   "id": "s22-k10",
+   "ahl": false,
+   "stmt": "S2.2.10",
+   "cue": "How does chromatography separate components?",
+   "answer": "A mobile phase carries components over a stationary phase; components more attracted to the mobile phase travel further. Rf = distance moved by spot ÷ distance moved by solvent front (0–1). Compare Rf values with standards to identify components. Locating agents and GC/HPLC operation are not assessed."
+  },
+  {
+   "id": "s22-k11",
+   "ahl": true,
+   "stmt": "S2.2.11",
+   "cue": "What is resonance (AHL)?",
+   "answer": "When a double bond could be in more than one position, the real structure is a hybrid of resonance structures with delocalised electrons. CO₃²⁻, NO₃⁻ and O₃ have equal bond lengths between single and double."
+  },
+  {
+   "id": "s22-k12",
+   "ahl": true,
+   "stmt": "S2.2.12",
+   "cue": "What is the evidence for benzene's structure (AHL)?",
+   "answer": "All six C–C bonds are the same length (between C–C and C=C); only one isomer of 1,2-disubstituted benzene; enthalpy of hydrogenation is less exothermic than expected for three C=C (extra stability from delocalisation); it undergoes substitution rather than addition."
+  },
+  {
+   "id": "s22-k13",
+   "ahl": true,
+   "stmt": "S2.2.13",
+   "cue": "Which molecules have expanded octets (AHL)?",
+   "answer": "Atoms from period 3 onwards can have 5 or 6 electron domains. 5: trigonal bipyramidal (PCl₅); with lone pairs see-saw (SF₄), T-shaped (ClF₃), linear (XeF₂). 6: octahedral (SF₆); with lone pairs square pyramidal (BrF₅), square planar (XeF₄)."
+  },
+  {
+   "id": "s22-k14",
+   "ahl": true,
+   "stmt": "S2.2.14",
+   "cue": "How is formal charge used (AHL)?",
+   "answer": "FC = valence electrons − (non-bonding electrons + ½ bonding electrons). The preferred Lewis formula has formal charges closest to zero, with any negative charge on the more electronegative atom."
+  },
+  {
+   "id": "s22-k15",
+   "ahl": true,
+   "stmt": "S2.2.15",
+   "cue": "What are sigma and pi bonds (AHL)?",
+   "answer": "σ: head-on overlap along the bond axis (s–s, s–p, p–p, hybrid orbitals). π: sideways overlap of p orbitals above and below the axis. Single bond = 1σ; double = 1σ + 1π; triple = 1σ + 2π."
+  },
+  {
+   "id": "s22-k16",
+   "ahl": true,
+   "stmt": "S2.2.16",
+   "cue": "How does hybridisation relate to shape (AHL)?",
+   "answer": "Atomic orbitals mix to form equivalent hybrids. sp³: 4 domains, tetrahedral (CH₄). sp²: 3 domains, trigonal planar, one unhybridised p for a π bond (C₂H₄). sp: 2 domains, linear, two π bonds (C₂H₂, CO₂ central C). Work from Lewis formula → domains → geometry → hybridisation, and back."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Lewis formula",
+   "def": "Diagram showing all valence electrons as bonding and lone pairs."
+  },
+  {
+   "term": "Electron domain",
+   "def": "Region of electron density around a central atom (lone pair or bond)."
+  },
+  {
+   "term": "Electronegativity",
+   "def": "Ability of an atom to attract a shared electron pair."
+  },
+  {
+   "term": "Hydrogen bond",
+   "def": "Attraction between H on N/O/F and a lone pair on N/O/F of another molecule."
+  },
+  {
+   "term": "Rf value",
+   "def": "Distance moved by component ÷ distance moved by solvent front."
+  },
+  {
+   "term": "Resonance",
+   "def": "Delocalisation described by several Lewis structures (AHL)."
+  },
+  {
+   "term": "Formal charge",
+   "def": "Valence electrons − lone-pair electrons − ½ bonding electrons (AHL)."
+  },
+  {
+   "term": "Hybridisation",
+   "def": "Mixing of atomic orbitals into new equivalent orbitals (AHL)."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Predicting a shape",
+   "prompt": "Predict the shape and bond angle of PCl₃ and say whether it is polar.",
+   "steps": [
+    "P: 5 valence electrons; three P–Cl bonds + one lone pair = 4 domains.",
+    "Electron domain geometry tetrahedral; molecular geometry trigonal pyramidal.",
+    "Lone pair squeezes angle below 109.5° (≈ 100–107°).",
+    "Asymmetric, so bond dipoles don't cancel."
+   ],
+   "answer": "Trigonal pyramidal, < 109.5°, polar"
+  },
+  {
+   "title": "Formal charge (AHL)",
+   "prompt": "Which Lewis structure of CO₂ is preferred: O=C=O or O≡C–O?",
+   "steps": [
+    "O=C=O: each O 6 − (4 + 2) = 0; C 4 − (0 + 4) = 0.",
+    "O≡C–O: triple-bonded O 6 − (2 + 3) = +1; C 0; single-bonded O 6 − (6 + 1) = −1."
+   ],
+   "answer": "O=C=O (all formal charges zero)"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Lone pairs don't affect shape.",
+   "right": "They occupy domains and repel more strongly, reducing bond angles; they're just not 'seen' in the molecular geometry name."
+  },
+  {
+   "wrong": "Polar bonds always give a polar molecule.",
+   "right": "Symmetric shapes cancel the dipoles (CO₂, CCl₄)."
+  },
+  {
+   "wrong": "Boiling breaks covalent bonds in water.",
+   "right": "It overcomes hydrogen bonds between molecules; O–H bonds stay intact."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain why the boiling point of H₂O (100 °C) is much higher than that of H₂S (−60 °C).",
+   "checkpoints": [
+    "H₂O forms hydrogen bonds (O very electronegative, H on O)",
+    "H₂S has only dipole–dipole/London forces",
+    "More energy to overcome H bonds"
+   ]
+  },
+  {
+   "commandTerm": "Deduce",
+   "marks": 2,
+   "prompt": "Deduce the Lewis formula and shape of the carbonate ion.",
+   "checkpoints": [
+    "C central, one C=O and two C–O⁻ (bracket, 2− charge), no lone pair on C",
+    "Trigonal planar, 120°"
+   ]
+  },
+  {
+   "commandTerm": "Calculate",
+   "marks": 1,
+   "prompt": "A dye spot travels 3.6 cm while the solvent front travels 8.0 cm. Calculate Rf.",
+   "checkpoints": [
+    "0.45"
+   ]
+  },
+  {
+   "commandTerm": "Deduce",
+   "marks": 3,
+   "prompt": "Deduce the electron domain geometry, molecular geometry and bond angle of XeF₄.",
+   "checkpoints": [
+    "6 domains: 4 bonds + 2 lone pairs",
+    "Octahedral electron domains; square planar molecule",
+    "90°"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "State",
+   "marks": 2,
+   "prompt": "State the hybridisation of each carbon in propene, CH₂=CH–CH₃, and the number of σ and π bonds.",
+   "checkpoints": [
+    "sp², sp², sp³",
+    "8 σ, 1 π"
+   ],
+   "ahl": true
+  }
+ ],
+ "paper1A": [
+  {
+   "stem": "What is the shape of BF₃?",
+   "choices": [
+    "Trigonal pyramidal",
+    "Trigonal planar",
+    "T-shaped",
+    "Tetrahedral"
+   ],
+   "answer": 1,
+   "why": "Three domains, no lone pair on B."
+  },
+  {
+   "stem": "Which molecule is non-polar?",
+   "choices": [
+    "NH₃",
+    "H₂O",
+    "CCl₄",
+    "CHCl₃"
+   ],
+   "answer": 2,
+   "why": "Tetrahedral, dipoles cancel."
+  },
+  {
+   "stem": "Which substance has hydrogen bonding between its molecules?",
+   "choices": [
+    "CH₄",
+    "HCl",
+    "CH₃OCH₃",
+    "CH₃OH"
+   ],
+   "answer": 3,
+   "why": "H attached to O."
+  },
+  {
+   "stem": "Why does graphite conduct electricity?",
+   "choices": [
+    "Ions move",
+    "Delocalised electrons between layers",
+    "Layers slide",
+    "Weak London forces"
+   ],
+   "answer": 1,
+   "why": "Each C has one delocalised electron."
+  },
+  {
+   "stem": "How many σ and π bonds are in HCN?",
+   "choices": [
+    "2σ, 2π",
+    "2σ, 1π",
+    "3σ, 1π",
+    "1σ, 2π"
+   ],
+   "answer": 0,
+   "why": "H–C σ; C≡N = 1σ + 2π.",
+   "ahl": true
+  }
+ ],
+ "paper1B": [
+  {
+   "data": "Boiling points (°C): CH₄ −162, SiH₄ −112, GeH₄ −88; NH₃ −33, PH₃ −88, AsH₃ −62.",
+   "prompt": "Explain the trend in group 14 hydrides and why NH₃ does not follow the group 15 trend.",
+   "answer": "Group 14: more electrons down the group → stronger London forces → higher b.p. NH₃ is anomalously high because it hydrogen bonds; PH₃ and AsH₃ don't."
+  },
+  {
+   "data": "Chromatogram: solvent front 10.0 cm. Unknown spots at 2.5 cm and 6.0 cm. Standards: A Rf 0.25, B Rf 0.45, C Rf 0.60.",
+   "prompt": "Identify the components of the unknown.",
+   "answer": "Rf 0.25 and 0.60: A and C."
+  }
+ ],
+ "assessmentNote": "Paper 1A = multiple choice, no calculator; Paper 1B = data-based questions (format from public sources, confirm with the official guide). All prompts here are original practice, not predictions of exam questions.",
+ "errorHints": [
+  {
+   "category": "knowledge",
+   "hint": "Learn the shape names with angles for 2–4 domains (SL) and 5–6 domains (AHL)."
+  },
+  {
+   "category": "interpretation",
+   "hint": "Name both electron domain geometry and molecular geometry when asked."
+  },
+  {
+   "category": "data-booklet use",
+   "hint": "Use booklet electronegativities to decide bond polarity instead of guessing."
+  },
+  {
+   "category": "exam communication",
+   "hint": "In boiling-point answers, name the force, say which is stronger and why, and link to energy needed."
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "S2.4",
+   "prompt": "How do bonding models combine to explain real materials?"
+  },
+  {
+   "to": "S3.2",
+   "prompt": "How does chain length and branching affect intermolecular forces?"
+  },
+  {
+   "to": "R3.4",
+   "prompt": "How does benzene's delocalisation explain its substitution reactions (AHL)?"
+  }
+ ],
+ "dataBooklet": [
+  {
+   "section": 9,
+   "title": "First ionization energy, electron affinity and electronegativity",
+   "use": "Electronegativity values for bond polarity."
+  },
+  {
+   "section": 11,
+   "title": "Covalent bond lengths",
+   "use": "Bond lengths."
+  },
+  {
+   "section": 12,
+   "title": "Bond enthalpies",
+   "use": "Bond enthalpies for strength comparisons."
+  }
+ ],
+ "links": {
+  "checklistKey": "chemistry-hl::library/notes/chemistry-hl/models-of-bonding-structure/the-covalent-model.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/chem-structure-2-bonding.json",
+    "itemIds": [
+     "b02",
+     "b03",
+     "b04",
+     "b05",
+     "b06",
+     "b07",
+     "b08",
+     "b09",
+     "b10",
+     "b12",
+     "b14",
+     "b15",
+     "b16",
+     "b17",
+     "b18",
+     "b19",
+     "b21",
+     "b22"
+    ]
+   },
+   {
+    "file": "library/questions/chem-organic-chemistry.json",
+    "itemIds": [
+     "o17"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/chem-structure-2-bonding.json",
+    "cardIds": [
+     "fc-chem-s2-02",
+     "fc-chem-s2-04",
+     "fc-chem-s2-05",
+     "fc-chem-s2-06",
+     "fc-chem-s2-07",
+     "fc-chem-s2-08",
+     "fc-chem-s2-09",
+     "fc-chem-s2-10",
+     "fc-chem-s2-12",
+     "fc-chem-s2-13",
+     "fc-chem-s2-14",
+     "fc-chem-s2-15",
+     "fc-chem-s2-16",
+     "fc-chem-s2-17",
+     "fc-chem-s2-18",
+     "fc-chem-s2-19"
+    ]
+   },
+   {
+    "file": "library/flashcards/chem-organic-chemistry.json",
+    "cardIds": [
+     "fc-chem-org-13"
+    ]
+   }
+  ],
+  "gap": "No items on chromatography/Rf (S2.2.10), formal charge (S2.2.14), sigma/pi bonds (S2.2.15) or hybridisation (S2.2.16); expanded octet only on one flashcard (fc-chem-s2-19)."
+ }
+}

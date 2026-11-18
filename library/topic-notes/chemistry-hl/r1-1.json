@@ -1,0 +1,293 @@
+{
+ "schemaVersion": 1,
+ "subject": "chemistry-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "chem-r1-1",
+ "code": "R1.1",
+ "title": "Measuring enthalpy changes",
+ "theme": "R1",
+ "themeLabel": "What drives chemical reactions?",
+ "hlOnly": false,
+ "islOrder": 8,
+ "islUnits": [
+  "5. Energetics (Y12 Dec-Feb)"
+ ],
+ "taughtStatus": "upcoming",
+ "statements": {
+  "SL": [
+   "R1.1.1",
+   "R1.1.2",
+   "R1.1.3",
+   "R1.1.4"
+  ],
+  "AHL": []
+ },
+ "bigPicture": "Every reaction moves energy between the system (the chemicals) and the surroundings (everything else). If heat flows out, the surroundings warm up and the reaction is exothermic; if heat flows in, they cool and it is endothermic. Measuring the temperature change of water lets us put a number on it: the enthalpy change, ΔH.",
+ "keyIdeas": [
+  {
+   "id": "r11-k1",
+   "ahl": false,
+   "stmt": "R1.1.1",
+   "cue": "What is the difference between heat and temperature, and what is conserved?",
+   "answer": "Heat is energy transferred because of a temperature difference (J); temperature is a measure of the average kinetic energy of particles (K). Energy is neither created nor destroyed: what the system loses, the surroundings gain."
+  },
+  {
+   "id": "r11-k2",
+   "ahl": false,
+   "stmt": "R1.1.2",
+   "cue": "How do you recognise exothermic and endothermic reactions?",
+   "answer": "Exothermic: heat released to the surroundings, temperature of surroundings rises, ΔH negative (combustion, neutralisation). Endothermic: heat absorbed, surroundings cool, ΔH positive (thermal decomposition, dissolving NH₄NO₃, photosynthesis)."
+  },
+  {
+   "id": "r11-k3",
+   "ahl": false,
+   "stmt": "R1.1.3",
+   "cue": "How do you draw and read an energy profile?",
+   "answer": "x-axis: reaction coordinate; y-axis: potential energy. Exothermic: products below reactants. Endothermic: products above. The hump is the activation energy (reactants to peak); ΔH is the vertical gap from reactants to products. Lower energy = more stable."
+  },
+  {
+   "id": "r11-k4",
+   "ahl": false,
+   "stmt": "R1.1.4",
+   "cue": "How is ΔH calculated from a calorimetry experiment?",
+   "answer": "Q = mcΔT, where m is the mass of the water/solution being heated (1 cm³ ≈ 1 g), c = 4.18 J g⁻¹ K⁻¹ and ΔT is the temperature change. Then ΔH = −Q/n, where n is the moles of the limiting reactant; convert J to kJ. Units: kJ mol⁻¹. Standard (⦵) means 100 kPa, a stated temperature (usually 298 K) and standard states. Heat loss to the surroundings makes experimental values less exothermic than literature values."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "System",
+   "def": "The reacting chemicals."
+  },
+  {
+   "term": "Surroundings",
+   "def": "Everything else, including the water and the container."
+  },
+  {
+   "term": "Enthalpy change, ΔH",
+   "def": "Heat transferred at constant pressure, per mole of reaction."
+  },
+  {
+   "term": "Exothermic",
+   "def": "Releases heat; ΔH < 0."
+  },
+  {
+   "term": "Endothermic",
+   "def": "Absorbs heat; ΔH > 0."
+  },
+  {
+   "term": "Specific heat capacity, c",
+   "def": "Energy to raise 1 g of a substance by 1 K."
+  },
+  {
+   "term": "Standard conditions",
+   "def": "100 kPa, usually 298 K, substances in standard states."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Neutralisation",
+   "prompt": "50.0 cm³ of 1.00 mol dm⁻³ HCl is mixed with 50.0 cm³ of 1.00 mol dm⁻³ NaOH; the temperature rises by 6.7 K. Calculate ΔH.",
+   "steps": [
+    "m = 100.0 g (total solution).",
+    "Q = 100.0 × 4.18 × 6.7 = 2800 J = 2.80 kJ.",
+    "n(H₂O) = 0.0500 mol.",
+    "ΔH = −2.80/0.0500 (negative: temperature rose)."
+   ],
+   "answer": "−56.0 kJ mol⁻¹"
+  },
+  {
+   "title": "Combustion of a fuel",
+   "prompt": "Burning 0.46 g of ethanol (M 46.08) heats 200 g of water by 12.0 K. Calculate ΔHc and compare with the booklet value (−1367 kJ mol⁻¹).",
+   "steps": [
+    "Q = 200 × 4.18 × 12.0 = 10 032 J = 10.0 kJ.",
+    "n = 0.46/46.08 = 9.98 × 10⁻³ mol.",
+    "ΔHc = −10.0/9.98 × 10⁻³."
+   ],
+   "answer": "≈ −1.0 × 10³ kJ mol⁻¹; much less exothermic than the booklet value because of heat loss and incomplete combustion."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "m in Q = mcΔT is the mass of the reactant.",
+   "right": "It is the mass of the substance whose temperature changes (usually the water or solution)."
+  },
+  {
+   "wrong": "If the temperature rises, ΔH is positive.",
+   "right": "A rise means heat was released to the surroundings: ΔH is negative."
+  },
+  {
+   "wrong": "Heat and temperature are the same thing.",
+   "right": "Heat is energy transferred (J); temperature measures average kinetic energy (K)."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Sketch",
+   "marks": 3,
+   "prompt": "Sketch an energy profile for an endothermic reaction and label ΔH and Ea.",
+   "checkpoints": [
+    "Axes labelled (potential energy, reaction coordinate)",
+    "Products higher than reactants",
+    "ΔH and Ea arrows correct"
+   ]
+  },
+  {
+   "commandTerm": "Calculate",
+   "marks": 3,
+   "prompt": "When 2.00 g of NH₄NO₃ (M 80.06) dissolves in 50.0 g of water, the temperature falls by 3.0 K. Calculate ΔH of solution.",
+   "checkpoints": [
+    "Q = 50.0 × 4.18 × 3.0 = 627 J",
+    "n = 0.0250 mol",
+    "ΔH = +25 kJ mol⁻¹ (positive: temperature fell)"
+   ]
+  },
+  {
+   "commandTerm": "Evaluate",
+   "marks": 2,
+   "prompt": "Suggest two improvements to a simple coffee-cup calorimetry experiment.",
+   "checkpoints": [
+    "Insulate/lid to reduce heat loss",
+    "Plot temperature against time and extrapolate to find ΔT at mixing"
+   ]
+  }
+ ],
+ "paper1A": [
+  {
+   "stem": "Which process is exothermic?",
+   "choices": [
+    "Melting ice",
+    "Boiling water",
+    "Burning methane",
+    "Decomposing CaCO₃"
+   ],
+   "answer": 2,
+   "why": "Combustion releases heat."
+  },
+  {
+   "stem": "100 g of water is heated by 10 K. Using c = 4.2 J g⁻¹ K⁻¹, how much heat is absorbed?",
+   "choices": [
+    "420 J",
+    "4.2 kJ",
+    "42 kJ",
+    "420 kJ"
+   ],
+   "answer": 1,
+   "why": "100 × 4.2 × 10 = 4200 J."
+  },
+  {
+   "stem": "On an energy profile, what represents ΔH?",
+   "choices": [
+    "Reactants to peak",
+    "Peak to products",
+    "Reactants to products",
+    "Zero to peak"
+   ],
+   "answer": 2,
+   "why": "Reactants to peak is Ea."
+  }
+ ],
+ "paper1B": [
+  {
+   "data": "Temperature–time data: a solution sits at 21.0 °C for 3 min, reagent added at 4 min; readings then fall steadily from 27.5 °C at 5 min to 26.0 °C at 9 min.",
+   "prompt": "Explain how to find the best value of ΔT from a graph of these data.",
+   "answer": "Extrapolate the cooling line back to the time of mixing (4 min) to correct for heat loss: about 27.9 °C, so ΔT ≈ 6.9 K rather than 6.5 K."
+  }
+ ],
+ "assessmentNote": "Paper 1A = multiple choice, no calculator; Paper 1B = data-based questions (format from public sources, confirm with the official guide). All prompts here are original practice, not predictions of exam questions.",
+ "errorHints": [
+  {
+   "category": "maths",
+   "hint": "Use the total solution mass in Q = mcΔT, convert J to kJ, and divide by moles of the limiting reactant."
+  },
+  {
+   "category": "knowledge",
+   "hint": "Get the sign right: temperature up → ΔH negative."
+  },
+  {
+   "category": "data-booklet use",
+   "hint": "c for water is 4.18 J g⁻¹ K⁻¹ in the booklet; use it unless the question gives another value."
+  },
+  {
+   "category": "exam communication",
+   "hint": "State the main systematic error (heat loss) and its effect (ΔH less negative than literature)."
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "R1.2",
+   "prompt": "How can ΔH be found when it cannot be measured directly?"
+  },
+  {
+   "to": "R2.2",
+   "prompt": "What does activation energy on an energy profile tell us about rate?"
+  }
+ ],
+ "dataBooklet": [
+  {
+   "section": 1,
+   "title": "Some relevant equations",
+   "use": "Q = mcΔT."
+  },
+  {
+   "section": 2,
+   "title": "Physical constants",
+   "use": "Specific heat capacity of water, 4.18 J g⁻¹ K⁻¹."
+  },
+  {
+   "section": 14,
+   "title": "Enthalpies of combustion",
+   "use": "Literature ΔHc values to compare with experiment."
+  }
+ ],
+ "links": {
+  "checklistKey": "chemistry-hl::library/notes/chemistry-hl/what-drives-chemical-reactions/measuring-enthalpy-change.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/chem-reactivity-1-energetics.json",
+    "itemIds": [
+     "r101",
+     "r102",
+     "r104",
+     "r105",
+     "r106",
+     "r117",
+     "r118",
+     "r119",
+     "r121",
+     "r1x1",
+     "r1x2",
+     "r1x4",
+     "r1x5"
+    ]
+   },
+   {
+    "file": "library/questions/chem-periodicity-energetics-review.json",
+    "itemIds": [
+     "periodicity-energetics-review-08",
+     "periodicity-energetics-review-09",
+     "periodicity-energetics-review-10",
+     "periodicity-energetics-review-17"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/chem-reactivity-1-energetics.json",
+    "cardIds": [
+     "fc-chem-r1-01",
+     "fc-chem-r1-02",
+     "fc-chem-r1-04",
+     "fc-chem-r1-14",
+     "fc-chem-r1-15",
+     "fc-chem-r1-16"
+    ]
+   }
+  ],
+  "gap": "Good coverage of R1.1.1–R1.1.4."
+ },
+ "syllabusFlags": [
+  "ISL document lists four statements and no AHL statements; recheck count against the official guide."
+ ]
+}

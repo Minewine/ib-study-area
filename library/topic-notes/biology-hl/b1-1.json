@@ -1,0 +1,259 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-b1-1",
+ "code": "B1.1",
+ "title": "Carbohydrates and lipids",
+ "theme": "B",
+ "themeLabel": "Form and function",
+ "level": 1,
+ "levelLabel": "Molecules",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "B1.1.1",
+   "B1.1.2",
+   "B1.1.3",
+   "B1.1.4",
+   "B1.1.5",
+   "B1.1.6",
+   "B1.1.7",
+   "B1.1.8",
+   "B1.1.9",
+   "B1.1.10",
+   "B1.1.11",
+   "B1.1.12",
+   "B1.1.13"
+  ],
+  "AHL": []
+ },
+ "bigPicture": "Carbon's four bonds make huge variety possible. The same few monomers (glucose, fatty acids, glycerol) become energy stores, structures and signals, depending on how they are linked.",
+ "keyIdeas": [
+  {
+   "id": "b11-k1",
+   "ahl": false,
+   "stmt": "B1.1.1",
+   "cue": "What makes carbon the basis of so many compounds?",
+   "answer": "Carbon forms four covalent bonds (each a shared pair of electrons), single or double, with other carbons or other non-metals. This allows straight chains, branched chains and rings. Know the SI prefixes: kilo 10³, centi 10⁻², milli 10⁻³, micro 10⁻⁶, nano 10⁻⁹."
+  },
+  {
+   "id": "b11-k2",
+   "ahl": false,
+   "stmt": "B1.1.2",
+   "cue": "How are polymers built?",
+   "answer": "Condensation: two monomers join and a water molecule is released. Examples: polysaccharides (from monosaccharides), polypeptides (from amino acids) and nucleic acids (from nucleotides)."
+  },
+  {
+   "id": "b11-k3",
+   "ahl": false,
+   "stmt": "B1.1.3",
+   "cue": "Define digestion and name the reaction.",
+   "answer": "Breaking large insoluble polymers into small soluble monomers that can be absorbed. It happens by hydrolysis: water is split and its –H and –OH are added to the products."
+  },
+  {
+   "id": "b11-k4",
+   "ahl": false,
+   "stmt": "B1.1.4",
+   "cue": "Which glucose properties fit its role as the main transported fuel?",
+   "answer": "It is soluble (carried in blood and sap), small enough to be transported, chemically stable (stable ring), and releases a lot of energy when oxidised in respiration. Recognise pentoses (5 C) and hexoses (6 C) from ring diagrams."
+  },
+  {
+   "id": "b11-k5",
+   "ahl": false,
+   "stmt": "B1.1.5",
+   "cue": "Why are starch and glycogen good energy stores?",
+   "answer": "Both are α-glucose polymers. Coiling and branching make them compact, they are large so they are relatively insoluble (no osmotic effect), and glucose can be added or removed easily at the many chain ends. Starch in plants, glycogen (more branched) in animals."
+  },
+  {
+   "id": "b11-k6",
+   "ahl": false,
+   "stmt": "B1.1.6",
+   "cue": "How does cellulose's structure fit a structural role?",
+   "answer": "β-glucose monomers alternate in orientation (each one flipped relative to the next), giving straight chains. Parallel chains are cross-linked by hydrogen bonds into bundles (microfibrils) with high tensile strength in plant cell walls."
+  },
+  {
+   "id": "b11-k7",
+   "ahl": false,
+   "stmt": "B1.1.7",
+   "cue": "What do glycoproteins do in recognition? Give the example.",
+   "answer": "Carbohydrate chains on the cell surface act as identity markers. ABO blood-group antigens are on red blood cells. A and B differ in the terminal sugar, and type O lacks that extra sugar. The immune system attacks a mismatched blood type."
+  },
+  {
+   "id": "b11-k8",
+   "ahl": false,
+   "stmt": "B1.1.8",
+   "cue": "Define lipid.",
+   "answer": "A substance from living things that dissolves in non-polar solvents but only sparingly in water. Includes fats, oils, waxes and steroids."
+  },
+  {
+   "id": "b11-k9",
+   "ahl": false,
+   "stmt": "B1.1.9",
+   "cue": "How are triglycerides and phospholipids formed?",
+   "answer": "Condensation. Glycerol plus three fatty acids gives a triglyceride (three water molecules released, ester bonds). Glycerol plus two fatty acids plus a phosphate group gives a phospholipid."
+  },
+  {
+   "id": "b11-k10",
+   "ahl": false,
+   "stmt": "B1.1.10",
+   "cue": "Saturated vs mono- vs polyunsaturated: what changes and why does it matter?",
+   "answer": "Saturated: no C=C double bonds. Monounsaturated: one. Polyunsaturated: two or more. Cis double bonds kink the chain so molecules pack less tightly and the melting point is lower. Plants store mostly unsaturated oils (liquid). Endotherms store more saturated fats (solid at body temperature)."
+  },
+  {
+   "id": "b11-k11",
+   "ahl": false,
+   "stmt": "B1.1.11",
+   "cue": "Why are triglycerides used for long-term storage and insulation?",
+   "answer": "They hold about twice the energy per gram of carbohydrate, are stored without water because they are hydrophobic, and are chemically stable. Adipose tissue conducts heat poorly, so thick layers (e.g. blubber in seals and whales) insulate animals in cold habitats."
+  },
+  {
+   "id": "b11-k12",
+   "ahl": false,
+   "stmt": "B1.1.12",
+   "cue": "Why do phospholipids form bilayers?",
+   "answer": "They are amphipathic: a hydrophilic phosphate head and hydrophobic tails. In water the tails turn inwards, away from the water, forming a bilayer."
+  },
+  {
+   "id": "b11-k13",
+   "ahl": false,
+   "stmt": "B1.1.13",
+   "cue": "Why can steroid hormones cross membranes freely? Examples?",
+   "answer": "Steroids (four fused carbon rings) are non-polar, so they dissolve through the hydrophobic core of the bilayer. Examples: oestradiol and testosterone. Identify steroids by the four-ring skeleton."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Condensation / hydrolysis",
+   "def": "Joining monomers with release of water / splitting a polymer by adding water."
+  },
+  {
+   "term": "Monosaccharide",
+   "def": "Single sugar unit, e.g. glucose (hexose) or ribose (pentose)."
+  },
+  {
+   "term": "Amphipathic",
+   "def": "Molecule with both hydrophilic and hydrophobic regions."
+  },
+  {
+   "term": "Unsaturated fatty acid",
+   "def": "Fatty acid with one or more C=C double bonds."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Explain branching",
+   "prompt": "Glycogen is more branched than amylose. Explain why this suits an animal's needs.",
+   "steps": [
+    "Branching gives many chain ends.",
+    "Enzymes remove glucose from the ends by hydrolysis.",
+    "More ends means faster glucose release.",
+    "Animals move and may need energy quickly."
+   ],
+   "answer": "More ends, so glucose is mobilised faster, which matches an animal's higher and more variable energy demand."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Starch and cellulose differ because they use different sugars.",
+   "right": "Both are glucose polymers. Starch uses α-glucose and cellulose uses β-glucose (alternating orientation)."
+  },
+  {
+   "wrong": "Hydrolysis releases water.",
+   "right": "Hydrolysis uses water. Condensation releases it."
+  },
+  {
+   "wrong": "Unsaturated fats have more hydrogen.",
+   "right": "They have fewer hydrogens, because C=C double bonds replace C–H bonds."
+  },
+  {
+   "wrong": "Lipids are better than glycogen for every kind of storage.",
+   "right": "Lipids store more energy per gram, but glycogen releases glucose faster."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Compare and contrast",
+   "marks": 4,
+   "prompt": "Compare and contrast carbohydrates and lipids as energy stores.",
+   "checkpoints": [
+    "Both can be oxidised in respiration to release energy",
+    "Lipids store about twice the energy per gram",
+    "Lipids are insoluble, so there is no osmotic effect; glycogen/starch are also relatively insoluble",
+    "Carbohydrate is mobilised faster",
+    "Lipids are stored without water, so they are lighter for the energy stored"
+   ]
+  },
+  {
+   "commandTerm": "Outline",
+   "marks": 3,
+   "prompt": "Outline how a triglyceride is formed.",
+   "checkpoints": [
+    "Glycerol and three fatty acids",
+    "Condensation reactions releasing three water molecules",
+    "Ester bonds form"
+   ]
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "A1.1",
+   "prompt": "Why must lipids be carried in blood as lipoproteins?"
+  },
+  {
+   "to": "B2.1",
+   "prompt": "How do phospholipids and cholesterol together set membrane fluidity?"
+  },
+  {
+   "to": "C1.2",
+   "prompt": "Why does oxidising lipid release more energy per gram than oxidising glucose?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/form-function/carbohydrates-lipids.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/bio-molecules-water.json",
+    "itemIds": [
+     "wm07",
+     "wm08",
+     "wm09",
+     "wm10",
+     "wm11",
+     "wm12",
+     "wm13",
+     "wm14",
+     "wm21",
+     "wm28",
+     "wmx2",
+     "wmx5",
+     "wmx6"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/bio-molecules-water.json",
+    "cardIds": [
+     "fc-bio-wm-09",
+     "fc-bio-wm-10",
+     "fc-bio-wm-11",
+     "fc-bio-wm-12",
+     "fc-bio-wm-13",
+     "fc-bio-wm-14",
+     "fc-bio-wm-15",
+     "fc-bio-wm-16",
+     "fc-bio-wm-17"
+    ]
+   }
+  ],
+  "gap": "Likely untested: B1.1.7 (glycoproteins in cell–cell recognition)."
+ },
+ "dataBooklet": [
+  "B1.1.5",
+  "B1.1.6",
+  "B1.1.10"
+ ]
+}

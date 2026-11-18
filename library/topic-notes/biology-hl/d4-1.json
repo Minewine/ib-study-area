@@ -1,0 +1,270 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-d4-1",
+ "code": "D4.1",
+ "title": "Natural selection",
+ "theme": "D",
+ "themeLabel": "Continuity and change",
+ "level": 4,
+ "levelLabel": "Ecosystems",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "D4.1.1",
+   "D4.1.2",
+   "D4.1.3",
+   "D4.1.4",
+   "D4.1.5",
+   "D4.1.6",
+   "D4.1.7",
+   "D4.1.8"
+  ],
+  "AHL": [
+   "D4.1.9",
+   "D4.1.10",
+   "D4.1.11",
+   "D4.1.12",
+   "D4.1.13",
+   "D4.1.14",
+   "D4.1.15"
+  ]
+ },
+ "bigPicture": "Natural selection drives evolution. Individuals vary, more are born than can survive, and those with heritable traits that suit the environment leave more offspring, so allele frequencies change over generations. HL adds gene pools, the types of selection and the Hardy–Weinberg equation.",
+ "keyIdeas": [
+  {
+   "id": "d41-k1",
+   "ahl": false,
+   "stmt": "D4.1.1",
+   "cue": "Why is natural selection a paradigm shift?",
+   "answer": "It acts continuously over billions of years and explains the diversity of life. In Darwin's time evolution was accepted but its mechanism wasn't; natural selection gave a convincing mechanism and replaced Lamarck's idea of inheriting acquired characteristics."
+  },
+  {
+   "id": "d41-k2",
+   "ahl": false,
+   "stmt": "D4.1.2",
+   "cue": "Where does the variation come from?",
+   "answer": "Mutation creates new alleles; sexual reproduction (meiosis and random fertilisation) creates new combinations of alleles."
+  },
+  {
+   "id": "d41-k3",
+   "ahl": false,
+   "stmt": "D4.1.3",
+   "cue": "Why do overproduction and competition matter?",
+   "answer": "Populations produce more offspring than resources (food, water, space, mates) can support, so individuals compete and many die before reproducing."
+  },
+  {
+   "id": "d41-k4",
+   "ahl": false,
+   "stmt": "D4.1.4",
+   "cue": "How can abiotic factors act as selection pressures?",
+   "answer": "Density-independent factors such as extreme heat, cold or drought kill individuals that tolerate them less well, favouring those that tolerate them better."
+  },
+  {
+   "id": "d41-k5",
+   "ahl": false,
+   "stmt": "D4.1.5",
+   "cue": "What is fitness?",
+   "answer": "The ability of a genotype to survive and reproduce in its environment. In intraspecific competition, better-adapted individuals survive and reproduce more, so their alleles become commoner."
+  },
+  {
+   "id": "d41-k6",
+   "ahl": false,
+   "stmt": "D4.1.6",
+   "cue": "Why must traits be heritable?",
+   "answer": "Only genetic traits can be passed on. Characteristics acquired during life (bigger muscles from exercise) don't change the base sequence of genes, so they aren't inherited."
+  },
+  {
+   "id": "d41-k7",
+   "ahl": false,
+   "stmt": "D4.1.7",
+   "cue": "What is sexual selection?",
+   "answer": "Selection by mate choice: traits that signal fitness (bright plumage, displays) increase success in attracting mates, even if costly. Birds of paradise evolved elaborate plumage and dances this way."
+  },
+  {
+   "id": "d41-k8",
+   "ahl": false,
+   "stmt": "D4.1.8",
+   "cue": "What did Endler's guppy experiments show?",
+   "answer": "In ponds with strong predators, guppies evolved duller colours (natural selection); with weak predators, males evolved brighter colours and more spots (sexual selection by female choice). Moving guppies between ponds changed colour patterns within generations."
+  },
+  {
+   "id": "d41-k9",
+   "ahl": true,
+   "stmt": "D4.1.9",
+   "cue": "What is a gene pool?",
+   "answer": "All the genes and all their alleles present in a population."
+  },
+  {
+   "id": "d41-k10",
+   "ahl": true,
+   "stmt": "D4.1.10",
+   "cue": "Why do isolated populations have different allele frequencies?",
+   "answer": "They experience different selection pressures, mutations and random drift and don't interbreed. Human example: lactase persistence alleles are common in northern Europeans but rare in East Asians (databases show the frequencies)."
+  },
+  {
+   "id": "d41-k11",
+   "ahl": true,
+   "stmt": "D4.1.11",
+   "cue": "How does natural selection change allele frequencies?",
+   "answer": "Individuals with advantageous heritable traits survive and reproduce more, so their alleles increase in frequency in the gene pool. Combining Darwin's theory with genetics is called neo-Darwinism."
+  },
+  {
+   "id": "d41-k12",
+   "ahl": true,
+   "stmt": "D4.1.12",
+   "cue": "Directional vs disruptive vs stabilising selection?",
+   "answer": "Directional: one extreme favoured, the mean shifts (e.g. antibiotic resistance). Disruptive: both extremes favoured over the middle, which can split a population. Stabilising: the intermediate favoured and extremes removed (e.g. human birth weight). All three change allele frequencies."
+  },
+  {
+   "id": "d41-k13",
+   "ahl": true,
+   "stmt": "D4.1.13",
+   "cue": "How do you use the Hardy–Weinberg equation?",
+   "answer": "Allele frequencies p + q = 1; genotype frequencies p² + 2pq + q² = 1 (p² = homozygous dominant, 2pq = heterozygous, q² = homozygous recessive). From q² (recessive phenotype frequency), find q = √q², then p and the carrier frequency 2pq."
+  },
+  {
+   "id": "d41-k14",
+   "ahl": true,
+   "stmt": "D4.1.14",
+   "cue": "What conditions keep a population in Hardy–Weinberg equilibrium?",
+   "answer": "Large population, random mating, no mutation, no migration, no selection (all genotypes survive and reproduce equally). If observed genotype frequencies don't fit, at least one condition is broken."
+  },
+  {
+   "id": "d41-k15",
+   "ahl": true,
+   "stmt": "D4.1.15",
+   "cue": "Artificial vs natural selection?",
+   "answer": "Artificial: humans deliberately choose individuals with desired traits to breed (crops, livestock). Antibiotic resistance is natural selection, even though humans caused the pressure, because no one chose the resistant bacteria."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Fitness",
+   "def": "Ability of a genotype to survive and reproduce."
+  },
+  {
+   "term": "Sexual selection",
+   "def": "Selection for traits that increase mating success."
+  },
+  {
+   "term": "Gene pool (AHL)",
+   "def": "All the alleles in a population."
+  },
+  {
+   "term": "Allele frequency (AHL)",
+   "def": "Proportion of one allele among all copies of that gene in a population."
+  },
+  {
+   "term": "Stabilising selection (AHL)",
+   "def": "Selection favouring the intermediate phenotype."
+  },
+  {
+   "term": "Hardy–Weinberg equilibrium (AHL)",
+   "def": "Stable allele and genotype frequencies when no evolutionary forces act."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Hardy–Weinberg (AHL)",
+   "prompt": "1 in 2 500 people has cystic fibrosis (recessive). Calculate the frequency of carriers.",
+   "steps": [
+    "q² = 1/2 500 = 0.0004.",
+    "q = √0.0004 = 0.02.",
+    "p = 1 − 0.02 = 0.98.",
+    "2pq = 2 × 0.98 × 0.02 = 0.0392."
+   ],
+   "answer": "About 3.9% of people (roughly 1 in 25) are carriers."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Organisms evolve because they need to.",
+   "right": "Variation arises randomly; selection favours what already exists."
+  },
+  {
+   "wrong": "Individuals evolve.",
+   "right": "Populations evolve; individuals don't change their genes."
+  },
+  {
+   "wrong": "Survival of the fittest means the strongest.",
+   "right": "Fitness means survival and reproduction in a given environment."
+  },
+  {
+   "wrong": "Antibiotic resistance is artificial selection.",
+   "right": "No one chose the bacteria; it is natural selection."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Explain",
+   "marks": 5,
+   "prompt": "Explain how natural selection can lead to antibiotic resistance in bacteria.",
+   "checkpoints": [
+    "Variation; resistance allele from mutation",
+    "Antibiotic is the selection pressure",
+    "Resistant bacteria survive and reproduce",
+    "Pass on resistance allele",
+    "Allele frequency increases over generations"
+   ]
+  },
+  {
+   "commandTerm": "Distinguish",
+   "marks": 2,
+   "prompt": "Distinguish between natural and artificial selection.",
+   "checkpoints": [
+    "Natural: environment selects",
+    "Artificial: humans choose breeding individuals for desired traits"
+   ]
+  },
+  {
+   "commandTerm": "Calculate",
+   "marks": 3,
+   "prompt": "In a population, 16% show a recessive phenotype. Calculate the frequency of heterozygotes.",
+   "checkpoints": [
+    "q² = 0.16, q = 0.4",
+    "p = 0.6",
+    "2pq = 0.48"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Outline",
+   "marks": 3,
+   "prompt": "Outline the conditions required for Hardy–Weinberg equilibrium.",
+   "checkpoints": [
+    "Large population, random mating",
+    "No mutation, no migration",
+    "No natural selection"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "A4.1",
+   "prompt": "How does natural selection lead to speciation?"
+  },
+  {
+   "to": "D1.3",
+   "prompt": "How does mutation supply new alleles?"
+  },
+  {
+   "to": "C4.1",
+   "prompt": "How does competition limit population size?"
+  },
+  {
+   "to": "D4.3",
+   "prompt": "How is climate change causing evolution?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/continuity-change/natural-selection.pdf",
+  "quizBanks": [],
+  "decks": [],
+  "gap": "No quiz or deck covers D4.1. Missing everything, including the conditions for natural selection, sexual selection, Endler, types of selection and Hardy–Weinberg calculations."
+ }
+}

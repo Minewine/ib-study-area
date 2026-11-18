@@ -1,0 +1,269 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-a2-2",
+ "code": "A2.2",
+ "title": "Cell structure",
+ "theme": "A",
+ "themeLabel": "Unity and diversity",
+ "level": 2,
+ "levelLabel": "Cells",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "A2.2.1",
+   "A2.2.2",
+   "A2.2.3",
+   "A2.2.4",
+   "A2.2.5",
+   "A2.2.6",
+   "A2.2.7",
+   "A2.2.8",
+   "A2.2.9",
+   "A2.2.10",
+   "A2.2.11"
+  ],
+  "AHL": [
+   "A2.2.12",
+   "A2.2.13",
+   "A2.2.14"
+  ]
+ },
+ "bigPicture": "All cells share DNA, water-based cytoplasm and a lipid membrane. Prokaryotes and eukaryotes differ in compartments and ribosome size, and microscopes are how we know.",
+ "keyIdeas": [
+  {
+   "id": "a22-k1",
+   "ahl": false,
+   "stmt": "A2.2.1",
+   "cue": "What does cell theory state and how is it used to predict?",
+   "answer": "All organisms are made of one or more cells, and cells are the basic unit of structure. By deduction, a newly discovered organism is predicted to be made of cells."
+  },
+  {
+   "id": "a22-k2",
+   "ahl": false,
+   "stmt": "A2.2.2",
+   "cue": "Which microscopy skills must you have and how do you calculate size?",
+   "answer": "Making temporary mounts, staining, using coarse then fine focus, measuring with an eyepiece graticule, adding a scale bar and taking photographs. Magnification = image size ÷ actual size. Convert to the same units first (1 mm = 1000 µm)."
+  },
+  {
+   "id": "a22-k3",
+   "ahl": false,
+   "stmt": "A2.2.3",
+   "cue": "What did each newer microscopy technique add?",
+   "answer": "Electron microscopy: much higher resolution, because electrons have a far shorter wavelength than light. Freeze fracture: splits frozen membranes through the middle, which revealed proteins inside the bilayer. Cryo-EM: images flash-frozen, unstained molecules, even single proteins. Fluorescent stains and immunofluorescence: dye-tagged stains or antibodies light up specific structures or proteins in light microscopy."
+  },
+  {
+   "id": "a22-k4",
+   "ahl": false,
+   "stmt": "A2.2.4",
+   "cue": "Which structures do all cells share, and why?",
+   "answer": "DNA as genetic material, cytoplasm that is mostly water (the medium for reactions), and a lipid plasma membrane (the barrier that controls exchange)."
+  },
+  {
+   "id": "a22-k5",
+   "ahl": false,
+   "stmt": "A2.2.5",
+   "cue": "Describe a Gram-positive prokaryote (e.g. Bacillus, Staphylococcus).",
+   "answer": "Cell wall (peptidoglycan), plasma membrane, cytoplasm, naked DNA in a loop (nucleoid) and 70S ribosomes. No nucleus and no membrane-bound organelles. Real prokaryotes vary."
+  },
+  {
+   "id": "a22-k6",
+   "ahl": false,
+   "stmt": "A2.2.6",
+   "cue": "Features common to eukaryote cells?",
+   "answer": "A compartmentalised cytoplasm with 80S ribosomes. A nucleus with a double membrane and pores, containing chromosomes of DNA bound to histones. Mitochondria, ER, Golgi and vesicles or vacuoles including lysosomes. A cytoskeleton of microtubules and microfilaments."
+  },
+  {
+   "id": "a22-k7",
+   "ahl": false,
+   "stmt": "A2.2.7",
+   "cue": "Which functions must a unicellular organism carry out?",
+   "answer": "Eight: homeostasis, metabolism, nutrition, movement, excretion, growth, response to stimuli, reproduction."
+  },
+  {
+   "id": "a22-k8",
+   "ahl": false,
+   "stmt": "A2.2.8",
+   "cue": "How do plant, animal and fungal cells differ?",
+   "answer": "Walls: plants have cellulose, fungi have chitin, animals have none. Vacuoles: large permanent sap vacuole in plants (also common in fungi), small temporary ones in animals. Chloroplasts and other plastids only in plants. Centrioles, cilia and flagella are typical of animals, absent from most plant cells, and rare in fungi."
+  },
+  {
+   "id": "a22-k9",
+   "ahl": false,
+   "stmt": "A2.2.9",
+   "cue": "Give four atypical eukaryote cells by number of nuclei.",
+   "answer": "Aseptate fungal hyphae: many nuclei in a continuous cytoplasm. Skeletal muscle fibres: many nuclei. Mammalian red blood cells: no nucleus. Phloem sieve tube elements: no nucleus (they rely on companion cells)."
+  },
+  {
+   "id": "a22-k10",
+   "ahl": false,
+   "stmt": "A2.2.10–A2.2.11",
+   "cue": "What must you identify and annotate in micrographs?",
+   "answer": "Classify a cell as prokaryote, plant or animal. Identify the nucleoid, cell walls, nucleus, mitochondrion, chloroplast, sap vacuole, Golgi, rough and smooth ER, chromosomes, ribosomes, plasma membrane and microvilli. Drawings must be annotated with functions, not just labels."
+  },
+  {
+   "id": "a22-k11",
+   "ahl": true,
+   "stmt": "A2.2.12",
+   "cue": "What is the endosymbiotic theory and its evidence?",
+   "answer": "Eukaryotes came from a common ancestor with a nucleus. Mitochondria then arose from an engulfed aerobic bacterium, and later, in some lineages, chloroplasts from an engulfed photosynthetic bacterium. Evidence: both have 70S ribosomes and naked circular DNA, and both replicate by division. A strong theory is one that explains many observations."
+  },
+  {
+   "id": "a22-k12",
+   "ahl": true,
+   "stmt": "A2.2.13",
+   "cue": "What causes cell differentiation?",
+   "answer": "Different patterns of gene expression in genetically identical cells, often triggered by environmental signals."
+  },
+  {
+   "id": "a22-k13",
+   "ahl": true,
+   "stmt": "A2.2.14",
+   "cue": "What are the advantages of multicellularity, and how often did it evolve?",
+   "answer": "It evolved repeatedly (in many fungi and algae, and in all plants and animals). It allows a larger body size and specialisation of cells."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Magnification",
+   "def": "Image size ÷ actual size."
+  },
+  {
+   "term": "Resolution",
+   "def": "Smallest distance at which two points can still be seen as separate."
+  },
+  {
+   "term": "70S / 80S ribosome",
+   "def": "Smaller prokaryote (and organelle) ribosome / larger eukaryote cytoplasmic ribosome."
+  },
+  {
+   "term": "Endosymbiosis (AHL)",
+   "def": "One cell living inside another, becoming an organelle."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Actual size from a micrograph",
+   "prompt": "A mitochondrion measures 30 mm on a micrograph at ×15 000. Find its actual length in µm.",
+   "steps": [
+    "Convert: 30 mm = 30 000 µm.",
+    "Actual size = image size ÷ magnification = 30 000 ÷ 15 000.",
+    "= 2 µm."
+   ],
+   "answer": "2 µm."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Magnification and resolution are the same thing.",
+   "right": "Magnification makes an image bigger. Resolution is how much detail can be separated. An image can be enlarged without new detail."
+  },
+  {
+   "wrong": "Prokaryotes have no ribosomes.",
+   "right": "They have 70S ribosomes."
+  },
+  {
+   "wrong": "Plant cells have no mitochondria because they photosynthesise.",
+   "right": "Plant cells have both mitochondria and chloroplasts."
+  },
+  {
+   "wrong": "The cell wall is an organelle.",
+   "right": "It is not counted as an organelle (see B2.2)."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Calculate",
+   "marks": 2,
+   "prompt": "A cell 25 µm wide appears 50 mm wide in a drawing. Calculate the magnification.",
+   "checkpoints": [
+    "Convert 50 mm to 50 000 µm",
+    "50 000 ÷ 25 = ×2000"
+   ]
+  },
+  {
+   "commandTerm": "Distinguish",
+   "marks": 3,
+   "prompt": "Distinguish between prokaryotic and eukaryotic cell structure.",
+   "checkpoints": [
+    "Nucleoid vs nucleus with double membrane",
+    "70S vs 80S ribosomes",
+    "No membrane-bound organelles vs mitochondria, ER, Golgi",
+    "Naked DNA vs DNA with histones"
+   ]
+  },
+  {
+   "commandTerm": "Evaluate",
+   "marks": 3,
+   "prompt": "Evaluate the evidence for the endosymbiotic origin of mitochondria.",
+   "checkpoints": [
+    "70S ribosomes like bacteria",
+    "Naked circular DNA",
+    "Divide independently of the cell",
+    "Explains many observations but the event itself cannot be observed"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "B2.2",
+   "prompt": "How does compartmentalisation benefit eukaryotic cells?"
+  },
+  {
+   "to": "A2.1",
+   "prompt": "What came before the first cells?"
+  },
+  {
+   "to": "B2.3",
+   "prompt": "How does differentiation produce specialised cells?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/unity-diversity/cell-structure.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/bio-unity-diversity-cells.json",
+    "itemIds": [
+     "b01",
+     "b13",
+     "b18",
+     "b23",
+     "b24",
+     "b28",
+     "b30",
+     "b31",
+     "b33",
+     "ucx1",
+     "ucx2",
+     "ucx3",
+     "ucx9"
+    ]
+   },
+   {
+    "file": "library/questions/bio-water-potential-origin-cells.json",
+    "itemIds": [
+     "oc03",
+     "oc07",
+     "oc13",
+     "oc17",
+     "wpx7"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/bio-water-potential-origin-cells.json",
+    "cardIds": [
+     "fc-bio-wp-13",
+     "fc-bio-wp-14",
+     "fc-bio-wp-18"
+    ]
+   }
+  ],
+  "gap": "No deck for A2.2 cell structure or microscopy calculations yet."
+ }
+}

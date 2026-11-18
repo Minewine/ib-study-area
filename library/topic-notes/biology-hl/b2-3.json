@@ -1,0 +1,201 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-b2-3",
+ "code": "B2.3",
+ "title": "Cell specialization",
+ "theme": "B",
+ "themeLabel": "Form and function",
+ "level": 2,
+ "levelLabel": "Cells",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "B2.3.1",
+   "B2.3.2",
+   "B2.3.3",
+   "B2.3.4",
+   "B2.3.5",
+   "B2.3.6"
+  ],
+  "AHL": [
+   "B2.3.7",
+   "B2.3.8",
+   "B2.3.9",
+   "B2.3.10"
+  ]
+ },
+ "bigPicture": "One zygote becomes hundreds of cell types by switching genes on and off. Each specialised cell's size and shape fit its job, within the limits set by surface area to volume.",
+ "keyIdeas": [
+  {
+   "id": "b23-k1",
+   "ahl": false,
+   "stmt": "B2.3.1",
+   "cue": "How do unspecialised cells become specialised after fertilisation?",
+   "answer": "The zygote divides into unspecialised cells. Gradients of signalling chemicals across the early embryo mean cells in different positions express different genes, and so differentiate."
+  },
+  {
+   "id": "b23-k2",
+   "ahl": false,
+   "stmt": "B2.3.2",
+   "cue": "What two properties define stem cells?",
+   "answer": "They can divide endlessly and can differentiate along different pathways."
+  },
+  {
+   "id": "b23-k3",
+   "ahl": false,
+   "stmt": "B2.3.3",
+   "cue": "Where are stem cell niches in adults and what do they do?",
+   "answer": "Examples: bone marrow (blood cells) and hair follicles. A niche keeps stem cells in reserve, or promotes their division and differentiation when needed."
+  },
+  {
+   "id": "b23-k4",
+   "ahl": false,
+   "stmt": "B2.3.4",
+   "cue": "Totipotent vs pluripotent vs multipotent?",
+   "answer": "Totipotent: can become any cell type (early embryo cells). Pluripotent: can become most types (soon after). Multipotent: a limited range, e.g. adult bone-marrow stem cells make blood cells."
+  },
+  {
+   "id": "b23-k5",
+   "ahl": false,
+   "stmt": "B2.3.5",
+   "cue": "How does cell size vary with function in humans?",
+   "answer": "The egg is one of the largest cells (stored cytoplasm), while sperm are small and streamlined. Red blood cells are small (about 7–8 µm) and white blood cells are larger. Neurons can be very long (up to about a metre), and striated muscle fibres can be several cm long."
+  },
+  {
+   "id": "b23-k6",
+   "ahl": false,
+   "stmt": "B2.3.6",
+   "cue": "Why does surface area to volume limit cell size?",
+   "answer": "Exchange depends on surface area, but the need for exchange depends on volume. As a cell grows, volume increases faster (cube) than area (square), so SA:V falls. Cubes model this: side 1 gives 6:1, side 2 gives 3:1, side 3 gives 2:1."
+  },
+  {
+   "id": "b23-k7",
+   "ahl": true,
+   "stmt": "B2.3.7",
+   "cue": "How do cells increase SA:V? Give the two examples.",
+   "answer": "Flattening, microvilli and invagination (infolding). Red blood cells are flattened biconcave discs. Proximal convoluted tubule cells in the nephron have microvilli on one side and infoldings on the other."
+  },
+  {
+   "id": "b23-k8",
+   "ahl": true,
+   "stmt": "B2.3.8",
+   "cue": "How are type I and type II pneumocytes adapted?",
+   "answer": "Type I: extremely thin, so diffusion distance is short. Type II: full of secretory vesicles (lamellar bodies) that release surfactant into the alveolus. One tissue needs two cell types."
+  },
+  {
+   "id": "b23-k9",
+   "ahl": true,
+   "stmt": "B2.3.9",
+   "cue": "Cardiac muscle cells vs striated muscle fibres?",
+   "answer": "Both contain contractile myofibrils. Cardiac cells are branched, shorter and usually have one nucleus. Striated (skeletal) fibres are unbranched, very long and have many nuclei, because they form by fusion of cells. Whether a fibre counts as a cell is debatable."
+  },
+  {
+   "id": "b23-k10",
+   "ahl": true,
+   "stmt": "B2.3.10",
+   "cue": "How are human sperm and egg adapted?",
+   "answer": "Sperm: a flagellum for movement, many mitochondria for ATP, an acrosome of enzymes to penetrate the egg's coat, a small haploid nucleus and little cytoplasm. Egg: large, with stored nutrients, a haploid nucleus, cortical granules that block extra sperm and a protective coat (zona pellucida)."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Differentiation",
+   "def": "Development of a cell into a specialised type by changes in gene expression."
+  },
+  {
+   "term": "Stem cell niche",
+   "def": "Location in a tissue where stem cells are maintained."
+  },
+  {
+   "term": "SA:V ratio",
+   "def": "Surface area divided by volume; falls as size increases."
+  },
+  {
+   "term": "Pneumocyte (AHL)",
+   "def": "Cell of the alveolar wall (type I or II)."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "SA:V of cubes",
+   "prompt": "Calculate SA:V for cubes of side 1 cm and 4 cm and explain the consequence.",
+   "steps": [
+    "1 cm: SA = 6 cm², V = 1 cm³, ratio 6:1.",
+    "4 cm: SA = 6 × 16 = 96 cm², V = 64 cm³, ratio 1.5:1.",
+    "The larger cube has less surface per unit volume."
+   ],
+   "answer": "6:1 vs 1.5:1. Large cells can't exchange materials fast enough for their volume."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Larger cells have a larger SA:V.",
+   "right": "Larger cells have more area but a smaller ratio."
+  },
+  {
+   "wrong": "Adult stem cells are pluripotent.",
+   "right": "Adult stem cells such as bone marrow cells are multipotent."
+  },
+  {
+   "wrong": "Differentiated cells lose genes.",
+   "right": "They keep the whole genome but express different genes."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Outline",
+   "marks": 3,
+   "prompt": "Outline the properties and one use of stem cells.",
+   "checkpoints": [
+    "Divide endlessly",
+    "Differentiate along different pathways",
+    "Location or use, e.g. bone marrow producing blood cells"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain how type II pneumocytes are adapted to their function.",
+   "checkpoints": [
+    "Secrete surfactant",
+    "Many lamellar bodies / secretory vesicles",
+    "Surfactant reduces surface tension and stops alveoli sticking shut"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "B3.1",
+   "prompt": "How do pneumocytes contribute to gas exchange?"
+  },
+  {
+   "to": "D2.2",
+   "prompt": "How do gene expression patterns create cell types?"
+  },
+  {
+   "to": "D3.1",
+   "prompt": "How are gametes produced?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/form-function/cell-specialisation.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/bio-unity-diversity-cells.json",
+    "itemIds": [
+     "b09",
+     "b19",
+     "b29",
+     "ucx7"
+    ]
+   }
+  ],
+  "decks": [],
+  "gap": "No flashcard deck covers B2.3 yet."
+ }
+}

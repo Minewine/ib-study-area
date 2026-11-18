@@ -1,0 +1,440 @@
+{
+ "schemaVersion": 1,
+ "subject": "chemistry-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "chem-r3-1",
+ "code": "R3.1",
+ "title": "Proton transfer reactions",
+ "theme": "R3",
+ "themeLabel": "What are the mechanisms of chemical change?",
+ "hlOnly": false,
+ "islOrder": 14,
+ "islUnits": [
+  "9. Acids and bases (Y12 Jun / Y13 Sep)"
+ ],
+ "taughtStatus": "upcoming",
+ "statements": {
+  "SL": [
+   "R3.1.1",
+   "R3.1.2",
+   "R3.1.3",
+   "R3.1.4",
+   "R3.1.5",
+   "R3.1.6",
+   "R3.1.7",
+   "R3.1.8"
+  ],
+  "AHL": [
+   "R3.1.9",
+   "R3.1.10",
+   "R3.1.11",
+   "R3.1.12",
+   "R3.1.13",
+   "R3.1.14",
+   "R3.1.15",
+   "R3.1.16",
+   "R3.1.17"
+  ]
+ },
+ "bigPicture": "Acids and bases are about handing over a proton (H⁺). The pH scale measures [H⁺] on a log scale, strong acids hand over all their protons and weak ones only some, and neutralisation, titration curves, indicators and buffers all follow from that equilibrium.",
+ "keyIdeas": [
+  {
+   "id": "r31-k1",
+   "ahl": false,
+   "stmt": "R3.1.1",
+   "cue": "What are Brønsted–Lowry acids and bases?",
+   "answer": "Acid = proton donor; base = proton acceptor. H⁺(aq) and H₃O⁺(aq) mean the same thing. An alkali is a base that dissolves in water to give OH⁻; all alkalis are bases, but not all bases are alkalis (e.g. CuO)."
+  },
+  {
+   "id": "r31-k2",
+   "ahl": false,
+   "stmt": "R3.1.2",
+   "cue": "What is a conjugate acid–base pair?",
+   "answer": "Two species that differ by one H⁺. In CH₃COOH + H₂O ⇌ CH₃COO⁻ + H₃O⁺: CH₃COOH/CH₃COO⁻ and H₃O⁺/H₂O are pairs."
+  },
+  {
+   "id": "r31-k3",
+   "ahl": false,
+   "stmt": "R3.1.3",
+   "cue": "Which species act as both acid and base?",
+   "answer": "Amphiprotic species can donate or accept a proton: H₂O, HCO₃⁻, HSO₄⁻, H₂PO₄⁻. E.g. HCO₃⁻ + H₃O⁺ → H₂CO₃ + H₂O; HCO₃⁻ + OH⁻ → CO₃²⁻ + H₂O."
+  },
+  {
+   "id": "r31-k4",
+   "ahl": false,
+   "stmt": "R3.1.4",
+   "cue": "How do pH and [H⁺] convert?",
+   "answer": "pH = −log₁₀[H⁺]; [H⁺] = 10⁻ᵖᴴ. One pH unit = a tenfold change in [H⁺]. Estimate pH with universal indicator; measure precisely with a pH meter or probe."
+  },
+  {
+   "id": "r31-k5",
+   "ahl": false,
+   "stmt": "R3.1.5",
+   "cue": "What is Kw?",
+   "answer": "Kw = [H⁺][OH⁻] = 1.00 × 10⁻¹⁴ at 298 K. Neutral: [H⁺] = [OH⁻]; acidic: [H⁺] > [OH⁻]; basic: [OH⁻] > [H⁺]."
+  },
+  {
+   "id": "r31-k6",
+   "ahl": false,
+   "stmt": "R3.1.6",
+   "cue": "Strong vs weak, and strong vs concentrated?",
+   "answer": "Strong acids/bases ionise completely (HCl, HBr, HNO₃, H₂SO₄; group 1 hydroxides); weak ones partly (CH₃COOH, NH₃). Equilibrium lies on the side of the weaker conjugate. Strength is about extent of ionisation; concentration is how much is dissolved. At equal concentration, a weak acid has higher pH, lower conductivity and reacts more slowly with metals or carbonates."
+  },
+  {
+   "id": "r31-k7",
+   "ahl": false,
+   "stmt": "R3.1.7",
+   "cue": "What are the products of neutralisation reactions?",
+   "answer": "Acid + metal oxide/hydroxide → salt + water. Acid + carbonate or hydrogencarbonate → salt + water + CO₂. Acid + ammonia/amine → ammonium salt. Identify a salt's parent acid and base: NH₄NO₃ from NH₃ and HNO₃; CH₃COONa from ethanoic acid and NaOH."
+  },
+  {
+   "id": "r31-k8",
+   "ahl": false,
+   "stmt": "R3.1.8",
+   "cue": "What does a strong acid–strong base pH curve look like?",
+   "answer": "Starts at low pH (≈1 for 0.1 mol dm⁻³ HCl), rises slowly, then a steep vertical section around the equivalence point at pH 7, then levels off at high pH. Read the starting pH (intercept) and the equivalence volume."
+  },
+  {
+   "id": "r31-k9",
+   "ahl": true,
+   "stmt": "R3.1.9",
+   "cue": "What is pOH (AHL)?",
+   "answer": "pOH = −log₁₀[OH⁻]; at 298 K, pH + pOH = 14.00 (because pKw = 14)."
+  },
+  {
+   "id": "r31-k10",
+   "ahl": true,
+   "stmt": "R3.1.10",
+   "cue": "What do Ka, Kb, pKa and pKb tell you (AHL)?",
+   "answer": "For HA ⇌ H⁺ + A⁻, Ka = [H⁺][A⁻]/[HA]; pKa = −log Ka. Larger Ka / smaller pKa = stronger acid. Kb and pKb do the same for bases."
+  },
+  {
+   "id": "r31-k11",
+   "ahl": true,
+   "stmt": "R3.1.11",
+   "cue": "How are Ka, Kb and Kw linked and used (AHL)?",
+   "answer": "For a conjugate pair, Ka × Kb = Kw, so pKa + pKb = 14 at 298 K. For a weak acid: [H⁺] ≈ √(Ka × c), assuming little ionisation (no quadratics needed)."
+  },
+  {
+   "id": "r31-k12",
+   "ahl": true,
+   "stmt": "R3.1.12",
+   "cue": "Why do salt solutions have different pHs (AHL)?",
+   "answer": "Ions from a weak parent react with water. NH₄⁺ + H₂O ⇌ NH₃ + H₃O⁺ (acidic); CH₃COO⁻ + H₂O ⇌ CH₃COOH + OH⁻ (basic); CO₃²⁻ and HCO₃⁻ are basic. Strong acid + strong base salts (NaCl) are neutral."
+  },
+  {
+   "id": "r31-k13",
+   "ahl": true,
+   "stmt": "R3.1.13",
+   "cue": "How do the four pH curves differ (AHL)?",
+   "answer": "Strong acid–strong base: equivalence at 7, long vertical section. Weak acid–strong base: higher start, buffer region, equivalence above 7; at half-equivalence pH = pKa. Strong acid–weak base: equivalence below 7; at half-equivalence pOH = pKb. Weak–weak: no sharp vertical section."
+  },
+  {
+   "id": "r31-k14",
+   "ahl": true,
+   "stmt": "R3.1.14",
+   "cue": "How do indicators work (AHL)?",
+   "answer": "An indicator is a weak acid HInd ⇌ H⁺ + Ind⁻ whose two forms have different colours. Adding acid pushes the equilibrium left (HInd colour); base pulls it right (Ind⁻ colour). The colour changes over about pKa ± 1. Universal indicator mixes several indicators for a broad range."
+  },
+  {
+   "id": "r31-k15",
+   "ahl": true,
+   "stmt": "R3.1.15",
+   "cue": "How do you choose an indicator (AHL)?",
+   "answer": "Its colour-change range must sit within the steep part of the curve at the equivalence point. Weak acid–strong base: phenolphthalein (8.0–10.0). Strong acid–weak base: methyl orange (3.1–4.4). The end point is where the indicator changes colour; the equivalence point is where moles of acid and base match."
+  },
+  {
+   "id": "r31-k16",
+   "ahl": true,
+   "stmt": "R3.1.16",
+   "cue": "What is a buffer and how does it work (AHL)?",
+   "answer": "A solution that resists pH change when small amounts of acid or base are added. Acidic buffer: weak acid + its conjugate base (CH₃COOH/CH₃COO⁻), often made by part-neutralising the weak acid. Basic buffer: weak base + its conjugate acid (NH₃/NH₄⁺). Added H⁺ is removed by the conjugate base; added OH⁻ by the weak acid."
+  },
+  {
+   "id": "r31-k17",
+   "ahl": true,
+   "stmt": "R3.1.17",
+   "cue": "How is buffer pH calculated (AHL)?",
+   "answer": "From Ka: [H⁺] = Ka × [HA]/[A⁻], then pH. pH depends on pKa and the ratio [HA]/[A⁻]. Diluting a buffer leaves the ratio, and so the pH, almost unchanged (but lowers its capacity)."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Brønsted–Lowry acid",
+   "def": "Proton donor."
+  },
+  {
+   "term": "Conjugate base",
+   "def": "Species formed when an acid loses a proton."
+  },
+  {
+   "term": "Amphiprotic",
+   "def": "Can donate or accept a proton."
+  },
+  {
+   "term": "Kw",
+   "def": "Ionic product of water, 1.00 × 10⁻¹⁴ at 298 K."
+  },
+  {
+   "term": "Strong acid",
+   "def": "Fully ionised in water."
+  },
+  {
+   "term": "Equivalence point",
+   "def": "Stoichiometric amounts of acid and base have reacted."
+  },
+  {
+   "term": "Ka",
+   "def": "Acid dissociation constant (AHL)."
+  },
+  {
+   "term": "Buffer",
+   "def": "Resists pH change on adding small amounts of acid or base (AHL)."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "pH of a strong base",
+   "prompt": "Calculate the pH of 0.0050 mol dm⁻³ NaOH at 298 K.",
+   "steps": [
+    "[OH⁻] = 0.0050 (fully ionised).",
+    "[H⁺] = Kw/[OH⁻] = 1.00 × 10⁻¹⁴/0.0050 = 2.0 × 10⁻¹².",
+    "pH = −log(2.0 × 10⁻¹²)."
+   ],
+   "answer": "pH = 11.70"
+  },
+  {
+   "title": "Weak acid and buffer (AHL)",
+   "prompt": "Ethanoic acid Ka = 1.8 × 10⁻⁵. Find the pH of (a) 0.100 mol dm⁻³ ethanoic acid; (b) a buffer of 0.100 mol dm⁻³ ethanoic acid and 0.200 mol dm⁻³ sodium ethanoate.",
+   "steps": [
+    "(a) [H⁺] ≈ √(1.8 × 10⁻⁵ × 0.100) = 1.34 × 10⁻³; pH = 2.87.",
+    "(b) [H⁺] = Ka × [HA]/[A⁻] = 1.8 × 10⁻⁵ × 0.100/0.200 = 9.0 × 10⁻⁶.",
+    "pH = −log(9.0 × 10⁻⁶)."
+   ],
+   "answer": "(a) 2.87; (b) 5.05"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "A strong acid is a concentrated acid.",
+   "right": "Strong = fully ionised; concentrated = lots of solute per dm³. A dilute strong acid is possible."
+  },
+  {
+   "wrong": "Equivalence point is always at pH 7.",
+   "right": "Only for strong acid–strong base; weak acid–strong base is above 7, strong acid–weak base below 7."
+  },
+  {
+   "wrong": "A buffer keeps pH completely constant.",
+   "right": "It resists change for small additions; large additions exceed its capacity."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Identify",
+   "marks": 2,
+   "prompt": "Identify the two conjugate pairs in NH₃ + H₂O ⇌ NH₄⁺ + OH⁻.",
+   "checkpoints": [
+    "NH₄⁺/NH₃",
+    "H₂O/OH⁻"
+   ]
+  },
+  {
+   "commandTerm": "Calculate",
+   "marks": 2,
+   "prompt": "Calculate [H⁺] in a solution of pH 3.40.",
+   "checkpoints": [
+    "10⁻³·⁴⁰",
+    "= 4.0 × 10⁻⁴ mol dm⁻³"
+   ]
+  },
+  {
+   "commandTerm": "Describe",
+   "marks": 2,
+   "prompt": "Describe two tests that distinguish 0.10 mol dm⁻³ HCl from 0.10 mol dm⁻³ CH₃COOH.",
+   "checkpoints": [
+    "pH: HCl lower",
+    "Conductivity higher / faster reaction with Mg or CaCO₃ for HCl"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain how a CH₃COOH/CH₃COO⁻ buffer responds to a small amount of added NaOH.",
+   "checkpoints": [
+    "OH⁻ reacts with CH₃COOH → CH₃COO⁻ + H₂O",
+    "Ratio [HA]/[A⁻] changes only slightly",
+    "So [H⁺]/pH changes very little"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Deduce",
+   "marks": 2,
+   "prompt": "Deduce whether a solution of sodium hydrogencarbonate is acidic or basic, with an equation.",
+   "checkpoints": [
+    "Basic",
+    "HCO₃⁻ + H₂O ⇌ H₂CO₃ + OH⁻"
+   ],
+   "ahl": true
+  }
+ ],
+ "paper1A": [
+  {
+   "stem": "What is the conjugate base of H₂PO₄⁻?",
+   "choices": [
+    "H₃PO₄",
+    "HPO₄²⁻",
+    "PO₄³⁻",
+    "OH⁻"
+   ],
+   "answer": 1,
+   "why": "Remove one H⁺."
+  },
+  {
+   "stem": "Solution X has pH 2; solution Y has pH 5. How do their [H⁺] compare?",
+   "choices": [
+    "X is 3 times Y",
+    "X is 100 times Y",
+    "X is 1000 times Y",
+    "Y is 1000 times X"
+   ],
+   "answer": 2,
+   "why": "Three pH units = 10³."
+  },
+  {
+   "stem": "Which pair are both strong acids?",
+   "choices": [
+    "HCl, CH₃COOH",
+    "HNO₃, H₂SO₄",
+    "HF, HBr",
+    "H₂CO₃, HNO₃"
+   ],
+   "answer": 1,
+   "why": "From the list of strong acids."
+  },
+  {
+   "stem": "What is the pH at the half-equivalence point when ethanoic acid (pKa 4.76) is titrated with NaOH?",
+   "choices": [
+    "2.38",
+    "4.76",
+    "7.00",
+    "9.24"
+   ],
+   "answer": 1,
+   "why": "[HA] = [A⁻], so pH = pKa.",
+   "ahl": true
+  },
+  {
+   "stem": "Which indicator suits titrating ammonia with HCl?",
+   "choices": [
+    "Phenolphthalein",
+    "Methyl orange",
+    "Phenol red",
+    "Bromothymol blue"
+   ],
+   "answer": 1,
+   "why": "Equivalence below 7; methyl orange changes at 3.1–4.4.",
+   "ahl": true
+  }
+ ],
+ "paper1B": [
+  {
+   "data": "pH curve: 25.0 cm³ of a weak acid titrated with 0.100 mol dm⁻³ NaOH. Start pH 2.9; pH 4.8 at 12.5 cm³; steep rise from pH 7 to 11 centred on 25.0 cm³.",
+   "prompt": "Determine the concentration and pKa of the acid and choose an indicator from the booklet.",
+   "answer": "Equivalence at 25.0 cm³: c = 0.100 mol dm⁻³ (1 : 1). pKa = pH at half-equivalence = 4.8. Phenolphthalein (8.0–10.0) sits within the steep section.",
+   "ahl": true
+  }
+ ],
+ "assessmentNote": "Paper 1A = multiple choice, no calculator; Paper 1B = data-based questions (format from public sources, confirm with the official guide). All prompts here are original practice, not predictions of exam questions.",
+ "errorHints": [
+  {
+   "category": "maths",
+   "hint": "Use log rules: pH to 2 d.p. from [H⁺]; at 298 K pH + pOH = 14."
+  },
+  {
+   "category": "knowledge",
+   "hint": "Learn the four strong acids and that group 1 hydroxides are strong bases."
+  },
+  {
+   "category": "data-booklet use",
+   "hint": "Choose indicators from the booklet's pH ranges, not memory."
+  },
+  {
+   "category": "exam communication",
+   "hint": "Distinguish strong/weak from concentrated/dilute in words; say 'partially ionises' for weak acids."
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "R2.3",
+   "prompt": "How does Le Châtelier's principle explain indicator colour changes and buffer action?"
+  },
+  {
+   "to": "R3.4",
+   "prompt": "How is a Lewis acid different from a Brønsted–Lowry acid (AHL)?"
+  }
+ ],
+ "dataBooklet": [
+  {
+   "section": 1,
+   "title": "Some relevant equations",
+   "use": "pH, pOH and Kw equations."
+  },
+  {
+   "section": 2,
+   "title": "Physical constants",
+   "use": "Kw at 298 K."
+  },
+  {
+   "section": 18,
+   "title": "Acid-base indicators",
+   "use": "Indicator pKa values and pH ranges (AHL)."
+  }
+ ],
+ "links": {
+  "checklistKey": "chemistry-hl::library/notes/chemistry-hl/what-are-the-mechanisms-of-chemical-change/proton-transfer-reactions.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/chem-reactivity-3-redox-acids-bases.json",
+    "itemIds": [
+     "r309",
+     "r310",
+     "r311",
+     "r312",
+     "r313",
+     "r314",
+     "r315",
+     "r316",
+     "r317",
+     "r319",
+     "r320",
+     "r322"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/chem-reactivity-3-redox-acids-bases.json",
+    "cardIds": [
+     "fc-chem-r3-07",
+     "fc-chem-r3-08",
+     "fc-chem-r3-09",
+     "fc-chem-r3-10",
+     "fc-chem-r3-11",
+     "fc-chem-r3-12",
+     "fc-chem-r3-13",
+     "fc-chem-r3-15",
+     "fc-chem-r3-16",
+     "fc-chem-r3-17",
+     "fc-chem-r3-18"
+    ]
+   }
+  ],
+  "gap": "No items on Ka/pKa calculations, Ka × Kb = Kw, buffers or buffer calculations (R3.1.10, R3.1.11, R3.1.16, R3.1.17, AHL); salt pH (r320, fc-chem-r3-17) and indicators (r317, fc-chem-r3-13) covered."
+ },
+ "syllabusFlags": [
+  "AHL statement numbers R3.1.10-17 are line-wrapped in the ISL PDF (e.g. 'R3.1.1 / 0 HL'); numbering reconstructed in sequence. Recheck."
+ ]
+}

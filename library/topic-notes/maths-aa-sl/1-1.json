@@ -1,0 +1,156 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-1-1",
+ "code": "1.1",
+ "title": "Scientific notation",
+ "theme": "1",
+ "themeLabel": "Number and algebra",
+ "hlOnly": false,
+ "islOrder": 1,
+ "islUnits": [
+  "1. Prior learning (Y12 wk 2 (early Sep 2026))"
+ ],
+ "taughtStatus": "taught (prior learning)",
+ "statements": {
+  "SL": [
+   "1.1.1",
+   "1.1.2"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "1.1.1",
+   "text": "Write numbers as a×10^k with 1≤a<10 and k an integer"
+  },
+  {
+   "id": "1.1.2",
+   "text": "Multiply, divide, add and compare numbers in this form, by hand and on the GDC"
+  }
+ ],
+ "bigPicture": "Scientific notation keeps very large and very small numbers readable and makes their size easy to compare. AA expects it by hand in Paper 1 and as the form to give answers in when asked.",
+ "keyIdeas": [
+  {
+   "id": "m11-k1",
+   "ahl": false,
+   "stmt": "1.1.1",
+   "cue": "What restrictions apply to a and k in a×10^k?",
+   "answer": "a is at least 1 but below 10, and the power k is a whole number (positive, negative or zero)."
+  },
+  {
+   "id": "m11-k2",
+   "ahl": false,
+   "stmt": "1.1.2",
+   "cue": "How do you multiply (a×10^m)(b×10^n)?",
+   "answer": "Multiply a·b, add the powers to get 10^(m+n), then re-normalise if a·b ≥ 10."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "standard form",
+   "def": "another name for scientific notation, a×10^k"
+  },
+  {
+   "term": "significant figures",
+   "def": "digits that carry meaning; IB default is exact or 3 s.f."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Divide in standard form",
+   "prompt": "Find (6×10^5)/(1.5×10^-2).",
+   "steps": [
+    "6/1.5 = 4",
+    "10^5/10^-2 = 10^7"
+   ],
+   "answer": "4×10^7"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "0.00456 = 4.56×10^3",
+   "right": "Moving the point right makes the power negative: 4.56×10^-3."
+  },
+  {
+   "wrong": "25×10^4 is in standard form",
+   "right": "a must be below 10: 2.5×10^5."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Find",
+   "marks": 3,
+   "prompt": "Write (3×10^4)×(5×10^-7) in the form a×10^k.",
+   "solution": [
+    "3×5 = 15",
+    "10^4×10^-7 = 10^-3",
+    "15×10^-3 = 1.5×10^-2"
+   ],
+   "answer": "1.5×10^-2",
+   "commonErrors": [
+    "Leaving 15×10^-3 (not normalised)",
+    "Subtracting powers when multiplying"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Calculate",
+   "marks": 2,
+   "prompt": "Light travels 3.00×10^8 m/s. How long does it take to travel 1.50×10^11 m? Give your answer in standard form.",
+   "solution": [
+    "t = d/v = 1.50×10^11 / 3.00×10^8",
+    "= 5.00×10^2 s"
+   ],
+   "answer": "5.00×10^2 s (500 s)",
+   "commonErrors": [
+    "Writing the GDC display 5E2 instead of 5×10^2",
+    "Dividing the wrong way"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [],
+  "memorise": [
+   "Definition of scientific notation and the index laws used with it (not in the booklet)",
+   "IB accuracy rule: exact or 3 significant figures unless told otherwise"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "1.7",
+   "prompt": "Why are logarithms base 10 closely tied to the exponent k in a×10^k?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/1-number-algebra/1-1-number-toolkit.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/math-aa-number-algebra.json",
+    "itemIds": [
+     "m01",
+     "m02"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/math-number-algebra.json",
+    "cardIds": [
+     "fc-math-n-16",
+     "fc-math-n-14",
+     "fc-math-n-17"
+    ]
+   }
+  ],
+  "reviewNote": "Percentage-error items m03, mnx6, fc-math-n-07, fc-math-st-05 are Maths AI content (AI SL 1.6), not AA SL; deliberately left unlinked."
+ }
+}

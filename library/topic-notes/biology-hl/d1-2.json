@@ -1,0 +1,305 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-d1-2",
+ "code": "D1.2",
+ "title": "Protein synthesis",
+ "theme": "D",
+ "themeLabel": "Continuity and change",
+ "level": 1,
+ "levelLabel": "Molecules",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "D1.2.1",
+   "D1.2.2",
+   "D1.2.3",
+   "D1.2.4",
+   "D1.2.5",
+   "D1.2.6",
+   "D1.2.7",
+   "D1.2.8",
+   "D1.2.9",
+   "D1.2.10",
+   "D1.2.11"
+  ],
+  "AHL": [
+   "D1.2.12",
+   "D1.2.13",
+   "D1.2.14",
+   "D1.2.15",
+   "D1.2.16",
+   "D1.2.17",
+   "D1.2.18",
+   "D1.2.19"
+  ]
+ },
+ "bigPicture": "Gene to protein in two steps: transcription copies a DNA base sequence into mRNA, and translation reads it three bases at a time to join amino acids. Complementary base pairing makes both steps accurate.",
+ "keyIdeas": [
+  {
+   "id": "d12-k1",
+   "ahl": false,
+   "stmt": "D1.2.1",
+   "cue": "What is transcription and which enzyme does it?",
+   "answer": "Synthesis of RNA using one DNA strand (the template). RNA polymerase separates the strands and links RNA nucleotides that pair with the template."
+  },
+  {
+   "id": "d12-k2",
+   "ahl": false,
+   "stmt": "D1.2.2",
+   "cue": "What role does base pairing play in transcription?",
+   "answer": "Free RNA nucleotides form hydrogen bonds with complementary template bases: A on the DNA with U on the RNA, T with A, C with G, G with C."
+  },
+  {
+   "id": "d12-k3",
+   "ahl": false,
+   "stmt": "D1.2.3",
+   "cue": "Why is DNA a stable template?",
+   "answer": "Transcription reads the strand without changing its base sequence. In non-dividing body cells the same DNA must last the whole life of the cell."
+  },
+  {
+   "id": "d12-k4",
+   "ahl": false,
+   "stmt": "D1.2.4",
+   "cue": "Why is transcription a control point?",
+   "answer": "Not all genes are expressed at once. Transcription is the first stage of gene expression, so switching it on or off controls the gene."
+  },
+  {
+   "id": "d12-k5",
+   "ahl": false,
+   "stmt": "D1.2.5–D1.2.6",
+   "cue": "What happens in translation, and what do mRNA, ribosomes and tRNA do?",
+   "answer": "The mRNA base sequence is turned into an amino acid sequence. mRNA binds to the small ribosome subunit. tRNAs bring specific amino acids, and two tRNAs can bind at once to the large subunit."
+  },
+  {
+   "id": "d12-k6",
+   "ahl": false,
+   "stmt": "D1.2.7",
+   "cue": "How do codon and anticodon work?",
+   "answer": "A codon is three mRNA bases. A tRNA's anticodon is three bases complementary to it, and they pair by hydrogen bonds, so the right amino acid is placed."
+  },
+  {
+   "id": "d12-k7",
+   "ahl": false,
+   "stmt": "D1.2.8",
+   "cue": "Why a triplet code? What do degenerate and universal mean?",
+   "answer": "4 bases in pairs give only 16 combinations, too few for 20 amino acids. Triplets give 64. Degenerate: most amino acids have more than one codon. Universal: the same codons mean the same amino acids in almost all organisms."
+  },
+  {
+   "id": "d12-k8",
+   "ahl": false,
+   "stmt": "D1.2.9",
+   "cue": "How do you use the codon table?",
+   "answer": "Read the mRNA from the start in non-overlapping triplets and look each one up (the table is in the data booklet). If you are given the DNA template, convert it to mRNA first."
+  },
+  {
+   "id": "d12-k9",
+   "ahl": false,
+   "stmt": "D1.2.10",
+   "cue": "What happens during elongation?",
+   "answer": "The ribosome moves along the mRNA one codon at a time. The amino acid on one tRNA is joined by a peptide bond to the growing chain, then the empty tRNA leaves."
+  },
+  {
+   "id": "d12-k10",
+   "ahl": false,
+   "stmt": "D1.2.11",
+   "cue": "Give a point mutation that changes protein structure.",
+   "answer": "Sickle cell anaemia: one base substitution in the haemoglobin gene changes the mRNA codon GAG to GUG, so glutamic acid becomes valine. The haemoglobin clumps at low oxygen and red cells become sickle-shaped."
+  },
+  {
+   "id": "d12-k11",
+   "ahl": true,
+   "stmt": "D1.2.12",
+   "cue": "What does 5′→3′ mean for transcription and translation?",
+   "answer": "RNA is made 5′→3′ (nucleotides added to the 3′ end, while the template is read 3′→5′). Ribosomes also move along mRNA from its 5′ end towards its 3′ end."
+  },
+  {
+   "id": "d12-k12",
+   "ahl": true,
+   "stmt": "D1.2.13",
+   "cue": "How does transcription start?",
+   "answer": "Transcription factors bind to the promoter (a DNA sequence just before the gene), which lets RNA polymerase bind and start."
+  },
+  {
+   "id": "d12-k13",
+   "ahl": true,
+   "stmt": "D1.2.14",
+   "cue": "Give examples of non-coding DNA.",
+   "answer": "Regulators of gene expression (e.g. promoters), introns, telomeres, and genes for rRNA and tRNA."
+  },
+  {
+   "id": "d12-k14",
+   "ahl": true,
+   "stmt": "D1.2.15",
+   "cue": "How is eukaryotic mRNA modified after transcription?",
+   "answer": "Introns are removed and exons spliced together. A 5′ cap and a 3′ poly-A tail are added, which stabilise the mRNA."
+  },
+  {
+   "id": "d12-k15",
+   "ahl": true,
+   "stmt": "D1.2.16",
+   "cue": "What is alternative splicing?",
+   "answer": "Joining different combinations of exons, so one gene can code for several polypeptides."
+  },
+  {
+   "id": "d12-k16",
+   "ahl": true,
+   "stmt": "D1.2.17",
+   "cue": "How does translation start, and what are the A, P and E sites?",
+   "answer": "The small subunit binds at the mRNA's 5′ end and moves to the start codon (AUG). The initiator tRNA pairs with it, a second tRNA arrives and the large subunit attaches. A site: an incoming tRNA binds. P site: the tRNA holding the growing chain. E site: an empty tRNA exits."
+  },
+  {
+   "id": "d12-k17",
+   "ahl": true,
+   "stmt": "D1.2.18",
+   "cue": "Why must many polypeptides be modified? Give the insulin example.",
+   "answer": "They are not functional straight after translation. Pre-proinsulin loses its signal sequence to become proinsulin, which folds and forms disulfide bonds. Removal of a middle section then leaves insulin's two chains, linked by disulfide bonds."
+  },
+  {
+   "id": "d12-k18",
+   "ahl": true,
+   "stmt": "D1.2.19",
+   "cue": "Why do cells constantly break down proteins?",
+   "answer": "Proteasomes break down unwanted or damaged proteins into amino acids, which are reused. Constant breakdown and synthesis keep the proteome working."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Codon / anticodon",
+   "def": "Three mRNA bases / complementary three bases on tRNA."
+  },
+  {
+   "term": "Degenerate code",
+   "def": "More than one codon can code for the same amino acid."
+  },
+  {
+   "term": "Exon / intron (AHL)",
+   "def": "Expressed coding section / non-coding section removed by splicing."
+  },
+  {
+   "term": "Promoter (AHL)",
+   "def": "DNA sequence where RNA polymerase and transcription factors bind."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Decode a sequence",
+   "prompt": "The DNA template strand reads 3′-TAC GGA CTT-5′. Give the mRNA and the amino acids.",
+   "steps": [
+    "Complement and swap T for U: mRNA 5′-AUG CCU GAA-3′.",
+    "Look up: AUG = Met (start), CCU = Pro, GAA = Glu."
+   ],
+   "answer": "Met–Pro–Glu."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "tRNA carries codons.",
+   "right": "tRNA carries anticodons. Codons are on the mRNA."
+  },
+  {
+   "wrong": "Degenerate means one codon codes for several amino acids.",
+   "right": "It's the reverse: several codons code for one amino acid."
+  },
+  {
+   "wrong": "Introns are removed from DNA.",
+   "right": "They are removed from the pre-mRNA. The DNA keeps them."
+  },
+  {
+   "wrong": "Translation happens in the nucleus.",
+   "right": "It happens at ribosomes in the cytoplasm or on rough ER."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Outline",
+   "marks": 4,
+   "prompt": "Outline the process of transcription.",
+   "checkpoints": [
+    "RNA polymerase binds and separates DNA strands",
+    "One strand used as template",
+    "Free RNA nucleotides pair by complementary bases (U with A)",
+    "Nucleotides joined into an mRNA strand"
+   ]
+  },
+  {
+   "commandTerm": "Deduce",
+   "marks": 2,
+   "prompt": "Deduce the effect of a substitution that changes codon GAA to GAG.",
+   "checkpoints": [
+    "Both code for glutamic acid (degeneracy)",
+    "No change to the protein: a silent mutation"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 4,
+   "prompt": "Explain how eukaryotic mRNA is processed before translation.",
+   "checkpoints": [
+    "Introns removed",
+    "Exons spliced together",
+    "5′ cap and poly-A tail added for stability",
+    "Alternative splicing can give different proteins from one gene"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "A1.2",
+   "prompt": "How does base pairing allow the genetic code to be read?"
+  },
+  {
+   "to": "D1.3",
+   "prompt": "How can a single base change alter a protein?"
+  },
+  {
+   "to": "D2.2",
+   "prompt": "How do cells decide which genes to transcribe?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/continuity-change/protein-synthesis.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/bio-respiration-protein-synthesis.json",
+    "itemIds": [
+     "ps01",
+     "ps02",
+     "ps03",
+     "ps04",
+     "ps05",
+     "ps06",
+     "ps07",
+     "ps08",
+     "ps09",
+     "ps10",
+     "rxx6",
+     "rxx7",
+     "rxx8"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/bio-respiration-protein-synthesis.json",
+    "cardIds": [
+     "fc-bio-rs-12",
+     "fc-bio-rs-13",
+     "fc-bio-rs-14",
+     "fc-bio-rs-15",
+     "fc-bio-rs-16",
+     "fc-bio-rs-17",
+     "fc-bio-rs-19"
+    ]
+   }
+  ],
+  "gap": "Likely untested: AHL D1.2.19 (proteasomes)."
+ },
+ "dataBooklet": [
+  "D1.2.9"
+ ]
+}

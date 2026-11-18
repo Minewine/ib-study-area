@@ -1,0 +1,251 @@
+{
+ "schemaVersion": 1,
+ "subject": "chemistry-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "chem-r1-3",
+ "code": "R1.3",
+ "title": "Energy from fuels",
+ "theme": "R1",
+ "themeLabel": "What drives chemical reactions?",
+ "hlOnly": false,
+ "islOrder": 20,
+ "islUnits": [
+  "3. Stoichiometry (Y12 Oct-Nov)",
+  "8. Redox (Y12 Apr-May)",
+  "10. Organic chemistry (Y13 Nov-Mar)"
+ ],
+ "taughtStatus": "partly taught (1/5 statements)",
+ "statements": {
+  "SL": [
+   "R1.3.1",
+   "R1.3.2",
+   "R1.3.3",
+   "R1.3.4",
+   "R1.3.5"
+  ],
+  "AHL": []
+ },
+ "bigPicture": "Fuels store chemical energy that combustion releases as heat. Complete and incomplete combustion give different products, fossil fuels and biofuels differ in how much CO₂ they add and how renewable they are, and fuel cells turn a fuel's energy straight into electricity.",
+ "keyIdeas": [
+  {
+   "id": "r13-k1",
+   "ahl": false,
+   "stmt": "R1.3.1",
+   "cue": "What happens in combustion?",
+   "answer": "Reactive metals, non-metals and organic compounds burn in oxygen: 2Mg + O₂ → 2MgO; S + O₂ → SO₂. Complete combustion of hydrocarbons and alcohols gives CO₂ and H₂O: C₂H₅OH + 3O₂ → 2CO₂ + 3H₂O."
+  },
+  {
+   "id": "r13-k2",
+   "ahl": false,
+   "stmt": "R1.3.2",
+   "cue": "What is incomplete combustion?",
+   "answer": "With limited oxygen, hydrocarbons and alcohols form carbon monoxide (toxic: binds to haemoglobin) and/or carbon (soot), plus water: 2CH₄ + 3O₂ → 2CO + 4H₂O; CH₄ + O₂ → C + 2H₂O. Larger hydrocarbons burn incompletely more easily."
+  },
+  {
+   "id": "r13-k3",
+   "ahl": false,
+   "stmt": "R1.3.3",
+   "cue": "How do fossil fuels compare?",
+   "answer": "Coal, crude oil and natural gas: high energy density and established infrastructure, but non-renewable and release CO₂ (a greenhouse gas: absorbs IR re-emitted by Earth). Coal releases most CO₂ per kJ and more pollutants (SO₂, particulates); natural gas the least. Compare using energy per gram and CO₂ per kJ."
+  },
+  {
+   "id": "r13-k4",
+   "ahl": false,
+   "stmt": "R1.3.4",
+   "cue": "What are biofuels?",
+   "answer": "Fuels from recently fixed carbon (photosynthesis: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂), e.g. ethanol from fermentation, biodiesel. Renewable and close to carbon-neutral over a short cycle, but compete with food for land, need water and fertiliser, and have lower energy density."
+  },
+  {
+   "id": "r13-k5",
+   "ahl": false,
+   "stmt": "R1.3.5",
+   "cue": "How does a fuel cell work?",
+   "answer": "Fuel and oxygen are supplied continuously and react at separate electrodes, converting chemical energy directly to electrical energy. Hydrogen (acidic): anode H₂ → 2H⁺ + 2e⁻; cathode O₂ + 4H⁺ + 4e⁻ → 2H₂O. Methanol: anode CH₃OH + H₂O → CO₂ + 6H⁺ + 6e⁻; cathode 3/2O₂ + 6H⁺ + 6e⁻ → 3H₂O. Proton-exchange membrane details are not assessed."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Complete combustion",
+   "def": "Burning in excess oxygen: CO₂ and H₂O from organic fuels."
+  },
+  {
+   "term": "Incomplete combustion",
+   "def": "Burning in limited oxygen: CO and/or C form."
+  },
+  {
+   "term": "Specific energy",
+   "def": "Energy released per unit mass of fuel (kJ g⁻¹)."
+  },
+  {
+   "term": "Greenhouse gas",
+   "def": "Gas that absorbs and re-emits infrared radiation (CO₂, CH₄, H₂O)."
+  },
+  {
+   "term": "Biofuel",
+   "def": "Fuel made from biological material via recent photosynthesis."
+  },
+  {
+   "term": "Fuel cell",
+   "def": "Cell converting a fuel's chemical energy directly into electricity."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Energy per gram and CO₂ per kJ",
+   "prompt": "Compare methane (ΔHc −891 kJ mol⁻¹, M 16.05) and octane (ΔHc −5470 kJ mol⁻¹, M 114.26).",
+   "steps": [
+    "Energy per gram: methane 891/16.05 = 55.5 kJ g⁻¹; octane 5470/114.26 = 47.9 kJ g⁻¹.",
+    "CO₂ per 1000 kJ: methane 1 mol per 891 kJ → 1.12 mol; octane 8 mol per 5470 kJ → 1.46 mol."
+   ],
+   "answer": "Methane releases more energy per gram and less CO₂ per kJ."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Biofuels add no CO₂ to the atmosphere.",
+   "right": "They release CO₂ when burned, but it was absorbed recently; farming and processing add more, so they're not fully carbon-neutral."
+  },
+  {
+   "wrong": "Fuel cells burn the fuel.",
+   "right": "There is no flame; oxidation and reduction happen at separate electrodes."
+  },
+  {
+   "wrong": "Incomplete combustion releases more energy.",
+   "right": "It releases less energy per mole of fuel than complete combustion."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Deduce",
+   "marks": 2,
+   "prompt": "Deduce equations for the complete and incomplete (forming CO) combustion of propane.",
+   "checkpoints": [
+    "C₃H₈ + 5O₂ → 3CO₂ + 4H₂O",
+    "2C₃H₈ + 7O₂ → 6CO + 8H₂O"
+   ]
+  },
+  {
+   "commandTerm": "Evaluate",
+   "marks": 3,
+   "prompt": "Evaluate the use of bioethanol as a replacement for petrol.",
+   "checkpoints": [
+    "Renewable; CO₂ recently absorbed",
+    "Lower energy per gram than octane (29.7 vs 47.9 kJ g⁻¹)",
+    "Land/food competition; overall judgement"
+   ]
+  },
+  {
+   "commandTerm": "Deduce",
+   "marks": 2,
+   "prompt": "Deduce the electrode half-equations in an acidic hydrogen fuel cell.",
+   "checkpoints": [
+    "Anode: H₂ → 2H⁺ + 2e⁻",
+    "Cathode: O₂ + 4H⁺ + 4e⁻ → 2H₂O"
+   ]
+  }
+ ],
+ "paper1A": [
+  {
+   "stem": "Which product shows incomplete combustion of a hydrocarbon?",
+   "choices": [
+    "CO₂",
+    "H₂O",
+    "CO",
+    "O₂"
+   ],
+   "answer": 2,
+   "why": "Limited oxygen gives CO."
+  },
+  {
+   "stem": "What is the balanced equation's O₂ coefficient for complete combustion of ethanol?",
+   "choices": [
+    "2",
+    "3",
+    "3.5",
+    "6"
+   ],
+   "answer": 1,
+   "why": "C₂H₅OH + 3O₂ → 2CO₂ + 3H₂O."
+  },
+  {
+   "stem": "Which fuel is renewable?",
+   "choices": [
+    "Coal",
+    "Natural gas",
+    "Bioethanol",
+    "Crude oil"
+   ],
+   "answer": 2,
+   "why": "Made from recently grown crops."
+  }
+ ],
+ "paper1B": [
+  {
+   "data": "Booklet ΔHc (kJ mol⁻¹): methanol −726 (M 32.05); ethanol −1367 (M 46.08); octane −5470 (M 114.26).",
+   "prompt": "Rank the fuels by energy released per gram.",
+   "answer": "Octane 47.9 > ethanol 29.7 > methanol 22.7 kJ g⁻¹."
+  }
+ ],
+ "assessmentNote": "Paper 1A = multiple choice, no calculator; Paper 1B = data-based questions (format from public sources, confirm with the official guide). All prompts here are original practice, not predictions of exam questions.",
+ "errorHints": [
+  {
+   "category": "knowledge",
+   "hint": "Learn photosynthesis reactants/products and both fuel-cell electrode equations."
+  },
+  {
+   "category": "data-booklet use",
+   "hint": "Take ΔHc from the booklet and divide by M for energy per gram."
+  },
+  {
+   "category": "exam communication",
+   "hint": "'Evaluate' needs advantages, disadvantages and a judgement."
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "R1.1",
+   "prompt": "How is the energy released by a fuel measured by calorimetry?"
+  },
+  {
+   "to": "R3.2",
+   "prompt": "How do fuel cells compare with primary and secondary cells?"
+  }
+ ],
+ "dataBooklet": [
+  {
+   "section": 14,
+   "title": "Enthalpies of combustion",
+   "use": "Enthalpies of combustion for comparing fuels."
+  },
+  {
+   "section": 7,
+   "title": "The periodic table",
+   "use": "Ar values for energy per gram."
+  }
+ ],
+ "links": {
+  "checklistKey": "chemistry-hl::library/notes/chemistry-hl/what-drives-chemical-reactions/energy-from-fuels.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/chem-organic-chemistry.json",
+    "itemIds": [
+     "o14"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/chem-organic-chemistry.json",
+    "cardIds": [
+     "fc-chem-org-17"
+    ]
+   }
+  ],
+  "gap": "Only one quiz item (o14) and one flashcard (incomplete combustion); nothing on fossil fuel comparison, biofuels (R1.3.3–R1.3.4) or fuel cells (R1.3.5)."
+ },
+ "syllabusFlags": [
+  "Split across ISL units: R1.3.1 stoichiometry, R1.3.5 redox, R1.3.2-4 organic."
+ ]
+}

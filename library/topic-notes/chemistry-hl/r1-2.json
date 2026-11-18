@@ -1,0 +1,328 @@
+{
+ "schemaVersion": 1,
+ "subject": "chemistry-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "chem-r1-2",
+ "code": "R1.2",
+ "title": "Energy cycles in reactions",
+ "theme": "R1",
+ "themeLabel": "What drives chemical reactions?",
+ "hlOnly": false,
+ "islOrder": 9,
+ "islUnits": [
+  "5. Energetics (Y12 Dec-Feb)"
+ ],
+ "taughtStatus": "upcoming",
+ "statements": {
+  "SL": [
+   "R1.2.1",
+   "R1.2.2"
+  ],
+  "AHL": [
+   "R1.2.3",
+   "R1.2.4",
+   "R1.2.5"
+  ]
+ },
+ "bigPicture": "Enthalpy depends only on where a reaction starts and finishes, not on the route. That single idea (Hess's law) lets us calculate enthalpy changes we cannot measure, using bond enthalpies, enthalpies of formation or combustion, or a Born–Haber cycle for ionic compounds.",
+ "keyIdeas": [
+  {
+   "id": "r12-k1",
+   "ahl": false,
+   "stmt": "R1.2.1",
+   "cue": "How do you calculate ΔH from bond enthalpies?",
+   "answer": "Breaking bonds absorbs energy; making bonds releases it. ΔH = Σ(bonds broken) − Σ(bonds formed), all species gaseous. Bond enthalpies in the booklet are averages over many compounds, so the answer is approximate, and it is wrong if any substance is not a gas."
+  },
+  {
+   "id": "r12-k2",
+   "ahl": false,
+   "stmt": "R1.2.2",
+   "cue": "What is Hess's law and how do you use it?",
+   "answer": "The total enthalpy change is independent of the pathway. Build a cycle or add equations: reverse an equation → change the sign of ΔH; multiply an equation → multiply ΔH."
+  },
+  {
+   "id": "r12-k3",
+   "ahl": true,
+   "stmt": "R1.2.3",
+   "cue": "What are ΔHf⦵ and ΔHc⦵ (AHL)?",
+   "answer": "ΔHf⦵: enthalpy change when one mole of a compound forms from its elements in their standard states (elements = 0). ΔHc⦵: enthalpy change when one mole of a substance burns completely in oxygen. Be able to write the matching equations, e.g. formation of ethanol: 2C(s) + 3H₂(g) + ½O₂(g) → C₂H₅OH(l)."
+  },
+  {
+   "id": "r12-k4",
+   "ahl": true,
+   "stmt": "R1.2.4",
+   "cue": "Which equations use ΔHf and ΔHc data (AHL)?",
+   "answer": "ΔH = Σ ΔHf(products) − Σ ΔHf(reactants). ΔH = Σ ΔHc(reactants) − Σ ΔHc(products). Multiply each value by its coefficient. Both are in the data booklet."
+  },
+  {
+   "id": "r12-k5",
+   "ahl": true,
+   "stmt": "R1.2.5",
+   "cue": "What is a Born–Haber cycle (AHL)?",
+   "answer": "A Hess cycle for an ionic solid: atomise the metal and the non-metal, ionise the metal (IE), add electrons to the non-metal (EA), then bring the gaseous ions together (−lattice enthalpy). The steps add up to ΔHf. Use it to find an unknown value, such as lattice enthalpy, for compounds with 1+/2+ and 1−/2− ions. You won't be asked to construct a full cycle from scratch."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Average bond enthalpy",
+   "def": "Energy to break one mole of a given bond in gaseous molecules, averaged over many compounds."
+  },
+  {
+   "term": "Hess's law",
+   "def": "ΔH for a reaction is independent of the route."
+  },
+  {
+   "term": "Standard enthalpy of formation",
+   "def": "ΔH when 1 mol of compound forms from its elements in standard states (AHL)."
+  },
+  {
+   "term": "Standard enthalpy of combustion",
+   "def": "ΔH when 1 mol of substance burns completely in O₂ (AHL)."
+  },
+  {
+   "term": "Lattice enthalpy",
+   "def": "Enthalpy to separate one mole of an ionic solid into gaseous ions (endothermic) (AHL)."
+  },
+  {
+   "term": "Enthalpy of atomisation",
+   "def": "ΔH to form 1 mol of gaseous atoms from the element (AHL)."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Bond enthalpies",
+   "prompt": "Estimate ΔH for CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(g) (C–H 414, O=O 498, C=O 804, O–H 463 kJ mol⁻¹).",
+   "steps": [
+    "Broken: 4(414) + 2(498) = 2652.",
+    "Formed: 2(804) + 4(463) = 3460.",
+    "ΔH = 2652 − 3460."
+   ],
+   "answer": "−808 kJ mol⁻¹ (less exothermic than ΔHc = −891 because water is a gas here and values are averages)"
+  },
+  {
+   "title": "From ΔHf data (AHL)",
+   "prompt": "Calculate ΔHc of ethanol using ΔHf: C₂H₅OH(l) −278, CO₂(g) −394, H₂O(l) −286 kJ mol⁻¹.",
+   "steps": [
+    "C₂H₅OH + 3O₂ → 2CO₂ + 3H₂O.",
+    "Products: 2(−394) + 3(−286) = −1646.",
+    "Reactants: −278 + 0 (O₂ is an element).",
+    "ΔH = −1646 − (−278)."
+   ],
+   "answer": "−1368 kJ mol⁻¹ (booklet ΔHc −1367)"
+  },
+  {
+   "title": "Born–Haber (AHL)",
+   "prompt": "Find the lattice enthalpy of NaCl from: ΔHf(NaCl) −411; atomisation Na +107; ½ Cl–Cl bond +121; IE(Na) +496; EA(Cl) −349 kJ mol⁻¹.",
+   "steps": [
+    "ΔHf = atomisations + IE + EA − ΔH(lattice).",
+    "−411 = 107 + 121 + 496 − 349 − ΔH(lattice).",
+    "ΔH(lattice) = 375 + 411."
+   ],
+   "answer": "+786 kJ mol⁻¹ (booklet experimental value 790)"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "ΔH = bonds formed − bonds broken.",
+   "right": "It is broken − formed (energy in minus energy out)."
+  },
+  {
+   "wrong": "The ΔHf of O₂(g) is −249 kJ mol⁻¹.",
+   "right": "Elements in their standard states have ΔHf = 0 by definition."
+  },
+  {
+   "wrong": "ΔHc data use the same 'products − reactants' rule as ΔHf data.",
+   "right": "Order matters: ΔHf uses products − reactants; ΔHc uses reactants − products."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Explain",
+   "marks": 2,
+   "prompt": "Explain why the ΔH calculated from average bond enthalpies differs from the experimental value.",
+   "checkpoints": [
+    "Bond enthalpies are averages, not specific to these molecules",
+    "Calculation assumes all species are gases"
+   ]
+  },
+  {
+   "commandTerm": "Calculate",
+   "marks": 3,
+   "prompt": "Use the equations below to find ΔH for C(s) + ½O₂(g) → CO(g): C + O₂ → CO₂ ΔH = −394; CO + ½O₂ → CO₂ ΔH = −283 kJ mol⁻¹.",
+   "checkpoints": [
+    "Reverse the second equation: +283",
+    "Add: −394 + 283",
+    "= −111 kJ mol⁻¹"
+   ]
+  },
+  {
+   "commandTerm": "Calculate",
+   "marks": 2,
+   "prompt": "Calculate ΔH for C₂H₄ + H₂ → C₂H₆ from ΔHc values (C₂H₄ −1411, H₂ −286, C₂H₆ −1561 kJ mol⁻¹).",
+   "checkpoints": [
+    "ΔH = (−1411 − 286) − (−1561)",
+    "= −136 kJ mol⁻¹"
+   ],
+   "ahl": true
+  }
+ ],
+ "paper1A": [
+  {
+   "stem": "Using bond enthalpies H–H 436, Cl–Cl 242, H–Cl 431 kJ mol⁻¹, what is ΔH for H₂ + Cl₂ → 2HCl?",
+   "choices": [
+    "−247",
+    "−184",
+    "+184",
+    "+247"
+   ],
+   "answer": 1,
+   "why": "678 − 862 = −184."
+  },
+  {
+   "stem": "Which equation represents ΔHf⦵ of water?",
+   "choices": [
+    "H₂(g) + ½O₂(g) → H₂O(l)",
+    "2H₂(g) + O₂(g) → 2H₂O(l)",
+    "H₂O(l) → H₂(g) + ½O₂(g)",
+    "2H(g) + O(g) → H₂O(l)"
+   ],
+   "answer": 0,
+   "why": "One mole of product from elements in standard states."
+  },
+  {
+   "stem": "A → B ΔH = +50; B → C ΔH = −80 kJ mol⁻¹. What is ΔH for C → A?",
+   "choices": [
+    "−130",
+    "−30",
+    "+30",
+    "+130"
+   ],
+   "answer": 2,
+   "why": "A → C = −30, so the reverse is +30."
+  },
+  {
+   "stem": "Which step in a Born–Haber cycle is always exothermic?",
+   "choices": [
+    "Atomisation of the metal",
+    "First IE of the metal",
+    "First EA of chlorine",
+    "Breaking Cl–Cl"
+   ],
+   "answer": 2,
+   "why": "Adding an electron to a Cl atom releases energy.",
+   "ahl": true
+  }
+ ],
+ "paper1B": [
+  {
+   "data": "Born–Haber data for MgO (kJ mol⁻¹): atomisation Mg +148; IE₁ +738; IE₂ +1451; ½O=O +249; EA₁(O) −141; EA₂(O) +753; ΔHf(MgO) −602.",
+   "prompt": "Calculate the lattice enthalpy of MgO and explain why EA₂ is positive.",
+   "answer": "Lattice = 148 + 738 + 1451 + 249 − 141 + 753 + 602 = +3800 kJ mol⁻¹ (booklet 3791). EA₂ is endothermic because an electron is being added to an already negative ion, which repels it.",
+   "ahl": true
+  }
+ ],
+ "assessmentNote": "Paper 1A = multiple choice, no calculator; Paper 1B = data-based questions (format from public sources, confirm with the official guide). All prompts here are original practice, not predictions of exam questions.",
+ "errorHints": [
+  {
+   "category": "maths",
+   "hint": "Multiply bond or ΔHf values by the number of bonds/coefficients; check signs when reversing equations."
+  },
+  {
+   "category": "data-booklet use",
+   "hint": "Use the v1.1 booklet values (e.g. C–H 414, C=O 804, O=O 498); older resources use different numbers."
+  },
+  {
+   "category": "knowledge",
+   "hint": "Remember elements in standard states have ΔHf = 0."
+  },
+  {
+   "category": "exam communication",
+   "hint": "When asked why bond-enthalpy answers differ, give both reasons: averages and gaseous state."
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "S2.1",
+   "prompt": "How does lattice enthalpy reflect the strength of ionic bonding (AHL)?"
+  },
+  {
+   "to": "R1.4",
+   "prompt": "Why isn't a negative ΔH alone enough to decide whether a reaction happens (AHL)?"
+  }
+ ],
+ "dataBooklet": [
+  {
+   "section": 12,
+   "title": "Bond enthalpies",
+   "use": "Average bond enthalpies."
+  },
+  {
+   "section": 13,
+   "title": "Thermodynamic data",
+   "use": "ΔHf⦵ values (AHL)."
+  },
+  {
+   "section": 14,
+   "title": "Enthalpies of combustion",
+   "use": "ΔHc⦵ values (AHL)."
+  },
+  {
+   "section": 1,
+   "title": "Some relevant equations",
+   "use": "Σ formulae for ΔHf and ΔHc."
+  },
+  {
+   "section": 9,
+   "title": "First ionization energy, electron affinity and electronegativity",
+   "use": "IE and electron affinity for Born–Haber cycles (AHL)."
+  },
+  {
+   "section": 16,
+   "title": "Lattice enthalpies",
+   "use": "Experimental lattice enthalpies (AHL)."
+  }
+ ],
+ "links": {
+  "checklistKey": "chemistry-hl::library/notes/chemistry-hl/what-drives-chemical-reactions/energy-cycles-in-reactions.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/chem-reactivity-1-energetics.json",
+    "itemIds": [
+     "r107",
+     "r108",
+     "r109",
+     "r110",
+     "r111",
+     "r1x6",
+     "r1x7"
+    ]
+   },
+   {
+    "file": "library/questions/chem-periodicity-energetics-review.json",
+    "itemIds": [
+     "periodicity-energetics-review-11",
+     "periodicity-energetics-review-12",
+     "periodicity-energetics-review-18",
+     "periodicity-energetics-review-19",
+     "periodicity-energetics-review-22"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/chem-reactivity-1-energetics.json",
+    "cardIds": [
+     "fc-chem-r1-05",
+     "fc-chem-r1-06",
+     "fc-chem-r1-07",
+     "fc-chem-r1-08",
+     "fc-chem-r1-17"
+    ]
+   }
+  ],
+  "gap": "No items on Born–Haber cycles (R1.2.5, AHL).",
+  "reviewNote": "Data-booklet mismatch: periodicity-energetics-review-11 uses C–H 412, C=O 743 and O=O 496; -22 uses C–H 412; -12 uses ΔHf(CH₄) −75. The v1.1 booklet gives C–H 414, C=O 804, O=O 498 and ΔHf(CH₄) −74. Worth updating the items (not changed here)."
+ }
+}

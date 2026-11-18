@@ -1,0 +1,225 @@
+{
+ "schemaVersion": 1,
+ "subject": "chemistry-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "chem-s1-1",
+ "code": "S1.1",
+ "title": "Introduction to the particulate nature of matter",
+ "theme": "S1",
+ "themeLabel": "Models of the particulate nature of matter",
+ "hlOnly": false,
+ "islOrder": 1,
+ "islUnits": [
+  "1. Atomic theory and kinetic theory (Y12 Sep)"
+ ],
+ "taughtStatus": "taught",
+ "statements": {
+  "SL": [
+   "S1.1.1",
+   "S1.1.2",
+   "S1.1.3"
+  ],
+  "AHL": []
+ },
+ "bigPicture": "Everything is made of particles. Whether those particles are single elements, fixed-ratio compounds or loose mixtures decides how we can separate them, and how fast the particles move (their kinetic energy) decides the state. Temperature in kelvin is a direct measure of that average kinetic energy.",
+ "keyIdeas": [
+  {
+   "id": "s11-k1",
+   "ahl": false,
+   "stmt": "S1.1.1",
+   "cue": "Element vs compound vs mixture, and how do you separate mixtures?",
+   "answer": "Element: one type of atom, cannot be broken down chemically. Compound: two or more elements bonded in a fixed ratio; properties differ from the elements. Mixture: substances not bonded, any ratio, separable by physical methods. Homogeneous mixtures have one uniform phase (salt water); heterogeneous ones have visibly separate phases (sand in water). Methods: dissolve (solvation) then filter an insoluble solid; evaporate or recrystallise to recover a dissolved solid; distil to separate liquids by boiling point; paper chromatography for coloured mixtures."
+  },
+  {
+   "id": "s11-k2",
+   "ahl": false,
+   "stmt": "S1.1.2",
+   "cue": "How does the kinetic molecular model explain states and changes of state?",
+   "answer": "Solid: particles vibrate about fixed positions, strong attractions. Liquid: particles close together but able to move past each other. Gas: particles far apart, moving fast and randomly. Changes: melting/freezing (s↔l), vaporisation (evaporation at the surface or boiling throughout) and condensation (l↔g), sublimation and deposition (s↔g). Write state symbols (s), (l), (g), (aq) in equations."
+  },
+  {
+   "id": "s11-k3",
+   "ahl": false,
+   "stmt": "S1.1.3",
+   "cue": "What does temperature measure, and what happens on a heating curve?",
+   "answer": "Absolute temperature (K) is proportional to the average kinetic energy of the particles. T(K) = T(°C) + 273.15; a change of 1 K equals a change of 1 °C. On a heating curve the flat sections are changes of state: energy goes into overcoming attractions (potential energy), not into raising kinetic energy, so temperature stays constant."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Element",
+   "def": "Substance made of one type of atom; cannot be split chemically."
+  },
+  {
+   "term": "Compound",
+   "def": "Two or more elements chemically bonded in a fixed ratio."
+  },
+  {
+   "term": "Mixture",
+   "def": "Two or more substances not chemically bonded, in any ratio."
+  },
+  {
+   "term": "Homogeneous mixture",
+   "def": "Uniform composition, single phase (e.g. air, brine)."
+  },
+  {
+   "term": "Heterogeneous mixture",
+   "def": "Non-uniform; separate phases visible (e.g. oil and water)."
+  },
+  {
+   "term": "Sublimation",
+   "def": "Solid turning directly into gas (deposition is the reverse)."
+  },
+  {
+   "term": "Kelvin",
+   "def": "SI unit of temperature; 0 K is absolute zero, where particle kinetic energy is minimal."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Choosing a separation",
+   "prompt": "How would you get pure, dry salt crystals from a mixture of sand and salt?",
+   "steps": [
+    "Add water and stir: the salt dissolves, the sand does not.",
+    "Filter: sand stays on the filter paper, salt solution passes through as filtrate.",
+    "Heat the filtrate gently to evaporate some water, then leave to cool so crystals form (recrystallisation).",
+    "Filter off the crystals and dry them."
+   ],
+   "answer": "Dissolve → filter → evaporate/crystallise → dry."
+  },
+  {
+   "title": "Celsius to kelvin",
+   "prompt": "Convert −40 °C and 100 °C to kelvin.",
+   "steps": [
+    "Add 273.15 to each value."
+   ],
+   "answer": "233.15 K and 373.15 K (233 K and 373 K to 3 s.f.)."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "A compound keeps the properties of its elements.",
+   "right": "A compound has new properties: sodium (reactive metal) and chlorine (toxic gas) form harmless table salt."
+  },
+  {
+   "wrong": "Temperature rises steadily while ice melts.",
+   "right": "Temperature stays constant during a change of state; the energy breaks attractions between particles."
+  },
+  {
+   "wrong": "Evaporation and boiling are the same thing.",
+   "right": "Both are vaporisation, but evaporation happens only at the surface and below the boiling point; boiling happens throughout the liquid at the boiling point."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Distinguish",
+   "marks": 2,
+   "prompt": "Distinguish between a homogeneous and a heterogeneous mixture, with one example of each.",
+   "checkpoints": [
+    "Homogeneous: uniform composition/one phase, e.g. salt solution",
+    "Heterogeneous: non-uniform, phases visible, e.g. sand and water"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain, using the kinetic molecular model, why the temperature of water stays at 100 °C while it boils.",
+   "checkpoints": [
+    "Energy supplied is used to overcome intermolecular attractions",
+    "Average kinetic energy of molecules does not increase",
+    "So temperature (a measure of average Ek) stays constant until all liquid has vaporised"
+   ]
+  },
+  {
+   "commandTerm": "Outline",
+   "marks": 2,
+   "prompt": "Outline how paper chromatography could show whether a black ink is a single dye or a mixture.",
+   "checkpoints": [
+    "Spot ink on a pencil baseline above solvent level, let solvent rise",
+    "More than one spot at different heights means a mixture"
+   ]
+  }
+ ],
+ "paper1A": [
+  {
+   "stem": "Which process is sublimation?",
+   "choices": [
+    "I₂(s) → I₂(g)",
+    "H₂O(l) → H₂O(g)",
+    "CO₂(g) → CO₂(s)",
+    "Br₂(l) → Br₂(s)"
+   ],
+   "answer": 0,
+   "why": "Solid directly to gas. CO₂(g) → CO₂(s) is deposition."
+  },
+  {
+   "stem": "A sample is heated from 20 °C to 50 °C. What is the change in temperature in kelvin?",
+   "choices": [
+    "30 K",
+    "303 K",
+    "323 K",
+    "243 K"
+   ],
+   "answer": 0,
+   "why": "Kelvin and Celsius degrees are the same size, so the change is the same number."
+  },
+  {
+   "stem": "Which is a compound?",
+   "choices": [
+    "Air",
+    "Brass",
+    "Carbon dioxide",
+    "Sea water"
+   ],
+   "answer": 2,
+   "why": "Fixed ratio of chemically bonded C and O; the others are mixtures."
+  }
+ ],
+ "paper1B": [
+  {
+   "data": "Heating curve data: a solid is heated at a constant rate. Temperature (°C) every minute: 20, 41, 62, 80, 80, 80, 80, 95, 110.",
+   "prompt": "State the melting point and explain the shape between minutes 3 and 6.",
+   "answer": "80 °C. The flat section is melting: energy supplied overcomes attractions between particles, so average kinetic energy (temperature) does not rise."
+  }
+ ],
+ "assessmentNote": "Paper 1A = multiple choice, no calculator; Paper 1B = data-based questions (format from public sources, confirm with the official guide). All prompts here are original practice, not predictions of exam questions.",
+ "errorHints": [
+  {
+   "category": "knowledge",
+   "hint": "Learn the six change-of-state names in pairs (melt/freeze, vaporise/condense, sublime/deposit)."
+  },
+  {
+   "category": "interpretation",
+   "hint": "On heating/cooling curves, flat = change of state; sloped = temperature of one phase changing."
+  },
+  {
+   "category": "exam communication",
+   "hint": "Say 'average kinetic energy' when linking temperature to particles, not just 'particles move faster'."
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "S2.2",
+   "prompt": "Why do substances with stronger intermolecular forces need more energy to change state?"
+  },
+  {
+   "to": "R1.1",
+   "prompt": "How is the energy absorbed during melting related to an enthalpy change?"
+  }
+ ],
+ "dataBooklet": [
+  {
+   "section": 4,
+   "title": "Unit conversions and standard conditions",
+   "use": "Kelvin–Celsius conversion and standard conditions."
+  }
+ ],
+ "links": {
+  "checklistKey": "chemistry-hl::library/notes/chemistry-hl/models-of-the-particulate-nature-of-matter/introduction-to-the-particulate-nature-of-matter.pdf",
+  "quizBanks": [],
+  "decks": [],
+  "gap": "No quiz items or flashcards cover mixtures, separation methods, states of matter or the kelvin scale (S1.1.1–S1.1.3)."
+ }
+}

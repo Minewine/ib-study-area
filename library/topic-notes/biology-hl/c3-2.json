@@ -1,0 +1,297 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-c3-2",
+ "code": "C3.2",
+ "title": "Defence against disease",
+ "theme": "C",
+ "themeLabel": "Interaction and interdependence",
+ "level": 3,
+ "levelLabel": "Organisms",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "C3.2.1",
+   "C3.2.2",
+   "C3.2.3",
+   "C3.2.4",
+   "C3.2.5",
+   "C3.2.6",
+   "C3.2.7",
+   "C3.2.8",
+   "C3.2.9",
+   "C3.2.10",
+   "C3.2.11",
+   "C3.2.12",
+   "C3.2.13",
+   "C3.2.14",
+   "C3.2.15",
+   "C3.2.16",
+   "C3.2.17",
+   "C3.2.18"
+  ],
+  "AHL": []
+ },
+ "bigPicture": "The body defends itself in layers: barriers, then innate phagocytes, then specific adaptive immunity that remembers. Vaccines exploit that memory, and antibiotic misuse undermines our other weapon.",
+ "keyIdeas": [
+  {
+   "id": "c32-k1",
+   "ahl": false,
+   "stmt": "C3.2.1",
+   "cue": "What is a pathogen?",
+   "answer": "A disease-causing organism, usually a virus, bacterium, fungus or protist. Archaea aren't known to cause human disease. Careful observation (e.g. of childbed fever in Vienna, cholera in London) led to infection control."
+  },
+  {
+   "id": "c32-k2",
+   "ahl": false,
+   "stmt": "C3.2.2",
+   "cue": "How are skin and mucous membranes a primary defence?",
+   "answer": "Skin is a tough physical barrier and also a chemical one (e.g. acidic secretions). Mucous membranes trap pathogens in mucus."
+  },
+  {
+   "id": "c32-k3",
+   "ahl": false,
+   "stmt": "C3.2.3",
+   "cue": "How does clotting seal a cut?",
+   "answer": "Platelets release clotting factors, triggering a cascade. Thrombin rapidly converts soluble fibrinogen into insoluble fibrin threads, which trap red blood cells to form a clot."
+  },
+  {
+   "id": "c32-k4",
+   "ahl": false,
+   "stmt": "C3.2.4",
+   "cue": "Innate vs adaptive immunity?",
+   "answer": "Innate: responds to broad categories of pathogen and doesn't change during life (e.g. phagocytes). Adaptive: responds specifically to each pathogen and builds a memory, so later responses are faster and stronger."
+  },
+  {
+   "id": "c32-k5",
+   "ahl": false,
+   "stmt": "C3.2.5",
+   "cue": "How do phagocytes control infection?",
+   "answer": "They squeeze out of the blood by amoeboid movement to infection sites, recognise pathogens, engulf them by endocytosis and digest them with lysosome enzymes."
+  },
+  {
+   "id": "c32-k6",
+   "ahl": false,
+   "stmt": "C3.2.6",
+   "cue": "Where are lymphocytes, and how many kinds of B cell are there?",
+   "answer": "They circulate in the blood and are concentrated in lymph nodes. There are a huge number of B-lymphocyte types, each able to make one specific antibody."
+  },
+  {
+   "id": "c32-k7",
+   "ahl": false,
+   "stmt": "C3.2.7",
+   "cue": "What are antigens?",
+   "answer": "Recognition molecules, mostly glycoproteins or other proteins on pathogen surfaces, that trigger antibody production. Red blood cell antigens can trigger antibodies after a transfusion of the wrong blood group."
+  },
+  {
+   "id": "c32-k8",
+   "ahl": false,
+   "stmt": "C3.2.8",
+   "cue": "How are B cells activated?",
+   "answer": "A specific B cell must bind its antigen and also contact a helper T cell that has been activated by the same antigen. Only then does it make antibodies and memory cells."
+  },
+  {
+   "id": "c32-k9",
+   "ahl": false,
+   "stmt": "C3.2.9",
+   "cue": "Why do activated B cells divide?",
+   "answer": "Few B cells match any one antigen, so the activated ones divide by mitosis to form a clone of plasma cells, all secreting the same antibody in large amounts."
+  },
+  {
+   "id": "c32-k10",
+   "ahl": false,
+   "stmt": "C3.2.10",
+   "cue": "What is immunity and what causes it?",
+   "answer": "The ability to eliminate an infectious disease. It comes from long-lived memory cells that can quickly make the specific antibody."
+  },
+  {
+   "id": "c32-k11",
+   "ahl": false,
+   "stmt": "C3.2.11",
+   "cue": "How is HIV transmitted?",
+   "answer": "In body fluids: unprotected sex, shared needles, transfusion of infected blood, and from mother to baby (birth or breastfeeding)."
+  },
+  {
+   "id": "c32-k12",
+   "ahl": false,
+   "stmt": "C3.2.12",
+   "cue": "How does HIV lead to AIDS?",
+   "answer": "It infects and kills certain lymphocytes (helper T cells). With fewer of them, antibody production fails and opportunistic infections take hold."
+  },
+  {
+   "id": "c32-k13",
+   "ahl": false,
+   "stmt": "C3.2.13",
+   "cue": "Why do antibiotics work on bacteria but not viruses?",
+   "answer": "They block processes found in bacteria but not in eukaryotic cells (e.g. cell-wall synthesis, 70S ribosomes). Viruses have no metabolism of their own and use the host's processes, so there is nothing to target."
+  },
+  {
+   "id": "c32-k14",
+   "ahl": false,
+   "stmt": "C3.2.14",
+   "cue": "How does multiple resistance evolve, and how do we slow it?",
+   "answer": "Random mutations give some bacteria resistance. Antibiotic use kills the others, so resistant strains survive and spread. Use antibiotics only when needed and finish courses. New antibiotics are being found by searching chemical libraries."
+  },
+  {
+   "id": "c32-k15",
+   "ahl": false,
+   "stmt": "C3.2.15",
+   "cue": "What are zoonoses? Give examples.",
+   "answer": "Infectious diseases that transfer from other species to humans, with varied modes of infection: tuberculosis (e.g. from cattle), rabies (bites), Japanese encephalitis (mosquitoes, from pigs and birds). COVID-19 recently transferred from another species."
+  },
+  {
+   "id": "c32-k16",
+   "ahl": false,
+   "stmt": "C3.2.16",
+   "cue": "How do vaccines work?",
+   "answer": "They contain antigens, or DNA or RNA coding for antigens, which trigger an immune response and memory cells without causing the disease."
+  },
+  {
+   "id": "c32-k17",
+   "ahl": false,
+   "stmt": "C3.2.17",
+   "cue": "What is herd immunity?",
+   "answer": "When a large enough share of the population is immune, transmission is blocked, which also protects those who can't be vaccinated. Vaccines are rigorously tested; risks are minimal but not zero."
+  },
+  {
+   "id": "c32-k18",
+   "ahl": false,
+   "stmt": "C3.2.18",
+   "cue": "Which calculations are used for COVID-19 data?",
+   "answer": "Percentage change = (new − old) ÷ old × 100. Percentage difference compares two values relative to a reference. Evaluate data critically (sampling, testing rates, time lags)."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Antigen",
+   "def": "Molecule that triggers a specific antibody response."
+  },
+  {
+   "term": "Plasma cell",
+   "def": "Activated B cell clone that secretes antibody."
+  },
+  {
+   "term": "Memory cell",
+   "def": "Long-lived lymphocyte giving immunity."
+  },
+  {
+   "term": "Zoonosis",
+   "def": "Disease transmitted from animals to humans."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Percentage change",
+   "prompt": "Weekly cases fell from 2400 to 1800 after a vaccination campaign. Calculate the percentage change.",
+   "steps": [
+    "Change = 1800 − 2400 = −600.",
+    "÷ 2400 = −0.25.",
+    "× 100 = −25%."
+   ],
+   "answer": "A 25% decrease. (Correlation alone doesn't prove the vaccine caused it.)"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Antibiotics kill viruses.",
+   "right": "They don't. Viruses lack the bacterial targets."
+  },
+  {
+   "wrong": "Bacteria become resistant because they get used to the antibiotic.",
+   "right": "Resistant mutants already exist and are selected."
+  },
+  {
+   "wrong": "Plasma cells become memory cells.",
+   "right": "Activated B cells give rise to both plasma cells and memory cells, separately."
+  },
+  {
+   "wrong": "HIV kills all white blood cells.",
+   "right": "It infects certain lymphocytes (helper T cells)."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Explain",
+   "marks": 4,
+   "prompt": "Explain how antibodies are produced in response to a pathogen.",
+   "checkpoints": [
+    "Antigen binds a specific B cell",
+    "Helper T cell activated by the same antigen activates the B cell",
+    "B cell divides by mitosis to form a clone of plasma cells",
+    "Plasma cells secrete specific antibody; memory cells formed"
+   ]
+  },
+  {
+   "commandTerm": "Outline",
+   "marks": 3,
+   "prompt": "Outline how herd immunity prevents epidemics.",
+   "checkpoints": [
+    "High proportion of population immune",
+    "Pathogen can't find enough susceptible hosts",
+    "Transmission chains broken, protecting non-immune people"
+   ]
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "A2.3",
+   "prompt": "Why do viruses need host cells?"
+  },
+  {
+   "to": "D4.1",
+   "prompt": "How does natural selection explain antibiotic resistance?"
+  },
+  {
+   "to": "C1.1",
+   "prompt": "How does penicillin inhibit bacterial transpeptidases?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/interaction-interdependence/defence-against-disease.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/bio-defence-against-disease.json",
+    "itemIds": [
+     "im01",
+     "im02",
+     "im03",
+     "im05",
+     "im08",
+     "im09",
+     "im10",
+     "im11",
+     "im12",
+     "im15",
+     "im20",
+     "im21",
+     "im22"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/bio-defence-against-disease.json",
+    "cardIds": [
+     "fc-bio-im-01",
+     "fc-bio-im-02",
+     "fc-bio-im-03",
+     "fc-bio-im-04",
+     "fc-bio-im-07",
+     "fc-bio-im-08",
+     "fc-bio-im-10",
+     "fc-bio-im-11",
+     "fc-bio-im-12",
+     "fc-bio-im-13",
+     "fc-bio-im-14",
+     "fc-bio-im-15",
+     "fc-bio-im-18"
+    ]
+   }
+  ],
+  "gap": "Likely untested: zoonoses (C3.2.15), herd immunity (C3.2.17), COVID-19 data evaluation (C3.2.18)."
+ },
+ "reviewNote": "Not linked (old 2016-syllabus content, beyond the IB guide (first assessment 2028) for C3.2): quiz im04, im06, im07, im13, im14, im16, im17, im18, im19; cards fc-bio-im-05, 06, 09, 16, 17, 19, 20."
+}

@@ -1,0 +1,353 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-c4-2",
+ "code": "C4.2",
+ "title": "Transfers of energy and matter",
+ "theme": "C",
+ "themeLabel": "Interaction and interdependence",
+ "level": 4,
+ "levelLabel": "Ecosystems",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "C4.2.1",
+   "C4.2.2",
+   "C4.2.3",
+   "C4.2.4",
+   "C4.2.5",
+   "C4.2.6",
+   "C4.2.7",
+   "C4.2.8",
+   "C4.2.9",
+   "C4.2.10",
+   "C4.2.11",
+   "C4.2.12",
+   "C4.2.13",
+   "C4.2.14",
+   "C4.2.15",
+   "C4.2.16",
+   "C4.2.17",
+   "C4.2.18",
+   "C4.2.19",
+   "C4.2.20",
+   "C4.2.21",
+   "C4.2.22"
+  ],
+  "AHL": []
+ },
+ "bigPicture": "Energy flows through ecosystems one way: in as light, out as heat. Matter, especially carbon, cycles: fixed by photosynthesis, passed on by feeding, and returned by respiration, decomposition and combustion.",
+ "keyIdeas": [
+  {
+   "id": "c42-k1",
+   "ahl": false,
+   "stmt": "C4.2.1",
+   "cue": "Open vs closed system?",
+   "answer": "An ecosystem is open: energy and matter enter and leave. In a closed system only energy crosses the boundary."
+  },
+  {
+   "id": "c42-k2",
+   "ahl": false,
+   "stmt": "C4.2.2",
+   "cue": "What powers most ecosystems, and what are the exceptions?",
+   "answer": "Sunlight, via photosynthesis. Exceptions: caves and the deep ocean below light penetration, where chemoautotrophs or imported organic matter supply energy. 'Sunlight sustains ecosystems' is a useful generalisation (a law-like pattern), not an explanation."
+  },
+  {
+   "id": "c42-k3",
+   "ahl": false,
+   "stmt": "C4.2.3",
+   "cue": "How does chemical energy pass along a food chain?",
+   "answer": "When a consumer eats an organism at the previous stage, the energy in its carbon compounds passes on."
+  },
+  {
+   "id": "c42-k4",
+   "ahl": false,
+   "stmt": "C4.2.4",
+   "cue": "What do arrows show in a food chain or web?",
+   "answer": "The direction of energy and biomass transfer: from the eaten to the eater."
+  },
+  {
+   "id": "c42-k5",
+   "ahl": false,
+   "stmt": "C4.2.5",
+   "cue": "Where do decomposers get their energy?",
+   "answer": "From carbon compounds in dead organic matter: faeces, dead parts (shed leaves, skin) and whole dead organisms."
+  },
+  {
+   "id": "c42-k6",
+   "ahl": false,
+   "stmt": "C4.2.6",
+   "cue": "What is an autotroph?",
+   "answer": "An organism that uses an external energy source to make its carbon compounds from simple inorganic substances (CO₂, water, mineral ions). Energy is needed both to fix carbon and to build macromolecules."
+  },
+  {
+   "id": "c42-k7",
+   "ahl": false,
+   "stmt": "C4.2.7",
+   "cue": "Photoautotroph vs chemoautotroph?",
+   "answer": "Photoautotrophs use light. Chemoautotrophs use energy released by oxidising inorganic chemicals, e.g. iron-oxidising bacteria oxidise Fe²⁺ to Fe³⁺."
+  },
+  {
+   "id": "c42-k8",
+   "ahl": false,
+   "stmt": "C4.2.8",
+   "cue": "What is a heterotroph?",
+   "answer": "An organism that takes in carbon compounds made by other organisms, digests them (inside or outside the body), then assimilates the products to build its own compounds."
+  },
+  {
+   "id": "c42-k9",
+   "ahl": false,
+   "stmt": "C4.2.9",
+   "cue": "How do all organisms release energy?",
+   "answer": "By oxidising carbon compounds in cell respiration, in both autotrophs and heterotrophs."
+  },
+  {
+   "id": "c42-k10",
+   "ahl": false,
+   "stmt": "C4.2.10",
+   "cue": "Name the trophic levels.",
+   "answer": "Producer, primary consumer, secondary consumer, tertiary consumer. Many organisms feed at more than one level, so their level depends on the food chain."
+  },
+  {
+   "id": "c42-k11",
+   "ahl": false,
+   "stmt": "C4.2.11",
+   "cue": "How do you build an energy pyramid?",
+   "answer": "Bars of energy per unit area per year (e.g. kJ m⁻² yr⁻¹) for each trophic level, drawn to scale with producers at the base, from real ecosystem data."
+  },
+  {
+   "id": "c42-k12",
+   "ahl": false,
+   "stmt": "C4.2.12",
+   "cue": "Why does energy fall at each stage?",
+   "answer": "Not all of an organism is eaten, not all eaten is digested (lost in faeces), and much is used in respiration and lost as heat. Unused energy passes to decomposers and detritivores, which aren't usually shown in the chain."
+  },
+  {
+   "id": "c42-k13",
+   "ahl": false,
+   "stmt": "C4.2.13",
+   "cue": "Why is heat lost by every organism?",
+   "answer": "Energy transfers are never 100% efficient: heat is released both when ATP is made in respiration and when ATP is used."
+  },
+  {
+   "id": "c42-k14",
+   "ahl": false,
+   "stmt": "C4.2.14",
+   "cue": "Why are food chains short?",
+   "answer": "So much energy is lost per stage (often ~90%) that too little remains to support another level. Higher levels have fewer or smaller organisms and less biomass, though energy per gram of tissue is not lower."
+  },
+  {
+   "id": "c42-k15",
+   "ahl": false,
+   "stmt": "C4.2.15",
+   "cue": "What is primary production and its units?",
+   "answer": "The accumulation of carbon compounds in biomass by autotrophs, in g m⁻² yr⁻¹ (mass of carbon per area per time). It varies greatly between biomes (high in rainforest, low in desert)."
+  },
+  {
+   "id": "c42-k16",
+   "ahl": false,
+   "stmt": "C4.2.16",
+   "cue": "Why is secondary production lower than primary?",
+   "answer": "Heterotrophs convert much of the biomass they eat back to CO₂ and water in respiration, so less is stored as new biomass."
+  },
+  {
+   "id": "c42-k17",
+   "ahl": false,
+   "stmt": "C4.2.17",
+   "cue": "What should a carbon cycle diagram show?",
+   "answer": "Carbon in the atmosphere (CO₂), producers, consumers, decomposers and fossil fuels, linked by arrows for photosynthesis, feeding, death/egestion, respiration and combustion."
+  },
+  {
+   "id": "c42-k18",
+   "ahl": false,
+   "stmt": "C4.2.18",
+   "cue": "Carbon sink vs carbon source?",
+   "answer": "Sink: photosynthesis exceeds respiration, net CO₂ uptake (e.g. a growing forest, peat bog). Source: respiration (plus combustion) exceeds photosynthesis, net CO₂ release."
+  },
+  {
+   "id": "c42-k19",
+   "ahl": false,
+   "stmt": "C4.2.19",
+   "cue": "Which combustion releases CO₂?",
+   "answer": "Burning of biomass, peat, coal, oil and natural gas. These stores formed at very different times (fossil fuels over millions of years). Lightning can cause natural fires, but human activity has hugely increased combustion."
+  },
+  {
+   "id": "c42-k20",
+   "ahl": false,
+   "stmt": "C4.2.20",
+   "cue": "How do you read the Keeling Curve?",
+   "answer": "Annual zig-zag: CO₂ falls in the northern summer (more photosynthesis) and rises in winter (respiration exceeds photosynthesis). Long-term rise: mainly fossil fuel combustion and deforestation."
+  },
+  {
+   "id": "c42-k21",
+   "ahl": false,
+   "stmt": "C4.2.21",
+   "cue": "How are photosynthesis and respiration linked globally?",
+   "answer": "Aerobic respiration depends on O₂ from photosynthesis, and photosynthesis depends on CO₂ from respiration. The yearly fluxes are enormous, so this is a major autotroph–heterotroph interaction."
+  },
+  {
+   "id": "c42-k22",
+   "ahl": false,
+   "stmt": "C4.2.22",
+   "cue": "Which elements are recycled?",
+   "answer": "All the chemical elements life needs (C, N, P, S and others), not just carbon. Decomposers release them from dead matter. No detail of the nitrogen cycle is needed."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Trophic level",
+   "def": "An organism's feeding position in a food chain."
+  },
+  {
+   "term": "Primary production",
+   "def": "Biomass accumulated by autotrophs, in g m⁻² yr⁻¹."
+  },
+  {
+   "term": "Chemoautotroph",
+   "def": "Autotroph that gets energy by oxidising inorganic chemicals."
+  },
+  {
+   "term": "Carbon sink",
+   "def": "Store or ecosystem with net uptake of CO₂."
+  },
+  {
+   "term": "Detritivore",
+   "def": "Ingests dead organic matter (e.g. earthworm); a saprotroph digests it externally (e.g. fungi)."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Energy transfer efficiency",
+   "prompt": "Producers fix 20 000 kJ m⁻² yr⁻¹; primary consumers 1 800 kJ m⁻² yr⁻¹. Calculate the efficiency.",
+   "steps": [
+    "Efficiency = energy at higher level ÷ energy at lower level × 100.",
+    "1 800 ÷ 20 000 = 0.09.",
+    "× 100 = 9%."
+   ],
+   "answer": "9% (the rest is lost mainly as heat from respiration, uneaten parts and faeces)."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Energy is recycled in ecosystems.",
+   "right": "Energy flows one way and leaves as heat; only matter is recycled."
+  },
+  {
+   "wrong": "Arrows in a food chain mean 'eats'.",
+   "right": "They show the direction of energy transfer, from food to feeder."
+  },
+  {
+   "wrong": "Higher trophic levels have less energy per gram.",
+   "right": "Energy per gram is similar; total biomass and energy are lower."
+  },
+  {
+   "wrong": "The Keeling Curve zig-zag is from fossil fuels.",
+   "right": "The yearly cycle is seasonal photosynthesis; the upward trend is combustion."
+  },
+  {
+   "wrong": "Only carbon is recycled.",
+   "right": "All elements used by living things are recycled, with decomposers playing a key role."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain why food chains rarely have more than five trophic levels.",
+   "checkpoints": [
+    "Large energy loss at each transfer (heat from respiration)",
+    "Also uneaten parts and egested faeces",
+    "Too little energy left to sustain a further level"
+   ]
+  },
+  {
+   "commandTerm": "Outline",
+   "marks": 3,
+   "prompt": "Outline the annual fluctuation and long-term trend in the Keeling Curve.",
+   "checkpoints": [
+    "Falls in northern summer: photosynthesis exceeds respiration",
+    "Rises in winter",
+    "Long-term rise from fossil fuel combustion/deforestation"
+   ]
+  },
+  {
+   "commandTerm": "Compare and contrast",
+   "marks": 3,
+   "prompt": "Compare and contrast photoautotrophs and chemoautotrophs.",
+   "checkpoints": [
+    "Both make carbon compounds from inorganic CO₂",
+    "Photo: light energy",
+    "Chemo: energy from oxidising inorganic chemicals (e.g. Fe²⁺)"
+   ]
+  },
+  {
+   "commandTerm": "Draw",
+   "marks": 4,
+   "prompt": "Draw a labelled carbon cycle for a forest ecosystem.",
+   "checkpoints": [
+    "Atmospheric CO₂, producers, consumers, decomposers",
+    "Photosynthesis and respiration arrows",
+    "Feeding and death/egestion arrows",
+    "Combustion arrow from fossil fuels/biomass"
+   ]
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "C1.3",
+   "prompt": "Where does the energy that enters ecosystems first get captured?"
+  },
+  {
+   "to": "D4.3",
+   "prompt": "How does burning fossil fuels change the carbon cycle and climate?"
+  },
+  {
+   "to": "C4.1",
+   "prompt": "How do feeding relationships shape populations?"
+  },
+  {
+   "to": "C1.2",
+   "prompt": "Why does respiration release heat?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/interaction-interdependence/transfer-of-energy-matter.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/bio-photosynthesis-energy.json",
+    "itemIds": [
+     "ph10",
+     "ph11",
+     "ph12",
+     "ph13",
+     "ph14",
+     "ph16"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/bio-photosynthesis-energy-transfer.json",
+    "cardIds": [
+     "fc-bio-ph-11",
+     "fc-bio-ph-12",
+     "fc-bio-ph-13",
+     "fc-bio-ph-14",
+     "fc-bio-ph-15",
+     "fc-bio-ph-16",
+     "fc-bio-ph-17"
+    ]
+   },
+   {
+    "file": "library/flashcards/bio-ecology-adaptations-populations.json",
+    "cardIds": [
+     "fc-bio-ec-19"
+    ]
+   }
+  ],
+  "gap": "No existing questions on chemoautotrophs, primary/secondary production, carbon sinks, combustion or the Keeling Curve."
+ }
+}

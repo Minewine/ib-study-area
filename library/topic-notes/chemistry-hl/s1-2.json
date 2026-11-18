@@ -1,0 +1,250 @@
+{
+ "schemaVersion": 1,
+ "subject": "chemistry-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "chem-s1-2",
+ "code": "S1.2",
+ "title": "The nuclear atom",
+ "theme": "S1",
+ "themeLabel": "Models of the particulate nature of matter",
+ "hlOnly": false,
+ "islOrder": 2,
+ "islUnits": [
+  "1. Atomic theory and kinetic theory (Y12 Sep)"
+ ],
+ "taughtStatus": "taught",
+ "statements": {
+  "SL": [
+   "S1.2.1",
+   "S1.2.2"
+  ],
+  "AHL": [
+   "S1.2.3"
+  ]
+ },
+ "bigPicture": "An atom is a tiny, dense, positive nucleus (protons + neutrons) surrounded by electrons. The number of protons fixes the element; changing the number of neutrons gives isotopes, which behave the same chemically but differ in mass. Relative atomic mass is the abundance-weighted average of those isotope masses.",
+ "keyIdeas": [
+  {
+   "id": "s12-k1",
+   "ahl": false,
+   "stmt": "S1.2.1",
+   "cue": "What is inside an atom and how do you read a nuclear symbol?",
+   "answer": "Nucleus: protons (relative mass 1, charge +1) and neutrons (mass 1, charge 0); electrons (mass ≈ 1/1840, charge −1) occupy the space outside. In the symbol with mass number A above and atomic number Z below: protons = Z, neutrons = A − Z, electrons = Z − (ion charge). Actual masses and charges are in the data booklet; the electron's mass can be treated as negligible."
+  },
+  {
+   "id": "s12-k2",
+   "ahl": false,
+   "stmt": "S1.2.2",
+   "cue": "What are isotopes and how is a non-integer Ar calculated?",
+   "answer": "Atoms of the same element (same Z) with different numbers of neutrons (different A). Same chemical properties (same electron arrangement) but different physical properties such as density, rate of diffusion and, for radioactive isotopes, stability. Ar = Σ(isotope mass × fractional abundance), which is why Ar is usually not a whole number."
+  },
+  {
+   "id": "s12-k3",
+   "ahl": true,
+   "stmt": "S1.2.3",
+   "cue": "How is a mass spectrum used to find Ar?",
+   "answer": "Each peak is an isotope: its position on the x-axis is the mass/charge ratio (m/z, effectively the isotope mass for 1+ ions) and its height is the relative abundance. Multiply each m/z by its abundance, add, and divide by the total abundance. How the spectrometer works is not assessed."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Nucleon",
+   "def": "A proton or neutron (particle in the nucleus)."
+  },
+  {
+   "term": "Atomic number, Z",
+   "def": "Number of protons; defines the element."
+  },
+  {
+   "term": "Mass number, A",
+   "def": "Protons + neutrons."
+  },
+  {
+   "term": "Isotopes",
+   "def": "Atoms of one element with different numbers of neutrons."
+  },
+  {
+   "term": "Relative atomic mass, Ar",
+   "def": "Weighted mean mass of an element's atoms relative to 1/12 of a carbon-12 atom; no units."
+  },
+  {
+   "term": "m/z",
+   "def": "Mass-to-charge ratio plotted on the x-axis of a mass spectrum."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Particles in an ion",
+   "prompt": "How many protons, neutrons and electrons are in ³⁴S²⁻ (Z = 16)?",
+   "steps": [
+    "Protons = Z = 16.",
+    "Neutrons = A − Z = 34 − 16 = 18.",
+    "Electrons = 16 + 2 (2− charge means 2 extra) = 18."
+   ],
+   "answer": "16 p, 18 n, 18 e⁻."
+  },
+  {
+   "title": "Ar from a mass spectrum (AHL)",
+   "prompt": "A magnesium spectrum shows peaks at m/z 24, 25 and 26 with abundances 79%, 10% and 11%. Calculate Ar.",
+   "steps": [
+    "Ar = (24 × 79 + 25 × 10 + 26 × 11) / 100",
+    "= (1896 + 250 + 286) / 100",
+    "= 24.32"
+   ],
+   "answer": "Ar(Mg) ≈ 24.3"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Isotopes of an element react differently.",
+   "right": "Chemistry depends on electrons; isotopes have the same electron configuration, so they react the same way. Only physical properties differ."
+  },
+  {
+   "wrong": "Mass number is the same as relative atomic mass.",
+   "right": "Mass number is a whole number for one isotope; Ar is a weighted average over all isotopes."
+  },
+  {
+   "wrong": "A 2− ion has two fewer electrons.",
+   "right": "Negative charge means electrons gained: a 2− ion has two more electrons than protons."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Calculate",
+   "marks": 2,
+   "prompt": "Copper has isotopes ⁶³Cu (69.2%) and ⁶⁵Cu (30.8%). Calculate Ar(Cu) to two decimal places.",
+   "checkpoints": [
+    "(63 × 69.2 + 65 × 30.8)/100",
+    "= 63.62"
+   ]
+  },
+  {
+   "commandTerm": "State",
+   "marks": 1,
+   "prompt": "State one physical property that differs between isotopes of the same element.",
+   "checkpoints": [
+    "e.g. density / mass / rate of diffusion / boiling point / nuclear stability"
+   ]
+  },
+  {
+   "commandTerm": "Deduce",
+   "marks": 2,
+   "prompt": "A mass spectrum of chlorine atoms shows two peaks at m/z 35 and 37 in a 3 : 1 height ratio. Deduce Ar(Cl).",
+   "checkpoints": [
+    "(35 × 3 + 37 × 1)/4",
+    "= 35.5"
+   ],
+   "ahl": true
+  }
+ ],
+ "paper1A": [
+  {
+   "stem": "How many neutrons are in one atom of ⁵⁶Fe (Z = 26)?",
+   "choices": [
+    "26",
+    "30",
+    "56",
+    "82"
+   ],
+   "answer": 1,
+   "why": "A − Z = 56 − 26."
+  },
+  {
+   "stem": "Element X has two isotopes, mass 10 (20%) and mass 11 (80%). What is Ar?",
+   "choices": [
+    "10.2",
+    "10.5",
+    "10.8",
+    "11.0"
+   ],
+   "answer": 2,
+   "why": "2.0 + 8.8 = 10.8; no calculator needed."
+  },
+  {
+   "stem": "Which species has more electrons than protons?",
+   "choices": [
+    "Na⁺",
+    "Mg",
+    "Cl⁻",
+    "Al³⁺"
+   ],
+   "answer": 2,
+   "why": "Negative ion = electrons gained."
+  }
+ ],
+ "paper1B": [
+  {
+   "data": "Mass spectrum of element Q: m/z 69, relative abundance 60; m/z 71, relative abundance 40.",
+   "prompt": "Calculate Ar(Q) and use the data booklet to identify Q.",
+   "answer": "(69 × 60 + 71 × 40)/100 = 69.8; Q is gallium (Ar 69.72).",
+   "ahl": true
+  }
+ ],
+ "assessmentNote": "Paper 1A = multiple choice, no calculator; Paper 1B = data-based questions (format from public sources, confirm with the official guide). All prompts here are original practice, not predictions of exam questions.",
+ "errorHints": [
+  {
+   "category": "maths",
+   "hint": "Divide by the total abundance, which is not always 100 (peak heights can be relative)."
+  },
+  {
+   "category": "data-booklet use",
+   "hint": "Use Ar values to two decimal places from the booklet's periodic table, not rounded whole numbers."
+  },
+  {
+   "category": "knowledge",
+   "hint": "Ion charge changes electrons only; protons and neutrons stay the same."
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "S1.3",
+   "prompt": "How does the model of the atom change once we look at where the electrons are?"
+  },
+  {
+   "to": "S3.2",
+   "prompt": "How is mass spectrometry also used to identify organic molecules (AHL)?"
+  }
+ ],
+ "dataBooklet": [
+  {
+   "section": 2,
+   "title": "Physical constants",
+   "use": "Masses and charges of the proton, neutron and electron."
+  },
+  {
+   "section": 7,
+   "title": "The periodic table",
+   "use": "Atomic numbers and Ar values for every element."
+  }
+ ],
+ "links": {
+  "checklistKey": "chemistry-hl::library/notes/chemistry-hl/models-of-the-particulate-nature-of-matter/the-nuclear-atom.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/chem-structure-3-1-periodicity.json",
+    "itemIds": [
+     "p09"
+    ]
+   },
+   {
+    "file": "library/questions/chem-structure-1-stoichiometry.json",
+    "itemIds": [
+     "chx1",
+     "chx9"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/chem-structure-1-stoichiometry.json",
+    "cardIds": [
+     "fc-chem-s1-09",
+     "fc-chem-s1-19"
+    ]
+   }
+  ],
+  "gap": "No items on mass spectra (S1.2.3, AHL) or on nuclear-symbol particle counting for ions."
+ }
+}

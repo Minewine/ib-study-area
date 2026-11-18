@@ -1,4 +1,4 @@
-"""Validate all quiz banks, flashcard decks and manifests before use.
+"""Validate all quiz banks, flashcard decks, topic notes and manifests before use.
 
 Run:  python3 -I tools/validate_content.py
 Exits non-zero on any FAIL so it can be used as a pre-commit gate.
@@ -190,9 +190,83 @@ for name, folder, key in [
         if not (ROOT / e.get("file", "")).exists():
             fails.append(f"{name}: manifest points to missing file {e.get('file')}")
 
+# ---------- topic notes (library/topic-notes) ----------
+NOTE_REQUIRED = {"schemaVersion": int, "id": str, "subject": str, "code": str, "title": str,
+                 "theme": str, "keyIdeas": list, "links": dict}
+NOTE_LISTS = {"keyIdeas": ("cue", "answer"), "keyTerms": ("term", "def"), "misconceptions": ("wrong", "right"),
+              "practice": ("prompt",), "workedExamples": ("prompt",), "linkingQuestions": ("to", "prompt"),
+              "paper1A": ("stem", "choices"), "paper1B": ("prompt",)}
+PRIVATE_PATH = re.compile(r"/workspace/|/home/[a-z]|/Users/")
+
+
+def ids_in(path, key):
+    data, err = load(path)
+    if err or not isinstance(data, dict):
+        return None
+    return {x.get("id") for x in data.get(key, []) if isinstance(x, dict)}
+
+
+notes_dir = ROOT / "library" / "topic-notes"
+note_files = sorted(notes_dir.glob("*/*.json")) if notes_dir.exists() else []
+id_cache, note_ids, total_n = {}, {}, 0
+for f in note_files:
+    rel = f.relative_to(ROOT).as_posix()
+    n, err = load(f)
+    if err or not isinstance(n, dict):
+        fails.append(f"note {rel}: not valid JSON ({err})")
+        continue
+    total_n += 1
+    for key, typ in NOTE_REQUIRED.items():
+        if not isinstance(n.get(key), typ):
+            fails.append(f"note {rel}: '{key}' missing or not {typ.__name__}")
+    if n.get("schemaVersion") not in (1,):
+        fails.append(f"note {rel}: unsupported schemaVersion {n.get('schemaVersion')!r}")
+    if n.get("subject") and f.parent.name != n["subject"]:
+        fails.append(f"note {rel}: subject '{n['subject']}' does not match its folder")
+    if n.get("id") in note_ids:
+        fails.append(f"note {rel}: id '{n['id']}' already used in {note_ids[n['id']]}")
+    note_ids[n.get("id")] = rel
+    for key, fields in NOTE_LISTS.items():
+        for i, x in enumerate(n.get(key) or []):
+            if not isinstance(x, dict) or any(not x.get(fl) for fl in fields):
+                fails.append(f"note {rel}: {key}[{i}] needs {', '.join(fields)}")
+    for i, q in enumerate(n.get("paper1A") or []):
+        if isinstance(q, dict) and not (isinstance(q.get("answer"), int) and 0 <= q["answer"] < len(q.get("choices") or [])):
+            fails.append(f"note {rel}: paper1A[{i}] answer index out of range")
+    links = n.get("links") if isinstance(n.get("links"), dict) else {}
+    for kind, idkey, listkey in (("quizBanks", "itemIds", "items"), ("decks", "cardIds", "cards")):
+        for ln in links.get(kind) or []:
+            path = ROOT / str(ln.get("file", ""))
+            if not ln.get("file") or not path.is_file():
+                fails.append(f"note {rel}: linked file {ln.get('file')!r} does not exist")
+                continue
+            if path not in id_cache:
+                id_cache[path] = ids_in(path, listkey) or set()
+            for x in ln.get(idkey) or []:
+                if x not in id_cache[path]:
+                    fails.append(f"note {rel}: linked id '{x}' not found in {ln['file']}")
+    for text in strings_in(n):
+        if PRIVATE_PATH.search(text):
+            fails.append(f"note {rel}: mentions a local path: {text[:60]!r}")
+            break
+    if n.get("practice") is not None and not n.get("practice"):
+        warns.append(f"note {rel}: no practice prompts")
+if note_files:
+    m, err = load(notes_dir / "manifest.json")
+    if err:
+        fails.append(f"topic-notes/manifest.json: missing or invalid ({err}); run tools/import_topic_notes.py")
+    else:
+        listed = {e.get("file") for e in m.get("notes", [])}
+        on_disk = {f.relative_to(ROOT).as_posix() for f in note_files}
+        for x in sorted(listed - on_disk):
+            fails.append(f"topic-notes/manifest.json: lists missing file {x}")
+        for x in sorted(on_disk - listed):
+            fails.append(f"topic-notes/manifest.json: does not list {x}; run tools/import_topic_notes.py")
+
 # ---------- report ----------
 print(f"quiz banks: {total_q} items in {len(bank_files) - 1} files")
 print(f"flashcard decks: {total_f} cards in {len(deck_files) - 1} files")
+print(f"topic notes: {total_n} files")
 for w in warns:
     print("WARN:", w)
 if fails:

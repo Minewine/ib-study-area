@@ -1,0 +1,271 @@
+{
+ "schemaVersion": 1,
+ "subject": "chemistry-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "chem-r2-1",
+ "code": "R2.1",
+ "title": "How much? The amount of chemical change",
+ "theme": "R2",
+ "themeLabel": "How much, how fast and how far?",
+ "hlOnly": false,
+ "islOrder": 7,
+ "islUnits": [
+  "3. Stoichiometry (Y12 Oct-Nov)"
+ ],
+ "taughtStatus": "in progress",
+ "statements": {
+  "SL": [
+   "R2.1.1",
+   "R2.1.2",
+   "R2.1.3",
+   "R2.1.4",
+   "R2.1.5"
+  ],
+  "AHL": []
+ },
+ "bigPicture": "A balanced equation is a recipe in moles. The mole ratio converts any measured amount of one substance into the amount of any other, the limiting reactant sets how much product is possible, and percentage yield and atom economy measure how efficient the process is.",
+ "keyIdeas": [
+  {
+   "id": "r21-k1",
+   "ahl": false,
+   "stmt": "R2.1.1",
+   "cue": "How do you write and balance a chemical equation?",
+   "answer": "Write correct formulas for reactants and products, then balance atoms by changing coefficients only (never subscripts). Add state symbols. E.g. 2Al(s) + 3Cl₂(g) → 2AlCl₃(s)."
+  },
+  {
+   "id": "r21-k2",
+   "ahl": false,
+   "stmt": "R2.1.2",
+   "cue": "How do you calculate reacting masses, volumes and concentrations?",
+   "answer": "Three steps: (1) known quantity → moles (n = m/M, n = cV or gas volume); (2) mole ratio from the equation; (3) moles → required quantity. Use the booklet's Ar values. The same method works for titrations: n(acid) from n(base) and the ratio."
+  },
+  {
+   "id": "r21-k3",
+   "ahl": false,
+   "stmt": "R2.1.3",
+   "cue": "What is the limiting reactant?",
+   "answer": "The reactant that runs out first; it fixes the theoretical yield. Find it by dividing moles of each reactant by its coefficient: the smallest result is limiting; the other is in excess. Experimental yield is what you actually obtain."
+  },
+  {
+   "id": "r21-k4",
+   "ahl": false,
+   "stmt": "R2.1.4",
+   "cue": "How is percentage yield calculated, and why is it below 100%?",
+   "answer": "% yield = experimental ÷ theoretical × 100. Losses: incomplete or reversible reaction, side reactions, product left in apparatus or lost on transfer. Over 100% usually means an impure or wet product."
+  },
+  {
+   "id": "r21-k5",
+   "ahl": false,
+   "stmt": "R2.1.5",
+   "cue": "What is atom economy?",
+   "answer": "% atom economy = molar mass of desired product ÷ total molar mass of all reactants × 100 (from the balanced equation). High atom economy means less waste, which is a goal of green chemistry. Addition reactions have 100%; substitutions and eliminations produce by-products."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Stoichiometry",
+   "def": "Quantitative relationship between reactants and products in a reaction."
+  },
+  {
+   "term": "Limiting reactant",
+   "def": "Reactant completely used up; determines the maximum product."
+  },
+  {
+   "term": "Excess reactant",
+   "def": "Reactant left over when the reaction stops."
+  },
+  {
+   "term": "Theoretical yield",
+   "def": "Maximum product mass predicted from the limiting reactant."
+  },
+  {
+   "term": "Percentage yield",
+   "def": "Experimental yield as a percentage of theoretical yield."
+  },
+  {
+   "term": "Atom economy",
+   "def": "Percentage of reactant mass that ends up in the desired product."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Limiting reactant and yield",
+   "prompt": "5.00 g of Mg (Ar 24.31) is added to 100.0 cm³ of 1.00 mol dm⁻³ HCl: Mg + 2HCl → MgCl₂ + H₂. Which is limiting, and what mass of MgCl₂ (M 95.21) forms?",
+   "steps": [
+    "n(Mg) = 5.00/24.31 = 0.206 mol; n(HCl) = 0.100 mol.",
+    "Divide by coefficients: Mg 0.206; HCl 0.100/2 = 0.0500. HCl is limiting.",
+    "n(MgCl₂) = 0.0500 mol; m = 0.0500 × 95.21."
+   ],
+   "answer": "HCl limiting; 4.76 g MgCl₂"
+  },
+  {
+   "title": "Atom economy",
+   "prompt": "Calculate the atom economy for making ethanol by fermentation: C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂ (M: glucose 180.18; ethanol 46.08).",
+   "steps": [
+    "Desired product mass = 2 × 46.08 = 92.16.",
+    "Reactant mass = 180.18.",
+    "92.16/180.18 × 100."
+   ],
+   "answer": "51.1%"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "The reactant with the smaller mass is limiting.",
+   "right": "Compare moles divided by coefficients, not masses."
+  },
+  {
+   "wrong": "A high percentage yield means a high atom economy.",
+   "right": "They are separate: yield measures losses in practice; atom economy measures waste built into the equation."
+  },
+  {
+   "wrong": "You can balance an equation by changing a formula, e.g. H₂O to H₂O₂.",
+   "right": "Only coefficients change; formulas are fixed."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Calculate",
+   "marks": 3,
+   "prompt": "Calculate the mass of CO₂ produced when 10.0 g of CaCO₃ (M 100.09) reacts completely with excess HCl.",
+   "checkpoints": [
+    "n(CaCO₃) = 0.0999 mol",
+    "1 : 1 ratio, so n(CO₂) = 0.0999 mol",
+    "m = 0.0999 × 44.01 = 4.40 g"
+   ]
+  },
+  {
+   "commandTerm": "Determine",
+   "marks": 2,
+   "prompt": "A preparation gives 3.20 g of product; the theoretical yield is 4.00 g. Determine the percentage yield and give one reason it is not 100%.",
+   "checkpoints": [
+    "80.0%",
+    "e.g. incomplete reaction / losses on filtration or transfer / side reactions"
+   ]
+  },
+  {
+   "commandTerm": "Deduce",
+   "marks": 2,
+   "prompt": "Deduce the balanced equation, with state symbols, for the complete combustion of propane.",
+   "checkpoints": [
+    "C₃H₈(g) + 5O₂(g) → 3CO₂(g) + 4H₂O(l)",
+    "State symbols correct"
+   ]
+  }
+ ],
+ "paper1A": [
+  {
+   "stem": "What is the coefficient of O₂ when C₂H₆ + O₂ → CO₂ + H₂O is balanced with whole numbers?",
+   "choices": [
+    "3",
+    "5",
+    "7",
+    "9"
+   ],
+   "answer": 2,
+   "why": "2C₂H₆ + 7O₂ → 4CO₂ + 6H₂O."
+  },
+  {
+   "stem": "0.20 mol H₂ reacts with 0.20 mol O₂: 2H₂ + O₂ → 2H₂O. Which is limiting, and how much H₂O forms?",
+   "choices": [
+    "H₂; 0.20 mol",
+    "H₂; 0.10 mol",
+    "O₂; 0.40 mol",
+    "O₂; 0.20 mol"
+   ],
+   "answer": 0,
+   "why": "H₂ needs only 0.10 mol O₂."
+  },
+  {
+   "stem": "Which reaction type always has 100% atom economy?",
+   "choices": [
+    "Substitution",
+    "Addition",
+    "Elimination",
+    "Neutralisation"
+   ],
+   "answer": 1,
+   "why": "All reactant atoms end up in the single product."
+  }
+ ],
+ "paper1B": [
+  {
+   "data": "Titration results for 25.00 cm³ of NaOH against 0.100 mol dm⁻³ H₂SO₄: rough 13.1 cm³; runs 12.45, 12.50, 12.40 cm³.",
+   "prompt": "Calculate the mean titre (concordant runs) and [NaOH]. H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O.",
+   "answer": "Mean 12.45 cm³ (exclude the rough). n(H₂SO₄) = 1.245 × 10⁻³ mol; n(NaOH) = 2.49 × 10⁻³ mol; [NaOH] = 0.0996 mol dm⁻³."
+  }
+ ],
+ "assessmentNote": "Paper 1A = multiple choice, no calculator; Paper 1B = data-based questions (format from public sources, confirm with the official guide). All prompts here are original practice, not predictions of exam questions.",
+ "errorHints": [
+  {
+   "category": "maths",
+   "hint": "Apply the mole ratio in the right direction: from the equation, 'want ÷ have' coefficients."
+  },
+  {
+   "category": "interpretation",
+   "hint": "In titration data, leave out the rough titre and use concordant results only."
+  },
+  {
+   "category": "data-booklet use",
+   "hint": "Atom economy uses the booklet equation: desired product over ALL reactants, including any reagent that ends up as waste."
+  },
+  {
+   "category": "exam communication",
+   "hint": "Name the limiting reactant explicitly and show the comparison that proves it."
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "S1.4",
+   "prompt": "Which mole relationship do you use for solids, solutions and gases?"
+  },
+  {
+   "to": "R1.3",
+   "prompt": "How do combustion equations link to energy released per mole of fuel?"
+  }
+ ],
+ "dataBooklet": [
+  {
+   "section": 1,
+   "title": "Some relevant equations",
+   "use": "% atom economy equation; n = m/M and n = CV."
+  },
+  {
+   "section": 7,
+   "title": "The periodic table",
+   "use": "Ar values for molar masses."
+  }
+ ],
+ "links": {
+  "checklistKey": "chemistry-hl::library/notes/chemistry-hl/how-much-how-fast-how-far/how-much-the-amount-of-chemical-change.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/chem-structure-1-stoichiometry.json",
+    "itemIds": [
+     "c05",
+     "c06",
+     "c07",
+     "c11",
+     "c18",
+     "c21",
+     "c22",
+     "chx4"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/chem-structure-1-stoichiometry.json",
+    "cardIds": [
+     "fc-chem-s1-06",
+     "fc-chem-s1-07",
+     "fc-chem-s1-14",
+     "fc-chem-s1-18"
+    ]
+   }
+  ],
+  "gap": "No items on atom economy (R2.1.5)."
+ }
+}

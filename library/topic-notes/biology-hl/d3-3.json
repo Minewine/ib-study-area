@@ -1,0 +1,238 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-d3-3",
+ "code": "D3.3",
+ "title": "Homeostasis",
+ "theme": "D",
+ "themeLabel": "Continuity and change",
+ "level": 3,
+ "levelLabel": "Organisms",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "D3.3.1",
+   "D3.3.2",
+   "D3.3.3",
+   "D3.3.4",
+   "D3.3.5",
+   "D3.3.6"
+  ],
+  "AHL": [
+   "D3.3.7",
+   "D3.3.8",
+   "D3.3.9",
+   "D3.3.10",
+   "D3.3.11"
+  ]
+ },
+ "bigPicture": "Homeostasis keeps internal conditions within narrow limits despite a changing environment. Negative feedback detects a change and reverses it, as with blood glucose and body temperature. HL adds the kidney, which controls water balance and removes waste.",
+ "keyIdeas": [
+  {
+   "id": "d33-k1",
+   "ahl": false,
+   "stmt": "D3.3.1",
+   "cue": "What is homeostasis? Give the variables kept constant in humans.",
+   "answer": "Keeping the internal environment within preset limits despite changes outside. Examples: body temperature, blood pH, blood glucose concentration and blood osmotic concentration."
+  },
+  {
+   "id": "d33-k2",
+   "ahl": false,
+   "stmt": "D3.3.2",
+   "cue": "Why does homeostasis use negative feedback?",
+   "answer": "A change away from the set point triggers a response that reverses it, whether the value rises above or falls below. Positive feedback would amplify the change and push the variable further away."
+  },
+  {
+   "id": "d33-k3",
+   "ahl": false,
+   "stmt": "D3.3.3",
+   "cue": "How is blood glucose controlled?",
+   "answer": "High glucose: β cells in the pancreatic islets secrete insulin into the blood; liver and muscle cells take up glucose and store it as glycogen; cells increase glucose uptake. Low glucose: α cells secrete glucagon; the liver breaks glycogen down to glucose and releases it."
+  },
+  {
+   "id": "d33-k4",
+   "ahl": false,
+   "stmt": "D3.3.4",
+   "cue": "Type 1 vs type 2 diabetes?",
+   "answer": "Type 1: autoimmune destruction of β cells, so little or no insulin; usually starts young; treated with insulin injections and monitoring. Type 2: target cells become less responsive to insulin (insulin resistance); risk factors are obesity, inactivity, poor diet, age and genetics; prevented and managed through diet, exercise and weight loss, then drugs (e.g. metformin) and sometimes insulin."
+  },
+  {
+   "id": "d33-k5",
+   "ahl": false,
+   "stmt": "D3.3.5",
+   "cue": "How is body temperature regulated by negative feedback?",
+   "answer": "Peripheral thermoreceptors in the skin (and receptors in the hypothalamus) detect changes. The hypothalamus coordinates responses, including via the pituitary, which stimulates the thyroid to release thyroxin (raises metabolic rate). Effectors include skeletal muscle (shivering), brown adipose tissue (heat) and skin blood vessels and sweat glands."
+  },
+  {
+   "id": "d33-k6",
+   "ahl": false,
+   "stmt": "D3.3.6",
+   "cue": "What are the human mechanisms for heating and cooling?",
+   "answer": "Too cold: vasoconstriction of skin arterioles, shivering, hair erection, uncoupled respiration in brown adipose tissue (heat instead of ATP), plus behaviour. Too hot: vasodilation, sweating (evaporation cools). Birds and mammals use both physiological and behavioural methods."
+  },
+  {
+   "id": "d33-k7",
+   "ahl": true,
+   "stmt": "D3.3.7",
+   "cue": "Excretion vs osmoregulation?",
+   "answer": "Excretion: removing metabolic wastes (e.g. urea). Osmoregulation: controlling the osmotic concentration (osmol L⁻¹) of body fluids. The kidney does both."
+  },
+  {
+   "id": "d33-k8",
+   "ahl": true,
+   "stmt": "D3.3.8",
+   "cue": "What happens in the glomerulus, Bowman's capsule and proximal convoluted tubule?",
+   "answer": "High pressure in the glomerulus forces small molecules (water, glucose, salts, urea) out of the blood into the Bowman's capsule: ultrafiltration (cells and large proteins stay). In the PCT all glucose and amino acids, and most water and salts, are reabsorbed, leaving urea and other unwanted solutes in the filtrate."
+  },
+  {
+   "id": "d33-k9",
+   "ahl": true,
+   "stmt": "D3.3.9",
+   "cue": "What does the loop of Henle do?",
+   "answer": "The ascending limb actively transports Na⁺ out into the medulla, keeping its osmotic concentration high. This allows water to be reabsorbed from the collecting ducts by osmosis."
+  },
+  {
+   "id": "d33-k10",
+   "ahl": true,
+   "stmt": "D3.3.10",
+   "cue": "How is water reabsorbed in the collecting duct?",
+   "answer": "Osmoreceptors in the hypothalamus detect high blood osmotic concentration; the pituitary releases more ADH; ADH causes aquaporins to move from vesicles into collecting duct membranes, so more water is reabsorbed and urine is concentrated. With low osmotic concentration, ADH falls and aquaporins are removed, producing dilute urine."
+  },
+  {
+   "id": "d33-k11",
+   "ahl": true,
+   "stmt": "D3.3.11",
+   "cue": "How does blood supply change with activity?",
+   "answer": "Vigorous exercise: much more to skeletal muscles, less to gut and kidneys, brain stays constant. Rest after a meal: more to the gut. Sleep: lower overall, with the brain's supply maintained. Skin flow changes for temperature control."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Homeostasis",
+   "def": "Maintaining the internal environment within set limits."
+  },
+  {
+   "term": "Negative feedback",
+   "def": "A response that reverses a change from the set point."
+  },
+  {
+   "term": "Insulin",
+   "def": "Hormone from β cells that lowers blood glucose."
+  },
+  {
+   "term": "Glucagon",
+   "def": "Hormone from α cells that raises blood glucose."
+  },
+  {
+   "term": "Ultrafiltration (AHL)",
+   "def": "Pressure filtration of small molecules from glomerular blood."
+  },
+  {
+   "term": "ADH (AHL)",
+   "def": "Pituitary hormone increasing water reabsorption in collecting ducts."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Read a glucose tolerance graph",
+   "prompt": "After a glucose drink, person A's blood glucose returns to normal within 2 h; person B's stays high for 4 h. Suggest why.",
+   "steps": [
+    "In A, insulin secretion and uptake by cells lower glucose quickly.",
+    "In B, either little insulin is made (type 1) or cells don't respond (type 2).",
+    "A further test (insulin levels) would distinguish them."
+   ],
+   "answer": "Person B shows impaired glucose control consistent with diabetes."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Insulin breaks down glucose.",
+   "right": "Insulin stimulates cells to take up glucose and store it as glycogen."
+  },
+  {
+   "wrong": "Sweating cools by releasing warm water.",
+   "right": "Cooling comes from evaporation of sweat."
+  },
+  {
+   "wrong": "Glucagon and glycogen are the same.",
+   "right": "Glucagon is a hormone; glycogen is a storage carbohydrate."
+  },
+  {
+   "wrong": "ADH makes more urine.",
+   "right": "ADH reduces urine volume by increasing water reabsorption."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Explain",
+   "marks": 4,
+   "prompt": "Explain how blood glucose is returned to normal after a meal.",
+   "checkpoints": [
+    "Rise detected by pancreatic β cells",
+    "Insulin secreted into blood",
+    "Liver/muscle cells take up glucose",
+    "Converted to glycogen; negative feedback"
+   ]
+  },
+  {
+   "commandTerm": "Outline",
+   "marks": 4,
+   "prompt": "Outline how the body responds to a fall in core temperature.",
+   "checkpoints": [
+    "Hypothalamus detects / thermoreceptors",
+    "Vasoconstriction in skin",
+    "Shivering",
+    "Brown fat/thyroxin increases heat production; hair erection"
+   ]
+  },
+  {
+   "commandTerm": "Distinguish",
+   "marks": 3,
+   "prompt": "Distinguish between type 1 and type 2 diabetes.",
+   "checkpoints": [
+    "Type 1: no insulin production (β cells destroyed)",
+    "Type 2: insulin resistance",
+    "Treatment: insulin vs lifestyle/drugs"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 4,
+   "prompt": "Explain how ADH regulates water balance.",
+   "checkpoints": [
+    "Osmoreceptors in hypothalamus detect concentration",
+    "Pituitary changes ADH secretion",
+    "Aquaporins inserted in collecting duct membranes",
+    "More water reabsorbed by osmosis; concentrated urine"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "C3.1",
+   "prompt": "How do the nervous and endocrine systems coordinate responses?"
+  },
+  {
+   "to": "C2.1",
+   "prompt": "How does insulin's receptor trigger glucose uptake?"
+  },
+  {
+   "to": "D2.3",
+   "prompt": "How does water potential explain water reabsorption?"
+  },
+  {
+   "to": "B3.2",
+   "prompt": "How is blood redirected to active organs?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/continuity-change/homeostasis.pdf",
+  "quizBanks": [],
+  "decks": [],
+  "gap": "No quiz or deck covers D3.3. Missing everything, including feedback, glucose control, diabetes, thermoregulation and the kidney."
+ }
+}

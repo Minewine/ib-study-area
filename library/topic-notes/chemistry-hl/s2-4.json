@@ -1,0 +1,269 @@
+{
+ "schemaVersion": 1,
+ "subject": "chemistry-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "chem-s2-4",
+ "code": "S2.4",
+ "title": "From models to materials",
+ "theme": "S2",
+ "themeLabel": "Models of bonding and structure",
+ "hlOnly": false,
+ "islOrder": 18,
+ "islUnits": [
+  "4. Bonding (Y13 Oct-Nov)",
+  "10. Organic chemistry (Y13 Nov-Mar)"
+ ],
+ "taughtStatus": "upcoming",
+ "statements": {
+  "SL": [
+   "S2.4.1",
+   "S2.4.2",
+   "S2.4.3",
+   "S2.4.4",
+   "S2.4.5"
+  ],
+  "AHL": [
+   "S2.4.6"
+  ]
+ },
+ "bigPicture": "Real materials rarely fit one bonding type perfectly. The bonding triangle places a substance between ionic, covalent and metallic using electronegativity, and that position predicts its properties. Alloys and polymers show how chemists design materials from these bonding ideas.",
+ "keyIdeas": [
+  {
+   "id": "s24-k1",
+   "ahl": false,
+   "stmt": "S2.4.1",
+   "cue": "Why is bonding a continuum?",
+   "answer": "Ionic, covalent and metallic are idealised models; most substances have a mixture of character. The triangular bonding diagram (data booklet) shows this continuum and lets you explain a material's properties."
+  },
+  {
+   "id": "s24-k2",
+   "ahl": false,
+   "stmt": "S2.4.2",
+   "cue": "How do you place a binary compound on the bonding triangle?",
+   "answer": "x-axis: average electronegativity of the two elements; y-axis: difference in electronegativity. Large difference → ionic (top); small difference with high average → covalent (bottom right); small difference with low average → metallic (bottom left). E.g. NaCl (Δχ 2.3, average 2.05) is ionic; SiCl₄ polar covalent. Predict properties from position. No % ionic character calculations."
+  },
+  {
+   "id": "s24-k3",
+   "ahl": false,
+   "stmt": "S2.4.3",
+   "cue": "What are alloys and why are they useful?",
+   "answer": "Mixtures of a metal with other metals or non-metals (bronze, brass, steel). Different-sized atoms disrupt the regular layers, so layers slide less: harder and stronger; can also resist corrosion (stainless steel). Metallic bonding is non-directional, so different atoms can be mixed in."
+  },
+  {
+   "id": "s24-k4",
+   "ahl": false,
+   "stmt": "S2.4.4",
+   "cue": "How does structure explain the properties of plastics?",
+   "answer": "Polymers are macromolecules of many repeating units (monomers). Long chains tangle and have many London forces → flexible, low density, often strong; usually electrical insulators; most are not biodegradable. Natural polymers include starch, cellulose, proteins and DNA; synthetic include polythene and PVC."
+  },
+  {
+   "id": "s24-k5",
+   "ahl": false,
+   "stmt": "S2.4.5",
+   "cue": "How do addition polymers form?",
+   "answer": "The C=C of each alkene monomer opens and monomers join into a chain; nothing else is produced. Draw the repeating unit by taking the two C=C carbons as a single-bonded unit with continuation bonds through brackets, e.g. poly(chloroethene): –[CH₂–CHCl]ₙ–. Monomers are given or deduced from the polymer."
+  },
+  {
+   "id": "s24-k6",
+   "ahl": true,
+   "stmt": "S2.4.6",
+   "cue": "How do condensation polymers form (AHL)?",
+   "answer": "Monomers with two functional groups join with loss of a small molecule (usually H₂O). Polyesters: diol + dicarboxylic acid → ester links –COO–. Polyamides: diamine + dicarboxylic acid → amide links –CONH–. Biological macromolecules (proteins, polysaccharides, nucleic acids) form by condensation and break down by hydrolysis."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Bonding triangle",
+   "def": "Diagram of average electronegativity against electronegativity difference, with ionic, covalent and metallic corners."
+  },
+  {
+   "term": "Alloy",
+   "def": "Mixture of a metal with other elements, with enhanced properties."
+  },
+  {
+   "term": "Monomer",
+   "def": "Small molecule that joins to form a polymer."
+  },
+  {
+   "term": "Repeating unit",
+   "def": "Section of a polymer that repeats; drawn in brackets with continuation bonds."
+  },
+  {
+   "term": "Addition polymer",
+   "def": "Formed by opening C=C bonds; no other product."
+  },
+  {
+   "term": "Condensation polymer",
+   "def": "Formed with loss of a small molecule such as water (AHL)."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Using the triangle",
+   "prompt": "Electronegativities: Al 1.6, Cl 3.2, O 3.4. Locate AlCl₃ and Al₂O₃.",
+   "steps": [
+    "AlCl₃: average 2.4, difference 1.6 → polar covalent region.",
+    "Al₂O₃: average 2.5, difference 1.8 → border of polar covalent and ionic."
+   ],
+   "answer": "AlCl₃ mainly polar covalent (sublimes at low temperature); Al₂O₃ more ionic (very high melting point)."
+  },
+  {
+   "title": "Repeating unit",
+   "prompt": "Draw the repeating unit of poly(propene) from propene, CH₂=CH–CH₃.",
+   "steps": [
+    "Open the C=C: –CH₂–CH(CH₃)–.",
+    "Put in brackets with continuation bonds."
+   ],
+   "answer": "–[CH₂–CH(CH₃)]ₙ–"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "The CH₃ in propene ends up in the main chain.",
+   "right": "Only the two C=C carbons form the backbone; CH₃ is a side group."
+  },
+  {
+   "wrong": "Alloys are compounds.",
+   "right": "They are mixtures; composition can vary."
+  },
+  {
+   "wrong": "All polymers are synthetic.",
+   "right": "Proteins, starch, cellulose and DNA are natural polymers."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Explain",
+   "marks": 2,
+   "prompt": "Explain why brass is harder than pure copper.",
+   "checkpoints": [
+    "Different-sized zinc atoms disrupt the regular layers",
+    "Layers can't slide as easily"
+   ]
+  },
+  {
+   "commandTerm": "Deduce",
+   "marks": 2,
+   "prompt": "Deduce the monomer of the polymer –[CF₂–CF₂]ₙ–.",
+   "checkpoints": [
+    "Tetrafluoroethene",
+    "CF₂=CF₂"
+   ]
+  },
+  {
+   "commandTerm": "Draw",
+   "marks": 2,
+   "prompt": "Draw the repeating unit of the polyamide formed from H₂N(CH₂)₆NH₂ and HOOC(CH₂)₄COOH and name the small molecule lost.",
+   "checkpoints": [
+    "–[NH(CH₂)₆NH–CO(CH₂)₄CO]– with amide link",
+    "Water"
+   ],
+   "ahl": true
+  }
+ ],
+ "paper1A": [
+  {
+   "stem": "Which substance is closest to the ionic corner of the bonding triangle?",
+   "choices": [
+    "CsF",
+    "CCl₄",
+    "Na",
+    "SiO₂"
+   ],
+   "answer": 0,
+   "why": "Largest electronegativity difference."
+  },
+  {
+   "stem": "What is produced alongside poly(ethene) when ethene polymerises?",
+   "choices": [
+    "Water",
+    "Hydrogen",
+    "Nothing",
+    "HCl"
+   ],
+   "answer": 2,
+   "why": "Addition polymerisation has one product."
+  },
+  {
+   "stem": "Which pair of monomers forms a polyester?",
+   "choices": [
+    "Diol + dicarboxylic acid",
+    "Diamine + dicarboxylic acid",
+    "Two alkenes",
+    "Diol + diamine"
+   ],
+   "answer": 0,
+   "why": "Ester links from –OH and –COOH.",
+   "ahl": true
+  }
+ ],
+ "paper1B": [
+  {
+   "data": "Electronegativity data: Mg 1.3, Si 1.9, S 2.6, O 3.4.",
+   "prompt": "Use the bonding triangle to compare the bonding in MgO and SiO₂ and link to one property of each.",
+   "answer": "MgO: Δχ 2.1, average 2.35 → ionic; conducts when molten. SiO₂: Δχ 1.5, average 2.65 → polar covalent (giant covalent network); very high melting point, doesn't conduct."
+  }
+ ],
+ "assessmentNote": "Paper 1A = multiple choice, no calculator; Paper 1B = data-based questions (format from public sources, confirm with the official guide). All prompts here are original practice, not predictions of exam questions.",
+ "errorHints": [
+  {
+   "category": "data-booklet use",
+   "hint": "Calculate both the average and the difference before reading the triangle."
+  },
+  {
+   "category": "knowledge",
+   "hint": "Repeating units of addition polymers have only single bonds in the backbone."
+  },
+  {
+   "category": "exam communication",
+   "hint": "Draw continuation bonds through the brackets and put n outside."
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "S2.1",
+   "prompt": "How does a large electronegativity difference lead to ionic bonding?"
+  },
+  {
+   "to": "R3.4",
+   "prompt": "What reaction opens the C=C bond during addition polymerisation?"
+  }
+ ],
+ "dataBooklet": [
+  {
+   "section": 17,
+   "title": "Triangular bonding diagram",
+   "use": "Triangular bonding diagram."
+  },
+  {
+   "section": 9,
+   "title": "First ionization energy, electron affinity and electronegativity",
+   "use": "Electronegativities for placing compounds."
+  }
+ ],
+ "links": {
+  "checklistKey": "chemistry-hl::library/notes/chemistry-hl/models-of-bonding-structure/from-models-to-materials.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/chem-organic-chemistry.json",
+    "itemIds": [
+     "o12"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/chem-organic-chemistry.json",
+    "cardIds": [
+     "fc-chem-org-10"
+    ]
+   }
+  ],
+  "gap": "No items on the bonding triangle (S2.4.1–S2.4.2), alloys (S2.4.3), plastics' properties (S2.4.4) or condensation polymers (S2.4.6, AHL)."
+ },
+ "syllabusFlags": [
+  "S2.4.4-6 (polymers) are taught with organic chemistry in Y13."
+ ]
+}

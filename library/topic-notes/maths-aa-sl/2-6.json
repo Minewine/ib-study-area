@@ -1,0 +1,191 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-2-6",
+ "code": "2.6",
+ "title": "The quadratic function",
+ "theme": "2",
+ "themeLabel": "Functions",
+ "hlOnly": false,
+ "islOrder": 8,
+ "islUnits": [
+  "2. Functions and quadratics (Y12 wk 3-8 (Sep-mid Oct 2026))"
+ ],
+ "taughtStatus": "taught",
+ "statements": {
+  "SL": [
+   "2.6.1",
+   "2.6.2",
+   "2.6.3"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "2.6.1",
+   "text": "Standard form: y-intercept and axis of symmetry"
+  },
+  {
+   "id": "2.6.2",
+   "text": "Factorised form: x-intercepts"
+  },
+  {
+   "id": "2.6.3",
+   "text": "Vertex form: vertex and completing the square"
+  }
+ ],
+ "bigPicture": "Every quadratic can be written three ways, and each form shows something different: the y-intercept, the roots, or the vertex.",
+ "keyIdeas": [
+  {
+   "id": "m26-k1",
+   "ahl": false,
+   "stmt": "2.6.1",
+   "cue": "What does ax² + bx + c show directly?",
+   "answer": "y-intercept (0, c); axis x = −b/(2a); opens up if a > 0."
+  },
+  {
+   "id": "m26-k2",
+   "ahl": false,
+   "stmt": "2.6.2",
+   "cue": "What does a(x − p)(x − q) show?",
+   "answer": "x-intercepts (p, 0), (q, 0); axis halfway, x = (p+q)/2."
+  },
+  {
+   "id": "m26-k3",
+   "ahl": false,
+   "stmt": "2.6.3",
+   "cue": "What does a(x − h)² + k show?",
+   "answer": "Vertex (h, k); found by completing the square."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "vertex",
+   "def": "turning point of a parabola"
+  },
+  {
+   "term": "completing the square",
+   "def": "rewriting x² + bx as (x + b/2)² − (b/2)²"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Complete the square",
+   "prompt": "Write 2x² − 12x + 7 in vertex form.",
+   "steps": [
+    "2(x² − 6x) + 7",
+    "2[(x − 3)² − 9] + 7",
+    "2(x − 3)² − 11"
+   ],
+   "answer": "2(x − 3)² − 11, vertex (3, −11)"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Vertex of (x + 2)² − 5 is (2, −5)",
+   "right": "It is (−2, −5): sign flips inside the bracket."
+  },
+  {
+   "wrong": "Forgetting to multiply the −9 by a",
+   "right": "2[(x−3)² − 9] gives −18, not −9."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Find",
+   "marks": 5,
+   "prompt": "f(x) = x² − 4x − 5. (a) Factorise. (b) Write in vertex form. (c) State the range.",
+   "solution": [
+    "(a) (x − 5)(x + 1)",
+    "(b) (x − 2)² − 9",
+    "(c) minimum −9"
+   ],
+   "answer": "(a) (x−5)(x+1) (b) (x−2)²−9 (c) f(x) ≥ −9",
+   "commonErrors": [
+    "Range x ≥ 2",
+    "Vertex form (x − 2)² − 5"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Find",
+   "marks": 4,
+   "prompt": "A ball's height is h = −4.9t² + 14t + 1.5. Find the maximum height and when it occurs.",
+   "solution": [
+    "GDC maximum or t = −b/(2a) = 14/9.8",
+    "t ≈ 1.43 s",
+    "h ≈ 11.5 m"
+   ],
+   "answer": "11.5 m at t ≈ 1.43 s",
+   "commonErrors": [
+    "Using b/(2a) without the minus",
+    "Premature rounding of t"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [
+   {
+    "section": "SL 2.6",
+    "item": "Axis of symmetry x = −b/(2a)"
+   }
+  ],
+  "memorise": [
+   "Factorised form and vertex form and what each reveals",
+   "Completing the square method"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "2.11",
+   "prompt": "Vertex form is a translation of y = x²: by what vector?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/2-functions/2-2-quadratic-functions-graphs.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/math-aa-functions-2-1-to-2-3.json",
+    "itemIds": [
+     "f10",
+     "f11",
+     "f12",
+     "f15",
+     "f21",
+     "f24",
+     "f31",
+     "fnx3"
+    ]
+   },
+   {
+    "file": "library/questions/math-functions-2-4-to-2-5.json",
+    "itemIds": [
+     "tf18"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/math-functions-2-1-to-2-3.json",
+    "cardIds": [
+     "fc-math-fn-05",
+     "fc-math-fn-07"
+    ]
+   },
+   {
+    "file": "library/flashcards/math-functions-2-4-to-2-5.json",
+    "cardIds": [
+     "fc-math-tf-15"
+    ]
+   }
+  ]
+ }
+}

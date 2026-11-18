@@ -1,0 +1,325 @@
+{
+ "schemaVersion": 1,
+ "subject": "chemistry-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "chem-r2-3",
+ "code": "R2.3",
+ "title": "How far? The extent of chemical change",
+ "theme": "R2",
+ "themeLabel": "How much, how fast and how far?",
+ "hlOnly": false,
+ "islOrder": 12,
+ "islUnits": [
+  "7. Equilibrium (Y12 Mar)"
+ ],
+ "taughtStatus": "upcoming",
+ "statements": {
+  "SL": [
+   "R2.3.1",
+   "R2.3.2",
+   "R2.3.3",
+   "R2.3.4"
+  ],
+  "AHL": [
+   "R2.3.5",
+   "R2.3.6",
+   "R2.3.7"
+  ]
+ },
+ "bigPicture": "Many reactions don't go to completion: they reach a dynamic equilibrium where forward and backward reactions run at the same rate. The equilibrium constant K measures how far the reaction gets, and Le Châtelier's principle predicts how the mixture responds when conditions change.",
+ "keyIdeas": [
+  {
+   "id": "r23-k1",
+   "ahl": false,
+   "stmt": "R2.3.1",
+   "cue": "What are the features of dynamic equilibrium?",
+   "answer": "Closed system; forward and reverse rates equal; concentrations (and macroscopic properties such as colour and pressure) constant, but not necessarily equal; both reactions continue. Applies to physical systems (e.g. liquid–vapour in a sealed flask) and chemical ones."
+  },
+  {
+   "id": "r23-k2",
+   "ahl": false,
+   "stmt": "R2.3.2",
+   "cue": "How do you write an equilibrium constant expression?",
+   "answer": "For aA + bB ⇌ cC + dD (homogeneous): K = [C]ᶜ[D]ᵈ / ([A]ᵃ[B]ᵇ), using equilibrium concentrations."
+  },
+  {
+   "id": "r23-k3",
+   "ahl": false,
+   "stmt": "R2.3.3",
+   "cue": "What does the size of K tell you?",
+   "answer": "K ≫ 1: almost complete, products dominate. K > 1: products favoured. K = 1: similar amounts. K < 1: reactants favoured. K ≪ 1: hardly any reaction. K changes only with temperature. For the reverse reaction K' = 1/K; doubling the coefficients squares K."
+  },
+  {
+   "id": "r23-k4",
+   "ahl": false,
+   "stmt": "R2.3.4",
+   "cue": "How does Le Châtelier's principle predict changes?",
+   "answer": "A system at equilibrium responds to partially oppose a change. Adding a reactant → shifts right. Higher pressure → shifts to fewer gas moles. Higher temperature → shifts in the endothermic direction, and K changes (falls for an exothermic forward reaction). A catalyst changes neither the position nor K; equilibrium is just reached faster. Also applies to heterogeneous equilibria such as a gas dissolving, X(g) ⇌ X(aq)."
+  },
+  {
+   "id": "r23-k5",
+   "ahl": true,
+   "stmt": "R2.3.5",
+   "cue": "What is the reaction quotient Q (AHL)?",
+   "answer": "Same expression as K but with concentrations at any moment. Q < K: net forward reaction. Q > K: net reverse. Q = K: at equilibrium."
+  },
+  {
+   "id": "r23-k6",
+   "ahl": true,
+   "stmt": "R2.3.6",
+   "cue": "How do you calculate K or equilibrium concentrations (AHL)?",
+   "answer": "Use an ICE table (Initial, Change, Equilibrium) in mol dm⁻³, with changes in the mole ratio. If K is very small, assume [reactant]eq ≈ [reactant]initial to avoid quadratics (which are not required). Only homogeneous equilibria are assessed."
+  },
+  {
+   "id": "r23-k7",
+   "ahl": true,
+   "stmt": "R2.3.7",
+   "cue": "How is K linked to ΔG⦵ (AHL)?",
+   "answer": "ΔG⦵ = −RT ln K. Large K ↔ large negative ΔG⦵. See also R1.4 for ΔG = ΔG⦵ + RT ln Q."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Dynamic equilibrium",
+   "def": "Forward and reverse rates equal; concentrations constant; closed system."
+  },
+  {
+   "term": "Equilibrium constant, K",
+   "def": "Ratio of product to reactant concentrations at equilibrium, each to the power of its coefficient."
+  },
+  {
+   "term": "Le Châtelier's principle",
+   "def": "An equilibrium shifts to partially counteract an imposed change."
+  },
+  {
+   "term": "Homogeneous equilibrium",
+   "def": "All species in the same phase."
+  },
+  {
+   "term": "Reaction quotient, Q",
+   "def": "Concentration ratio at any moment (AHL)."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Le Châtelier",
+   "prompt": "N₂(g) + 3H₂(g) ⇌ 2NH₃(g), ΔH = −92 kJ mol⁻¹. Predict the effect on yield of NH₃ of (a) raising pressure, (b) raising temperature.",
+   "steps": [
+    "(a) 4 mol gas → 2 mol gas: higher pressure favours the side with fewer gas moles → yield rises.",
+    "(b) Forward is exothermic: higher T favours the endothermic reverse reaction → yield falls and K decreases."
+   ],
+   "answer": "(a) increases; (b) decreases. Industry uses a compromise temperature for an acceptable rate."
+  },
+  {
+   "title": "ICE table (AHL)",
+   "prompt": "1.00 mol H₂ and 1.00 mol I₂ in a 1.00 dm³ flask reach equilibrium with 1.56 mol HI. Calculate K for H₂ + I₂ ⇌ 2HI.",
+   "steps": [
+    "Change: HI +1.56, so H₂ and I₂ each −0.78.",
+    "Equilibrium: [H₂] = [I₂] = 0.22; [HI] = 1.56.",
+    "K = 1.56²/(0.22 × 0.22)."
+   ],
+   "answer": "K ≈ 50"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "At equilibrium the concentrations of reactants and products are equal.",
+   "right": "They are constant, not equal."
+  },
+  {
+   "wrong": "Adding a catalyst increases the equilibrium yield.",
+   "right": "It speeds up both directions equally; yield and K are unchanged."
+  },
+  {
+   "wrong": "Increasing concentration of a reactant changes K.",
+   "right": "Only temperature changes K; the position shifts so that the ratio returns to K."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Deduce",
+   "marks": 1,
+   "prompt": "Deduce the equilibrium constant expression for 2SO₂(g) + O₂(g) ⇌ 2SO₃(g).",
+   "checkpoints": [
+    "K = [SO₃]²/([SO₂]²[O₂])"
+   ]
+  },
+  {
+   "commandTerm": "Predict",
+   "marks": 2,
+   "prompt": "Predict and explain the effect of adding a catalyst on the position of the equilibrium above.",
+   "checkpoints": [
+    "No change in position",
+    "Forward and reverse rates increase equally"
+   ]
+  },
+  {
+   "commandTerm": "Determine",
+   "marks": 2,
+   "prompt": "For a reaction with K = 4.0, a mixture has Q = 10. Determine the direction of net reaction.",
+   "checkpoints": [
+    "Q > K",
+    "Net reverse reaction (towards reactants) until Q = K"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Calculate",
+   "marks": 2,
+   "prompt": "Calculate ΔG⦵ at 298 K for a reaction with K = 1.0 × 10⁻⁵.",
+   "checkpoints": [
+    "ΔG⦵ = −8.31 × 298 × ln(1.0 × 10⁻⁵)",
+    "= +28.5 kJ mol⁻¹"
+   ],
+   "ahl": true
+  }
+ ],
+ "paper1A": [
+  {
+   "stem": "What is the expression for K for H₂(g) + I₂(g) ⇌ 2HI(g)?",
+   "choices": [
+    "[HI]/[H₂][I₂]",
+    "[HI]²/[H₂][I₂]",
+    "[H₂][I₂]/[HI]²",
+    "2[HI]/[H₂][I₂]"
+   ],
+   "answer": 1,
+   "why": "Power = coefficient."
+  },
+  {
+   "stem": "For an exothermic forward reaction, what happens to K when temperature rises?",
+   "choices": [
+    "Increases",
+    "Decreases",
+    "No change",
+    "Becomes zero"
+   ],
+   "answer": 1,
+   "why": "The endothermic reverse is favoured."
+  },
+  {
+   "stem": "K for A ⇌ B is 4. What is K for B ⇌ A?",
+   "choices": [
+    "−4",
+    "0.25",
+    "2",
+    "16"
+   ],
+   "answer": 1,
+   "why": "Reciprocal."
+  },
+  {
+   "stem": "Which change shifts N₂O₄(g) ⇌ 2NO₂(g) to the right?",
+   "choices": [
+    "Higher pressure",
+    "Lower pressure",
+    "Adding a catalyst",
+    "Removing NO₂ has no effect"
+   ],
+   "answer": 1,
+   "why": "Fewer moles on the left; lower pressure favours more moles."
+  }
+ ],
+ "paper1B": [
+  {
+   "data": "Equilibrium data at 700 K for H₂ + I₂ ⇌ 2HI: [H₂] = 0.010, [I₂] = 0.010, [HI] = 0.070 mol dm⁻³. A second mixture has [H₂] = 0.020, [I₂] = 0.020, [HI] = 0.10.",
+   "prompt": "Calculate K and Q for the second mixture, and state the direction of change.",
+   "answer": "K = 0.070²/(0.010 × 0.010) = 49. Q = 0.10²/(0.020 × 0.020) = 25. Q < K, so net forward reaction (more HI forms).",
+   "ahl": true
+  }
+ ],
+ "assessmentNote": "Paper 1A = multiple choice, no calculator; Paper 1B = data-based questions (format from public sources, confirm with the official guide). All prompts here are original practice, not predictions of exam questions.",
+ "errorHints": [
+  {
+   "category": "knowledge",
+   "hint": "Only temperature changes K; catalysts change neither K nor position."
+  },
+  {
+   "category": "interpretation",
+   "hint": "Count gas moles on each side before predicting pressure effects; ignore solids and liquids."
+  },
+  {
+   "category": "maths",
+   "hint": "In ICE tables, use concentrations (divide moles by volume) and apply the mole ratio to the change row."
+  },
+  {
+   "category": "exam communication",
+   "hint": "Predict + justify: give the direction AND the Le Châtelier reason, and say what happens to K."
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "R1.4",
+   "prompt": "How do ΔG⦵ and K describe the same equilibrium (AHL)?"
+  },
+  {
+   "to": "R3.1",
+   "prompt": "How is Ka an equilibrium constant for acid ionisation?"
+  }
+ ],
+ "dataBooklet": [
+  {
+   "section": 1,
+   "title": "Some relevant equations",
+   "use": "ΔG⦵ = −RT ln K (AHL)."
+  },
+  {
+   "section": 2,
+   "title": "Physical constants",
+   "use": "Gas constant R."
+  }
+ ],
+ "links": {
+  "checklistKey": "chemistry-hl::library/notes/chemistry-hl/how-much-how-fast-how-far/how-far-the-extent-of-chemical-change.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/chem-reactivity-2-kinetics-equilibrium.json",
+    "itemIds": [
+     "k08",
+     "k09",
+     "k10",
+     "k11",
+     "k12",
+     "k13",
+     "k14",
+     "k15",
+     "k16",
+     "k17",
+     "k18",
+     "k19",
+     "k20",
+     "k22"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/chem-reactivity-2-kinetics-equilibrium.json",
+    "cardIds": [
+     "fc-chem-r2-06",
+     "fc-chem-r2-07",
+     "fc-chem-r2-08",
+     "fc-chem-r2-09",
+     "fc-chem-r2-10",
+     "fc-chem-r2-11",
+     "fc-chem-r2-12",
+     "fc-chem-r2-13",
+     "fc-chem-r2-14",
+     "fc-chem-r2-15",
+     "fc-chem-r2-16",
+     "fc-chem-r2-17",
+     "fc-chem-r2-19"
+    ]
+   },
+   {
+    "file": "library/flashcards/chem-reactivity-1-energetics.json",
+    "cardIds": [
+     "fc-chem-r1-18"
+    ]
+   }
+  ],
+  "gap": "No items on K calculations with ICE tables (R2.3.6) or on ΔG⦵ = −RT ln K (R2.3.7); Q is covered (k17, fc-chem-r2-14)."
+ }
+}

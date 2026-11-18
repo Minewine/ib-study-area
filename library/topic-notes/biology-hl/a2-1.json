@@ -1,0 +1,212 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-a2-1",
+ "code": "A2.1",
+ "title": "Origins of cells",
+ "theme": "A",
+ "themeLabel": "Unity and diversity",
+ "level": 2,
+ "levelLabel": "Cells",
+ "hlOnly": true,
+ "statements": {
+  "SL": [],
+  "AHL": [
+   "A2.1.1",
+   "A2.1.2",
+   "A2.1.3",
+   "A2.1.4",
+   "A2.1.5",
+   "A2.1.6",
+   "A2.1.7",
+   "A2.1.8",
+   "A2.1.9"
+  ]
+ },
+ "bigPicture": "Life probably arose from chemistry on an oxygen-free early Earth. The key steps were self-assembling membranes, self-replicating RNA, and a last universal common ancestor near hydrothermal vents.",
+ "keyIdeas": [
+  {
+   "id": "a21-k1",
+   "ahl": true,
+   "stmt": "A2.1.1",
+   "cue": "What were conditions on early Earth and what did they allow?",
+   "answer": "No free oxygen, so no ozone layer, so UV light reached the surface. More carbon dioxide and methane, so it was warmer. Under these conditions carbon compounds could form spontaneously, by chemistry that doesn't happen now."
+  },
+  {
+   "id": "a21-k2",
+   "ahl": true,
+   "stmt": "A2.1.2",
+   "cue": "What makes something living, and why are viruses non-living?",
+   "answer": "Cells are the smallest units that carry out all life functions themselves (metabolism, growth, reproduction and so on). Viruses have no metabolism and can only reproduce inside a host cell, so they are considered non-living."
+  },
+  {
+   "id": "a21-k3",
+   "ahl": true,
+   "stmt": "A2.1.3",
+   "cue": "What had to evolve before the first cells, and why is this hard to test?",
+   "answer": "Catalysis, self-replicating molecules, self-assembly and compartmentalisation. Pre-biotic conditions can't be exactly recreated and protocells didn't fossilise, so the hypotheses are hard to test."
+  },
+  {
+   "id": "a21-k4",
+   "ahl": true,
+   "stmt": "A2.1.4",
+   "cue": "Evaluate the Miller–Urey experiment.",
+   "answer": "Sparks were passed through a mixture of methane, ammonia, hydrogen and water vapour, and amino acids and other organic compounds formed. Strength: organic molecules can form from inorganic ones without life. Limits: the gas mixture may not match early Earth's atmosphere, and no polymers or cells formed."
+  },
+  {
+   "id": "a21-k5",
+   "ahl": true,
+   "stmt": "A2.1.5",
+   "cue": "How could the first compartments form?",
+   "answer": "Fatty acids spontaneously come together into spherical bilayers (vesicles). A membrane lets the chemistry inside become different from the outside."
+  },
+  {
+   "id": "a21-k6",
+   "ahl": true,
+   "stmt": "A2.1.6",
+   "cue": "Why was RNA probably the first genetic material?",
+   "answer": "RNA can store information, be replicated and catalyse reactions (ribozymes), so it could act as both gene and enzyme. Ribozymes in ribosomes still form peptide bonds today."
+  },
+  {
+   "id": "a21-k7",
+   "ahl": true,
+   "stmt": "A2.1.7",
+   "cue": "What is the evidence for LUCA?",
+   "answer": "The universal genetic code and genes shared by all organisms. Other early life forms probably existed but were out-competed by LUCA and its descendants and went extinct."
+  },
+  {
+   "id": "a21-k8",
+   "ahl": true,
+   "stmt": "A2.1.8",
+   "cue": "How are the first cells and LUCA dated?",
+   "answer": "Fossils and rocks are dated radiometrically, and differences in gene sequences are used as a molecular clock. Life has been evolving for billions of years (estimates for the first cells are about 3.5–4 billion years ago)."
+  },
+  {
+   "id": "a21-k9",
+   "ahl": true,
+   "stmt": "A2.1.9",
+   "cue": "Why do we think LUCA lived near hydrothermal vents?",
+   "answer": "Fossilised traces of life have been found in ancient seafloor vent precipitates. Genes conserved across all life suggest an ancestor adapted to hot, oxygen-free conditions rich in chemical energy."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Protocell",
+   "def": "Hypothetical membrane-bound precursor of the first cell."
+  },
+  {
+   "term": "Ribozyme",
+   "def": "RNA molecule that acts as a catalyst."
+  },
+  {
+   "term": "LUCA",
+   "def": "Last universal common ancestor of all living organisms."
+  },
+  {
+   "term": "Pre-biotic",
+   "def": "Before life existed."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Evaluate an experiment",
+   "prompt": "Using Miller–Urey, evaluate whether organic molecules could form on early Earth.",
+   "steps": [
+    "State the method: reducing gases plus sparks plus water cycling.",
+    "Result: amino acids formed.",
+    "Strength: shows abiotic synthesis is possible.",
+    "Limitation: the atmosphere may have differed; no polymers or cells; can't prove it happened."
+   ],
+   "answer": "Supports the possibility but doesn't prove how life began."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Miller–Urey created life.",
+   "right": "It produced organic molecules, not cells."
+  },
+  {
+   "wrong": "Early Earth had an oxygen-rich atmosphere.",
+   "right": "There was no free oxygen. Oxygen came later from photosynthesis."
+  },
+  {
+   "wrong": "LUCA was the first living cell.",
+   "right": "LUCA was the most recent ancestor shared by all life now, not necessarily the first cell."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Outline",
+   "marks": 3,
+   "prompt": "Outline the evidence for RNA as the first genetic material.",
+   "checkpoints": [
+    "Can store information as a base sequence",
+    "Can self-replicate",
+    "Can catalyse reactions (ribozymes, e.g. in ribosomes)"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Discuss",
+   "marks": 4,
+   "prompt": "Discuss the challenges of explaining the origin of cells.",
+   "checkpoints": [
+    "Cells now only arise from pre-existing cells",
+    "Need catalysis, self-replication, self-assembly and compartmentalisation",
+    "Early Earth conditions can't be replicated",
+    "No fossils of protocells, so hypotheses are hard to test"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "A1.2",
+   "prompt": "Which features of RNA make it a candidate first genetic material?"
+  },
+  {
+   "to": "A2.2",
+   "prompt": "How did eukaryotes arise from prokaryotes?"
+  },
+  {
+   "to": "A1.1",
+   "prompt": "Why did life begin in water?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/unity-diversity/origins-of-cells.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/bio-water-potential-origin-cells.json",
+    "itemIds": [
+     "oc01",
+     "oc02",
+     "oc04",
+     "oc05",
+     "oc06",
+     "oc12",
+     "oc14",
+     "oc15",
+     "oc16",
+     "wpx8"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/bio-water-potential-origin-cells.json",
+    "cardIds": [
+     "fc-bio-wp-11",
+     "fc-bio-wp-12",
+     "fc-bio-wp-15",
+     "fc-bio-wp-16",
+     "fc-bio-wp-17"
+    ]
+   }
+  ],
+  "gap": "Likely untested: AHL A2.1.2 (cells as the smallest unit of life), A2.1.5 (spontaneous vesicle formation), A2.1.6 (RNA as the first genetic material)."
+ }
+}

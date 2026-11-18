@@ -1,0 +1,381 @@
+{
+ "schemaVersion": 1,
+ "subject": "chemistry-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "chem-r2-2",
+ "code": "R2.2",
+ "title": "How fast? The rate of chemical change",
+ "theme": "R2",
+ "themeLabel": "How much, how fast and how far?",
+ "hlOnly": false,
+ "islOrder": 11,
+ "islUnits": [
+  "6. Kinetics (Y12 Feb-Mar)"
+ ],
+ "taughtStatus": "upcoming",
+ "statements": {
+  "SL": [
+   "R2.2.1",
+   "R2.2.2",
+   "R2.2.3",
+   "R2.2.4",
+   "R2.2.5"
+  ],
+  "AHL": [
+   "R2.2.6",
+   "R2.2.7",
+   "R2.2.8",
+   "R2.2.9",
+   "R2.2.10",
+   "R2.2.11",
+   "R2.2.12",
+   "R2.2.13"
+  ]
+ },
+ "bigPicture": "Rate is how fast concentration changes. Particles must collide with enough energy (at least Ea) and the right orientation, so anything that increases the number of successful collisions per second (concentration, pressure, surface area, temperature, a catalyst) speeds the reaction up. At HL you also measure exactly how rate depends on concentration and temperature, and use that to test mechanisms.",
+ "keyIdeas": [
+  {
+   "id": "r22-k1",
+   "ahl": false,
+   "stmt": "R2.2.1",
+   "cue": "How is rate defined and measured?",
+   "answer": "Rate = change in concentration (or mass, volume) of a reactant or product per unit time, e.g. mol dm⁻³ s⁻¹. From a concentration–time graph, the rate at any moment is the gradient of the tangent; the initial rate is the tangent at t = 0. Methods: gas volume, mass loss, colour (colorimeter), conductivity, time to a fixed point."
+  },
+  {
+   "id": "r22-k2",
+   "ahl": false,
+   "stmt": "R2.2.2",
+   "cue": "What does collision theory say?",
+   "answer": "Particles react only if they collide with energy ≥ Ea and with a suitable orientation (geometry). Higher absolute temperature means higher average kinetic energy."
+  },
+  {
+   "id": "r22-k3",
+   "ahl": false,
+   "stmt": "R2.2.3",
+   "cue": "How do conditions affect rate?",
+   "answer": "Higher concentration or gas pressure → more frequent collisions. Larger surface area (powder) → more collisions at the surface. Higher temperature → more frequent collisions and, much more importantly, a larger fraction with E ≥ Ea. Catalyst → lower Ea pathway."
+  },
+  {
+   "id": "r22-k4",
+   "ahl": false,
+   "stmt": "R2.2.4",
+   "cue": "What does a Maxwell–Boltzmann distribution show?",
+   "answer": "Number of particles against kinetic energy; starts at the origin, has a peak, and a long tail that never touches the x-axis. Area under the curve = total number of particles. At higher T the peak moves right and lower, area unchanged, and the area beyond Ea grows a lot."
+  },
+  {
+   "id": "r22-k5",
+   "ahl": false,
+   "stmt": "R2.2.5",
+   "cue": "How do catalysts work?",
+   "answer": "They provide an alternative pathway with lower Ea, so a larger fraction of collisions succeed; they are not used up and do not change ΔH or the position of equilibrium. Draw both energy profiles (catalysed hump lower) and mark the lower Ea on the Maxwell–Boltzmann curve. Enzymes are biological catalysts."
+  },
+  {
+   "id": "r22-k6",
+   "ahl": true,
+   "stmt": "R2.2.6",
+   "cue": "What is a reaction mechanism and the rate-determining step (AHL)?",
+   "answer": "A sequence of elementary steps adding up to the overall equation. The slowest step decides the rate (rate-determining step, RDS); it need not be the first step. Intermediates are formed in one step and used in a later one (they sit in the energy 'valleys'); transition states are the unstable peaks. A valid mechanism must agree with the stoichiometry and the rate equation."
+  },
+  {
+   "id": "r22-k7",
+   "ahl": true,
+   "stmt": "R2.2.7",
+   "cue": "How do energy profiles show a multistep reaction (AHL)?",
+   "answer": "One hump per step; the highest-Ea hump is the rate-determining step; intermediates sit in the dips between humps."
+  },
+  {
+   "id": "r22-k8",
+   "ahl": true,
+   "stmt": "R2.2.8",
+   "cue": "What is molecularity (AHL)?",
+   "answer": "Number of particles reacting in one elementary step: unimolecular (1), bimolecular (2), termolecular (3, rare)."
+  },
+  {
+   "id": "r22-k9",
+   "ahl": true,
+   "stmt": "R2.2.9, R2.2.10",
+   "cue": "How are rate equations and orders found (AHL)?",
+   "answer": "Rate = k[A]ᵐ[B]ⁿ, found only by experiment. From initial-rate data: double [A] with [B] fixed; rate ×1 → order 0, ×2 → 1, ×4 → 2. Overall order = m + n. Graphs: concentration–time is a straight downward line for zero order, a curve with constant half-life for first order, a steeper curve for second order. Rate–concentration: horizontal line (0), straight line through origin (1), upward curve (2). The orders show which species (and how many) are in the RDS."
+  },
+  {
+   "id": "r22-k10",
+   "ahl": true,
+   "stmt": "R2.2.11",
+   "cue": "What are the units of k (AHL)?",
+   "answer": "Work them out from rate = k × concentrations: zero order mol dm⁻³ s⁻¹; first order s⁻¹; second order dm³ mol⁻¹ s⁻¹; third order dm⁶ mol⁻² s⁻¹. k rises with temperature."
+  },
+  {
+   "id": "r22-k11",
+   "ahl": true,
+   "stmt": "R2.2.12, R2.2.13",
+   "cue": "How does the Arrhenius equation give Ea and A (AHL)?",
+   "answer": "k = A e^(−Ea/RT); linear form ln k = −Ea/(RT) + ln A. Plot ln k against 1/T: gradient = −Ea/R (so Ea = −gradient × 8.31, in J mol⁻¹) and y-intercept = ln A. A (the Arrhenius factor) represents how often collisions happen with the correct orientation."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Rate of reaction",
+   "def": "Change in concentration per unit time."
+  },
+  {
+   "term": "Activation energy, Ea",
+   "def": "Minimum energy colliding particles need to react."
+  },
+  {
+   "term": "Catalyst",
+   "def": "Increases rate via a lower-Ea pathway; unchanged at the end."
+  },
+  {
+   "term": "Rate-determining step",
+   "def": "Slowest step in a mechanism (AHL)."
+  },
+  {
+   "term": "Intermediate",
+   "def": "Species formed then used up within a mechanism (AHL)."
+  },
+  {
+   "term": "Order of reaction",
+   "def": "Power to which a concentration is raised in the rate equation (AHL)."
+  },
+  {
+   "term": "Rate constant, k",
+   "def": "Proportionality constant in the rate equation; depends on temperature (AHL)."
+  },
+  {
+   "term": "Arrhenius factor, A",
+   "def": "Frequency factor reflecting collisions with correct orientation (AHL)."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Orders from initial rates (AHL)",
+   "prompt": "Exp 1: [A] 0.10, [B] 0.10, rate 2.0 × 10⁻³. Exp 2: [A] 0.20, [B] 0.10, rate 8.0 × 10⁻³. Exp 3: [A] 0.10, [B] 0.20, rate 2.0 × 10⁻³ (mol dm⁻³ s⁻¹). Find the rate equation and k.",
+   "steps": [
+    "A doubled, rate ×4: second order in A.",
+    "B doubled, rate unchanged: zero order in B.",
+    "Rate = k[A]²; k = 2.0 × 10⁻³ / 0.10²."
+   ],
+   "answer": "rate = k[A]²; k = 0.20 dm³ mol⁻¹ s⁻¹"
+  },
+  {
+   "title": "Ea from an Arrhenius plot (AHL)",
+   "prompt": "A plot of ln k against 1/T has gradient −6.00 × 10³ K. Calculate Ea.",
+   "steps": [
+    "Gradient = −Ea/R.",
+    "Ea = 6.00 × 10³ × 8.31 = 4.99 × 10⁴ J mol⁻¹."
+   ],
+   "answer": "≈ 49.9 kJ mol⁻¹"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Raising temperature speeds reactions mainly because particles collide more often.",
+   "right": "The main effect is the much larger fraction of collisions with E ≥ Ea."
+  },
+  {
+   "wrong": "A catalyst shifts the Maxwell–Boltzmann curve.",
+   "right": "The curve is unchanged; the Ea line moves left so more particles exceed it."
+  },
+  {
+   "wrong": "Orders come from the balanced equation's coefficients.",
+   "right": "Orders are found experimentally; they match coefficients only for the RDS of an elementary step."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain, using a Maxwell–Boltzmann distribution, why a 10 K rise in temperature can roughly double the rate.",
+   "checkpoints": [
+    "Curve at higher T: peak lower and moved right, same area",
+    "Many more particles have E ≥ Ea (area beyond Ea larger)",
+    "So the frequency of successful collisions increases greatly"
+   ]
+  },
+  {
+   "commandTerm": "Determine",
+   "marks": 2,
+   "prompt": "Describe how to determine the initial rate from a graph of [product] against time.",
+   "checkpoints": [
+    "Draw a tangent to the curve at t = 0",
+    "Gradient = Δconcentration/Δtime"
+   ]
+  },
+  {
+   "commandTerm": "Deduce",
+   "marks": 3,
+   "prompt": "Rate = k[NO₂]² for NO₂ + CO → NO + CO₂. Suggest a two-step mechanism consistent with this.",
+   "checkpoints": [
+    "Step 1 (slow): NO₂ + NO₂ → NO₃ + NO",
+    "Step 2 (fast): NO₃ + CO → NO₂ + CO₂",
+    "RDS involves two NO₂; CO not in RDS; steps sum to overall equation"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "State",
+   "marks": 1,
+   "prompt": "State the units of k for a third-order reaction.",
+   "checkpoints": [
+    "dm⁶ mol⁻² s⁻¹"
+   ],
+   "ahl": true
+  }
+ ],
+ "paper1A": [
+  {
+   "stem": "Why does a powder react faster than a lump of the same mass?",
+   "choices": [
+    "Higher Ea",
+    "Larger surface area",
+    "Higher concentration of particles inside",
+    "Lower ΔH"
+   ],
+   "answer": 1,
+   "why": "More particles exposed for collisions."
+  },
+  {
+   "stem": "What does a catalyst change?",
+   "choices": [
+    "ΔH",
+    "The position of equilibrium",
+    "Ea",
+    "The Maxwell–Boltzmann curve"
+   ],
+   "answer": 2,
+   "why": "Only the pathway and Ea."
+  },
+  {
+   "stem": "Rate = k[X][Y]². What happens to the rate if both [X] and [Y] double?",
+   "choices": [
+    "×2",
+    "×4",
+    "×6",
+    "×8"
+   ],
+   "answer": 3,
+   "why": "2 × 2² = 8.",
+   "ahl": true
+  },
+  {
+   "stem": "Which units are correct for k in rate = k[A]?",
+   "choices": [
+    "s⁻¹",
+    "mol dm⁻³ s⁻¹",
+    "dm³ mol⁻¹ s⁻¹",
+    "mol⁻¹ s⁻¹"
+   ],
+   "answer": 0,
+   "why": "First order.",
+   "ahl": true
+  }
+ ],
+ "paper1B": [
+  {
+   "data": "Volume of CO₂ from marble chips + HCl: t/s 0, 30, 60, 90, 120, 150; V/cm³ 0, 28, 46, 57, 62, 62.",
+   "prompt": "Describe how the rate changes and explain why it stops; estimate the average rate in the first 30 s.",
+   "answer": "Rate decreases as acid is used up (fewer collisions per second) and stops when the limiting reactant is gone (at about 120 s). Average rate over the first 30 s ≈ 28/30 = 0.93 cm³ s⁻¹."
+  },
+  {
+   "data": "ln k against 1/T data: 1/T = 3.30 × 10⁻³ K⁻¹, ln k = −5.0; 1/T = 3.10 × 10⁻³ K⁻¹, ln k = −3.8.",
+   "prompt": "Calculate Ea.",
+   "answer": "Gradient = (−3.8 + 5.0)/(3.10 − 3.30) × 10³ = −6.0 × 10³ K; Ea = 6.0 × 10³ × 8.31 ≈ 50 kJ mol⁻¹.",
+   "ahl": true
+  }
+ ],
+ "assessmentNote": "Paper 1A = multiple choice, no calculator; Paper 1B = data-based questions (format from public sources, confirm with the official guide). All prompts here are original practice, not predictions of exam questions.",
+ "errorHints": [
+  {
+   "category": "interpretation",
+   "hint": "On Maxwell–Boltzmann sketches keep the area the same and never let the curve touch the x-axis."
+  },
+  {
+   "category": "maths",
+   "hint": "Arrhenius: Ea comes out in J mol⁻¹; divide by 1000 for kJ, and keep the gradient's sign straight."
+  },
+  {
+   "category": "data-booklet use",
+   "hint": "Use the linear Arrhenius form from the booklet; don't rearrange from memory."
+  },
+  {
+   "category": "exam communication",
+   "hint": "For temperature effects say 'greater proportion of collisions with E ≥ Ea', not just 'more energy'."
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "R2.3",
+   "prompt": "How can a catalyst speed up reaching equilibrium without changing K?"
+  },
+  {
+   "to": "R3.4",
+   "prompt": "How do SN1 and SN2 rate equations reveal the mechanism (AHL)?"
+  }
+ ],
+ "dataBooklet": [
+  {
+   "section": 1,
+   "title": "Some relevant equations",
+   "use": "Arrhenius equation and its linear form (AHL)."
+  },
+  {
+   "section": 2,
+   "title": "Physical constants",
+   "use": "Gas constant R."
+  },
+  {
+   "section": 4,
+   "title": "Unit conversions and standard conditions",
+   "use": "Kelvin conversion."
+  }
+ ],
+ "links": {
+  "checklistKey": "chemistry-hl::library/notes/chemistry-hl/how-much-how-fast-how-far/how-fast-the-rate-of-chemical-change.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/chem-reactivity-2-kinetics-equilibrium.json",
+    "itemIds": [
+     "k01",
+     "k02",
+     "k03",
+     "k04",
+     "k05",
+     "k06",
+     "k07",
+     "k21"
+    ]
+   },
+   {
+    "file": "library/questions/chem-reactivity-1-energetics.json",
+    "itemIds": [
+     "r103",
+     "r1x3"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/chem-reactivity-2-kinetics-equilibrium.json",
+    "cardIds": [
+     "fc-chem-r2-01",
+     "fc-chem-r2-02",
+     "fc-chem-r2-03",
+     "fc-chem-r2-04",
+     "fc-chem-r2-05",
+     "fc-chem-r2-18"
+    ]
+   },
+   {
+    "file": "library/flashcards/chem-reactivity-1-energetics.json",
+    "cardIds": [
+     "fc-chem-r1-03",
+     "fc-chem-r1-13",
+     "fc-chem-r1-19"
+    ]
+   }
+  ],
+  "gap": "No quiz items or flashcards for any AHL kinetics: mechanisms, rate equations, orders, k units, Arrhenius (R2.2.6–R2.2.13)."
+ }
+}

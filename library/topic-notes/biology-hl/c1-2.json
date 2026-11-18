@@ -1,0 +1,297 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-c1-2",
+ "code": "C1.2",
+ "title": "Cell respiration",
+ "theme": "C",
+ "themeLabel": "Interaction and interdependence",
+ "level": 1,
+ "levelLabel": "Molecules",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "C1.2.1",
+   "C1.2.2",
+   "C1.2.3",
+   "C1.2.4",
+   "C1.2.5",
+   "C1.2.6"
+  ],
+  "AHL": [
+   "C1.2.7",
+   "C1.2.8",
+   "C1.2.9",
+   "C1.2.10",
+   "C1.2.11",
+   "C1.2.12",
+   "C1.2.13",
+   "C1.2.14",
+   "C1.2.15",
+   "C1.2.16",
+   "C1.2.17"
+  ]
+ },
+ "bigPicture": "Respiration releases energy from organic compounds bit by bit to make ATP. At HL, follow the hydrogen: NAD carries it to the electron transport chain, where a proton gradient drives ATP synthase and oxygen takes the electrons.",
+ "keyIdeas": [
+  {
+   "id": "c12-k1",
+   "ahl": false,
+   "stmt": "C1.2.1",
+   "cue": "What is ATP and why is it a good energy currency?",
+   "answer": "Adenosine triphosphate, a nucleotide (adenine, ribose, three phosphates). It is soluble and moves easily around the cell, stable until an enzyme hydrolyses it, releases an amount of energy that suits many cell tasks, and is quickly regenerated."
+  },
+  {
+   "id": "c12-k2",
+   "ahl": false,
+   "stmt": "C1.2.2",
+   "cue": "Which processes use ATP?",
+   "answer": "Active transport, synthesis of macromolecules (anabolism), and movement, both of whole cells and of parts such as chromosomes."
+  },
+  {
+   "id": "c12-k3",
+   "ahl": false,
+   "stmt": "C1.2.3",
+   "cue": "Energy changes in ATP ⇌ ADP?",
+   "answer": "ATP → ADP + phosphate releases energy (hydrolysis). ADP + phosphate → ATP needs energy, supplied by respiration."
+  },
+  {
+   "id": "c12-k4",
+   "ahl": false,
+   "stmt": "C1.2.4",
+   "cue": "What is cell respiration, and how is it different from gas exchange?",
+   "answer": "Respiration is the enzyme-controlled release of energy from carbon compounds (mainly glucose and fatty acids, but many others too) to make ATP, inside cells. Gas exchange is the movement of O₂ and CO₂ across an exchange surface."
+  },
+  {
+   "id": "c12-k5",
+   "ahl": false,
+   "stmt": "C1.2.5",
+   "cue": "Compare aerobic and anaerobic respiration in humans.",
+   "answer": "Aerobic: glucose (also lipids and others), needs O₂, high ATP yield, makes CO₂ and water, happens in the cytoplasm and mitochondria. Anaerobic: glucose only, no O₂, small yield (2 ATP per glucose), makes lactate, cytoplasm only. Word equations: glucose + oxygen → carbon dioxide + water; glucose → lactate."
+  },
+  {
+   "id": "c12-k6",
+   "ahl": false,
+   "stmt": "C1.2.6",
+   "cue": "How can you measure the rate of respiration?",
+   "answer": "Measure O₂ uptake (respirometer, with CO₂ absorbed by soda lime or KOH) or CO₂ release per unit time per unit mass. Variables include temperature, substrate and O₂ availability. Rate = change ÷ time."
+  },
+  {
+   "id": "c12-k7",
+   "ahl": true,
+   "stmt": "C1.2.7",
+   "cue": "What is oxidation here, and what does NAD do?",
+   "answer": "Oxidation is loss of electrons, often by removing hydrogen (dehydrogenation). NAD accepts the hydrogen and is reduced. Redox means one substance is oxidised while another is reduced."
+  },
+  {
+   "id": "c12-k8",
+   "ahl": true,
+   "stmt": "C1.2.8",
+   "cue": "Summarise glycolysis.",
+   "answer": "In the cytoplasm, in steps, each catalysed by a different enzyme: phosphorylation (2 ATP used), lysis into two 3-C molecules, oxidation (NAD reduced), ATP formation. The result is 2 pyruvate, a net 2 ATP and 2 reduced NAD per glucose."
+  },
+  {
+   "id": "c12-k9",
+   "ahl": true,
+   "stmt": "C1.2.9",
+   "cue": "Why do human muscles make lactate?",
+   "answer": "Without O₂, pyruvate is reduced to lactate, which regenerates NAD so glycolysis can continue (net 2 ATP per glucose)."
+  },
+  {
+   "id": "c12-k10",
+   "ahl": true,
+   "stmt": "C1.2.10",
+   "cue": "How does yeast's anaerobic respiration differ, and why do we use it?",
+   "answer": "Same glycolysis, but pyruvate is converted to ethanol and CO₂, which regenerates NAD. Brewing uses the ethanol. Baking uses the CO₂ to raise dough (the ethanol evaporates)."
+  },
+  {
+   "id": "c12-k11",
+   "ahl": true,
+   "stmt": "C1.2.11",
+   "cue": "What is the link reaction?",
+   "answer": "In the mitochondrial matrix, pyruvate (3C) is decarboxylated (CO₂ released) and oxidised (NAD reduced). The 2C acetyl group is carried by coenzyme A into the Krebs cycle. Lipids also give acetyl groups."
+  },
+  {
+   "id": "c12-k12",
+   "ahl": true,
+   "stmt": "C1.2.12",
+   "cue": "What happens in the Krebs cycle?",
+   "answer": "Acetyl (2C) + oxaloacetate (4C) → citrate (6C). Two decarboxylations and four oxidations (dehydrogenations) regenerate oxaloacetate, giving CO₂, reduced NAD and a little ATP."
+  },
+  {
+   "id": "c12-k13",
+   "ahl": true,
+   "stmt": "C1.2.13",
+   "cue": "How does reduced NAD pass on energy?",
+   "answer": "It gives a pair of electrons to the first carrier of the electron transport chain (inner membrane), becoming NAD again. Reduced NAD comes from glycolysis, the link reaction and the Krebs cycle."
+  },
+  {
+   "id": "c12-k14",
+   "ahl": true,
+   "stmt": "C1.2.14–C1.2.15",
+   "cue": "How is ATP made by chemiosmosis?",
+   "answer": "Electrons flowing along the chain release energy used to pump protons from the matrix into the intermembrane space, creating a gradient. Protons diffuse back through ATP synthase, which uses this energy to phosphorylate ADP into ATP."
+  },
+  {
+   "id": "c12-k15",
+   "ahl": true,
+   "stmt": "C1.2.16",
+   "cue": "What is the role of oxygen?",
+   "answer": "Terminal electron acceptor: it combines with electrons from the chain and protons from the matrix to form water. Without O₂, electrons stop flowing and ATP production by the chain stops."
+  },
+  {
+   "id": "c12-k16",
+   "ahl": true,
+   "stmt": "C1.2.17",
+   "cue": "Lipids vs carbohydrates as respiratory substrates?",
+   "answer": "Lipids yield more energy per gram, because they contain less oxygen and more oxidisable C and H. Only carbohydrate can go through glycolysis and anaerobic respiration. Fatty acids are broken into 2C acetyl groups that enter as acetyl-CoA."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "ATP",
+   "def": "Adenosine triphosphate: nucleotide that distributes energy in cells."
+  },
+  {
+   "term": "Anaerobic respiration",
+   "def": "Respiration without oxygen; only glycolysis yields ATP."
+  },
+  {
+   "term": "Chemiosmosis (AHL)",
+   "def": "ATP synthesis driven by protons diffusing through ATP synthase."
+  },
+  {
+   "term": "Decarboxylation (AHL)",
+   "def": "Removal of CO₂ from a molecule."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Respirometer rate",
+   "prompt": "A respirometer with germinating seeds (5.0 g) shows the fluid moving 24 mm in 10 min along a tube of cross-section 1 mm². Calculate the O₂ uptake rate per gram.",
+   "steps": [
+    "Volume = 24 mm × 1 mm² = 24 mm³.",
+    "Per minute: 24 ÷ 10 = 2.4 mm³ min⁻¹.",
+    "Per gram: 2.4 ÷ 5.0 = 0.48 mm³ g⁻¹ min⁻¹."
+   ],
+   "answer": "0.48 mm³ O₂ g⁻¹ min⁻¹ (CO₂ absorbed by KOH, so movement shows O₂ uptake)."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Respiration is breathing.",
+   "right": "Respiration is a chemical process in cells. Breathing is ventilation, and gas exchange is separate again."
+  },
+  {
+   "wrong": "Anaerobic respiration makes no ATP.",
+   "right": "It makes 2 ATP per glucose, from glycolysis."
+  },
+  {
+   "wrong": "Oxygen is used in the Krebs cycle.",
+   "right": "O₂ is used only at the end of the electron transport chain."
+  },
+  {
+   "wrong": "Lactate production makes ATP.",
+   "right": "It only regenerates NAD so glycolysis can continue."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Distinguish",
+   "marks": 3,
+   "prompt": "Distinguish between aerobic and anaerobic respiration in humans.",
+   "checkpoints": [
+    "O₂ needed vs not",
+    "Large vs small (2) ATP yield",
+    "CO₂ + water vs lactate",
+    "Mitochondria + cytoplasm vs cytoplasm only"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 4,
+   "prompt": "Explain how ATP is produced by chemiosmosis in mitochondria.",
+   "checkpoints": [
+    "Electrons from reduced NAD pass along the electron transport chain",
+    "Energy pumps protons into the intermembrane space",
+    "Proton gradient; protons diffuse back through ATP synthase",
+    "ATP synthase phosphorylates ADP; O₂ is the final acceptor"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Outline",
+   "marks": 3,
+   "prompt": "Outline the link reaction.",
+   "checkpoints": [
+    "Pyruvate decarboxylated (CO₂ released)",
+    "Oxidised, NAD reduced",
+    "Acetyl group joined to coenzyme A, entering the Krebs cycle"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "B2.2",
+   "prompt": "How is the mitochondrion adapted for chemiosmosis?"
+  },
+  {
+   "to": "C1.3",
+   "prompt": "How do photophosphorylation and oxidative phosphorylation compare?"
+  },
+  {
+   "to": "C4.2",
+   "prompt": "Why is respiration a source of heat loss in food chains?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/interaction-interdependence/cell-respiration.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/bio-respiration-protein-synthesis.json",
+    "itemIds": [
+     "rs01",
+     "rs02",
+     "rs03",
+     "rs04",
+     "rs05",
+     "rs06",
+     "rs07",
+     "rs08",
+     "rs09",
+     "rs10",
+     "wp01",
+     "rxx1",
+     "rxx2",
+     "rxx3",
+     "rxx4",
+     "rxx5"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/bio-respiration-protein-synthesis.json",
+    "cardIds": [
+     "fc-bio-rs-01",
+     "fc-bio-rs-02",
+     "fc-bio-rs-03",
+     "fc-bio-rs-04",
+     "fc-bio-rs-05",
+     "fc-bio-rs-06",
+     "fc-bio-rs-07",
+     "fc-bio-rs-08",
+     "fc-bio-rs-09",
+     "fc-bio-rs-10",
+     "fc-bio-rs-11",
+     "fc-bio-rs-18"
+    ]
+   }
+  ],
+  "gap": "Likely untested: ATP's role and ATP–ADP energy transfers (C1.2.1, C1.2.3) and variables affecting respiration rate (C1.2.6)."
+ }
+}

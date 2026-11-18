@@ -1,0 +1,227 @@
+{
+ "schemaVersion": 1,
+ "subject": "biology-hl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "bio-d1-1",
+ "code": "D1.1",
+ "title": "DNA replication",
+ "theme": "D",
+ "themeLabel": "Continuity and change",
+ "level": 1,
+ "levelLabel": "Molecules",
+ "hlOnly": false,
+ "statements": {
+  "SL": [
+   "D1.1.1",
+   "D1.1.2",
+   "D1.1.3",
+   "D1.1.4",
+   "D1.1.5"
+  ],
+  "AHL": [
+   "D1.1.6",
+   "D1.1.7",
+   "D1.1.8",
+   "D1.1.9"
+  ]
+ },
+ "bigPicture": "DNA replication makes exact copies of a cell's DNA before it divides. Each strand acts as a template, so every new molecule keeps one old strand. PCR copies DNA in a test tube, and gel electrophoresis sorts the copies by size; HL adds the enzymes and the leading and lagging strands.",
+ "keyIdeas": [
+  {
+   "id": "d11-k1",
+   "ahl": false,
+   "stmt": "D1.1.1",
+   "cue": "Why does DNA need to be replicated?",
+   "answer": "To make exact copies with identical base sequences, needed for reproduction and for growth and tissue replacement in multicellular organisms."
+  },
+  {
+   "id": "d11-k2",
+   "ahl": false,
+   "stmt": "D1.1.2",
+   "cue": "What does semi-conservative mean and why is replication accurate?",
+   "answer": "Each new DNA molecule has one original (template) strand and one new strand. Complementary base pairing (A–T, G–C) means each new base is determined by the template, so copies are highly accurate."
+  },
+  {
+   "id": "d11-k3",
+   "ahl": false,
+   "stmt": "D1.1.3",
+   "cue": "What do helicase and DNA polymerase do?",
+   "answer": "Helicase unwinds the double helix and breaks the hydrogen bonds between bases, separating the strands. DNA polymerase links free nucleotides, paired with the template, into a new strand."
+  },
+  {
+   "id": "d11-k4",
+   "ahl": false,
+   "stmt": "D1.1.4",
+   "cue": "How do PCR and gel electrophoresis work?",
+   "answer": "PCR amplifies DNA by repeated cycles: about 95 °C to separate strands, about 55 °C so primers (short single strands complementary to the ends of the target) bind and mark where copying starts, about 72 °C for heat-stable Taq polymerase to extend them. Each cycle doubles the target. Gel electrophoresis: DNA is negatively charged, so in an electric field fragments move through the gel towards the positive electrode; smaller fragments move further."
+  },
+  {
+   "id": "d11-k5",
+   "ahl": false,
+   "stmt": "D1.1.5",
+   "cue": "What are PCR and gel electrophoresis used for?",
+   "answer": "DNA profiling for forensic cases and paternity tests, diagnosing infections (e.g. COVID-19 tests), detecting genetic disease, and research. Using more markers in profiling lowers the chance of a false match."
+  },
+  {
+   "id": "d11-k6",
+   "ahl": true,
+   "stmt": "D1.1.6",
+   "cue": "Which direction does DNA polymerase work?",
+   "answer": "Each strand has a 5′ end (phosphate) and a 3′ end (–OH on the sugar). DNA polymerase adds the 5′ phosphate end of a new nucleotide to the 3′ end of the growing strand, so new strands always grow 5′→3′."
+  },
+  {
+   "id": "d11-k7",
+   "ahl": true,
+   "stmt": "D1.1.7",
+   "cue": "Leading vs lagging strand?",
+   "answer": "Leading strand: made continuously towards the replication fork, needing an RNA primer only once. Lagging strand: made discontinuously away from the fork in short Okazaki fragments, each needing its own RNA primer."
+  },
+  {
+   "id": "d11-k8",
+   "ahl": true,
+   "stmt": "D1.1.8",
+   "cue": "What do primase, DNA pol III, DNA pol I and ligase do (prokaryotes)?",
+   "answer": "Primase makes short RNA primers. DNA polymerase III extends primers by adding DNA nucleotides 5′→3′. DNA polymerase I removes the RNA primers and replaces them with DNA. DNA ligase seals the gaps between fragments by forming the final sugar–phosphate bond."
+  },
+  {
+   "id": "d11-k9",
+   "ahl": true,
+   "stmt": "D1.1.9",
+   "cue": "How is DNA proofread?",
+   "answer": "DNA polymerase III checks each new base. If the base at the 3′ end is mismatched, it removes that nucleotide and replaces it with the correct one."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Semi-conservative",
+   "def": "Each new DNA molecule keeps one parental strand."
+  },
+  {
+   "term": "Helicase",
+   "def": "Enzyme that unwinds DNA and breaks hydrogen bonds between strands."
+  },
+  {
+   "term": "Primer",
+   "def": "Short strand that gives DNA polymerase a starting 3′ end."
+  },
+  {
+   "term": "Taq polymerase",
+   "def": "Heat-stable DNA polymerase from a hot-spring bacterium, used in PCR."
+  },
+  {
+   "term": "Okazaki fragment (AHL)",
+   "def": "Short DNA section made on the lagging strand."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "PCR copies",
+   "prompt": "A sample contains 10 copies of a target sequence. How many copies are there after 20 PCR cycles?",
+   "steps": [
+    "Each cycle doubles the number.",
+    "Copies = 10 × 2²⁰.",
+    "2²⁰ = 1 048 576."
+   ],
+   "answer": "About 1.05 × 10⁷ copies (roughly 10 million)."
+  },
+  {
+   "title": "Reading a DNA profile",
+   "prompt": "A child's profile has bands at 3, 5 and 7 kb. The mother has bands at 3 and 9 kb. Which bands must come from the father?",
+   "steps": [
+    "Every band in the child must come from the mother or the father.",
+    "3 kb matches the mother.",
+    "5 and 7 kb aren't in the mother's profile."
+   ],
+   "answer": "5 and 7 kb must come from the father; a possible father must have both."
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Replication produces one old and one entirely new molecule.",
+   "right": "Each molecule is half old, half new (semi-conservative)."
+  },
+  {
+   "wrong": "DNA polymerase can start a strand from nothing.",
+   "right": "It needs a primer with a free 3′ end."
+  },
+  {
+   "wrong": "In gel electrophoresis large fragments move furthest.",
+   "right": "Small fragments move furthest through the gel."
+  },
+  {
+   "wrong": "Helicase joins the fragments together.",
+   "right": "Helicase unwinds; ligase joins Okazaki fragments."
+  }
+ ],
+ "practice": [
+  {
+   "commandTerm": "Outline",
+   "marks": 3,
+   "prompt": "Outline the steps of the polymerase chain reaction.",
+   "checkpoints": [
+    "Denaturation ~95 °C separates strands",
+    "Annealing ~55 °C: primers bind",
+    "Extension ~72 °C: Taq polymerase builds new strands; cycle repeats"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 3,
+   "prompt": "Explain how gel electrophoresis separates DNA fragments.",
+   "checkpoints": [
+    "DNA is negatively charged (phosphate groups)",
+    "Moves towards positive electrode through the gel",
+    "Smaller fragments move faster/further"
+   ]
+  },
+  {
+   "commandTerm": "Explain",
+   "marks": 5,
+   "prompt": "Explain the differences between replication of the leading and lagging strands.",
+   "checkpoints": [
+    "Polymerase only works 5′→3′",
+    "Leading strand continuous towards fork",
+    "Lagging strand discontinuous, Okazaki fragments",
+    "Primers once on leading, repeatedly on lagging",
+    "DNA pol I replaces primers, ligase joins fragments"
+   ],
+   "ahl": true
+  },
+  {
+   "commandTerm": "Describe",
+   "marks": 2,
+   "prompt": "Describe how DNA polymerase III proofreads DNA.",
+   "checkpoints": [
+    "Detects mismatched base at 3′ end",
+    "Removes it and inserts the correct nucleotide"
+   ],
+   "ahl": true
+  }
+ ],
+ "linkingQuestions": [
+  {
+   "to": "A1.2",
+   "prompt": "How does base pairing make DNA a good template?"
+  },
+  {
+   "to": "D2.1",
+   "prompt": "Why must DNA be replicated before mitosis or meiosis?"
+  },
+  {
+   "to": "D1.3",
+   "prompt": "What happens when replication errors are not corrected?"
+  },
+  {
+   "to": "C1.1",
+   "prompt": "Why does PCR need a heat-stable enzyme?"
+  }
+ ],
+ "links": {
+  "checklistKey": "biology-hl::library/notes/biology-hl/continuity-change/dna-replication.pdf",
+  "quizBanks": [],
+  "decks": [],
+  "gap": "No quiz bank or flashcard deck covers D1.1 at all (only b15, on when replication happens, is in D2.1)."
+ }
+}
