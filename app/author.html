@@ -112,15 +112,18 @@
 
   <section class="card">
     <h3>4 · Backup &amp; move between devices</h3>
-    <p class="muted">Everything you upload plus all progress lives in this browser. Export it as a file before switching devices — and import the file on the new one.</p>
-    <button id="export-btn" class="btn primary">Download my content (JSON)</button>
-    <input type="file" id="import-file" accept=".json" style="margin-left:.5rem">
+    <p class="muted">Logged in, everything syncs on its own. The backup file holds all progress and uploads in this browser (quiz, cards, missed questions, checklists, lists, notes). Restoring shows what's in the file and <strong>merges</strong> it in by default, after saving a safety copy; older exports from this page still work.</p>
+    <button id="export-btn" class="btn primary">Download full backup (JSON)</button>
+    <label class="btn" for="import-file" style="margin-left:.5rem">Restore from file…</label><input type="file" id="import-file" accept=".json,application/json" style="display:none">
+    <button id="undo-restore" class="btn" style="margin-left:.5rem">Undo last restore</button>
+    <div id="restore-panel"></div>
     <p class="muted" style="margin-top:.5rem">Tip: to make an uploaded bank permanent for all devices, save its JSON into <code>library/questions/</code> (or <code>library/flashcards/</code>) and add one line to the matching <code>manifest.json</code> — see docs/AUTHORING.md.</p>
   </section>
 </main>
 <footer>Private family use · exams <strong>May 2028</strong> · keep this app and its content non-public</footer>
 
 <script src="../assets/store.js?v=1"></script>
+<script src="../assets/backup.js?v=1"></script>
 <script>
 (function () {
   "use strict";
@@ -277,45 +280,28 @@
     a.click();
     URL.revokeObjectURL(a.href);
   }
+  // full backup / safe restore (assets/backup.js) — replaces the v2 export and the
+  // import that overwrote seven keys without validation or a safety copy
+  const BK = () => window.NB && window.NB.backup;
   document.getElementById("export-btn").addEventListener("click", () => {
-    const payload = {
-      version: 2,
-      exported: new Date().toISOString().slice(0, 10),
-      qUserBanks: store.get(QBANKS, []),
-      fcUserDecks: store.get(FDECKS, []),
-      fcState: store.get("fc-state", {}),
-      fcUser: store.get("fc-user", []),
-      fcDeleted: store.get("fc-deleted", []),
-      fcEdits: store.get("fc-edits", {}),
-      quizlog: store.get("quizlog", [])
-    };
-    const blob = new Blob([JSON.stringify(payload, null, 1)], { type: "application/json" });
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "practice-user-content.json";
-    a.click();
-    URL.revokeObjectURL(a.href);
+    if (!BK()) return alert("Reload the page to use backup and restore.");
+    BK().download();
   });
   document.getElementById("import-file").addEventListener("change", (e) => {
     const f = e.target.files[0];
     if (!f) return;
+    if (!BK()) return alert("Reload the page to use backup and restore.");
     const reader = new FileReader();
-    reader.onload = () => {
-      try {
-        const data = JSON.parse(reader.result);
-        if (data.qUserBanks) store.set(QBANKS, data.qUserBanks);
-        if (data.fcUserDecks) store.set(FDECKS, data.fcUserDecks);
-        if (data.fcState) store.set("fc-state", data.fcState);
-        if (data.fcUser) store.set("fc-user", data.fcUser);
-        if (data.fcDeleted) store.set("fc-deleted", data.fcDeleted);
-        if (data.fcEdits) store.set("fc-edits", data.fcEdits);
-        if (data.quizlog) store.set("quizlog", data.quizlog);
-        renderManage();
-        alert("Imported. Reload the Quiz and Cards pages to see everything.");
-      } catch (err) { alert("Could not import: " + err.message); }
-    };
+    reader.onload = () => BK().openRestore(String(reader.result), document.getElementById("restore-panel"), (r) => { if (r && r.ok) renderManage(); });
     reader.readAsText(f);
     e.target.value = "";
+  });
+  document.getElementById("undo-restore").addEventListener("click", () => {
+    if (!BK()) return alert("Reload the page to use backup and restore.");
+    if (!confirm("Bring back this browser's data from just before the last restore?")) return;
+    const r = BK().undoLast();
+    if (r.ok) { alert("Done \u2014 restored the safety copy from " + r.restoredFrom + "."); location.reload(); }
+    else alert(r.error);
   });
 
   // ---------- quiz item editor ----------
