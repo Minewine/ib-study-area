@@ -258,7 +258,7 @@ async function init() {
 
   function saveLog(pct, got, max, label) {
     const log = store.get("quizlog", []);
-    log.unshift({ date: new Date().toISOString().slice(0, 10), label, pct, got, max });
+    log.unshift({ date: today(), label, pct, got, max, ts: Date.now() }); // local date; ts keeps two identical sessions distinct in the sync merge
     store.set("quizlog", log.slice(0, 20));
   }
   function renderLog() {

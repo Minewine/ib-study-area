@@ -1,18 +1,12 @@
-// Run: node tests/js/auth-merge.test.js   (no dependencies)
-// Unit tests for auth.js per-record merge (runs auth.js in a vm with minimal stubs)
-const fs = require("fs"), vm = require("vm"), assert = require("assert");
-const path = require("path");
-const src = fs.readFileSync(process.argv[2] || path.join(__dirname, "../../assets/auth.js"), "utf8");
-const ls = new Map();
-const ctx = {
-  window: {}, console, URLSearchParams, setTimeout, clearTimeout, setInterval,
-  location: { search: "", hostname: "example.org" },
-  document: { readyState: "loading", addEventListener() {}, getElementById() { return null; } },
-  localStorage: { getItem: k => ls.has(k) ? ls.get(k) : null, setItem: (k, v) => ls.set(k, String(v)), removeItem: k => ls.delete(k), key: i => [...ls.keys()][i], get length() { return ls.size; } },
-};
-vm.createContext(ctx); vm.runInContext(src, ctx);
+// Per-record merge rules as used by sync (auth.js mergeValue → NB.merge.RECORDS).
+// Run: node --test tests/js/*.test.js   (no dependencies)
+const assert = require("assert");
+const nodeTest = require("node:test");
+const { makeEnv } = require("./harness");
+const env = makeEnv({ fetch: () => Promise.reject(new Error("offline")) }).load("store.js").load("auth.js");
+const ctx = env.ctx;
 const M = ctx.window.Auth.mergeValue;
-let n = 0; const t = (name, fn) => { fn(); n++; console.log("ok -", name); };
+const t = (name, fn) => nodeTest(name, fn);
 
 t("fc-state: union of cards from both devices", () => {
   const a = { c1: { box: 2, due: "2026-11-20", seen: 2, t: 100 } };
@@ -62,6 +56,7 @@ t("missing local/server values fall back safely", () => {
   assert.strictEqual(JSON.stringify(M("fc-state", { a: { seen: 1 } }, null)), JSON.stringify({ a: { seen: 1 } }));
 });
 t("non-merge keys keep server-wins behaviour", () => {
-  assert.strictEqual(JSON.stringify(M("quizlog", [1], [2])), JSON.stringify([2]));
+  assert.strictEqual(JSON.stringify(M("tok-objects", { items: [1] }, { items: [2] })), JSON.stringify({ items: [2] }));
+  assert.strictEqual(JSON.stringify(M("quizlog", [{ date: "b" }], [{ date: "a" }])), JSON.stringify([{ date: "b" }, { date: "a" }]), "quizlog is now a union");
 });
-console.log(`\n${n} merge tests passed`);
+
