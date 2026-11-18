@@ -1,0 +1,186 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-5-6",
+ "code": "5.6",
+ "title": "Further differentiation rules",
+ "theme": "5",
+ "themeLabel": "Calculus",
+ "hlOnly": false,
+ "islOrder": 30,
+ "islUnits": [
+  "7. Further differentiation (Y12 wk 28-30 (Apr-May 2027))"
+ ],
+ "taughtStatus": "later",
+ "statements": {
+  "SL": [
+   "5.6.1",
+   "5.6.2",
+   "5.6.3",
+   "5.6.4"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "5.6.1",
+   "text": "Derivatives of x^n, sin x, cos x, e^x and ln x"
+  },
+  {
+   "id": "5.6.2",
+   "text": "Sums and multiples"
+  },
+  {
+   "id": "5.6.3",
+   "text": "Chain rule"
+  },
+  {
+   "id": "5.6.4",
+   "text": "Product and quotient rules"
+  }
+ ],
+ "bigPicture": "Five standard derivatives and three rules (chain, product, quotient) let you differentiate any function in the course. Spot the structure first, then apply the rule.",
+ "keyIdeas": [
+  {
+   "id": "m56-k1",
+   "ahl": false,
+   "stmt": "5.6.1",
+   "cue": "Standard derivatives?",
+   "answer": "x^n → nx^(n−1); sin x → cos x; cos x → −sin x; e^x → e^x; ln x → 1/x."
+  },
+  {
+   "id": "m56-k2",
+   "ahl": false,
+   "stmt": "5.6.2",
+   "cue": "Sums and multiples?",
+   "answer": "Differentiate term by term; constants multiply through: (kf)′ = kf′."
+  },
+  {
+   "id": "m56-k3",
+   "ahl": false,
+   "stmt": "5.6.3",
+   "cue": "Chain rule?",
+   "answer": "For y = f(g(x)): dy/dx = f′(g(x)) × g′(x), i.e. dy/du × du/dx. Example: e^(3x) → 3e^(3x); sin(x²) → 2x cos(x²)."
+  },
+  {
+   "id": "m56-k4",
+   "ahl": false,
+   "stmt": "5.6.4",
+   "cue": "Product and quotient rules?",
+   "answer": "Product: (uv)′ = uv′ + vu′. Quotient: (u/v)′ = (vu′ − uv′)/v²."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "composite function",
+   "def": "a function of a function, f(g(x))"
+  },
+  {
+   "term": "inner function",
+   "def": "g(x) in f(g(x)); its derivative multiplies the result"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Product",
+   "prompt": "Differentiate y = x²e^(3x).",
+   "steps": [
+    "u = x², v = e^(3x): u′ = 2x, v′ = 3e^(3x)",
+    "y′ = 3x²e^(3x) + 2xe^(3x)"
+   ],
+   "answer": "y′ = xe^(3x)(3x + 2)"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "d/dx cos x = sin x",
+   "right": "It is −sin x."
+  },
+  {
+   "wrong": "Quotient numerator uv′ − vu′",
+   "right": "It is vu′ − uv′: the order matters."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Find",
+   "marks": 6,
+   "prompt": "Differentiate (a) sin(4x − 1) (b) ln(x² + 1) (c) x/(x + 2).",
+   "solution": [
+    "(a) chain: 4cos(4x − 1)",
+    "(b) 2x/(x² + 1)",
+    "(c) ((x + 2) − x)/(x + 2)²"
+   ],
+   "answer": "(a) 4cos(4x − 1) (b) 2x/(x² + 1) (c) 2/(x + 2)²",
+   "commonErrors": [
+    "Forgetting the inner derivative",
+    "Quotient rule sign error"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Find",
+   "marks": 4,
+   "prompt": "f(x) = e^(2x) cos x. Find f′(x) and the gradient of the curve at x = 1.",
+   "solution": [
+    "f′(x) = 2e^(2x) cos x − e^(2x) sin x",
+    "= e^(2x)(2cos x − sin x)",
+    "x = 1, radians"
+   ],
+   "answer": "f′(1) ≈ 1.77",
+   "commonErrors": [
+    "Degree mode",
+    "Missing the factor 2"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [
+   {
+    "section": "SL 5.6",
+    "item": "Derivatives of sin x, cos x, e^x and ln x; chain rule, product rule and quotient rule"
+   }
+  ],
+  "memorise": [
+   "Spotting product vs composite",
+   "Radian mode for trig derivatives"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "5.10",
+   "prompt": "How do you reverse the chain rule when integrating?"
+  },
+  {
+   "to": "5.8",
+   "prompt": "Which new functions can you now optimise?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/5-calculus/5-2-further-differentiation.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/math-aa-topic5-calculus.json",
+    "itemIds": [
+     "c508"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/math-topic5-calculus.json",
+    "cardIds": [
+     "fc-math-ca-09"
+    ]
+   }
+  ]
+ }
+}

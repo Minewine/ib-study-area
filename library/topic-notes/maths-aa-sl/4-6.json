@@ -1,0 +1,185 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-4-6",
+ "code": "4.6",
+ "title": "Combined, conditional and independent events",
+ "theme": "4",
+ "themeLabel": "Statistics and probability",
+ "hlOnly": false,
+ "islOrder": 41,
+ "islUnits": [
+  "10. Probability (Y13 wk 12-15 (Nov-Dec 2027))"
+ ],
+ "taughtStatus": "later",
+ "statements": {
+  "SL": [
+   "4.6.1",
+   "4.6.2",
+   "4.6.3",
+   "4.6.4"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "4.6.1",
+   "text": "Venn, tree and sample-space diagrams and tables of outcomes"
+  },
+  {
+   "id": "4.6.2",
+   "text": "Combined and mutually exclusive events"
+  },
+  {
+   "id": "4.6.3",
+   "text": "Conditional probability from diagrams and tables"
+  },
+  {
+   "id": "4.6.4",
+   "text": "Independent events"
+  }
+ ],
+ "bigPicture": "Combined events need a diagram: Venn diagrams for overlaps, trees for sequences, tables for two-way data. The diagram makes the rules almost automatic.",
+ "keyIdeas": [
+  {
+   "id": "m46-k1",
+   "ahl": false,
+   "stmt": "4.6.1",
+   "cue": "Which diagram for which problem?",
+   "answer": "Venn diagram: overlapping events in one trial. Tree diagram: events in sequence (multiply along branches, add complete paths). Sample-space diagram or table: two dice, two-way data."
+  },
+  {
+   "id": "m46-k2",
+   "ahl": false,
+   "stmt": "4.6.2",
+   "cue": "Combined and mutually exclusive events?",
+   "answer": "P(A ∪ B) = P(A) + P(B) − P(A ∩ B). Mutually exclusive events cannot happen together: P(A ∩ B) = 0, so P(A ∪ B) = P(A) + P(B)."
+  },
+  {
+   "id": "m46-k3",
+   "ahl": false,
+   "stmt": "4.6.3",
+   "cue": "Conditional probability from a diagram?",
+   "answer": "P(A | B): restrict to the outcomes in B, then find the fraction of them also in A. On a tree, second-stage branches are already conditional."
+  },
+  {
+   "id": "m46-k4",
+   "ahl": false,
+   "stmt": "4.6.4",
+   "cue": "Independent events?",
+   "answer": "A and B are independent if one happening does not change the probability of the other: P(A ∩ B) = P(A)P(B)."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "mutually exclusive",
+   "def": "cannot occur together"
+  },
+  {
+   "term": "independent",
+   "def": "the occurrence of one does not affect the probability of the other"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Venn",
+   "prompt": "P(A) = 0.5, P(B) = 0.4, P(A ∩ B) = 0.15. Find P(A only) and P(neither).",
+   "steps": [
+    "A only: 0.5 − 0.15 = 0.35",
+    "P(A ∪ B) = 0.75, neither 0.25"
+   ],
+   "answer": "0.35; 0.25"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Mutually exclusive means independent",
+   "right": "If P(A), P(B) > 0, mutually exclusive events are dependent: one happening makes the other impossible."
+  },
+  {
+   "wrong": "Adding along tree branches",
+   "right": "Multiply along branches; add between paths."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Determine",
+   "marks": 4,
+   "prompt": "P(A) = 0.5, P(B) = 0.4 and P(A ∪ B) = 0.7. Find P(A ∩ B) and determine whether A and B are independent.",
+   "solution": [
+    "P(A ∩ B) = 0.5 + 0.4 − 0.7 = 0.2",
+    "P(A)P(B) = 0.2"
+   ],
+   "answer": "0.2; independent, since P(A ∩ B) = P(A)P(B)",
+   "commonErrors": [
+    "Concluding without comparing numbers",
+    "Assuming mutually exclusive"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Find",
+   "marks": 5,
+   "prompt": "60% of students take the bus. 10% of bus users are late, and 25% of other students are late. (a) Find P(late). (b) Given that a student is late, find the probability they took the bus.",
+   "solution": [
+    "tree: 0.6 × 0.1 = 0.06; 0.4 × 0.25 = 0.10",
+    "P(late) = 0.16",
+    "P(bus | late) = 0.06/0.16"
+   ],
+   "answer": "(a) 0.16 (b) 0.375",
+   "commonErrors": [
+    "P(bus | late) = 0.1",
+    "Forgetting the non-bus branch"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [
+   {
+    "section": "SL 4.6",
+    "item": "Formulas for combined events, mutually exclusive events, conditional probability and independent events"
+   }
+  ],
+  "memorise": [
+   "Which diagram to draw",
+   "Multiply along, add between"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "4.11",
+   "prompt": "How does the formula for P(A | B) give a test for independence?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/4-statistics-probability/4-3-probability.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/math-aa-topic4-statistics.json",
+    "itemIds": [
+     "s410",
+     "s411"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/math-topic4-statistics.json",
+    "cardIds": [
+     "fc-math-st-10",
+     "fc-math-st-11",
+     "fc-math-st-13",
+     "fc-math-st-14"
+    ]
+   }
+  ]
+ }
+}

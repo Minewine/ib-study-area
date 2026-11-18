@@ -1,0 +1,169 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-3-7",
+ "code": "3.7",
+ "title": "Circular functions and their graphs",
+ "theme": "3",
+ "themeLabel": "Geometry and trigonometry",
+ "hlOnly": false,
+ "islOrder": 28,
+ "islUnits": [
+  "6. Trig equations and functions (Y12 wk 23-27 (Mar-Apr 2027))"
+ ],
+ "taughtStatus": "later",
+ "statements": {
+  "SL": [
+   "3.7.1",
+   "3.7.2",
+   "3.7.3"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "3.7.1",
+   "text": "Graphs, amplitude and period of sin, cos and tan"
+  },
+  {
+   "id": "3.7.2",
+   "text": "Functions of the form a sin(b(x+c))+d and transformations"
+  },
+  {
+   "id": "3.7.3",
+   "text": "Periodic models in real contexts"
+  }
+ ],
+ "bigPicture": "Sine and cosine repeat, so they model anything periodic: tides, daylight, a Ferris wheel. Every parameter in a sin(b(x + c)) + d has a meaning you can read from a graph.",
+ "keyIdeas": [
+  {
+   "id": "m37-k1",
+   "ahl": false,
+   "stmt": "3.7.1",
+   "cue": "Amplitude and period of sin, cos and tan?",
+   "answer": "sin x and cos x: amplitude 1, period 2π (360°), range −1 to 1. tan x: period π (180°), no amplitude, vertical asymptotes at x = π/2 + kπ."
+  },
+  {
+   "id": "m37-k2",
+   "ahl": false,
+   "stmt": "3.7.2",
+   "cue": "Effect of a, b, c and d in y = a sin(b(x + c)) + d?",
+   "answer": "|a| is the amplitude; the period is 2π/b; c translates the graph left by c (right if c < 0); d translates it up, so the principal axis is y = d. Maximum d + |a|, minimum d − |a|."
+  },
+  {
+   "id": "m37-k3",
+   "ahl": false,
+   "stmt": "3.7.3",
+   "cue": "How do you build a periodic model from data?",
+   "answer": "d = (max + min)/2; a = (max − min)/2; b = 2π/period; then choose c, or use cos, so a maximum or minimum falls at the right time."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "period",
+   "def": "horizontal length of one complete cycle"
+  },
+  {
+   "term": "principal axis",
+   "def": "the horizontal line y = d halfway between max and min"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Read the parameters",
+   "prompt": "y = 3 sin(2(x − π/4)) + 1",
+   "steps": [
+    "amplitude 3; period 2π/2 = π",
+    "translated π/4 right and 1 up"
+   ],
+   "answer": "max 4, min −2, period π"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "The period of sin 2x is 4π",
+   "right": "Period = 2π/b = π."
+  },
+  {
+   "wrong": "sin(x + π/3) moves the graph right",
+   "right": "It moves it π/3 to the left."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Write down",
+   "marks": 3,
+   "prompt": "f(x) = 4 cos(3x) − 1. Write down the amplitude, the period and the range of f.",
+   "solution": [
+    "amplitude |4|",
+    "period 2π/3",
+    "range d ± a"
+   ],
+   "answer": "4; 2π/3; −5 ≤ f(x) ≤ 3",
+   "commonErrors": [
+    "Period 6π",
+    "Range −4 to 4"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Find",
+   "marks": 4,
+   "prompt": "The depth of water in a harbour is d(t) = 2.5 sin(0.5t) + 6 metres, t hours after midnight. (a) Find the maximum depth. (b) Find the times in the first 12 hours when the depth is 7 m.",
+   "solution": [
+    "max 6 + 2.5",
+    "sin(0.5t) = 0.4",
+    "GDC intersect y = 7: t = 0.823 or 5.46"
+   ],
+   "answer": "(a) 8.5 m (b) t ≈ 0.823 h and 5.46 h",
+   "commonErrors": [
+    "Giving only the first solution",
+    "GDC in degree mode"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [],
+  "memorise": [
+   "Period 2π/b and amplitude |a|",
+   "Shapes of the sin, cos and tan graphs"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "2.11",
+   "prompt": "Which 2.11 transformation does each parameter perform?"
+  },
+  {
+   "to": "3.8",
+   "prompt": "How does the graph show how many solutions an equation has?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/3-geometry-trigonometry/3-5-trigonometric-functions-graphs.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/math-aa-topic3-geometry-trig.json",
+    "itemIds": [
+     "gt18"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/math-topic3-geometry-trig.json",
+    "cardIds": [
+     "fc-math-gt-20"
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,150 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-1-6",
+ "code": "1.6",
+ "title": "Simple deductive proof",
+ "theme": "1",
+ "themeLabel": "Number and algebra",
+ "hlOnly": false,
+ "islOrder": 37,
+ "islUnits": [
+  "9. Sequences etc, binomial (Y13 wk 7-11 (Oct-Nov 2027))"
+ ],
+ "taughtStatus": "later",
+ "statements": {
+  "SL": [
+   "1.6.1",
+   "1.6.2"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "1.6.1",
+   "text": "Numerical and algebraic deductive arguments"
+  },
+  {
+   "id": "1.6.2",
+   "text": "Setting out a proof from the left-hand side to the right-hand side; equals versus identity symbols"
+  }
+ ],
+ "bigPicture": "A proof shows a statement is true for every case, not just the ones you tried. AA SL proofs are short: write the general case in algebra and transform one side into the other.",
+ "keyIdeas": [
+  {
+   "id": "m16-k1",
+   "ahl": false,
+   "stmt": "1.6.1",
+   "cue": "What is a deductive proof, and how do you write general numbers?",
+   "answer": "A chain of logical steps from definitions or known facts to the result, valid for every case. Examples never prove a general claim; one counterexample disproves it. Even: 2n; odd: 2n + 1; consecutive integers: n, n + 1, n + 2."
+  },
+  {
+   "id": "m16-k2",
+   "ahl": false,
+   "stmt": "1.6.2",
+   "cue": "How do you set out a proof that LHS = RHS?",
+   "answer": "Start with one side (usually the more complicated), transform it step by step until it equals the other side, then write a conclusion. Don't work on both sides at once or start from what you want to prove. ≡ means identically equal (true for all values); = in an equation is true only for particular values."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "identity",
+   "def": "true for every value of the variable; symbol ≡"
+  },
+  {
+   "term": "counterexample",
+   "def": "one case that shows a general claim is false"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Three consecutive integers",
+   "prompt": "Prove that the sum of any three consecutive integers is divisible by 3.",
+   "steps": [
+    "n + (n + 1) + (n + 2) = 3n + 3",
+    "= 3(n + 1), and n + 1 is an integer"
+   ],
+   "answer": "a multiple of 3, so divisible by 3"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Checking n = 1, 2, 3 proves it",
+   "right": "Examples only illustrate; algebra for a general n proves it."
+  },
+  {
+   "wrong": "Writing both sides and cancelling to 0 = 0",
+   "right": "Work from one side to the other."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Show that",
+   "marks": 3,
+   "prompt": "Prove that (n + 3)² − (n − 3)² ≡ 12n.",
+   "solution": [
+    "LHS = (n² + 6n + 9) − (n² − 6n + 9)",
+    "= 12n = RHS"
+   ],
+   "answer": "proved",
+   "commonErrors": [
+    "−(n − 3)² expanded as −n² − 6n + 9",
+    "No concluding statement"
+   ]
+  },
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Prove",
+   "marks": 4,
+   "prompt": "Prove that the square of any odd number is one more than a multiple of 8.",
+   "solution": [
+    "(2n + 1)² = 4n² + 4n + 1 = 4n(n + 1) + 1",
+    "n(n + 1) is a product of consecutive integers, so it is even: n(n + 1) = 2k",
+    "so (2n + 1)² = 8k + 1"
+   ],
+   "answer": "proved",
+   "commonErrors": [
+    "Stopping at 4n(n + 1) + 1 without explaining why it is 8k + 1",
+    "Using the same letter for two different odd numbers"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [],
+  "memorise": [
+   "Algebraic forms for even, odd and consecutive numbers",
+   "Layout: LHS = … = RHS, then a concluding sentence"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "1.2",
+   "prompt": "How could you prove the formula for the sum of an arithmetic series?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/1-number-algebra/1-4-proof-reasoning.pdf",
+  "quizBanks": [],
+  "decks": [
+   {
+    "file": "library/flashcards/math-number-algebra.json",
+    "cardIds": [
+     "fc-math-n-18"
+    ]
+   }
+  ],
+  "gap": "No quiz items cover proof yet."
+ },
+ "paperNote": "Proof is algebra without a calculator, so both prompts are Paper 1 style. It can also appear as a 'show that' part inside a longer question on either paper.",
+ "syllabusFlags": [
+  "No ISL unit names proof explicitly; assumed to sit in 'Sequences etc' (Y13) - inferred."
+ ]
+}

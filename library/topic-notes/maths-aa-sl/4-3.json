@@ -1,0 +1,185 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-4-3",
+ "code": "4.3",
+ "title": "Measures of centre and spread",
+ "theme": "4",
+ "themeLabel": "Statistics and probability",
+ "hlOnly": false,
+ "islOrder": 49,
+ "islUnits": [
+  "11. Statistics (Y13 wk 19-22 (Feb-Mar 2028))"
+ ],
+ "taughtStatus": "later",
+ "statements": {
+  "SL": [
+   "4.3.1",
+   "4.3.2",
+   "4.3.3",
+   "4.3.4"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "4.3.1",
+   "text": "Mean, median and mode; estimating a mean from grouped data; modal class"
+  },
+  {
+   "id": "4.3.2",
+   "text": "IQR, standard deviation and variance (by GDC)"
+  },
+  {
+   "id": "4.3.3",
+   "text": "Effect of adding or multiplying all data by a constant"
+  },
+  {
+   "id": "4.3.4",
+   "text": "Quartiles of discrete data"
+  }
+ ],
+ "bigPicture": "Centre and spread summarise a data set in two numbers. Know when each measure is appropriate and how they change when every value is transformed.",
+ "keyIdeas": [
+  {
+   "id": "m43-k1",
+   "ahl": false,
+   "stmt": "4.3.1",
+   "cue": "Mean, median, mode; how do you estimate the mean of grouped data?",
+   "answer": "Mean = total ÷ number; median = middle value; mode = most frequent. Grouped data: use class midpoints, x̄ ≈ Σfx/Σf; the modal class has the highest frequency."
+  },
+  {
+   "id": "m43-k2",
+   "ahl": false,
+   "stmt": "4.3.2",
+   "cue": "Which measures of spread, and how are they found?",
+   "answer": "IQR = Q3 − Q1 (resistant to outliers). Standard deviation σ measures typical distance from the mean; variance = σ². Find σ on the GDC (one-variable statistics)."
+  },
+  {
+   "id": "m43-k3",
+   "ahl": false,
+   "stmt": "4.3.3",
+   "cue": "Effect of adding or multiplying every value by a constant?",
+   "answer": "Adding k: mean, median and quartiles increase by k; standard deviation, variance and IQR do not change. Multiplying by k: mean and σ are multiplied by k (k > 0), variance by k²."
+  },
+  {
+   "id": "m43-k4",
+   "ahl": false,
+   "stmt": "4.3.4",
+   "cue": "Quartiles of discrete data?",
+   "answer": "Q1 is the median of the lower half and Q3 the median of the upper half (excluding the median when n is odd). GDCs may use slightly different methods."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "standard deviation",
+   "def": "typical distance of data from the mean"
+  },
+  {
+   "term": "modal class",
+   "def": "the class with the highest frequency"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Grouped mean",
+   "prompt": "Masses: 40–50: 4, 50–60: 10, 60–70: 14, 70–80: 2. Estimate the mean.",
+   "steps": [
+    "midpoints 45, 55, 65, 75",
+    "Σfx = 180 + 550 + 910 + 150 = 1790; n = 30"
+   ],
+   "answer": "x̄ ≈ 59.7"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Adding 5 to every value adds 5 to the standard deviation",
+   "right": "The spread is unchanged."
+  },
+  {
+   "wrong": "The grouped mean is exact",
+   "right": "It is an estimate, because midpoints replace the real values."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Find",
+   "marks": 4,
+   "prompt": "(a) The mean of five numbers is 12. A sixth number x is added and the mean becomes 13. Find x. (b) A data set has mean 20 and standard deviation 4. Each value is multiplied by 3 and then 5 is added. Find the new mean and standard deviation.",
+   "solution": [
+    "(a) 60 + x = 6 × 13 = 78",
+    "(b) mean 3 × 20 + 5",
+    "sd 3 × 4"
+   ],
+   "answer": "(a) x = 18 (b) mean 65, sd 12",
+   "commonErrors": [
+    "Adding 5 to the sd",
+    "x = 13"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Find",
+   "marks": 3,
+   "prompt": "Using the grouped masses in the worked example, use the GDC to estimate the standard deviation.",
+   "solution": [
+    "enter midpoints in L1 and frequencies in L2",
+    "1-Var Stats L1, L2"
+   ],
+   "answer": "σ ≈ 8.06",
+   "commonErrors": [
+    "Leaving out the frequency list",
+    "Reporting the variance"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [
+   {
+    "section": "SL 4.3",
+    "item": "Mean of a set of data: x̄ = Σ fx / n"
+   }
+  ],
+  "memorise": [
+   "Effects of adding or multiplying by a constant",
+   "Midpoints for grouped data"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "4.7",
+   "prompt": "How is the mean of a data set like the expected value of a random variable?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/4-statistics-probability/4-1-statistics-toolkit.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/math-aa-topic4-statistics.json",
+    "itemIds": [
+     "s402",
+     "s403",
+     "s404",
+     "s405"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/math-topic4-statistics.json",
+    "cardIds": [
+     "fc-math-st-02",
+     "fc-math-st-08"
+    ]
+   }
+  ]
+ }
+}

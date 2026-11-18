@@ -1,0 +1,144 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-4-7",
+ "code": "4.7",
+ "title": "Discrete random variables",
+ "theme": "4",
+ "themeLabel": "Statistics and probability",
+ "hlOnly": false,
+ "islOrder": 42,
+ "islUnits": [
+  "10. Probability (Y13 wk 12-15 (Nov-Dec 2027))"
+ ],
+ "taughtStatus": "later",
+ "statements": {
+  "SL": [
+   "4.7.1",
+   "4.7.2"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "4.7.1",
+   "text": "Discrete random variables and their probability distributions"
+  },
+  {
+   "id": "4.7.2",
+   "text": "Expected value and fair games"
+  }
+ ],
+ "bigPicture": "A discrete random variable attaches a number to each outcome. Its distribution lists the probabilities; its expected value is the long-run average, which decides whether a game is fair.",
+ "keyIdeas": [
+  {
+   "id": "m47-k1",
+   "ahl": false,
+   "stmt": "4.7.1",
+   "cue": "What makes a valid probability distribution?",
+   "answer": "Each P(X = x) is between 0 and 1 and the probabilities add to 1. Show it as a table or a formula."
+  },
+  {
+   "id": "m47-k2",
+   "ahl": false,
+   "stmt": "4.7.2",
+   "cue": "Expected value and fair games?",
+   "answer": "E(X) = Σ x P(X = x), the long-run mean of X. A game is fair if the player's expected gain (winnings minus cost) is 0."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "random variable",
+   "def": "a numerical value determined by the outcome of a random experiment"
+  },
+  {
+   "term": "fair game",
+   "def": "expected gain is zero"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Unknown constant",
+   "prompt": "P(X = x) = kx for x = 1, 2, 3, 4. Find k and E(X).",
+   "steps": [
+    "k(1 + 2 + 3 + 4) = 1 → k = 0.1",
+    "E(X) = 0.1(1 + 4 + 9 + 16)"
+   ],
+   "answer": "k = 0.1; E(X) = 3"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "E(X) must be a possible value of X",
+   "right": "It is a long-run average, e.g. 1.2."
+  },
+  {
+   "wrong": "Fair means equal chances of winning and losing",
+   "right": "Fair means expected gain = 0."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Find",
+   "marks": 4,
+   "prompt": "P(X = 0) = 0.2, P(X = 1) = 0.5, P(X = 2) = p, P(X = 3) = 0.1. Find p and E(X).",
+   "solution": [
+    "0.2 + 0.5 + p + 0.1 = 1",
+    "E(X) = 0 + 0.5 + 2(0.2) + 3(0.1)"
+   ],
+   "answer": "p = 0.2; E(X) = 1.2",
+   "commonErrors": [
+    "Averaging the x values",
+    "Forgetting x = 0 in the sum of probabilities"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Find",
+   "marks": 5,
+   "prompt": "A game costs 3 CHF. A fair die is rolled: a 6 wins 10 CHF, a 5 wins 5 CHF, anything else wins nothing. (a) Find the expected gain. (b) Find the prize for a 6 that would make the game fair.",
+   "solution": [
+    "expected winnings 10/6 + 5/6 = 2.5",
+    "gain 2.5 − 3",
+    "(W + 5)/6 = 3"
+   ],
+   "answer": "(a) −0.50 CHF (b) 13 CHF",
+   "commonErrors": [
+    "Ignoring the cost",
+    "Subtracting the cost from each prize but not from losing outcomes"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [
+   {
+    "section": "SL 4.7",
+    "item": "E(X) = Σ x P(X = x)"
+   }
+  ],
+  "memorise": [
+   "Probabilities sum to 1",
+   "Fair game: expected gain 0"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "4.8",
+   "prompt": "Which formula replaces Σ x P(X = x) for a binomial variable?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/4-statistics-probability/4-4-probability-distributions.pdf",
+  "quizBanks": [],
+  "decks": [],
+  "gap": "No quiz items or flashcards cover discrete random variables (4.7) yet."
+ }
+}

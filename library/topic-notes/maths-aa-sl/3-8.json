@@ -1,0 +1,182 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-3-8",
+ "code": "3.8",
+ "title": "Solving trigonometric equations",
+ "theme": "3",
+ "themeLabel": "Geometry and trigonometry",
+ "hlOnly": false,
+ "islOrder": 29,
+ "islUnits": [
+  "6. Trig equations and functions (Y12 wk 23-27 (Mar-Apr 2027))"
+ ],
+ "taughtStatus": "later",
+ "statements": {
+  "SL": [
+   "3.8.1",
+   "3.8.2"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "3.8.1",
+   "text": "Solving on a finite interval, graphically and analytically"
+  },
+  {
+   "id": "3.8.2",
+   "text": "Equations that become quadratics in sin x, cos x or tan x"
+  }
+ ],
+ "bigPicture": "Trig equations usually have several solutions in an interval. Find one, use symmetry to get the rest, and check every solution is inside the interval.",
+ "keyIdeas": [
+  {
+   "id": "m38-k1",
+   "ahl": false,
+   "stmt": "3.8.1",
+   "cue": "How do you solve sin x = k (or cos, tan) on an interval?",
+   "answer": "Find the principal value, then use symmetry: sin gives π − x; cos gives 2π − x (or −x); tan adds π. Add or subtract periods until you leave the interval. For sin(bx) = k, first scale the interval by b, solve for bx, then divide by b. Graphically: intersect y = f(x) with y = k on the GDC."
+  },
+  {
+   "id": "m38-k2",
+   "ahl": false,
+   "stmt": "3.8.2",
+   "cue": "How do you solve an equation that is quadratic in sin x, cos x or tan x?",
+   "answer": "Use an identity (e.g. cos²x = 1 − sin²x or a double-angle formula) to get one function, let s = sin x, solve the quadratic, reject values outside −1 ≤ s ≤ 1, then solve each sin x = s."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "principal value",
+   "def": "the solution the calculator's inverse function gives"
+  },
+  {
+   "term": "interval",
+   "def": "the range of x allowed, e.g. 0 ≤ x ≤ 2π"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Quadratic in sin x",
+   "prompt": "Solve 2sin²x − sin x − 1 = 0 for 0 ≤ x < 2π.",
+   "steps": [
+    "(2 sin x + 1)(sin x − 1) = 0",
+    "sin x = 1 → π/2; sin x = −1/2 → 7π/6, 11π/6"
+   ],
+   "answer": "x = π/2, 7π/6, 11π/6"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Giving only the calculator value",
+   "right": "Find every solution in the interval."
+  },
+  {
+   "wrong": "Dividing both sides by sin x",
+   "right": "You lose the solutions of sin x = 0; factorise instead."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Solve",
+   "marks": 4,
+   "prompt": "Solve sin 2x = 1/2 for 0 ≤ x ≤ π.",
+   "solution": [
+    "0 ≤ 2x ≤ 2π",
+    "2x = π/6 or 5π/6"
+   ],
+   "answer": "x = π/12, 5π/12",
+   "commonErrors": [
+    "Not doubling the interval",
+    "Dividing π/6 by 2 only"
+   ]
+  },
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Solve",
+   "marks": 6,
+   "prompt": "Solve 2cos²x + 3 sin x − 3 = 0 for 0 ≤ x ≤ 2π.",
+   "solution": [
+    "2(1 − sin²x) + 3 sin x − 3 = 0",
+    "2 sin²x − 3 sin x + 1 = 0 → (2 sin x − 1)(sin x − 1) = 0",
+    "sin x = 1/2 or 1"
+   ],
+   "answer": "x = π/6, π/2, 5π/6",
+   "commonErrors": [
+    "Using cos²x = 1 + sin²x",
+    "Missing 5π/6"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Solve",
+   "marks": 3,
+   "prompt": "Solve 5 cos(2x) + 1 = 2 for 0 ≤ x ≤ π.",
+   "solution": [
+    "cos 2x = 0.2, with 0 ≤ 2x ≤ 2π",
+    "2x = 1.3694 or 2π − 1.3694"
+   ],
+   "answer": "x ≈ 0.685 or 2.46",
+   "commonErrors": [
+    "Degree mode",
+    "Missing the second solution"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [
+   {
+    "section": "SL 3.5",
+    "item": "tan θ = sin θ/cos θ"
+   },
+   {
+    "section": "SL 3.6",
+    "item": "Pythagorean identity; double-angle identities for sin and cos"
+   }
+  ],
+  "memorise": [
+   "Exact values and symmetry of the unit circle",
+   "Factorising instead of dividing"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "3.5",
+   "prompt": "How does the unit circle show both solutions of sin x = k?"
+  },
+  {
+   "to": "3.7",
+   "prompt": "How many times does y = k cross the graph in one period?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/3-geometry-trigonometry/3-6-trigonometric-equations-identities.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/math-aa-topic3-geometry-trig.json",
+    "itemIds": [
+     "gt20"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/math-topic3-geometry-trig.json",
+    "cardIds": [
+     "fc-math-gt-18",
+     "fc-math-gt-17"
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,169 @@
+{
+ "subject": "chemistry-hl",
+ "topic": "s1-1-particulate-nature",
+ "topicLabel": "Structure 1.1 — Particulate nature of matter (Sep unit)",
+ "cards": [
+  {
+   "id": "fc-chem-pn-01",
+   "type": "term",
+   "tags": [
+    "definition"
+   ],
+   "front": "Element",
+   "back": "Substance made of only one type of atom; cannot be broken down by chemical means."
+  },
+  {
+   "id": "fc-chem-pn-02",
+   "type": "term",
+   "tags": [
+    "definition"
+   ],
+   "front": "Compound",
+   "back": "Two or more elements chemically bonded in a fixed ratio. Its properties differ from those of its elements."
+  },
+  {
+   "id": "fc-chem-pn-03",
+   "type": "term",
+   "tags": [
+    "definition"
+   ],
+   "front": "Mixture",
+   "back": "Two or more substances not chemically bonded, in any ratio; components keep their properties and can be separated physically."
+  },
+  {
+   "id": "fc-chem-pn-04",
+   "type": "qa",
+   "tags": [
+    "distinction"
+   ],
+   "front": "Homogeneous vs heterogeneous mixture",
+   "back": "Homogeneous: uniform composition, one phase (salt water, air). Heterogeneous: non-uniform, visibly separate phases (sand in water, oil and water)."
+  },
+  {
+   "id": "fc-chem-pn-05",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "Separate an insoluble solid from a liquid",
+   "back": "Filtration: the solid stays as residue, the liquid passes through as filtrate."
+  },
+  {
+   "id": "fc-chem-pn-06",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "Recover a dissolved solid from a solution",
+   "back": "Evaporation, or crystallisation/recrystallisation (concentrate, cool, collect crystals) for a purer product."
+  },
+  {
+   "id": "fc-chem-pn-07",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "Separate salt from a sand–salt mixture",
+   "back": "Add water to dissolve (solvation) the salt, filter off the sand, then evaporate or crystallise the salt from the filtrate."
+  },
+  {
+   "id": "fc-chem-pn-08",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "Separate two miscible liquids",
+   "back": "Distillation (fractional distillation if boiling points are close): the lower-boiling liquid vaporises first and is condensed and collected."
+  },
+  {
+   "id": "fc-chem-pn-09",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "What separates the components of an ink?",
+   "back": "Paper chromatography: components travel different distances depending on their relative attraction to the solvent (mobile phase) and the paper (stationary phase)."
+  },
+  {
+   "id": "fc-chem-pn-10",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "Solid, liquid and gas in the kinetic molecular model",
+   "back": "Solid: particles vibrate about fixed positions. Liquid: close together but can move past each other. Gas: far apart, moving fast and randomly; attractions negligible."
+  },
+  {
+   "id": "fc-chem-pn-11",
+   "type": "qa",
+   "tags": [
+    "definition"
+   ],
+   "front": "Name the changes of state",
+   "back": "s→l melting, l→s freezing, l→g vaporisation (evaporation or boiling), g→l condensation, s→g sublimation, g→s deposition."
+  },
+  {
+   "id": "fc-chem-pn-12",
+   "type": "qa",
+   "tags": [
+    "distinction"
+   ],
+   "front": "Evaporation vs boiling",
+   "back": "Evaporation: only at the surface, at any temperature below the boiling point. Boiling: throughout the liquid, at the boiling point."
+  },
+  {
+   "id": "fc-chem-pn-13",
+   "type": "qa",
+   "tags": [
+    "definition"
+   ],
+   "front": "State symbols",
+   "back": "(s) solid, (l) liquid, (g) gas, (aq) dissolved in water. Include them in equations when asked."
+  },
+  {
+   "id": "fc-chem-pn-14",
+   "type": "qa",
+   "tags": [
+    "definition"
+   ],
+   "front": "What does absolute temperature measure?",
+   "back": "Temperature in kelvin is proportional to the average kinetic energy of the particles."
+  },
+  {
+   "id": "fc-chem-pn-15",
+   "type": "qa",
+   "tags": [
+    "formula"
+   ],
+   "front": "Convert between °C and K",
+   "back": "T(K) = T(°C) + 273.15. A change of 1 K equals a change of 1 °C. Example: 25 °C = 298.15 K (298 K)."
+  },
+  {
+   "id": "fc-chem-pn-16",
+   "type": "term",
+   "tags": [
+    "definition"
+   ],
+   "front": "Absolute zero",
+   "back": "0 K (−273.15 °C): the lowest possible temperature, where particle kinetic energy is at a minimum."
+  },
+  {
+   "id": "fc-chem-pn-17",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "Why is the temperature constant during a change of state on a heating curve?",
+   "back": "The energy supplied overcomes attractions between particles (increases potential energy), not their average kinetic energy, so temperature stays constant."
+  },
+  {
+   "id": "fc-chem-pn-18",
+   "type": "qa",
+   "tags": [
+    "figure"
+   ],
+   "front": "Heating curve of ice to steam: which flat section is longer, and why?",
+   "back": "Boiling (l→g) takes longer than melting, because separating particles completely needs much more energy than loosening them from a lattice."
+  }
+ ]
+}

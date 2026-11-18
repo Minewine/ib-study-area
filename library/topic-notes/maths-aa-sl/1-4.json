@@ -1,0 +1,166 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-1-4",
+ "code": "1.4",
+ "title": "Financial applications of geometric sequences",
+ "theme": "1",
+ "themeLabel": "Number and algebra",
+ "hlOnly": false,
+ "islOrder": 23,
+ "islUnits": [
+  "9. Sequences etc, binomial (Y13 wk 7-11 (Oct-Nov 2027))",
+  "5. Exp and logs (Y12 wk 17 (Jan 2027))"
+ ],
+ "taughtStatus": "later",
+ "statements": {
+  "SL": [
+   "1.4.1",
+   "1.4.2"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "1.4.1",
+   "text": "Compound interest with k compounding periods per year"
+  },
+  {
+   "id": "1.4.2",
+   "text": "Annual depreciation as a negative rate; solving for time, rate or value (GDC finance solver allowed)"
+  }
+ ],
+ "bigPicture": "Compound interest and depreciation are geometric sequences with money. The formula is given; the skill is reading the rate, the number of periods per year and the direction of rounding.",
+ "keyIdeas": [
+  {
+   "id": "m14-k1",
+   "ahl": false,
+   "stmt": "1.4.1",
+   "cue": "Compound interest with k compounding periods a year?",
+   "answer": "FV = PV(1 + r/(100k))^(kn): r is the annual rate in %, k the periods per year, n the years."
+  },
+  {
+   "id": "m14-k2",
+   "ahl": false,
+   "stmt": "1.4.2",
+   "cue": "Depreciation, and how do you find n, r or PV?",
+   "answer": "Depreciation is a negative rate: value = PV(1 − r/100)^n. To find an unknown, use the GDC finance (TVM) solver or logs; on the TVM solver money paid out and money received have opposite signs. Round time up when the question asks when a value is first exceeded."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "present value (PV)",
+   "def": "amount at the start"
+  },
+  {
+   "term": "future value (FV)",
+   "def": "amount after n years"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Monthly compounding",
+   "prompt": "5000 CHF invested at 3% a year, compounded monthly, for 4 years.",
+   "steps": [
+    "FV = 5000(1 + 3/(100·12))^(12·4)",
+    "= 5000·1.0025⁴⁸"
+   ],
+   "answer": "5636.64 CHF"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Use r = 4.5 in (1 + r)",
+   "right": "Divide by 100k: 1 + 4.5/400 for quarterly."
+  },
+  {
+   "wrong": "n = 9.06, so 9 years",
+   "right": "After 9 years it has not yet passed the target: 10 years."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Find",
+   "marks": 3,
+   "prompt": "A machine bought for 8000 CHF loses 25% of its value each year. Write an expression for its value after n years and find its value after 2 years.",
+   "solution": [
+    "V = 8000·0.75^n",
+    "V(2) = 8000·0.5625"
+   ],
+   "answer": "8000(0.75)^n; 4500 CHF",
+   "commonErrors": [
+    "Multiplying by 0.25",
+    "Subtracting 25% of the original each year"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Find",
+   "marks": 4,
+   "prompt": "2000 CHF is invested at 4.5% a year compounded quarterly. Find the least number of whole years until it exceeds 3000 CHF.",
+   "solution": [
+    "2000(1 + 4.5/400)^(4n) > 3000",
+    "4n > ln 1.5 / ln 1.01125 ≈ 36.24",
+    "n > 9.06"
+   ],
+   "answer": "10 years",
+   "commonErrors": [
+    "Answering 9",
+    "Using k = 1"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [
+   {
+    "section": "SL 1.4",
+    "item": "FV = PV × (1 + r/(100k))^(kn)"
+   }
+  ],
+  "memorise": [
+   "Depreciation as a negative rate",
+   "Sign convention on the GDC finance solver"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "1.3",
+   "prompt": "Why is a compound-interest balance a geometric sequence?"
+  },
+  {
+   "to": "2.9",
+   "prompt": "How would continuous growth be written with e?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/1-number-algebra/1-3-sequences-series.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/math-aa-number-algebra.json",
+    "itemIds": [
+     "m16"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/math-number-algebra.json",
+    "cardIds": [
+     "fc-math-n-06",
+     "fc-math-n-15"
+    ]
+   }
+  ]
+ },
+ "syllabusFlags": [
+  "ISL calendar has no separate finance unit; placed with 'Sequences etc' (geometric sequences) and touched in 'Exp and logs' - inferred."
+ ]
+}

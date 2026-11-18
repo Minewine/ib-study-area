@@ -1,0 +1,175 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-1-3",
+ "code": "1.3",
+ "title": "Geometric sequences and series",
+ "theme": "1",
+ "themeLabel": "Number and algebra",
+ "hlOnly": false,
+ "islOrder": 36,
+ "islUnits": [
+  "9. Sequences etc, binomial (Y13 wk 7-11 (Oct-Nov 2027))"
+ ],
+ "taughtStatus": "later",
+ "statements": {
+  "SL": [
+   "1.3.1",
+   "1.3.2",
+   "1.3.3"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "1.3.1",
+   "text": "General term of a sequence with constant ratio"
+  },
+  {
+   "id": "1.3.2",
+   "text": "Sum of the first n terms; sigma notation"
+  },
+  {
+   "id": "1.3.3",
+   "text": "Applications (growth, decay, repeated percentage change)"
+  }
+ ],
+ "bigPicture": "A geometric sequence multiplies by the same ratio each step. It models any repeated percentage change, so it links directly to finance (1.4) and exponential functions (2.9).",
+ "keyIdeas": [
+  {
+   "id": "m13-k1",
+   "ahl": false,
+   "stmt": "1.3.1",
+   "cue": "General term of a geometric sequence?",
+   "answer": "u_n = u₁ r^(n − 1), where r = u_(n+1)/u_n is constant."
+  },
+  {
+   "id": "m13-k2",
+   "ahl": false,
+   "stmt": "1.3.2",
+   "cue": "Sum of the first n terms?",
+   "answer": "S_n = u₁(r^n − 1)/(r − 1) = u₁(1 − r^n)/(1 − r), r ≠ 1. Pick the version with a positive denominator."
+  },
+  {
+   "id": "m13-k3",
+   "ahl": false,
+   "stmt": "1.3.3",
+   "cue": "How do you model repeated percentage change?",
+   "answer": "Growth by p%: r = 1 + p/100. Decay by p%: r = 1 − p/100. Check whether the starting value is u₁ or the value 'after 0 steps'."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "common ratio",
+   "def": "r = u_(n+1)/u_n, the same for every pair"
+  },
+  {
+   "term": "multiplier",
+   "def": "the factor 1 ± p/100 for a p% change"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "First term over 10 000",
+   "prompt": "2, 6, 18, … Find the first term greater than 10 000.",
+   "steps": [
+    "2·3^(n−1) > 10 000",
+    "n − 1 > log 5000 / log 3 ≈ 7.75, so n = 9"
+   ],
+   "answer": "u₉ = 13 122"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "u_n = u₁ r^n",
+   "right": "The power is n − 1."
+  },
+  {
+   "wrong": "5% growth means r = 0.05",
+   "right": "The multiplier is 1.05."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Find",
+   "marks": 5,
+   "prompt": "A geometric sequence has u₂ = 12 and u₅ = −96. Find r, u₁ and S₆.",
+   "solution": [
+    "r³ = −96/12 = −8, so r = −2",
+    "u₁ = 12/(−2) = −6",
+    "S₆ = −6((−2)⁶ − 1)/(−2 − 1) = −6·63/(−3)"
+   ],
+   "answer": "r = −2, u₁ = −6, S₆ = 126",
+   "commonErrors": [
+    "r = 2 (losing the sign of the cube root)",
+    "Sign slip in the sum formula"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Find",
+   "marks": 4,
+   "prompt": "A runner runs 5 km in week 1 and increases the distance by 10% each week. Find the distance in week 8 and the total over the first 8 weeks.",
+   "solution": [
+    "u₈ = 5·1.1⁷",
+    "S₈ = 5(1.1⁸ − 1)/(1.1 − 1)"
+   ],
+   "answer": "9.74 km; 57.2 km",
+   "commonErrors": [
+    "Using 1.1⁸ for week 8",
+    "r = 0.1"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [
+   {
+    "section": "SL 1.3",
+    "item": "u_n = u₁ r^(n − 1); S_n = u₁(r^n − 1)/(r − 1) = u₁(1 − r^n)/(1 − r), r ≠ 1"
+   }
+  ],
+  "memorise": [
+   "Multiplier for a percentage change",
+   "Solving r^n = k with logs or the GDC"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "1.8",
+   "prompt": "What happens to S_n as n grows when |r| < 1?"
+  },
+  {
+   "to": "2.9",
+   "prompt": "How is u₁ r^(n−1) related to an exponential function?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/1-number-algebra/1-3-sequences-series.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/math-aa-number-algebra.json",
+    "itemIds": [
+     "m06",
+     "m31"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/math-number-algebra.json",
+    "cardIds": [
+     "fc-math-n-03",
+     "fc-math-n-04"
+    ]
+   }
+  ]
+ }
+}

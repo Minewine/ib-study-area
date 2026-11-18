@@ -78,6 +78,8 @@
     CARDS = [];
     for (const d of DECKS) {
       for (const c of d.cards) {
+        // retired cards (off-syllabus) stay in the deck file and keep their fc-state, but are not studied
+        if (c.retired === true) continue;
         if (deleted.includes(c.id)) continue;
         const e = edits[c.id];
         CARDS.push(Object.assign({}, c, e || {}, { deck: d.id || null, subject: d.subject, subjectLabel: d.subjectLabel, topic: d.topic, topicLabel: d.topicLabel, seed: true }));
@@ -408,6 +410,10 @@
     if (!q.length) { $("fc-error").textContent = "None of the cards linked from that note could be found."; return; }
     startSession(null, q);
   }
+  // test hook (node --test loads this file in a vm)
+  window.NB = window.NB || {};
+  window.NB.flashcards = { loadDecks, cards: () => CARDS };
+
   const boot = () => {
     ["fc-subject", "fc-topic"].forEach(id => { const el = $(id); if (el && !el.options.length) el.innerHTML = '<option value="">Loading decks\u2026</option>'; });
     return loadDecks().then(fillSetup).then(fromLink);

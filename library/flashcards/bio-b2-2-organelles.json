@@ -1,0 +1,160 @@
+{
+ "subject": "biology-hl",
+ "topic": "b2-2-organelles-compartmentalization",
+ "topicLabel": "B2.2 — Organelles & compartmentalization (Form & function — cells)",
+ "cards": [
+  {
+   "id": "fc-bio-og-01",
+   "type": "term",
+   "tags": [
+    "definition"
+   ],
+   "front": "Organelle",
+   "back": "Discrete subunit of a cell adapted to a specific function, e.g. nucleus, ribosome, vesicle, plasma membrane. Not organelles: cell wall, cytoskeleton, cytoplasm."
+  },
+  {
+   "id": "fc-bio-og-02",
+   "type": "qa",
+   "tags": [
+    "distinction"
+   ],
+   "front": "Are ribosomes organelles even though they have no membrane?",
+   "back": "Yes. An organelle is a discrete functional subunit; a membrane is not required."
+  },
+  {
+   "id": "fc-bio-og-03",
+   "type": "term",
+   "tags": [
+    "definition"
+   ],
+   "front": "Cell fractionation",
+   "back": "Breaking cells open and separating organelles by (ultra)centrifugation, so each type can be studied alone. An example of a new technique driving progress."
+  },
+  {
+   "id": "fc-bio-og-04",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "Why separate the nucleus from the cytoplasm?",
+   "back": "Transcription and translation are kept apart, so mRNA can be processed (modified) before it reaches ribosomes."
+  },
+  {
+   "id": "fc-bio-og-05",
+   "type": "qa",
+   "tags": [
+    "distinction"
+   ],
+   "front": "Prokaryotes vs eukaryotes: when can translation start?",
+   "back": "Prokaryotes have no nucleus, so ribosomes can begin translating mRNA while it is still being transcribed. In eukaryotes mRNA is processed first and leaves through nuclear pores."
+  },
+  {
+   "id": "fc-bio-og-06",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "Advantages of compartments in the cytoplasm",
+   "back": "Enzymes and substrates are concentrated in one place, and incompatible processes are kept apart."
+  },
+  {
+   "id": "fc-bio-og-07",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "Lysosomes: why compartmentalise them?",
+   "back": "They hold digestive (hydrolytic) enzymes that would damage the cell if free. Phagocytic vacuoles fuse with lysosomes to digest what was engulfed."
+  },
+  {
+   "id": "fc-bio-og-08",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "AHL: How is the mitochondrion adapted for ATP production?",
+   "back": "Double membrane with a small intermembrane space (proton gradient builds quickly); cristae give a large inner-membrane area for electron transport chains and ATP synthase; matrix holds Krebs cycle enzymes."
+  },
+  {
+   "id": "fc-bio-og-09",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "AHL: How is the chloroplast adapted for photosynthesis?",
+   "back": "Large thylakoid membrane area holding photosystems; small fluid volume inside thylakoids (proton gradient builds fast); stroma holds Calvin cycle enzymes and substrates."
+  },
+  {
+   "id": "fc-bio-og-10",
+   "type": "term",
+   "tags": [
+    "definition"
+   ],
+   "front": "AHL: Cristae",
+   "back": "Folds of the inner mitochondrial membrane that increase its surface area."
+  },
+  {
+   "id": "fc-bio-og-11",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "AHL: Why does the nucleus have a double membrane with pores?",
+   "back": "Pores let mRNA out and proteins (e.g. enzymes, histones) in while keeping DNA inside."
+  },
+  {
+   "id": "fc-bio-og-12",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "AHL: What happens to the nuclear membrane in mitosis and meiosis?",
+   "back": "It breaks into vesicles so spindle microtubules can reach the chromosomes, then re-forms around each new nucleus."
+  },
+  {
+   "id": "fc-bio-og-13",
+   "type": "qa",
+   "tags": [
+    "distinction"
+   ],
+   "front": "AHL: Free ribosomes vs ribosomes on rough ER",
+   "back": "Free ribosomes: proteins for use in the cytoplasm. Rough-ER ribosomes: proteins that enter the ER for other organelles, the plasma membrane or secretion."
+  },
+  {
+   "id": "fc-bio-og-14",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "AHL: Role of the Golgi apparatus",
+   "back": "Receives proteins from the rough ER in vesicles, modifies them (e.g. adds carbohydrate) and packages them into vesicles for secretion. It does not make proteins."
+  },
+  {
+   "id": "fc-bio-og-15",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "AHL: Path of a secreted protein",
+   "back": "Rough-ER ribosome → ER lumen → vesicle → Golgi (modified) → secretory vesicle → fuses with plasma membrane (exocytosis)."
+  },
+  {
+   "id": "fc-bio-og-16",
+   "type": "term",
+   "tags": [
+    "definition"
+   ],
+   "front": "AHL: Vesicle",
+   "back": "Small membrane-bound sac that carries materials within the cell or to the plasma membrane."
+  },
+  {
+   "id": "fc-bio-og-17",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "AHL: Role of clathrin",
+   "back": "Clathrin proteins assemble into a cage-like coat on a patch of membrane, curving it into a pit that pinches off as a vesicle (e.g. in endocytosis)."
+  }
+ ]
+}

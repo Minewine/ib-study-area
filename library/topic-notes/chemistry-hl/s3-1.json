@@ -429,7 +429,7 @@
    }
   ],
   "gap": "No quiz items or flashcards on transition-element properties, complex-ion colour or the colour wheel (S3.1.8–S3.1.10, AHL); oxide/water equations (S3.1.5) only partly covered (p18, pdx1, fc-chem-p-15).",
-  "reviewNote": "fc-chem-p-09 and p21 use 'half-filled extra stability' for N > O; the ISL course guidance asks for explanations based on the energy of the electron removed. Suggest rewording (not changed here)."
+  "reviewNote": "fc-chem-p-09 and p21 were reworded (Nov 2026) to explain N > O through pairing repulsion and the energy of the electron removed, not 'half-filled stability'."
  },
  "syllabusFlags": [
   "Taught across four ISL units (atomic theory, periodicity, redox, acids and bases)."
