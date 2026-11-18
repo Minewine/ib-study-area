@@ -150,6 +150,27 @@
    "stmt": "S2.2.16",
    "cue": "How does hybridisation relate to shape (AHL)?",
    "answer": "Atomic orbitals mix to form equivalent hybrids. sp³: 4 domains, tetrahedral (CH₄). sp²: 3 domains, trigonal planar, one unhybridised p for a π bond (C₂H₄). sp: 2 domains, linear, two π bonds (C₂H₂, CO₂ central C). Work from Lewis formula → domains → geometry → hybridisation, and back."
+  },
+  {
+   "id": "s22-x1",
+   "ahl": false,
+   "stmt": "S2.2.8",
+   "cue": "When can hydrogen bonding happen, and how does it show up in boiling points?",
+   "answer": "Two things are needed: a hydrogen attached to N, O or F, and a nearby N, O or F atom (on another molecule) with a lone pair to accept it. This explains why NH₃, H₂O and HF have much higher boiling points than the other hydrides in their groups would suggest."
+  },
+  {
+   "id": "s22-x2",
+   "ahl": true,
+   "stmt": "S2.2.11",
+   "cue": "What do resonance structures mean for bond order and charge (AHL)?",
+   "answer": "The real structure is a hybrid: in CO₃²⁻ each C–O has bond order 1⅓ and each O carries about −⅔; in benzene each C–C has bond order 1.5. All the bonds are the same length."
+  },
+  {
+   "id": "s22-x3",
+   "ahl": true,
+   "stmt": "S2.2.12",
+   "cue": "What enthalpy evidence shows benzene is extra stable (AHL)?",
+   "answer": "Hydrogenating cyclohexene releases about 120 kJ mol⁻¹, so three C=C would predict about 360. Benzene releases only about 210, so it is roughly 150 kJ mol⁻¹ more stable than a 'cyclohexatriene' would be."
   }
  ],
  "keyTerms": [
@@ -220,6 +241,14 @@
   {
    "wrong": "Boiling breaks covalent bonds in water.",
    "right": "It overcomes hydrogen bonds between molecules; O–H bonds stay intact."
+  },
+  {
+   "wrong": "Every molecule obeys the octet rule unless it has an expanded octet.",
+   "right": "Odd-electron molecules (radicals such as NO₂) and electron-deficient ones such as BF₃ cannot have eight around every atom."
+  },
+  {
+   "wrong": "Isomers with the same formula have equal London forces.",
+   "right": "Straight chains touch along more of their length than branched ones, so they have stronger London forces and higher boiling points."
   }
  ],
  "practice": [
@@ -359,6 +388,10 @@
   {
    "category": "exam communication",
    "hint": "In boiling-point answers, name the force, say which is stronger and why, and link to energy needed."
+  },
+  {
+   "category": "exam communication",
+   "hint": "For expanded octets just state that atoms from period 3 onwards can hold more than eight electrons; no d-orbital explanation is needed. Count σ and π bonds from a full structural formula: every bond has one σ, and each extra bond in a double or triple bond is π."
   }
  ],
  "linkingQuestions": [

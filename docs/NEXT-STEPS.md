@@ -5,7 +5,7 @@ _Updated 18 Nov 2026 (afternoon). Background: [HANDOFF.md](HANDOFF.md). Longer-t
 ## Status at a glance
 - **Done and live (18 Nov morning):** PRs #1–#4.
 - **Done, merged into `main`, awaiting deploy:** PRs #5–#12 (cards loading fix, content fixes, content gaps, Today panel, security hardening, weekly summary, exam practice, coursework planner). `./dev.sh validate`, `./dev.sh test` and `./dev.sh e2e` pass on `main`.
-- **Paused:** the private cross-check of our notes against a commercial revision-notes set (the PDFs are held privately, outside the repo) and the "My resources" per-note links. Nothing of either is in the repo.
+- **Done, in a PR (Nov 2026), awaiting deploy:** the private cross-check of 25 topic notes (11 Biology, 9 Chemistry S1–S2, Maths sequences/binomial/finance/triangles/trig) against a commercial revision-notes set held privately outside the repo. Gaps and exam pitfalls were added to 29 notes in our own words, checked against the IB guides; nothing from the source set is in the repo. Also added: **My resources** on every note (her own http(s)/file links, synced key `my-res`, in backups).
 
 ## 1. Deploy `main` (only with explicit approval)
 1. **Back up first:** the server copy via `api/api.php?action=export` (logged in), and her browser progress with Cards → "Download full backup".
@@ -27,7 +27,7 @@ _Updated 18 Nov 2026 (afternoon). Background: [HANDOFF.md](HANDOFF.md). Longer-t
 - **Year 13 (2027–28) schedule** once the school publishes it.
 - **Maths topics with no quiz items:** 1.6 (proof), 4.5, 4.7, 4.10.
 - **Notes not yet linked** to the new exam banks (`chem-p1a-*`, `chem-p1b-*`, `bio-data-response-unfamiliar`, `ia-practical-skills`).
-- **Teacher check:** the draft notes (all `status: "draft"`) and the questions that depend on data-booklet values.
+- **Teacher check:** the draft notes, including the cross-check additions (key ideas with ids like `s13-x1`), (all `status: "draft"`) and the questions that depend on data-booklet values.
 - **Weekly e-mail:** wanted or not (optional config above).
 
 ## 4. Content decisions (you)

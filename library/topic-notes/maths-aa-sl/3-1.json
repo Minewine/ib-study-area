@@ -91,6 +91,10 @@
   {
    "wrong": "Angle with plane uses the slant edge",
    "right": "Use the line and its projection on the plane."
+  },
+  {
+   "wrong": "Slant height and slant edge of a pyramid are the same length.",
+   "right": "Slant height goes from the apex to the midpoint of a base edge (used for face areas); slant edge goes from the apex to a corner. Draw the right-angled triangle that contains the one you need."
   }
  ],
  "practice": [

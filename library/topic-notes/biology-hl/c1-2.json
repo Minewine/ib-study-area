@@ -148,6 +148,20 @@
    "stmt": "C1.2.17",
    "cue": "Lipids vs carbohydrates as respiratory substrates?",
    "answer": "Lipids yield more energy per gram, because they contain less oxygen and more oxidisable C and H. Only carbohydrate can go through glycolysis and anaerobic respiration. Fatty acids are broken into 2C acetyl groups that enter as acetyl-CoA."
+  },
+  {
+   "id": "c12-x1",
+   "ahl": true,
+   "stmt": "C1.2.12",
+   "cue": "Give the per-glucose totals for glycolysis, the link reaction and Krebs.",
+   "answer": "Glycolysis: 4 ATP made, 2 used, so net 2 ATP, plus 2 reduced NAD. Each glucose gives two pyruvates, so the link reaction runs twice (2 CO₂, 2 reduced NAD) and the Krebs cycle turns twice (4 CO₂, 2 ATP, 6 reduced NAD)."
+  },
+  {
+   "id": "c12-x2",
+   "ahl": false,
+   "stmt": "C1.2.6",
+   "cue": "How do you get reliable results from a simple respirometer?",
+   "answer": "Use alkali to absorb CO₂ so the drop moves only as O₂ is used; volume = πr² × distance moved. Keep the tube in a water bath at constant temperature, let it settle before timing, and run a control with glass beads or dead organisms of equal volume."
   }
  ],
  "keyTerms": [
@@ -196,6 +210,14 @@
   {
    "wrong": "Lactate production makes ATP.",
    "right": "It only regenerates NAD so glycolysis can continue."
+  },
+  {
+   "wrong": "ATP is how cells store energy long-term.",
+   "right": "ATP is used within seconds; long-term stores are glycogen, starch and fat."
+  },
+  {
+   "wrong": "Fatty acids can be respired anaerobically like glucose.",
+   "right": "They are broken into acetyl groups that enter the Krebs cycle, so they need aerobic respiration."
   }
  ],
  "practice": [

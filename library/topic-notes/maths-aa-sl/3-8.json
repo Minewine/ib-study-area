@@ -47,6 +47,13 @@
    "stmt": "3.8.2",
    "cue": "How do you solve an equation that is quadratic in sin x, cos x or tan x?",
    "answer": "Use an identity (e.g. cos²x = 1 − sin²x or a double-angle formula) to get one function, let s = sin x, solve the quadratic, reject values outside −1 ≤ s ≤ 1, then solve each sin x = s."
+  },
+  {
+   "id": "m38-x1",
+   "ahl": false,
+   "stmt": "3.8.1",
+   "cue": "How many solutions should you expect, and how do you check with the GDC?",
+   "answer": "For −1 < k < 1, sin x = k and cos x = k have two solutions in each period; k = 1 or k = −1 gives only one. For sin(nx) = k on 0 ≤ x ≤ 2π expect 2n solutions, which is a useful check. Watch the interval ends (sin x = 0 on [0, 2π] has 0, π and 2π). On the GDC, set the window to the domain, graph both sides and use intersect for each solution."
   }
  ],
  "keyTerms": [

@@ -46,6 +46,13 @@
    "stmt": "S1.2.3",
    "cue": "How is a mass spectrum used to find Ar?",
    "answer": "Each peak is an isotope: its position on the x-axis is the mass/charge ratio (m/z, effectively the isotope mass for 1+ ions) and its height is the relative abundance. Multiply each m/z by its abundance, add, and divide by the total abundance. How the spectrometer works is not assessed."
+  },
+  {
+   "id": "s12-x1",
+   "ahl": false,
+   "stmt": "S1.2.2",
+   "cue": "How do you find isotope abundances from Ar?",
+   "answer": "For two isotopes, let one abundance be x % and the other (100 − x) %. Then Ar = [m₁x + m₂(100 − x)] / 100; solve for x. Check: Ar must lie between the two isotope masses and nearer the more abundant one."
   }
  ],
  "keyTerms": [
@@ -108,6 +115,10 @@
   {
    "wrong": "A 2− ion has two fewer electrons.",
    "right": "Negative charge means electrons gained: a 2− ion has two more electrons than protons."
+  },
+  {
+   "wrong": "Ar is the mass of the most common isotope.",
+   "right": "It is the weighted mean of all isotopes, so it is usually not a whole number."
   }
  ],
  "practice": [

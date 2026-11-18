@@ -71,6 +71,27 @@
    "stmt": "S2.4.6",
    "cue": "How do condensation polymers form (AHL)?",
    "answer": "Monomers with two functional groups join with loss of a small molecule (usually H₂O). Polyesters: diol + dicarboxylic acid → ester links –COO–. Polyamides: diamine + dicarboxylic acid → amide links –CONH–. Biological macromolecules (proteins, polysaccharides, nucleic acids) form by condensation and break down by hydrolysis."
+  },
+  {
+   "id": "s24-x1",
+   "ahl": false,
+   "stmt": "S2.4.5",
+   "cue": "How do you go from a polymer back to its monomer?",
+   "answer": "For an addition polymer, take the two-carbon repeating unit and put the C=C back between those carbons. For a condensation polymer (AHL), break each amide or ester link and add back H and OH to get the two monomers."
+  },
+  {
+   "id": "s24-x2",
+   "ahl": false,
+   "stmt": "S2.4.2",
+   "cue": "What can't the bonding triangle tell you?",
+   "answer": "It uses only the electronegativities of the elements, so it gives the same point for compounds of the same two elements in different ratios (PbCl₂ and PbCl₄), even though their bonding differs. It ignores oxidation state and ion size."
+  },
+  {
+   "id": "s24-x3",
+   "ahl": true,
+   "stmt": "S2.4.6",
+   "cue": "How do condensation polymers differ in properties from addition polymers (AHL)?",
+   "answer": "Polyamides such as nylon form hydrogen bonds between chains, so they are stronger and melt higher than polyethene, held only by London forces. Ester and amide links can be hydrolysed, so condensation polymers can break down; all-carbon backbones of addition polymers resist this. When balancing, n monomer pairs release (2n − 1) water molecules."
   }
  ],
  "keyTerms": [
@@ -131,6 +152,10 @@
   {
    "wrong": "All polymers are synthetic.",
    "right": "Proteins, starch, cellulose and DNA are natural polymers."
+  },
+  {
+   "wrong": "The repeating unit is the same as the monomer.",
+   "right": "In an addition polymer the double bond is gone in the repeating unit; in a condensation polymer the repeating unit has lost water."
   }
  ],
  "practice": [

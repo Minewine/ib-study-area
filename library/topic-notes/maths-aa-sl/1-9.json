@@ -47,6 +47,27 @@
    "stmt": "1.9.2",
    "cue": "Where do the coefficients come from, and how do you find one term?",
    "answer": "Row n of Pascal's triangle, or nCr = n!/(r!(n − r)!). The general term is nCr a^(n−r) b^r (the (r + 1)th term). For the term in x^k, write the power of x in terms of r and solve for r."
+  },
+  {
+   "id": "m19-x1",
+   "ahl": false,
+   "stmt": "1.9.2",
+   "cue": "How do you find an unknown constant or n from a given coefficient?",
+   "answer": "Write the general term ⁿCᵣ aⁿ⁻ʳ bʳ, set its coefficient equal to the value given and solve. If the unknown ends up squared, both signs may be valid. To find n from e.g. ⁿC₂ = 28, write n(n − 1)/2 = 28, solve the quadratic and reject the negative root."
+  },
+  {
+   "id": "m19-x2",
+   "ahl": false,
+   "stmt": "1.9.2",
+   "cue": "What changes when the expansion is multiplied by something, e.g. (1 + x)(2 − x)⁵ or x²(1 + 2x)⁶?",
+   "answer": "Work out which powers from the bracket combine with the outside factor to make the power you want. For the x³ term of (1 + x)(2 − x)⁵ you need (x³ term) × 1 plus (x² term) × x, then add the two. For x⁵ in x²(1 + 2x)⁶ you only need the x³ term of the expansion."
+  },
+  {
+   "id": "m19-x3",
+   "ahl": false,
+   "stmt": "1.9.2",
+   "cue": "How can an expansion approximate a number such as 0.98⁶?",
+   "answer": "Write 0.98⁶ = (1 − 0.02)⁶ and expand: 1 − 6(0.02) + 15(0.02)² − … = 1 − 0.12 + 0.006 − 0.00016 ≈ 0.8858. Later terms are tiny because powers of 0.02 shrink quickly."
   }
  ],
  "keyTerms": [
@@ -78,6 +99,14 @@
   {
    "wrong": "The term with r = 3 is the 3rd term",
    "right": "It is the 4th term; r starts at 0."
+  },
+  {
+   "wrong": "Every expansion has a term in xᵏ for any k you are asked about.",
+   "right": "Solve for r: if it is not a whole number from 0 to n, there is no such term (its coefficient is 0)."
+  },
+  {
+   "wrong": "ⁿCᵣ and ⁿCₙ₋ᵣ are different numbers.",
+   "right": "They are equal (choosing r to include is the same as choosing n − r to leave out), which is why each row of Pascal's triangle is symmetric."
   }
  ],
  "practice": [

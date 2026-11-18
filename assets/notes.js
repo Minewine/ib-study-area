@@ -2,7 +2,8 @@
    Notes: library/topic-notes/<subject>/<code>.json, listed in library/topic-notes/manifest.json
    (schema in docs/DEVELOPMENT.md, "Topic notes"). Subject > theme > topic; key ideas are
    recall-first (cue shown, answer revealed on demand). Links open the quiz / cards pages on
-   exactly the question and card ids the note lists. Everything is rendered with textContent. */
+   exactly the question and card ids the note lists. Everything is rendered with textContent, except the My resources list,
+   which is built from NB.escapeHtml-escaped strings and only allows http(s):// and file:// links. */
 (function () {
   "use strict";
 
@@ -204,6 +205,52 @@
     })));
   }
 
+  // ── My resources: her own links per note, synced key "my-res" ───────────
+  // {itemId: {note, label, url, t}} — a deleted link becomes {note, deleted: true, t} so the
+  // deletion wins the per-item sync/restore merge (NB.merge.RECORDS["my-res"]). Nothing is pre-seeded.
+  const RES_KEY = "my-res";
+  const esc = (window.NB && window.NB.escapeHtml) || ((s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;"));
+  const safeUrl = (u) => { const s = String(u || "").trim(); return /^(https?:\/\/|file:\/\/)\S+$/i.test(s) && s.length <= 2000 ? s : ""; };
+  const resAll = () => { const v = store.get(RES_KEY, {}); return v && typeof v === "object" && !Array.isArray(v) ? v : {}; };
+  const resFor = (noteId) => Object.entries(resAll()).filter(([, r]) => r && !r.deleted && r.note === noteId && safeUrl(r.url))
+    .sort((a, b) => (a[1].t || 0) - (b[1].t || 0));
+
+  function myResources(note) {
+    const list = el("ul", { class: "nt-res", id: "nt-res-list" });
+    const msg = el("p", { class: "nt-err", role: "status" });
+    function draw() {
+      const rows = resFor(note.id);
+      list.innerHTML = rows.length ? rows.map(([id, r]) =>
+        `<li><a href="${esc(safeUrl(r.url))}" target="_blank" rel="noopener noreferrer">${esc(r.label)}</a> ` +
+        `<button type="button" class="btn nt-mini" data-del="${esc(id)}" aria-label="Delete ${esc(r.label)}">Delete</button></li>`).join("")
+        : `<li class="muted">${esc("No links yet. Add your own notes, videos or files for this topic.")}</li>`;
+    }
+    list.addEventListener("click", (e) => {
+      const b = e.target.closest("button[data-del]");
+      if (!b) return;
+      const all = resAll(), id = b.getAttribute("data-del"), cur = all[id];
+      if (!cur) return;
+      all[id] = { note: cur.note, deleted: true, t: Math.max(Date.now(), (cur.t || 0) + 1) };
+      store.set(RES_KEY, all);
+      draw();
+    });
+    const label = el("input", { type: "text", id: "nt-res-label", placeholder: "Label, e.g. My class notes", maxlength: 200 });
+    const url = el("input", { type: "url", id: "nt-res-url", placeholder: "https://… or file://…", maxlength: 2000 });
+    const form = el("form", { class: "nt-res-form", onsubmit: (e) => {
+      e.preventDefault();
+      const l = label.value.trim(), u = safeUrl(url.value);
+      if (!l) { msg.textContent = "Add a label."; return; }
+      if (!u) { msg.textContent = "Links must start with http://, https:// or file://."; return; }
+      const all = resAll();
+      all["r" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6)] = { note: note.id, label: l.slice(0, 200), url: u, t: Date.now() };
+      if (store.set(RES_KEY, all) === false) { msg.textContent = "Could not save (storage full?)."; return; }
+      msg.textContent = ""; label.value = ""; url.value = "";
+      draw();
+    } }, label, url, el("button", { type: "submit", class: "btn nt-mini primary" }, "Add link"));
+    draw();
+    return section("My resources", el("p", { class: "muted" }, "Your own links for this topic (class notes, videos, files on this device). Saved with your progress and synced when you are logged in."), list, form, msg);
+  }
+
   async function renderNote(subject, topic) {
     const view = $("nt-note");
     const row = MAN.notes.find(n => n.subject === subject && fileId(n.file) === topic);
@@ -220,6 +267,7 @@
         el("p", { class: "muted" }, `${note.themeLabel || ""}${note.levelLabel ? " · " + note.levelLabel : ""}${meta ? " · " + meta : ""}`),
         note.bigPicture ? el("p", { class: "nt-big" }, note.bigPicture) : null,
         practiceLinks(note)),
+      myResources(note),
       note.keyIdeas && note.keyIdeas.length ? keyIdeas(note) : null,
       note.keyTerms && note.keyTerms.length ? keyTerms(note) : null,
       note.misconceptions && note.misconceptions.length ? misconceptions(note) : null,

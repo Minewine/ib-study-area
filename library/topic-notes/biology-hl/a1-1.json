@@ -83,6 +83,27 @@
    "stmt": "A1.1.8",
    "cue": "Why does the search for extraterrestrial life focus on water and the 'Goldilocks zone'?",
    "answer": "Life as we know it needs liquid water. The Goldilocks (habitable) zone is the range of distances from a star where a planet's surface could be warm enough, but not too warm, for liquid water."
+  },
+  {
+   "id": "a11-x1",
+   "ahl": false,
+   "stmt": "A1.1.3",
+   "cue": "Why does water have surface tension?",
+   "answer": "Molecules at the surface have neighbours only beside and below them, so the hydrogen bonds pull them inwards and sideways. The surface behaves like a stretched skin that small animals (e.g. pond skaters) can stand on."
+  },
+  {
+   "id": "a11-x2",
+   "ahl": false,
+   "stmt": "A1.1.5",
+   "cue": "How does an ionic compound such as NaCl dissolve in water?",
+   "answer": "Water molecules cluster round each ion: the slightly negative O faces cations and the slightly positive H atoms face anions. These hydration shells separate the ions and keep them in solution."
+  },
+  {
+   "id": "a11-x3",
+   "ahl": false,
+   "stmt": "A1.1.6",
+   "cue": "Give rough numbers comparing water and air as habitats.",
+   "answer": "Water needs about four times as much energy per kg to warm by 1 °C (about 4.2 vs 1.0 kJ kg⁻¹ K⁻¹) and conducts heat roughly 25 times faster. So aquatic animals lose heat fast but face stable temperatures; the black-throated loon relies on feathers and trapped air for insulation, the ringed seal on thick blubber."
   }
  ],
  "keyTerms": [
@@ -155,6 +176,10 @@
   {
    "wrong": "Cohesion and adhesion are the same thing.",
    "right": "Cohesion is water to water. Adhesion is water to another polar or charged material. Xylem transport needs both."
+  },
+  {
+   "wrong": "Water is only a solvent in metabolism.",
+   "right": "It is also a reactant (hydrolysis, photosynthesis) and a product (condensation, aerobic respiration)."
   }
  ],
  "practice": [

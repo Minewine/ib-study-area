@@ -155,6 +155,27 @@
    "stmt": "B2.1.17",
    "cue": "What holds cells together in tissues?",
    "answer": "Cell-adhesion molecules (CAMs) in the membrane bind neighbouring cells. Different CAMs form different kinds of cell–cell junction (details not required)."
+  },
+  {
+   "id": "b21-x1",
+   "ahl": true,
+   "stmt": "B2.1.15",
+   "cue": "Describe one cycle of the sodium–potassium pump.",
+   "answer": "Three Na⁺ bind on the inside; ATP transfers a phosphate to the pump, which changes shape and releases Na⁺ outside. Two K⁺ then bind from outside; the phosphate is released, the pump returns to its first shape and K⁺ is released inside."
+  },
+  {
+   "id": "b21-x2",
+   "ahl": false,
+   "stmt": "B2.1.10",
+   "cue": "What do 'fluid' and 'mosaic' mean in the membrane model?",
+   "answer": "Fluid: phospholipids and many proteins can move sideways within each layer. Mosaic: proteins of different types are scattered through the bilayer like tiles."
+  },
+  {
+   "id": "b21-x3",
+   "ahl": false,
+   "stmt": "B2.1.3",
+   "cue": "Why can't glucose cross the bilayer by simple diffusion?",
+   "answer": "It is large and polar (many –OH groups), so the hydrophobic core repels it. It needs channel/carrier proteins (facilitated diffusion) or cotransport. Small polar molecules such as water and urea can cross the bilayer, but only slowly."
   }
  ],
  "keyTerms": [
@@ -235,6 +256,10 @@
   {
    "wrong": "The glucose cotransporter hydrolyses ATP.",
    "right": "It uses the Na⁺ gradient. ATP is spent by the Na⁺/K⁺ pump elsewhere in the membrane."
+  },
+  {
+   "wrong": "The bilayer is completely impermeable to water.",
+   "right": "Water crosses slowly through the bilayer; aquaporins (e.g. in kidney collecting ducts and root cells) make it much faster."
   }
  ],
  "practice": [

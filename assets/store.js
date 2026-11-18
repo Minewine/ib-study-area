@@ -42,7 +42,7 @@
     "q-userbanks", "fc-userdecks", "fc-state", "fc-user",
     "fc-deleted", "fc-edits", "quizlog", "q-errors",
     "tok-objects", "ee-ideas", "io-issues", "ia-debriefs",
-    "res-bookmarks", "res-notes", "res-recent", "pp-scores", "cw-progress"
+    "res-bookmarks", "res-notes", "res-recent", "pp-scores", "cw-progress", "my-res"
   ];
   // never synced, never in backups: credentials, sync bookkeeping, caches, safety copies
   const LOCAL_ONLY = ["nb-token", "nb-api", DIRTY_KEY, "nb-sync", SCHEMA_KEY, "fc-seedids"];
@@ -296,6 +296,14 @@
         if (!cur || (r.ts || 0) > (cur.ts || 0)) byId.set(r.id, r);
       });
       return Array.from(byId.values());
+    },
+    // "My resources" on topic notes {itemId: {note, label, url, t} | {note, deleted: true, t}}:
+    // per item the newest t wins; a deletion is a newer tombstone, so an older copy can't revive it
+    "my-res": function (a, b) {
+      if (!isObj(a)) return b; if (!isObj(b)) return a;
+      const out = Object.assign({}, b);
+      Object.keys(a).forEach(id => { if (!(id in out) || newer(a[id], out[id], (r) => [r && r.t || 0])) out[id] = a[id]; });
+      return out;
     }
   };
 
