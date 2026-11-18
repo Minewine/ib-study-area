@@ -34,11 +34,6 @@ Merge **PR #1 → PR #2 → PR #3**, in that order (each one builds on the previ
 - **Maths checklist:** `math-aa-sl.html` uses textbook numbering, not IB numbering. Rebuild it from `library/syllabus/maths-aa-sl.json`.
 - The duplicate quiz id `wp01` in two Biology banks: rename it with a q-errors key migration, or leave it as it is (the validator warns about it).
 
-## 5b. "Today" panel (practice home page)
-- Built in the `feat/today-plan` PR: due cards, a 6-question quiz on the weakest topic, and this week's class units from `library/class-schedule.json`.
-- **Check the schedule with her once a month.** The dates are estimates made from the ISL course calendars, and editing them is one JSON line per unit.
-- Add the **Year 13 (2027-28)** units once ISL publishes the DP2 calendars (the current Maths one is based on an older year).
-
 ## 6. Fill the practice gaps the notes exposed
 - Flashcards for **B2.1–B2.3** (membranes, organelles, cell specialisation). She studies these next, and they have questions but no cards.
 - Questions and cards for **Chemistry S1.1** (her first topic has none).
@@ -63,3 +58,8 @@ Merge **PR #1 → PR #2 → PR #3**, in that order (each one builds on the previ
   - escape the remaining `innerHTML` sink in `practice.html` (missed-question rendering);
   - per-IP plus per-account brute-force limits.
 - **Known sync limits:** if two devices edit the same list blob, the last one wins (the server history keeps the other version). A device's first sync after the upgrade unions both sides, so an item deleted elsewhere can come back once.
+
+## 9. "Today" panel (practice home page)
+- Built in the `feat/today-plan` PR: due cards, a 6-question quiz on the weakest topic, and this week's class units from `library/class-schedule.json`.
+- **Check the schedule with her once a month.** The dates are estimates made from the ISL course calendars, and editing them is one JSON line per unit.
+- Add the **Year 13 (2027-28)** units once ISL publishes the DP2 calendars (the current Maths one is based on an older year).
