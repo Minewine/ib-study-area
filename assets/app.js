@@ -1,12 +1,14 @@
 (function () {
-  const store = {
+  // NB.store (assets/store.js) is the storage layer; the literal below is only a
+  // fallback for a stale cached page that didn't load store.js.
+  const store = (window.NB && window.NB.store) || {
     get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v === null ? d : v; } catch (e) { return d; } },
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   };
   document.querySelectorAll('.row[data-key]').forEach(row => {
     const key = row.dataset.key;
     const st = store.get('chk:' + key, { c: false, r: '' });
-    if (localStorage.getItem('chk:' + key) === null) store.set('chk:' + key, st);
+    if (localStorage.getItem('chk:' + key) === null) store.set('chk:' + key, st, { silent: true }); // default row, not a user change
     const cb = row.querySelector('input[type=checkbox]');
     const sel = row.querySelector('select.rag');
     if (cb) cb.checked = !!st.c;

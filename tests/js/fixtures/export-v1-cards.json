@@ -1,0 +1,8 @@
+{
+ "version": 1,
+ "exported": "2026-10-02",
+ "state": {"fc-bio-1": {"box": 3, "due": "2026-10-06", "seen": 4}, "fc-bio-2": {"box": 1, "due": "2026-10-03", "seen": 1}},
+ "user": [{"id": "u-1696000000000", "type": "qa", "subject": "biology-hl", "topic": "cells", "topicLabel": "Cells", "tags": ["from-quiz"], "front": "Prokaryote feature?", "back": "No nucleus"}],
+ "deleted": ["fc-chem-9"],
+ "edits": {"fc-bio-3": {"front": "Edited front", "back": "Edited back", "tags": []}}
+}

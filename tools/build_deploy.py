@@ -16,6 +16,7 @@ script refuses to upload an armed api.php unless forced). See
 server/deploy-notes.md.
 """
 
+import re
 import shutil
 import zipfile
 from pathlib import Path
@@ -61,6 +62,9 @@ def build_pages(out: Path) -> None:
             '<a href="../plan.html">← How sessions fit the weekly plan</a>', ""
         )
         t = t.replace('<p><a href="../plan.html">', "<p>")
+        # blocks that only make sense next to the local study site (e.g. the
+        # "Study site →" launcher card, which would link the app to itself)
+        t = re.sub(r"<!-- study-site-only -->.*?<!-- /study-site-only -->", "", t, flags=re.S)
         (out / page).write_text(t, encoding="utf-8")
 
 

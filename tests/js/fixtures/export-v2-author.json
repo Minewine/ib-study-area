@@ -1,0 +1,11 @@
+{
+ "version": 2,
+ "exported": "2026-10-20",
+ "qUserBanks": [{"name": "my-bank.json", "subject": "biology-hl", "topic": "x", "topicLabel": "X", "label": "X", "items": [{"id": "x1", "format": "mcq", "stem": "Q?", "choices": ["a", "b"], "answer": 0}]}],
+ "fcUserDecks": [],
+ "fcState": {"fc-bio-1": {"box": 4, "due": "2026-10-28", "seen": 5}},
+ "fcUser": [],
+ "fcDeleted": [],
+ "fcEdits": {},
+ "quizlog": [{"date": "2026-10-19", "label": "Biology HL", "pct": 80, "got": 8, "max": 10}]
+}

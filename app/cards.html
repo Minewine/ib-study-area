@@ -78,10 +78,13 @@ main{color:var(--fctext)}
     <button id="fc-start" class="btn primary">Start session</button>
     <button id="fc-open-editor" class="btn">Edit cards</button>
     <h3>Backup / move between devices</h3>
-    <p class="muted">Progress and your own cards live in this browser (localStorage). Export the JSON below and paste it into the other device's import box to move everything.</p>
-    <button id="fc-export" class="btn">Export</button>
-    <button id="fc-import" class="btn">Import</button>
-    <textarea id="fc-io" placeholder="Exported JSON appears here; paste JSON here and press Import."></textarea>
+    <p class="muted">Logged in, progress syncs on its own. A backup file holds everything in this browser — quiz and card progress, missed questions, checklists, lists and notes, uploads. Restoring <strong>merges</strong> it in (nothing here is lost unless you choose Replace), after saving a safety copy.</p>
+    <button id="fc-export" class="btn">Download full backup</button>
+    <label class="btn" for="fc-import-file">Restore from file…</label><input type="file" id="fc-import-file" accept=".json,application/json" style="display:none">
+    <button id="fc-import" class="btn">Restore pasted JSON</button>
+    <button id="fc-undo" class="btn">Undo last restore</button>
+    <textarea id="fc-io" placeholder="“Download full backup” also puts the JSON here for copy/paste. Paste a backup (older Cards exports work too) and press “Restore pasted JSON”."></textarea>
+    <div id="fc-restore"></div>
     <h3>Where cards come from</h3>
     <p class="muted">Seeded decks live in <code>library/flashcards/</code> using the same subject/topic keys as the question banks. Your own cards (added here, or via the <em>＋ Flashcard</em> button on quiz answers) are stored in this browser. Deleting or editing a seeded card is kept as an override, so re-downloading decks never resurrects removed cards.</p>
   </section>
@@ -126,13 +129,15 @@ main{color:var(--fctext)}
   </section>
 </main>
 <footer>Private family study area · exams <strong>May 2028</strong> · keep this site and its library non-public</footer>
-<script src="../assets/flashcards.js?v=6"></script>
+<script src="../assets/store.js?v=1"></script>
+<script src="../assets/backup.js?v=1"></script>
+<script src="../assets/flashcards.js?v=8"></script>
 <script>
 document.getElementById("fc-close-editor").addEventListener("click", () => {
   document.getElementById("editor").style.display = "none";
   document.getElementById("setup").style.display = "";
 });
 </script>
-<script src="../assets/auth.js?v=4"></script>
+<script src="../assets/auth.js?v=7"></script>
 </body>
 </html>

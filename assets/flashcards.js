@@ -27,7 +27,9 @@
   const $ = (id) => document.getElementById(id);
   const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   const shuffle = (a) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
-  const store = {
+  // NB.store (assets/store.js) is the storage layer; the literal below is only a
+  // fallback for a stale cached page that didn't load store.js.
+  const store = (window.NB && window.NB.store) || {
     get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v === null ? d : v; } catch (e) { return d; } },
     set(k, v) {
       try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {}
@@ -173,6 +175,7 @@
     if (r === "again") { s.box = 1; s.due = addDays(1); }
     else if (r === "hard") { s.box = Math.max(1, s.box); s.due = addDays(INTERVALS[s.box]); }
     else { s.box = Math.min(5, s.box + 1); s.due = addDays(INTERVALS[s.box]); }
+    s.t = Date.now(); // last-review timestamp — lets auth.js merge devices per card (newest wins)
     st[c.id] = s;
     store.set("fc-state", st);
     session.ratings[r]++;
@@ -290,22 +293,37 @@
           <div class="bar mini" style="--pct:${g.pct}%"></div></div>`).join("");
   }
 
-  // ---------- export / import ----------
+  // ---------- backup / restore (assets/backup.js) ----------
+  // Full backup of every progress key; restore validates, summarises, snapshots and
+  // merges by default — replaces the old v1 export/import that overwrote 4 keys blindly.
+  const BK = () => window.NB && window.NB.backup;
+  function needReload() { alert("Reload the page to use backup and restore."); }
   function doExport() {
-    const { state, user, deleted, edits } = loadState();
-    $("fc-io").value = JSON.stringify({ version: 1, exported: todayISO(), state, user, deleted, edits }, null, 1);
-    $("fc-io").select();
+    if (!BK()) return needReload();
+    const data = BK().collect();
+    $("fc-io").value = JSON.stringify(data, null, 1);
+    BK().download(data);
   }
+  function afterRestore(r) { if (r && r.ok) { rebuild(); renderProgress(); renderEditor(); } }
   function doImport() {
-    try {
-      const data = JSON.parse($("fc-io").value);
-      if (data.state) store.set("fc-state", data.state);
-      if (data.user) store.set("fc-user", data.user);
-      if (data.deleted) store.set("fc-deleted", data.deleted);
-      if (data.edits) store.set("fc-edits", data.edits);
-      rebuild(); renderProgress(); renderEditor();
-      alert("Imported.");
-    } catch (e) { alert("Could not parse that JSON: " + e.message); }
+    if (!BK()) return needReload();
+    BK().openRestore($("fc-io").value, $("fc-restore"), afterRestore);
+  }
+  function doImportFile(e) {
+    const f = e.target.files && e.target.files[0];
+    if (!f) return;
+    if (!BK()) return needReload();
+    const reader = new FileReader();
+    reader.onload = () => BK().openRestore(String(reader.result), $("fc-restore"), afterRestore);
+    reader.readAsText(f);
+    e.target.value = "";
+  }
+  function doUndo() {
+    if (!BK()) return needReload();
+    if (!confirm("Bring back this browser's data from just before the last restore?")) return;
+    const r = BK().undoLast();
+    if (r.ok) { alert("Done \u2014 restored the safety copy from " + r.restoredFrom + ". The page will reload."); location.reload(); }
+    else alert(r.error);
   }
 
   // ---------- theme ----------
@@ -352,6 +370,8 @@
     $("fc-open-editor").addEventListener("click", () => { $("setup").style.display = "none"; $("editor").style.display = ""; renderEditor(); });
     $("fc-export").addEventListener("click", doExport);
     $("fc-import").addEventListener("click", doImport);
+    if ($("fc-import-file")) $("fc-import-file").addEventListener("change", doImportFile);
+    if ($("fc-undo")) $("fc-undo").addEventListener("click", doUndo);
     $("fc-theme-btn").addEventListener("click", toggleTheme);
     applyTheme();
     renderProgress();

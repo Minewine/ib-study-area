@@ -17,7 +17,7 @@ Status snapshot: **2026-11-15** — hosted at **rametric.com/nevaib (live, verif
 | Core | `core.html` | TOK (exhibition 33% / essay 67%), **new EE guide** (first assessment 2027), CAS + TOK exhibition object shortlist (tracked, synced) |
 | EE workspace | `ee.html` | Idea-log shortlist (tracked, synced), one-page proposal checklist mapped to the new-EE criteria, DP1 timeline, reflection-session guidance |
 | Quiz engine | `quiz.html` | 20-question sessions, filtered by subject/topic/format; instant MCQ marking; written answers self-marked against markschemes; weak-topic flags + tactics; "＋ Flashcard" button on every answer |
-| Flashcards | `flashcards.html` | Leitner spaced repetition (1/2/4/8/16-day boxes), flip UI, keyboard shortcuts, dark mode, editor, export/import |
+| Flashcards | `flashcards.html` | Leitner spaced repetition (1/2/4/8/16-day boxes), flip UI, keyboard shortcuts, dark mode, editor, full backup / restore |
 | Practice | `practice.html` | Mock protocol, printable error log, missed-question tracker, paper-alignment table per subject, Dec–Jan mock schedule, manifest-driven papers list |
 | Library | `library.html` | Filterable/searchable browser over every library PDF (notes · official · school · papers) from `library/library-manifest.json`; ★ pin resources (dashboard card), private per-resource notes, recently-opened tracking — all synced |
 | IA & EE | `ia.html` | IA/EE criteria per subject, milestone timeline, **practice-IA debrief notes** (Nov hydrogen-peroxide + Jan beetroot/osmosis — saved + synced) |
@@ -26,17 +26,17 @@ Status snapshot: **2026-11-15** — hosted at **rametric.com/nevaib (live, verif
 | Reference | `quick-reference.html` | Formula/data booklets, command terms, GDC exam-mode, citation |
 | Redirect | `sixth-subject.html` | The sixth subject is English A Literature HL → redirects to its hub |
 
-Content totals: **127 PDFs** in the library (indexed by `library/library-manifest.json` — rebuilt with `tools/build_library_manifest.py` after any PDF lands) · **631 quiz questions** (23 banks) · **484 flashcards** (23 decks — now incl. French terminology + English literary terms).
+Content totals: **127 PDFs** in the library (indexed by `library/library-manifest.json` — rebuilt with `tools/build_library_manifest.py` after any PDF lands) · **658 quiz questions** (24 banks) · **524 flashcards** (24 decks — now incl. French terminology + English literary terms).
 
 ## Tech stack (deliberately boring)
 
 - **Static HTML + vanilla JS.** No framework, no dependencies, no build step.
 - **Data** = JSON files in `library/` (question banks, flashcard decks, deadlines array).
-- **State** = browser `localStorage` (checklist ticks, SRS boxes, quiz logs, this-week items) — per device; Export/Import on the Cards page moves it.
+- **State** = browser `localStorage` (checklist ticks, SRS boxes, quiz logs, missed questions, this-week items) — synced across devices when logged in (merged per record for SRS boxes and missed questions); logged out it stays on the device and syncs at the next login. Full backup / restore (merge by default) on the Cards page; the server keeps the last 30 versions.
 - **Python 3** used only for one-off scripts (extraction, site generation) — always run with `-I`.
 - **Must be served over HTTP** for the quiz/flashcards to load their JSON (`fetch()` fails on `file://`):
   ```bash
-  python3 -m http.server 8017 --bind 0.0.0.0 --directory ~/Projects/ibsystem
+  ./dev.sh start      # http://127.0.0.1:8018 — site + local API; ./dev.sh help for test/validate/build/deploy
   ```
 - Deployment + privacy (basic auth) → [DEPLOY.md](DEPLOY.md).
 
@@ -58,7 +58,9 @@ ibsystem/
 │   ├── style.css             ← site-wide styles
 │   ├── app.js                ← checklists, progress bars, countdown, this-week
 │   ├── quiz-engine.js        ← quiz sessions + flashcard hook
-│   ├── flashcards.js         ← SRS engine + editor + export/import
+│   ├── store.js              ← shared storage layer (NB.store): schema, migrations, sync markers, snapshots
+│   ├── backup.js             ← full backup + validated, merge-by-default restore
+│   ├── flashcards.js         ← SRS engine + editor
 │   ├── lists.js              ← tracked lists + debrief notes (synced blobs)
 │   ├── library.js            ← library browser: manifest filter/search, pins/notes/recent tracking
 │   └── deadlines.js          ← deadline data + timeline renderers
@@ -66,8 +68,8 @@ ibsystem/
 │   ├── official/             ← 21 PDFs from ibo.org (guides, specimens, briefs, booklets, EE guide)
 │   ├── school/               ← ISL course documents (bio outline, chem at-a-glance, math syllabus)
 │   ├── notes/                ← 103 topic PDFs, organised by ISL teaching order
-│   ├── questions/            ← 23 quiz banks (631 items) — schema in DEVELOPMENT.md
-│   ├── flashcards/           ← 23 decks (484 cards) — schema in DEVELOPMENT.md
+│   ├── questions/            ← 24 quiz banks (658 items) — schema in DEVELOPMENT.md
+│   ├── flashcards/           ← 24 decks (524 cards) — schema in DEVELOPMENT.md
 │   ├── papers/               ← (empty) school-provided past papers land here
 │   └── library-manifest.json ← auto-built index of every PDF (127 items) — rebuild after changes
 ├── source-archives/          ← original downloaded ZIPs (kept as provenance; deletable once confident)

@@ -1,0 +1,9 @@
+{
+ "ok": true, "format": "nevaib-server-export", "user": "tester", "exported_at": "2026-11-18T09:00:00+00:00", "rev": 7,
+ "state": {
+  "q-errors": [{"key": "bio-unity-diversity-cells#b01", "stem": "Q", "attempts": 2, "ts": 1763450000000}],
+  "site-state": {"checklists": {"chk:biology-hl::library/notes/a.pdf": {"c": true, "r": "g"}}, "week": {"week:0": "Enzymes"}},
+  "tok-objects": {"items": [{"t": "A map", "done": true}]}
+ },
+ "history": []
+}

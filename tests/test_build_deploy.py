@@ -78,6 +78,18 @@ def test_built_pages_are_rewritten(built):
         assert "← Study site" not in t, page
 
 
+def test_built_pages_drop_study_site_only_blocks(built):
+    out, _ = built
+    home = (out / "index.html").read_text(encoding="utf-8")
+    # the launcher card would otherwise link the deployed home page to itself
+    assert "Study site →" not in home
+    assert "study-site-only" not in home
+    for page in build_deploy.PAGES:
+        t = (out / page).read_text(encoding="utf-8")
+        assert "\\uFF0B" not in t, page  # literal escape must not reach the page
+        assert "stored per device" not in t, page
+
+
 def test_built_api_setup_key_state(built):
     out, _ = built
     api = (out / "api/api.php").read_text(encoding="utf-8")

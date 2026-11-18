@@ -27,3 +27,6 @@ deploy/
 
 # ── Agent session workspace ──
 .zcode/
+
+# ── e2e test tooling (tests/e2e) ──
+node_modules/

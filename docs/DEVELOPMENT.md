@@ -5,7 +5,7 @@ touching this site.
 
 ## Architecture
 
-- **Static site, no build step.** 18 study-site pages + 4 practice-app pages (`app/`, LIVE on rametric.com/nevaib) + 8 asset files + JSON data in `library/` (23 quiz banks / 631 items, 23 flashcard decks / 484 cards, and the PDF manifest `library/library-manifest.json` / 127 items). The engines build their pickers from `library/questions/manifest.json` + `library/flashcards/manifest.json`; the Library browser reads `library/library-manifest.json`.
+- **Static site, no build step.** 18 study-site pages + 4 practice-app pages (`app/`, LIVE on rametric.com/nevaib) + 8 asset files + JSON data in `library/` (24 quiz banks / 658 items, 24 flashcard decks / 524 cards, and the PDF manifest `library/library-manifest.json` / 127 items). The engines build their pickers from `library/questions/manifest.json` + `library/flashcards/manifest.json`; the Library browser reads `library/library-manifest.json`.
 - **Practice app (`app/`)**: `index.html` (launcher), `quiz.html`, `cards.html`, `author.html` (upload/manage/export).
   Engines resolve content via `PATH_BASE` (`../` when served from `/app/`, empty at the root), so the same engine
   files serve both layers. Root `quiz.html`/`flashcards.html` are one-line redirect stubs to the app.
@@ -27,26 +27,65 @@ touching this site.
   5 fails → 5-min lockout (`login-fails.json`). Accounts: key-protected `action=setup`. CORS: whitelisted origins
   (rametric.com, localhost/127.0.0.1, LAN 192.168/10/172.16-31) get `Access-Control-Allow-Origin`; OPTIONS
   preflights answer 204 before auth.
-- **Sync model**: last-write-wins on the whole synced payload (`q-userbanks, fc-userdecks, fc-state, fc-user,
-  fc-deleted, fc-edits, quizlog, tok-objects, ee-ideas, io-issues, ia-debriefs, res-bookmarks, res-notes,
-  res-recent` **+ `site-state`**). On load, the server state replaces local per key; every engine
-  write triggers a debounced (2 s) push; retry loop every 15 s while dirty. Login triggers one reload so engines
-  re-read restored state. `site-state` = `{checklists: {"chk:…": {c,r}}, week: {"week:0": "…"}}` — one batched
-  object built from the per-row localStorage keys on push, distributed back to per-row keys on pull; **rows merge
-  per-row** (server wins on pull; local-only rows survive; a push first re-fetches and merges server rows it lacks
-  — never pushes blind, since `save-state` replaces the whole per-user file). First login on an empty account
-  pushes the local state up (migration, no data loss).
+- **Storage layer** (`assets/store.js`, loaded first on every page that stores anything): `window.NB.store`
+  is the only get/set the engines use. Unreadable JSON is moved to `nb-corrupt:<key>` (raw text kept) with a
+  banner; quota errors show a banner and `set()` returns false; `set()` of an unchanged value is a no-op.
+  `nb-schema` holds the data-shape version (currently **1** = the shapes in the table below) and
+  `MIGRATIONS` in store.js runs ordered, one-time steps (each snapshots the keys it touches; a failure stops the
+  chain without bumping the version). **To change a stored shape:** add `{to: N+1, touches: [keys], run(store)}`,
+  bump `SCHEMA_VERSION`, add a test in `tests/js/store.test.js`. Non-silent writes to synced keys are recorded in
+  `nb-dirty` (`{key: ms}`), persisted, so "changed on this device since the last sync" survives reloads,
+  offline use and closed tabs. `NB.store.snapshot(reason, keys)` keeps a ring of 3 local safety copies
+  (`nb-backup:<ms>`). Each engine keeps its old 3-line helper only as a fallback for a stale cached page
+  without store.js.
+- **Sync model** (`assets/auth.js`): synced keys = `NB.store.SYNCED_KEYS` (`q-userbanks, fc-userdecks, fc-state,
+  fc-user, fc-deleted, fc-edits, quizlog, q-errors, tok-objects, ee-ideas, io-issues, ia-debriefs, res-bookmarks,
+  res-notes, res-recent`) **+ `site-state`** (`{checklists: {"chk:…": {c,r}}, week: {"week:0": "…"}}`, built from
+  the per-row keys; rows are tracked individually). Rules, applied on page load, after login and on a 409:
+  1. `fc-state`, `q-errors`, `quizlog` merge **per record** (`NB.merge.RECORDS`): `fc-state` per card (newest `t`,
+     then `seen`, then `due`), `q-errors` union by `key` (newest `ts`, then last attempt/miss date, then attempts;
+     a key renamed by the quiz migration — `legacyKey` — isn't resurrected), `quizlog` union, newest first.
+  2. Any other key or checklist row **this device changed** since its last sync (`nb-dirty`) keeps the local value
+     and is pushed.
+  3. Untouched keys take the server value (so deletions made on another device stick).
+  4. A device's **first** sync with the account (`nb-sync` missing or another user) unions both copies
+     (`NB.merge.union`) instead — nothing on either side is dropped. This also happens once per device after
+     upgrading from the pre-revision client.
+  Every local value about to be replaced is snapshotted first; if the snapshot can't be saved the key is left
+  alone and not pushed. Pushes send only the changed keys plus `base_rev` (the server revision this device last
+  saw, in `nb-sync`); a 409 returns the current server copy, which is merged (rules above) before retrying (max 4
+  attempts). Pushes happen 2 s after a change, every 15 s while anything is dirty, on `online`, on "Sync now",
+  before logout, and on `pagehide`/`visibilitychange→hidden` via `fetch(…, {keepalive: true})` (bodies ≤ 60 KB;
+  if that doesn't get through, the markers make the next load push). Checklist default rows written on page
+  load are written silently and never pushed over another device's ticks. Against an **old api.php** (no
+  `rev`) the client falls back to fetch-merge-then-full-payload with the server's other keys carried over.
+- **Server** (`server/api.php`): `state/<user>.json` = `{state, updated_at, rev}`; every save runs under a
+  per-user `flock`, copies the previous file to `state/history/<user>/<UTC>-r<rev>.json` (newest 30 kept) and
+  writes temp + `rename()`. `base_rev` mismatch → 409 + current state; no `base_rev` (older clients) → saved as
+  before. Keys a save omits are kept. An unreadable stored file → 500, never overwritten. `action=export`
+  downloads the user's full stored state; `action=history` lists previous versions, `&name=<file>` returns one.
+- **Backup / restore** (`assets/backup.js`, Cards page + author page): one file
+  (`{format: "nevaib-backup", version: 3, schema, created, keys}`) with every progress key incl. `q-errors`,
+  `chk:*`, `week:*`, lists, `res-*`, settings and quarantined values (never `nb-token`, `nb-api`, `nb-dirty`,
+  `nb-sync`, `nb-schema`, snapshots). Restore also reads the old Cards export (v1), the old author export (v2) and
+  `action=export` files; validates each key (wrong shape → rejected, bad records dropped with a warning,
+  credentials/unknown keys ignored, newer schema refused); shows a summary; snapshots first; **merges** by default
+  (records newest-wins, otherwise the current value wins conflicts and gaps are filled); Replace is an explicit
+  opt-in for the keys in the file; "Undo last restore" brings the snapshot back.
 - **Cache-busting convention**: engine script tags carry `?v=N` — bump N in the referencing pages whenever an engine
-  file changes. auth.js is at `?v=5` on the eleven study-site auth pages (dashboard, hubs, core, ia, ee, library)
-  and still `?v=4` on the four app pages; `app.js` is at `?v=2` everywhere it loads; `deadlines.js` is at `?v=2`
-  (index + deadlines); `lists.js` is at `?v=2` (core, ia, french hub, ee); `library.js` is at `?v=1`
-  (library.html, index, practice). Bank/deck/manifest fetches use `?cb=Date.now()` + `cache: no-store`.
+  file changes. `store.js` `?v=1` (first script on every storing page), `backup.js` `?v=1` (cards, author),
+  `auth.js` `?v=7`, `quiz-engine.js` `?v=11`, `flashcards.js` `?v=8`, `app.js` `?v=3`, `lists.js` `?v=3`
+  (core, ia, french hub, ee, library), `library.js` `?v=2` (library.html, index, practice), `deadlines.js` `?v=2`
+  (index + deadlines). Bank/deck/manifest fetches use `?cb=Date.now()` + `cache: no-store`.
 - **Vanilla JS, one engine per concern**:
   | File | Owns | Page(s) |
   |---|---|---|
+  | `assets/store.js` | `NB.store` (get/set, quarantine, quota banner, dirty markers, snapshots, schema + migrations) and `NB.merge` rules | every page that stores data (first script) |
+  | `assets/backup.js` | `NB.backup`: full backup, validated restore (merge/replace), undo, restore dialog | `app/cards.html`, `app/author.html` |
+  | `assets/auth.js` | Login widget, sync (reconcile, dirty-key pushes with `base_rev`, 409 retry, pagehide flush) | auth pages + app pages |
   | `assets/app.js` | Checklist rows (RAG + ticks), progress bars, countdown, this-week inputs | all pages (safe no-op) |
   | `assets/quiz-engine.js` | Session builder, MCQ marking, written self-marking, summaries, `fcSaveFromQuiz()` hook, PATH_BASE content resolution, user-bank merge | `quiz.html` (root + `app/`) |
-  | `assets/flashcards.js` | Deck loading, Leitner SRS, session runner, editor, export/import, theme, PATH_BASE, user-deck merge | `flashcards.html` (root + `app/`) |
+  | `assets/flashcards.js` | Deck loading, Leitner SRS, session runner, editor, backup/restore buttons (via backup.js), theme, PATH_BASE, user-deck merge | `flashcards.html` (root + `app/`) |
   | `assets/deadlines.js` | Deadline data + `#nextup` / `#timeline` renderers | `index.html`, `deadlines.html` |
   | `assets/lists.js` | Tracked lists (`data-list` containers) + debrief notes (`textarea[data-note]`), one synced blob each | `core.html`, `ia.html`, `french-a-langlit.html`, `ee.html` |
   | `assets/library.js` | Library browser over `library/library-manifest.json`: filter bar (subject/type/free-text), rows reusing the hub-row convention, ★ pins / notes / recent tracking, `#res-pins` + `#papers-list` renderers | `library.html`, `index.html`, `practice.html` |
@@ -57,23 +96,40 @@ touching this site.
 ## Running it
 
 ```bash
-python3 -m http.server 8017 --bind 0.0.0.0 --directory ~/Projects/ibsystem
+./dev.sh start        # site + API on http://127.0.0.1:8018 (php -S + tools/dev_server.php)
+./dev.sh adduser mick # dev login in ~/.cache/nevaib-dev-data (NEVAIB_DATA_DIR overrides)
+./dev.sh test         # pytest (incl. PHP API tests) + node --test tests/js + php -l + node --check
+./dev.sh e2e          # headless Chrome end-to-end (tests/e2e; installs puppeteer-core there on first run)
+./dev.sh validate     # content validator
+./dev.sh build        # build_site.py (+ library manifest when the PDFs are present) + build_deploy.py
+./dev.sh deploy       # push_deploy.py --rebuild --dry-run; a real upload needs --confirm
 ```
+
+`start` binds **127.0.0.1** only. `./dev.sh start --lan` binds 0.0.0.0 (with a warning) and serves only the
+built `deploy/nevaib` copy — never the working tree, which holds `.git` and `deploy/.ftp-credentials`.
+Open a page once with `?nbapi=/api/api.php` to point it at the local API (localhost only; `?nbapi=` resets).
 
 **Gotcha:** `quiz.html` and `flashcards.html` `fetch()` their JSON banks — `fetch()` on
-`file://` is blocked by browsers. The site *pages* open fine from disk, but always use the
-HTTP server for real use.
+`file://` is blocked by browsers. Always use the HTTP server for real use.
 
-**Testing the PHP API locally** (no host needed):
+**Tests** (`./dev.sh test`, also the CI workflow in `tools/ci/github-actions-test.yml` — copy it to
+`.github/workflows/test.yml` to enable it on GitHub):
+- `tests/js/*.test.js` (node ≥ 18, no dependencies; `tests/js/harness.js` fakes localStorage/document/fetch):
+  `store.test.js` (get/set, quarantine, quota, dirty markers, snapshots, migrations, merge rules),
+  `sync.test.js` (offline then online, write-then-navigate, two devices / stale tab + 409, first login with
+  local data, `me` failing, checklist defaults, legacy server, storage full — against `fake-server.js`),
+  `backup.test.js` (v1/v2/server-export fixtures, round trip, merge vs replace, undo, malformed input),
+  `auth-merge.test.js`.
+- `tests/test_api.py`: `server/api.php` on `php -S` with a temp data dir (skipped without php): auth,
+  revisions + 409, partial saves, legacy files and clients, history rotation, export, atomic writes,
+  unreadable file, lockout, plus a PHP 7.2 syntax guard.
+- `tests/test_validate_content.py`, `tests/test_build_deploy.py`, `tests/test_course_calendar.py` (regenerates
+  the site and requires byte-identical output — works without the private PDFs via `library-manifest.json`).
+- `tests/e2e/e2e.js` (needs Chrome + `npm install --prefix tests/e2e`): every page loads cleanly, quiz flows,
+  migration, two-browser sync, leave-within-2 s, offline study, stale tab, restore through the Cards UI.
 
-```bash
-NEVAIB_DATA_DIR=/tmp/nevaib-test-data php -S 127.0.0.1:8018 -t . tools/dev_server.php
-```
-
-`tools/dev_server.php` maps `/api/api.php` onto `server/api.php` and `NEVAIB_DATA_DIR`
-keeps test accounts/state out of the real `~/nevaib-data`. Point the browser at
-`http://localhost:8017/…?nbapi=http://127.0.0.1:8018/api/api.php` to exercise the
-cross-origin token path (the sticky override is localhost-only, by design).
+`build_site.py` writes into the repo it lives in (`NEVAIB_ROOT` overrides); without the git-ignored PDF
+folders it reads the file list from `library/library-manifest.json`.
 
 ## localStorage keys
 
@@ -81,17 +137,22 @@ cross-origin token path (the sticky override is localhost-only, by design).
 |---|---|---|
 | `chk:<subject>::<path>` | `app.js` | syllabus checklist row: `{c: bool, r: "r/a/g"}` |
 | `week:0` … `week:4` | `app.js` | dashboard this-week items |
-| `quizlog` | `quiz-engine.js` | last 20 session summaries `{date, label, got, max, pct}` |
-| `fc-state` | `flashcards.js` | per-card SRS state `{box: 1–5, due: "YYYY-MM-DD", seen}` |
+| `quizlog` | `quiz-engine.js` | last 20 session summaries `{date, label, got, max, pct, ts}` (local date; `ts` on new entries) |
+| `fc-state` | `flashcards.js` | per-card SRS state `{box: 1–5, due: "YYYY-MM-DD", seen, t}` — `t` = last-review ms timestamp (absent on older entries), used by the sync merge |
 | `fc-user` | both | user-created cards (quiz hook + editor), full card objects |
 | `fc-deleted` | `flashcards.js` | seeded card ids the user deleted (override) |
 | `fc-edits` | `flashcards.js` | edits to seeded cards `{id: {front, back, tags}}` |
 | `fc-theme` | `flashcards.js` | "light"/"dark" for the Cards page |
 | `q-userbanks` | `app/author.html` + quiz-engine | uploaded quiz banks (per device) |
 | `fc-userdecks` | `app/author.html` + flashcards | uploaded flashcard decks (per device) |
-| `q-errors` | quiz-engine + `practice.html` | missed-question tracker: `{key, subject, topic, topicLabel, format, stem, choices, answer, userAnswer, note, marks, markscheme, tactic, attempts, firstMissed, lastMissed, resolved}` — ids unique per file, key = id or stem hash; synced cross-device when logged in |
+| `q-errors` | quiz-engine + `practice.html` | missed-question tracker: `{key, subject, topic, topicLabel, format, stem, choices, answer, userAnswer, note, marks, markscheme, tactic, attempts, firstMissed, lastMissed, resolved}` + `id, bankId, ts, lastAttempt, legacyKey` — key = `"<bankId>#<id>"` (bankId = bank file name without `.json`, `user:<slug>` for uploaded banks; ids are only unique per file). Older records keyed by bare id / stem hash are renamed when their bank loads in a session (same id AND same stem), keeping `legacyKey`; unmatched old records stay as they are and remain reviewable. `ts` = last-change ms timestamp for the sync merge. Synced cross-device when logged in |
 | `nb-token` | `auth.js` | login bearer token (sent as `X-Nevaib-Token`) — cross-origin sync |
 | `nb-api` | `auth.js` | dev-only API override set via `?nbapi=` on localhost pages |
+| `nb-schema` | `store.js` | data-shape version (int) — local only |
+| `nb-dirty` | `store.js` / `auth.js` | `{key: ms}` synced keys/rows changed on this device since the last successful sync — local only |
+| `nb-sync` | `auth.js` | `{user, rev, legacy, at}` — server revision this device last synced with — local only |
+| `nb-backup:<ms>` | `store.js` | local safety snapshots `{reason, at, schema, keys: {key: rawJSON}}`, newest 3 — local only |
+| `nb-corrupt:<key>` | `store.js` | quarantined unreadable values `[{key, at, raw}]` — local only, included in backups |
 | `chk:*` / `week:*` | `app.js` | synced inside the `site-state` payload (not as their own keys) |
 | `tok-objects` | `lists.js` (core.html) | TOK exhibition shortlist blob `{items:[{t, done, a: prompt, b: why}]}` |
 | `ee-ideas` | `lists.js` (ee.html) | EE idea-log shortlist blob `{items:[{t, done, a: subject, b: why}]}` |
@@ -103,8 +164,8 @@ cross-origin token path (the sticky override is localhost-only, by design).
 | `lib-filters` | `library.js` | library browser filter state `{subject, type, q}` — device-local, NOT synced |
 
 `tok-objects`, `ee-ideas`, `io-issues`, `ia-debriefs` and the three `res-*` blobs are plain synced keys (in
-`auth.js` `SYNCED_KEYS`, last-write-wins per blob). `q-errors` is deliberately NOT synced (device-local, rendered by practice.html's
-inline script — now folded into the generator).
+`NB.store.SYNCED_KEYS`; per blob: the device that changed it wins, otherwise the server copy — see Sync model). `q-errors` is synced and merged per record (see Sync model);
+practice.html's inline script (folded into the generator) renders it.
 
 ## Data schemas
 
@@ -187,7 +248,7 @@ is gone).
 Rules:
 - Any hand-edit to one of the 10 generated pages must ALSO be folded into the generator
   (template or PATCHES entry) — otherwise the next regeneration reverts it.
-- Auth widget (auth-slot + `auth.js?v=4` tag) is injected by `page()` for the `AUTH_PAGES` set
+- Auth widget (auth-slot + `auth.js?v=6` tag) is injected by `page()` for the `AUTH_PAGES` set
   (index, 5 hubs, core, ia); `english-lit-hl.html` and `ee.html` carry the same markup
   hand-authored. Keep them in sync. Core/ia/ee load auth.js because their lists/notes sync.
 - Per-page engine scripts go through `EXTRA_SCRIPTS` (lists.js on core/ia/french; library.js on index
@@ -218,7 +279,7 @@ Rules:
   and the timeline update automatically; the renderers sort by date, but keep the array ordered).
 - **Add a tracked list or debrief notes**: drop a `<div data-list="<key>" data-list-fields='[{"k":"a","label":"…","ph":"…"}]'></div>`
   or `<textarea class="tnote" data-note="<key>:<dot.path>"></textarea>` into the page, register `<key>`
-  in `auth.js` `SYNCED_KEYS`, and load `lists.js` on that page (add it to `EXTRA_SCRIPTS` for generated
+  in `NB.store.SYNCED_KEYS` (assets/store.js), and load `lists.js` on that page (add it to `EXTRA_SCRIPTS` for generated
   pages, or the script tag for hand-made ones). One blob key per list/notes group; blobs are
   last-write-wins on sync.
 - **Add a subject hub**: copy a hub page, keep the checklist `data-key` convention
