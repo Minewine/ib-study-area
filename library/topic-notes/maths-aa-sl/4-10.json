@@ -1,0 +1,140 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-4-10",
+ "code": "4.10",
+ "title": "Regression of x on y",
+ "theme": "4",
+ "themeLabel": "Statistics and probability",
+ "hlOnly": false,
+ "islOrder": 51,
+ "islUnits": [
+  "11. Statistics (Y13 wk 19-22 (Feb-Mar 2028))"
+ ],
+ "taughtStatus": "later",
+ "statements": {
+  "SL": [
+   "4.10.1",
+   "4.10.2"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "4.10.1",
+   "text": "The regression line of x on y"
+  },
+  {
+   "id": "4.10.2",
+   "text": "Choosing the right line for a prediction"
+  }
+ ],
+ "bigPicture": "There are two regression lines. Use y on x to predict y, and x on y to predict x; both pass through the mean point.",
+ "keyIdeas": [
+  {
+   "id": "m410-k1",
+   "ahl": false,
+   "stmt": "4.10.1",
+   "cue": "What is the regression line of x on y?",
+   "answer": "x = cy + d, found on the GDC by entering y as the independent (first) list. It minimises horizontal distances, so it differs from the y-on-x line unless |r| = 1. Both lines pass through (x̄, ȳ)."
+  },
+  {
+   "id": "m410-k2",
+   "ahl": false,
+   "stmt": "4.10.2",
+   "cue": "Which line should you use for a prediction?",
+   "answer": "To predict y from a given x: the y-on-x line. To predict x from a given y: the x-on-y line. Never rearrange the y-on-x line to predict x."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "regression line of x on y",
+   "def": "line for predicting x from y"
+  },
+  {
+   "term": "mean point",
+   "def": "(x̄, ȳ), on both regression lines"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Choose the line",
+   "prompt": "Arm span y and height x have y-on-x line y = 0.98x + 2 and x-on-y line x = 0.95y + 5. Predict height for arm span 170 cm.",
+   "steps": [
+    "predicting x from y: use x on y",
+    "x = 0.95 × 170 + 5"
+   ],
+   "answer": "166.5 cm"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Rearrange y = ax + b to get x",
+   "right": "Use the x-on-y line."
+  },
+  {
+   "wrong": "The two lines are the same line",
+   "right": "They coincide only when |r| = 1."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Find",
+   "marks": 4,
+   "prompt": "The regression line of y on x is y = 2x + 3 and the regression line of x on y is x = 0.4y − 0.2. (a) Find the mean point. (b) Estimate x when y = 20.",
+   "solution": [
+    "(x̄, ȳ) lies on both: x = 0.4(2x + 3) − 0.2",
+    "0.2x = 1 → x̄ = 5, ȳ = 13",
+    "x = 0.4 × 20 − 0.2"
+   ],
+   "answer": "(a) (5, 13) (b) 7.8",
+   "commonErrors": [
+    "Rearranging y = 2x + 3 for (b)",
+    "Arithmetic slip solving simultaneously"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Find",
+   "marks": 3,
+   "prompt": "Using x: 2, 4, 5, 7, 8, 10 and y: 15, 22, 24, 31, 35, 41, find the regression line of x on y and estimate x when y = 30.",
+   "solution": [
+    "GDC LinReg with y as the first list",
+    "x = 0.306y − 2.56",
+    "x(30) ≈ 6.61"
+   ],
+   "answer": "x = 0.306y − 2.56; x ≈ 6.61",
+   "commonErrors": [
+    "Using the y-on-x line rearranged (gives 6.61 only by luck when r ≈ 1)",
+    "Entering the lists in the wrong order"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [],
+  "memorise": [
+   "Which line to use for which prediction",
+   "Both lines pass through the mean point"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "4.4",
+   "prompt": "When are the two regression lines almost identical?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/4-statistics-probability/4-2-correlation-regression.pdf",
+  "quizBanks": [],
+  "decks": [],
+  "gap": "No quiz items or flashcards cover the x-on-y regression line (4.10) yet."
+ }
+}

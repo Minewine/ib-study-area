@@ -1,0 +1,66 @@
+{
+ "schemaVersion": 1,
+ "year": "2026-27 (Year 12 / DP1)",
+ "approximate": true,
+ "about": "Week-by-week estimate of which IB topics are taught in class, derived by hand from the school's course calendars and the Year 12 deadline calendar (Nov 2026). Only date ranges, IB topic codes and short unit names are kept here. The schools' own plans say timings are approximate and may change; the teacher's plan always wins.",
+ "breaks": [
+  {"from": "2026-10-19", "to": "2026-10-23", "label": "Half-term holiday"},
+  {"from": "2026-12-21", "to": "2027-01-08", "label": "Winter holiday"},
+  {"from": "2027-01-25", "to": "2027-01-29", "label": "First-semester exams"},
+  {"from": "2027-02-08", "to": "2027-02-12", "label": "Half-term holiday"},
+  {"from": "2027-03-26", "to": "2027-04-09", "label": "Spring holiday"},
+  {"from": "2027-05-20", "to": "2027-05-28", "label": "Second-semester exams"}
+ ],
+ "subjects": {
+  "biology-hl": {
+   "label": "Biology HL",
+   "units": [
+    {"from": "2026-08-26", "to": "2026-09-25", "codes": ["A1.1", "B1.1"], "unit": "Water; carbohydrates and lipids"},
+    {"from": "2026-09-28", "to": "2026-10-30", "codes": ["A1.2", "B1.2"], "unit": "Nucleic acids; proteins"},
+    {"from": "2026-11-02", "to": "2026-11-27", "codes": ["C1.1"], "unit": "Enzymes and metabolism"},
+    {"from": "2026-11-30", "to": "2026-12-04", "codes": ["A2.2"], "unit": "Cell structure"},
+    {"from": "2026-12-07", "to": "2026-12-11", "codes": ["B2.2"], "unit": "Organelles and compartmentalization"},
+    {"from": "2026-12-14", "to": "2026-12-18", "codes": ["B2.3"], "unit": "Cell specialization"},
+    {"from": "2027-01-11", "to": "2027-01-22", "codes": ["A2.1", "B2.1"], "unit": "Origin of cells; membranes and membrane transport"},
+    {"from": "2027-02-01", "to": "2027-02-19", "codes": ["D2.3"], "unit": "Water potential"},
+    {"from": "2027-02-22", "to": "2027-03-05", "codes": ["C1.2"], "unit": "Cell respiration"},
+    {"from": "2027-03-08", "to": "2027-03-17", "codes": ["D1.2"], "unit": "Protein synthesis"},
+    {"from": "2027-03-18", "to": "2027-03-19", "codes": ["D2.2"], "unit": "Gene expression"},
+    {"from": "2027-03-22", "to": "2027-04-16", "codes": ["C3.2"], "unit": "Defence against disease"},
+    {"from": "2027-04-19", "to": "2027-04-30", "codes": ["C1.3"], "unit": "Photosynthesis"},
+    {"from": "2027-05-03", "to": "2027-05-07", "codes": ["C4.2"], "unit": "Transfer of energy and matter"},
+    {"from": "2027-05-10", "to": "2027-05-19", "codes": ["B3.1", "B3.2"], "unit": "Gas exchange; transport"},
+    {"from": "2027-05-31", "to": "2027-06-11", "codes": ["B4.1", "B4.2"], "unit": "Adaptations to environment; ecological niches"},
+    {"from": "2027-06-14", "to": "2027-06-25", "codes": ["C4.1"], "unit": "Populations and communities"}
+   ]
+  },
+  "chemistry-hl": {
+   "label": "Chemistry HL",
+   "units": [
+    {"from": "2026-08-26", "to": "2026-10-02", "codes": ["S1.1", "S1.2", "S1.3", "S3.1"], "unit": "Atomic theory and kinetic theory"},
+    {"from": "2026-10-05", "to": "2026-10-16", "codes": ["S3.1"], "unit": "Periodicity"},
+    {"from": "2026-10-26", "to": "2026-11-27", "codes": ["S1.4", "S1.5", "R2.1", "S2.1"], "unit": "Stoichiometry"},
+    {"from": "2026-11-30", "to": "2027-02-05", "codes": ["R1.1", "R1.2", "R1.4"], "unit": "Energetics"},
+    {"from": "2027-02-15", "to": "2027-03-12", "codes": ["R2.2"], "unit": "Kinetics"},
+    {"from": "2027-03-15", "to": "2027-03-25", "codes": ["R2.3", "R1.4"], "unit": "Equilibrium"},
+    {"from": "2027-04-12", "to": "2027-05-19", "codes": ["R3.2", "R1.3"], "unit": "Redox"},
+    {"from": "2027-05-31", "to": "2027-06-25", "codes": ["R3.1"], "unit": "Acids and bases"}
+   ]
+  },
+  "maths-aa-sl": {
+   "label": "Maths AA SL",
+   "units": [
+    {"from": "2026-08-31", "to": "2026-09-04", "codes": ["1.1", "3.1"], "unit": "Prior learning"},
+    {"from": "2026-09-07", "to": "2026-10-16", "codes": ["2.1", "2.2", "2.3", "2.4", "2.5", "2.6", "2.7", "2.10", "2.11"], "unit": "Functions and quadratics"},
+    {"from": "2026-10-26", "to": "2026-11-20", "codes": ["5.1", "5.2", "5.3", "5.4", "5.8"], "unit": "Differentiation"},
+    {"from": "2026-11-23", "to": "2026-12-18", "codes": ["3.1", "3.2", "3.3", "3.4", "3.5", "3.6"], "unit": "Circular trigonometry"},
+    {"from": "2027-01-11", "to": "2027-01-15", "codes": ["1.5", "1.7", "2.9", "2.10"], "unit": "Exponents and logarithms"},
+    {"from": "2027-01-18", "to": "2027-01-22", "codes": [], "unit": "Revision before the January exams"},
+    {"from": "2027-03-01", "to": "2027-04-16", "codes": ["3.6", "3.7", "3.8", "2.11"], "unit": "Trigonometric equations and functions"},
+    {"from": "2027-04-19", "to": "2027-05-07", "codes": ["5.6", "5.7", "5.8"], "unit": "Further differentiation"},
+    {"from": "2027-05-10", "to": "2027-05-19", "codes": [], "unit": "Revision before the June exams"},
+    {"from": "2027-06-14", "to": "2027-06-25", "codes": ["5.5", "5.10", "5.11"], "unit": "Integration"}
+   ]
+  }
+ }
+}

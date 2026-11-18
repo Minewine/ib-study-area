@@ -66,6 +66,8 @@ def test_built_folder_structure(built):
         "docs/AUTHORING.md",
         "library/questions/manifest.json",
         "library/flashcards/manifest.json",
+        "library/class-schedule.json",
+        "assets/today.js",
     ]:
         assert (out / rel).is_file(), rel
 

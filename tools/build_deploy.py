@@ -79,6 +79,8 @@ def build(out: Path = OUT, apply_key: bool = True) -> Path:
     copy_tree(ROOT / "library/questions", out / "library/questions")
     copy_tree(ROOT / "library/flashcards", out / "library/flashcards")
     copy_tree(ROOT / "library/topic-notes", out / "library/topic-notes")
+    # class-week schedule for the home page "Today" panel (dates + IB codes only)
+    shutil.copy2(ROOT / "library/class-schedule.json", out / "library/class-schedule.json")
     (out / "docs").mkdir(parents=True, exist_ok=True)
     shutil.copy2(ROOT / "docs/AUTHORING.md", out / "docs/AUTHORING.md")
     # backend

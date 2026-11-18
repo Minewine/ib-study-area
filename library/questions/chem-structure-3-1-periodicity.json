@@ -99,7 +99,7 @@
     "Heisenberg's principle"
    ],
    "answer": 2,
-   "note": "Hund's rule: electrons occupy degenerate orbitals singly before pairing — this extra stability explains the N→O ionization energy anomaly."
+   "note": "Hund's rule: electrons occupy degenerate orbitals singly before pairing, because paired electrons repel more. That is why oxygen, whose fourth 2p electron must pair, has a lower first IE than nitrogen."
   },
   {
    "id": "p08",
@@ -290,7 +290,7 @@
    "topic": "structure-3-1-periodicity",
    "stem": "Explain why the first ionization energy of oxygen is lower than that of nitrogen.",
    "markscheme": [
-    "N has 2p³ — each 2p orbital singly occupied (half-filled, extra stability) (1)",
+    "N has 2p³ — each 2p orbital singly occupied, so no electrons are paired (1)",
     "O has 2p⁴ — the fourth electron must pair in an already-occupied orbital (1)",
     "Electron–electron repulsion in the pair makes that electron easier to remove → lower IE for O (1)"
    ],

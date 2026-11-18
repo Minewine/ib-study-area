@@ -323,6 +323,6 @@
    }
   ],
   "gap": "No items on Born–Haber cycles (R1.2.5, AHL).",
-  "reviewNote": "Data-booklet mismatch: periodicity-energetics-review-11 uses C–H 412, C=O 743 and O=O 496; -22 uses C–H 412; -12 uses ΔHf(CH₄) −75. The v1.1 booklet gives C–H 414, C=O 804, O=O 498 and ΔHf(CH₄) −74. Worth updating the items (not changed here)."
+  "reviewNote": "periodicity-energetics-review-11, -12 and -22 were updated (Nov 2026) to the v1.1 data booklet values (C–H 414, C=O 804, O=O 498, ΔHf(CH₄) −74) and their answers recomputed."
  }
 }

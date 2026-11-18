@@ -7,7 +7,7 @@
   const PATH_BASE = location.pathname.includes("/app/") ? "../" : "";
 
   const $ = (id) => document.getElementById(id);
-  const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const esc = (window.NB && window.NB.escapeHtml) || ((s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;"));
   const shuffle = (a) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
   // Bank id = file name without folder/extension ("library/questions/bio-x.json" -> "bio-x");
@@ -24,6 +24,10 @@
     if (it.fixedOrder || (it.choices || []).some(c => POSITIONAL.test(String(c)))) return idx;
     return shuffle(idx);
   }
+
+  // "retired": true marks an item that stays in its bank (so its id, q-errors records and
+  // note links remain valid) but is no longer served in new sessions.
+  const isActive = (it) => !(it && it.retired === true);
 
   let session = null;
   let BANKS = {};
@@ -105,12 +109,13 @@ async function init() {
 
   async function bankItems(b) {
     const bid = bankIdFor(b);
-    if (b.inline) return (b.items || []).map(it => ({ ...it, topic: it.topic || b.topic || bid, topicLabel: it.topicLabel || b.topicLabel, bank: b.label, bankId: bid }));
+    if (b.inline) return (b.items || []).filter(isActive).map(it => ({ ...it, topic: it.topic || b.topic || bid, topicLabel: it.topicLabel || b.topicLabel, bank: b.label, bankId: bid }));
     const res = await fetch(PATH_BASE + b.file + "?cb=" + Date.now(), { cache: "no-store" });
     if (!res.ok) throw new Error(res.status + " " + b.file);
     const data = await res.json();
-    // untagged items inherit the bank's topic (else they'd all pool under "undefined")
-    return data.items.map(it => ({ ...it, topic: it.topic || data.topic || bid, topicLabel: data.topicLabel, bank: b.label, bankId: bid }));
+    // untagged items inherit the bank's topic (else they'd all pool under "undefined").
+    // Retired items (off-syllabus, kept so ids and progress stay valid) never enter a session.
+    return data.items.filter(isActive).map(it => ({ ...it, topic: it.topic || data.topic || bid, topicLabel: data.topicLabel, bank: b.label, bankId: bid }));
   }
 
   // Deep link from a topic note: quiz.html?from=<bankId>[:id1,id2…]&from=…&label=…&n=20
@@ -171,7 +176,7 @@ async function init() {
     const prog = $("q-progress");
     prog.textContent = (session.fromLink ? session.label + " · " : "") + `Question ${session.idx + 1} / ${session.items.length}`;
     const box = $("q-box");
-    const topicTag = `<div class="q-topic">${esc(it.topicLabel || "")} · ${it.format === "mcq" ? "multiple choice" : `written — ${it.marks} marks`}</div>`;
+    const topicTag = `<div class="q-topic">${esc(it.topicLabel || "")} · ${it.format === "mcq" ? "multiple choice" : `written — ${esc(it.marks)} marks`}</div>`;
     let html = topicTag + `<div class="q-stem">${esc(it.stem)}</div>`;
     if (it.format === "mcq") {
       // data-i is always the ORIGINAL choice index, so marking, stored answers and
@@ -185,7 +190,7 @@ async function init() {
                <div id="q-ms" class="q-ms" style="display:none">
                  <ol>${it.markscheme.map(m => `<li>${esc(m)}</li>`).join("")}</ol>
                  <p class="muted">Self-score honestly — the gap analysis only works if you don't inflate.</p>
-                 <div class="q-score">Score: <select id="q-selfscore">${Array.from({ length: (it.marks || 1) + 1 }, (_, k) => `<option value="${k}">${k} / ${it.marks}</option>`).join("")}</select></div>
+                 <div class="q-score">Score: <select id="q-selfscore">${Array.from({ length: (it.marks || 1) + 1 }, (_, k) => `<option value="${k}">${k} / ${esc(it.marks)}</option>`).join("")}</select></div>
                  <div class="q-actions"><button id="q-fc" class="btn">＋ Flashcard</button><button id="q-next" class="btn primary">Next question</button></div>
                </div>`;
     }
@@ -303,7 +308,7 @@ async function init() {
     if (!el) return;
     const log = store.get("quizlog", []);
     el.innerHTML = log.length
-      ? log.slice(0, 8).map(e => `<li>${e.date} — ${esc(e.label)}: <strong>${e.got}/${e.max} (${e.pct}%)</strong></li>`).join("")
+      ? log.slice(0, 8).map(e => `<li>${esc(e.date)} — ${esc(e.label)}: <strong>${esc(e.got)}/${esc(e.max)} (${esc(e.pct)}%)</strong></li>`).join("")
       : "<li class='muted'>No sessions yet.</li>";
   }
 
@@ -436,6 +441,10 @@ async function init() {
     $("setup").style.display = "";
     session = null;
   }
+
+  // test hook (node --test loads this file in a vm)
+  window.NB = window.NB || {};
+  window.NB.quizEngine = { isActive, bankItems };
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();

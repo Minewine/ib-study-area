@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- security: see server/deploy-notes.md "Security headers" -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://rametric.com https://www.rametric.com http://localhost:* http://127.0.0.1:*; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Cards — Practice</title>
 <link rel="stylesheet" href="../assets/style.css">
 <style>
@@ -130,15 +133,15 @@ main{color:var(--fctext)}
   </section>
 </main>
 <footer>Private family study area · exams <strong>May 2028</strong> · keep this site and its library non-public</footer>
-<script src="../assets/store.js?v=1"></script>
+<script src="../assets/store.js?v=2"></script>
 <script src="../assets/backup.js?v=1"></script>
-<script src="../assets/flashcards.js?v=10"></script>
+<script src="../assets/flashcards.js?v=12"></script>
 <script>
 document.getElementById("fc-close-editor").addEventListener("click", () => {
   document.getElementById("editor").style.display = "none";
   document.getElementById("setup").style.display = "";
 });
 </script>
-<script src="../assets/auth.js?v=7"></script>
+<script src="../assets/auth.js?v=8"></script>
 </body>
 </html>

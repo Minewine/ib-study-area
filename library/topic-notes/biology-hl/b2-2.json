@@ -194,7 +194,29 @@
     ]
    }
   ],
-  "decks": [],
-  "gap": "No flashcard deck covers B2.2 yet."
+  "decks": [
+   {
+    "file": "library/flashcards/bio-b2-2-organelles.json",
+    "cardIds": [
+     "fc-bio-og-01",
+     "fc-bio-og-02",
+     "fc-bio-og-03",
+     "fc-bio-og-04",
+     "fc-bio-og-05",
+     "fc-bio-og-06",
+     "fc-bio-og-07",
+     "fc-bio-og-08",
+     "fc-bio-og-09",
+     "fc-bio-og-10",
+     "fc-bio-og-11",
+     "fc-bio-og-12",
+     "fc-bio-og-13",
+     "fc-bio-og-14",
+     "fc-bio-og-15",
+     "fc-bio-og-16",
+     "fc-bio-og-17"
+    ]
+   }
+  ]
  }
 }
