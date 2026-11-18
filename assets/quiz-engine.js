@@ -10,6 +10,21 @@
   const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   const shuffle = (a) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
+  // Bank id = file name without folder/extension ("library/questions/bio-x.json" -> "bio-x");
+  // inline (uploaded) banks get "user:<label>". Used for topic fallback + error keys.
+  const bankIdFor = (b) => b.file
+    ? String(b.file).split("/").pop().replace(/\.json$/i, "")
+    : "user:" + String(b.label || b.topicLabel || "bank").toLowerCase().replace(/\W+/g, "-");
+
+  // Options that refer to other options by position ("Both A and B", "All of the above")
+  // must keep their authored order; everything else is shuffled at render time.
+  const POSITIONAL = /\b(all|none|both|neither) of the above\b|\b(both|neither|only)\s+[A-D]\s+(and|nor|or)\s+[A-D]\b|^\s*[A-D]\s+(and|or)\s+[A-D]\s*$/i;
+  function choiceOrder(it) {
+    const idx = (it.choices || []).map((_, i) => i);
+    if (it.fixedOrder || (it.choices || []).some(c => POSITIONAL.test(String(c)))) return idx;
+    return shuffle(idx);
+  }
+
   let session = null;
   let BANKS = {};
 
@@ -97,15 +112,19 @@ async function init() {
     try {
       for (const b of chosen) {
         if (b.inline) {
-          items = items.concat((b.items || []).map(it => ({ ...it, topicLabel: it.topicLabel || b.topicLabel, bank: b.label })));
+          const bid = bankIdFor(b);
+          items = items.concat((b.items || []).map(it => ({ ...it, topic: it.topic || b.topic || bid, topicLabel: it.topicLabel || b.topicLabel, bank: b.label, bankId: bid })));
           continue;
         }
         const res = await fetch(PATH_BASE + b.file + "?cb=" + Date.now(), { cache: "no-store" });
         if (!res.ok) throw new Error(res.status + " " + b.file);
         const data = await res.json();
-        items = items.concat(data.items.map(it => ({ ...it, topicLabel: data.topicLabel, bank: b.label })));
+        const bid = bankIdFor(b);
+        // untagged items inherit the bank's topic (else they'd all pool under "undefined")
+        items = items.concat(data.items.map(it => ({ ...it, topic: it.topic || data.topic || bid, topicLabel: data.topicLabel, bank: b.label, bankId: bid })));
       }
     } catch (e) { $("q-error").textContent = "Could not load question bank: " + e.message; return; }
+    migrateErrorKeys(items);
     if (format !== "mixed") items = items.filter(it => it.format === format);
     shuffle(items);
     const use = items.slice(0, n);
@@ -124,8 +143,11 @@ async function init() {
     const topicTag = `<div class="q-topic">${esc(it.topicLabel || "")} · ${it.format === "mcq" ? "multiple choice" : `written — ${it.marks} marks`}</div>`;
     let html = topicTag + `<div class="q-stem">${esc(it.stem)}</div>`;
     if (it.format === "mcq") {
-      html += `<div class="q-choices">` + it.choices.map((c, i) =>
-        `<button class="choice" data-i="${i}">${String.fromCharCode(65 + i)}. ${esc(c)}</button>`).join("") + `</div>`;
+      // data-i is always the ORIGINAL choice index, so marking, stored answers and
+      // q-errors.userAnswer keep the authored indexing; only the display order changes.
+      const order = choiceOrder(it);
+      html += `<div class="q-choices">` + order.map((i, pos) =>
+        `<button class="choice" data-i="${i}">${String.fromCharCode(65 + pos)}. ${esc(it.choices[i])}</button>`).join("") + `</div>`;
     } else {
       html += `<textarea id="q-answer" rows="4" placeholder="Work through it here, then self-mark against the markscheme…"></textarea>
                <div class="q-actions"><button id="q-reveal" class="btn">Reveal markscheme</button></div>
@@ -143,12 +165,13 @@ async function init() {
         btn.addEventListener("click", () => {
           const chosen = parseInt(btn.dataset.i, 10);
           const right = chosen === it.answer;
-          box.querySelectorAll(".choice").forEach((b, i) => {
+          box.querySelectorAll(".choice").forEach((b) => {
+            const i = parseInt(b.dataset.i, 10);
             b.disabled = true;
             if (i === it.answer) b.classList.add("correct");
             if (i === chosen && !right) b.classList.add("wrong");
           });
-          session.results.push({ id: it.id, topic: it.topic, topicLabel: it.topicLabel, format: "mcq", got: right ? 1 : 0, max: 1, note: it.note });
+          session.results.push({ id: it.id, topic: it.topic, topicLabel: it.topicLabel, format: "mcq", got: right ? 1 : 0, max: 1, note: it.note, tactic: it.tactic || "" });
           if (session.review) markReviewResult(it, right);
           else if (!right) recordError(it, { userChoice: chosen });
           const after = document.createElement("div");
@@ -171,7 +194,7 @@ async function init() {
 
         $("q-next").addEventListener("click", () => {
           const got = parseInt($("q-selfscore").value, 10);
-          session.results.push({ id: it.id, topic: it.topic, topicLabel: it.topicLabel, format: "written", got, max: it.marks, note: "" });
+          session.results.push({ id: it.id, topic: it.topic, topicLabel: it.topicLabel, format: "written", got, max: it.marks, note: "", tactic: it.tactic || "" });
           if (session.review) markReviewResult(it, got >= it.marks);
           else if (got < it.marks) recordError(it, { selfScore: got });
           nextQuestion();
@@ -214,8 +237,8 @@ async function init() {
     if (mcqPct !== null && mcqPct < 70) advice.push("Re-drill this topic's notes PDF, then run the same session again in 3 days (spaced repetition).");
     if (wrPct !== null && wrPct < 70) advice.push("For written questions: redo the missed ones with the markscheme open, then once closed. Command terms decide where marks sit.");
     if (mcqPct !== null && mcqPct >= 70 && wrPct !== null && wrPct < 70) advice.push("MCQs are solid — your gap is written communication. Practise verb-shaped answers (state vs explain vs evaluate).");
-    if (!advice.length && pct >= 70) advice.push("Solid session — move the topic green in the subject checklist and log 2 tricky items in the error log anyway.");
-    advice.push("Log every lost mark in the practice page error log with a topic tag.");
+    if (!advice.length && pct >= 70) advice.push("Solid session — move the topic green in the subject checklist and turn 2 tricky items into flashcards anyway.");
+    advice.push("Missed questions are saved automatically \u2014 retry them with \u201cReview past errors\u201d in a few days.");
 
     $("summary").innerHTML = `
       <h3>Session summary — ${esc(session.label)}</h3>
@@ -257,11 +280,52 @@ async function init() {
 
   function getErrors() { return store.get("q-errors", []); }
 
+  const stemKey = (stem) => "stem-" + String(stem).slice(0, 48).replace(/\W+/g, "-").toLowerCase();
+
+  // Error key = "<bankId>#<itemId>" (ids are only unique per bank file). Legacy records
+  // keyed by bare id / stem hash are kept and renamed by migrateErrorKeys() when their bank loads.
   function errKeyFor(it) {
-    return it.errKey || it.id || ("stem-" + String(it.stem).slice(0, 48).replace(/\W+/g, "-").toLowerCase());
+    if (it.errKey) return it.errKey;
+    if (it.bankId && it.id) return it.bankId + "#" + it.id;
+    return (it.bankId ? it.bankId + "#" : "") + (it.id || stemKey(it.stem));
   }
 
-  function today() { return new Date().toISOString().slice(0, 10); }
+  // One-time, idempotent rename of legacy q-errors keys (bare "b01" or "stem-…") to bank-scoped
+  // keys. A legacy record is only claimed by an item with the same id (or stem hash) AND the same
+  // stem, so a collided id ("b01" exists in several banks) maps to the bank it really came from.
+  // Records that never match stay as they are and remain reviewable (they carry their own copy).
+  function migrateErrorKeys(items) {
+    const errs = store.get("q-errors", []);
+    if (!errs.length) return;
+    let changed = false;
+    items.forEach(it => {
+      if (!it.bankId) return;
+      const newKey = errKeyFor(it);
+      const legacyKeys = [it.id, stemKey(it.stem)].filter(Boolean);
+      const idx = errs.findIndex(e => e && legacyKeys.includes(e.key) && e.key.indexOf("#") < 0 && String(e.stem) === String(it.stem));
+      if (idx < 0) return;
+      const legacy = errs[idx];
+      const existing = errs.find(e => e && e.key === newKey);
+      if (existing) {
+        existing.attempts = (existing.attempts || 0) + (legacy.attempts || 0);
+        if ((legacy.firstMissed || "") && (!existing.firstMissed || legacy.firstMissed < existing.firstMissed)) existing.firstMissed = legacy.firstMissed;
+        if ((legacy.lastMissed || "") > (existing.lastMissed || "")) existing.lastMissed = legacy.lastMissed;
+        if (legacy.resolved === false) existing.resolved = false;
+        existing.ts = Math.max(existing.ts || 0, legacy.ts || 0, Date.now());
+        errs.splice(idx, 1);
+      } else {
+        legacy.legacyKey = legacy.key;
+        legacy.key = newKey;
+        legacy.bankId = it.bankId;
+        legacy.ts = Date.now();
+      }
+      changed = true;
+    });
+    if (changed) store.set("q-errors", errs);
+  }
+
+  // local calendar date (was UTC via toISOString — wrong between midnight and 01:00/02:00 in Zurich)
+  function today() { const d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
 
   function recordError(it, extra) {
     const errs = store.get("q-errors", []);
@@ -271,14 +335,16 @@ async function init() {
       existing.attempts = (existing.attempts || 0) + 1;
       existing.lastMissed = today();
       existing.resolved = false;
+      existing.ts = Date.now();
     } else {
       errs.push({
-        key, id: it.id || null, subject: session.subject, topic: it.topic || "",
+        key, id: it.id || null, bankId: it.bankId || null, subject: session.subject, topic: it.topic || "",
         topicLabel: it.topicLabel || "", format: it.format, stem: it.stem,
         choices: it.choices || null, answer: (typeof it.answer === "number" ? it.answer : null),
         userAnswer: (extra && extra.userChoice !== undefined) ? extra.userChoice : null,
         note: it.note || "", marks: it.marks || null, markscheme: it.markscheme || null,
-        tactic: it.tactic || "", attempts: 1, firstMissed: today(), lastMissed: today(), resolved: false
+        tactic: it.tactic || "", attempts: 1, firstMissed: today(), lastMissed: today(), resolved: false,
+        ts: Date.now()
       });
     }
     store.set("q-errors", errs);
@@ -291,6 +357,7 @@ async function init() {
       e.attempts = (e.attempts || 0) + 1;
       e.lastAttempt = today();
       if (correct) e.resolved = true;
+      e.ts = Date.now();
       store.set("q-errors", errs);
     }
   }
@@ -312,7 +379,7 @@ async function init() {
       id: e.id, errKey: e.key, format: e.format, stem: e.stem,
       choices: e.choices, answer: e.answer, note: e.note,
       marks: e.marks, markscheme: e.markscheme, tactic: e.tactic,
-      topic: e.topic, topicLabel: e.topicLabel, isReview: true
+      topic: e.topic, topicLabel: e.topicLabel, subject: e.subject || null, isReview: true
     }));
     session = { items, idx: 0, results: [], review: true, subject: null, label: "Error review", requested: items.length, notice: "Reviewing questions you previously missed." };
     $("setup").style.display = "none";
@@ -322,7 +389,7 @@ async function init() {
 
   function fcSaveFromQuiz(it) {
     const user = store.get("fc-user", []);
-    user.push({ id: "u-" + Date.now(), type: "qa", subject: session.subject, topic: it.topic, topicLabel: it.topicLabel || "", tags: ["from-quiz"], front: String(it.stem).slice(0, 160), back: String(it.note || (it.markscheme || []).join(" ") || "").slice(0, 400) });
+    user.push({ id: "u-" + Date.now(), type: "qa", subject: session.subject || it.subject || "user", topic: it.topic, topicLabel: it.topicLabel || "", tags: ["from-quiz"], front: String(it.stem).slice(0, 160), back: String(it.note || (it.markscheme || []).join(" ") || "").slice(0, 400) });
     store.set("fc-user", user);
   }
   function reset() {
