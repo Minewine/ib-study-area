@@ -1,0 +1,157 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-5-7",
+ "code": "5.7",
+ "title": "The second derivative",
+ "theme": "5",
+ "themeLabel": "Calculus",
+ "hlOnly": false,
+ "islOrder": 16,
+ "islUnits": [
+  "7. Further differentiation (Y12 wk 28-30 (Apr-May 2027))",
+  "3. Differentiation (Y12 wk 9-12 (late Oct-Nov 2026))"
+ ],
+ "taughtStatus": "partly in progress",
+ "statements": {
+  "SL": [
+   "5.7.1",
+   "5.7.2"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "5.7.1",
+   "text": "Second derivative notation and meaning"
+  },
+  {
+   "id": "5.7.2",
+   "text": "Linking the graphs of f, f' and f''; concavity"
+  }
+ ],
+ "bigPicture": "The second derivative measures how the gradient itself changes. It describes the bend (concavity) of a graph and links the graphs of f, f′ and f″.",
+ "keyIdeas": [
+  {
+   "id": "m57-k1",
+   "ahl": false,
+   "stmt": "5.7.1",
+   "cue": "Notation and meaning of the second derivative?",
+   "answer": "f″(x) or d²y/dx²: the derivative of f′(x), the rate of change of the gradient."
+  },
+  {
+   "id": "m57-k2",
+   "ahl": false,
+   "stmt": "5.7.2",
+   "cue": "How are f, f′ and f″ linked, and what is concavity?",
+   "answer": "f increasing where f′ > 0; turning points of f where f′ = 0 (and changes sign). f″ > 0: concave up, f′ increasing. f″ < 0: concave down. Turning points of f′ match points of inflexion of f."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "concave up",
+   "def": "bending upwards; f″ > 0"
+  },
+  {
+   "term": "point of inflexion",
+   "def": "where concavity changes (f″ changes sign)"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Concavity",
+   "prompt": "f(x) = x³ − 3x². Find where f is concave up and the point of inflexion.",
+   "steps": [
+    "f′ = 3x² − 6x; f″ = 6x − 6",
+    "f″ > 0 for x > 1; changes sign at x = 1"
+   ],
+   "answer": "concave down x < 1, up x > 1; inflexion (1, −2)"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "f″ = 0 always gives an inflexion",
+   "right": "f″ must change sign (y = x⁴ has f″(0) = 0 but a minimum)."
+  },
+  {
+   "wrong": "f′ < 0 means f is negative",
+   "right": "It means f is decreasing."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Find",
+   "marks": 4,
+   "prompt": "y = x⁴ − 4x³. Find d²y/dx² and the intervals where the graph is concave up.",
+   "solution": [
+    "y′ = 4x³ − 12x²",
+    "y″ = 12x² − 24x = 12x(x − 2)",
+    "y″ > 0 outside the roots"
+   ],
+   "answer": "x < 0 or x > 2",
+   "commonErrors": [
+    "Solving y′ > 0 instead",
+    "Giving 0 < x < 2"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Find",
+   "marks": 3,
+   "prompt": "f(x) = ln(x² + 1). Use the GDC to sketch y = f″(x) and find the interval on which f is concave up.",
+   "solution": [
+    "f′(x) = 2x/(x² + 1)",
+    "GDC: f″(x) > 0 between its zeros x = −1 and x = 1"
+   ],
+   "answer": "−1 < x < 1",
+   "commonErrors": [
+    "Reading where f′ > 0",
+    "Giving closed endpoints without checking"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [],
+  "memorise": [
+   "Sign of f″ and concavity",
+   "Inflexion needs a sign change of f″"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "5.8",
+   "prompt": "How does f″ classify stationary points?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/5-calculus/5-2-further-differentiation.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/math-aa-topic5-calculus.json",
+    "itemIds": [
+     "c506"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/math-topic5-calculus.json",
+    "cardIds": [
+     "fc-math-ca-06",
+     "fc-math-ca-19"
+    ]
+   }
+  ]
+ },
+ "syllabusFlags": [
+  "Second derivative may be introduced in 'Differentiation' (stationary-point test) - partly in progress."
+ ]
+}

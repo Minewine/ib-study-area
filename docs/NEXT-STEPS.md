@@ -34,14 +34,14 @@ Still open:
 - Missed-question review uses the copy saved when the question was missed, so an old miss of a corrected or retired item still shows its old text until it's answered correctly.
 
 ## 6. Fill the practice gaps the notes exposed
-- Flashcards for **B2.1–B2.3** (membranes, organelles, cell specialisation). She studies these next, and they have questions but no cards.
-- Questions and cards for **Chemistry S1.1** (her first topic has none).
+- ~~Flashcards for **B2.1–B2.3**~~ Done (Nov 2026): 52 cards in `bio-b2-1/2/3-*.json`, linked from the notes.
+- Questions for **Chemistry S1.1** (her first topic has none). Cards done (Nov 2026): 18 in `chem-s1-1-particulate-nature.json`.
 - Turn the **Chemistry Paper 1A prompts** in the notes (`paper1A`, about 81) into quiz items in a calculator-free bank.
 - The 15 Biology topics with no questions or cards (mostly DP2): see the Biology notes Page.
 - Maths: AA papers have no multiple choice, so convert the mostly-MCQ maths banks to typed answers (roadmap H9).
 
 ## 7. Notes still to write
-- **Maths AA SL: 27 subtopics remain:** 1.2–1.4, 1.6, 1.8, 1.9, 2.8, 3.7, 3.8, 4.1–4.12, 5.5–5.7, 5.9–5.11 (taught from March 2027). Write them before each unit and import them with `tools/import_topic_notes.py`.
+- ~~**Maths AA SL: 27 subtopics remain**~~ Done (Nov 2026): all 51 SL subtopics now have draft notes. Have her teacher check them before each unit. Still missing practice items for 1.6 (proof), 4.5, 4.7 and 4.10 (see each note's `links.gap`).
 - **History, English, French:** later. Waiting on ISL's History topics and case studies and the English and French work lists.
 - Have teachers check the flagged details: Biology statins and voltage-gated channels; local case studies; Chemistry codes, once the official guide is supplied (`syllabusFlags`).
 

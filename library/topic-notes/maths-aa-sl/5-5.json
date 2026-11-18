@@ -1,0 +1,189 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-5-5",
+ "code": "5.5",
+ "title": "Introduction to integration",
+ "theme": "5",
+ "themeLabel": "Calculus",
+ "hlOnly": false,
+ "islOrder": 32,
+ "islUnits": [
+  "8. Integration (Y12 wk 37 (Jun 2027) + Y13 wk 1-6 (Sep-Oct 2027))"
+ ],
+ "taughtStatus": "later",
+ "statements": {
+  "SL": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3",
+   "5.5.4"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "5.5.1",
+   "text": "Anti-differentiation of polynomial terms"
+  },
+  {
+   "id": "5.5.2",
+   "text": "Using a boundary condition to find the constant"
+  },
+  {
+   "id": "5.5.3",
+   "text": "Definite integrals with technology"
+  },
+  {
+   "id": "5.5.4",
+   "text": "Area between a curve and the x-axis when the curve is above the axis"
+  }
+ ],
+ "bigPicture": "Integration reverses differentiation, and a definite integral gives the area under a curve. This first pass covers polynomials and GDC integrals.",
+ "keyIdeas": [
+  {
+   "id": "m55-k1",
+   "ahl": false,
+   "stmt": "5.5.1",
+   "cue": "How do you anti-differentiate ax^n?",
+   "answer": "∫ax^n dx = a x^(n+1)/(n + 1) + C, n ≠ −1. Rewrite roots and reciprocals as powers first."
+  },
+  {
+   "id": "m55-k2",
+   "ahl": false,
+   "stmt": "5.5.2",
+   "cue": "How do you find the constant C?",
+   "answer": "Substitute a known point (boundary condition) into F(x) + C and solve for C."
+  },
+  {
+   "id": "m55-k3",
+   "ahl": false,
+   "stmt": "5.5.3",
+   "cue": "Definite integrals with technology?",
+   "answer": "∫ₐᵇ f(x) dx on the GDC; write the integral with its limits in your working before the answer."
+  },
+  {
+   "id": "m55-k4",
+   "ahl": false,
+   "stmt": "5.5.4",
+   "cue": "Area between a curve and the x-axis when the curve is above it?",
+   "answer": "Area = ∫ₐᵇ y dx, provided y ≥ 0 between a and b."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "antiderivative",
+   "def": "a function whose derivative is f"
+  },
+  {
+   "term": "constant of integration",
+   "def": "C, fixed by a boundary condition"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Boundary condition",
+   "prompt": "f′(x) = 6x² − 4x + 1 and f(1) = 5. Find f(x).",
+   "steps": [
+    "f(x) = 2x³ − 2x² + x + C",
+    "2 − 2 + 1 + C = 5"
+   ],
+   "answer": "f(x) = 2x³ − 2x² + x + 4"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "Leaving out + C",
+   "right": "Every indefinite integral needs + C."
+  },
+  {
+   "wrong": "∫x⁻¹ dx = x⁰/0",
+   "right": "n = −1 is the exception (it gives ln x, in 5.10)."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Find",
+   "marks": 3,
+   "prompt": "Find ∫(3x² + 4/x³) dx.",
+   "solution": [
+    "4/x³ = 4x⁻³",
+    "x³ + 4x⁻²/(−2) + C"
+   ],
+   "answer": "x³ − 2/x² + C",
+   "commonErrors": [
+    "4x⁻⁴/(−4)",
+    "No + C"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Find",
+   "marks": 3,
+   "prompt": "Find the area enclosed by y = 4 + 3x − x², the x-axis and the lines x = 0 and x = 4.",
+   "solution": [
+    "y = (4 − x)(1 + x) ≥ 0 on [0, 4]",
+    "GDC ∫₀⁴ (4 + 3x − x²) dx"
+   ],
+   "answer": "56/3 ≈ 18.7",
+   "commonErrors": [
+    "Not checking the curve is above the axis",
+    "Wrong limits"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [
+   {
+    "section": "SL 5.5",
+    "item": "∫x^n dx = x^(n+1)/(n + 1) + C, n ≠ −1; area between y = f(x) and the x-axis, f(x) > 0: A = ∫ₐᵇ y dx"
+   }
+  ],
+  "memorise": [
+   "Rewrite roots and fractions as powers",
+   "Always + C"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "5.11",
+   "prompt": "What changes when part of the curve is below the x-axis?"
+  },
+  {
+   "to": "5.9",
+   "prompt": "Why does integrating velocity give displacement?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/5-calculus/5-3-integration.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/math-aa-topic5-calculus.json",
+    "itemIds": [
+     "c511",
+     "c517",
+     "c519",
+     "c518"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/math-topic5-calculus.json",
+    "cardIds": [
+     "fc-math-ca-10",
+     "fc-math-ca-15",
+     "fc-math-ca-17"
+    ]
+   }
+  ]
+ }
+}

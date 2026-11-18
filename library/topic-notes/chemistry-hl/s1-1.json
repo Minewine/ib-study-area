@@ -219,7 +219,31 @@
  "links": {
   "checklistKey": "chemistry-hl::library/notes/chemistry-hl/models-of-the-particulate-nature-of-matter/introduction-to-the-particulate-nature-of-matter.pdf",
   "quizBanks": [],
-  "decks": [],
-  "gap": "No quiz items or flashcards cover mixtures, separation methods, states of matter or the kelvin scale (S1.1.1–S1.1.3)."
+  "decks": [
+   {
+    "file": "library/flashcards/chem-s1-1-particulate-nature.json",
+    "cardIds": [
+     "fc-chem-pn-01",
+     "fc-chem-pn-02",
+     "fc-chem-pn-03",
+     "fc-chem-pn-04",
+     "fc-chem-pn-05",
+     "fc-chem-pn-06",
+     "fc-chem-pn-07",
+     "fc-chem-pn-08",
+     "fc-chem-pn-09",
+     "fc-chem-pn-10",
+     "fc-chem-pn-11",
+     "fc-chem-pn-12",
+     "fc-chem-pn-13",
+     "fc-chem-pn-14",
+     "fc-chem-pn-15",
+     "fc-chem-pn-16",
+     "fc-chem-pn-17",
+     "fc-chem-pn-18"
+    ]
+   }
+  ],
+  "gap": "No quiz items cover mixtures, separation methods, states of matter or the kelvin scale (S1.1.1–S1.1.3); flashcards added Nov 2026."
  }
 }

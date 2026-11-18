@@ -1,0 +1,178 @@
+{
+ "subject": "biology-hl",
+ "topic": "b2-1-membranes-transport",
+ "topicLabel": "B2.1 — Membranes & membrane transport (Form & function — cells)",
+ "cards": [
+  {
+   "id": "fc-bio-mt-01",
+   "type": "term",
+   "tags": [
+    "definition"
+   ],
+   "front": "Amphipathic",
+   "back": "Has a hydrophilic part and a hydrophobic part, like a phospholipid: phosphate head attracted to water, two fatty-acid tails repelled by it."
+  },
+  {
+   "id": "fc-bio-mt-02",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "Why do phospholipids form a bilayer in water?",
+   "back": "Heads face the water on both sides and the tails cluster together in the middle, away from water. This happens spontaneously."
+  },
+  {
+   "id": "fc-bio-mt-03",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "What can and can't cross the hydrophobic core of the bilayer easily?",
+   "back": "Small non-polar molecules cross easily (O₂, CO₂). Ions, large or polar molecules (glucose, amino acids, proteins) barely cross, so the bilayer acts as a barrier."
+  },
+  {
+   "id": "fc-bio-mt-04",
+   "type": "term",
+   "tags": [
+    "definition"
+   ],
+   "front": "Simple diffusion",
+   "back": "Passive net movement of particles down a concentration gradient directly between phospholipids. No protein, no ATP. Example: O₂ and CO₂."
+  },
+  {
+   "id": "fc-bio-mt-05",
+   "type": "qa",
+   "tags": [
+    "definition"
+   ],
+   "front": "Integral vs peripheral membrane proteins",
+   "back": "Integral: embedded in the bilayer, often spanning it (transmembrane). Peripheral: attached to one surface only, to lipid heads or integral proteins."
+  },
+  {
+   "id": "fc-bio-mt-06",
+   "type": "term",
+   "tags": [
+    "definition"
+   ],
+   "front": "Osmosis",
+   "back": "Net movement of water across a partially permeable membrane from lower to higher solute concentration (higher to lower water potential)."
+  },
+  {
+   "id": "fc-bio-mt-07",
+   "type": "term",
+   "tags": [
+    "definition"
+   ],
+   "front": "Aquaporin",
+   "back": "Channel protein specific for water; greatly increases a membrane's permeability to water."
+  },
+  {
+   "id": "fc-bio-mt-08",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "How do channel proteins give facilitated diffusion its selectivity?",
+   "back": "Each channel has a pore of a particular diameter with a charged lining, so only specific ions or molecules pass. Movement is passive, down the gradient; many channels are gated."
+  },
+  {
+   "id": "fc-bio-mt-09",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "Pump vs channel",
+   "back": "A pump uses energy from ATP to change shape and moves specific particles AGAINST their gradient (active transport). A channel only allows passive movement down the gradient."
+  },
+  {
+   "id": "fc-bio-mt-10",
+   "type": "qa",
+   "tags": [
+    "distinction"
+   ],
+   "front": "Which membrane transport mechanisms are selective?",
+   "back": "Facilitated diffusion and active transport (they depend on specific proteins). Simple diffusion is not selective: it depends only on size and polarity."
+  },
+  {
+   "id": "fc-bio-mt-11",
+   "type": "qa",
+   "tags": [
+    "definition"
+   ],
+   "front": "Glycoproteins and glycolipids: where and why?",
+   "back": "Carbohydrate chains on the outer (extracellular) face only. Roles: cell–cell recognition (e.g. ABO blood-group antigens) and cell adhesion."
+  },
+  {
+   "id": "fc-bio-mt-12",
+   "type": "qa",
+   "tags": [
+    "figure"
+   ],
+   "front": "Fluid mosaic model: what must the diagram show?",
+   "back": "Phospholipid bilayer; integral and peripheral proteins; glycoproteins with carbohydrate facing out; cholesterol among the tails; hydrophilic and hydrophobic regions labelled."
+  },
+  {
+   "id": "fc-bio-mt-13",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "AHL: How does fatty-acid saturation affect membrane fluidity?",
+   "back": "Unsaturated (cis double bonds) tails are kinked and pack loosely: more fluid at low temperature. Saturated tails pack tightly: more rigid. Cold-water ectotherms have more unsaturated fatty acids in their membranes."
+  },
+  {
+   "id": "fc-bio-mt-14",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "AHL: Role of cholesterol in animal membranes",
+   "back": "A fluidity buffer: it restrains phospholipid movement when warm (less fluid) and stops the tails packing tightly when cold (prevents stiffening)."
+  },
+  {
+   "id": "fc-bio-mt-15",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "AHL: Endocytosis and exocytosis, one example each",
+   "back": "Both rely on membrane fluidity. Endocytosis: a phagocyte engulfing a bacterium. Exocytosis: pancreatic cells secreting digestive enzymes, or neurotransmitter release at a synapse."
+  },
+  {
+   "id": "fc-bio-mt-16",
+   "type": "qa",
+   "tags": [
+    "distinction"
+   ],
+   "front": "AHL: Neurotransmitter-gated vs voltage-gated channels, one example each",
+   "back": "Neurotransmitter-gated: nicotinic acetylcholine receptor opens when acetylcholine binds, letting Na⁺ in. Voltage-gated: Na⁺ and K⁺ channels in axons open when the membrane potential changes."
+  },
+  {
+   "id": "fc-bio-mt-17",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "AHL: Sodium–potassium pump",
+   "back": "Per ATP: 3 Na⁺ pumped out, 2 K⁺ pumped in, both against their gradients. Net loss of positive charge helps set the negative resting potential."
+  },
+  {
+   "id": "fc-bio-mt-18",
+   "type": "qa",
+   "tags": [
+    "process"
+   ],
+   "front": "AHL: Sodium-dependent glucose cotransport — why 'indirect' active transport?",
+   "back": "The cotransporter uses no ATP. Na⁺ moves in down the gradient made by the Na⁺/K⁺ pump and carries glucose in against its gradient. Small intestine and nephron (glucose reabsorption)."
+  },
+  {
+   "id": "fc-bio-mt-19",
+   "type": "term",
+   "tags": [
+    "definition"
+   ],
+   "front": "AHL: Cell-adhesion molecules (CAMs)",
+   "back": "Membrane proteins that bind neighbouring cells together; different CAMs form different types of cell–cell junction."
+  }
+ ]
+}

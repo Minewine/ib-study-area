@@ -195,7 +195,28 @@
     ]
    }
   ],
-  "decks": [],
-  "gap": "No flashcard deck covers B2.3 yet."
+  "decks": [
+   {
+    "file": "library/flashcards/bio-b2-3-cell-specialization.json",
+    "cardIds": [
+     "fc-bio-cs-01",
+     "fc-bio-cs-02",
+     "fc-bio-cs-03",
+     "fc-bio-cs-04",
+     "fc-bio-cs-05",
+     "fc-bio-cs-06",
+     "fc-bio-cs-07",
+     "fc-bio-cs-08",
+     "fc-bio-cs-09",
+     "fc-bio-cs-10",
+     "fc-bio-cs-11",
+     "fc-bio-cs-12",
+     "fc-bio-cs-13",
+     "fc-bio-cs-14",
+     "fc-bio-cs-15",
+     "fc-bio-cs-16"
+    ]
+   }
+  ]
  }
 }

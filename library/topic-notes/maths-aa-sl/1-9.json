@@ -1,0 +1,157 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-1-9",
+ "code": "1.9",
+ "title": "The binomial theorem",
+ "theme": "1",
+ "themeLabel": "Number and algebra",
+ "hlOnly": false,
+ "islOrder": 39,
+ "islUnits": [
+  "9. Sequences etc, binomial (Y13 wk 7-11 (Oct-Nov 2027))"
+ ],
+ "taughtStatus": "later",
+ "statements": {
+  "SL": [
+   "1.9.1",
+   "1.9.2"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "1.9.1",
+   "text": "Expanding (a+b)^n for natural n"
+  },
+  {
+   "id": "1.9.2",
+   "text": "Binomial coefficients from Pascal's triangle and nCr; finding a given term or coefficient"
+  }
+ ],
+ "bigPicture": "The binomial theorem expands (a + b)^n without multiplying out brackets. Most questions ask for one term or one coefficient, so learn the general term.",
+ "keyIdeas": [
+  {
+   "id": "m19-k1",
+   "ahl": false,
+   "stmt": "1.9.1",
+   "cue": "Structure of (a + b)^n?",
+   "answer": "n + 1 terms; powers of a fall from n to 0 while powers of b rise from 0 to n; the powers in each term add to n."
+  },
+  {
+   "id": "m19-k2",
+   "ahl": false,
+   "stmt": "1.9.2",
+   "cue": "Where do the coefficients come from, and how do you find one term?",
+   "answer": "Row n of Pascal's triangle, or nCr = n!/(r!(n − r)!). The general term is nCr a^(n−r) b^r (the (r + 1)th term). For the term in x^k, write the power of x in terms of r and solve for r."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "nCr",
+   "def": "binomial coefficient: number of ways to choose r items from n"
+  },
+  {
+   "term": "Pascal's triangle",
+   "def": "each entry is the sum of the two above it"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Full expansion",
+   "prompt": "Expand (2 + x)⁴.",
+   "steps": [
+    "coefficients 1, 4, 6, 4, 1",
+    "16 + 4·8x + 6·4x² + 4·2x³ + x⁴"
+   ],
+   "answer": "16 + 32x + 24x² + 8x³ + x⁴"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "(2x)³ = 2x³",
+   "right": "Bracket the whole term: (2x)³ = 8x³; keep negative signs inside the bracket too."
+  },
+  {
+   "wrong": "The term with r = 3 is the 3rd term",
+   "right": "It is the 4th term; r starts at 0."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Find",
+   "marks": 4,
+   "prompt": "Find the coefficient of x³ in the expansion of (3 − 2x)⁵.",
+   "solution": [
+    "term: 5C3 · 3² · (−2x)³",
+    "= 10 · 9 · (−8)x³"
+   ],
+   "answer": "−720",
+   "commonErrors": [
+    "Losing the minus sign",
+    "Using 3³ instead of 3²"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Find",
+   "marks": 4,
+   "prompt": "Find the term independent of x in the expansion of (x² + 2/x)⁶.",
+   "solution": [
+    "general term 6Cr (x²)^(6−r) (2/x)^r = 6Cr 2^r x^(12 − 3r)",
+    "12 − 3r = 0, so r = 4",
+    "6C4 · 2⁴ = 15·16"
+   ],
+   "answer": "240",
+   "commonErrors": [
+    "Setting the power to 6 − 2r",
+    "Forgetting 2^r"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [
+   {
+    "section": "SL 1.9",
+    "item": "Binomial theorem (a + b)^n = a^n + nC1 a^(n−1)b + … + nCr a^(n−r)b^r + … + b^n; nCr = n!/(r!(n − r)!)"
+   }
+  ],
+  "memorise": [
+   "Pascal's triangle for small n",
+   "Bracketing whole terms before raising to a power"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "4.8",
+   "prompt": "Where do the coefficients nCr appear again in probability?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/1-number-algebra/1-5-binomial-theorem.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/math-aa-topic4-statistics.json",
+    "itemIds": [
+     "s414"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/math-topic4-statistics.json",
+    "cardIds": [
+     "fc-math-st-17"
+    ]
+   }
+  ]
+ }
+}
