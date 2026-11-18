@@ -11,6 +11,12 @@
   .big-links a:hover{border-color:var(--accent);transform:translateY(-2px);transition:transform .12s}
   .big-links strong{display:block;font-size:1.15rem;margin-bottom:.3rem;color:var(--accent)}
   .big-links span{font-size:.92rem;color:var(--muted)}
+  #today h4{margin:.6rem 0 .3rem;font-size:1rem}
+  #today .td-block{border-top:1px solid var(--line);padding-top:.3rem}
+  #today .td-block:first-child{border-top:0}
+  #today .td-btn{display:inline-block;margin:.2rem 0 .4rem;padding:.35rem .8rem;border-radius:8px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600}
+  #today .td-subj{margin:.35rem 0}
+  #today .td-links{margin:.15rem 0 .2rem 1rem}
 </style>
 </head>
 <body>
@@ -25,6 +31,11 @@
 <main>
   <h2>Practice</h2>
   <p class="muted">The quiz + flashcard layer of the study area, self-contained. Works on any device with the link — log in (top right) and your quiz history, missed questions and flashcard reviews sync across devices. Logged out, progress stays on this device (the Cards page export/import can move it).</p>
+
+  <section class="card" id="today">
+    <h3>Today</h3>
+    <div id="today-body"><p class="muted">Loading today's plan…</p></div>
+  </section>
 
   <div class="big-links">
     <a href="notes.html"><strong>Notes →</strong><span>Topic notes for Biology HL, Chemistry HL and Maths AA SL by syllabus code. Recall-first key ideas, common mistakes, practice prompts, and one tap to that topic's quiz questions and flashcards.</span></a>
@@ -47,5 +58,6 @@
 <footer>Private family use · exams <strong>May 2028</strong> · keep this app and its content non-public</footer>
 <script src="../assets/store.js?v=1"></script>
 <script src="../assets/auth.js?v=7"></script>
+<script src="../assets/today.js?v=1"></script>
 </body>
 </html>

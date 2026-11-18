@@ -57,3 +57,8 @@ Still open:
   - escape the remaining `innerHTML` sink in `practice.html` (missed-question rendering);
   - per-IP plus per-account brute-force limits.
 - **Known sync limits:** if two devices edit the same list blob, the last one wins (the server history keeps the other version). A device's first sync after the upgrade unions both sides, so an item deleted elsewhere can come back once.
+
+## 9. "Today" panel (practice home page)
+- Built in the `feat/today-plan` PR: due cards, a 6-question quiz on the weakest topic, and this week's class units from `library/class-schedule.json`.
+- **Check the schedule with her once a month.** The dates are estimates made from the ISL course calendars, and editing them is one JSON line per unit.
+- Add the **Year 13 (2027-28)** units once ISL publishes the DP2 calendars (the current Maths one is based on an older year).
