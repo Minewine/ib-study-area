@@ -261,7 +261,8 @@ BASE = """<!DOCTYPE html>
 __CONTENT__
 </main>
 <footer>Private family study area · exams <strong>May 2028</strong> · keep this site and its library non-public</footer>
-<script src="assets/app.js?v=2"></script>
+<script src="assets/store.js?v=1"></script>
+<script src="assets/app.js?v=3"></script>
 </body>
 </html>
 """
@@ -353,11 +354,11 @@ AUTH_PAGES = (
 # notes; library.js on index/practice drives the pinned-resources card and the
 # papers-intake list).
 EXTRA_SCRIPTS = {
-    "core.html": ["assets/lists.js?v=2"],
-    "ia.html": ["assets/lists.js?v=2"],
-    "french-a-langlit.html": ["assets/lists.js?v=2"],
-    "index.html": ["assets/library.js?v=1"],
-    "practice.html": ["assets/library.js?v=1"],
+    "core.html": ["assets/lists.js?v=3"],
+    "ia.html": ["assets/lists.js?v=3"],
+    "french-a-langlit.html": ["assets/lists.js?v=3"],
+    "index.html": ["assets/library.js?v=2"],
+    "practice.html": ["assets/library.js?v=2"],
 }
 
 
@@ -369,8 +370,8 @@ def page(fname, title, content_html, active):
     if fname in AUTH_PAGES:
         h = h.replace("</nav>", '  <span id="auth-slot"></span>\n</nav>', 1)
         h = h.replace(
-            '<script src="assets/app.js?v=2"></script>',
-            '<script src="assets/app.js?v=2"></script>\n<script src="assets/auth.js?v=6"></script>',
+            '<script src="assets/app.js?v=3"></script>',
+            '<script src="assets/app.js?v=3"></script>\n<script src="assets/auth.js?v=7"></script>',
             1,
         )
     if fname in EXTRA_SCRIPTS:
@@ -382,8 +383,8 @@ def page(fname, title, content_html, active):
         )
     if fname == "index.html":
         h = h.replace(
-            '<script src="assets/app.js?v=2"></script>',
-            '<script src="assets/deadlines.js?v=2"></script>\n<script src="assets/app.js?v=2"></script>',
+            '<script src="assets/app.js?v=3"></script>',
+            '<script src="assets/deadlines.js?v=2"></script>\n<script src="assets/app.js?v=3"></script>',
             1,
         )
     out.write_text(h, encoding="utf-8")
@@ -1085,14 +1086,16 @@ nav a.active{background:#26415f;color:#fff}
 """
 
 JS = """(function () {
-  const store = {
+  // NB.store (assets/store.js) is the storage layer; the literal below is only a
+  // fallback for a stale cached page that didn't load store.js.
+  const store = (window.NB && window.NB.store) || {
     get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v === null ? d : v; } catch (e) { return d; } },
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   };
   document.querySelectorAll('.row[data-key]').forEach(row => {
     const key = row.dataset.key;
     const st = store.get('chk:' + key, { c: false, r: '' });
-    if (localStorage.getItem('chk:' + key) === null) store.set('chk:' + key, st);
+    if (localStorage.getItem('chk:' + key) === null) store.set('chk:' + key, st, { silent: true }); // default row, not a user change
     const cb = row.querySelector('input[type=checkbox]');
     const sel = row.querySelector('select.rag');
     if (cb) cb.checked = !!st.c;

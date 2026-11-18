@@ -120,10 +120,13 @@
 </main>
 <footer>Private family use · exams <strong>May 2028</strong> · keep this app and its content non-public</footer>
 
+<script src="../assets/store.js?v=1"></script>
 <script>
 (function () {
   "use strict";
-  const store = {
+  // NB.store (assets/store.js) is the storage layer; the literal below is only a
+  // fallback for a stale cached page that didn't load store.js.
+  const store = (window.NB && window.NB.store) || {
     get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v === null ? d : v; } catch (e) { return d; } },
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} try { if (window.Auth && window.Auth.queueSync) window.Auth.queueSync(); } catch (e) {} }
   };
@@ -465,6 +468,6 @@
   renderManage();
 })();
 </script>
-<script src="../assets/auth.js?v=6"></script>
+<script src="../assets/auth.js?v=7"></script>
 </body>
 </html>
