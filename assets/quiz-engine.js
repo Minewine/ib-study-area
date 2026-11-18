@@ -282,14 +282,20 @@ async function init() {
       <h3>What to do next</h3><ul>${advice.map(a => `<li>${esc(a)}</li>`).join("")}</ul>
       <div class="q-actions"><button class="btn primary" id="q-again">New session</button></div>`;
     $("q-again").addEventListener("click", reset);
-    saveLog(pct, got, max, session.label);
+    saveLog(pct, got, max, session.label, byTopic, session.subject);
     renderLog();
     updateReviewUI();
   }
 
-  function saveLog(pct, got, max, label) {
+  function saveLog(pct, got, max, label, byTopic, subject) {
     const log = store.get("quizlog", []);
-    log.unshift({ date: today(), label, pct, got, max, ts: Date.now() }); // local date; ts keeps two identical sessions distinct in the sync merge
+    // per-topic breakdown {topic: {l: label, g: got, m: max}} feeds the parent weekly summary
+    const topics = {};
+    Object.entries(byTopic || {}).forEach(([k, v]) => { if (k && k !== "undefined") topics[k] = { l: v.label, g: v.got, m: v.max }; });
+    const entry = { date: today(), label, pct, got, max, ts: Date.now() }; // local date; ts keeps two identical sessions distinct in the sync merge
+    if (subject) entry.subject = subject;
+    if (Object.keys(topics).length) entry.topics = topics;
+    log.unshift(entry);
     store.set("quizlog", log.slice(0, 20));
   }
   function renderLog() {

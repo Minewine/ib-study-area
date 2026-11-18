@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Weekly summary — Practice</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+.btn{display:inline-block;padding:.45rem .9rem;border:1px solid var(--line);border-radius:10px;background:#fff;font:inherit;cursor:pointer;color:var(--ink)}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.ws-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem;margin:.6rem 0}
+.ws-stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.7rem .8rem}
+.ws-stat strong{display:block;font-size:1.5rem;color:var(--accent)}
+.ws-table{width:100%;border-collapse:collapse;font-size:.93rem}
+.ws-table td,.ws-table th{text-align:left;padding:.3rem .4rem;border-bottom:1px solid #eef1f4}
+.ws-weak{color:#a33}
+.ws-form input{margin:.2rem .3rem .2rem 0;padding:.4rem}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="brand">Practice</a>
+  <a href="notes.html">Notes</a>
+  <a href="quiz.html">Quiz</a>
+  <a href="cards.html">Cards</a>
+  <a href="summary.html" class="active">Weekly summary</a>
+  <a href="../index.html" style="margin-left:auto">← Study site</a>
+</nav>
+<main>
+  <h2>Weekly summary</h2>
+  <p class="muted">Read-only overview for a parent: what was practised, how quizzes went, and which topics need another look. This page only reads; it never changes progress, and logging in here doesn't sync anything into this browser.</p>
+  <section class="card" id="ws-login" hidden>
+    <form id="ws-form" class="ws-form">
+      <input id="ws-user" placeholder="username" autocomplete="username" size="14">
+      <input id="ws-pass" type="password" placeholder="password" autocomplete="current-password" size="14">
+      <button class="btn primary">Show summary</button>
+      <span id="ws-login-msg" class="muted"></span>
+    </form>
+  </section>
+  <section id="ws-controls" hidden>
+    <label>Account <select id="ws-target"></select></label>
+    <label>Period <select id="ws-days"><option value="7">last 7 days</option><option value="14">last 14 days</option><option value="30">last 30 days</option></select></label>
+    <button class="btn" id="ws-logout">Log out</button>
+  </section>
+  <p id="ws-msg" class="muted"></p>
+  <div id="ws-out"></div>
+</main>
+<footer>Private family use · figures come from the app's own logs; time is an estimate</footer>
+<script src="../assets/summary.js?v=1"></script>
+</body>
+</html>

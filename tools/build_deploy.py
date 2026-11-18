@@ -5,7 +5,8 @@ Output: deploy/nevaib/  +  deploy/nevaib.zip  (push with tools/push_deploy.py,
 or upload manually via cPanel/SFTP)
 
 Contents: the practice app pages, engines, style, ORIGINAL quiz banks +
-flashcard decks + topic notes + manifests + authoring doc + api.php. The copyrighted PDF
+flashcard decks + topic notes + manifests + authoring doc + api.php (+ summary.php,
+weekly_email.php). The copyrighted PDF
 folders (library/official|school|notes|papers) are NOT included — they stay
 local-only. Study-site links are stripped (the deployed app is standalone).
 
@@ -26,7 +27,7 @@ OUT = ROOT / "deploy" / "nevaib"
 KEY_FILE = ROOT / "deploy" / ".setup-key"
 ZIP_FILE = ROOT / "deploy" / "nevaib.zip"
 
-PAGES = ["index.html", "notes.html", "quiz.html", "cards.html", "author.html"]
+PAGES = ["index.html", "notes.html", "quiz.html", "cards.html", "author.html", "summary.html"]
 
 EMPTY_KEY_LINE = (
     '$SETUP_KEY = "";  // e.g. "paste-a-long-random-string"; empty = setup disabled'
@@ -88,6 +89,9 @@ def build(out: Path = OUT, apply_key: bool = True) -> Path:
             api_text, KEY_FILE.read_text(encoding="utf-8").strip()
         )
     (out / "api/api.php").write_text(api_text, encoding="utf-8")
+    # weekly summary: library used by api.php + the cron-only e-mail script (refuses web requests)
+    for extra in ("summary.php", "weekly_email.php"):
+        shutil.copy2(ROOT / "server" / extra, out / "api" / extra)
     return out
 
 

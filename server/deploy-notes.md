@@ -154,3 +154,52 @@ NEVAIB_DATA_DIR=/tmp/nevaib-test-data php -S 127.0.0.1:8018 -t . tools/dev_serve
 test data out of the real home dir. From a browser:
 `http://localhost:8017/<page>?nbapi=http://127.0.0.1:8018/api/api.php` exercises
 the full cross-origin token path (override is localhost-only; see DEVELOPMENT.md).
+
+## Parent weekly summary (2026-11)
+
+**Page:** `https://rametric.com/nevaib/summary.html` (linked in the home-page footer). Read-only.
+It logs in **token-only** (`"no_session": true`) and keeps the token in `sessionStorage`; it
+never loads `auth.js`/`store.js` and never writes `nb-token` or any synced key, so a parent's
+browser can't merge its own local data into the student's account. Logging in with her
+username/password works with no setup at all.
+
+**API:** `GET api.php?action=summary&days=7[&user=<name>]` (authenticated, days 1–90). Computed
+by `server/summary.php` from the stored state; nothing is written. Figures:
+- active days (dates with a quiz session or a card review), quiz sessions and accuracy by
+  session label, accuracy **by topic** (from quiz sessions saved by quiz-engine v13+, which adds a
+  `topics` breakdown to each `quizlog` entry; older entries count only in the totals),
+- flashcards: distinct cards whose latest review falls in the window (the app keeps only the
+  last review time per card, so repeated reviews of one card count once), due now, mastered,
+- missed questions (unresolved `q-errors` last missed in the window) and the 5 weakest topics,
+- **minutes are an estimate** (≈20 s per card + 1 min per quiz mark): the app doesn't time sessions.
+
+**Optional config** — `~/nevaib-data/config.json` (outside `public_html`, never committed; the
+deploy never touches it). Upload it the same way as other `nevaib-data` files, or create it via a
+temporary key-gated PHP helper as in the backup recipe. Example:
+
+```json
+{
+  "timezone": "Europe/Zurich",
+  "summary_viewers": { "<parent-username>": ["<student-username>"] },
+  "summary_email": { "to": "<parent e-mail>", "from": "<sender on your domain>",
+                     "users": ["<student-username>"], "days": 7 }
+}
+```
+
+- `summary_viewers` lets a separate parent account read the student's summary (one-way,
+  read-only). The parent account is created with the one-time setup-key procedure above.
+  Without it, log in on the summary page with the student's own credentials.
+- `summary_email` is used by the cron script below.
+
+**Weekly e-mail (optional, no external service):** `api/weekly_email.php` runs only from the
+command line (web requests get 404) and sends a plain-text summary with PHP `mail()`.
+cPanel → Cron Jobs → e.g. Sundays 18:00:
+
+```sh
+php -q /home/<cpanel-user>/public_html/nevaib/api/weekly_email.php
+```
+
+Try it first with `--dry-run` (prints, sends nothing) if you have any CLI access, or schedule one
+run a few minutes ahead and check the inbox (and spam folder). Use a `from` address on the
+hosting domain (e.g. `nevaib@rametric.com`) so SPF passes. If the cron's `php` is a different
+version than the web one, use the path cPanel shows (e.g. `/usr/local/bin/php`).
