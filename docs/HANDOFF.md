@@ -1,6 +1,6 @@
 # NevaIB study area: handoff
 
-_Last updated 18 Nov 2026. Read this first, then [NEXT-STEPS.md](NEXT-STEPS.md)._
+_Last updated 18 Nov 2026 (afternoon). Read this first, then [NEXT-STEPS.md](NEXT-STEPS.md); ideas for later are in [VISION.md](VISION.md)._
 
 ## What the system is
 
@@ -16,6 +16,10 @@ A private IB Diploma study site for one student (exams May 2028). It has two par
   - topic notes;
   - quiz (MCQ marked automatically, written answers self-marked);
   - Leitner flashcards;
+  - a "Today" panel on the home page (due cards, weakest-topic quiz, this week in class);
+  - exam-style practice (Chemistry Paper 1A/1B-style banks, Biology data response), confidence ratings and a past-paper score log;
+  - a coursework planner (Biology/Chemistry scientific investigation, Maths exploration);
+  - a read-only weekly summary page for a parent (`summary.html`);
   - an upload page.
 
   `tools/build_deploy.py` builds it into `deploy/nevaib/` for https://rametric.com/nevaib/. A small PHP API (`server/api.php`, PHP 7.2) handles login and cross-device sync.
@@ -33,6 +37,10 @@ Stack: static HTML, vanilla JS, JSON content, browser localStorage, one PHP file
 | Topic notes viewer | `app/notes.html`, `assets/notes.js` |
 | Coursework planner (Bio/Chem scientific investigation, Maths exploration: stages, self-checks, pitfalls, approximate ISL dates) | `app/coursework.html`, `assets/coursework.js`, `library/coursework/coursework.json`; skills quiz `library/questions/ia-practical-skills.json` |
 | Quiz / cards engines (both accept `?from=` deep links from notes) | `assets/quiz-engine.js`, `assets/flashcards.js` |
+| Today panel (due cards, weakest-topic quiz, this week's class units) | `assets/today.js`, `library/class-schedule.json` |
+| Confidence ratings ("sure"/"guessing") and past-paper score log | `assets/confidence.js`, `assets/papers.js` (Quiz page) |
+| Parent weekly summary (read-only, token-only login) and optional cron e-mail | `app/summary.html`, `assets/summary.js`, `server/summary.php`, `server/weekly_email.php` |
+| Security: login limits, header-only tokens, CSRF guard, response headers, `NB.escapeHtml` for every `innerHTML` string | `server/api.php`, `assets/store.js`; details in `server/deploy-notes.md` |
 | Checklist rows, tracked lists, library browser | `assets/app.js`, `assets/lists.js`, `assets/library.js` |
 | Content | `library/questions/*.json`, `library/flashcards/*.json`, `library/topic-notes/<subject>/*.json`, `library/syllabus/*.json` |
 | Tooling | `dev.sh`, `tools/validate_content.py`, `tools/build_site.py`, `tools/build_deploy.py`, `tools/push_deploy.py`, `tools/import_topic_notes.py` |
@@ -72,13 +80,23 @@ Stack: static HTML, vanilla JS, JSON content, browser localStorage, one PHP file
 
 ## What has been done (pull requests)
 
-| PR | Branch | Contents |
-|---|---|---|
-| [#1](https://github.com/Minewine/ib-study-area/pull/1) | `fix/measurement-and-sync` | MCQ options shuffled at render; four quiz-engine bugs fixed; per-record sync of SRS state and missed questions; confirmed content errors fixed; 15 exact duplicates removed; stale copy fixed |
-| [#2](https://github.com/Minewine/ib-study-area/pull/2) | `feat/data-integrity` | Loss-proof sync; server revisions, history, atomic writes and export; `NB.store`; full backup and safe restore; `dev.sh`; validator warnings; e2e suite; CI workflow |
-| #3 | `feat/topic-notes` | 86 topic notes in the app (Biology HL 40, Chemistry HL 22, Maths AA SL 24); notes page; quiz/cards deep links; "study notes" links on checklist rows; notes in the deploy build; validator checks for notes; this handoff and NEXT-STEPS |
+| PR | Branch | Contents | Status |
+|---|---|---|---|
+| [#1](https://github.com/Minewine/ib-study-area/pull/1) | `fix/measurement-and-sync` | MCQ shuffling, quiz-engine bug fixes, per-record sync, content errors, duplicates removed | deployed 18 Nov (morning) |
+| [#2](https://github.com/Minewine/ib-study-area/pull/2) | `feat/data-integrity` | Loss-proof sync, server revisions/history/export, `NB.store`, backup and safe restore, `dev.sh`, e2e suite, CI | deployed 18 Nov (morning) |
+| #3 / [#4](https://github.com/Minewine/ib-study-area/pull/4) | `feat/topic-notes` | 86 topic notes, notes page, quiz/cards deep links, handoff docs (#3 was superseded by #4) | deployed 18 Nov (morning) |
+| [#5](https://github.com/Minewine/ib-study-area/pull/5) | `fix/cards-load-parallel` | Cards page loads decks in parallel, "Loading decks…" placeholder | merged, awaiting deploy |
+| [#6](https://github.com/Minewine/ib-study-area/pull/6) | `fix/content-corrections` | Data-booklet bond enthalpies, ionisation-energy wording, off-syllabus Maths items retired | merged, awaiting deploy |
+| [#7](https://github.com/Minewine/ib-study-area/pull/7) | `feat/content-gaps` | B2.1–B2.3 and S1.1 cards, the remaining Maths AA SL notes (all 51 SL subtopics) | merged, awaiting deploy |
+| [#8](https://github.com/Minewine/ib-study-area/pull/8) | `feat/today-plan` | Today panel | merged, awaiting deploy |
+| [#9](https://github.com/Minewine/ib-study-area/pull/9) | `feat/security-hardening` | Login limits, token/session checks, CSRF guard, escaping, headers | merged, awaiting deploy |
+| [#10](https://github.com/Minewine/ib-study-area/pull/10) | `feat/weekly-summary` | Parent weekly summary page, API action, optional cron e-mail | merged, awaiting deploy |
+| [#11](https://github.com/Minewine/ib-study-area/pull/11) | `feat/exam-practice` | Paper 1A/1B-style Chemistry banks, Biology data response, confidence ratings, past-paper log | merged, awaiting deploy |
+| [#12](https://github.com/Minewine/ib-study-area/pull/12) | `feat/coursework-planner` | Coursework planner and practical/IA skills quiz | merged, awaiting deploy |
 
-The PRs are stacked: #2 builds on #1, and #3 on #2. Merge them in that order. **Nothing is deployed yet.** The live site still runs the code from before #1.
+**Live site:** runs the 18 Nov morning deploy (#1–#4). Everything else is on `main` and goes live with the next `./dev.sh deploy --confirm` (see NEXT-STEPS, step 1).
+
+**Paused (not started in the repo):** a private cross-check of our topic notes against a commercial revision-notes set (kept privately, never committed), and a "My resources" box on each note for her own links. Pick up when there is budget.
 
 ## Reports (Pages)
 
@@ -108,28 +126,22 @@ The notes are drafts (`status: "draft"`). Each one says it is not IB material, n
 - The IB guides, the ISL course documents, the Chemistry data booklet and the Maths formula booklet that the family supplied are **private**. They are never committed and never deployed. Keep your own copies; the notes were checked against them.
 - `library/official|school|notes|papers` (the PDFs) are git-ignored and excluded from the deploy build.
 - No copyrighted IB questions or markschemes are in the repo. Practice items and self-check points are original.
-- The GitHub repo is currently **public**. Making it private is step 3 of NEXT-STEPS.
+- The GitHub repo is currently **public**. Making it private is in NEXT-STEPS, step 2.
 
 ## Get it onto your laptop
 
-Your copy is at `~/Projects/ibsystem`, currently on `feat/data-integrity` with a clean working tree.
+Your copy is at `~/Projects/ibsystem`.
 
 ```bash
 cd ~/Projects/ibsystem
 git status                      # must be clean; otherwise: git stash
-git fetch origin && git switch feat/topic-notes && git pull
-./dev.sh test                   # pytest + node + php -l (needs uv, node >= 18, php)
-./dev.sh start                  # http://127.0.0.1:8018/app/notes.html
-```
-
-After PRs #1, #2 and #3 are merged on GitHub:
-
-```bash
 git switch main && git pull
-./dev.sh test && ./dev.sh start
+./dev.sh test                   # pytest + node + php -l (needs uv, node >= 18, php)
+./dev.sh start                  # http://127.0.0.1:8018/app/index.html
 ```
 
 Other commands:
+- `./dev.sh validate`: content validator.
 - `./dev.sh e2e`: browser tests (needs Chrome; installs puppeteer-core into `tests/e2e` once).
 - `./dev.sh build`: rebuilds the site and the deploy folder.
-- `./dev.sh deploy`: dry run only. A real upload needs `--confirm` (see NEXT-STEPS, step 2).
+- `./dev.sh deploy`: dry run only. A real upload needs `--confirm` (see NEXT-STEPS, step 1).
