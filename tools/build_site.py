@@ -1,4 +1,5 @@
-"""Generate the IB study-area static site in /home/mick/Projects/ibsystem.
+"""Generate the IB study-area static site in the repository this script lives in
+(override with NEVAIB_ROOT=/path/to/checkout).
 
 Reads the organized library (library/notes, library/official) and writes:
   index.html, per-subject hub pages, practice.html, ia.html,
@@ -8,12 +9,43 @@ before the script finishes.
 """
 
 import html
+import json
+import os
 import re
 from pathlib import Path
 
-ROOT = Path("/home/mick/Projects/ibsystem")
+# Repo-relative by default (was hard-coded to /home/mick/Projects/ibsystem, which
+# made a second checkout regenerate the main tree); NEVAIB_ROOT overrides.
+ROOT = Path(os.environ.get("NEVAIB_ROOT") or Path(__file__).resolve().parent.parent).resolve()
 LIB = ROOT / "library"
 ASSETS = ROOT / "assets"
+
+# The PDFs (library/notes, library/official, …) are private and git-ignored. On a
+# checkout without them (CI, a fresh clone) the committed library-manifest.json —
+# written by build_library_manifest.py from the real library — stands in for the
+# disk scan, so the generated pages are identical either way.
+def _manifest_files():
+    try:
+        data = json.loads((LIB / "library-manifest.json").read_text(encoding="utf-8"))
+        return {it["file"] for it in data.get("items", []) if isinstance(it, dict) and "file" in it}
+    except (OSError, ValueError):
+        return set()
+
+
+MANIFEST_FILES = _manifest_files()
+
+
+def lib_exists(p):
+    """True if the library file exists on disk or, without the private folders, in the manifest."""
+    p = Path(p)
+    if p.exists():
+        return True
+    try:
+        rel = p.relative_to(ROOT).as_posix()
+    except ValueError:
+        return False
+    top = rel.split("/")[1] if rel.startswith("library/") and rel.count("/") >= 2 else ""
+    return bool(top) and not (LIB / top).is_dir() and rel in MANIFEST_FILES
 
 
 def kebab(s):
@@ -31,10 +63,15 @@ def pretty(s):
 def gather_notes(subject):
     """Return [(section_key, [(relpath, display), ...]), ...] from notes dir."""
     base = LIB / "notes" / subject
-    if not base.exists():
-        return []
+    if (LIB / "notes").is_dir():
+        if not base.exists():
+            return []
+        pdfs = sorted(base.rglob("*.pdf"))
+    else:  # no private notes folder here — use the committed manifest
+        prefix = "library/notes/" + subject + "/"
+        pdfs = sorted(ROOT / f for f in MANIFEST_FILES if f.startswith(prefix) and f.endswith(".pdf"))
     sections = {}
-    for pdf in sorted(base.rglob("*.pdf")):
+    for pdf in pdfs:
         rel = pdf.relative_to(ROOT).as_posix()
         parts = pdf.relative_to(base).parts
         section = parts[0] if len(parts) > 1 else ""
@@ -159,7 +196,7 @@ def official_links():
         rows = []
         for label, fname in items:
             p = LIB / "official" / (subj if subj != "core" else "core-tok-ee") / fname
-            if p.exists():
+            if lib_exists(p):
                 rows.append((label, p.relative_to(ROOT).as_posix()))
         out[subj] = rows
     return out
@@ -1180,7 +1217,7 @@ for f in written:
     for href in re.findall(r'href="([^"#]+)"', txt):
         if href.startswith(("http", "mailto")):
             continue
-        if not (ROOT / href.split("?")[0]).exists():
+        if not lib_exists(ROOT / href.split("?")[0]):
             missing.append((f, href))
 print("pages:", ", ".join(sorted(written)))
 print("checklist rows:", n_math + n_bio + n_chem)
