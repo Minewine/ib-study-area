@@ -5,12 +5,13 @@ Exits non-zero on any FAIL so it can be used as a pre-commit gate.
 """
 
 import json
+import os
 import re
 import sys
 from collections import Counter
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(os.environ.get("NEVAIB_ROOT") or Path(__file__).resolve().parent.parent)
 fails, warns = [], []
 
 # Answer-cue thresholds (warnings, not failures). The quiz engine shuffles options at
@@ -47,6 +48,7 @@ def load(path):
 
 # ---------- quiz banks ----------
 quiz_ids_per_file = {}
+ids_by_subject = {}  # subject -> {id: [bank files]}
 bank_files = sorted((ROOT / "library/questions").glob("*.json"))
 total_q = 0
 for b in bank_files:
@@ -122,8 +124,27 @@ for b in bank_files:
         for ch, why in CORRUPT_CHARS.items():
             if ch in text:
                 fails.append(f"quiz bank {b.name}: contains {why}: {text[:60]!r}")
+    # untagged items inherit the bank topic in the quiz (fine), but tag them so the
+    # topic breakdown and any future per-topic stats don't depend on the file they sit in
+    untagged = [it.get("id") for it in d.get("items", []) if not it.get("topic")]
+    if untagged:
+        warns.append(f"quiz bank {b.name}: {len(untagged)} item(s) without a topic (inherit '{d.get('topic')}')")
+    no_id = [it for it in d.get("items", []) if not it.get("id")]
+    if no_id:
+        warns.append(f"quiz bank {b.name}: {len(no_id)} item(s) without an id (missed-question tracking falls back to the stem)")
+    for i in ids:
+        if i:
+            ids_by_subject.setdefault(d.get("subject"), {}).setdefault(i, []).append(b.name)
     quiz_ids_per_file[b.name] = set(ids)
     total_q += len(d.get("items", []))
+
+# ids only need to be unique per file (missed questions are keyed <bank>#<id>), but a
+# reused id within a subject makes logs and reports ambiguous — report it
+for subj, by_id in sorted(ids_by_subject.items(), key=lambda kv: str(kv[0])):
+    dup = {i: f for i, f in by_id.items() if len(f) > 1}
+    if dup:
+        sample = ", ".join(f"{i} ({' / '.join(sorted(f))})" for i, f in sorted(dup.items())[:5])
+        warns.append(f"subject {subj}: {len(dup)} question id(s) reused across banks, e.g. {sample}")
 
 # ---------- flashcard decks (ids unique GLOBALLY — SRS state is keyed by id) ----------
 fc_ids = {}

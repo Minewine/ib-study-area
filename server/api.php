@@ -44,6 +44,7 @@ $MAX_LOGIN_FAILS = 5;
 $TOKEN_TTL = 90 * 86400;  // login tokens expire after 90 days
 // One-time account creation: set a long random key here, create accounts, then blank it.
 $SETUP_KEY = "";  // e.g. "paste-a-long-random-string"; empty = setup disabled
+$HISTORY_KEEP = 30;  // previous versions kept per user in state/history/<user>/
 
 // ── helpers ──────────────────────────────────────────────────────────────────
 function fail(string $msg, int $code = 400) {   // PHP 7.2 target: no "never" return type (8.1+)
@@ -69,13 +70,54 @@ function users(): array {
     $arr = json_decode($raw, true);
     return is_array($arr) ? $arr : [];
 }
+// Write via a temp file in the same directory + rename(): readers see either the
+// old or the new file, never a truncated one (file_put_contents truncates first).
+function write_atomic(string $path, string $data): bool {
+    $tmp = $path . ".tmp-" . bin2hex(random_bytes(6));
+    if (file_put_contents($tmp, $data, LOCK_EX) !== strlen($data)) { @unlink($tmp); return false; }
+    @chmod($tmp, 0660);
+    if (!@rename($tmp, $path)) { @unlink($tmp); return false; }
+    return true;
+}
 function save_users(array $u): void {
     global $USERS_FILE;
-    file_put_contents($USERS_FILE, json_encode($u, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE), LOCK_EX);
+    write_atomic($USERS_FILE, json_encode($u, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+}
+function safe_user(string $user): string {
+    return preg_replace("/[^a-z0-9._-]/", "", strtolower($user));
 }
 function state_path(string $user): string {
     global $STATE_DIR;
-    return $STATE_DIR . "/" . preg_replace("/[^a-z0-9._-]/", "", strtolower($user)) . ".json";
+    return $STATE_DIR . "/" . safe_user($user) . ".json";
+}
+function history_dir(string $user): string {
+    global $STATE_DIR;
+    return $STATE_DIR . "/history/" . safe_user($user);
+}
+// Stored file: {"state": {...}, "updated_at": "...", "rev": N}. Files written before
+// revisions existed have no "rev" and read as rev 0 — no migration step needed.
+function read_state(string $user): array {
+    $p = state_path($user);
+    if (!is_file($p)) return ["state" => null, "updated_at" => null, "rev" => 0, "exists" => false];
+    $d = json_decode((string)file_get_contents($p), true);
+    if (!is_array($d)) fail("stored state is unreadable — not overwriting it; restore from state/history", 500);
+    $st = (isset($d["state"]) && is_array($d["state"])) ? $d["state"] : null;
+    return ["state" => $st, "updated_at" => $d["updated_at"] ?? null, "rev" => (int)($d["rev"] ?? 0), "exists" => true];
+}
+// keep the newest $keep snapshots of a user's state file
+function prune_history(string $dir, int $keep): void {
+    $files = glob($dir . "/*.json");
+    if (!is_array($files) || count($files) <= $keep) return;
+    sort($files);
+    foreach (array_slice($files, 0, count($files) - $keep) as $f) @unlink($f);
+}
+function history_list(string $user): array {
+    $files = glob(history_dir($user) . "/*.json");
+    if (!is_array($files)) return [];
+    rsort($files);
+    $out = [];
+    foreach ($files as $f) $out[] = ["name" => basename($f), "bytes" => filesize($f)];
+    return $out;
 }
 function login_fails(): array {
     global $DATA_DIR;
@@ -93,14 +135,14 @@ function record_fail(string $user): void {
     $entry["count"] = ($entry["count"] ?? 0) + 1;
     $entry["last"] = time();
     $all[$user] = $entry;
-    file_put_contents($f, json_encode($all), LOCK_EX);
+    write_atomic($f, json_encode($all));
 }
 function clear_fails(string $user): void {
     global $DATA_DIR;
     $f = $DATA_DIR . "/login-fails.json";
     $all = login_fails();
     unset($all[$user]);
-    file_put_contents($f, json_encode($all), LOCK_EX);
+    write_atomic($f, json_encode($all));
 }
 function tokens(): array {
     global $DATA_DIR;
@@ -111,7 +153,7 @@ function tokens(): array {
 }
 function save_tokens(array $t): void {
     global $DATA_DIR;
-    file_put_contents($DATA_DIR . "/tokens.json", json_encode($t, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE), LOCK_EX);
+    write_atomic($DATA_DIR . "/tokens.json", json_encode($t, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 }
 
 data_dir();
@@ -201,35 +243,79 @@ if ($action === "me") {
 if (empty($user)) fail("not logged in", 401);
 
 if ($action === "get-state") {
-    $p = state_path($user);
-    if (!is_file($p)) { ok(["state" => null, "updated_at" => null]); }
-    $raw = file_get_contents($p);
-    $d = json_decode($raw, true);
-    ok(["state" => $d["state"] ?? null, "updated_at" => $d["updated_at"] ?? null]);
+    $cur = read_state($user);
+    ok(["state" => $cur["state"], "updated_at" => $cur["updated_at"], "rev" => $cur["rev"]]);
 }
 
 if ($action === "save-state") {
+    global $HISTORY_KEEP;
     $body = json_decode(file_get_contents("php://input"), true);
     if (!is_array($body) || !isset($body["state"])) fail("missing 'state'");
     if (!is_array($body["state"])) fail("'state' must be an object");
     $incoming = $body["state"];
+
+    // one writer at a time per user: read-check-write happens under this lock
+    $lock = fopen(state_path($user) . ".lock", "c");
+    if ($lock === false || !flock($lock, LOCK_EX)) fail("could not lock state", 503);
+    $cur = read_state($user);
+
+    // Optimistic concurrency: a client that sends base_rev must have seen the current
+    // revision, otherwise it gets 409 + the current state, merges, and retries.
+    // Clients that send no base_rev (older cached auth.js) keep the old behaviour.
+    if (array_key_exists("base_rev", $body) && $body["base_rev"] !== null && (int)$body["base_rev"] !== $cur["rev"]) {
+        http_response_code(409);
+        echo json_encode(["ok" => false, "error" => "conflict: state changed on another device",
+            "rev" => $cur["rev"], "updated_at" => $cur["updated_at"], "state" => $cur["state"]], JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+
     // Keep stored top-level keys the client didn't send. Clients never delete a synced
     // key, so a missing key only means "this client version doesn't know it" (e.g. a
-    // cached older auth.js without q-errors) — dropping it would wipe another device's data.
-    $prevPath = state_path($user);
-    if (is_file($prevPath)) {
-        $prev = json_decode(file_get_contents($prevPath), true);
-        if (is_array($prev) && isset($prev["state"]) && is_array($prev["state"])) {
-            foreach ($prev["state"] as $k => $v) {
-                if (!array_key_exists($k, $incoming)) $incoming[$k] = $v;
-            }
+    // cached older auth.js without q-errors) or a partial push of changed keys only.
+    if (is_array($cur["state"])) {
+        foreach ($cur["state"] as $k => $v) {
+            if (!array_key_exists($k, $incoming)) $incoming[$k] = $v;
         }
     }
-    // light size guard (5 MB)
-    $encoded = json_encode(["state" => (object)$incoming, "updated_at" => gmdate("c")], JSON_UNESCAPED_UNICODE);
-    if (strlen($encoded) > 5 * 1024 * 1024) fail("state too large", 413);
-    file_put_contents(state_path($user), $encoded, LOCK_EX);
-    ok(["saved" => true, "updated_at" => gmdate("c")]);
+    $rev = $cur["rev"] + 1;
+    $now = gmdate("c");
+    $encoded = json_encode(["state" => (object)$incoming, "updated_at" => $now, "rev" => $rev], JSON_UNESCAPED_UNICODE);
+    if ($encoded === false) fail("state could not be encoded", 400);
+    if (strlen($encoded) > 5 * 1024 * 1024) fail("state too large", 413); // light size guard (5 MB)
+
+    // previous version → history (kept: newest $HISTORY_KEEP)
+    if ($cur["exists"]) {
+        $hd = history_dir($user);
+        if (!is_dir($hd)) mkdir($hd, 0770, true);
+        $name = $hd . "/" . gmdate("Ymd\THis") . "-r" . str_pad((string)$cur["rev"], 6, "0", STR_PAD_LEFT) . ".json";
+        if (!@copy(state_path($user), $name)) fail("could not keep the previous version — not saving", 500);
+        prune_history($hd, $HISTORY_KEEP);
+    }
+    if (!write_atomic(state_path($user), $encoded)) fail("could not write state", 500);
+    flock($lock, LOCK_UN);
+    fclose($lock);
+    ok(["saved" => true, "updated_at" => $now, "rev" => $rev]);
+}
+
+// full copy of this user's stored state (for backups — replaces the temporary dumper)
+if ($action === "export") {
+    $cur = read_state($user);
+    header("Content-Disposition: attachment; filename=\"nevaib-" . safe_user($user) . "-" . gmdate("Ymd-His") . ".json\"");
+    echo json_encode(["ok" => true, "format" => "nevaib-server-export", "user" => $user,
+        "exported_at" => gmdate("c"), "rev" => $cur["rev"], "updated_at" => $cur["updated_at"],
+        "state" => $cur["state"], "history" => history_list($user)], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+    exit;
+}
+
+// previous versions: ?action=history lists them, ?action=history&name=<file> returns one
+if ($action === "history") {
+    $name = (string)($_GET["name"] ?? "");
+    if ($name === "") ok(["history" => history_list($user)]);
+    if (!preg_match('/^\d{8}T\d{6}-r\d{6,}\.json$/', $name)) fail("bad name");
+    $f = history_dir($user) . "/" . $name;
+    if (!is_file($f)) fail("not found", 404);
+    $d = json_decode((string)file_get_contents($f), true);
+    ok(["name" => $name, "state" => $d["state"] ?? null, "updated_at" => $d["updated_at"] ?? null, "rev" => (int)($d["rev"] ?? 0)]);
 }
 
 fail("unknown action");

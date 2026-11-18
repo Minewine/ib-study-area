@@ -258,7 +258,7 @@ async function init() {
 
   function saveLog(pct, got, max, label) {
     const log = store.get("quizlog", []);
-    log.unshift({ date: new Date().toISOString().slice(0, 10), label, pct, got, max });
+    log.unshift({ date: today(), label, pct, got, max, ts: Date.now() }); // local date; ts keeps two identical sessions distinct in the sync merge
     store.set("quizlog", log.slice(0, 20));
   }
   function renderLog() {
@@ -270,7 +270,9 @@ async function init() {
       : "<li class='muted'>No sessions yet.</li>";
   }
 
-  const store = {
+  // NB.store (assets/store.js) is the storage layer; the literal below is only a
+  // fallback for a stale cached page that didn't load store.js.
+  const store = (window.NB && window.NB.store) || {
     get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v === null ? d : v; } catch (e) { return d; } },
     set(k, v) {
       try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {}
