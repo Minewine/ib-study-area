@@ -109,6 +109,20 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
     assert.ok(card && (!deck.cardIds || deck.cardIds.includes(card.id)), "first card is one of the note's linked cards");
     assert.deepStrictEqual(errors.filter(e => !/favicon/.test(e)), [], "notes → quiz/cards console errors");
     ok(`${man.notes.length} topic notes render; recall-first reveal; note links start a quiz on exactly the linked questions and cards on the linked deck`);
+    // My resources: add a link (escaped), reject a javascript: URL, delete leaves a tombstone
+    await page.goto(`${BASE}/app/notes.html?subject=chemistry-hl&topic=s1-4`, { waitUntil: "networkidle0" });
+    await page.waitForSelector("#nt-res-url");
+    await page.type("#nt-res-label", "<b>My notes</b>"); await page.type("#nt-res-url", "javascript:alert(1)");
+    await page.click(".nt-res-form button[type=submit]");
+    assert.strictEqual(await page.$$eval("#nt-res-list a", a => a.length), 0, "javascript: link refused");
+    await page.$eval("#nt-res-url", e => { e.value = ""; }); await page.type("#nt-res-url", "https://example.org/x");
+    await page.click(".nt-res-form button[type=submit]");
+    assert.strictEqual(await page.$eval("#nt-res-list a", a => a.textContent), "<b>My notes</b>", "label shown as text");
+    await page.click("#nt-res-list button[data-del]");
+    const mr = await page.evaluate(() => JSON.parse(localStorage.getItem("my-res")));
+    assert.ok(Object.values(mr).length === 1 && Object.values(mr)[0].deleted === true, "deletion stored as a tombstone");
+    assert.deepStrictEqual(errors.filter(e => !/favicon/.test(e)), [], "my resources console errors");
+    ok("My resources: add, escape, reject non-http(s)/file links, delete");
     await ctx.close();
   }
 

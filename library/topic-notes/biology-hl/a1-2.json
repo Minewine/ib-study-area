@@ -139,6 +139,20 @@
    "stmt": "A1.2.15",
    "cue": "What did Chargaff's data show?",
    "answer": "In every species tested, A ≈ T and G ≈ C, but the proportions differed between species. This falsified the tetranucleotide hypothesis, which predicted equal amounts of all four bases in a repeating unit. It is an example of falsification answering the problem of induction."
+  },
+  {
+   "id": "a12-x1",
+   "ahl": false,
+   "stmt": "A1.2.2",
+   "cue": "Which carbons of the pentose carry the base and the phosphate?",
+   "answer": "Number the sugar's carbons 1′–5′. The base joins at C1′, the phosphate at C5′, and the next nucleotide's phosphate links to C3′. That is why strands have a 5′ end and a 3′ end."
+  },
+  {
+   "id": "a12-x2",
+   "ahl": false,
+   "stmt": "A1.2.7",
+   "cue": "Name some types of nucleic acid you should recognise.",
+   "answer": "DNA in the nucleus, plus the small circular DNA in mitochondria and chloroplasts; RNA as mRNA (message), tRNA (carries amino acids) and rRNA (part of ribosomes). Certain viruses carry their genes as RNA rather than DNA."
   }
  ],
  "keyTerms": [
@@ -187,6 +201,10 @@
   {
    "wrong": "Chargaff showed all four bases are equal.",
    "right": "He showed A = T and G = C, with ratios varying between species."
+  },
+  {
+   "wrong": "Both DNA strands can be drawn running the same way.",
+   "right": "Draw them antiparallel: label 5′ and 3′ at each end, with one strand upside down relative to the other."
   }
  ],
  "practice": [

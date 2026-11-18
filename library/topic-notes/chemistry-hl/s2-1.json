@@ -46,6 +46,13 @@
    "stmt": "S2.1.3",
    "cue": "Why do ionic compounds have their properties?",
    "answer": "A 3D lattice of ions held by strong, non-directional electrostatic attraction; the formula is an empirical ratio. High melting/boiling points and low volatility (much energy to separate ions). Conduct when molten or aqueous (ions free to move), not as solids. Often soluble in polar solvents like water (ions attracted to polar water molecules), insoluble in non-polar solvents. Lattice enthalpy measures bond strength: larger for higher ionic charges and smaller ions (MgO ≫ NaCl)."
+  },
+  {
+   "id": "s21-x1",
+   "ahl": false,
+   "stmt": "S2.1.3",
+   "cue": "How do you write a lattice enthalpy, and why do ionic solids dissolve in water?",
+   "answer": "Lattice enthalpy is the energy needed to separate one mole of solid into gaseous ions, e.g. NaCl(s) → Na⁺(g) + Cl⁻(g), so it is endothermic (positive). In water, the δ− oxygen atoms surround cations and the δ+ hydrogen atoms surround anions, releasing energy that helps break up the lattice."
   }
  ],
  "keyTerms": [
@@ -107,6 +114,14 @@
   {
    "wrong": "Ionic bonds are directional, like covalent bonds.",
    "right": "Each ion attracts all neighbouring oppositely charged ions in every direction."
+  },
+  {
+   "wrong": "The ionic bond is the transfer of electrons.",
+   "right": "Transfer forms the ions; the bond itself is the attraction between the positive and negative ions, acting in all directions through the lattice."
+  },
+  {
+   "wrong": "Ionic compounds always contain a metal.",
+   "right": "Ammonium salts such as NH₄Cl are ionic with no metal."
   }
  ],
  "practice": [
@@ -185,6 +200,10 @@
   {
    "category": "exam communication",
    "hint": "Say 'mobile ions' (not 'free electrons') when explaining conduction in ionic compounds."
+  },
+  {
+   "category": "knowledge",
+   "hint": "Use Roman numerals for metals with variable charge: iron(III) chloride, copper(II) oxide. Brittleness: a shift brings like charges side by side and they repel."
   }
  ],
  "linkingQuestions": [

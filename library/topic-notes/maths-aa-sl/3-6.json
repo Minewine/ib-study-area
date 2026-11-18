@@ -60,6 +60,20 @@
    "stmt": "3.6.3",
    "cue": "Find tan θ from sin θ = 3/5, θ obtuse?",
    "answer": "cos θ = −4/5 (Q2), tan θ = −3/4."
+  },
+  {
+   "id": "m36-x1",
+   "ahl": false,
+   "stmt": "3.6.2",
+   "cue": "Which version of cos 2θ should you substitute, and which rearrangements are worth recognising?",
+   "answer": "Match the other function in the expression: use 1 − 2sin²θ if the rest is in sin θ, 2cos²θ − 1 if it is in cos θ. Spot sin θ cos θ = ½ sin 2θ, cos²θ = (1 + cos 2θ)/2 and sin²θ = (1 − cos 2θ)/2; the last two are needed again for integration."
+  },
+  {
+   "id": "m36-x2",
+   "ahl": false,
+   "stmt": "3.6.1",
+   "cue": "How should an identity proof be set out?",
+   "answer": "Start from one side (usually the more complicated one) and transform it line by line until you reach the other side. Do not treat it as an equation by doing the same thing to both sides."
   }
  ],
  "keyTerms": [
@@ -91,6 +105,14 @@
   {
    "wrong": "Ignoring quadrant when taking square roots",
    "right": "Choose sign from the quadrant."
+  },
+  {
+   "wrong": "sin⁻¹x means 1/sin x.",
+   "right": "sin⁻¹x is the inverse function (arcsin x); 1/sin x is (sin x)⁻¹. However sin²x does mean (sin x)²."
+  },
+  {
+   "wrong": "sin(A + B) = sin A + sin B.",
+   "right": "False in general: A = B = 90° gives sin 180° = 0, not 2. Only use the identities you are given."
   }
  ],
  "practice": [

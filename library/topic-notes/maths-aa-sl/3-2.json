@@ -47,6 +47,20 @@
    "stmt": "3.2.2",
    "cue": "When to use sine rule vs cosine rule?",
    "answer": "Sine rule: a matched side-angle pair is known. Cosine rule: two sides and the included angle, or all three sides. Area = ½ab sin C uses the included angle."
+  },
+  {
+   "id": "m32-x1",
+   "ahl": false,
+   "stmt": "3.2.2",
+   "cue": "How are triangle sides labelled, and what goes where in the cosine rule?",
+   "answer": "Side a is opposite angle A, b opposite B, c opposite C. In c² = a² + b² − 2ab cos C, the side being squared on the left must be opposite the angle in the cosine. With two sides and an angle that is not between them, the cosine rule gives a quadratic for the third side: discard a negative root; two positive roots mean two possible triangles."
+  },
+  {
+   "id": "m32-x2",
+   "ahl": false,
+   "stmt": "3.2.2",
+   "cue": "On Paper 1, how do you use the area or cosine rule when you only know cos C (or sin C) as a fraction?",
+   "answer": "Use sin²C + cos²C = 1. For example cos C = 3/5 gives sin C = 4/5 (positive because 0° < C < 180°), which goes straight into ½ab sin C. No angle in degrees is needed."
   }
  ],
  "keyTerms": [
@@ -78,6 +92,14 @@
   {
    "wrong": "Calculator in radians",
    "right": "Check degree mode in Paper 2."
+  },
+  {
+   "wrong": "An angle found from the area formula has one value.",
+   "right": "½ab sin C = area gives sin C = k, so C could be acute or obtuse (C or 180° − C). Check which fit the information."
+  },
+  {
+   "wrong": "Knowing all three angles fixes the triangle.",
+   "right": "Three angles fix only the shape; you need at least one length. Also, any two sides must add up to more than the third."
   }
  ],
  "practice": [

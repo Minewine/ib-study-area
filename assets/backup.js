@@ -45,6 +45,7 @@
     "res-notes": { type: isObj, label: "resource notes" },
     "res-recent": { type: arrOf(isStr), label: "recently opened" },
     "pp-scores": { type: Array.isArray, record: (r) => isObj(r) && isStr(r.id) && r.id !== "" && (r.deleted === true || (isStr(r.date) && typeof r.score === "number" && typeof r.max === "number")), label: "past-paper scores" },
+    "my-res": { type: isObj, record: (r) => isObj(r) && typeof r.t === "number" && isStr(r.note) && r.note !== "" && (r.deleted === true || (isStr(r.label) && r.label.trim() !== "" && r.label.length <= 200 && isStr(r.url) && r.url.length <= 2000 && /^(https?:\/\/|file:\/\/)\S+$/i.test(r.url))), label: "my resources on notes" },
     "fc-theme": { type: (v) => v === "dark" || v === "light", label: "theme" },
     "lib-filters": { type: isObj, label: "library filters" }
   };

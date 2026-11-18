@@ -115,6 +115,20 @@
    "stmt": "D4.3.12",
    "cue": "How is climate change causing evolution?",
    "answer": "Tawny owls come in grey and brown forms. Grey owls are better camouflaged against snow; as winters have less snow, brown owls survive better, so the brown allele has become more common (e.g. in Finland)."
+  },
+  {
+   "id": "d43-x1",
+   "ahl": false,
+   "stmt": "D4.3.7",
+   "cue": "How does extra CO₂ harm corals apart from warming?",
+   "answer": "CO₂ dissolves in seawater to form carbonic acid. The H⁺ released combines with carbonate ions, leaving less carbonate for corals to build calcium carbonate skeletons (acidification). Warming causes bleaching; acidification slows calcification."
+  },
+  {
+   "id": "d43-x2",
+   "ahl": false,
+   "stmt": "D4.3.8",
+   "cue": "Where does peat build up, and why does it matter?",
+   "answer": "In waterlogged, acidic soils where decomposition is slow, both in cool bogs and in some tropical swamp forests. Draining or burning peat releases large amounts of stored carbon."
   }
  ],
  "keyTerms": [
@@ -167,6 +181,14 @@
   {
    "wrong": "All species respond to warming in the same way.",
    "right": "Different cues (temperature vs day length) cause mismatches."
+  },
+  {
+   "wrong": "Emperor penguins and walruses are affected by the same ice.",
+   "right": "Emperor penguins (Antarctic) breed on landfast ice; walruses (Arctic) rest on floating sea ice."
+  },
+  {
+   "wrong": "Ips typographus is the only bark beetle you can use as the example.",
+   "right": "Dendroctonus micans (great spruce bark beetle) is also accepted; both fit in more generations and spread further as conditions warm."
   }
  ],
  "practice": [

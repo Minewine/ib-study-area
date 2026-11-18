@@ -59,6 +59,20 @@
    "stmt": "3.3.3",
    "cue": "First step for a worded problem?",
    "answer": "Draw and label a diagram with north lines and right angles marked."
+  },
+  {
+   "id": "m33-x1",
+   "ahl": false,
+   "stmt": "3.3.3",
+   "cue": "How do you tackle a 3D problem or one with two angles of depression?",
+   "answer": "Redraw each triangle you need flat on the page. Often two right-angled triangles give lengths that become the sides of a third triangle that is not right-angled, which needs the cosine rule. With two angles of depression to points on one line, find each horizontal distance and subtract. Keep unrounded values until the end."
+  },
+  {
+   "id": "m33-x2",
+   "ahl": false,
+   "stmt": "3.3.2",
+   "cue": "How do you find angles inside a bearings diagram?",
+   "answer": "Draw a north line at every point where the direction changes. North lines are parallel, so alternate and co-interior angles (co-interior add to 180°) link a bearing at one point to the angle you need at the next."
   }
  ],
  "keyTerms": [

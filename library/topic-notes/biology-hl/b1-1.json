@@ -122,6 +122,20 @@
    "stmt": "B1.1.13",
    "cue": "Why can steroid hormones cross membranes freely? Examples?",
    "answer": "Steroids (four fused carbon rings) are non-polar, so they dissolve through the hydrophobic core of the bilayer. Examples: oestradiol and testosterone. Identify steroids by the four-ring skeleton."
+  },
+  {
+   "id": "b11-x1",
+   "ahl": false,
+   "stmt": "B1.1.5",
+   "cue": "Which bonds link glucose units in starch and glycogen?",
+   "answer": "Glycosidic bonds made by condensation. Amylose is an unbranched chain of 1,4 links that coils into a helix; amylopectin and glycogen also have 1,6 links that make branches (glycogen branches more often), giving many ends for fast addition or removal of glucose."
+  },
+  {
+   "id": "b11-x2",
+   "ahl": false,
+   "stmt": "B1.1.11",
+   "cue": "How much energy do fats and carbohydrates store per gram?",
+   "answer": "Roughly 37–39 kJ g⁻¹ for fat against about 17 kJ g⁻¹ for carbohydrate. Fat is also stored without water and has no osmotic effect, so it is the lighter long-term store."
   }
  ],
  "keyTerms": [
@@ -171,6 +185,10 @@
   {
    "wrong": "Lipids are better than glycogen for every kind of storage.",
    "right": "Lipids store more energy per gram, but glycogen releases glucose faster."
+  },
+  {
+   "wrong": "Oils and fats are different kinds of molecule.",
+   "right": "Both are triglycerides; oils are liquid at room temperature because more of their fatty acids are unsaturated (typical of plants), fats are solid (typical of endotherms)."
   }
  ],
  "practice": [

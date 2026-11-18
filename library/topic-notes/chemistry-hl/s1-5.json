@@ -53,6 +53,20 @@
    "stmt": "S1.5.4",
    "cue": "How do you use PV = nRT and the combined gas law?",
    "answer": "PV = nRT in SI units: P in Pa, V in m³, T in K, R = 8.31 J K⁻¹ mol⁻¹. Conversions: kPa × 1000; dm³ ÷ 1000; cm³ × 10⁻⁶. For a fixed amount changing conditions: P₁V₁/T₁ = P₂V₂/T₂. Rearrange to M = mRT/(PV) to find molar mass."
+  },
+  {
+   "id": "s15-x1",
+   "ahl": false,
+   "stmt": "S1.5.3",
+   "cue": "What causes gas pressure, and how do you explain the gas laws with it?",
+   "answer": "Pressure is the force from particles colliding with the container walls per unit area. Heat the gas: faster particles hit the walls more often and harder, so pressure rises (fixed V). Halve the volume: twice as many collisions per second per area."
+  },
+  {
+   "id": "s15-x2",
+   "ahl": false,
+   "stmt": "S1.5.3",
+   "cue": "How can you estimate absolute zero in the lab?",
+   "answer": "Measure the volume (or pressure) of a fixed amount of gas at several temperatures in °C, plot a straight line and extrapolate to zero volume/pressure. The estimate is rough: real gases liquefy long before, and the extrapolation is far beyond the data."
   }
  ],
  "keyTerms": [
@@ -110,6 +124,10 @@
   {
    "wrong": "Real gases deviate most at high temperature.",
    "right": "They deviate most at low temperature and high pressure."
+  },
+  {
+   "wrong": "Real gases deviate because particles get bigger at high pressure.",
+   "right": "Particle volume becomes a larger share of the space, and attractions pull particles back from the walls so they hit with less force; the most ideal gases are small and non-polar (e.g. He), the least ideal are polar (e.g. NH₃)."
   }
  ],
  "practice": [

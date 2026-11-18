@@ -59,6 +59,20 @@
    "stmt": "1.2.3",
    "cue": "When is an arithmetic model appropriate?",
    "answer": "When a quantity changes by a constant amount each step (rows of seats, fixed weekly savings). If data are only roughly arithmetic, use the average difference and treat predictions as approximate."
+  },
+  {
+   "id": "m12-x1",
+   "ahl": false,
+   "stmt": "1.2.2",
+   "cue": "How do you get a single term from a sum formula, or add up only terms m to n?",
+   "answer": "If S_n is given as a formula in n, then u_n = S_n − S_(n−1), and u₁ = S₁. The total of terms m to n is S_n − S_(m−1): take away the sum that stops just before term m."
+  },
+  {
+   "id": "m12-x2",
+   "ahl": false,
+   "stmt": "1.2.1",
+   "cue": "What does 'a, b, c are consecutive terms of an arithmetic sequence' give you, and how do you use two known terms?",
+   "answer": "The gaps are equal, so b − a = c − b, i.e. 2b = a + c. If you know two terms such as u₄ and u₉, subtract: u₉ − u₄ = 5d, then put d back in to find u₁."
   }
  ],
  "keyTerms": [
@@ -90,6 +104,14 @@
   {
    "wrong": "Σ from k = 3 to 10 has 7 terms",
    "right": "It has 10 − 3 + 1 = 8 terms."
+  },
+  {
+   "wrong": "Terms 5 to 12 add up to S₁₂ − S₅.",
+   "right": "That leaves out term 5. Use S₁₂ − S₄."
+  },
+  {
+   "wrong": "Cancel an unknown d from both sides to simplify.",
+   "right": "Factorise instead; dividing by an unknown can throw away a valid answer such as d = 0."
   }
  ],
  "practice": [

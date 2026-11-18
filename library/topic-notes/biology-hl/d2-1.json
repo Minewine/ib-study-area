@@ -155,6 +155,20 @@
    "stmt": "D2.1.17",
    "cue": "Benign vs malignant tumours? What is the mitotic index?",
    "answer": "Benign: grows slowly, stays in place, doesn't invade, not cancer. Malignant: divides fast, invades neighbouring tissue and can spread (metastasis) from a primary tumour to form secondary tumours: cancer. Mitotic index = cells in mitosis ÷ total cells; a high value suggests rapid division."
+  },
+  {
+   "id": "d21-x1",
+   "ahl": false,
+   "stmt": "D2.1.10",
+   "cue": "How does the timing of non-disjunction change the gametes?",
+   "answer": "In meiosis I (homologues fail to separate) all four gametes are abnormal: two with an extra chromosome, two missing one. In meiosis II (sister chromatids fail to separate) two gametes are normal and two abnormal."
+  },
+  {
+   "id": "d21-x2",
+   "ahl": false,
+   "stmt": "D2.1.9",
+   "cue": "Name the stages of meiosis with one key event each.",
+   "answer": "Prophase I: homologues pair into bivalents and cross over. Metaphase I: bivalents line up at the equator. Anaphase I: homologues go to opposite poles. Telophase I, then meiosis II, which separates sister chromatids as in mitosis."
   }
  ],
  "keyTerms": [
@@ -221,6 +235,10 @@
   {
    "wrong": "All tumours are cancer.",
    "right": "Only malignant tumours are cancerous."
+  },
+  {
+   "wrong": "DNA replication doubles the number of chromosomes.",
+   "right": "After S phase a human cell still has 46 chromosomes, but each now has two chromatids (92 chromatids)."
   }
  ],
  "practice": [

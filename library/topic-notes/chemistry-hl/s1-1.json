@@ -45,6 +45,20 @@
    "stmt": "S1.1.3",
    "cue": "What does temperature measure, and what happens on a heating curve?",
    "answer": "Absolute temperature (K) is proportional to the average kinetic energy of the particles. T(K) = T(°C) + 273.15; a change of 1 K equals a change of 1 °C. On a heating curve the flat sections are changes of state: energy goes into overcoming attractions (potential energy), not into raising kinetic energy, so temperature stays constant."
+  },
+  {
+   "id": "s11-x1",
+   "ahl": false,
+   "stmt": "S1.1.1",
+   "cue": "Which property does each separation technique rely on?",
+   "answer": "Filtration: particle size (insoluble solid vs liquid). Solvation/dissolving: solubility. Evaporation and crystallisation: the solvent is volatile, the solute is not. Distillation: different boiling points. Paper chromatography: different attraction to the paper vs the solvent."
+  },
+  {
+   "id": "s11-x2",
+   "ahl": false,
+   "stmt": "S1.1.3",
+   "cue": "Do all particles in a sample have the same kinetic energy?",
+   "answer": "No. At any temperature there is a spread of speeds; temperature in kelvin is proportional to the average kinetic energy. At the same temperature, heavier particles move more slowly on average."
   }
  ],
  "keyTerms": [
@@ -110,6 +124,10 @@
   {
    "wrong": "Evaporation and boiling are the same thing.",
    "right": "Both are vaporisation, but evaporation happens only at the surface and below the boiling point; boiling happens throughout the liquid at the boiling point."
+  },
+  {
+   "wrong": "(aq) is a fourth state of matter.",
+   "right": "(aq) means dissolved in water; the states are solid, liquid and gas."
   }
  ],
  "practice": [
@@ -197,6 +215,10 @@
   {
    "category": "exam communication",
    "hint": "Say 'average kinetic energy' when linking temperature to particles, not just 'particles move faster'."
+  },
+  {
+   "category": "exam communication",
+   "hint": "In 'explain the heating curve' answers, name what is overcome: intermolecular forces for molecular substances, but ionic or metallic bonding for ionic solids and metals."
   }
  ],
  "linkingQuestions": [

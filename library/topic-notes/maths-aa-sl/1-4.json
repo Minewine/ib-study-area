@@ -48,6 +48,20 @@
    "stmt": "1.4.2",
    "cue": "Depreciation, and how do you find n, r or PV?",
    "answer": "Depreciation is a negative rate: value = PV(1 − r/100)^n. To find an unknown, use the GDC finance (TVM) solver or logs; on the TVM solver money paid out and money received have opposite signs. Round time up when the question asks when a value is first exceeded."
+  },
+  {
+   "id": "m14-x1",
+   "ahl": false,
+   "stmt": "1.4.1",
+   "cue": "How do you find the real value of an investment when prices are rising?",
+   "answer": "First grow the money at the interest rate to get its future (nominal) value. Then divide by (1 + i/100)^n, where i % is the yearly inflation rate, to express it in today's money. A common shortcut on the TVM solver is to use (interest rate − inflation rate) as the rate; follow the method the question asks for."
+  },
+  {
+   "id": "m14-x2",
+   "ahl": false,
+   "stmt": "1.4.2",
+   "cue": "How do you find a depreciation rate from two values?",
+   "answer": "value after n years ÷ starting value = (1 − r/100)^n. Take the positive nth root to get the yearly multiplier (between 0 and 1), then r = 100 × (1 − multiplier)."
   }
  ],
  "keyTerms": [
@@ -79,6 +93,18 @@
   {
    "wrong": "n = 9.06, so 9 years",
    "right": "After 9 years it has not yet passed the target: 10 years."
+  },
+  {
+   "wrong": "Year-end balances of an account paying 6 % a year compounded monthly grow by 1.06 each year.",
+   "right": "Each year multiplies the balance by (1 + 6/1200)¹² ≈ 1.0617, so the year-end balances are geometric with that ratio."
+  },
+  {
+   "wrong": "0.9ⁿ < 0.5 gives n < log 0.5 ÷ log 0.9.",
+   "right": "log 0.9 is negative, so dividing by it flips the sign: n > 6.58, so n = 7."
+  },
+  {
+   "wrong": "Savings plans with regular deposits and loan repayment schedules are AA SL syllabus points.",
+   "right": "AA SL 1.4 is about compound interest and depreciation (with the GDC finance solver allowed). Regular-payment models belong to the Applications and Interpretation course."
   }
  ],
  "practice": [

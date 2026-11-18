@@ -171,6 +171,13 @@
    "stmt": "C1.3.19",
    "cue": "How do the two stages depend on each other?",
    "answer": "No light: no ATP or reduced NADP, so GP can't be reduced and the Calvin cycle stops. No CO₂: no fixation, so NADP isn't recycled, NADP runs out, electrons have nowhere to go and PSII stops working."
+  },
+  {
+   "id": "c13-x1",
+   "ahl": false,
+   "stmt": "C1.3.7",
+   "cue": "Describe the graph shapes for light, CO₂ and temperature.",
+   "answer": "Light intensity and CO₂ concentration: rate rises, then levels off where another factor becomes limiting. Temperature: rate rises to an optimum, then falls steeply as enzymes such as Rubisco denature. On a plateau, increasing the plotted factor has no effect."
   }
  ],
  "keyTerms": [
@@ -242,6 +249,10 @@
   {
    "wrong": "Rf can be bigger than 1.",
    "right": "A pigment can't travel further than the solvent, so Rf is always between 0 and 1."
+  },
+  {
+   "wrong": "In a limiting-factor experiment only the chosen factor matters.",
+   "right": "Keep the others constant (e.g. temperature, CO₂, light distance, plant species and size) and state them as controlled variables."
   }
  ],
  "practice": [

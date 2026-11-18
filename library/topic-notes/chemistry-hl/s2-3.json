@@ -46,6 +46,13 @@
    "stmt": "S2.3.3",
    "cue": "Why do transition elements have high melting points and good conductivity (AHL)?",
    "answer": "Both 3d and 4s electrons can delocalise, giving more delocalised electrons per atom and smaller, more highly charged ions, so stronger metallic bonding. Their chemical properties are in R3.4/S3.1."
+  },
+  {
+   "id": "s23-x1",
+   "ahl": false,
+   "stmt": "S2.3.2",
+   "cue": "Why is boiling point a better guide than melting point to metallic bond strength?",
+   "answer": "When a metal melts, most of the metallic bonding remains; it is only fully overcome on boiling. Mg and Al melt within about 10 K of each other, but Al boils over 1400 K higher, matching its stronger bonding (3 delocalised electrons per atom and a smaller, more highly charged ion)."
   }
  ],
  "keyTerms": [
@@ -86,6 +93,10 @@
   {
    "wrong": "Hammering breaks metallic bonds.",
    "right": "Layers slide but the delocalised electrons keep bonding them: the bond is non-directional."
+  },
+  {
+   "wrong": "Malleable means the metallic bond is weak.",
+   "right": "The bonding is non-directional, so layers can slide while the attraction to the electron sea stays intact. Metals conduct both as solids and when molten; ionic compounds conduct only when molten or dissolved."
   }
  ],
  "practice": [

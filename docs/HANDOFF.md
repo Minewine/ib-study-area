@@ -96,7 +96,7 @@ Stack: static HTML, vanilla JS, JSON content, browser localStorage, one PHP file
 
 **Live site:** runs the 18 Nov morning deploy (#1–#4). Everything else is on `main` and goes live with the next `./dev.sh deploy --confirm` (see NEXT-STEPS, step 1).
 
-**Paused (not started in the repo):** a private cross-check of our topic notes against a commercial revision-notes set (kept privately, never committed), and a "My resources" box on each note for her own links. Pick up when there is budget.
+**Notes cross-check and My resources (Nov 2026):** 25 topic notes were cross-checked privately against a commercial revision-notes set (kept outside the repo, never committed). 29 notes gained key ideas (ids `<prefix>-x1`, `-x2`…) and misconceptions in our own words, accurate to the 2025 Biology/Chemistry guides and the AA SL 2021 guide; an 8-word overlap check against the source set and guides is clean. Drafts in the private notes folder mirror the edits, so `tools/import_topic_notes.py` will not undo them. `app/notes.html` now has a **My resources** box per note: she adds her own links (label + http(s):// or file:// URL) and deletes them; stored in the synced key `my-res` (`{id: {note, label, url, t}}`, deletions as tombstones, newest `t` wins in `NB.merge.RECORDS["my-res"]`), validated in backups (`assets/backup.js`), tests in `tests/js/myres.test.js`.
 
 ## Reports (Pages)
 

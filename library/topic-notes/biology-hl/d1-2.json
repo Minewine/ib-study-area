@@ -164,6 +164,20 @@
    "stmt": "D1.2.19",
    "cue": "Why do cells constantly break down proteins?",
    "answer": "Proteasomes break down unwanted or damaged proteins into amino acids, which are reused. Constant breakdown and synthesis keep the proteome working."
+  },
+  {
+   "id": "d12-x1",
+   "ahl": false,
+   "stmt": "D1.2.9",
+   "cue": "How do start and stop codons work?",
+   "answer": "AUG (methionine) marks where translation begins. UAA, UAG and UGA code for no amino acid: at a stop codon a release factor binds, the polypeptide is released and the ribosome falls apart."
+  },
+  {
+   "id": "d12-x2",
+   "ahl": false,
+   "stmt": "D1.2.2",
+   "cue": "Template strand or coding strand: which matches the mRNA?",
+   "answer": "RNA polymerase reads the template strand, so the mRNA has the same sequence as the coding strand, with U in place of T. Behind the polymerase the DNA double helix re-forms."
   }
  ],
  "keyTerms": [
@@ -211,6 +225,10 @@
   {
    "wrong": "Translation happens in the nucleus.",
    "right": "It happens at ribosomes in the cytoplasm or on rough ER."
+  },
+  {
+   "wrong": "New amino acids are added to the 3′ end of the polypeptide.",
+   "right": "Polypeptides have an N-terminus and a C-terminus; each new amino acid is added at the C-terminal end. 5′/3′ ends belong to nucleic acids."
   }
  ],
  "practice": [

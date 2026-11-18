@@ -203,6 +203,27 @@
    "stmt": "C3.1.23",
    "cue": "How does positive feedback control fruit ripening?",
    "answer": "Ethylene triggers ripening changes, and ripening fruit makes more ethylene, which spreads to neighbouring fruit. Ripening is therefore rapid and synchronised, which attracts seed-dispersing animals."
+  },
+  {
+   "id": "c31-x1",
+   "ahl": false,
+   "stmt": "C3.1.14",
+   "cue": "Which nerves change heart rate and how?",
+   "answer": "The medulla sends impulses along a sympathetic nerve to speed up the SA node and strengthen contractions (higher stroke volume), or along the vagus (parasympathetic) nerve to slow it. Low blood pressure or low blood pH (high CO₂) raises the rate."
+  },
+  {
+   "id": "c31-x2",
+   "ahl": false,
+   "stmt": "C3.1.15",
+   "cue": "Why does more CO₂ lower blood pH?",
+   "answer": "CO₂ + H₂O → carbonic acid → H⁺ + hydrogencarbonate. Chemoreceptors detect the extra H⁺, and the brainstem increases breathing rate and depth."
+  },
+  {
+   "id": "c31-x3",
+   "ahl": true,
+   "stmt": "C3.1.17",
+   "cue": "How can you make a seedling tropism experiment more trustworthy?",
+   "answer": "Use many seedlings of the same type and starting length, light from one side only, repeat trials, and measure angles of curvature from photos with a protractor or software."
   }
  ],
  "keyTerms": [

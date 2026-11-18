@@ -78,6 +78,20 @@
    "stmt": "S1.3.7",
    "cue": "What do successive ionization energies tell you (AHL)?",
    "answer": "Each successive IE is larger (removing from an increasingly positive ion). A very large jump appears when an electron is removed from a new, inner shell. The number of electrons removed before the first big jump equals the number of valence electrons, which gives the group (for main-group elements)."
+  },
+  {
+   "id": "s13-x1",
+   "ahl": true,
+   "stmt": "S1.3.6",
+   "cue": "Why does first IE dip from Be to B and from N to O (AHL)?",
+   "answer": "The general rise across a period comes from increasing nuclear charge with similar shielding. Be→B (and Mg→Al): boron's outer electron is in a 2p sublevel, higher in energy and slightly better shielded than 2s, so it is easier to remove. N→O (and P→S): oxygen's removed electron is in a 2p orbital that already holds an electron, and the repulsion between the paired electrons makes it easier to remove."
+  },
+  {
+   "id": "s13-x2",
+   "ahl": false,
+   "stmt": "S1.3.4",
+   "cue": "What is an orbital, and what are isoelectronic species?",
+   "answer": "An orbital is a region where there is a high probability (often taken as 90 %) of finding an electron, holding at most two with opposite spins; it is not a fixed circular orbit. Isoelectronic species have the same electron configuration, e.g. Na⁺, Ne and F⁻."
   }
  ],
  "keyTerms": [
@@ -144,6 +158,10 @@
   {
    "wrong": "Hydrogen lines get further apart at higher energy.",
    "right": "They get closer together and converge, because the energy levels converge."
+  },
+  {
+   "wrong": "Absorption and emission spectra show different wavelengths.",
+   "right": "An absorption spectrum has dark lines at exactly the wavelengths where the emission spectrum has bright lines: the same energy gaps are involved."
   }
  ],
  "practice": [

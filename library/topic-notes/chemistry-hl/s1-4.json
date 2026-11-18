@@ -69,6 +69,20 @@
    "stmt": "S1.4.6",
    "cue": "What is Avogadro's law and how is it used?",
    "answer": "Equal volumes of any gases at the same temperature and pressure hold the same number of molecules. So for gases, volume ratios equal mole ratios: in N₂ + 3H₂ → 2NH₃, 10 cm³ N₂ reacts with 30 cm³ H₂ to give 20 cm³ NH₃."
+  },
+  {
+   "id": "s14-x1",
+   "ahl": false,
+   "stmt": "S1.4.4",
+   "cue": "How do you get an empirical formula from combustion data?",
+   "answer": "All the C ends up in CO₂ and all the H in H₂O: mass of C = mass CO₂ × 12.01/44.01; mass of H = mass H₂O × 2.02/18.02. Any oxygen is found by difference from the sample mass. Change each mass to an amount in mol and divide by the smallest; multiply ratios ending in .5 by 2, .33 or .67 by 3, .25 or .75 by 4."
+  },
+  {
+   "id": "s14-x2",
+   "ahl": false,
+   "stmt": "S1.4.5",
+   "cue": "Serial or parallel dilution for a set of standards?",
+   "answer": "Serial: each solution is made from the previous one (e.g. 1:10 each time), useful for wide ranges but errors carry forward. Parallel: each standard is made directly from the stock. If a calculation needs a volume too small for your pipette, make an intermediate dilution first."
   }
  ],
  "keyTerms": [
@@ -134,6 +148,10 @@
   {
    "wrong": "Empirical-formula ratios like 1 : 1.5 can be rounded to 1 : 2.",
    "right": "Multiply up: 1 : 1.5 becomes 2 : 3. Round only values within about 0.1 of a whole number."
+  },
+  {
+   "wrong": "Percentage composition only works from data to formula.",
+   "right": "You also need the reverse: % by mass of an element = (number of atoms × Ar ÷ Mr) × 100."
   }
  ],
  "practice": [
