@@ -40,7 +40,7 @@ def test_api_source_is_php72_compatible():
         r"\bpublic\s+\w+\s+\$": "typed properties (7.4)",
         r"\bJSON_THROW_ON_ERROR\b": "JSON_THROW_ON_ERROR (7.3)",
     }
-    for f in (API_SRC, ROOT / "tools" / "dev_server.php"):
+    for f in (*sorted((ROOT / "server").glob("*.php")), ROOT / "tools" / "dev_server.php"):
         src = re.sub(r"//[^\n]*|#[^\n]*|/\*.*?\*/", "", f.read_text(encoding="utf-8"), flags=re.S)
         for pat, what in banned.items():
             assert not re.search(pat, src), f"{f.name}: {what} is not available on PHP 7.2"

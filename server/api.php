@@ -59,6 +59,15 @@ $TOKEN_TTL = 90 * 86400;  // login tokens expire after 90 days
 // One-time account creation: set a long random key here, create accounts, then blank it.
 $SETUP_KEY = "";  // e.g. "paste-a-long-random-string"; empty = setup disabled
 $HISTORY_KEEP = 30;  // previous versions kept per user in state/history/<user>/
+// Optional, NOT committed: $DATA_DIR/config.json (outside public_html), e.g.
+//   {"summary_viewers": {"michael": ["neva"]}, "timezone": "Europe/Zurich",
+//    "summary_email": {"to": "...", "from": "...", "users": ["neva"], "days": 7}}
+// summary_viewers lets a parent account read another account's weekly summary (read-only).
+$CONFIG_FILE = $DATA_DIR . "/config.json";
+
+// weekly-summary computation (read-only). Optional include: push_deploy uploads api.php
+// before summary.php, and the rest of the API must keep working in between.
+if (is_file(__DIR__ . "/summary.php")) require_once __DIR__ . "/summary.php";
 
 // ── helpers ──────────────────────────────────────────────────────────────────
 function fail(string $msg, int $code = 400) {   // PHP 7.2 target: no "never" return type (8.1+)
@@ -173,6 +182,12 @@ function login_locked(string $user): bool {
     return (int)($all[$k["pair"]]["count"] ?? 0) >= $MAX_LOGIN_FAILS
         || (int)($all[$k["ip"]]["count"] ?? 0) >= $MAX_LOGIN_FAILS_IP;
 }
+function config(): array {
+    global $CONFIG_FILE;
+    if (!is_file($CONFIG_FILE)) return [];
+    $d = json_decode((string)file_get_contents($CONFIG_FILE), true);
+    return is_array($d) ? $d : [];
+}
 function fails_update(string $user, bool $success): void {
     $lock = @fopen(fails_file() . ".lock", "c");
     if ($lock !== false) flock($lock, LOCK_EX);
@@ -269,9 +284,13 @@ if ($action === "login") {
         fail("wrong username or password", 401);
     }
     clear_fails($user);
-    session_regenerate_id(true);
-    $_SESSION["user"] = $user;
-    $_SESSION["at"] = time();
+    // "no_session": token-only login (the weekly-summary page uses it so a parent's
+    // browser never gets a cookie session that the sync pages would pick up)
+    if (empty($JSON_BODY["no_session"])) {
+        session_regenerate_id(true);
+        $_SESSION["user"] = $user;
+        $_SESSION["at"] = time();
+    }
     // token for cross-origin callers — cookies can't cross origins (SameSite)
     $token = bin2hex(random_bytes(32));
     $tokens = array_filter(tokens(), function ($e) { return (time() - (int)($e["t"] ?? 0)) < $GLOBALS["TOKEN_TTL"]; }); // prune expired
@@ -398,6 +417,29 @@ if ($action === "history") {
     if (!is_file($f)) fail("not found", 404);
     $d = json_decode((string)file_get_contents($f), true);
     ok(["name" => $name, "state" => $d["state"] ?? null, "updated_at" => $d["updated_at"] ?? null, "rev" => (int)($d["rev"] ?? 0)]);
+}
+
+// parent weekly summary (read-only): ?action=summary&days=7[&user=<name>]
+// Another account's summary only if config.json summary_viewers allows it.
+if ($action === "summary") {
+    if (!function_exists("nb_summary")) fail("summary not installed (api/summary.php missing)", 503);
+    $days = (int)($_GET["days"] ?? 7);
+    if ($days < 1 || $days > 90) fail("days: 1-90");
+    $target = (string)($_GET["user"] ?? $user);
+    if ($target !== $user) {
+        $viewers = config()["summary_viewers"] ?? [];
+        $allowed = (is_array($viewers) && isset($viewers[$user]) && is_array($viewers[$user])) ? $viewers[$user] : [];
+        if (!in_array($target, $allowed, true)) fail("not allowed to view that account", 403);
+        if (!isset(users()[$target])) fail("not found", 404);
+    }
+    $cur = read_state($target);
+    $tz = (string)(config()["timezone"] ?? "Europe/Zurich");
+    $summary = nb_summary(is_array($cur["state"]) ? $cur["state"] : [], $days, time(),
+        nb_card_index(dirname(__DIR__) . "/library/flashcards"), $tz);
+    $viewable = [$user];
+    $vv = config()["summary_viewers"][$user] ?? [];
+    if (is_array($vv)) foreach ($vv as $v) if (is_string($v) && $v !== $user) $viewable[] = $v;
+    ok(["user" => $target, "viewable" => $viewable, "summary" => $summary]);
 }
 
 fail("unknown action");
