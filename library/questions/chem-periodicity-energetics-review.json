@@ -40,7 +40,7 @@
         "Cr"
       ],
       "answer": 3,
-      "note": "Chromium adopts [Ar] 4s¹ 3d⁵ (half-filled 3d subshell) rather than the expected [Ar] 4s² 3d⁴. Vanadium is 4s² 3d³, manganese is 4s² 3d⁵. Trap: applying the simple Aufbau order without the known exception."
+      "note": "Chromium's observed configuration is [Ar] 4s¹ 3d⁵ rather than the [Ar] 4s² 3d⁴ predicted by the simple Aufbau order; Cr and Cu are the two exceptions to learn in the first transition row. Vanadium is 4s² 3d³, manganese is 4s² 3d⁵. Trap: applying the simple Aufbau order without the known exception."
     },
     {
       "id": "periodicity-energetics-review-04",
@@ -136,28 +136,28 @@
     {
       "id": "periodicity-energetics-review-11",
       "format": "mcq",
-      "stem": "Using the average bond enthalpies C–H 412, C=O 743, O–H 463 and O=O 496 kJ mol⁻¹, the enthalpy change for CH₄ + 2O₂ → CO₂ + 2H₂O is approximately",
+      "stem": "Using the data-booklet average bond enthalpies C–H 414, C=O 804, O–H 463 and O=O 498 kJ mol⁻¹, the enthalpy change for CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(g) is approximately",
       "choices": [
-        "−802 kJ mol⁻¹",
-        "−900 kJ mol⁻¹",
-        "−700 kJ mol⁻¹",
-        "+802 kJ mol⁻¹"
+        "−890 kJ mol⁻¹",
+        "+118 kJ mol⁻¹",
+        "−808 kJ mol⁻¹",
+        "+808 kJ mol⁻¹"
       ],
       "answer": 2,
-      "note": "ΔH = Σ(bonds broken) − Σ(bonds formed) = (4 × 412 + 2 × 496) − (2 × 743 + 4 × 463) ≈ −700 kJ mol⁻¹. Trap: reversing the sign or miscounting the O–H bonds formed."
+      "note": "ΔH = Σ(bonds broken) − Σ(bonds formed) = (4 × 414 + 2 × 498) − (2 × 804 + 4 × 463) = 2652 − 3460 = −808 kJ mol⁻¹. The measured enthalpy of combustion (−891 kJ mol⁻¹) is different because average bond enthalpies are averages over many compounds and apply only to gases (here H₂O(g), not H₂O(l)). Trap: reversing the sign, or counting only two O–H bonds formed (+118)."
     },
     {
       "id": "periodicity-energetics-review-12",
       "format": "mcq",
-      "stem": "Given ΔHf°(CO₂) = −394, ΔHf°(H₂O) = −286 and ΔHf°(CH₄) = −75 kJ mol⁻¹, the standard enthalpy of combustion of methane is",
+      "stem": "Given ΔHf°(CO₂) = −394, ΔHf°(H₂O) = −286 and ΔHf°(CH₄) = −74 kJ mol⁻¹, the standard enthalpy of combustion of methane is",
       "choices": [
-        "−891 kJ mol⁻¹",
-        "−890 kJ mol⁻¹",
-        "−75 kJ mol⁻¹",
-        "+891 kJ mol⁻¹"
+        "−892 kJ mol⁻¹",
+        "−1040 kJ mol⁻¹",
+        "−74 kJ mol⁻¹",
+        "+892 kJ mol⁻¹"
       ],
       "answer": 0,
-      "note": "ΔHc = [ΔHf(CO₂) + 2ΔHf(H₂O)] − ΔHf(CH₄) = (−394 − 572) − (−75) = −891 kJ mol⁻¹. Trap: adding the enthalpies of formation instead of subtracting reactants, or forgetting the stoichiometric coefficient for water."
+      "note": "ΔHc = [ΔHf(CO₂) + 2ΔHf(H₂O)] − ΔHf(CH₄) = (−394 − 572) − (−74) = −892 kJ mol⁻¹ (the data booklet lists the measured value as −891 kJ mol⁻¹; the 1 kJ gap comes from rounding in the tabulated values). Trap: adding ΔHf(CH₄) instead of subtracting it (−1040), or forgetting the coefficient 2 for water."
     },
     {
       "id": "periodicity-energetics-review-13",
@@ -272,19 +272,19 @@
         "Oxygen is 1s² 2s² 2p⁴ while nitrogen is 1s² 2s² 2p³ (1)",
         "In oxygen one 2p orbital contains a pair of electrons (1)",
         "Electron–electron repulsion in that paired orbital makes removal of an electron easier (1)",
-        "Nitrogen’s half-filled 2p³ subshell is especially stable, so its IE is higher (1)"
+        "In nitrogen each 2p electron is alone in its orbital, so the electron removed feels no such pairing repulsion and more energy is needed (1)"
       ],
-      "tactic": "Write both electron configurations, identify the paired electrons in oxygen’s 2p subshell, and link the repulsion (and the stability of nitrogen’s half-filled subshell) directly to the lower ionization energy."
+      "tactic": "Write both electron configurations, identify the paired electrons in oxygen’s 2p subshell, and link that extra repulsion directly to the lower ionization energy. Explain it through the energy of the electron removed; avoid saying a half-filled subshell is \"especially stable\" as the reason."
     },
     {
       "id": "periodicity-energetics-review-22",
       "format": "written",
       "marks": 4,
-      "stem": "Calculate the enthalpy change for C₂H₄ + H₂ → C₂H₆ using the average bond enthalpies C=C 614, C–C 346, C–H 412 and H–H 436 kJ mol⁻¹. Show your working.",
+      "stem": "Calculate the enthalpy change for C₂H₄ + H₂ → C₂H₆ using the average bond enthalpies C=C 614, C–C 346, C–H 414 and H–H 436 kJ mol⁻¹. Show your working.",
       "markscheme": [
         "Bonds broken: C=C + H–H = 614 + 436 = 1050 kJ (1)",
-        "Bonds formed: C–C + 2 × C–H = 346 + 824 = 1170 kJ (1)",
-        "ΔH = 1050 − 1170 = −120 kJ mol⁻¹ (1)",
+        "Bonds formed: C–C + 2 × C–H = 346 + 828 = 1174 kJ (1)",
+        "ΔH = 1050 − 1174 = −124 kJ mol⁻¹ (1)",
         "Negative sign and correct units stated (1)"
       ],
       "tactic": "Identify precisely which bonds break (the C=C double bond and the H–H bond) and which form (the new C–C single bond and two additional C–H bonds). Apply ΔH = Σ(bonds broken) − Σ(bonds formed) and include the sign and units."

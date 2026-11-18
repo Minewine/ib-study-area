@@ -9,7 +9,7 @@
     {"id": "fc-math-n-04", "type": "term", "tags": ["formula"], "front": "Geometric series: sum of n terms", "back": "S\u2099 = u\u2081(r\u207F \u2212 1)/(r \u2212 1), r \u2260 1"},
     {"id": "fc-math-n-05", "type": "term", "tags": ["formula"], "front": "Infinite geometric sum", "back": "S\u221E = u\u2081/(1 \u2212 r) \u2014 valid only when |r| < 1"},
     {"id": "fc-math-n-06", "type": "term", "tags": ["formula"], "front": "Compound percentage growth", "back": "value = initial \u00D7 (1 + r/100)\u207F \u2014 r is the % change per period"},
-    {"id": "fc-math-n-07", "type": "term", "tags": ["formula"], "front": "Percentage error", "back": "|measured \u2212 true| / true \u00D7 100 \u2014 always non-negative"},
+    {"id": "fc-math-n-07", "retired": true, "retiredReason": "Maths AI content (percentage error, AI SL 1.6), not in the AA SL course", "type": "term", "tags": ["formula"], "front": "Percentage error", "back": "|measured \u2212 true| / true \u00D7 100 \u2014 always non-negative"},
     {"id": "fc-math-n-08", "type": "term", "tags": ["formula"], "front": "Log laws (product, quotient, power)", "back": "log\u2090(xy) = log\u2090x + log\u2090y · log\u2090(x/y) = log\u2090x \u2212 log\u2090y · log\u2090(x\u207F) = n\u00B7log\u2090x"},
     {"id": "fc-math-n-09", "type": "term", "tags": ["formula"], "front": "Change of base", "back": "log\u2090b = log b / log a (any base) \u2014 how the GDC evaluates any logarithm"},
     {"id": "fc-math-n-10", "type": "qa", "tags": ["definition"], "front": "Define a logarithm.", "back": "log\u2090b = c \u21D4 a\u1D9C = b \u2014 a logarithm IS an exponent."},
