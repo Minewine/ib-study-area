@@ -25,6 +25,8 @@
   const SYNCED_KEYS = [
     "q-userbanks", "fc-userdecks", "fc-state", "fc-user",
     "fc-deleted", "fc-edits", "quizlog", "site-state",
+    // missed-question tracker (quiz-engine.js) — merged per record, see MERGERS
+    "q-errors",
     // study-site tracked lists + debrief notes (lists.js blobs)
     "tok-objects", "ee-ideas", "io-issues", "ia-debriefs",
     // library browser resource tracking (library.js blobs)
@@ -34,6 +36,52 @@
     get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v === null ? d : v; } catch (e) { return d; } },
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   };
+
+  // ── per-record merge ─────────────────────────────────────────────────────
+  // Progress keys are merged record by record (newest wins) instead of whole-blob
+  // last-write-wins, so two devices (or an offline session) can't overwrite each
+  // other's reviews. Records written before timestamps existed (no t/ts) are ranked
+  // by their own progress fields, so old data merges sensibly and is never dropped.
+  const fcRank = (s) => [s && s.t || 0, s && s.seen || 0, String(s && s.due || "")];
+  const errRank = (e) => [e && e.ts || 0, String(e && (e.lastAttempt > e.lastMissed ? e.lastAttempt : e.lastMissed) || ""), e && e.attempts || 0];
+  function newer(a, b, rank) { // true if a should win over b
+    const ra = rank(a), rb = rank(b);
+    for (let i = 0; i < ra.length; i++) { if (ra[i] > rb[i]) return true; if (ra[i] < rb[i]) return false; }
+    return false; // tie → keep b (the incoming/server value, matching the old behaviour)
+  }
+  const isObj = (v) => v && typeof v === "object" && !Array.isArray(v);
+  const MERGERS = {
+    // { cardId: {box, due, seen, t?} }
+    "fc-state": function (local, server) {
+      if (!isObj(local)) return server;
+      if (!isObj(server)) return local;
+      const out = Object.assign({}, server);
+      Object.keys(local).forEach(id => { if (!(id in out) || newer(local[id], out[id], fcRank)) out[id] = local[id]; });
+      return out;
+    },
+    // [ {key, …, ts?} ] — records are never deleted by the app, so a union by key is safe
+    "q-errors": function (local, server) {
+      if (!Array.isArray(local)) return server;
+      if (!Array.isArray(server)) return local;
+      const byKey = new Map();
+      server.forEach(e => { if (e && e.key) byKey.set(e.key, e); });
+      local.forEach(e => {
+        if (!e || !e.key) return;
+        const cur = byKey.get(e.key);
+        if (!cur || newer(e, cur, errRank)) byKey.set(e.key, e);
+      });
+      const out = Array.from(byKey.values());
+      // a record renamed by quiz-engine's key migration on one device must not
+      // reappear under its legacy key from another device's older copy
+      const renamed = new Set(out.map(e => e.legacyKey).filter(Boolean));
+      return out.filter(e => !(renamed.has(e.key) && String(e.key).indexOf("#") < 0));
+    }
+  };
+  function mergeValue(k, local, server) {
+    if (MERGERS[k] && local !== null && local !== undefined) return MERGERS[k](local, server);
+    return server;
+  }
+  const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
   let user = null;
   let syncTimer = null;
@@ -153,9 +201,16 @@
     try {
       const d = await api("get-state");
       if (d.state && typeof d.state === "object") {
+        let needPush = false;
         Object.entries(d.state).forEach(([k, v]) => {
-          if (k !== "site-state") store.set(k, v);
+          if (k === "site-state") return;
+          const merged = mergeValue(k, store.get(k, null), v);
+          if (!same(merged, v)) needPush = true; // this device held records the server lacked
+          store.set(k, merged);
         });
+        // keys only this device has (e.g. q-errors on a server that predates syncing it)
+        SYNCED_KEYS.forEach(k => { if (k !== "site-state" && d.state[k] === undefined && store.get(k, null) !== null) needPush = true; });
+        if (needPush) queueSync();
         if (d.state["site-state"]) distributeSiteState(d.state["site-state"], false);
         else if (hasSiteEntries()) queueSync(); // server predates site-state — push the migration
         status("Loaded from server \u2713", "good");
@@ -187,10 +242,23 @@
       let server = null;
       const d = await api("get-state");
       if (d.state && typeof d.state === "object") server = d.state;
-      if (server) distributeSiteState(server["site-state"], true);
+      if (server) {
+        distributeSiteState(server["site-state"], true);
+        // fold the server's newer records into local first (per record), so this
+        // push carries both devices' progress instead of replacing the other's
+        Object.keys(MERGERS).forEach(k => {
+          if (server[k] === undefined) return;
+          const local = store.get(k, null);
+          if (local === null) return;
+          const merged = MERGERS[k](local, server[k]);
+          if (!same(merged, local)) store.set(k, merged);
+        });
+      }
       const payload = collectState();
       if (server) {
-        SYNCED_KEYS.forEach(k => {
+        // carry over every server key this device doesn't hold — including keys this
+        // client version doesn't know about, so an older/newer client never wipes them
+        Object.keys(server).forEach(k => {
           if (payload[k] === undefined && server[k] !== undefined) payload[k] = server[k];
         });
       }
@@ -223,11 +291,16 @@
         const d = await api("get-state");
         if (d.state && typeof d.state === "object") {
           let changed = false;
+          let needPush = false;
           Object.entries(d.state).forEach(([k, v]) => {
             if (k === "site-state") { if (distributeSiteState(v, false)) changed = true; return; }
-            if (JSON.stringify(store.get(k, null)) !== JSON.stringify(v)) { store.set(k, v); changed = true; }
+            const local = store.get(k, null);
+            const merged = mergeValue(k, local, v); // per-record for progress keys, server-wins otherwise
+            if (!same(merged, v)) needPush = true;   // local had newer/extra records
+            if (!same(local, merged)) { store.set(k, merged); changed = true; }
           });
-          if (changed || (!d.state["site-state"] && hasSiteEntries())) queueSync();
+          SYNCED_KEYS.forEach(k => { if (k !== "site-state" && d.state[k] === undefined && store.get(k, null) !== null) needPush = true; });
+          if (changed || needPush || (!d.state["site-state"] && hasSiteEntries())) queueSync();
           if (changed) setTimeout(() => location.reload(), 300);
           status("Synced \u2713", "good");
         } else {
@@ -240,7 +313,7 @@
     setInterval(() => { if (dirty && user) pushNow(false); }, 15000);
   }
 
-  window.Auth = { queueSync, pull, login, logout: doLogout, user: () => user };
+  window.Auth = { queueSync, pull, login, logout: doLogout, user: () => user, mergeValue };
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();

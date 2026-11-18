@@ -173,6 +173,7 @@
     if (r === "again") { s.box = 1; s.due = addDays(1); }
     else if (r === "hard") { s.box = Math.max(1, s.box); s.due = addDays(INTERVALS[s.box]); }
     else { s.box = Math.min(5, s.box + 1); s.due = addDays(INTERVALS[s.box]); }
+    s.t = Date.now(); // last-review timestamp — lets auth.js merge devices per card (newest wins)
     st[c.id] = s;
     store.set("fc-state", st);
     session.ratings[r]++;

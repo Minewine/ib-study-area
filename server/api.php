@@ -212,8 +212,21 @@ if ($action === "save-state") {
     $body = json_decode(file_get_contents("php://input"), true);
     if (!is_array($body) || !isset($body["state"])) fail("missing 'state'");
     if (!is_array($body["state"])) fail("'state' must be an object");
+    $incoming = $body["state"];
+    // Keep stored top-level keys the client didn't send. Clients never delete a synced
+    // key, so a missing key only means "this client version doesn't know it" (e.g. a
+    // cached older auth.js without q-errors) — dropping it would wipe another device's data.
+    $prevPath = state_path($user);
+    if (is_file($prevPath)) {
+        $prev = json_decode(file_get_contents($prevPath), true);
+        if (is_array($prev) && isset($prev["state"]) && is_array($prev["state"])) {
+            foreach ($prev["state"] as $k => $v) {
+                if (!array_key_exists($k, $incoming)) $incoming[$k] = $v;
+            }
+        }
+    }
     // light size guard (5 MB)
-    $encoded = json_encode(["state" => $body["state"], "updated_at" => gmdate("c")], JSON_UNESCAPED_UNICODE);
+    $encoded = json_encode(["state" => (object)$incoming, "updated_at" => gmdate("c")], JSON_UNESCAPED_UNICODE);
     if (strlen($encoded) > 5 * 1024 * 1024) fail("state too large", 413);
     file_put_contents(state_path($user), $encoded, LOCK_EX);
     ok(["saved" => true, "updated_at" => gmdate("c")]);
