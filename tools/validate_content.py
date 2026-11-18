@@ -5,11 +5,37 @@ Exits non-zero on any FAIL so it can be used as a pre-commit gate.
 """
 
 import json
+import re
 import sys
+from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 fails, warns = [], []
+
+# Answer-cue thresholds (warnings, not failures). The quiz engine shuffles options at
+# render time, so authored key position only matters for printouts/exports, but the
+# "correct answer is the longest option" cue survives shuffling and needs content edits.
+POSITION_WARN = 0.40  # one position holding more than 40% of a bank's keys
+LONGEST_WARN = 0.40  # correct option strictly longest in more than 40% of a bank's MCQs
+MIN_MCQ_FOR_CUE_CHECK = 8
+# U+00B4 (acute accent) has replaced superscript-4 in generated content before ("10²´")
+CORRUPT_CHARS = {"\u00b4": "acute accent (corrupted superscript?)"}
+
+
+def norm(text):
+    return re.sub(r"\s+", " ", str(text).strip().lower())
+
+
+def strings_in(obj):
+    if isinstance(obj, str):
+        yield obj
+    elif isinstance(obj, list):
+        for v in obj:
+            yield from strings_in(v)
+    elif isinstance(obj, dict):
+        for v in obj.values():
+            yield from strings_in(v)
 
 
 def load(path):
@@ -57,6 +83,45 @@ for b in bank_files:
             )
         if not it.get("stem"):
             fails.append(f"quiz bank {b.name} item {it.get('id')}: missing stem")
+    # exact duplicates (same stem, choices and key) inflate counts and topic stats
+    seen_items = {}
+    for it in d.get("items", []):
+        k = (norm(it.get("stem")), json.dumps(it.get("choices")), it.get("answer"))
+        if k in seen_items:
+            fails.append(
+                f"quiz bank {b.name} item {it.get('id')}: exact duplicate of {seen_items[k]}"
+            )
+        else:
+            seen_items[k] = it.get("id")
+    # answer-cue checks
+    mcqs = [
+        it for it in d.get("items", [])
+        if it.get("format") == "mcq" and isinstance(it.get("answer"), int)
+        and 0 <= it["answer"] < len(it.get("choices", []))
+    ]
+    if len(mcqs) >= MIN_MCQ_FOR_CUE_CHECK:
+        pos = Counter(it["answer"] for it in mcqs)
+        top_pos, top_n = pos.most_common(1)[0]
+        if top_n / len(mcqs) > POSITION_WARN:
+            dist = "/".join(str(pos.get(i, 0)) for i in range(4))
+            warns.append(
+                f"quiz bank {b.name}: key position {'ABCD'[top_pos] if top_pos < 4 else top_pos} "
+                f"holds {top_n}/{len(mcqs)} MCQ keys (A/B/C/D = {dist}; display is shuffled at runtime)"
+            )
+        longest = 0
+        for it in mcqs:
+            lens = [len(str(c)) for c in it["choices"]]
+            if lens[it["answer"]] == max(lens) and lens.count(max(lens)) == 1:
+                longest += 1
+        if longest / len(mcqs) > LONGEST_WARN:
+            warns.append(
+                f"quiz bank {b.name}: correct option is the longest in {longest}/{len(mcqs)} MCQs "
+                f"(length cue — balance option lengths)"
+            )
+    for text in strings_in(d):
+        for ch, why in CORRUPT_CHARS.items():
+            if ch in text:
+                fails.append(f"quiz bank {b.name}: contains {why}: {text[:60]!r}")
     quiz_ids_per_file[b.name] = set(ids)
     total_q += len(d.get("items", []))
 
@@ -85,6 +150,10 @@ for d in deck_files:
             fails.append(f"deck {d.name} card {cid}: front and back are both required")
         if c.get("type") not in ("qa", "term"):
             fails.append(f"deck {d.name} card {cid}: type must be 'qa' or 'term'")
+    for text in strings_in(data):
+        for ch, why in CORRUPT_CHARS.items():
+            if ch in text:
+                fails.append(f"deck {d.name}: contains {why}: {text[:60]!r}")
     total_f += len(data.get("cards", []))
 
 # ---------- manifests ----------

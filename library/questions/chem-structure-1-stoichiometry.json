@@ -8,13 +8,13 @@
    "format": "mcq",
    "stem": "What is the number of molecules in 0.250 mol of CO₂? (Nᴀ = 6.02 × 10²³)",
    "choices": [
-    "1.50 × 10²³",
+    "1.51 × 10²²",
     "6.02 × 10²³",
-    "1.51 × 10²´",
-    "2.41 × 10²´"
+    "1.51 × 10²³",
+    "2.41 × 10²⁴"
    ],
    "answer": 2,
-   "note": "N = n × Nᴀ = 0.250 × 6.02×10²³ = 1.505×10²³ ≈ 1.51×10²´ (3 s.f.). Watch the exponent — 1.50×10²³ forgets the 0.250 multiplier's effect on magnitude."
+   "note": "N = n × Nᴀ = 0.250 × 6.02×10²³ = 1.505×10²³ ≈ 1.51×10²³ (3 s.f.). Watch the exponent — 2.41×10²⁴ divides by 0.250 instead of multiplying."
   },
   {
    "id": "c02",
@@ -404,7 +404,7 @@
     "6.02 × 10²³",
     "3.01 × 10²³",
     "1.50 × 10²³",
-    "6.02 × 10²´"
+    "6.02 × 10²⁴"
    ],
    "answer": 0,
    "note": "n = 4.0/4.0 = 1 mol → 6.02×10²³ atoms. Helium is monatomic — atoms = moles directly.",
@@ -432,7 +432,7 @@
    "choices": [
     "3.01 × 10²³",
     "6.02 × 10²³",
-    "1.20 × 10²´",
+    "1.20 × 10²⁴",
     "3.01 × 10²²"
    ],
    "answer": 0,
@@ -447,7 +447,7 @@
     "3.01 × 10²³",
     "9.03 × 10²³",
     "6.02 × 10²³",
-    "1.50 × 10²´"
+    "1.50 × 10²⁴"
    ],
    "answer": 1,
    "note": "3 atoms per molecule × 0.50 mol = 1.5 mol atoms = 9.03×10²³. Count atoms per unit before multiplying."

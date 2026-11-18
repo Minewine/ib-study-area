@@ -46,7 +46,7 @@
      "choices": ["Amphoteric", "Ambidextrous", "Aprotic", "Polyprotic"], "answer": 0,
      "note": "Amphiprotic/amphoteric: acts as acid or base. It's why water can be both acid and base in the same equilibrium (2H\u2082O \u21CC H\u2083O\u207A + OH\u207B)."},
     {"id": "r315", "format": "mcq", "topic": "reactivity-3-redox-acids-bases", "stem": "At 298 K, Kw = 1.0 \u00D7 10\u207B\u00B9\u2074. A solution with pH 4 has [OH\u207B] equal to:",
-     "choices": ["1.0 \u00D7 10\u207B\u2074", "1.0 \u00D7 10\u207B\u00B9\u2070", "1.0 \u00D7 10\u207B\u2077", "1.0 \u00D7 10\u207B\u00B9\u00B4"], "answer": 1,
+     "choices": ["1.0 \u00D7 10\u207B\u2074", "1.0 \u00D7 10\u207B\u00B9\u2070", "1.0 \u00D7 10\u207B\u2077", "1.0 \u00D7 10\u207B\u00B9\u2074"], "answer": 1,
      "note": "pOH = 14 \u2212 4 = 10 \u2192 [OH\u207B] = 10\u207B\u00B9\u2070. Or [OH\u207B] = Kw/[H\u207A] = 10\u207B\u00B9\u2074/10\u207B\u2074."},
     {"id": "r316", "format": "mcq", "topic": "reactivity-3-redox-acids-bases", "stem": "The pH at the equivalence point of a titration between ethanoic acid (weak) and NaOH (strong) is:",
      "choices": ["Exactly 7", "Greater than 7", "Less than 7", "Impossible to predict"], "answer": 1,

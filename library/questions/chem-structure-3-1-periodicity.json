@@ -422,11 +422,11 @@
    "stem": "Successive ionization energies of an element show a large jump after the third electron. The element is likely in group:",
    "choices": [
     "2",
-    "3",
+    "14",
     "13",
     "15"
    ],
-   "answer": 1,
+   "answer": 2,
    "note": "Three electrons removed relatively easily → three valence electrons → group 13 (e.g. aluminium: the 4th electron comes from the filled inner shell).",
    "topicLabel": "Structure 3.1 — Periodic table & electron structure (Nov unit)"
   }
