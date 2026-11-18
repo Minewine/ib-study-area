@@ -18,6 +18,15 @@
 (function () {
   "use strict";
   const NB = window.NB = window.NB || {};
+  // NB.escapeHtml: the one escaper for any string built into innerHTML — text AND
+  // attribute contexts (escapes & < > " '). Content (questions, cards, notes) is plain
+  // text by design, so everything content- or user-derived goes through it.
+  if (!NB.escapeHtml) {
+    NB.escapeHtml = function (s) {
+      return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+    };
+  }
   if (NB.store) return;
 
   const SCHEMA_KEY = "nb-schema";

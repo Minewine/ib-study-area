@@ -3,8 +3,9 @@ data dir. Skipped when no php binary is on PATH (CI installs one).
 
 Covers auth, get/save, revisions + 409 on a stale base, partial saves keeping
 other keys, legacy (rev-less) files and clients, history rotation and retrieval,
-export, atomic writes, refusing to overwrite an unreadable file, lockout, and a
-PHP 7.2 syntax guard (the host runs 7.2)."""
+export, atomic writes, refusing to overwrite an unreadable file, lockout (per
+username+IP and per IP, expiring), token handling, CSRF guards (JSON-only POST/PUT,
+foreign Origin refused), security headers, and a PHP 7.2 syntax guard (the host runs 7.2)."""
 
 import json
 import os
@@ -39,7 +40,7 @@ def test_api_source_is_php72_compatible():
         r"\bpublic\s+\w+\s+\$": "typed properties (7.4)",
         r"\bJSON_THROW_ON_ERROR\b": "JSON_THROW_ON_ERROR (7.3)",
     }
-    for f in (API_SRC, ROOT / "tools" / "dev_server.php"):
+    for f in (*sorted((ROOT / "server").glob("*.php")), ROOT / "tools" / "dev_server.php"):
         src = re.sub(r"//[^\n]*|#[^\n]*|/\*.*?\*/", "", f.read_text(encoding="utf-8"), flags=re.S)
         for pat, what in banned.items():
             assert not re.search(pat, src), f"{f.name}: {what} is not available on PHP 7.2"
@@ -197,3 +198,159 @@ def test_bad_input_and_lockout(server):
     for _ in range(5):
         assert call(server, "login", {"username": "tester", "password": "wrong-password"})[0] == 401
     assert call(server, "login", {"username": "tester", "password": PASSWORD})[0] == 429
+
+
+# ── security hardening ───────────────────────────────────────────────────────
+
+def raw(srv, action, data=None, method=None, headers=None, extra=""):
+    """Low-level request: arbitrary body bytes, method and headers."""
+    req = urllib.request.Request(srv["base"] + "?action=" + action + extra, data=data,
+                                 method=method or ("POST" if data is not None else "GET"))
+    for k, v in (headers or {}).items():
+        req.add_header(k, v)
+    try:
+        with urllib.request.urlopen(req, timeout=5) as r:
+            return r.status, json.loads(r.read() or b"null"), dict(r.headers)
+    except urllib.error.HTTPError as e:
+        return e.code, json.loads(e.read() or b"null"), dict(e.headers)
+
+
+def bad_login(srv, user="tester"):
+    return call(srv, "login", {"username": user, "password": "wrong-password"})
+
+
+@php
+def test_lockout_is_per_username_and_ip(server):
+    for _ in range(5):
+        st, d, _ = bad_login(server)
+        assert st == 401 and d["error"] == "wrong username or password"
+    # locked: even the right password is refused, with a generic message
+    st, d, _ = call(server, "login", {"username": "tester", "password": PASSWORD})
+    assert st == 429 and "password" not in d["error"]
+    # a different account from the same IP is not locked out
+    assert login(server, "other")
+    # unknown usernames get the same answer as wrong passwords (no enumeration)
+    st, d, _ = bad_login(server, "nobody-here")
+    assert st == 401 and d["error"] == "wrong username or password"
+
+
+@php
+def test_lockout_expires_after_window(server):
+    for _ in range(5):
+        bad_login(server)
+    assert call(server, "login", {"username": "tester", "password": PASSWORD})[0] == 429
+    f = server["data"] / "login-fails.json"
+    fails = json.loads(f.read_text())
+    for e in fails.values():   # pretend the window has passed
+        e["first"] -= 16 * 60
+        e["last"] -= 16 * 60
+    f.write_text(json.dumps(fails))
+    assert login(server)
+
+
+@php
+def test_success_resets_pair_counter(server):
+    for _ in range(4):
+        bad_login(server)
+    login(server)
+    for _ in range(4):   # counter restarted: 4 more fails still leave a try
+        assert bad_login(server)[0] == 401
+    assert login(server)
+
+
+@php
+def test_per_ip_cap_across_usernames(server):
+    for i in range(20):
+        assert bad_login(server, f"spray{i}")[0] == 401
+    # the IP is now capped, whichever account it tries
+    assert call(server, "login", {"username": "other", "password": PASSWORD})[0] == 429
+
+
+@php
+def test_fail_counters_store_no_raw_identifiers(server):
+    bad_login(server)
+    text = (server["data"] / "login-fails.json").read_text()
+    assert "tester" not in text and "127.0.0.1" not in text
+    assert not list(server["data"].glob("*.tmp-*"))
+
+
+@php
+def test_legacy_fail_file_is_tolerated(server):
+    (server["data"] / "login-fails.json").write_text(json.dumps({"tester": {"count": 9, "last": int(time.time())}}))
+    assert login(server)
+
+
+@php
+def test_tokens_random_hashed_and_expiring(server):
+    a, b = login(server), login(server)
+    assert a != b and re.fullmatch(r"[0-9a-f]{64}", a)
+    stored = (server["data"] / "tokens.json").read_text()
+    assert a not in stored and b not in stored   # only sha256 hashes are kept
+    assert call(server, "me", token=a)[1]["user"] == "tester"
+    # expire every token
+    toks = json.loads(stored)
+    for e in toks.values():
+        e["t"] -= 91 * 86400
+    (server["data"] / "tokens.json").write_text(json.dumps(toks))
+    assert call(server, "get-state", token=a)[0] == 401
+
+
+@php
+def test_token_only_via_header(server):
+    tok = login(server)
+    assert call(server, "get-state", extra="&token=" + tok)[0] == 401
+    assert call(server, "get-state", token="not-a-token")[0] == 401
+    assert call(server, "get-state", token="0" * 64)[0] == 401
+
+
+@php
+def test_logout_retires_token(server):
+    tok = login(server)
+    assert call(server, "logout", {}, tok)[0] == 200
+    assert call(server, "get-state", token=tok)[0] == 401
+
+
+@php
+def test_writes_require_json_post(server):
+    tok = login(server)
+    form = b"username=tester&password=" + PASSWORD.encode()
+    # cross-site HTML forms can only send these content types
+    for ct in ("application/x-www-form-urlencoded", "text/plain", "multipart/form-data; boundary=x"):
+        assert raw(server, "login", form, headers={"Content-Type": ct})[0] == 415
+        assert raw(server, "save-state", b'{"state":{"quizlog":[1]}}',
+                   headers={"Content-Type": ct, "X-Nevaib-Token": tok})[0] == 415
+    assert raw(server, "login", extra="&username=tester&password=" + PASSWORD)[0] == 405
+    assert raw(server, "logout", headers={"X-Nevaib-Token": tok})[0] == 405
+    # nothing was written
+    assert not (server["data"] / "state" / "tester.json").exists()
+    # PUT with JSON still works (older clients / e2e)
+    st, d, _ = raw(server, "save-state", b'{"state":{"quizlog":[1]}}', method="PUT",
+                   headers={"Content-Type": "application/json", "X-Nevaib-Token": tok})
+    assert st == 200 and d["rev"] == 1
+
+
+@php
+def test_cross_origin_writes_refused(server):
+    tok = login(server)
+    body = json.dumps({"state": {"quizlog": [1]}}).encode()
+    hdr = {"Content-Type": "application/json", "X-Nevaib-Token": tok}
+    assert raw(server, "save-state", body, headers=dict(hdr, Origin="https://evil.example"))[0] == 403
+    st, _, h = raw(server, "save-state", body, headers=dict(hdr, Origin="https://rametric.com"))
+    assert st == 200 and h.get("Access-Control-Allow-Origin") == "https://rametric.com"
+    # same-origin (Origin == Host) is fine too
+    host = server["base"].split("/")[2]
+    assert raw(server, "save-state", json.dumps({"state": {"quizlog": [2]}, "base_rev": 1}).encode(),
+               headers=dict(hdr, Origin="http://" + host))[0] == 200
+    # disallowed origins get no CORS grant
+    _, _, h = raw(server, "me", headers={"Origin": "https://evil.example"})
+    assert "Access-Control-Allow-Origin" not in h
+
+
+@php
+def test_security_headers(server):
+    _, _, h = call(server, "me")
+    assert h.get("X-Content-Type-Options") == "nosniff"
+    assert h.get("Referrer-Policy") == "no-referrer"
+    assert h.get("X-Frame-Options") == "DENY"
+    assert "frame-ancestors 'none'" in h.get("Content-Security-Policy", "")
+    assert "no-store" in h.get("Cache-Control", "")

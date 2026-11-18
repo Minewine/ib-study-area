@@ -50,7 +50,7 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
   // ── 1. every page loads without console errors ───────────────────────────
   {
     const { page, errors, ctx } = await newCtx(browser);
-    const pages = ["/index.html", "/app/index.html", "/app/notes.html", "/app/quiz.html", "/app/cards.html", "/app/author.html",
+    const pages = ["/index.html", "/app/index.html", "/app/notes.html", "/app/quiz.html", "/app/cards.html", "/app/author.html", "/app/summary.html",
       ...fs.readdirSync(REPO).filter(f => f.endsWith(".html")).map(f => "/" + f)];
     for (const p of [...new Set(pages)]) {
       errors.length = 0;

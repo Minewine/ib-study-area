@@ -279,8 +279,8 @@ BASE = """<!DOCTYPE html>
 __CONTENT__
 </main>
 <footer>Private family study area · exams <strong>May 2028</strong> · keep this site and its library non-public</footer>
-<script src="assets/store.js?v=2"></script>
-<script src="assets/app.js?v=3"></script>
+<script src="assets/store.js?v=3"></script>
+<script src="assets/app.js?v=4"></script>
 </body>
 </html>
 """
@@ -372,11 +372,11 @@ AUTH_PAGES = (
 # notes; library.js on index/practice drives the pinned-resources card and the
 # papers-intake list).
 EXTRA_SCRIPTS = {
-    "core.html": ["assets/lists.js?v=3"],
-    "ia.html": ["assets/lists.js?v=3"],
-    "french-a-langlit.html": ["assets/lists.js?v=3"],
-    "index.html": ["assets/library.js?v=2"],
-    "practice.html": ["assets/library.js?v=2"],
+    "core.html": ["assets/lists.js?v=4"],
+    "ia.html": ["assets/lists.js?v=4"],
+    "french-a-langlit.html": ["assets/lists.js?v=4"],
+    "index.html": ["assets/library.js?v=3"],
+    "practice.html": ["assets/library.js?v=3"],
 }
 
 
@@ -388,8 +388,8 @@ def page(fname, title, content_html, active):
     if fname in AUTH_PAGES:
         h = h.replace("</nav>", '  <span id="auth-slot"></span>\n</nav>', 1)
         h = h.replace(
-            '<script src="assets/app.js?v=3"></script>',
-            '<script src="assets/app.js?v=3"></script>\n<script src="assets/auth.js?v=8"></script>',
+            '<script src="assets/app.js?v=4"></script>',
+            '<script src="assets/app.js?v=4"></script>\n<script src="assets/auth.js?v=9"></script>',
             1,
         )
     if fname in EXTRA_SCRIPTS:
@@ -401,8 +401,8 @@ def page(fname, title, content_html, active):
         )
     if fname == "index.html":
         h = h.replace(
-            '<script src="assets/app.js?v=3"></script>',
-            '<script src="assets/deadlines.js?v=2"></script>\n<script src="assets/app.js?v=3"></script>',
+            '<script src="assets/app.js?v=4"></script>',
+            '<script src="assets/deadlines.js?v=3"></script>\n<script src="assets/app.js?v=4"></script>',
             1,
         )
     out.write_text(h, encoding="utf-8")
@@ -1159,7 +1159,7 @@ JS = """(function () {
   });
   const statsBody = document.getElementById('stats-body');
   if (statsBody) {
-    const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const esc = (window.NB && window.NB.escapeHtml) || ((s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;"));
     const d = new Date();
     const today = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
     let html = '';
@@ -1170,7 +1170,7 @@ JS = """(function () {
         const raw = String(e.label || '');
         const label = raw.length > 30 ? raw.slice(0, 29) + '…' : raw;
         pcts.push(e.pct);
-        return '<div class="stat-row"><span class="stat-date">' + esc((e.date || '').slice(5)) + '</span><span class="stat-label">' + esc(label) + '</span><span class="bar mini"></span><span class="pct">' + e.pct + '%</span></div>';
+        return '<div class="stat-row"><span class="stat-date">' + esc((e.date || '').slice(5)) + '</span><span class="stat-label">' + esc(label) + '</span><span class="bar mini"></span><span class="pct">' + esc(e.pct) + '%</span></div>';
       }).join('');
     } else {
       html += '<p class="muted">No quiz sessions yet — run one in the practice app.</p>';

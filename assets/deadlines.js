@@ -59,16 +59,17 @@
   const today = new Date(); today.setHours(0, 0, 0, 0);
   const daysTo = (iso) => Math.round((new Date(iso + "T12:00:00") - today) / 86400000);
 
+  const esc = (window.NB && window.NB.escapeHtml) || ((s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;"));
   function chip(tag) {
     const t = TAGS[tag] || { label: tag, color: "#5b6b7c" };
-    return `<span class="chip" style="border-color:${t.color};color:${t.color}">${t.label}</span>`;
+    return `<span class="chip" style="border-color:${esc(t.color)};color:${esc(t.color)}">${esc(t.label)}</span>`;
   }
 
   function row(item, past) {
     const d = daysTo(item.d);
     const when = past ? fmt(item.d)
       : d === 0 ? "TODAY" : d === 1 ? "tomorrow" : `in ${d} days`;
-    return `<li class="${past ? "past" : "future"}"><span class="dl-date">${fmt(item.d)}</span> ${chip(item.tag)} <span class="dl-label">${item.t}</span> <span class="dl-in muted">${past ? "" : "· " + when}</span></li>`;
+    return `<li class="${past ? "past" : "future"}"><span class="dl-date">${fmt(item.d)}</span> ${chip(item.tag)} <span class="dl-label">${esc(item.t)}</span> <span class="dl-in muted">${past ? "" : "· " + when}</span></li>`;
   }
 
   const nextup = document.getElementById("nextup");

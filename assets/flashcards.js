@@ -25,7 +25,7 @@
   const INTERVALS = { 1: 1, 2: 2, 3: 4, 4: 8, 5: 16 };
 
   const $ = (id) => document.getElementById(id);
-  const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const esc = (window.NB && window.NB.escapeHtml) || ((s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;"));
   const shuffle = (a) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   // NB.store (assets/store.js) is the storage layer; the literal below is only a
   // fallback for a stale cached page that didn't load store.js.

@@ -7,7 +7,7 @@
   const PATH_BASE = location.pathname.includes("/app/") ? "../" : "";
 
   const $ = (id) => document.getElementById(id);
-  const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const esc = (window.NB && window.NB.escapeHtml) || ((s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;"));
   const shuffle = (a) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
   // Bank id = file name without folder/extension ("library/questions/bio-x.json" -> "bio-x");
@@ -180,7 +180,7 @@ async function init() {
     prog.textContent = (session.fromLink ? session.label + " · " : "") + `Question ${session.idx + 1} / ${session.items.length}`;
     const box = $("q-box");
     const style = it.calculatorFree ? " · calculator-free practice" : (it.paperStyle === "1B" ? " · data-based practice (calculator allowed)" : "");
-    const topicTag = `<div class="q-topic">${esc(it.topicLabel || "")} · ${it.format === "mcq" ? "multiple choice" : `written — ${it.marks} marks`}${style}</div>`;
+    const topicTag = `<div class="q-topic">${esc(it.topicLabel || "")} · ${it.format === "mcq" ? "multiple choice" : `written — ${esc(it.marks)} marks`}${style}</div>`;
     let html = topicTag + `<div class="q-stem">${esc(it.stem)}</div>`;
     if (it.format === "mcq") {
       // data-i is always the ORIGINAL choice index, so marking, stored answers and
@@ -196,7 +196,7 @@ async function init() {
                <div id="q-ms" class="q-ms" style="display:none">
                  <ol>${it.markscheme.map(m => `<li>${esc(m)}</li>`).join("")}</ol>
                  <p class="muted">Self-score honestly — the gap analysis only works if you don't inflate.</p>
-                 <div class="q-score">Score: <select id="q-selfscore">${Array.from({ length: (it.marks || 1) + 1 }, (_, k) => `<option value="${k}">${k} / ${it.marks}</option>`).join("")}</select></div>
+                 <div class="q-score">Score: <select id="q-selfscore">${Array.from({ length: (it.marks || 1) + 1 }, (_, k) => `<option value="${k}">${k} / ${esc(it.marks)}</option>`).join("")}</select></div>
                  <div class="q-actions"><button id="q-fc" class="btn">＋ Flashcard</button><button id="q-next" class="btn primary">Next question</button></div>
                </div>`;
     }
@@ -322,14 +322,19 @@ async function init() {
       <h3>What to do next</h3><ul>${advice.map(a => `<li>${esc(a)}</li>`).join("")}</ul>
       <div class="q-actions"><button class="btn primary" id="q-again">New session</button></div>`;
     $("q-again").addEventListener("click", reset);
-    saveLog(pct, got, max, session.label, C.logField(res));
+    saveLog(pct, got, max, session.label, byTopic, session.subject, C.logField(res));
     renderLog();
     updateReviewUI();
   }
 
-  function saveLog(pct, got, max, label, conf) {
+  function saveLog(pct, got, max, label, byTopic, subject, conf) {
     const log = store.get("quizlog", []);
+    // per-topic breakdown {topic: {l: label, g: got, m: max}} feeds the parent weekly summary
+    const topics = {};
+    Object.entries(byTopic || {}).forEach(([k, v]) => { if (k && k !== "undefined") topics[k] = { l: v.label, g: v.got, m: v.max }; });
     const entry = { date: today(), label, pct, got, max, ts: Date.now() }; // local date; ts keeps two identical sessions distinct in the sync merge
+    if (subject) entry.subject = subject;
+    if (Object.keys(topics).length) entry.topics = topics;
     if (conf) entry.conf = conf; // {sure, sureRight, guess, guessRight}; absent on older entries
     log.unshift(entry);
     store.set("quizlog", log.slice(0, 20));
@@ -339,7 +344,7 @@ async function init() {
     if (!el) return;
     const log = store.get("quizlog", []);
     el.innerHTML = log.length
-      ? log.slice(0, 8).map(e => { const c = C.describe(e.conf); return `<li>${esc(String(e.date))} — ${esc(String(e.label))}: <strong>${e.got}/${e.max} (${e.pct}%)</strong>${c ? ` <span class="muted">(${esc(c)})</span>` : ""}</li>`; }).join("")
+      ? log.slice(0, 8).map(e => { const c = C.describe(e.conf); return `<li>${esc(e.date)} — ${esc(e.label)}: <strong>${esc(e.got)}/${esc(e.max)} (${esc(e.pct)}%)</strong>${c ? ` <span class="muted">(${esc(c)})</span>` : ""}</li>`; }).join("")
       : "<li class='muted'>No sessions yet.</li>";
   }
 

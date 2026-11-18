@@ -10,18 +10,29 @@ $COOKIE_SECURE = ($_SERVER["HTTPS"] ?? "") !== "" || ($_SERVER["HTTP_X_FORWARDED
 // attribute on 7.2 — modern browsers treat a SameSite-less cookie as Lax, which
 // is the behaviour we want; cross-origin callers use the token header instead.
 session_set_cookie_params(60 * 60 * 24 * 30, "/", "", $COOKIE_SECURE, true);
+ini_set("session.use_strict_mode", "1");   // never adopt a session id the server didn't issue
+ini_set("session.use_only_cookies", "1");  // no session ids in URLs
 session_start();
 header("Content-Type: application/json; charset=utf-8");
+// security headers: JSON only, never framed, never cached, no referrer leak
 header("X-Content-Type-Options: nosniff");
+header("Referrer-Policy: no-referrer");
+header("X-Frame-Options: DENY");
+header("Content-Security-Policy: default-src 'none'; frame-ancestors 'none'");
+header("Cache-Control: no-store");
 
 // ── CORS: the study site runs on other origins (localhost dev etc.) where
 // cookies can never cross — those callers authenticate by token instead.
 // Preflights carry no credentials, so answer them before any auth logic.
 $ORIGIN = $_SERVER["HTTP_ORIGIN"] ?? "";
-if ($ORIGIN !== "" && (preg_match("/^https:\/\/(www\.)?rametric\.com$/", $ORIGIN)
-    || preg_match("/^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$/", $ORIGIN)
-    // LAN study-site use (DEPLOY.md option A): the token, not CORS, is the auth gate
-    || preg_match("/^http:\/\/(192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+|172\.(1[6-9]|2\d|3[01])\.\d+\.\d+)(:\d+)?$/", $ORIGIN))) {
+function origin_allowed(string $o): bool {
+    if ($o === "") return false;
+    return preg_match("/^https:\/\/(www\.)?rametric\.com$/", $o)
+        || preg_match("/^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$/", $o)
+        // LAN study-site use (DEPLOY.md option A): the token, not CORS, is the auth gate
+        || preg_match("/^http:\/\/(192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+|172\.(1[6-9]|2\d|3[01])\.\d+\.\d+)(:\d+)?$/", $o);
+}
+if (origin_allowed($ORIGIN)) {
     header("Access-Control-Allow-Origin: " . $ORIGIN);
     header("Vary: Origin");
 }
@@ -40,11 +51,23 @@ $DATA_DIR = getenv("NEVAIB_DATA_DIR") ?: (dirname(__DIR__, 3) . "/nevaib-data");
 $USERS_FILE = $DATA_DIR . "/users.json";
 $STATE_DIR = $DATA_DIR . "/state";
 $SESSION_NAME = "nevaibsess";
-$MAX_LOGIN_FAILS = 5;
+$MAX_LOGIN_FAILS = 5;          // failed logins allowed per username+IP inside the window
+$MAX_LOGIN_FAILS_IP = 20;      // failed logins allowed per IP (any username) inside the window
+$LOGIN_WINDOW = 15 * 60;       // seconds; a lockout lifts once the window has passed
+$SESSION_TTL = 30 * 86400;     // absolute lifetime of a cookie session
 $TOKEN_TTL = 90 * 86400;  // login tokens expire after 90 days
 // One-time account creation: set a long random key here, create accounts, then blank it.
 $SETUP_KEY = "";  // e.g. "paste-a-long-random-string"; empty = setup disabled
 $HISTORY_KEEP = 30;  // previous versions kept per user in state/history/<user>/
+// Optional, NOT committed: $DATA_DIR/config.json (outside public_html), e.g.
+//   {"summary_viewers": {"michael": ["neva"]}, "timezone": "Europe/Zurich",
+//    "summary_email": {"to": "...", "from": "...", "users": ["neva"], "days": 7}}
+// summary_viewers lets a parent account read another account's weekly summary (read-only).
+$CONFIG_FILE = $DATA_DIR . "/config.json";
+
+// weekly-summary computation (read-only). Optional include: push_deploy uploads api.php
+// before summary.php, and the rest of the API must keep working in between.
+if (is_file(__DIR__ . "/summary.php")) require_once __DIR__ . "/summary.php";
 
 // ── helpers ──────────────────────────────────────────────────────────────────
 function fail(string $msg, int $code = 400) {   // PHP 7.2 target: no "never" return type (8.1+)
@@ -119,31 +142,73 @@ function history_list(string $user): array {
     foreach ($files as $f) $out[] = ["name" => basename($f), "bytes" => filesize($f)];
     return $out;
 }
+// ── brute-force guard ────────────────────────────────────────────────────────
+// login-fails.json: {"<sha256 key>": {"count": N, "first": ts, "last": ts}}. Keys are
+// hashes of "u:<username>|ip:<addr>" and "ip:<addr>", so no raw IPs/usernames are
+// stored. Read-modify-write happens under an flock; the file is written atomically.
+// Entries from the pre-2026-11 format (keyed by plain username) simply age out.
+function fails_file(): string { global $DATA_DIR; return $DATA_DIR . "/login-fails.json"; }
+function client_ip(): string {
+    // REMOTE_ADDR only: X-Forwarded-For is client-controlled and would let an attacker
+    // pick a fresh "IP" per attempt.
+    return (string)($_SERVER["REMOTE_ADDR"] ?? "unknown");
+}
+function fail_keys(string $user): array {
+    $ip = client_ip();
+    return [
+        "pair" => hash("sha256", "u:" . strtolower($user) . "|ip:" . $ip),
+        "ip" => hash("sha256", "ip:" . $ip),
+    ];
+}
 function login_fails(): array {
-    global $DATA_DIR;
-    $f = $DATA_DIR . "/login-fails.json";
+    $f = fails_file();
     if (!is_file($f)) return [];
-    $d = json_decode(file_get_contents($f), true);
+    $d = json_decode((string)file_get_contents($f), true);
     return is_array($d) ? $d : [];
 }
-function record_fail(string $user): void {
-    global $DATA_DIR;
-    $f = $DATA_DIR . "/login-fails.json";
-    $all = login_fails();
-    $entry = $all[$user] ?? ["count" => 0, "last" => 0];
-    if (!is_array($entry)) $entry = ["count" => 0, "last" => 0];
-    $entry["count"] = ($entry["count"] ?? 0) + 1;
-    $entry["last"] = time();
-    $all[$user] = $entry;
-    write_atomic($f, json_encode($all));
+function fails_prune(array $all, int $now): array {
+    global $LOGIN_WINDOW;
+    $out = [];
+    foreach ($all as $k => $e) {
+        if (is_array($e) && isset($e["first"]) && ($now - (int)$e["first"]) < $LOGIN_WINDOW) $out[$k] = $e;
+    }
+    return $out;
 }
-function clear_fails(string $user): void {
-    global $DATA_DIR;
-    $f = $DATA_DIR . "/login-fails.json";
-    $all = login_fails();
-    unset($all[$user]);
-    write_atomic($f, json_encode($all));
+// true when this username+IP (or this IP overall) has used up its attempts
+function login_locked(string $user): bool {
+    global $MAX_LOGIN_FAILS, $MAX_LOGIN_FAILS_IP;
+    $all = fails_prune(login_fails(), time());
+    $k = fail_keys($user);
+    return (int)($all[$k["pair"]]["count"] ?? 0) >= $MAX_LOGIN_FAILS
+        || (int)($all[$k["ip"]]["count"] ?? 0) >= $MAX_LOGIN_FAILS_IP;
 }
+function config(): array {
+    global $CONFIG_FILE;
+    if (!is_file($CONFIG_FILE)) return [];
+    $d = json_decode((string)file_get_contents($CONFIG_FILE), true);
+    return is_array($d) ? $d : [];
+}
+function fails_update(string $user, bool $success): void {
+    $lock = @fopen(fails_file() . ".lock", "c");
+    if ($lock !== false) flock($lock, LOCK_EX);
+    $now = time();
+    $all = fails_prune(login_fails(), $now);
+    $k = fail_keys($user);
+    if ($success) {
+        unset($all[$k["pair"]]);   // the per-IP counter keeps counting other usernames
+    } else {
+        foreach ([$k["pair"], $k["ip"]] as $key) {
+            $e = $all[$key] ?? ["count" => 0, "first" => $now];
+            $e["count"] = (int)$e["count"] + 1;
+            $e["last"] = $now;
+            $all[$key] = $e;
+        }
+    }
+    write_atomic(fails_file(), json_encode((object)$all));
+    if ($lock !== false) { flock($lock, LOCK_UN); fclose($lock); }
+}
+function record_fail(string $user): void { fails_update($user, false); }
+function clear_fails(string $user): void { fails_update($user, true); }
 function tokens(): array {
     global $DATA_DIR;
     $f = $DATA_DIR . "/tokens.json";
@@ -158,11 +223,30 @@ function save_tokens(array $t): void {
 
 data_dir();
 
-// accept both JSON and form-encoded bodies
-$JSON_BODY = json_decode(file_get_contents("php://input"), true);
-if (!is_array($JSON_BODY)) $JSON_BODY = $_POST;
+$action = (string)($_GET["action"] ?? "");
+$METHOD = strtoupper((string)($_SERVER["REQUEST_METHOD"] ?? "GET"));
 
-$action = $_GET["action"] ?? ($_POST["action"] ?? "");
+// ── CSRF / cross-origin write guard ──────────────────────────────────────────
+// State-changing actions must be POST/PUT with a JSON body. A cross-site HTML form
+// can only send urlencoded/multipart/text-plain bodies, and a cross-origin fetch with
+// Content-Type: application/json triggers a CORS preflight that only the allow-listed
+// origins pass. A browser-sent Origin that is neither allow-listed nor this host is
+// refused outright. Reads (GET) stay as they were (the export link opens in a tab).
+$WRITE_ACTIONS = ["setup", "login", "logout", "save-state"];
+if (in_array($action, $WRITE_ACTIONS, true)) {
+    if ($METHOD !== "POST" && $METHOD !== "PUT") fail("use POST", 405);
+    $ctype = strtolower((string)($_SERVER["CONTENT_TYPE"] ?? $_SERVER["HTTP_CONTENT_TYPE"] ?? ""));
+    if (strpos($ctype, "application/json") !== 0) fail("Content-Type must be application/json", 415);
+    if ($ORIGIN !== "" && !origin_allowed($ORIGIN)) {
+        $host = (string)($_SERVER["HTTP_HOST"] ?? "");
+        $oh = (string)parse_url($ORIGIN, PHP_URL_HOST) . (parse_url($ORIGIN, PHP_URL_PORT) ? ":" . parse_url($ORIGIN, PHP_URL_PORT) : "");
+        if ($host === "" || !hash_equals(strtolower($host), strtolower($oh))) fail("cross-origin request refused", 403);
+    }
+}
+
+// JSON bodies only (form-encoded bodies are no longer accepted — see the guard above)
+$JSON_BODY = json_decode((string)file_get_contents("php://input"), true);
+if (!is_array($JSON_BODY)) $JSON_BODY = [];
 
 // ── one-time setup: create accounts (requires SETUP_KEY in this file) ───────
 if ($action === "setup") {
@@ -187,20 +271,26 @@ if ($action === "login") {
     $user = trim((string)($JSON_BODY["username"] ?? ""));
     $pass = (string)($JSON_BODY["password"] ?? "");
     if ($user === "" || $pass === "") fail("username and password required");
-    $fails = login_fails();
-    if (($fails[$user]["count"] ?? 0) >= $GLOBALS["MAX_LOGIN_FAILS"]
-        && (time() - ($fails[$user]["last"] ?? 0)) < 300) {
-        fail("too many failed attempts — wait 5 minutes", 429);
-    }
+    if (strlen($user) > 64 || strlen($pass) > 1024) fail("wrong username or password", 401);
+    // generic message: it doesn't say whether the username exists or the password was close
+    if (login_locked($user)) { usleep(300000); fail("too many failed attempts — try again in 15 minutes", 429); }
     $users = users();
-    if (!isset($users[$user]) || !password_verify($pass, $users[$user])) {
+    // unknown usernames still pay for a hash check, so timing doesn't reveal which exist
+    $hash = isset($users[$user]) ? (string)$users[$user] : '$2y$10$YodVcb.3lMgDl4VqkHGDhO9ZrriNi3iqIBqSrB.j.tMaRXl3Wjlau'  /* hash of a random throwaway string */;
+    $good = password_verify($pass, $hash) && isset($users[$user]);
+    if (!$good) {
         record_fail($user);
         usleep(300000); // slow brute force slightly
         fail("wrong username or password", 401);
     }
     clear_fails($user);
-    session_regenerate_id(true);
-    $_SESSION["user"] = $user;
+    // "no_session": token-only login (the weekly-summary page uses it so a parent's
+    // browser never gets a cookie session that the sync pages would pick up)
+    if (empty($JSON_BODY["no_session"])) {
+        session_regenerate_id(true);
+        $_SESSION["user"] = $user;
+        $_SESSION["at"] = time();
+    }
     // token for cross-origin callers — cookies can't cross origins (SameSite)
     $token = bin2hex(random_bytes(32));
     $tokens = array_filter(tokens(), function ($e) { return (time() - (int)($e["t"] ?? 0)) < $GLOBALS["TOKEN_TTL"]; }); // prune expired
@@ -228,11 +318,22 @@ if ($action === "logout") {
 
 // resolve the caller: PHP session, else X-Nevaib-Token header (tokens expire after 90 days)
 $user = $_SESSION["user"] ?? null;
+// cookie sessions expire $SESSION_TTL after login (sessions from before this field existed
+// get stamped now, so nobody is logged out by the upgrade)
+if ($user) {
+    if (!isset($_SESSION["at"])) $_SESSION["at"] = time();
+    if ((time() - (int)$_SESSION["at"]) >= $SESSION_TTL) { $_SESSION = []; session_destroy(); $user = null; }
+}
 if (!$user) {
     $tok = (string)($_SERVER["HTTP_X_NEVAIB_TOKEN"] ?? "");
-    $all = $tok === "" ? [] : tokens();
-    $h = hash("sha256", $tok);
-    if (isset($all[$h]) && (time() - (int)$all[$h]["t"]) < $TOKEN_TTL) $user = (string)$all[$h]["u"];
+    // tokens are 64 hex chars (random_bytes(32)); anything else can't be valid
+    if (preg_match('/^[0-9a-f]{64}$/', $tok)) {
+        $all = tokens();
+        $h = hash("sha256", $tok);
+        foreach ($all as $k => $e) {   // constant-time comparison of the stored hashes
+            if (is_string($k) && hash_equals($k, $h) && is_array($e) && (time() - (int)($e["t"] ?? 0)) < $TOKEN_TTL) { $user = (string)($e["u"] ?? ""); break; }
+        }
+    }
 }
 
 if ($action === "me") {
@@ -316,6 +417,29 @@ if ($action === "history") {
     if (!is_file($f)) fail("not found", 404);
     $d = json_decode((string)file_get_contents($f), true);
     ok(["name" => $name, "state" => $d["state"] ?? null, "updated_at" => $d["updated_at"] ?? null, "rev" => (int)($d["rev"] ?? 0)]);
+}
+
+// parent weekly summary (read-only): ?action=summary&days=7[&user=<name>]
+// Another account's summary only if config.json summary_viewers allows it.
+if ($action === "summary") {
+    if (!function_exists("nb_summary")) fail("summary not installed (api/summary.php missing)", 503);
+    $days = (int)($_GET["days"] ?? 7);
+    if ($days < 1 || $days > 90) fail("days: 1-90");
+    $target = (string)($_GET["user"] ?? $user);
+    if ($target !== $user) {
+        $viewers = config()["summary_viewers"] ?? [];
+        $allowed = (is_array($viewers) && isset($viewers[$user]) && is_array($viewers[$user])) ? $viewers[$user] : [];
+        if (!in_array($target, $allowed, true)) fail("not allowed to view that account", 403);
+        if (!isset(users()[$target])) fail("not found", 404);
+    }
+    $cur = read_state($target);
+    $tz = (string)(config()["timezone"] ?? "Europe/Zurich");
+    $summary = nb_summary(is_array($cur["state"]) ? $cur["state"] : [], $days, time(),
+        nb_card_index(dirname(__DIR__) . "/library/flashcards"), $tz);
+    $viewable = [$user];
+    $vv = config()["summary_viewers"][$user] ?? [];
+    if (is_array($vv)) foreach ($vv as $v) if (is_string($v) && $v !== $user) $viewable[] = $v;
+    ok(["user" => $target, "viewable" => $viewable, "summary" => $summary]);
 }
 
 fail("unknown action");
