@@ -51,7 +51,9 @@ $HISTORY_KEEP = 30;  // previous versions kept per user in state/history/<user>/
 // summary_viewers lets a parent account read another account's weekly summary (read-only).
 $CONFIG_FILE = $DATA_DIR . "/config.json";
 
-require_once __DIR__ . "/summary.php";   // weekly-summary computation (read-only)
+// weekly-summary computation (read-only). Optional include: push_deploy uploads api.php
+// before summary.php, and the rest of the API must keep working in between.
+if (is_file(__DIR__ . "/summary.php")) require_once __DIR__ . "/summary.php";
 
 // ── helpers ──────────────────────────────────────────────────────────────────
 function fail(string $msg, int $code = 400) {   // PHP 7.2 target: no "never" return type (8.1+)
@@ -338,6 +340,7 @@ if ($action === "history") {
 // parent weekly summary (read-only): ?action=summary&days=7[&user=<name>]
 // Another account's summary only if config.json summary_viewers allows it.
 if ($action === "summary") {
+    if (!function_exists("nb_summary")) fail("summary not installed (api/summary.php missing)", 503);
     $days = (int)($_GET["days"] ?? 7);
     if ($days < 1 || $days > 90) fail("days: 1-90");
     $target = (string)($_GET["user"] ?? $user);
