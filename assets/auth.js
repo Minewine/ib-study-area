@@ -51,7 +51,7 @@
   let syncing = false;
   let legacyServer = null;
 
-  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+  function esc(s) { return window.NB && window.NB.escapeHtml ? window.NB.escapeHtml(s) : String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;"); }
 
   function status(text, cls) {
     const s = document.getElementById("auth-status");

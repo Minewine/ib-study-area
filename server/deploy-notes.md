@@ -93,7 +93,8 @@ over plain HTTP.
   checklist ticks + this-week items, synced from the study-site pages too).
 - `~/nevaib-data/tokens.json` — sha256-hashed login tokens (90-day expiry, max 8/user)
   used by non-rametric.com origins (localhost study site, LAN) where cookies can't cross.
-- `~/nevaib-data/login-fails.json` — brute-force guard (auto-clears on success).
+- `~/nevaib-data/login-fails.json` — brute-force guard: counters keyed by sha256 of username+IP and of IP
+  (no raw usernames/IPs stored), 15-minute window, written atomically under `login-fails.json.lock`.
 
 - `~/nevaib-data/state/history/<user>/<UTC>-r<rev>.json` — the previous 30 versions of each
   state file (written by every save; files are copies of the state file before the save).
@@ -154,3 +155,55 @@ NEVAIB_DATA_DIR=/tmp/nevaib-test-data php -S 127.0.0.1:8018 -t . tools/dev_serve
 test data out of the real home dir. From a browser:
 `http://localhost:8017/<page>?nbapi=http://127.0.0.1:8018/api/api.php` exercises
 the full cross-origin token path (override is localhost-only; see DEVELOPMENT.md).
+
+## Security hardening (2026-11)
+
+What `server/api.php` enforces (tests: `tests/test_api.py`):
+
+- **Login limits.** 5 failed logins per username + IP within 15 minutes, and 20 per IP across
+  all usernames, then HTTP 429 with a generic message until the window passes (a correct
+  password is refused too while locked). A success clears that username+IP counter. Unknown
+  usernames get the same "wrong username or password" answer and the same bcrypt cost, so the
+  API doesn't reveal which accounts exist. Only `REMOTE_ADDR` is used (never
+  `X-Forwarded-For`, which a client can forge). If she is ever locked out, wait 15 minutes, or
+  delete `~/nevaib-data/login-fails.json` (safe: it holds only counters).
+- **Tokens.** 64-hex tokens from `random_bytes(32)`, stored only as sha256 hashes, compared with
+  `hash_equals`, valid 90 days, max 8 per user, accepted only in the `X-Nevaib-Token` header
+  (never a URL parameter). Logout retires the presented token.
+- **Cookie sessions.** `HttpOnly`, `Secure` on HTTPS, browser-default `SameSite=Lax` (PHP 7.2 can't
+  set the attribute), strict mode (no adopting client-chosen ids), cookies only (no ids in URLs),
+  regenerated at login, absolute 30-day lifetime.
+- **CSRF.** `setup`, `login`, `logout` and `save-state` must be POST/PUT with
+  `Content-Type: application/json` (405 / 415 otherwise). An HTML form on another site can't send
+  that content type, and a cross-origin `fetch` with it needs a CORS preflight that only the
+  allow-listed origins (rametric.com, localhost, private LAN) pass. A browser `Origin` that is
+  neither allow-listed nor this host gets 403. Form-encoded bodies are no longer accepted
+  (the setup `curl` above already sends JSON). Reads stay GET, so the export link still works in a tab.
+- **Response headers.** `X-Content-Type-Options: nosniff`, `Referrer-Policy: no-referrer`,
+  `X-Frame-Options: DENY`, `Content-Security-Policy: default-src 'none'; frame-ancestors 'none'`,
+  `Cache-Control: no-store` (state is private; no proxy or browser cache keeps it).
+
+**Pages (`app/*.html`)** carry a `<meta>` CSP and referrer policy:
+`default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;
+connect-src 'self' https://rametric.com https://www.rametric.com http://localhost:* http://127.0.0.1:*;
+object-src 'none'; base-uri 'self'; form-action 'self'`. `'unsafe-inline'` stays because
+`author.html` and `cards.html` have inline `<script>` blocks and the pages use inline `<style>`
+and `style=""`. Moving those scripts into `assets/*.js` would allow dropping it for scripts —
+a later, separate change. A `<meta>` CSP can't set `frame-ancestors`; for that (and headers on
+static files generally) an optional `public_html/nevaib/.htaccess` would work on LiteSpeed:
+
+```apache
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "DENY"
+</IfModule>
+```
+
+It is **not** shipped by the build: test it on the host first (a bad `.htaccess` returns 500 for
+the whole folder), then add it to `tools/build_deploy.py` if wanted.
+
+**XSS.** Content (questions, cards, notes) is plain text by design. Every string built into
+`innerHTML` from content, imported backups, synced state or the user goes through one escaper,
+`NB.escapeHtml` (in `assets/store.js`; escapes `& < > " '`), with an identical local fallback in
+modules that load without `store.js`. `assets/notes.js` builds DOM nodes and never uses `innerHTML`.

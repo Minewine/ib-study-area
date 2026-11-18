@@ -55,8 +55,7 @@
     }
   };
 
-  const esc = (s) => String(s == null ? "" : s)
-    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  const esc = (window.NB && window.NB.escapeHtml) || ((s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;"));
 
   // NB.store (assets/store.js) is the storage layer; the literal below is only a
   // fallback for a stale cached page that didn't load store.js.
@@ -219,7 +218,7 @@
     if (!box) return;
     if (state.failed) {
       box.innerHTML = "<p class='muted'>Library manifest failed to load — is the site served over HTTP? (<code>" +
-        MANIFEST_URL + "</code>)</p>";
+        esc(MANIFEST_URL) + "</code>)</p>";
       return;
     }
     const f = filters();
