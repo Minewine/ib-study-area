@@ -1,0 +1,370 @@
+{
+ "subject": "chemistry-hl",
+ "topic": "chem-paper-1b-practice",
+ "topicLabel": "Paper 1B-style data practice (Structure & Reactivity)",
+ "paperStyle": "1B",
+ "about": "Original practice questions written for the IB Chemistry 2025 guide (HL). Not IB past-paper questions or markschemes, and not a prediction of exam questions. Data-based practice; a calculator is allowed.",
+ "items": [
+  {
+   "id": "p1b-s11-01",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-s1-1",
+   "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+   "stem": "Data: Heating curve data: a solid is heated at a constant rate. Temperature (°C) every minute: 20, 41, 62, 80, 80, 80, 80, 95, 110.\n\nState the melting point and explain the shape between minutes 3 and 6.",
+   "markscheme": [
+    "Melting point = 80 °C (1)",
+    "Between minutes 3 and 6 the solid is melting: the energy supplied overcomes attractions between particles, so average kinetic energy (temperature) does not rise (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units."
+  },
+  {
+   "id": "p1b-s12-01",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-s1-2",
+   "topicLabel": "S1.2 The nuclear atom",
+   "stem": "Data: Mass spectrum of element Q: m/z 69, relative abundance 60; m/z 71, relative abundance 40.\n\nCalculate Ar(Q) and use the data booklet to identify Q.",
+   "markscheme": [
+    "Ar = (69 × 60 + 71 × 40) ÷ 100 = 69.8 (1)",
+    "Q is gallium (closest Ar in the data booklet) (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units.",
+   "hl": true
+  },
+  {
+   "id": "p1b-s13-01",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-s1-3",
+   "topicLabel": "S1.3 Electron configurations",
+   "stem": "Data: Successive ionization energies of element R (kJ mol⁻¹): 1st 578, 2nd 1817, 3rd 2745, 4th 11577, 5th 14842.\n\nPlot or inspect log(IE) against electrons removed. Deduce the group and give the condensed configuration if R is in period 3.",
+   "markscheme": [
+    "Large jump between the 3rd and 4th ionization energies, so 3 valence electrons: group 13 (1)",
+    "Period 3: aluminium, [Ne]3s²3p¹ (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units.",
+   "hl": true
+  },
+  {
+   "id": "p1b-s14-01",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s1-4",
+   "topicLabel": "S1.4 Counting particles by mass: the mole",
+   "stem": "Data: Heating hydrated copper(II) sulfate. Crucible 20.00 g; crucible + hydrated salt 22.50 g; crucible after heating to constant mass 21.60 g. M(CuSO₄) = 159.62, M(H₂O) = 18.02.\n\nDetermine x in CuSO₄·xH₂O and suggest why heating to constant mass matters.",
+   "markscheme": [
+    "Anhydrous CuSO₄ = 1.60 g → 1.60 ÷ 159.62 = 0.0100 mol; water = 0.90 g → 0.90 ÷ 18.02 = 0.0499 mol (1)",
+    "Ratio ≈ 1 : 5, so x = 5 (1)",
+    "Heating to constant mass shows all the water has been removed; otherwise x comes out too low (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units."
+  },
+  {
+   "id": "p1b-s15-01",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-s1-5",
+   "topicLabel": "S1.5 Ideal gases",
+   "stem": "Data: Pressure–volume data for a gas at constant temperature: P/kPa 50, 100, 200, 400; V/cm³ 96, 48, 24, 12.\n\nShow the data fit the ideal model and state the graph that gives a straight line.",
+   "markscheme": [
+    "P × V = 4800 kPa cm³ for every pair, so V ∝ 1/P at constant temperature, as the ideal gas model predicts (1)",
+    "A graph of V against 1/P (or P against 1/V) is a straight line through the origin (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units."
+  },
+  {
+   "id": "p1b-s21-01",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s2-1",
+   "topicLabel": "S2.1 The ionic model",
+   "stem": "Data: Lattice enthalpies (kJ mol⁻¹, booklet): NaF 930, NaCl 790, NaBr 754, NaI 705; MgCl₂ 2540.\n\nDescribe and explain the trend from NaF to NaI and why MgCl₂ is much larger.",
+   "markscheme": [
+    "Lattice enthalpy decreases from NaF to NaI (1)",
+    "The halide ion gets larger, so the ions are further apart and the attraction is weaker (1)",
+    "Mg²⁺ has double the charge of Na⁺ and is smaller, so the attraction is much stronger (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units."
+  },
+  {
+   "id": "p1b-s22-01",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s2-2",
+   "topicLabel": "S2.2 The covalent model",
+   "stem": "Data: Boiling points (°C): CH₄ −162, SiH₄ −112, GeH₄ −88; NH₃ −33, PH₃ −88, AsH₃ −62.\n\nExplain the trend in group 14 hydrides and why NH₃ does not follow the group 15 trend.",
+   "markscheme": [
+    "Group 14: boiling point increases down the group (1)",
+    "More electrons, so stronger London (dispersion) forces between molecules (1)",
+    "NH₃ forms hydrogen bonds between molecules (N–H with a lone pair on N); PH₃ and AsH₃ do not, so NH₃ is anomalously high (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units."
+  },
+  {
+   "id": "p1b-s22-02",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-s2-2",
+   "topicLabel": "S2.2 The covalent model",
+   "stem": "Data: Chromatogram: solvent front 10.0 cm. Unknown spots at 2.5 cm and 6.0 cm. Standards: A Rf 0.25, B Rf 0.45, C Rf 0.60.\n\nIdentify the components of the unknown.",
+   "markscheme": [
+    "Rf of the spots: 2.5 ÷ 10.0 = 0.25 and 6.0 ÷ 10.0 = 0.60 (1)",
+    "The unknown contains A and C (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units."
+  },
+  {
+   "id": "p1b-s23-01",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-s2-3",
+   "topicLabel": "S2.3 The metallic model",
+   "stem": "Data: Melting points (°C): Li 180, Na 98, K 63, Rb 39.\n\nDescribe and explain the trend.",
+   "markscheme": [
+    "Melting point decreases down group 1 (1)",
+    "Ionic radius increases, so the attraction between the 1+ ions and the delocalized electrons weakens (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units."
+  },
+  {
+   "id": "p1b-s24-01",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s2-4",
+   "topicLabel": "S2.4 From models to materials",
+   "stem": "Data: Electronegativity data: Mg 1.3, Si 1.9, S 2.6, O 3.4.\n\nUse the bonding triangle to compare the bonding in MgO and SiO₂ and link to one property of each.",
+   "markscheme": [
+    "MgO: Δχ = 2.1, average χ = 2.35, so in the ionic region of the triangle (1)",
+    "SiO₂: Δχ = 1.5, average χ = 2.65, so polar covalent (a giant covalent network) (1)",
+    "One linked property each, e.g. MgO conducts when molten; SiO₂ has a very high melting point and does not conduct (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units."
+  },
+  {
+   "id": "p1b-s31-01",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s3-1",
+   "topicLabel": "S3.1 The periodic table: classification of elements",
+   "stem": "Data: First IE (kJ mol⁻¹) across period 3: Na 496, Mg 738, Al 578, Si 787, P 1012, S 1000, Cl 1251, Ar 1520.\n\nDescribe the general trend and identify the two places where it breaks.",
+   "markscheme": [
+    "General increase across the period: nuclear charge increases while electrons enter the same shell (1)",
+    "Decrease from Mg to Al: Al's outer electron is in 3p, higher in energy than 3s (1)",
+    "Decrease from P to S: S has a paired 3p electron, and the extra repulsion makes it easier to remove (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units."
+  },
+  {
+   "id": "p1b-s31-02",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-s3-1",
+   "topicLabel": "S3.1 The periodic table: classification of elements",
+   "stem": "Data: A solution of [Ni(H₂O)₆]²⁺ absorbs strongly near 400 nm and 700 nm and weakly in between.\n\nUse the colour wheel to suggest the colour of the solution.",
+   "markscheme": [
+    "It absorbs violet (about 400 nm) and red (about 700 nm) light (1)",
+    "It transmits the middle of the spectrum, so it appears green (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units.",
+   "hl": true
+  },
+  {
+   "id": "p1b-s32-01",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s3-2",
+   "topicLabel": "S3.2 Functional groups: classification of organic compounds",
+   "stem": "Data: Unknown X, C₂H₄O₂. IR: very broad 2500–3000 cm⁻¹ and strong 1710 cm⁻¹. ¹H NMR: singlet at 2.1 ppm (3H), singlet at 11.5 ppm (1H).\n\nIdentify X, using the booklet IR and NMR tables.",
+   "markscheme": [
+    "IR: very broad 2500–3000 cm⁻¹ is O–H in a carboxylic acid; 1710 cm⁻¹ is C=O (1)",
+    "¹H NMR: 3H singlet at 2.1 ppm is CH₃ next to C=O; 1H singlet at 11.5 ppm is the COOH proton (1)",
+    "X is ethanoic acid, CH₃COOH (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units.",
+   "hl": true
+  },
+  {
+   "id": "p1b-r11-01",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-r1-1",
+   "topicLabel": "R1.1 Measuring enthalpy changes",
+   "stem": "Data: Temperature–time data: a solution sits at 21.0 °C for 3 min, reagent added at 4 min; readings then fall steadily from 27.5 °C at 5 min to 26.0 °C at 9 min.\n\nExplain how to find the best value of ΔT from a graph of these data.",
+   "markscheme": [
+    "Extrapolate the cooling line back to the time of mixing (4 min) to correct for heat lost while the temperature was rising (1)",
+    "Maximum ≈ 27.9 °C, so ΔT ≈ 6.9 K (accept 6.8–7.0 K) rather than 6.5 K (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units."
+  },
+  {
+   "id": "p1b-r12-01",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r1-2",
+   "topicLabel": "R1.2 Energy cycles in reactions",
+   "stem": "Data: Born–Haber data for MgO (kJ mol⁻¹): atomisation Mg +148; IE₁ +738; IE₂ +1451; ½O=O +249; EA₁(O) −141; EA₂(O) +753; ΔHf(MgO) −602.\n\nCalculate the lattice enthalpy of MgO and explain why EA₂ is positive.",
+   "markscheme": [
+    "Lattice enthalpy = sum of the other steps − ΔHf: 148 + 738 + 1451 + 249 − 141 + 753 + 602 (1)",
+    "= +3800 kJ mol⁻¹ (compare with the data booklet value) (1)",
+    "EA₂ is endothermic: the electron is added to an O⁻ ion, which repels it (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units.",
+   "hl": true
+  },
+  {
+   "id": "p1b-r13-01",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-r1-3",
+   "topicLabel": "R1.3 Energy from fuels",
+   "stem": "Data: Booklet ΔHc (kJ mol⁻¹): methanol −726 (M 32.05); ethanol −1367 (M 46.08); octane −5470 (M 114.26).\n\nRank the fuels by energy released per gram.",
+   "markscheme": [
+    "Energy per gram = |ΔHc| ÷ M: octane 47.9, ethanol 29.7, methanol 22.7 kJ g⁻¹ (1)",
+    "Order: octane > ethanol > methanol (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units."
+  },
+  {
+   "id": "p1b-r14-01",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-r1-4",
+   "topicLabel": "R1.4 Entropy and spontaneity (additional higher level)",
+   "stem": "Data: Booklet-style data (S⦵ / J K⁻¹ mol⁻¹): C₂H₄(g) +220; H₂(g) +131; C₂H₆(g) +230.\n\nCalculate ΔS⦵ for C₂H₄ + H₂ → C₂H₆ and explain its sign.",
+   "markscheme": [
+    "ΔS⦵ = 230 − (220 + 131) = −121 J K⁻¹ mol⁻¹ (1)",
+    "Negative: 2 mol of gas become 1 mol of gas, so fewer ways to arrange particles and energy (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units.",
+   "hl": true
+  },
+  {
+   "id": "p1b-r21-01",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r2-1",
+   "topicLabel": "R2.1 How much? The amount of chemical change",
+   "stem": "Data: Titration results for 25.00 cm³ of NaOH against 0.100 mol dm⁻³ H₂SO₄: rough 13.1 cm³; runs 12.45, 12.50, 12.40 cm³.\n\nCalculate the mean titre (concordant runs) and [NaOH]. H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O.",
+   "markscheme": [
+    "Mean of the concordant titres (rough excluded) = 12.45 cm³ (1)",
+    "n(H₂SO₄) = 0.100 × 0.01245 = 1.245 × 10⁻³ mol, so n(NaOH) = 2 × 1.245 × 10⁻³ = 2.49 × 10⁻³ mol (1)",
+    "[NaOH] = 2.49 × 10⁻³ ÷ 0.02500 = 0.0996 mol dm⁻³ (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units."
+  },
+  {
+   "id": "p1b-r22-01",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r2-2",
+   "topicLabel": "R2.2 How fast? The rate of chemical change",
+   "stem": "Data: Volume of CO₂ from marble chips + HCl: t/s 0, 30, 60, 90, 120, 150; V/cm³ 0, 28, 46, 57, 62, 62.\n\nDescribe how the rate changes and explain why it stops; estimate the average rate in the first 30 s.",
+   "markscheme": [
+    "Rate decreases with time: acid concentration falls, so fewer successful collisions per second (1)",
+    "Volume stays at 62 cm³ from about 120 s because the limiting reactant is used up (1)",
+    "Average rate over the first 30 s = 28 ÷ 30 ≈ 0.93 cm³ s⁻¹ (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units."
+  },
+  {
+   "id": "p1b-r22-02",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-r2-2",
+   "topicLabel": "R2.2 How fast? The rate of chemical change",
+   "stem": "Data: ln k against 1/T data: 1/T = 3.30 × 10⁻³ K⁻¹, ln k = −5.0; 1/T = 3.10 × 10⁻³ K⁻¹, ln k = −3.8.\n\nCalculate Ea.",
+   "markscheme": [
+    "Gradient = (−3.8 − (−5.0)) ÷ (3.10 × 10⁻³ − 3.30 × 10⁻³) = −6.0 × 10³ K (1)",
+    "Gradient = −Ea/R, so Ea = 6.0 × 10³ × 8.31 ≈ 5.0 × 10⁴ J mol⁻¹ = 50 kJ mol⁻¹ (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units.",
+   "hl": true
+  },
+  {
+   "id": "p1b-r23-01",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r2-3",
+   "topicLabel": "R2.3 How far? The extent of chemical change",
+   "stem": "Data: Equilibrium data at 700 K for H₂ + I₂ ⇌ 2HI: [H₂] = 0.010, [I₂] = 0.010, [HI] = 0.070 mol dm⁻³. A second mixture has [H₂] = 0.020, [I₂] = 0.020, [HI] = 0.10.\n\nCalculate K and Q for the second mixture, and state the direction of change.",
+   "markscheme": [
+    "K = 0.070² ÷ (0.010 × 0.010) = 49 (1)",
+    "Q = 0.10² ÷ (0.020 × 0.020) = 25 (1)",
+    "Q < K, so there is a net forward reaction: more HI forms until Q = K (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units.",
+   "hl": true
+  },
+  {
+   "id": "p1b-r31-01",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r3-1",
+   "topicLabel": "R3.1 Proton transfer reactions",
+   "stem": "Data: pH curve: 25.0 cm³ of a weak acid titrated with 0.100 mol dm⁻³ NaOH. Start pH 2.9; pH 4.8 at 12.5 cm³; steep rise from pH 7 to 11 centred on 25.0 cm³.\n\nDetermine the concentration and pKa of the acid and choose an indicator from the booklet.",
+   "markscheme": [
+    "Equivalence at 25.0 cm³ with a 1 : 1 ratio, so c(acid) = 0.100 mol dm⁻³ (1)",
+    "pKa = pH at half-equivalence (12.5 cm³) = 4.8 (1)",
+    "Phenolphthalein: its colour-change range (data booklet) lies within the steep section, pH 7–11 (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units.",
+   "hl": true
+  },
+  {
+   "id": "p1b-r32-01",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-r3-2",
+   "topicLabel": "R3.2 Electron transfer reactions",
+   "stem": "Data: Displacement results (✓ = reaction): metal W in X²⁺(aq) ✓, in Y²⁺(aq) ✓; metal X in W²⁺(aq) ✗, in Y²⁺(aq) ✓; metal Y in W²⁺ ✗, in X²⁺ ✗.\n\nRank W, X and Y in order of ease of oxidation and justify.",
+   "markscheme": [
+    "W > X > Y (1)",
+    "W displaces both other metals, X displaces only Y, Y displaces neither: a more easily oxidised metal displaces the ions of a less easily oxidised one (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units."
+  },
+  {
+   "id": "p1b-r32-02",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r3-2",
+   "topicLabel": "R3.2 Electron transfer reactions",
+   "stem": "Data: Selected E⦵/V: Mg²⁺/Mg −2.37; Fe²⁺/Fe −0.45; Cu²⁺/Cu +0.34; Cl₂/Cl⁻ +1.36.\n\nIdentify the strongest oxidising agent and the strongest reducing agent, and the pair of half-cells giving the largest E⦵cell.",
+   "markscheme": [
+    "Strongest oxidising agent: Cl₂ (most positive E⦵) (1)",
+    "Strongest reducing agent: Mg (most negative E⦵) (1)",
+    "Mg/Cl₂ cell: E⦵cell = 1.36 − (−2.37) = +3.73 V (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units.",
+   "hl": true
+  },
+  {
+   "id": "p1b-r33-01",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-r3-3",
+   "topicLabel": "R3.3 Electron sharing reactions",
+   "stem": "Data: Bond enthalpies (kJ mol⁻¹, booklet): C–H 414, Cl–Cl 242, Br–Br 193.\n\nExplain which bond UV light breaks in initiation.",
+   "markscheme": [
+    "The halogen–halogen bond (Cl–Cl or Br–Br) breaks (1)",
+    "It is much weaker than C–H, so UV photons have enough energy to break it homolytically, giving radicals (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units."
+  },
+  {
+   "id": "p1b-r34-01",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-r3-4",
+   "topicLabel": "R3.4 Electron-pair sharing reactions",
+   "stem": "Data: Initial rate data for RBr + OH⁻: doubling [RBr] doubles the rate; doubling [OH⁻] leaves the rate unchanged.\n\nDeduce the rate equation and whether RBr is primary or tertiary.",
+   "markscheme": [
+    "Rate = k[RBr]: first order in RBr, zero order in OH⁻ (1)",
+    "OH⁻ is not in the rate-determining step, so the mechanism is SN1 and RBr is most likely tertiary (1)"
+   ],
+   "tactic": "Data questions: quote the numbers you use, show each step, and give units.",
+   "hl": true
+  }
+ ]
+}

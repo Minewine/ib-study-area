@@ -279,7 +279,7 @@ BASE = """<!DOCTYPE html>
 __CONTENT__
 </main>
 <footer>Private family study area · exams <strong>May 2028</strong> · keep this site and its library non-public</footer>
-<script src="assets/store.js?v=2"></script>
+<script src="assets/store.js?v=3"></script>
 <script src="assets/app.js?v=4"></script>
 </body>
 </html>
@@ -389,7 +389,7 @@ def page(fname, title, content_html, active):
         h = h.replace("</nav>", '  <span id="auth-slot"></span>\n</nav>', 1)
         h = h.replace(
             '<script src="assets/app.js?v=4"></script>',
-            '<script src="assets/app.js?v=4"></script>\n<script src="assets/auth.js?v=8"></script>',
+            '<script src="assets/app.js?v=4"></script>\n<script src="assets/auth.js?v=9"></script>',
             1,
         )
     if fname in EXTRA_SCRIPTS:

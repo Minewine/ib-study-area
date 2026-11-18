@@ -1,0 +1,360 @@
+{
+ "subject": "chemistry-hl",
+ "topic": "chem-p1a-structure-2-3",
+ "topicLabel": "Paper 1A-style calculator-free practice — Structure 2–3",
+ "paperStyle": "1A",
+ "calculatorFree": true,
+ "about": "Original practice questions written for the IB Chemistry 2025 guide (HL). Not IB past-paper questions or markschemes, and not a prediction of exam questions. Calculator-free practice: every item can be done without a calculator.",
+ "items": [
+  {
+   "id": "p1a-s21-01",
+   "format": "mcq",
+   "topic": "chem-s2-1",
+   "topicLabel": "S2.1 The ionic model",
+   "stem": "What is the formula of ammonium carbonate?",
+   "choices": [
+    "NH₄CO₃",
+    "(NH₄)₂CO₃",
+    "NH₄(CO₃)₂",
+    "(NH₃)₂CO₃"
+   ],
+   "answer": 1,
+   "note": "2 × (1+) balances 2−."
+  },
+  {
+   "id": "p1a-s21-02",
+   "format": "mcq",
+   "topic": "chem-s2-1",
+   "topicLabel": "S2.1 The ionic model",
+   "stem": "Which ion would group 16 sulfur form?",
+   "choices": [
+    "S⁶⁺",
+    "S²⁺",
+    "S²⁻",
+    "S⁶⁻"
+   ],
+   "answer": 2,
+   "note": "Gains two electrons."
+  },
+  {
+   "id": "p1a-s21-03",
+   "format": "mcq",
+   "topic": "chem-s2-1",
+   "topicLabel": "S2.1 The ionic model",
+   "stem": "Which statement explains why NaCl(aq) conducts electricity?",
+   "choices": [
+    "Delocalised electrons",
+    "Mobile ions",
+    "Free Na atoms",
+    "Polar molecules"
+   ],
+   "answer": 1,
+   "note": "Ions move in solution."
+  },
+  {
+   "id": "p1a-s22-01",
+   "format": "mcq",
+   "topic": "chem-s2-2",
+   "topicLabel": "S2.2 The covalent model",
+   "stem": "What is the shape of BF₃?",
+   "choices": [
+    "Trigonal pyramidal",
+    "Trigonal planar",
+    "T-shaped",
+    "Tetrahedral"
+   ],
+   "answer": 1,
+   "note": "Three domains, no lone pair on B."
+  },
+  {
+   "id": "p1a-s22-02",
+   "format": "mcq",
+   "topic": "chem-s2-2",
+   "topicLabel": "S2.2 The covalent model",
+   "stem": "Which molecule is non-polar?",
+   "choices": [
+    "NH₃",
+    "H₂O",
+    "CCl₄",
+    "CHCl₃"
+   ],
+   "answer": 2,
+   "note": "Tetrahedral, dipoles cancel."
+  },
+  {
+   "id": "p1a-s22-03",
+   "format": "mcq",
+   "topic": "chem-s2-2",
+   "topicLabel": "S2.2 The covalent model",
+   "stem": "Which substance has hydrogen bonding between its molecules?",
+   "choices": [
+    "CH₄",
+    "HCl",
+    "CH₃OCH₃",
+    "CH₃OH"
+   ],
+   "answer": 3,
+   "note": "H attached to O."
+  },
+  {
+   "id": "p1a-s22-04",
+   "format": "mcq",
+   "topic": "chem-s2-2",
+   "topicLabel": "S2.2 The covalent model",
+   "stem": "Why does graphite conduct electricity?",
+   "choices": [
+    "Ions move",
+    "Delocalised electrons between layers",
+    "Layers slide",
+    "Weak London forces"
+   ],
+   "answer": 1,
+   "note": "Each C has one delocalised electron."
+  },
+  {
+   "id": "p1a-s22-05",
+   "format": "mcq",
+   "topic": "chem-s2-2",
+   "topicLabel": "S2.2 The covalent model",
+   "stem": "How many σ and π bonds are in HCN?",
+   "choices": [
+    "2σ, 2π",
+    "2σ, 1π",
+    "3σ, 1π",
+    "1σ, 2π"
+   ],
+   "answer": 0,
+   "note": "H–C σ; C≡N = 1σ + 2π.",
+   "hl": true
+  },
+  {
+   "id": "p1a-s23-01",
+   "format": "mcq",
+   "topic": "chem-s2-3",
+   "topicLabel": "S2.3 The metallic model",
+   "stem": "Which metal has the strongest metallic bonding?",
+   "choices": [
+    "Na",
+    "K",
+    "Mg",
+    "Al"
+   ],
+   "answer": 3,
+   "note": "Highest charge, smallest ion."
+  },
+  {
+   "id": "p1a-s23-02",
+   "format": "mcq",
+   "topic": "chem-s2-3",
+   "topicLabel": "S2.3 The metallic model",
+   "stem": "What carries the charge when a solid metal conducts?",
+   "choices": [
+    "Cations",
+    "Anions",
+    "Delocalised electrons",
+    "Protons"
+   ],
+   "answer": 2,
+   "note": "Electrons are mobile."
+  },
+  {
+   "id": "p1a-s24-01",
+   "format": "mcq",
+   "topic": "chem-s2-4",
+   "topicLabel": "S2.4 From models to materials",
+   "stem": "Which substance is closest to the ionic corner of the bonding triangle?",
+   "choices": [
+    "CsF",
+    "CCl₄",
+    "Na",
+    "SiO₂"
+   ],
+   "answer": 0,
+   "note": "Largest electronegativity difference."
+  },
+  {
+   "id": "p1a-s24-02",
+   "format": "mcq",
+   "topic": "chem-s2-4",
+   "topicLabel": "S2.4 From models to materials",
+   "stem": "What is produced alongside poly(ethene) when ethene polymerises?",
+   "choices": [
+    "Water",
+    "Hydrogen",
+    "Nothing",
+    "HCl"
+   ],
+   "answer": 2,
+   "note": "Addition polymerisation has one product."
+  },
+  {
+   "id": "p1a-s24-03",
+   "format": "mcq",
+   "topic": "chem-s2-4",
+   "topicLabel": "S2.4 From models to materials",
+   "stem": "Which pair of monomers forms a polyester?",
+   "choices": [
+    "Diol + dicarboxylic acid",
+    "Diamine + dicarboxylic acid",
+    "Two alkenes",
+    "Diol + diamine"
+   ],
+   "answer": 0,
+   "note": "Ester links from –OH and –COOH.",
+   "hl": true
+  },
+  {
+   "id": "p1a-s31-01",
+   "format": "mcq",
+   "topic": "chem-s3-1",
+   "topicLabel": "S3.1 The periodic table: classification of elements",
+   "stem": "Which element is in period 4 and group 15?",
+   "choices": [
+    "P",
+    "As",
+    "Sb",
+    "Ge"
+   ],
+   "answer": 1,
+   "note": "Period 4, five valence electrons: arsenic."
+  },
+  {
+   "id": "p1a-s31-02",
+   "format": "mcq",
+   "topic": "chem-s3-1",
+   "topicLabel": "S3.1 The periodic table: classification of elements",
+   "stem": "Which oxide gives an acidic solution in water?",
+   "choices": [
+    "Na₂O",
+    "MgO",
+    "CaO",
+    "SO₂"
+   ],
+   "answer": 3,
+   "note": "Non-metal oxide: forms H₂SO₃."
+  },
+  {
+   "id": "p1a-s31-03",
+   "format": "mcq",
+   "topic": "chem-s3-1",
+   "topicLabel": "S3.1 The periodic table: classification of elements",
+   "stem": "What is the oxidation state of hydrogen in CaH₂?",
+   "choices": [
+    "−2",
+    "−1",
+    "0",
+    "+1"
+   ],
+   "answer": 1,
+   "note": "Metal hydride: H is −1 (Ca is +2)."
+  },
+  {
+   "id": "p1a-s31-04",
+   "format": "mcq",
+   "topic": "chem-s3-1",
+   "topicLabel": "S3.1 The periodic table: classification of elements",
+   "stem": "Which ion has the smallest radius?",
+   "choices": [
+    "Na⁺",
+    "Mg²⁺",
+    "F⁻",
+    "O²⁻"
+   ],
+   "answer": 1,
+   "note": "All have 10 electrons; Mg²⁺ has the most protons."
+  },
+  {
+   "id": "p1a-s31-05",
+   "format": "mcq",
+   "topic": "chem-s3-1",
+   "topicLabel": "S3.1 The periodic table: classification of elements",
+   "stem": "Which property is NOT typical of transition elements?",
+   "choices": [
+    "Coloured compounds",
+    "Variable oxidation states",
+    "Low melting points",
+    "Catalytic activity"
+   ],
+   "answer": 2,
+   "note": "They have high melting points.",
+   "hl": true
+  },
+  {
+   "id": "p1a-s32-01",
+   "format": "mcq",
+   "topic": "chem-s3-2",
+   "topicLabel": "S3.2 Functional groups: classification of organic compounds",
+   "stem": "What is the name of CH₃CH₂CH₂CHO?",
+   "choices": [
+    "Butanone",
+    "Butanal",
+    "Butan-1-ol",
+    "Butanoic acid"
+   ],
+   "answer": 1,
+   "note": "–CHO on a 4-carbon chain."
+  },
+  {
+   "id": "p1a-s32-02",
+   "format": "mcq",
+   "topic": "chem-s3-2",
+   "topicLabel": "S3.2 Functional groups: classification of organic compounds",
+   "stem": "Which pair are functional group isomers?",
+   "choices": [
+    "Propan-1-ol and propan-2-ol",
+    "Butane and methylpropane",
+    "Propanal and propanone",
+    "Ethanol and methanol"
+   ],
+   "answer": 2,
+   "note": "Same formula C₃H₆O, different groups."
+  },
+  {
+   "id": "p1a-s32-03",
+   "format": "mcq",
+   "topic": "chem-s3-2",
+   "topicLabel": "S3.2 Functional groups: classification of organic compounds",
+   "stem": "Which alcohol is tertiary?",
+   "choices": [
+    "Butan-1-ol",
+    "Butan-2-ol",
+    "2-methylpropan-2-ol",
+    "2-methylpropan-1-ol"
+   ],
+   "answer": 2,
+   "note": "C–OH carbon bonded to three carbons."
+  },
+  {
+   "id": "p1a-s32-04",
+   "format": "mcq",
+   "topic": "chem-s3-2",
+   "topicLabel": "S3.2 Functional groups: classification of organic compounds",
+   "stem": "How many signals are in the ¹H NMR spectrum of propan-2-ol?",
+   "choices": [
+    "2",
+    "3",
+    "4",
+    "8"
+   ],
+   "answer": 1,
+   "note": "Two equivalent CH₃, one CH, one OH.",
+   "hl": true
+  },
+  {
+   "id": "p1a-s32-05",
+   "format": "mcq",
+   "topic": "chem-s3-2",
+   "topicLabel": "S3.2 Functional groups: classification of organic compounds",
+   "stem": "Which compound has a chiral carbon?",
+   "choices": [
+    "CH₃CH₂CH₂Cl",
+    "CH₃CHClCH₃",
+    "CH₃CHClCH₂CH₃",
+    "CH₂ClCH₂Cl"
+   ],
+   "answer": 2,
+   "note": "C2 has H, Cl, CH₃, C₂H₅.",
+   "hl": true
+  }
+ ]
+}

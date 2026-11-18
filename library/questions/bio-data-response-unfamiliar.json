@@ -1,0 +1,375 @@
+{
+ "subject": "biology-hl",
+ "topic": "bio-data-response",
+ "topicLabel": "Data response & extended answers (unfamiliar contexts)",
+ "about": "Original practice questions written for the IB Biology 2025 guide (HL). Not IB past-paper questions or markschemes, and not a prediction of exam questions. Organisms and experiments marked as invented are made up for practice. Marking guidance is written for self-marking, not IB markscheme text.",
+ "items": [
+  {
+   "id": "dr-01",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-a1-1",
+   "topicLabel": "A1.1 Water",
+   "stem": "(This organism/experiment is invented for practice.) Data: A desert beetle collects water from fog. Its back has smooth bumps that water spreads on (water attracted to the surface) separated by waxy grooves that water beads up on.\n\nExplain, using the properties of water, how droplets form on the bumps and then run along the grooves to the beetle's mouth.",
+   "markscheme": [
+    "Bumps are hydrophilic: water adheres to them (adhesion), so fog droplets collect there (1)",
+    "Cohesion (hydrogen bonds between water molecules) lets small droplets merge into larger drops (1)",
+    "Grooves are hydrophobic: water is not attracted to the wax, so large drops roll along them rather than spreading (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea it is testing, then use the numbers given. Describe the data before you explain it."
+  },
+  {
+   "id": "dr-02",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-a1-2",
+   "topicLabel": "A1.2 Nucleic acids",
+   "stem": "(This organism/experiment is invented for practice.) Data: DNA from a newly discovered bacterium contains 18 % adenine and 32 % guanine. DNA from a virus contains A 24 %, T 31 %, G 19 %, C 26 %.\n\nDeduce the percentages of T and C in the bacterial DNA, and suggest what the virus data show about its genome.",
+   "markscheme": [
+    "Bacterium: T = 18 %, C = 32 % (1)",
+    "Because in double-stranded DNA A pairs with T and G with C, so A = T and G = C (1)",
+    "In the virus A ≠ T and G ≠ C, so its DNA is probably single-stranded (no complementary partner strand) (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea it is testing, then use the numbers given. Describe the data before you explain it."
+  },
+  {
+   "id": "dr-03",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-a2-1",
+   "topicLabel": "A2.1 Origins of cells",
+   "stem": "Data: In a model experiment, fatty acids added to water formed hollow vesicles at pH 7–8.5 but not at pH 4. Adding fine clay particles made vesicles form about 100 times faster, and RNA attached to the clay often ended up inside the vesicles.\n\nExplain how these results support a hypothesis about the origin of the first cells.",
+   "markscheme": [
+    "Simple amphipathic molecules can assemble into membrane-bound compartments spontaneously, without enzymes (1)",
+    "A compartment separates internal chemistry from the surroundings, so molecules can be concentrated inside (1)",
+    "Mineral (clay) surfaces could speed up assembly and bring self-replicating molecules such as RNA inside, forming a protocell (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea it is testing, then use the numbers given. Describe the data before you explain it.",
+   "hl": true
+  },
+  {
+   "id": "dr-04",
+   "format": "written",
+   "marks": 2,
+   "topic": "bio-a2-2",
+   "topicLabel": "A2.2 Cell structure",
+   "stem": "Data: At ×400 the microscope's field of view is 400 µm across. A cell spans one-eighth of the field. A student's drawing of the cell is 25 mm long.\n\nCalculate the actual size of the cell and the magnification of the drawing.",
+   "markscheme": [
+    "Actual size = 400 ÷ 8 = 50 µm (1)",
+    "Magnification = image size ÷ actual size = 25 000 µm ÷ 50 µm = ×500 (1)"
+   ],
+   "tactic": "Magnification: convert both sizes to the same unit before dividing."
+  },
+  {
+   "id": "dr-05",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-a2-2",
+   "topicLabel": "A2.2 Cell structure",
+   "stem": "(This organism/experiment is invented for practice.) Data: A single-celled organism from a deep-sea vent is 2 µm across. It has 70S ribosomes, a circular DNA molecule with no surrounding membrane, and no membrane-bound organelles.\n\nClassify the organism as prokaryote or eukaryote, giving evidence, and explain why size alone would not be enough.",
+   "markscheme": [
+    "Prokaryote: DNA not enclosed in a nucleus (in a nucleoid) and circular (1)",
+    "70S ribosomes and no membrane-bound organelles (1)",
+    "Size ranges overlap: some eukaryotic cells are very small and some prokaryotes large, so structure decides (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea it is testing, then use the numbers given. Describe the data before you explain it."
+  },
+  {
+   "id": "dr-06",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-a2-3",
+   "topicLabel": "A2.3 Viruses",
+   "stem": "(This organism/experiment is invented for practice.) Data: A virus that infects bacteria is added to a culture at 0 min. The number of free virus particles in the medium stays constant from 0 to 25 min, then rises about 100-fold at 30 min.\n\nExplain the pattern.",
+   "markscheme": [
+    "0–25 min: viruses attach and inject their nucleic acid; new virus particles are being made inside the cells, so none are released (1)",
+    "The host cell's enzymes and ribosomes copy the viral genome and make capsid proteins, which assemble into new viruses (1)",
+    "At about 30 min the host cells burst (lysis), releasing many new viruses from each cell: lytic cycle (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea it is testing, then use the numbers given. Describe the data before you explain it.",
+   "hl": true
+  },
+  {
+   "id": "dr-07",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b1-1",
+   "topicLabel": "B1.1 Carbohydrates and lipids",
+   "stem": "(This organism/experiment is invented for practice.) Data: The tiny wind-dispersed seeds of a mountain plant store 60 % of their dry mass as lipid. Energy released: lipid about 39 kJ g⁻¹, carbohydrate about 17 kJ g⁻¹.\n\nExplain the advantage of storing lipid rather than starch in these seeds.",
+   "markscheme": [
+    "Lipid releases roughly twice as much energy per gram as carbohydrate (1)",
+    "So the same energy store has less mass: a lighter seed travels further on the wind (1)",
+    "Lipids are hydrophobic, so they are stored without associated water, saving further mass (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea it is testing, then use the numbers given. Describe the data before you explain it."
+  },
+  {
+   "id": "dr-08",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b2-1",
+   "topicLabel": "B2.1 Membranes and membrane transport",
+   "stem": "(This organism/experiment is invented for practice.) Data: Melting points of fatty acids: stearic (18 C, no double bonds) 69 °C; oleic (18 C, one cis double bond) 13 °C; linoleic (18 C, two cis double bonds) −5 °C. Fish species P lives at 2 °C, species Q at 25 °C.\n\nPredict which species has more unsaturated fatty acids in its membranes and explain.",
+   "markscheme": [
+    "Species P (cold water) has more unsaturated fatty acids (1)",
+    "Cis double bonds put kinks in the tails, so they pack less closely and have lower melting points (1)",
+    "This keeps P's membranes fluid at 2 °C, so membrane proteins and transport still work (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea it is testing, then use the numbers given. Describe the data before you explain it."
+  },
+  {
+   "id": "dr-09",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b1-2",
+   "topicLabel": "B1.2 Proteins",
+   "stem": "(This organism/experiment is invented for practice.) Data: An enzyme from a hot-spring bacterium keeps its activity at 85 °C. Compared with a similar enzyme from a soil bacterium, it has many more disulfide bonds and ionic bonds between R groups.\n\nExplain how these features make it heat-stable.",
+   "markscheme": [
+    "The 3D (tertiary) shape is held by bonds between R groups (1)",
+    "Covalent disulfide bonds are strong and are not broken at these temperatures; extra ionic bonds add further stability (1)",
+    "More energy is needed to denature the protein, so the active site keeps its shape at 85 °C (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea it is testing, then use the numbers given. Describe the data before you explain it."
+  },
+  {
+   "id": "dr-10",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b1-2",
+   "topicLabel": "B1.2 Proteins",
+   "stem": "(This organism/experiment is invented for practice.) Data: In a cell-surface enzyme, a mutation replaces a leucine (hydrophobic R group) buried in the protein's interior with a lysine (positively charged R group). Activity falls to 5 % of normal.\n\nExplain this result.",
+   "markscheme": [
+    "Folding depends on R groups; hydrophobic R groups cluster inside, away from water (1)",
+    "A charged R group in the interior disrupts these interactions, so the protein folds differently (1)",
+    "The active site changes shape, so substrate binds poorly and activity falls (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea it is testing, then use the numbers given. Describe the data before you explain it."
+  },
+  {
+   "id": "dr-11",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b2-1",
+   "topicLabel": "B2.1 Membranes and membrane transport",
+   "stem": "(This organism/experiment is invented for practice.) Data: Uptake rate of a sugar into root cells (arbitrary units) at external concentrations of 0.5, 1, 2, 4 and 8 mM: 2, 4, 7, 9, 9.5. Adding cyanide (which stops ATP production) does not change these rates.\n\nDeduce the mechanism of uptake, with reasons.",
+   "markscheme": [
+    "The rate levels off at high concentration, so carrier/channel proteins become saturated (1)",
+    "Cyanide has no effect, so no ATP is needed: not active transport (1)",
+    "So the mechanism is facilitated diffusion (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea it is testing, then use the numbers given. Describe the data before you explain it."
+  },
+  {
+   "id": "dr-12",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b2-1",
+   "topicLabel": "B2.1 Membranes and membrane transport",
+   "stem": "(This organism/experiment is invented for practice.) Data: A freshwater alga holds K⁺ at 50 times the concentration in the pond water. K⁺ uptake stops when oxygen is removed or when the alga is cooled to 4 °C.\n\nIdentify the uptake mechanism and justify your answer.",
+   "markscheme": [
+    "Active transport (pump proteins) (1)",
+    "K⁺ moves against its concentration gradient (1)",
+    "It needs ATP from aerobic respiration, so it stops without oxygen; low temperature slows the enzymes/pumps (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea it is testing, then use the numbers given. Describe the data before you explain it."
+  },
+  {
+   "id": "dr-13",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-b2-2",
+   "topicLabel": "B2.2 Organelles and compartmentalization",
+   "stem": "Data: To isolate organelles, liver tissue is ground in a cold, isotonic, buffered solution and spun at increasing speeds. The fraction that settles at a medium speed has the highest activity of the enzymes of aerobic respiration.\n\nExplain why the solution is cold, isotonic and buffered, and identify the organelles in the medium-speed fraction.",
+   "markscheme": [
+    "Cold: slows enzymes, e.g. digestive enzymes released from broken lysosomes that would damage organelles (1)",
+    "Isotonic: no net water movement by osmosis, so organelles don't burst or shrink (1)",
+    "Buffered: keeps pH constant so proteins are not denatured (1)",
+    "Mitochondria: the site of the later stages of aerobic respiration (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea it is testing, then use the numbers given. Describe the data before you explain it."
+  },
+  {
+   "id": "dr-14",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b2-3",
+   "topicLabel": "B2.3 Cell specialization",
+   "stem": "(This organism/experiment is invented for practice.) Data: Surface area : volume ratios of cube-shaped cells: 1 µm side 6 : 1; 10 µm side 0.6 : 1; 100 µm side 0.06 : 1. A newly found single-celled organism is 2 mm long but only a few µm thick, like a flat ribbon.\n\nExplain the significance of the shape for this organism.",
+   "markscheme": [
+    "SA : V falls as size increases (tenfold for each tenfold increase in side) (1)",
+    "The volume's demand for O₂/nutrients and waste removal would exceed what diffusion across the surface supplies (1)",
+    "A flat ribbon keeps SA : V high and diffusion distances short, so exchange is still fast enough (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea it is testing, then use the numbers given. Describe the data before you explain it."
+  },
+  {
+   "id": "dr-15",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b2-3",
+   "topicLabel": "B2.3 Cell specialization",
+   "stem": "(This organism/experiment is invented for practice.) Data: In an amphibian embryo, any single cell taken at the 16-cell stage can develop into a whole larva. Cells taken from the skin region of a later embryo only ever form skin cells.\n\nExplain these results.",
+   "markscheme": [
+    "Early embryo cells are unspecialized stem cells able to form every cell type (totipotent / pluripotent) (1)",
+    "Later cells have differentiated (become committed to one type) (1)",
+    "All cells have the same genes; differentiation results from different genes being expressed (switched on or off) (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea it is testing, then use the numbers given. Describe the data before you explain it."
+  },
+  {
+   "id": "dr-16",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-c1-1",
+   "topicLabel": "C1.1 Enzymes and metabolism",
+   "stem": "(This organism/experiment is invented for practice.) Data: Activity of an enzyme from an Antarctic crustacean (arbitrary units): 0 °C 40, 10 °C 70, 20 °C 100, 30 °C 35, 40 °C 0. The human version of the enzyme is most active at 37 °C.\n\nDescribe the pattern, explain the fall above 20 °C, and suggest why the crustacean's enzyme differs from the human one.",
+   "markscheme": [
+    "Activity rises to a maximum (optimum) at 20 °C, then falls sharply to zero by 40 °C (1)",
+    "Above the optimum, heat breaks bonds holding the tertiary structure; the active site changes shape (denaturation) (1)",
+    "Adaptation: a more flexible structure gives useful activity at the low temperatures where the animal lives, but it denatures at lower temperatures (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea it is testing, then use the numbers given. Describe the data before you explain it."
+  },
+  {
+   "id": "dr-17",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-c1-1",
+   "topicLabel": "C1.1 Enzymes and metabolism",
+   "stem": "Data: Reaction rate is measured at increasing substrate concentrations. With inhibitor X the rate is lower at low substrate concentrations but reaches the same maximum as without inhibitor. With inhibitor Y the maximum rate is lower even at very high substrate concentrations.\n\nIdentify the type of inhibition shown by X and by Y and explain the results.",
+   "markscheme": [
+    "X: competitive inhibition (1)",
+    "X binds the active site; at high substrate concentration substrate out-competes it, so the same maximum rate is reached (1)",
+    "Y: non-competitive inhibition (1)",
+    "Y binds a different (allosteric) site and changes the active site's shape, so adding more substrate cannot overcome it (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea it is testing, then use the numbers given. Describe the data before you explain it."
+  },
+  {
+   "id": "dr-18",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-c1-1",
+   "topicLabel": "C1.1 Enzymes and metabolism",
+   "stem": "(This organism/experiment is invented for practice.) Data: A bacterium makes amino acid D by the pathway A → B → C → D (enzymes 1, 2, 3). When D is added to the medium, the activity of enzyme 1 falls by 90 % within minutes; enzyme 2 is unchanged.\n\nExplain this result and its benefit to the bacterium.",
+   "markscheme": [
+    "End-product (feedback) inhibition (1)",
+    "D binds an allosteric site on enzyme 1, changing its active site so A is converted more slowly (1)",
+    "The cell stops making D when it already has enough, saving energy and resources; control is fast and reversible (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea it is testing, then use the numbers given. Describe the data before you explain it.",
+   "hl": true
+  },
+  {
+   "id": "dr-19",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-d2-3",
+   "topicLabel": "D2.3 Water potential",
+   "stem": "(This organism/experiment is invented for practice.) Data: Percentage change in mass of tuber cylinders after 24 h in sucrose solutions. 0.0 mol dm⁻³ +12; 0.2 +5; 0.4 −2; 0.6 −9; 0.8 −14.\n\nEstimate the sucrose concentration with the same water potential as the tissue, and explain the results.",
+   "markscheme": [
+    "About 0.34 mol dm⁻³ (accept 0.32–0.36), where the line crosses 0 % change (1)",
+    "In weaker solutions the water potential outside is higher than in the cells, so water enters by osmosis and mass rises (1)",
+    "In stronger solutions water potential outside is lower, so water leaves the cells and mass falls (1)",
+    "Percentage change is used because the cylinders started with different masses (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea it is testing, then use the numbers given. Describe the data before you explain it."
+  },
+  {
+   "id": "dr-20",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-d2-3",
+   "topicLabel": "D2.3 Water potential",
+   "stem": "(This organism/experiment is invented for practice.) Data: Water potential (MPa): salt-marsh soil water −1.8; root cells of a salt-marsh plant −2.5; root cells of a crop plant −0.8.\n\nExplain how the salt-marsh plant takes up water and predict what happens to the crop plant if it is planted in the marsh.",
+   "markscheme": [
+    "Water moves from higher (less negative) to lower (more negative) water potential (1)",
+    "Salt-marsh root cells (−2.5) are lower than the soil (−1.8), so water enters; the plant accumulates solutes to achieve this (1)",
+    "Crop root cells (−0.8) are higher than the soil, so water leaves the roots: the crop loses turgor and wilts (cells may plasmolyse) (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea it is testing, then use the numbers given. Describe the data before you explain it."
+  },
+  {
+   "id": "er-01",
+   "format": "written",
+   "marks": 7,
+   "topic": "bio-c1-1",
+   "topicLabel": "C1.1 Enzymes and metabolism",
+   "stem": "Extended response: Explain how the structure of an enzyme allows it to catalyse a specific reaction, and how temperature and pH affect its activity.",
+   "markscheme": [
+    "Marking guidance (own words): award 1 mark per valid point, up to 7.",
+    "Enzymes are globular proteins whose 3D (tertiary) shape is set by the amino acid sequence",
+    "The active site has a shape and chemical properties that fit one substrate (specificity)",
+    "Substrate binds to the active site through random collisions, forming an enzyme–substrate complex",
+    "Binding stresses bonds / brings reactants together, lowering the activation energy",
+    "Induced fit: the active site changes shape slightly as the substrate binds",
+    "Higher temperature increases kinetic energy and collision rate, so activity rises up to an optimum",
+    "Above the optimum, bonds holding the tertiary structure break and the enzyme denatures; activity falls",
+    "pH away from the optimum changes the charges on R groups, altering the active site and substrate binding",
+    "Extreme pH can denature the enzyme permanently"
+   ],
+   "tactic": "Extended response: plan 6–8 distinct points before writing; each point should be a separate idea in your own words."
+  },
+  {
+   "id": "er-02",
+   "format": "written",
+   "marks": 7,
+   "topic": "bio-b2-1",
+   "topicLabel": "B2.1 Membranes and membrane transport",
+   "stem": "Extended response: Describe the fluid mosaic model of membrane structure and explain how its components let the membrane control what enters and leaves a cell.",
+   "markscheme": [
+    "Marking guidance (own words): award 1 mark per valid point, up to 7.",
+    "Phospholipid bilayer: hydrophilic phosphate heads face water, hydrophobic tails face inward",
+    "Fluid: phospholipids and many proteins can move sideways within the layer",
+    "Mosaic: proteins scattered through the bilayer — integral (spanning) and peripheral (surface)",
+    "The hydrophobic core blocks ions and large polar molecules, but small non-polar molecules (O₂, CO₂) diffuse through",
+    "Channel proteins let specific ions pass by facilitated diffusion",
+    "Carrier proteins change shape to move specific molecules; pump proteins use ATP for active transport against a gradient",
+    "Cholesterol (in animal cells) regulates fluidity",
+    "Glycoproteins/glycolipids act in cell recognition",
+    "Selective permeability lets the cell keep internal conditions different from the outside"
+   ],
+   "tactic": "Extended response: plan 6–8 distinct points before writing; each point should be a separate idea in your own words."
+  },
+  {
+   "id": "er-03",
+   "format": "written",
+   "marks": 6,
+   "topic": "bio-d2-3",
+   "topicLabel": "D2.3 Water potential",
+   "stem": "(This organism/experiment is invented for practice.) Extended response: A single-celled freshwater organism has no cell wall. It survives in a pond by repeatedly filling and emptying a contractile vacuole. Explain why it needs the vacuole, and predict, with reasons, what would happen if it were moved into seawater.",
+   "markscheme": [
+    "Marking guidance (own words): award 1 mark per valid point, up to 6.",
+    "Pond water has a higher water potential than the cytoplasm (cytoplasm has more solutes)",
+    "So water enters continually by osmosis across the membrane",
+    "Without a cell wall the cell would swell and burst",
+    "The contractile vacuole collects excess water and expels it, which uses energy (ATP)",
+    "Seawater has a lower water potential than the cytoplasm",
+    "So water would leave the cell by osmosis and the cell would shrink",
+    "The contractile vacuole would stop filling / could not prevent water loss; the cell could die unless it gains solutes"
+   ],
+   "tactic": "Extended response: plan 6–8 distinct points before writing; each point should be a separate idea in your own words."
+  },
+  {
+   "id": "er-04",
+   "format": "written",
+   "marks": 6,
+   "topic": "bio-a2-1",
+   "topicLabel": "A2.1 Origins of cells",
+   "stem": "Extended response: Outline how the first cells could have arisen from non-living material, including the evidence that supports each stage.",
+   "markscheme": [
+    "Marking guidance (own words): award 1 mark per valid point, up to 6.",
+    "Cells need: catalysis, self-replication, self-assembly and compartmentalization to arise",
+    "Simple organic molecules can form from inorganic ones under early-Earth conditions (e.g. spark-discharge experiments)",
+    "Possible sites such as deep-sea hydrothermal vents supply energy and chemicals",
+    "Amphipathic molecules self-assemble into vesicles, giving a compartment",
+    "RNA can both store information and catalyse reactions (ribozymes), so it could be the first genetic material",
+    "Mineral surfaces such as clay can speed polymer formation and vesicle assembly",
+    "Universal features of all cells (genetic code, ribosomes) suggest a common ancestor (LUCA)",
+    "Note: these are hypotheses — the steps cannot be observed directly"
+   ],
+   "tactic": "Extended response: plan 6–8 distinct points before writing; each point should be a separate idea in your own words.",
+   "hl": true
+  }
+ ]
+}
