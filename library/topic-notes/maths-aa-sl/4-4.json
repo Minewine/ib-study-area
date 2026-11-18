@@ -1,0 +1,180 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-4-4",
+ "code": "4.4",
+ "title": "Correlation and regression of y on x",
+ "theme": "4",
+ "themeLabel": "Statistics and probability",
+ "hlOnly": false,
+ "islOrder": 50,
+ "islUnits": [
+  "11. Statistics (Y13 wk 19-22 (Feb-Mar 2028))"
+ ],
+ "taughtStatus": "later",
+ "statements": {
+  "SL": [
+   "4.4.1",
+   "4.4.2",
+   "4.4.3",
+   "4.4.4"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "4.4.1",
+   "text": "Scatter diagrams and linear correlation; Pearson's r"
+  },
+  {
+   "id": "4.4.2",
+   "text": "Lines of best fit by eye through the mean point"
+  },
+  {
+   "id": "4.4.3",
+   "text": "Regression line of y on x by GDC; predicting y"
+  },
+  {
+   "id": "4.4.4",
+   "text": "Meaning of the gradient and intercept in context"
+  }
+ ],
+ "bigPicture": "A scatter diagram shows whether two variables move together. Pearson's r measures how close to a straight line they are; the regression line uses that line to predict.",
+ "keyIdeas": [
+  {
+   "id": "m44-k1",
+   "ahl": false,
+   "stmt": "4.4.1",
+   "cue": "How do you describe correlation, and what does r measure?",
+   "answer": "State the direction (positive or negative) and the strength. Pearson's r, from the GDC, lies between −1 and 1 and measures LINEAR correlation only. Correlation does not imply causation."
+  },
+  {
+   "id": "m44-k2",
+   "ahl": false,
+   "stmt": "4.4.2",
+   "cue": "How do you draw a line of best fit by eye?",
+   "answer": "Plot the mean point (x̄, ȳ) and draw a line through it with roughly equal numbers of points on each side."
+  },
+  {
+   "id": "m44-k3",
+   "ahl": false,
+   "stmt": "4.4.3",
+   "cue": "How do you find and use the regression line of y on x?",
+   "answer": "GDC linear regression gives y = ax + b. Use it to predict y from x within the data range (interpolation) and when correlation is reasonably strong; extrapolation beyond the data is unreliable."
+  },
+  {
+   "id": "m44-k4",
+   "ahl": false,
+   "stmt": "4.4.4",
+   "cue": "How do you interpret the gradient and intercept?",
+   "answer": "Gradient a: change in y for each 1-unit increase in x, in context with units. Intercept b: predicted y when x = 0, often meaningless if x = 0 is outside the data."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "Pearson's r",
+   "def": "measure of linear correlation, −1 ≤ r ≤ 1"
+  },
+  {
+   "term": "extrapolation",
+   "def": "predicting outside the range of the data"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Interpret",
+   "prompt": "Exam score y against hours revised x: y = 2.4x + 31.",
+   "steps": [
+    "gradient: +2.4 marks per extra hour",
+    "intercept: 31 marks predicted with no revision"
+   ],
+   "answer": "each extra hour is associated with about 2.4 more marks"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "r = 0 means no relationship",
+   "right": "It means no linear relationship; there may be a curve."
+  },
+  {
+   "wrong": "A strong r proves x causes y",
+   "right": "There may be a third variable or coincidence."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Find",
+   "marks": 2,
+   "prompt": "The regression line of y on x is y = 1.8x + 12 and x̄ = 10. Find ȳ.",
+   "solution": [
+    "the line passes through (x̄, ȳ)",
+    "ȳ = 1.8 × 10 + 12"
+   ],
+   "answer": "ȳ = 30",
+   "commonErrors": [
+    "Needing the data",
+    "Using x = 0"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Find",
+   "marks": 5,
+   "prompt": "x: 2, 4, 5, 7, 8, 10; y: 15, 22, 24, 31, 35, 41. (a) Find r. (b) Find the regression line of y on x. (c) Estimate y when x = 9 and comment on reliability.",
+   "solution": [
+    "GDC LinReg(ax + b)",
+    "r = 0.999",
+    "y = 3.26x + 8.43",
+    "x = 9: y ≈ 37.8"
+   ],
+   "answer": "(a) 0.999 (b) y = 3.26x + 8.43 (c) 37.8; reliable: interpolation and very strong correlation",
+   "commonErrors": [
+    "Swapping the lists",
+    "Rounding a and b to 1 s.f."
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [],
+  "memorise": [
+   "Line passes through (x̄, ȳ)",
+   "Interpolation vs extrapolation",
+   "Pearson's r from the GDC"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "4.10",
+   "prompt": "Why can't you rearrange the y-on-x line to predict x?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/4-statistics-probability/4-2-correlation-regression.pdf",
+  "quizBanks": [
+   {
+    "file": "library/questions/math-aa-topic4-statistics.json",
+    "itemIds": [
+     "s408",
+     "s409"
+    ]
+   }
+  ],
+  "decks": [
+   {
+    "file": "library/flashcards/math-topic4-statistics.json",
+    "cardIds": [
+     "fc-math-st-06",
+     "fc-math-st-07"
+    ]
+   }
+  ]
+ }
+}

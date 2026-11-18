@@ -1,0 +1,166 @@
+{
+ "schemaVersion": 1,
+ "subject": "maths-aa-sl",
+ "updated": "2026-11-18",
+ "author": "original (NevaIB)",
+ "status": "draft",
+ "id": "math-4-5",
+ "code": "4.5",
+ "title": "Basic probability",
+ "theme": "4",
+ "themeLabel": "Statistics and probability",
+ "hlOnly": false,
+ "islOrder": 40,
+ "islUnits": [
+  "10. Probability (Y13 wk 12-15 (Nov-Dec 2027))"
+ ],
+ "taughtStatus": "later",
+ "statements": {
+  "SL": [
+   "4.5.1",
+   "4.5.2",
+   "4.5.3"
+  ],
+  "AHL": []
+ },
+ "points": [
+  {
+   "id": "4.5.1",
+   "text": "Trial, outcome, equally likely outcomes, relative frequency, sample space, event"
+  },
+  {
+   "id": "4.5.2",
+   "text": "P(A)=n(A)/n(U) and complementary events"
+  },
+  {
+   "id": "4.5.3",
+   "text": "Expected number of occurrences"
+  }
+ ],
+ "bigPicture": "Probability measures how likely an event is, from 0 (impossible) to 1 (certain). With equally likely outcomes it is a matter of careful counting.",
+ "keyIdeas": [
+  {
+   "id": "m45-k1",
+   "ahl": false,
+   "stmt": "4.5.1",
+   "cue": "Key vocabulary?",
+   "answer": "Trial: one performance of an experiment. Outcome: one possible result. Sample space U: all possible outcomes. Event: a set of outcomes. Relative frequency = number of times it happened ÷ number of trials; it estimates the probability."
+  },
+  {
+   "id": "m45-k2",
+   "ahl": false,
+   "stmt": "4.5.2",
+   "cue": "Equally likely outcomes and complements?",
+   "answer": "P(A) = n(A)/n(U). The complement A′ (not A): P(A′) = 1 − P(A)."
+  },
+  {
+   "id": "m45-k3",
+   "ahl": false,
+   "stmt": "4.5.3",
+   "cue": "Expected number of occurrences?",
+   "answer": "In n trials, expect n × P(A) occurrences. It need not be a whole number."
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "sample space",
+   "def": "the set of all possible outcomes"
+  },
+  {
+   "term": "relative frequency",
+   "def": "observed proportion of trials in which an event happens"
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Two dice",
+   "prompt": "Two fair dice are rolled. Find P(sum = 8).",
+   "steps": [
+    "36 equally likely outcomes",
+    "(2,6), (3,5), (4,4), (5,3), (6,2)"
+   ],
+   "answer": "5/36"
+  }
+ ],
+ "misconceptions": [
+  {
+   "wrong": "The expected number must be a whole number",
+   "right": "It is a long-run average, e.g. 2.5."
+  },
+  {
+   "wrong": "Relative frequency equals the probability",
+   "right": "It estimates it; the estimate improves with more trials."
+  }
+ ],
+ "practice": [
+  {
+   "paper": "Paper 1",
+   "calculator": false,
+   "commandTerm": "Find",
+   "marks": 3,
+   "prompt": "A bag has 5 red, 3 blue and 2 green counters. One is drawn at random and replaced, 60 times. Find P(not red) and the expected number of greens.",
+   "solution": [
+    "P(not red) = 1 − 5/10",
+    "P(green) = 2/10; 60 × 0.2"
+   ],
+   "answer": "1/2; 12",
+   "commonErrors": [
+    "P(not red) = 5/10 by miscounting",
+    "60 × 2"
+   ]
+  },
+  {
+   "paper": "Paper 2",
+   "calculator": true,
+   "commandTerm": "Find",
+   "marks": 3,
+   "prompt": "A spinner lands on 4 in 37 out of 200 spins. Estimate P(4) and the expected number of 4s in 750 spins.",
+   "solution": [
+    "relative frequency 37/200",
+    "750 × 0.185"
+   ],
+   "answer": "0.185; about 139",
+   "commonErrors": [
+    "Assuming the spinner is fair",
+    "Dividing 750 by 37"
+   ]
+  }
+ ],
+ "assessmentNote": "AA SL external exams: Paper 1 without a calculator and Paper 2 with a GDC, both written answers in sections A (short) and B (extended); no multiple choice. Practice prompts here are original and are not predictions of exam questions.",
+ "formulaBooklet": {
+  "given": [
+   {
+    "section": "SL 4.5",
+    "item": "P(A) = n(A)/n(U); P(A) + P(A′) = 1"
+   }
+  ],
+  "memorise": [
+   "Expected number n·P(A)",
+   "Vocabulary: trial, outcome, sample space, event"
+  ],
+  "note": "'Given' = appears in the SL or prior-learning sections of the official AA formula booklet (2021 edition), which is provided in both papers. The ISL one-page sheet (Jan 2026) is a third-party summary of the same SL formulas; use the official booklet in the exam. 'Memorise' = needed but not printed."
+ },
+ "linkingQuestions": [
+  {
+   "to": "4.6",
+   "prompt": "How do you find probabilities when two events are combined?"
+  },
+  {
+   "to": "4.7",
+   "prompt": "How does 'expected number' become expected value?"
+  }
+ ],
+ "links": {
+  "checklistKey": "math-aa-sl::library/notes/math-aa-sl/4-statistics-probability/4-3-probability.pdf",
+  "quizBanks": [],
+  "decks": [
+   {
+    "file": "library/flashcards/math-topic4-statistics.json",
+    "cardIds": [
+     "fc-math-st-09"
+    ]
+   }
+  ],
+  "gap": "No quiz items are written specifically for 4.5 yet."
+ }
+}

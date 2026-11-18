@@ -325,7 +325,31 @@
     ]
    }
   ],
-  "decks": [],
-  "gap": "No flashcard deck covers B2.1 yet; the January unit needs one."
+  "decks": [
+   {
+    "file": "library/flashcards/bio-b2-1-membranes-transport.json",
+    "cardIds": [
+     "fc-bio-mt-01",
+     "fc-bio-mt-02",
+     "fc-bio-mt-03",
+     "fc-bio-mt-04",
+     "fc-bio-mt-05",
+     "fc-bio-mt-06",
+     "fc-bio-mt-07",
+     "fc-bio-mt-08",
+     "fc-bio-mt-09",
+     "fc-bio-mt-10",
+     "fc-bio-mt-11",
+     "fc-bio-mt-12",
+     "fc-bio-mt-13",
+     "fc-bio-mt-14",
+     "fc-bio-mt-15",
+     "fc-bio-mt-16",
+     "fc-bio-mt-17",
+     "fc-bio-mt-18",
+     "fc-bio-mt-19"
+    ]
+   }
+  ]
  }
 }

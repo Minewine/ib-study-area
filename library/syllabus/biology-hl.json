@@ -231,7 +231,9 @@
    "quizBanks": [
     "library/questions/bio-unity-diversity-cells.json"
    ],
-   "decks": []
+   "decks": [
+    "library/flashcards/bio-b2-1-membranes-transport.json"
+   ]
   },
   {
    "code": "B2.2",
@@ -247,7 +249,9 @@
    "quizBanks": [
     "library/questions/bio-unity-diversity-cells.json"
    ],
-   "decks": []
+   "decks": [
+    "library/flashcards/bio-b2-2-organelles.json"
+   ]
   },
   {
    "code": "B2.3",
@@ -263,7 +267,9 @@
    "quizBanks": [
     "library/questions/bio-unity-diversity-cells.json"
    ],
-   "decks": []
+   "decks": [
+    "library/flashcards/bio-b2-3-cell-specialization.json"
+   ]
   },
   {
    "code": "B3.1",
