@@ -56,14 +56,17 @@
   async function loadDecks() {
     await loadRegistry();
     DECKS = [];
-    for (const r of REGISTRY) {
+    // Fetch all decks in parallel (was one-by-one, which left the dropdowns
+    // empty for several seconds); keep manifest order in the result.
+    const loaded = await Promise.all(REGISTRY.map(async (r) => {
       try {
         const res = await fetch(PATH_BASE + r.file + "?cb=" + Date.now(), { cache: "no-store" });
         if (!res.ok) throw new Error(res.status + " " + r.file);
         const d = await res.json();
-        DECKS.push({ id: String(r.file).split("/").pop().replace(/\.json$/i, ""), subject: d.subject || r.subject, subjectLabel: r.subjectLabel, topic: d.topic, topicLabel: d.topicLabel, cards: d.cards || [] });
-      } catch (e) { console.warn("deck failed:", r.file, e); }
-    }
+        return { id: String(r.file).split("/").pop().replace(/\.json$/i, ""), subject: d.subject || r.subject, subjectLabel: r.subjectLabel, topic: d.topic, topicLabel: d.topicLabel, cards: d.cards || [] };
+      } catch (e) { console.warn("deck failed:", r.file, e); return null; }
+    }));
+    loaded.forEach(d => { if (d) DECKS.push(d); });
     store.get("fc-userdecks", []).forEach(ud => {
       DECKS.push({ subject: ud.subject, subjectLabel: ud.subjectLabel || ud.subject, topic: ud.topic, topicLabel: ud.topicLabel || ud.topic, cards: ud.cards || [] });
     });
@@ -405,7 +408,10 @@
     if (!q.length) { $("fc-error").textContent = "None of the cards linked from that note could be found."; return; }
     startSession(null, q);
   }
-  const boot = () => loadDecks().then(fillSetup).then(fromLink);
+  const boot = () => {
+    ["fc-subject", "fc-topic"].forEach(id => { const el = $(id); if (el && !el.options.length) el.innerHTML = '<option value="">Loading decks\u2026</option>'; });
+    return loadDecks().then(fillSetup).then(fromLink);
+  };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();
 })();
