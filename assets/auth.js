@@ -132,7 +132,7 @@
   }
 
   /* Merge the server copy into this device. Never overwrites newer local work:
-     - fc-state / q-errors / quizlog merge per record (newest wins, nothing dropped);
+     - fc-state / q-errors / quizlog / pp-scores merge per record (newest wins, nothing dropped);
      - any other key or checklist row this device changed since its last sync
        (persisted nb-dirty marker) keeps the local value and is pushed;
      - untouched keys take the server value (so deletions made elsewhere stick);

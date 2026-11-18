@@ -18,6 +18,8 @@ let passed = 0; const ok = (name) => { passed++; console.log("ok -", name); };
 async function newCtx(browser) {
   const ctx = await browser.createBrowserContext();
   const page = await ctx.newPage();
+  // tall viewport: the sticky nav would otherwise cover buttons that puppeteer scrolls to the top edge
+  await page.setViewport({ width: 1280, height: 2400 });
   const errors = [];
   page.on("console", m => { if (m.type() === "error" && !/^Failed to load resource/.test(m.text())) errors.push(m.text()); });
   page.on("pageerror", e => errors.push("pageerror: " + e.message));
@@ -90,7 +92,7 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
     for (let q = 0; q < Math.min(20, want.size); q++) {
       const stem = await page.$eval("#q-box .q-stem", e => e.textContent);
       seen.push(stemToId[stem]);
-      if (await page.$("#q-box .choice")) await page.click("#q-box .choice");
+      if (await page.$("#q-box .choice")) { await page.click("#q-box .choice"); await page.click("#q-guess"); }
       else { await page.click("#q-reveal"); await page.select("#q-selfscore", "0"); }
       await page.click("#q-next");
     }
@@ -169,6 +171,10 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
       // click a wrong option on even questions, the correct one on odd
       const target = q % 2 === 0 ? info.btns.find(b => b.i !== item.answer) : info.btns.find(b => b.i === item.answer);
       await page.click(`#q-box .choice[data-i="${target.i}"]`);
+      // nothing is revealed until a confidence rating is given
+      assert.strictEqual(await page.$(".choice.correct"), null, "answer not revealed before the rating");
+      // wrong answers are rated "sure" (false confidence), right ones "guessing"
+      await page.click(target.i === item.answer ? "#q-guess" : "#q-sure");
       const cls = await page.evaluate(() => ({ correct: [...document.querySelectorAll(".choice.correct")].map(b => +b.dataset.i), wrong: [...document.querySelectorAll(".choice.wrong")].map(b => +b.dataset.i), note: document.querySelector(".q-note").className }));
       assert.deepStrictEqual(cls.correct, [item.answer], "correct option highlighted by original index");
       if (target.i === item.answer) { assert.deepStrictEqual(cls.wrong, []); assert.match(cls.note, /good/); }
@@ -177,11 +183,14 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
         const e = (await ls(page, "q-errors")).find(e => e.key === "bio-unity-diversity-cells#" + item.id);
         assert.ok(e, "error stored under bank#id"); assert.strictEqual(e.userAnswer, target.i, "stored answer is original index"); assert.strictEqual(e.answer, item.answer);
         assert.strictEqual(e.choices[e.userAnswer], item.choices[target.i]);
+        assert.strictEqual(e.lastConf, "sure", "rating stored on the missed question"); assert.strictEqual(e.sureWrong, 1);
         wrongIds.push(item.id);
       }
       await page.click("#q-next");
     } else {
-      await page.click("#q-reveal"); await page.select("#q-selfscore", "0"); await page.click("#q-next");
+      await page.click("#q-reveal-guess"); await page.select("#q-selfscore", "0"); await page.click("#q-next");
+      const e = (await ls(page, "q-errors")).find(e => e.key === "bio-unity-diversity-cells#" + item.id);
+      assert.strictEqual(e.lastConf, "guess", "written rating stored");
       wrongIds.push(item.id);
     }
   }
@@ -203,10 +212,19 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
   assert.ok(fresh.length >= 1, "new errors dated with local date");
   assert.ok(errs.every(e => e.key !== "b01" || e.stem === "A stem that no current bank has"));
   ok(`missed questions recorded (${errs.length} records), dated ${ymd} (local)`);
-  assert.strictEqual((await ls(page, "quizlog")).length, 2, "quizlog appended, old entry kept");
+  const qlog = await ls(page, "quizlog");
+  assert.strictEqual(qlog.length, 2, "quizlog appended, old entry kept");
+  assert.ok(qlog[0].conf && qlog[0].conf.sure >= 1 && qlog[0].conf.sureRight === 0 && qlog[0].conf.guess >= 1, "session confidence tally saved: " + JSON.stringify(qlog[0].conf));
+  assert.strictEqual(qlog[1].conf, undefined, "old entry untouched");
+  assert.match(summary, /Confident but wrong \(\d+\)/, "summary lists confident-but-wrong");
+  ok("confidence ratings: required before reveal, stored on q-errors + quizlog, confident-but-wrong listed");
+  await page.click("#q-again");
+  const setupText = await page.evaluate(() => document.getElementById("setup").innerText);
+  assert.match(setupText, /Review confident-but-wrong \(\d+\)/, "setup panel lists confident-but-wrong");
+  assert.ok(!/undefined/.test(setupText), "old quizlog entry renders without 'undefined'");
+  ok("setup shows the confident-but-wrong panel; old quizlog entries render");
 
   // review mode works on migrated + legacy + new records
-  await page.click("#q-again");
   await page.click("#q-review-btn");
   await page.waitForSelector("#q-box .q-stem");
   const n = await page.evaluate(() => document.getElementById("q-progress").textContent);
@@ -217,7 +235,8 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
     if (!st.stem) break;
     if (st.mcq) {
       const ans = (await ls(page, "q-errors")).find(e => e.stem === st.stem).answer;
-      await page.click(`#q-box .choice[data-i="${ans}"]`); await page.click("#q-next");
+      await page.click(`#q-box .choice[data-i="${ans}"]`); await page.click("#q-sure");
+      await page.click("#q-next");
     } else {
       await page.click("#q-reveal");
       const max = await page.evaluate(() => document.querySelector("#q-selfscore").options.length - 1);
@@ -332,6 +351,19 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
   assert.ok(fs.readdirSync(path.join(DATA, "state", "history", "tester")).length >= 3, "server kept previous versions");
   ok("stale tab: 409 → merge → retry keeps both devices' work; server history kept");
 
+  // past-paper score log on the quiz page: saved, survives reload, reaches the server
+  await A.page.goto(BASE + "/app/quiz.html", { waitUntil: "networkidle0" });
+  await A.page.select("#pp-subject", "chemistry-hl");
+  await A.page.type("#pp-paper", "Paper 1A practice"); await A.page.type("#pp-score", "30"); await A.page.type("#pp-max", "40");
+  await A.page.click("#pp-add");
+  await A.page.reload({ waitUntil: "networkidle0" });
+  assert.match(await A.page.evaluate(() => document.getElementById("pp-list").innerText), /Paper 1A practice[\s\S]*30\/40 \(75%\)/);
+  await A.page.evaluate(() => window.Auth.pushNow(true));
+  srv = serverState();
+  assert.ok((srv["pp-scores"] || []).some(r => r.paper === "Paper 1A practice" && r.score === 30), "pp-scores on the server");
+  ok("past-paper score saved, shown after reload, synced to the server");
+  await A.page.goto(BASE + "/app/cards.html", { waitUntil: "networkidle0" }); // backup.js lives on the Cards page
+
   // backup on A, restore (merge) on a fresh logged-out browser through the Cards UI
   const backup = await A.page.evaluate(() => JSON.stringify(window.NB.backup.collect()));
   const C = await newCtx(browser);
@@ -348,6 +380,7 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
   const cState = await ls(C.page, "fc-state");
   assert.ok(cState["only-on-c"] && cState["e2e-a"], "merge kept C's own progress and added A's");
   assert.ok((await ls(C.page, "q-errors")).length >= 1, "missed questions restored too");
+  assert.ok((await ls(C.page, "pp-scores") || []).some(r => r.paper === "Paper 1A practice"), "past-paper scores restored too");
   assert.ok(await C.page.evaluate(() => Object.keys(localStorage).some(k => k.startsWith("nb-backup:"))), "safety copy taken");
   assert.strictEqual(await C.page.evaluate(() => localStorage.getItem("nb-token")), null, "no credentials restored");
   assert.deepStrictEqual(C.errors.filter(e => !/favicon/.test(e)), [], "restore console errors");

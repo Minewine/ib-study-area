@@ -1,0 +1,341 @@
+{
+ "subject": "chemistry-hl",
+ "topic": "chem-p1a-structure-1",
+ "topicLabel": "Paper 1A-style calculator-free practice — Structure 1",
+ "paperStyle": "1A",
+ "calculatorFree": true,
+ "about": "Original practice questions written for the IB Chemistry 2025 guide (HL). Not IB past-paper questions or markschemes, and not a prediction of exam questions. Calculator-free practice: every item can be done without a calculator.",
+ "items": [
+  {
+   "id": "p1a-s11-01",
+   "format": "mcq",
+   "topic": "chem-s1-1",
+   "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+   "stem": "Which process is sublimation?",
+   "choices": [
+    "I₂(s) → I₂(g)",
+    "H₂O(l) → H₂O(g)",
+    "CO₂(g) → CO₂(s)",
+    "Br₂(l) → Br₂(s)"
+   ],
+   "answer": 0,
+   "note": "Solid directly to gas. CO₂(g) → CO₂(s) is deposition."
+  },
+  {
+   "id": "p1a-s11-02",
+   "format": "mcq",
+   "topic": "chem-s1-1",
+   "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+   "stem": "A sample is heated from 20 °C to 50 °C. What is the change in temperature in kelvin?",
+   "choices": [
+    "30 K",
+    "303 K",
+    "323 K",
+    "243 K"
+   ],
+   "answer": 0,
+   "note": "Kelvin and Celsius degrees are the same size, so the change is the same number."
+  },
+  {
+   "id": "p1a-s11-03",
+   "format": "mcq",
+   "topic": "chem-s1-1",
+   "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+   "stem": "Which is a compound?",
+   "choices": [
+    "Air",
+    "Brass",
+    "Carbon dioxide",
+    "Sea water"
+   ],
+   "answer": 2,
+   "note": "Fixed ratio of chemically bonded C and O; the others are mixtures."
+  },
+  {
+   "id": "p1a-s11-04",
+   "format": "mcq",
+   "topic": "chem-s1-1",
+   "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+   "stem": "Which change of state is exothermic?",
+   "choices": [
+    "Melting",
+    "Evaporation",
+    "Sublimation",
+    "Condensation"
+   ],
+   "answer": 3,
+   "note": "Condensation forms new attractions between particles, so energy is released. The other three need energy to overcome attractions."
+  },
+  {
+   "id": "p1a-s11-05",
+   "format": "mcq",
+   "topic": "chem-s1-1",
+   "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+   "stem": "Which is a homogeneous mixture?",
+   "choices": [
+    "Sand in water",
+    "Sodium chloride solution",
+    "Oil and water",
+    "Chalk suspended in water"
+   ],
+   "answer": 1,
+   "note": "A solution has uniform composition throughout; the others have visibly separate phases."
+  },
+  {
+   "id": "p1a-s11-06",
+   "format": "mcq",
+   "topic": "chem-s1-1",
+   "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+   "stem": "Which technique best separates ethanol (boiling point 78 °C) from water?",
+   "choices": [
+    "Filtration",
+    "Fractional distillation",
+    "Paper chromatography",
+    "Crystallization"
+   ],
+   "answer": 1,
+   "note": "Two miscible liquids with different boiling points: fractional distillation."
+  },
+  {
+   "id": "p1a-s11-07",
+   "format": "mcq",
+   "topic": "chem-s1-1",
+   "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+   "stem": "What is true of particles at absolute zero (0 K)?",
+   "choices": [
+    "They have their minimum kinetic energy",
+    "They have no mass",
+    "They are all in the gas phase",
+    "They are at the freezing point of water"
+   ],
+   "answer": 0,
+   "note": "0 K is the temperature at which particles have minimum kinetic energy; the kelvin scale starts there."
+  },
+  {
+   "id": "p1a-s11-08",
+   "format": "mcq",
+   "topic": "chem-s1-1",
+   "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+   "stem": "While a pure liquid boils at constant pressure, its temperature stays constant. Why?",
+   "choices": [
+    "The particles lose kinetic energy",
+    "Energy supplied overcomes attractions between particles",
+    "Covalent bonds inside the molecules break",
+    "The mass of each particle decreases"
+   ],
+   "answer": 1,
+   "note": "Energy goes into separating particles (overcoming intermolecular forces), not into raising average kinetic energy."
+  },
+  {
+   "id": "p1a-s12-01",
+   "format": "mcq",
+   "topic": "chem-s1-2",
+   "topicLabel": "S1.2 The nuclear atom",
+   "stem": "How many neutrons are in one atom of ⁵⁶Fe (Z = 26)?",
+   "choices": [
+    "26",
+    "30",
+    "56",
+    "82"
+   ],
+   "answer": 1,
+   "note": "A − Z = 56 − 26."
+  },
+  {
+   "id": "p1a-s12-02",
+   "format": "mcq",
+   "topic": "chem-s1-2",
+   "topicLabel": "S1.2 The nuclear atom",
+   "stem": "Element X has two isotopes, mass 10 (20%) and mass 11 (80%). What is Ar?",
+   "choices": [
+    "10.2",
+    "10.5",
+    "10.8",
+    "11.0"
+   ],
+   "answer": 2,
+   "note": "2.0 + 8.8 = 10.8; no calculator needed."
+  },
+  {
+   "id": "p1a-s12-03",
+   "format": "mcq",
+   "topic": "chem-s1-2",
+   "topicLabel": "S1.2 The nuclear atom",
+   "stem": "Which species has more electrons than protons?",
+   "choices": [
+    "Na⁺",
+    "Mg",
+    "Cl⁻",
+    "Al³⁺"
+   ],
+   "answer": 2,
+   "note": "Negative ion = electrons gained."
+  },
+  {
+   "id": "p1a-s13-01",
+   "format": "mcq",
+   "topic": "chem-s1-3",
+   "topicLabel": "S1.3 Electron configurations",
+   "stem": "Which electron configuration is correct for Cu (Z = 29)?",
+   "choices": [
+    "[Ar]3d⁹4s²",
+    "[Ar]3d¹⁰4s¹",
+    "[Ar]3d¹⁰4s²",
+    "[Ar]4s²4p⁹"
+   ],
+   "answer": 1,
+   "note": "Copper is an exception: a full 3d sublevel and 4s¹."
+  },
+  {
+   "id": "p1a-s13-02",
+   "format": "mcq",
+   "topic": "chem-s1-3",
+   "topicLabel": "S1.3 Electron configurations",
+   "stem": "What is the maximum number of electrons in the n = 3 level?",
+   "choices": [
+    "8",
+    "9",
+    "18",
+    "32"
+   ],
+   "answer": 2,
+   "note": "2n² = 2 × 9."
+  },
+  {
+   "id": "p1a-s13-03",
+   "format": "mcq",
+   "topic": "chem-s1-3",
+   "topicLabel": "S1.3 Electron configurations",
+   "stem": "In the hydrogen spectrum, which transition emits visible light?",
+   "choices": [
+    "n = 3 → n = 2",
+    "n = 2 → n = 1",
+    "n = 4 → n = 3",
+    "n = 1 → n = 2"
+   ],
+   "answer": 0,
+   "note": "Drops to n = 2 are visible; n = 1 is UV; n = 1 → 2 is absorption."
+  },
+  {
+   "id": "p1a-s13-04",
+   "format": "mcq",
+   "topic": "chem-s1-3",
+   "topicLabel": "S1.3 Electron configurations",
+   "stem": "Successive IEs (kJ mol⁻¹): 496, 4562, 6912, 9543. Which group?",
+   "choices": [
+    "1",
+    "2",
+    "13",
+    "14"
+   ],
+   "answer": 0,
+   "note": "Big jump after the first electron: one valence electron.",
+   "hl": true
+  },
+  {
+   "id": "p1a-s14-01",
+   "format": "mcq",
+   "topic": "chem-s1-4",
+   "topicLabel": "S1.4 Counting particles by mass: the mole",
+   "stem": "How many moles of ions are in 0.10 mol of Al₂(SO₄)₃?",
+   "choices": [
+    "0.10",
+    "0.20",
+    "0.50",
+    "1.70"
+   ],
+   "answer": 2,
+   "note": "Each formula unit gives 2 Al³⁺ + 3 SO₄²⁻ = 5 ions."
+  },
+  {
+   "id": "p1a-s14-02",
+   "format": "mcq",
+   "topic": "chem-s1-4",
+   "topicLabel": "S1.4 Counting particles by mass: the mole",
+   "stem": "What is the empirical formula of a compound with molecular formula C₆H₁₂O₆?",
+   "choices": [
+    "CHO",
+    "CH₂O",
+    "C₂H₄O₂",
+    "C₃H₆O₃"
+   ],
+   "answer": 1,
+   "note": "Divide by 6."
+  },
+  {
+   "id": "p1a-s14-03",
+   "format": "mcq",
+   "topic": "chem-s1-4",
+   "topicLabel": "S1.4 Counting particles by mass: the mole",
+   "stem": "What volume of 0.50 mol dm⁻³ NaOH contains 0.010 mol?",
+   "choices": [
+    "5.0 cm³",
+    "20 cm³",
+    "50 cm³",
+    "200 cm³"
+   ],
+   "answer": 1,
+   "note": "V = n/c = 0.020 dm³."
+  },
+  {
+   "id": "p1a-s14-04",
+   "format": "mcq",
+   "topic": "chem-s1-4",
+   "topicLabel": "S1.4 Counting particles by mass: the mole",
+   "stem": "At the same T and p, 20 cm³ of CH₄ is burned: CH₄ + 2O₂ → CO₂ + 2H₂O(l). What volume of O₂ reacts?",
+   "choices": [
+    "10 cm³",
+    "20 cm³",
+    "40 cm³",
+    "60 cm³"
+   ],
+   "answer": 2,
+   "note": "Gas volume ratio = mole ratio 1 : 2."
+  },
+  {
+   "id": "p1a-s15-01",
+   "format": "mcq",
+   "topic": "chem-s1-5",
+   "topicLabel": "S1.5 Ideal gases",
+   "stem": "Which conditions make a real gas behave most like an ideal gas?",
+   "choices": [
+    "High T, high P",
+    "High T, low P",
+    "Low T, high P",
+    "Low T, low P"
+   ],
+   "answer": 1,
+   "note": "Fast particles, far apart."
+  },
+  {
+   "id": "p1a-s15-02",
+   "format": "mcq",
+   "topic": "chem-s1-5",
+   "topicLabel": "S1.5 Ideal gases",
+   "stem": "A fixed mass of gas at constant volume is heated from 200 K to 400 K. The pressure:",
+   "choices": [
+    "halves",
+    "stays the same",
+    "doubles",
+    "quadruples"
+   ],
+   "answer": 2,
+   "note": "P ∝ T (kelvin)."
+  },
+  {
+   "id": "p1a-s15-03",
+   "format": "mcq",
+   "topic": "chem-s1-5",
+   "topicLabel": "S1.5 Ideal gases",
+   "stem": "What volume does 2.0 g of H₂ (M = 2.0 g mol⁻¹) occupy at STP?",
+   "choices": [
+    "2.27 dm³",
+    "11.4 dm³",
+    "22.7 dm³",
+    "45.4 dm³"
+   ],
+   "answer": 2,
+   "note": "1.0 mol × 22.7 dm³ mol⁻¹."
+  }
+ ]
+}

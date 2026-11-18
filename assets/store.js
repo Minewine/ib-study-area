@@ -33,7 +33,7 @@
     "q-userbanks", "fc-userdecks", "fc-state", "fc-user",
     "fc-deleted", "fc-edits", "quizlog", "q-errors",
     "tok-objects", "ee-ideas", "io-issues", "ia-debriefs",
-    "res-bookmarks", "res-notes", "res-recent"
+    "res-bookmarks", "res-notes", "res-recent", "pp-scores"
   ];
   // never synced, never in backups: credentials, sync bookkeeping, caches, safety copies
   const LOCAL_ONLY = ["nb-token", "nb-api", DIRTY_KEY, "nb-sync", SCHEMA_KEY, "fc-seedids"];
@@ -258,6 +258,19 @@
       const at = (e) => [String(e && e.date || ""), e && e.ts || 0];
       out.sort((x, y) => { const p = at(x), q = at(y); return p[0] < q[0] ? 1 : p[0] > q[0] ? -1 : q[1] - p[1]; });
       return out.slice(0, Math.max(20, a.length, b.length));
+    },
+    // past-paper scores [ {id, date, subject, paper, score, max, notes, ts} | {id, deleted, ts} ]:
+    // union by id, newest ts wins (a deletion is a newer tombstone, so it isn't undone by an older copy)
+    "pp-scores": function (a, b) {
+      if (!Array.isArray(a)) return b; if (!Array.isArray(b)) return a;
+      const byId = new Map();
+      b.forEach(r => { if (r && r.id) byId.set(r.id, r); });
+      a.forEach(r => {
+        if (!r || !r.id) return;
+        const cur = byId.get(r.id);
+        if (!cur || (r.ts || 0) > (cur.ts || 0)) byId.set(r.id, r);
+      });
+      return Array.from(byId.values());
     }
   };
 

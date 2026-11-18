@@ -1,0 +1,290 @@
+{
+ "subject": "chemistry-hl",
+ "topic": "chem-tools",
+ "topicLabel": "Tools & inquiry: measurement, uncertainty, graphs and evaluation",
+ "paperStyle": "1B",
+ "about": "Original practice questions written for the IB Chemistry 2025 guide (HL). Not IB past-paper questions or markschemes, and not a prediction of exam questions. Data-based and experimental-skills practice; a calculator is allowed.",
+ "items": [
+  {
+   "id": "p1bx-01",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-tools",
+   "topicLabel": "Tools & inquiry: measurement, uncertainty, graphs and evaluation",
+   "stem": "Data: Burette readings for one titration: initial 1.20 ± 0.05 cm³, final 24.70 ± 0.05 cm³.\n\nCalculate the titre with its absolute uncertainty and its percentage uncertainty.",
+   "markscheme": [
+    "Titre = 24.70 − 1.20 = 23.50 cm³ (1)",
+    "Absolute uncertainty = 0.05 + 0.05 = ±0.10 cm³ (uncertainties add when readings are subtracted) (1)",
+    "Percentage uncertainty = 0.10 ÷ 23.50 × 100 ≈ 0.43 % (1)"
+   ],
+   "tactic": "Uncertainties: add absolute uncertainties for + and −, add percentage uncertainties for × and ÷."
+  },
+  {
+   "id": "p1bx-02",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-tools",
+   "topicLabel": "Tools & inquiry: measurement, uncertainty, graphs and evaluation",
+   "stem": "Data: A student weighs 2.00 ± 0.01 g of NaOH, dissolves it and makes the solution up to 250.0 ± 0.3 cm³ in a volumetric flask.\n\nDetermine the percentage uncertainty in the concentration of the solution.",
+   "markscheme": [
+    "Mass: 0.01 ÷ 2.00 × 100 = 0.50 % (1)",
+    "Volume: 0.3 ÷ 250.0 × 100 = 0.12 % (1)",
+    "c = n ÷ V, so add percentage uncertainties: ≈ 0.62 % (accept 0.6 %) (1)"
+   ],
+   "tactic": "Uncertainties: add absolute uncertainties for + and −, add percentage uncertainties for × and ÷."
+  },
+  {
+   "id": "p1bx-03",
+   "format": "written",
+   "marks": 4,
+   "topic": "chem-r1-3",
+   "topicLabel": "R1.3 Energy from fuels",
+   "stem": "Data: Enthalpy of combustion of ethanol measured with a spirit burner heating water in a copper can. Three runs: −915, −922, −923 kJ mol⁻¹. Data booklet value: −1367 kJ mol⁻¹.\n\nCalculate the percentage error of the mean, state whether the main error is random or systematic, and suggest two specific sources.",
+   "markscheme": [
+    "Mean ≈ −920 kJ mol⁻¹; % error = (1367 − 920) ÷ 1367 × 100 ≈ 33 % (1)",
+    "Repeats agree closely (precise) but are far from the accepted value, so the error is mainly systematic (1)",
+    "Any two, 1 each: heat lost to the surroundings (no draught shield or lid); incomplete combustion, e.g. soot on the can; heat absorbed by the can not included; ethanol evaporating from the wick before burning (2)"
+   ],
+   "tactic": "Evaluating a method: name the specific weakness, say which way it moves the result, and give a matching improvement."
+  },
+  {
+   "id": "p1bx-04",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-tools",
+   "topicLabel": "Tools & inquiry: measurement, uncertainty, graphs and evaluation",
+   "stem": "Data: Titres (cm³) for the same solution. Student A: 22.10, 22.15, 22.10. Student B: 21.80, 22.60, 22.30. Accepted titre: 22.20 cm³.\n\nCompare the precision and accuracy of the two students' results.",
+   "markscheme": [
+    "A: very precise (range 0.05 cm³) but mean 22.12 cm³ is slightly below the accepted value, suggesting a small systematic error (1)",
+    "B: mean 22.23 cm³ is closer to the accepted value (more accurate) but the spread of 0.80 cm³ shows poor precision, i.e. large random error (1)"
+   ],
+   "tactic": "Precision = how close repeats are to each other; accuracy = how close the mean is to the accepted value."
+  },
+  {
+   "id": "p1bx-05",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-r2-2",
+   "topicLabel": "R2.2 How fast? The rate of chemical change",
+   "stem": "Data: Decomposition of H₂O₂ at constant temperature. t/s: 0, 100, 200, 300, 400. [H₂O₂]/mol dm⁻³: 0.80, 0.56, 0.40, 0.28, 0.20.\n\nUse the data to find the half-life and deduce the order of reaction with respect to H₂O₂.",
+   "markscheme": [
+    "Half-life = 200 s (0.80 → 0.40 mol dm⁻³) (1)",
+    "The next halving (0.40 → 0.20) also takes 200 s; a constant half-life means first order (1)"
+   ],
+   "tactic": "Graphs: quote values you read off, show the gradient working, and state what the shape means.",
+   "hl": true
+  },
+  {
+   "id": "p1bx-06",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s1-5",
+   "topicLabel": "S1.5 Ideal gases",
+   "stem": "Data: Volume of a fixed mass of gas at constant pressure. T/°C: 0, 25, 50, 75, 100. V/cm³: 27.3, 29.8, 32.3, 34.8, 37.3.\n\nUse the trend to estimate the temperature at which the volume would be zero, and give one limitation of this extrapolation.",
+   "markscheme": [
+    "Gradient = 2.5 ÷ 25 = 0.100 cm³ °C⁻¹ (1)",
+    "V = 0 when T = 0 − 27.3 ÷ 0.100 = −273 °C (1)",
+    "Limitation: assumes the straight line continues far outside the measured range; a real gas would liquefy (stop behaving ideally) long before −273 °C (1)"
+   ],
+   "tactic": "Graphs: quote values you read off, show the gradient working, and state what the shape means."
+  },
+  {
+   "id": "p1bx-07",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r2-2",
+   "topicLabel": "R2.2 How fast? The rate of chemical change",
+   "stem": "Data: Sodium thiosulfate + hydrochloric acid, time for a cross under the flask to disappear. T/°C: 20, 30, 40, 50, 60. t/s: 120, 62, 33, 41, 9.\n\nIdentify the anomalous result, suggest a cause, and describe the trend in rate (1/t) with temperature.",
+   "markscheme": [
+    "50 °C (41 s) is anomalous: it should lie between 33 s and 9 s (about 17–18 s) (1)",
+    "Likely cause, e.g. the mixture cooled after mixing (reactants not both pre-heated), or a timing/end-point judgement error (1)",
+    "1/t = 0.0083, 0.016, 0.030 s⁻¹ for 20–40 °C: the rate roughly doubles for each 10 °C rise (1)"
+   ],
+   "tactic": "Graphs: quote values you read off, show the gradient working, and state what the shape means."
+  },
+  {
+   "id": "p1bx-08",
+   "format": "written",
+   "marks": 4,
+   "topic": "chem-r1-1",
+   "topicLabel": "R1.1 Measuring enthalpy changes",
+   "stem": "Data: 25.0 cm³ of 1.00 mol dm⁻³ HCl is mixed with 25.0 cm³ of 1.00 mol dm⁻³ NaOH in a glass beaker. Thermometer ±0.5 °C. Temperature rise 6.0 °C. Assume c = 4.18 J g⁻¹ K⁻¹ and density 1.00 g cm⁻³.\n\nCalculate ΔH of neutralization and suggest two improvements to the method, with reasons.",
+   "markscheme": [
+    "q = mcΔT = 50.0 × 4.18 × 6.0 = 1254 J (1)",
+    "n(H₂O) = 0.0250 mol, so ΔH = −1254 ÷ 0.0250 ≈ −50 kJ mol⁻¹ (negative sign needed) (1)",
+    "Use an insulated (polystyrene) cup with a lid, to reduce heat loss through the glass (1)",
+    "Use a more precise thermometer or a temperature probe: ΔT has ±1.0 °C uncertainty, about 17 % of 6.0 °C (or: larger volumes / concentrations to give a bigger ΔT) (1)"
+   ],
+   "tactic": "Evaluating a method: name the specific weakness, say which way it moves the result, and give a matching improvement."
+  },
+  {
+   "id": "p1bx-09",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-tools",
+   "topicLabel": "Tools & inquiry: measurement, uncertainty, graphs and evaluation",
+   "stem": "Data: Calibration of a colorimeter with Cu²⁺(aq) standards. c/mol dm⁻³: 0.020, 0.040, 0.060, 0.080. Absorbance: 0.11, 0.22, 0.33, 0.44. An unknown sample has absorbance 0.29.\n\nDetermine the concentration of the unknown and state one condition that must be kept the same.",
+   "markscheme": [
+    "Straight line through the origin, gradient 0.11 ÷ 0.020 = 5.5 dm³ mol⁻¹ (1)",
+    "c = 0.29 ÷ 5.5 ≈ 0.053 mol dm⁻³ (1)",
+    "Same wavelength/filter and same cuvette for all readings (or: the unknown must be within the calibration range) (1)"
+   ],
+   "tactic": "Graphs: quote values you read off, show the gradient working, and state what the shape means."
+  },
+  {
+   "id": "p1bx-10",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r2-3",
+   "topicLabel": "R2.3 How far? The extent of chemical change",
+   "stem": "Data: For the equilibrium X(g) ⇌ 2Y(g), K = 0.20 at 300 K, 1.5 at 400 K and 6.0 at 500 K.\n\nDeduce the sign of ΔH for the forward reaction and predict how raising the temperature affects the equilibrium yield of Y.",
+   "markscheme": [
+    "K increases as temperature increases (1)",
+    "So the forward reaction is endothermic: ΔH is positive (1)",
+    "Raising the temperature increases the equilibrium yield of Y (1)"
+   ],
+   "tactic": "Graphs: quote values you read off, show the gradient working, and state what the shape means."
+  },
+  {
+   "id": "p1bx-11",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r3-1",
+   "topicLabel": "R3.1 Proton transfer reactions",
+   "stem": "Data: pH of 0.10 mol dm⁻³ solutions: HCl 1.0, CH₃COOH 2.9. After a tenfold dilution: HCl 2.0, CH₃COOH 3.4.\n\nExplain the difference in pH between the two acids, and what the dilution results show.",
+   "markscheme": [
+    "HCl is a strong acid, fully dissociated: [H⁺] = 0.10 mol dm⁻³, pH 1.0 (1)",
+    "CH₃COOH is weak, only partly dissociated: [H⁺] ≈ 10⁻²·⁹ ≈ 1.3 × 10⁻³ mol dm⁻³, about 1 % (1)",
+    "Dilution raises the strong acid's pH by 1 unit but the weak acid's by only about 0.5, because a weak acid dissociates more when diluted (1)"
+   ],
+   "tactic": "Graphs: quote values you read off, show the gradient working, and state what the shape means."
+  },
+  {
+   "id": "p1bx-12",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-r3-2",
+   "topicLabel": "R3.2 Electron transfer reactions",
+   "stem": "Data: Cell voltages for metals M1, M2 and M3, each paired with a Cu²⁺/Cu half-cell (copper is the positive electrode each time): M1 0.78 V, M2 1.10 V, M3 0.47 V.\n\nRank the metals as reducing agents and predict the voltage of an M2/M3 cell.",
+   "markscheme": [
+    "Strongest to weakest reducing agent: M2 > M1 > M3 (larger voltage against copper = more easily oxidized) (1)",
+    "M2/M3 cell: 1.10 − 0.47 = 0.63 V (1)"
+   ],
+   "tactic": "Graphs: quote values you read off, show the gradient working, and state what the shape means.",
+   "hl": true
+  },
+  {
+   "id": "p1bx-13",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r1-2",
+   "topicLabel": "R1.2 Energy cycles in reactions",
+   "stem": "Data: Enthalpy of solution of anhydrous CuSO₄(s): −66 kJ mol⁻¹. Enthalpy of solution of CuSO₄·5H₂O(s): +12 kJ mol⁻¹.\n\nUse a Hess's law cycle to calculate ΔH for CuSO₄(s) + 5H₂O(l) → CuSO₄·5H₂O(s), and explain why it cannot be measured directly.",
+   "markscheme": [
+    "Cycle: both solids dissolve to the same solution, so ΔH = ΔH(anhydrous) − ΔH(hydrated) (1)",
+    "ΔH = −66 − (+12) = −78 kJ mol⁻¹ (1)",
+    "Adding exactly 5 mol of water to the solid and measuring its temperature change is not practical (the reaction can't be controlled or stopped at the hydrate) (1)"
+   ],
+   "tactic": "Hess's law: draw the cycle first; both routes must start and finish at the same substances."
+  },
+  {
+   "id": "p1bx-14",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r2-2",
+   "topicLabel": "R2.2 How fast? The rate of chemical change",
+   "stem": "Data: CaCO₃ chips + HCl in an open flask on a balance. t/s: 0, 20, 40, 60, 80, 100, 120. Mass lost/g: 0, 0.48, 0.80, 1.00, 1.10, 1.14, 1.14.\n\nEstimate the initial rate, explain why the mass falls, and give one limitation of this method.",
+   "markscheme": [
+    "Initial rate ≈ 0.48 ÷ 20 ≈ 0.024 g s⁻¹ (a tangent at t = 0 gives a slightly higher value, accept 0.024–0.030) (1)",
+    "Mass falls because CO₂ gas escapes from the flask (1)",
+    "Limitation, e.g. some CO₂ dissolves in the solution; water vapour/acid spray also escapes; mass changes are small relative to balance resolution (1)"
+   ],
+   "tactic": "Evaluating a method: name the specific weakness, say which way it moves the result, and give a matching improvement."
+  },
+  {
+   "id": "p1bx-15",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s3-2",
+   "topicLabel": "S3.2 Functional groups: classification of organic compounds",
+   "stem": "Data: Boiling points of straight-chain alkanes (°C): C₁ −162, C₂ −89, C₃ −42, C₄ −1, C₅ 36, C₆ 69.\n\nPredict the boiling point of heptane (C₇) and explain the trend, including why the increase per carbon gets smaller.",
+   "markscheme": [
+    "Prediction in the range 95–100 °C (increments 73, 47, 41, 37, 33 → about +30) (1)",
+    "More electrons and larger surface area → stronger London (dispersion) forces → higher boiling point (1)",
+    "Each extra CH₂ is a smaller fraction of the molecule, so the relative increase in London forces (and boiling point) gets smaller (1)"
+   ],
+   "tactic": "Graphs: quote values you read off, show the gradient working, and state what the shape means."
+  },
+  {
+   "id": "p1bx-16",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r2-1",
+   "topicLabel": "R2.1 How much? The amount of chemical change",
+   "stem": "Data: 6.00 g of ethanoic acid (M = 60.06 g mol⁻¹) is heated with excess ethanol and an acid catalyst. 5.28 g of ethyl ethanoate (M = 88.12 g mol⁻¹) is collected.\n\nCalculate the percentage yield and suggest two reasons it is below 100 %.",
+   "markscheme": [
+    "n(acid) = 6.00 ÷ 60.06 = 0.0999 mol, so theoretical mass = 0.0999 × 88.12 = 8.80 g (1)",
+    "Yield = 5.28 ÷ 8.80 × 100 = 60.0 % (1)",
+    "Esterification is reversible and reaches equilibrium; product lost during separation/distillation (1)"
+   ],
+   "tactic": "Percentage yield: always work from the limiting reagent."
+  },
+  {
+   "id": "p1bx-17",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s1-5",
+   "topicLabel": "S1.5 Ideal gases",
+   "stem": "Data: 0.048 g of magnesium (Ar 24.31) reacts with excess HCl: Mg + 2HCl → MgCl₂ + H₂. Gas syringe reading 45 ± 1 cm³ at 298 K and 100 kPa. R = 8.31 J K⁻¹ mol⁻¹.\n\nCalculate the expected volume of hydrogen and suggest a reason the measured volume is lower.",
+   "markscheme": [
+    "n(H₂) = n(Mg) = 0.048 ÷ 24.31 = 1.97 × 10⁻³ mol (1)",
+    "V = nRT ÷ p = 1.97 × 10⁻³ × 8.31 × 298 ÷ 100 000 = 4.9 × 10⁻⁵ m³ ≈ 49 cm³ (1)",
+    "e.g. oxide layer on the magnesium (less Mg reacts); gas escaped before the bung was fitted; syringe plunger sticking (1)"
+   ],
+   "tactic": "pV = nRT: convert to SI units first (Pa, m³, K)."
+  },
+  {
+   "id": "p1bx-18",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s3-2",
+   "topicLabel": "S3.2 Functional groups: classification of organic compounds",
+   "stem": "Data: Compound Z, C₃H₆O. IR: strong absorption at 1715 cm⁻¹; no broad absorption between 2500 and 3600 cm⁻¹. ¹H NMR: one signal only, a singlet at 2.2 ppm.\n\nIdentify Z, using the data booklet tables.",
+   "markscheme": [
+    "1715 cm⁻¹ = C=O; no broad band, so no O–H (not an alcohol or carboxylic acid) (1)",
+    "A single ¹H environment: the molecule is symmetrical, two equivalent CH₃ groups next to C=O (1)",
+    "Z is propanone, CH₃COCH₃ (1)"
+   ],
+   "tactic": "Spectra: use each technique for one clue, then combine.",
+   "hl": true
+  },
+  {
+   "id": "p1bx-19",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r2-2",
+   "topicLabel": "R2.2 How fast? The rate of chemical change",
+   "stem": "Data: Initial rates for A + B → products. Exp 1: [A] 0.10, [B] 0.10, rate 2.0 × 10⁻⁴. Exp 2: [A] 0.20, [B] 0.10, rate 8.0 × 10⁻⁴. Exp 3: [A] 0.10, [B] 0.30, rate 6.0 × 10⁻⁴ (concentrations in mol dm⁻³, rates in mol dm⁻³ s⁻¹).\n\nDeduce the rate equation and calculate k with units.",
+   "markscheme": [
+    "Doubling [A] quadruples the rate: second order in A (1)",
+    "Tripling [B] triples the rate: first order in B, so rate = k[A]²[B] (1)",
+    "k = 2.0 × 10⁻⁴ ÷ (0.10² × 0.10) = 0.20 dm⁶ mol⁻² s⁻¹ (1)"
+   ],
+   "tactic": "Graphs: quote values you read off, show the gradient working, and state what the shape means.",
+   "hl": true
+  },
+  {
+   "id": "p1bx-20",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-tools",
+   "topicLabel": "Tools & inquiry: measurement, uncertainty, graphs and evaluation",
+   "stem": "Data: Three students timed the same 'disappearing cross' run by eye: 31 s, 38 s and 34 s.\n\nIdentify the main type of error and suggest an improvement.",
+   "markscheme": [
+    "Random error from judging the end point by eye (results scatter both ways) (1)",
+    "Use a light sensor or colorimeter with a data logger to fix the end point objectively (or: one observer, repeat and average) (1)"
+   ],
+   "tactic": "Evaluating a method: name the specific weakness, say which way it moves the result, and give a matching improvement."
+  }
+ ]
+}

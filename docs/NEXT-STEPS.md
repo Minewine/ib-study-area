@@ -37,7 +37,7 @@ Merge **PR #1 → PR #2 → PR #3**, in that order (each one builds on the previ
 ## 6. Fill the practice gaps the notes exposed
 - Flashcards for **B2.1–B2.3** (membranes, organelles, cell specialisation). She studies these next, and they have questions but no cards.
 - Questions and cards for **Chemistry S1.1** (her first topic has none).
-- Turn the **Chemistry Paper 1A prompts** in the notes (`paper1A`, about 81) into quiz items in a calculator-free bank.
+- ~~Turn the Chemistry Paper 1A prompts into quiz items~~ Done in `feat/exam-practice`: four calculator-free `chem-p1a-*` banks, plus Paper 1B-style banks `chem-p1b-data-practice` and `chem-p1b-experimental-skills`, and the Biology `bio-data-response-unfamiliar` bank. Topic notes don't link to these banks yet.
 - The 15 Biology topics with no questions or cards (mostly DP2): see the Biology notes Page.
 - Maths: AA papers have no multiple choice, so convert the mostly-MCQ maths banks to typed answers (roadmap H9).
 
