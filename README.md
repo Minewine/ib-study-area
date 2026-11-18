@@ -18,14 +18,15 @@ Status snapshot: **2026-11-15** — hosted at **rametric.com/nevaib (live, verif
 | EE workspace | `ee.html` | Idea-log shortlist (tracked, synced), one-page proposal checklist mapped to the new-EE criteria, DP1 timeline, reflection-session guidance |
 | Quiz engine | `quiz.html` | 20-question sessions, filtered by subject/topic/format; instant MCQ marking; written answers self-marked against markschemes; weak-topic flags + tactics; "＋ Flashcard" button on every answer |
 | Flashcards | `flashcards.html` | Leitner spaced repetition (1/2/4/8/16-day boxes), flip UI, keyboard shortcuts, dark mode, editor, export/import |
-| Practice | `practice.html` | Mock protocol, printable error log, missed-question tracker, paper-alignment table per subject, Dec–Jan mock schedule |
+| Practice | `practice.html` | Mock protocol, printable error log, missed-question tracker, paper-alignment table per subject, Dec–Jan mock schedule, manifest-driven papers list |
+| Library | `library.html` | Filterable/searchable browser over every library PDF (notes · official · school · papers) from `library/library-manifest.json`; ★ pin resources (dashboard card), private per-resource notes, recently-opened tracking — all synced |
 | IA & EE | `ia.html` | IA/EE criteria per subject, milestone timeline, **practice-IA debrief notes** (Nov hydrogen-peroxide + Jan beetroot/osmosis — saved + synced) |
 | Plan | `plan.html` | DP1 term-by-term plan merged from ISL's deadline calendar + weekly loop + school-requests email (copy-paste) |
 | Deadlines | `deadlines.html` | ISL Year 12 calendar as a live timeline (past struck through, upcoming with days-to-go) |
 | Reference | `quick-reference.html` | Formula/data booklets, command terms, GDC exam-mode, citation |
 | Redirect | `sixth-subject.html` | The sixth subject is English A Literature HL → redirects to its hub |
 
-Content totals: **127 PDFs** in the library · **631 quiz questions** (23 banks) · **484 flashcards** (23 decks — now incl. French terminology + English literary terms).
+Content totals: **127 PDFs** in the library (indexed by `library/library-manifest.json` — rebuilt with `tools/build_library_manifest.py` after any PDF lands) · **631 quiz questions** (23 banks) · **484 flashcards** (23 decks — now incl. French terminology + English literary terms).
 
 ## Tech stack (deliberately boring)
 
@@ -59,6 +60,7 @@ ibsystem/
 │   ├── quiz-engine.js        ← quiz sessions + flashcard hook
 │   ├── flashcards.js         ← SRS engine + editor + export/import
 │   ├── lists.js              ← tracked lists + debrief notes (synced blobs)
+│   ├── library.js            ← library browser: manifest filter/search, pins/notes/recent tracking
 │   └── deadlines.js          ← deadline data + timeline renderers
 ├── library/                  ← all content data (the important folder — back this up)
 │   ├── official/             ← 21 PDFs from ibo.org (guides, specimens, briefs, booklets, EE guide)
@@ -66,9 +68,11 @@ ibsystem/
 │   ├── notes/                ← 103 topic PDFs, organised by ISL teaching order
 │   ├── questions/            ← 23 quiz banks (631 items) — schema in DEVELOPMENT.md
 │   ├── flashcards/           ← 23 decks (484 cards) — schema in DEVELOPMENT.md
-│   └── papers/               ← (empty) school-provided past papers land here
+│   ├── papers/               ← (empty) school-provided past papers land here
+│   └── library-manifest.json ← auto-built index of every PDF (127 items) — rebuild after changes
 ├── source-archives/          ← original downloaded ZIPs (kept as provenance; deletable once confident)
-└── tools/build_site.py       ← OPTIONAL generator for 10 base pages — see warning in DEVELOPMENT.md
+├── tools/build_site.py       ← OPTIONAL generator for 10 base pages — see warning in DEVELOPMENT.md
+└── tools/build_library_manifest.py ← rebuilds library/library-manifest.json from the PDF tree
 ```
 
 ## How content is organised
@@ -106,7 +110,7 @@ banner on its hub.
 ## Next actions (ordered — details in the linked docs)
 
 1. **Tell her** — the app is live: rametric.com/nevaib, her login is `neva` + the account password (created via the setup action). Bookmark / add to home screen on the phone.
-2. **Send the school-requests email** (ready to copy at the bottom of `plan.html`) — papers + markschemes, History FA2028 guide/specimens, LangLit materials, IA samples. Then file arrivals into `library/papers/<subject>/` and link them on `practice.html`.
+2. **Send the school-requests email** (ready to copy at the bottom of `plan.html`) — papers + markschemes, History FA2028 guide/specimens, LangLit materials, IA samples. Then file arrivals into `library/papers/<subject>/` and run `tools/build_library_manifest.py` — they surface on `practice.html` and `library.html` automatically.
 3. **8 December**: English Paper 1 timed rehearsal (specimen on the English hub) → error-log entry. The Dec–Jan mock schedule lives on `practice.html`; the IA debrief boxes on `ia.html` get filled after each bio practice session.
 4. **Confirm with the school**: Nov–Jun calendar dates (only Aug–Oct verified against the official text layer), ISL's math unit order (relabel the Functions bank if needed), the English P2 work list (unlocks quote banks).
 5. **Monthly rhythm** (MAINTENANCE.md): content commit + push, host backup of `~/nevaib-data/`, next bank/deck batch per [docs/CONTENT-PLAN.md](docs/CONTENT-PLAN.md), validator + link check.

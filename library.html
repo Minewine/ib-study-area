@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Library — IB Study Area</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav>
+  <a href="index.html" class="brand">IB Study Area</a>
+  <a href="math-aa-sl.html">Math AA SL</a>
+  <a href="biology-hl.html">Biology HL</a>
+  <a href="chemistry-hl.html">Chemistry HL</a>
+  <a href="history-sl.html">History SL</a>
+  <a href="french-a-langlit.html">French A</a>
+  <a href="english-lit-hl.html">English Lit HL</a>
+  <a href="core.html">Core</a>
+  <a href="practice.html">Practice</a>
+  <a href="ia.html">IA &amp; EE</a>
+  <a href="ee.html">EE</a>
+  <a href="quiz.html">Quiz</a>
+  <a href="plan.html">Plan</a>
+  <a href="deadlines.html">Deadlines</a>
+  <a href="flashcards.html">Cards</a><a href="quick-reference.html">Reference</a>
+  <a href="library.html" class="active">Library</a>
+  <span id="auth-slot"></span>
+</nav>
+<main>
+  <h2>Library <span class="count">(every PDF on the shelf — notes · official · school · papers)</span></h2>
+
+  <div class="currency"><strong>One shelf, one list.</strong> This page reads <code>library/library-manifest.json</code> — drop a PDF into the right <code>library/</code> folder, run <code>tools/build_library_manifest.py</code>, refresh. Checklist rows here are the same records as the subject hubs (same <code>subject::path</code> keys); ★ pins, notes and recently-opened sync when logged in (<code>res-*</code>).</div>
+
+  <section class="card">
+    <h3>Browse <span class="count" id="lib-count"></span></h3>
+    <div class="lib-filter">
+      <select id="lib-subject" aria-label="subject"></select>
+      <select id="lib-type" aria-label="type">
+        <option value="all">All types</option>
+        <option value="notes">Notes</option>
+        <option value="official">Official</option>
+        <option value="school">School</option>
+        <option value="papers">Papers</option>
+      </select>
+      <input id="lib-search" type="text" placeholder="search label, section, subject…" aria-label="search">
+    </div>
+    <div id="lib-results"><p class="muted">Loading the manifest…</p></div>
+    <p class="muted">Filters stick on this device. ★ = pinned (dashboard) · note = private note on the resource · checkbox/RAG = the hub checklist record.</p>
+  </section>
+</main>
+<footer>Private family study area · exams <strong>May 2028</strong> · keep this site and its library non-public</footer>
+<script src="assets/app.js?v=2"></script>
+<script src="assets/auth.js?v=5"></script>
+<script src="assets/lists.js?v=2"></script>
+<script src="assets/library.js?v=1"></script>
+</body>
+</html>

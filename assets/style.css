@@ -87,3 +87,18 @@ li.future{padding:.3rem 0}
 .auth-status.bad{color:#f0a5a5}
 #auth-slot .btn{padding:.2rem .6rem;font-size:.82rem;border:1px solid #3a4d63;border-radius:8px;background:#1e3350;color:#e8eef7;cursor:pointer}
 #auth-slot .btn:hover{background:#26415f}
+
+/* library browser (library.js) */
+nav a.active{background:#26415f;color:#fff}
+.lib-filter{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:.4rem 0 .7rem}
+.lib-filter select,.lib-filter input{font:inherit;font-size:.9rem;border:1px solid var(--line);border-radius:8px;padding:.3rem .5rem;background:#fff;color:var(--ink)}
+.lib-filter select:focus,.lib-filter input:focus{outline:none;border-color:var(--accent)}
+.lib-filter input{flex:1 1 200px;min-width:160px}
+.lib-subj{font-size:1rem;margin:.8rem 0 .2rem}
+.lib-sec{color:var(--muted);font-size:.85rem;margin:.55rem 0 .1rem}
+.lib-pin{border:none;background:none;cursor:pointer;font-size:1.05rem;line-height:1;color:#b9c6d4;padding:.05rem .3rem}
+.lib-pin.on{color:#dfa50f}
+.lib-note-btn{border:1px solid var(--line);background:#fff;color:var(--muted);font:inherit;font-size:.78rem;border-radius:8px;padding:.08rem .5rem;cursor:pointer;white-space:nowrap}
+.lib-note-btn:hover,.lib-note-btn.has{border-color:var(--accent);color:var(--accent)}
+.tnote.lib-note{display:none}
+.tnote.lib-note.open{display:block}

@@ -26,7 +26,9 @@
     "q-userbanks", "fc-userdecks", "fc-state", "fc-user",
     "fc-deleted", "fc-edits", "quizlog", "site-state",
     // study-site tracked lists + debrief notes (lists.js blobs)
-    "tok-objects", "ee-ideas", "io-issues", "ia-debriefs"
+    "tok-objects", "ee-ideas", "io-issues", "ia-debriefs",
+    // library browser resource tracking (library.js blobs)
+    "res-bookmarks", "res-notes", "res-recent"
   ];
   const store = {
     get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v === null ? d : v; } catch (e) { return d; } },

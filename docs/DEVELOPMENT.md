@@ -5,7 +5,7 @@ touching this site.
 
 ## Architecture
 
-- **Static site, no build step.** 17 study-site pages + 4 practice-app pages (`app/`, LIVE on rametric.com/nevaib) + 7 asset files + JSON data in `library/` (23 quiz banks / 631 items, 23 flashcard decks / 484 cards). The engines build their pickers from `library/questions/manifest.json` + `library/flashcards/manifest.json`.
+- **Static site, no build step.** 18 study-site pages + 4 practice-app pages (`app/`, LIVE on rametric.com/nevaib) + 8 asset files + JSON data in `library/` (23 quiz banks / 631 items, 23 flashcard decks / 484 cards, and the PDF manifest `library/library-manifest.json` / 127 items). The engines build their pickers from `library/questions/manifest.json` + `library/flashcards/manifest.json`; the Library browser reads `library/library-manifest.json`.
 - **Practice app (`app/`)**: `index.html` (launcher), `quiz.html`, `cards.html`, `author.html` (upload/manage/export).
   Engines resolve content via `PATH_BASE` (`../` when served from `/app/`, empty at the root), so the same engine
   files serve both layers. Root `quiz.html`/`flashcards.html` are one-line redirect stubs to the app.
@@ -28,7 +28,8 @@ touching this site.
   (rametric.com, localhost/127.0.0.1, LAN 192.168/10/172.16-31) get `Access-Control-Allow-Origin`; OPTIONS
   preflights answer 204 before auth.
 - **Sync model**: last-write-wins on the whole synced payload (`q-userbanks, fc-userdecks, fc-state, fc-user,
-  fc-deleted, fc-edits, quizlog, tok-objects, ee-ideas, io-issues, ia-debriefs` **+ `site-state`**). On load, the server state replaces local per key; every engine
+  fc-deleted, fc-edits, quizlog, tok-objects, ee-ideas, io-issues, ia-debriefs, res-bookmarks, res-notes,
+  res-recent` **+ `site-state`**). On load, the server state replaces local per key; every engine
   write triggers a debounced (2 s) push; retry loop every 15 s while dirty. Login triggers one reload so engines
   re-read restored state. `site-state` = `{checklists: {"chk:…": {c,r}}, week: {"week:0": "…"}}` — one batched
   object built from the per-row localStorage keys on push, distributed back to per-row keys on pull; **rows merge
@@ -36,9 +37,10 @@ touching this site.
   — never pushes blind, since `save-state` replaces the whole per-user file). First login on an empty account
   pushes the local state up (migration, no data loss).
 - **Cache-busting convention**: engine script tags carry `?v=N` — bump N in the referencing pages whenever an engine
-  file changes. auth.js is at `?v=4` on the four app pages **and** the ten study-site auth pages (dashboard, hubs,
-  core, ia, ee); `app.js` is at `?v=2` everywhere it loads; `deadlines.js` is at `?v=2` (index + deadlines);
-  `lists.js` is at `?v=1` (core, ia, french hub, ee). Bank/deck/manifest fetches use `?cb=Date.now()` + `cache: no-store`.
+  file changes. auth.js is at `?v=5` on the eleven study-site auth pages (dashboard, hubs, core, ia, ee, library)
+  and still `?v=4` on the four app pages; `app.js` is at `?v=2` everywhere it loads; `deadlines.js` is at `?v=2`
+  (index + deadlines); `lists.js` is at `?v=2` (core, ia, french hub, ee); `library.js` is at `?v=1`
+  (library.html, index, practice). Bank/deck/manifest fetches use `?cb=Date.now()` + `cache: no-store`.
 - **Vanilla JS, one engine per concern**:
   | File | Owns | Page(s) |
   |---|---|---|
@@ -47,6 +49,7 @@ touching this site.
   | `assets/flashcards.js` | Deck loading, Leitner SRS, session runner, editor, export/import, theme, PATH_BASE, user-deck merge | `flashcards.html` (root + `app/`) |
   | `assets/deadlines.js` | Deadline data + `#nextup` / `#timeline` renderers | `index.html`, `deadlines.html` |
   | `assets/lists.js` | Tracked lists (`data-list` containers) + debrief notes (`textarea[data-note]`), one synced blob each | `core.html`, `ia.html`, `french-a-langlit.html`, `ee.html` |
+  | `assets/library.js` | Library browser over `library/library-manifest.json`: filter bar (subject/type/free-text), rows reusing the hub-row convention, ★ pins / notes / recent tracking, `#res-pins` + `#papers-list` renderers | `library.html`, `index.html`, `practice.html` |
 - **State** lives in `localStorage` (per browser/device — see table below).
 - **Python** is used only for one-off scripts, run with `python3 -I` (`tools/build_site.py`,
   past extraction scripts). Nothing at runtime needs Python except the file server.
@@ -94,9 +97,13 @@ cross-origin token path (the sticky override is localhost-only, by design).
 | `ee-ideas` | `lists.js` (ee.html) | EE idea-log shortlist blob `{items:[{t, done, a: subject, b: why}]}` |
 | `io-issues` | `lists.js` (french hub) | French IO global-issue bank blob `{items:[{t, done, a: text, b: work}]}` |
 | `ia-debriefs` | `lists.js` (ia.html) | IA practice debrief notes `{nov:{rd,da,ce}, jan:{rd,ace}}` |
+| `res-bookmarks` | `library.js` | pinned library resources: array of `subject::path` keys (★ on library rows), newest pin first |
+| `res-notes` | `library.js` | per-resource free-text notes `{subject::path: text}` |
+| `res-recent` | `library.js` | recently opened PDFs: array of `subject::path`, newest first, capped at 20 |
+| `lib-filters` | `library.js` | library browser filter state `{subject, type, q}` — device-local, NOT synced |
 
-`tok-objects`, `ee-ideas`, `io-issues`, `ia-debriefs` are plain synced keys (in `auth.js` `SYNCED_KEYS`,
-last-write-wins per blob). `q-errors` is deliberately NOT synced (device-local, rendered by practice.html's
+`tok-objects`, `ee-ideas`, `io-issues`, `ia-debriefs` and the three `res-*` blobs are plain synced keys (in
+`auth.js` `SYNCED_KEYS`, last-write-wins per blob). `q-errors` is deliberately NOT synced (device-local, rendered by practice.html's
 inline script — now folded into the generator).
 
 ## Data schemas
@@ -145,6 +152,24 @@ pickers (`?cb=` + `cache: no-store`). The flashcards manifest omits `label`. The
 fetch-failure snapshots, not the source of truth — the manifests are. `validate_content.py`
 checks that every manifest entry points to an existing file.
 
+### Library manifest (`library/library-manifest.json`)
+```json
+{
+  "generated": "2026-11-15T20:01:52Z",
+  "items": [
+    {"file": "library/notes/biology-hl/continuity-change/cell-nuclear-division.pdf",
+     "subject": "biology-hl", "subjectLabel": "Biology HL", "type": "notes",
+     "section": "continuity-change", "label": "Cell nuclear division"}
+  ]
+}
+```
+`type` is one of `notes | official | school | papers` (`papers/` may be empty); items are sorted by
+(type, subject, section, label) so re-runs diff cleanly; `label`/`subjectLabel` are pre-HTML-escaped by
+the tool (its `pretty()` mirrors `build_site.py`). Rebuild after adding/removing PDFs with
+`python3 -I tools/build_library_manifest.py` — it scans `library/{notes,official,school,papers}` only
+(`questions/` and `flashcards/` keep their own manifests). `library.html`, the dashboard pins card and
+the practice papers list all render from this one file.
+
 ### Deadlines (`assets/deadlines.js` → `DEADLINES` array)
 `{ d: "YYYY-MM-DD", t: "label", tag: "sciences|ee|tok|core|exams|langlit|university|sixth" }`
 
@@ -165,14 +190,20 @@ Rules:
 - Auth widget (auth-slot + `auth.js?v=4` tag) is injected by `page()` for the `AUTH_PAGES` set
   (index, 5 hubs, core, ia); `english-lit-hl.html` and `ee.html` carry the same markup
   hand-authored. Keep them in sync. Core/ia/ee load auth.js because their lists/notes sync.
-- Per-page engine scripts go through `EXTRA_SCRIPTS` (currently lists.js on core/ia/french/ee).
+- Per-page engine scripts go through `EXTRA_SCRIPTS` (lists.js on core/ia/french; library.js on index
+  + practice — it drives the dashboard pins card and the practice papers list).
 - The hand-maintained pages (`quiz.html`, `plan.html`, `deadlines.html`, `flashcards.html`,
-  `english-lit-hl.html`, `ee.html`, `sixth-subject.html`) are never touched by the generator.
+  `english-lit-hl.html`, `ee.html`, `library.html`, `sixth-subject.html`) are never touched by the generator.
 
 ## Recipes (common changes)
 
-- **Add school papers**: save into `library/papers/<subject>/`, then link them from the
-  matching table/card on `practice.html`.
+- **Add school papers (manifest-driven intake)**: save the PDF into `library/papers/<subject>/`, run
+  `python3 -I tools/build_library_manifest.py`, refresh — the papers list on `practice.html` and the
+  Papers group on `library.html` pick it up from the manifest; no page edit needed. The drop-files hint
+  shows on both only while the papers count is 0.
+- **Add library resources (notes/official/school)**: file the PDF under its `library/<type>/<subject>/`
+  folder, re-run the manifest tool, refresh `library.html` — filter by type/subject/section or search;
+  ★ pins, per-resource notes and recently-opened tracking sync via the `res-*` blobs.
 - **Add a quiz bank**: JSON into `library/questions/`, then add an entry to
   `library/questions/manifest.json` (`file`, `subject`, `subjectLabel`, `label`). The engines
   fetch the manifest — no engine edit needed. The inline `FALLBACK_BANKS` in `quiz-engine.js`
