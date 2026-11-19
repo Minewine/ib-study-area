@@ -259,12 +259,12 @@ BASE = """<!DOCTYPE html>
 <body>
 <nav>
   <a href="index.html" class="brand">IB Study Area</a>
-  <a href="math-aa-sl.html">Math AA SL</a>
-  <a href="biology-hl.html">Biology HL</a>
-  <a href="chemistry-hl.html">Chemistry HL</a>
-  <a href="history-sl.html">History SL</a>
-  <a href="french-a-langlit.html">French A</a>
-  <a href="english-lit-hl.html">English Lit HL</a>
+  <a href="math-aa-sl.html" data-subject="math-aa-sl">Math AA SL</a>
+  <a href="biology-hl.html" data-subject="biology-hl">Biology HL</a>
+  <a href="chemistry-hl.html" data-subject="chemistry-hl">Chemistry HL</a>
+  <a href="history-sl.html" data-subject="history-sl">History SL</a>
+  <a href="french-a-langlit.html" data-subject="french-a-langlit">French A</a>
+  <a href="english-lit-hl.html" data-subject="english-lit-hl">English Lit HL</a>
   <a href="core.html">Core</a>
   <a href="practice.html">Practice</a>
   <a href="ia.html">IA &amp; EE</a>
@@ -279,15 +279,16 @@ BASE = """<!DOCTYPE html>
 __CONTENT__
 </main>
 <footer>Private family study area · exams <strong>May 2028</strong> · keep this site and its library non-public</footer>
-<script src="assets/store.js?v=6"></script>
-<script src="assets/app.js?v=4"></script>
+<script src="assets/store.js?v=7"></script>
+<script src="assets/profile.js?v=1"></script>
+<script src="assets/app.js?v=5"></script>
 </body>
 </html>
 """
 
 
 # Post-generation patches (folded back in on 2026-11-14; keep in sync with the live pages)
-CANONICAL_NAV = '<nav>\n  <a href="index.html" class="brand">IB Study Area</a>\n  <a href="math-aa-sl.html">Math AA SL</a>\n  <a href="biology-hl.html">Biology HL</a>\n  <a href="chemistry-hl.html">Chemistry HL</a>\n  <a href="history-sl.html">History SL</a>\n  <a href="french-a-langlit.html">French A</a>\n  <a href="english-lit-hl.html">English Lit HL</a>\n  <a href="core.html">Core</a>\n  <a href="practice.html">Practice</a>\n  <a href="ia.html">IA &amp; EE</a>\n  <a href="ee.html">EE</a>\n  <a href="quiz.html">Quiz</a>\n  <a href="plan.html">Plan</a>\n  <a href="deadlines.html">Deadlines</a>\n  <a href="flashcards.html">Cards</a>\n  <a href="app/notes.html">Notes</a>\n  <a href="quick-reference.html">Reference</a>\n  <a href="library.html">Library</a>\n</nav>'
+CANONICAL_NAV = '<nav>\n  <a href="index.html" class="brand">IB Study Area</a>\n  <a href="math-aa-sl.html" data-subject="math-aa-sl">Math AA SL</a>\n  <a href="biology-hl.html" data-subject="biology-hl">Biology HL</a>\n  <a href="chemistry-hl.html" data-subject="chemistry-hl">Chemistry HL</a>\n  <a href="history-sl.html" data-subject="history-sl">History SL</a>\n  <a href="french-a-langlit.html" data-subject="french-a-langlit">French A</a>\n  <a href="english-lit-hl.html" data-subject="english-lit-hl">English Lit HL</a>\n  <a href="core.html">Core</a>\n  <a href="practice.html">Practice</a>\n  <a href="ia.html">IA &amp; EE</a>\n  <a href="ee.html">EE</a>\n  <a href="quiz.html">Quiz</a>\n  <a href="plan.html">Plan</a>\n  <a href="deadlines.html">Deadlines</a>\n  <a href="flashcards.html">Cards</a>\n  <a href="app/notes.html">Notes</a>\n  <a href="quick-reference.html">Reference</a>\n  <a href="library.html">Library</a>\n</nav>'
 
 NEXTUP = (
     '<section class="card"><h3>Next school deadlines</h3><ul id="nextup" class="links"></ul>'
@@ -302,12 +303,12 @@ CALLOUT = (
     '<p><a class="btn-link" href="quiz.html">Start a session →</a> · <a href="plan.html">how sessions fit the week</a></p></section>'
 )
 
-MATH_ANCHOR = "<section class=\"card\"><h3>Syllabus checklist <span class='count'>(topics with notes PDFs)</span></h3>"
-BIO_ANCHOR = "<section class=\"card\"><h3>Syllabus checklist <span class='count'>(43 topics, new-syllabus themes)</span></h3>"
-CHEM_ANCHOR = "<section class=\"card\"><h3>Syllabus checklist <span class='count'>(25 topics, Structure/Reactivity)</span></h3>"
-MATH_PANEL = '<section class="card">\n    <h3>Teaching hours (SL) <span class="count">(from the official syllabus content)</span></h3>\n    <table class="wt"><thead><tr><th>Topic</th><th>SL hours</th></tr></thead><tbody>\n      <tr><td>1. Number &amp; algebra</td><td>19</td></tr>\n      <tr><td>2. Functions</td><td>21</td></tr>\n      <tr><td>3. Geometry &amp; trigonometry</td><td>25</td></tr>\n      <tr><td>4. Statistics &amp; probability</td><td>27</td></tr>\n      <tr><td>5. Calculus</td><td>28</td></tr>\n    </tbody></table>\n    <p class="muted">Calculus carries the most hours and lands last — it is where steady DP1 pacing pays off. Full document: <a href="library/school/math-aa-syllabus-content.pdf" target="_blank">math-aa-syllabus-content.pdf</a>.</p>\n  </section>\n'
-BIO_PANEL = '<section class="card">\n    <h3>ISL teaching sequence 2026–28 <span class="count">(from the school course outline — timings approximate)</span></h3>\n    <table class="wt"><thead><tr><th>When</th><th>Units</th><th>Assessments</th></tr></thead><tbody>\n      <tr><td>DP1 Sep–Oct</td><td>Form &amp; function: A1.1 water · B1.1/B1.2 carbohydrates, lipids, proteins · A1.2 nucleic acids</td><td>unit tests</td></tr>\n      <tr><td>DP1 Nov</td><td>C1.1 enzymes &amp; metabolism</td><td><strong>IA practice</strong>: hydrogen peroxide (design · analysis · conclusion · evaluation)</td></tr>\n      <tr><td>DP1 Nov–Dec</td><td>Unity: A2.2 cell structure · B2.2 organelles · B2.3 specialization · A2.1 origin of cells</td><td><strong>January exam</strong> — everything to date</td></tr>\n      <tr><td>DP1 Jan–Feb</td><td>B2.1 membranes &amp; transport · D2.3 water potential</td><td><strong>IA practice</strong>: beetroot membranes (research design) · osmosis in potatoes (analysis/conclusion/evaluation)</td></tr>\n      <tr><td>DP1 Feb–Mar</td><td>C1.2 cell respiration · D1.2 protein synthesis · D2.2 gene expression · C3.2 defence against disease</td><td>tests</td></tr>\n      <tr><td>DP1 Apr–May</td><td>Flow: C1.3 photosynthesis · C4.2 transfer of energy &amp; matter · B3.1 gas exchange · B3.2 transport</td><td><strong>June exam</strong> — everything to date</td></tr>\n      <tr><td>DP1 June</td><td>B4.1/B4.2 niches · C4.1 populations · D1.1 DNA replication · A2.3 viruses</td><td><strong>IA experiments (late June)</strong></td></tr>\n      <tr><td>DP2 Sep–Nov</td><td>Continuity: D2.1 division · D3.1 reproduction · Diversity: A3.1/A3.2 · D1.3 mutation · D3.2 inheritance · A4.2 conservation</td><td><strong>IA draft (early Sept)</strong> → <strong>IA final (early Nov)</strong></td></tr>\n      <tr><td>DP2 Dec–Mar</td><td>Control &amp; coordination (C3.1, C2.2, B3.3, D3.3, C2.1) · Change (D4.1 selection, A4.1 evolution, D4.2, D4.3 climate)</td><td><strong>Mock exams (January)</strong></td></tr>\n    </tbody></table>\n    <p class="muted">Checklist rows below carry the same topic codes — keep the current unit green before its test. Official outline: <a href="library/school/bio-course-outline-2026-28.pdf" target="_blank">bio-course-outline-2026-28.pdf</a>.</p>\n  </section>\n'
-CHEM_PANEL = '<section class="card">\n    <h3>ISL timeline for the M28 cohort <span class="count">(from the school\'s "Chemistry at a glance")</span></h3>\n    <table class="wt"><thead><tr><th>When</th><th>ISL unit</th><th>Checklist section below</th></tr></thead><tbody>\n      <tr><td>DP1 Sep</td><td>Atomic theory &amp; kinetic theory</td><td>Structure 1 — particulate nature of matter</td></tr>\n      <tr><td>DP1 Oct–Nov</td><td>Periodicity · Stoichiometry</td><td>Structure 3 (classification) · Reactivity 2 — how much</td></tr>\n      <tr><td>DP1 Dec–Jan</td><td>Energetics</td><td>Reactivity 1 — what drives reactions</td></tr>\n      <tr><td>DP1 Feb–Mar</td><td>Kinetics · Equilibrium</td><td>Reactivity 2 — how fast · how far</td></tr>\n      <tr><td>DP1 Apr–May</td><td>Redox</td><td>Reactivity 3 — mechanisms of change</td></tr>\n      <tr><td>DP1 June</td><td>Acids and bases</td><td>Reactivity 3 — mechanisms of change</td></tr>\n      <tr><td>DP2 Sep–Oct</td><td>Acids &amp; bases (finish) · <strong>IA labwork</strong></td><td>—</td></tr>\n      <tr><td>DP2 Oct–Nov</td><td>Bonding</td><td>Structure 2 — models of bonding</td></tr>\n      <tr><td>DP2 Nov–Mar</td><td>Organic chemistry</td><td>Structure 3 — functional groups · Reactivity 3</td></tr>\n      <tr><td>DP2 Apr</td><td>Practical skills for Paper 1B</td><td>Tools (skills)</td></tr>\n    </tbody></table>\n    <p class="muted">School document: <a href="library/school/chem-at-a-glance-m28.pdf" target="_blank">chem-at-a-glance-m28.pdf</a> (subject to change — it does not replace the IB guide).</p>\n  </section>\n'
+MATH_ANCHOR = "<section class=\"card\" data-subject=\"math-aa-sl\"><h3>Syllabus checklist <span class='count'>(topics with notes PDFs)</span></h3>"
+BIO_ANCHOR = "<section class=\"card\" data-subject=\"biology-hl\"><h3>Syllabus checklist <span class='count'>(43 topics, new-syllabus themes)</span></h3>"
+CHEM_ANCHOR = "<section class=\"card\" data-subject=\"chemistry-hl\"><h3>Syllabus checklist <span class='count'>(25 topics, Structure/Reactivity)</span></h3>"
+MATH_PANEL = '<section class="card" data-subject="math-aa-sl">\n    <h3>Teaching hours (SL) <span class="count">(from the official syllabus content)</span></h3>\n    <table class="wt"><thead><tr><th>Topic</th><th>SL hours</th></tr></thead><tbody>\n      <tr><td>1. Number &amp; algebra</td><td>19</td></tr>\n      <tr><td>2. Functions</td><td>21</td></tr>\n      <tr><td>3. Geometry &amp; trigonometry</td><td>25</td></tr>\n      <tr><td>4. Statistics &amp; probability</td><td>27</td></tr>\n      <tr><td>5. Calculus</td><td>28</td></tr>\n    </tbody></table>\n    <p class="muted">Calculus carries the most hours and lands last — it is where steady DP1 pacing pays off. Full document: <a href="library/school/math-aa-syllabus-content.pdf" target="_blank">math-aa-syllabus-content.pdf</a>.</p>\n  </section>\n'
+BIO_PANEL = '<section class="card" data-subject="biology-hl">\n    <h3>ISL teaching sequence 2026–28 <span class="count">(from the school course outline — timings approximate)</span></h3>\n    <table class="wt"><thead><tr><th>When</th><th>Units</th><th>Assessments</th></tr></thead><tbody>\n      <tr><td>DP1 Sep–Oct</td><td>Form &amp; function: A1.1 water · B1.1/B1.2 carbohydrates, lipids, proteins · A1.2 nucleic acids</td><td>unit tests</td></tr>\n      <tr><td>DP1 Nov</td><td>C1.1 enzymes &amp; metabolism</td><td><strong>IA practice</strong>: hydrogen peroxide (design · analysis · conclusion · evaluation)</td></tr>\n      <tr><td>DP1 Nov–Dec</td><td>Unity: A2.2 cell structure · B2.2 organelles · B2.3 specialization · A2.1 origin of cells</td><td><strong>January exam</strong> — everything to date</td></tr>\n      <tr><td>DP1 Jan–Feb</td><td>B2.1 membranes &amp; transport · D2.3 water potential</td><td><strong>IA practice</strong>: beetroot membranes (research design) · osmosis in potatoes (analysis/conclusion/evaluation)</td></tr>\n      <tr><td>DP1 Feb–Mar</td><td>C1.2 cell respiration · D1.2 protein synthesis · D2.2 gene expression · C3.2 defence against disease</td><td>tests</td></tr>\n      <tr><td>DP1 Apr–May</td><td>Flow: C1.3 photosynthesis · C4.2 transfer of energy &amp; matter · B3.1 gas exchange · B3.2 transport</td><td><strong>June exam</strong> — everything to date</td></tr>\n      <tr><td>DP1 June</td><td>B4.1/B4.2 niches · C4.1 populations · D1.1 DNA replication · A2.3 viruses</td><td><strong>IA experiments (late June)</strong></td></tr>\n      <tr><td>DP2 Sep–Nov</td><td>Continuity: D2.1 division · D3.1 reproduction · Diversity: A3.1/A3.2 · D1.3 mutation · D3.2 inheritance · A4.2 conservation</td><td><strong>IA draft (early Sept)</strong> → <strong>IA final (early Nov)</strong></td></tr>\n      <tr><td>DP2 Dec–Mar</td><td>Control &amp; coordination (C3.1, C2.2, B3.3, D3.3, C2.1) · Change (D4.1 selection, A4.1 evolution, D4.2, D4.3 climate)</td><td><strong>Mock exams (January)</strong></td></tr>\n    </tbody></table>\n    <p class="muted">Checklist rows below carry the same topic codes — keep the current unit green before its test. Official outline: <a href="library/school/bio-course-outline-2026-28.pdf" target="_blank">bio-course-outline-2026-28.pdf</a>.</p>\n  </section>\n'
+CHEM_PANEL = '<section class="card" data-subject="chemistry-hl">\n    <h3>ISL timeline for the M28 cohort <span class="count">(from the school\'s "Chemistry at a glance")</span></h3>\n    <table class="wt"><thead><tr><th>When</th><th>ISL unit</th><th>Checklist section below</th></tr></thead><tbody>\n      <tr><td>DP1 Sep</td><td>Atomic theory &amp; kinetic theory</td><td>Structure 1 — particulate nature of matter</td></tr>\n      <tr><td>DP1 Oct–Nov</td><td>Periodicity · Stoichiometry</td><td>Structure 3 (classification) · Reactivity 2 — how much</td></tr>\n      <tr><td>DP1 Dec–Jan</td><td>Energetics</td><td>Reactivity 1 — what drives reactions</td></tr>\n      <tr><td>DP1 Feb–Mar</td><td>Kinetics · Equilibrium</td><td>Reactivity 2 — how fast · how far</td></tr>\n      <tr><td>DP1 Apr–May</td><td>Redox</td><td>Reactivity 3 — mechanisms of change</td></tr>\n      <tr><td>DP1 June</td><td>Acids and bases</td><td>Reactivity 3 — mechanisms of change</td></tr>\n      <tr><td>DP2 Sep–Oct</td><td>Acids &amp; bases (finish) · <strong>IA labwork</strong></td><td>—</td></tr>\n      <tr><td>DP2 Oct–Nov</td><td>Bonding</td><td>Structure 2 — models of bonding</td></tr>\n      <tr><td>DP2 Nov–Mar</td><td>Organic chemistry</td><td>Structure 3 — functional groups · Reactivity 3</td></tr>\n      <tr><td>DP2 Apr</td><td>Practical skills for Paper 1B</td><td>Tools (skills)</td></tr>\n    </tbody></table>\n    <p class="muted">School document: <a href="library/school/chem-at-a-glance-m28.pdf" target="_blank">chem-at-a-glance-m28.pdf</a> (subject to change — it does not replace the IB guide).</p>\n  </section>\n'
 
 FRENCH_CARD = '<a class="subj-card" href="french-a-langlit.html" data-subject="french"><strong>French A LangLit</strong><span class="bar mini"></span><span class="pct">0%</span></a>'
 ENGLISH_CARD = '<a class="subj-card" href="english-lit-hl.html" data-subject="english-lit"><strong>English A Lit HL</strong><span class="bar mini"></span><span class="pct">0%</span></a>'
@@ -375,8 +376,8 @@ EXTRA_SCRIPTS = {
     "core.html": ["assets/lists.js?v=4"],
     "ia.html": ["assets/lists.js?v=4"],
     "french-a-langlit.html": ["assets/lists.js?v=4"],
-    "index.html": ["assets/library.js?v=3"],
-    "practice.html": ["assets/library.js?v=3"],
+    "index.html": ["assets/library.js?v=4"],
+    "practice.html": ["assets/library.js?v=4"],
 }
 
 
@@ -388,8 +389,8 @@ def page(fname, title, content_html, active):
     if fname in AUTH_PAGES:
         h = h.replace("</nav>", '  <span id="auth-slot"></span>\n</nav>', 1)
         h = h.replace(
-            '<script src="assets/app.js?v=4"></script>',
-            '<script src="assets/app.js?v=4"></script>\n<script src="assets/auth.js?v=9"></script>',
+            '<script src="assets/app.js?v=5"></script>',
+            '<script src="assets/app.js?v=5"></script>\n<script src="assets/auth.js?v=10"></script>',
             1,
         )
     if fname in EXTRA_SCRIPTS:
@@ -401,8 +402,8 @@ def page(fname, title, content_html, active):
         )
     if fname == "index.html":
         h = h.replace(
-            '<script src="assets/app.js?v=4"></script>',
-            '<script src="assets/deadlines.js?v=4"></script>\n<script src="assets/app.js?v=4"></script>',
+            '<script src="assets/app.js?v=5"></script>',
+            '<script src="assets/deadlines.js?v=5"></script>\n<script src="assets/app.js?v=5"></script>',
             1,
         )
     out.write_text(h, encoding="utf-8")
@@ -415,6 +416,13 @@ def h2(t):
 
 def card(inner):
     return f'<section class="card">{inner}</section>'
+
+
+def subject_card(subj, inner):
+    """A card tagged with its subject (assets/profile.js hides the whole block
+    for accounts whose profile doesn't include it). The id matches the hub's
+    own .bar data-subject value (chk keys use the same legacy short ids)."""
+    return f'<section class="card" data-subject="{subj}">{inner}</section>'
 
 
 def weighting_table(rows):
@@ -469,14 +477,16 @@ SUBJECTS["math-aa-sl.html"] = dict(
             )
             + "<p>Paper 1 discipline: no calculator means exact values, factorising, mental algebra. Practise it that way from day one.</p>"
         )
-        + card(
+        + subject_card(
+            "math-aa-sl",
             "<h3>Two-year teaching plan (ISL 2026–28)</h3>"
             + "<div class='legend'>bold = non-teaching weeks (exams, IA, revision, trips &amp; breaks)</div>"
             + math_calendar_html
             + "<p class='muted'>Week numbering as published (source footnote: “based on 2019/2020 calendar”); "
             "no absolute dates are set yet — milestones as published in the “Course Calendar 2026–2028”.</p>"
         )
-        + card(
+        + subject_card(
+            "math-aa-sl",
             "<h3>Syllabus checklist <span class='count'>(topics with notes PDFs)</span></h3>"
             + "<div class='legend'>checkbox = revised · red/amber/green = confidence</div>"
             + "<div class='bar' data-subject='math-aa-sl'></div>"
@@ -523,7 +533,8 @@ SUBJECTS["biology-hl.html"] = dict(
             )
             + "<p>Paper 1B (data handling) is the new skill: read graphs, design tables, evaluate methods. No data booklet exists for biology — the skills must be automatic.</p>"
         )
-        + card(
+        + subject_card(
+            "biology-hl",
             "<h3>Syllabus checklist <span class='count'>(43 topics, new-syllabus themes)</span></h3>"
             + "<div class='legend'>checkbox = revised · red/amber/green = confidence</div>"
             + "<div class='bar' data-subject='biology-hl'></div>"
@@ -567,7 +578,8 @@ SUBJECTS["chemistry-hl.html"] = dict(
             )
             + "<p>Structure 1 (stoichiometry) is the classic DP1 grade-killer — go green on it before anything else.</p>"
         )
-        + card(
+        + subject_card(
+            "chemistry-hl",
             "<h3>Syllabus checklist <span class='count'>(25 topics, Structure/Reactivity)</span></h3>"
             + "<div class='legend'>checkbox = revised · red/amber/green = confidence</div>"
             + "<div class='bar' data-subject='chemistry-hl'></div>"
@@ -607,7 +619,8 @@ SUBJECTS["history-sl.html"] = dict(
             )
             + "<p>Practice diet: the official specimen set (via school) + teacher-made source work + old-guide Paper 1 for source-evaluation technique only (content differs).</p>"
         )
-        + card(
+        + subject_card(
+            "history",
             "<h3>Skills checklist</h3>"
             + "<div class='legend'>checkbox = revised · red/amber/green = confidence</div>"
             + "<div class='bar' data-subject='history'></div>"
@@ -672,7 +685,8 @@ SUBJECTS["french-a-langlit.html"] = dict(
             "<p>Marking vocabulary for P1 and the IO: the <a href='flashcards.html'>Cards page</a> has a French "
             "terminology deck (procédés stylistiques, registres, argumentation) — run it before each written analysis.</p>"
         )
-        + card(
+        + subject_card(
+            "french",
             "<h3>Skills checklist</h3>"
             + "<div class='legend'>checkbox = revised · red/amber/green = confidence</div>"
             + "<div class='bar' data-subject='french'></div>"
@@ -775,7 +789,8 @@ SUBJECTS["practice.html"] = dict(
             "(function () {\n"
             "  function render() {\n"
             "    let errs = [];\n"
-            '    try { errs = JSON.parse(localStorage.getItem("q-errors") || "[]"); } catch (e) {}\n'
+            '    if (window.NB && window.NB.store) errs = window.NB.store.get("q-errors", []); // scoped per account\n'
+            '    else { try { errs = JSON.parse(localStorage.getItem("q-errors") || "[]"); } catch (e) {} } // stale-cache fallback\n'
             "    const open = errs.filter(x => !x.resolved);\n"
             "    const done = errs.length - open.length;\n"
             '    const s = document.getElementById("err-summary");\n'
@@ -1109,12 +1124,16 @@ JS = """(function () {
   // fallback for a stale cached page that didn't load store.js.
   const store = (window.NB && window.NB.store) || {
     get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v === null ? d : v; } catch (e) { return d; } },
-    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} },
+    getRaw(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    keys(p) { const out = []; for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k && (!p || k.indexOf(p) === 0)) out.push(k); } return out; }
   };
   document.querySelectorAll('.row[data-key]').forEach(row => {
     const key = row.dataset.key;
     const st = store.get('chk:' + key, { c: false, r: '' });
-    if (localStorage.getItem('chk:' + key) === null) store.set('chk:' + key, st, { silent: true }); // default row, not a user change
+    // existence check through the store too: a raw read can't see the active
+    // user's scope and would re-seed defaults over their real ticks
+    if (store.getRaw('chk:' + key) === null) store.set('chk:' + key, st, { silent: true }); // default row, not a user change
     const cb = row.querySelector('input[type=checkbox]');
     const sel = row.querySelector('select.rag');
     if (cb) cb.checked = !!st.c;
@@ -1142,14 +1161,13 @@ JS = """(function () {
   document.querySelectorAll('.subj-card').forEach(cardEl => {
     const subj = cardEl.dataset.subject;
     let total = 0, done = 0;
-    for (let i = 0; i < localStorage.length; i++) {
-      const k = localStorage.key(i);
-      if (k && k.startsWith('chk:' + subj + '::')) {
+    store.keys().forEach(k => { // logical (scoped) keys — raw localStorage would miss the active user's rows
+      if (k.startsWith('chk:' + subj + '::')) {
         total++;
         const st = store.get(k, { c: false, r: '' });
         if (st.c || st.r === 'g') done++;
       }
-    }
+    });
     if (total) {
       const pct = Math.round(100 * done / total) + '%';
       const mini = cardEl.querySelector('.bar.mini');
@@ -1186,11 +1204,10 @@ JS = """(function () {
     }
     const bySubj = {};
     let total = 0, done = 0;
-    for (let i = 0; i < localStorage.length; i++) {
-      const k = localStorage.key(i);
-      if (!k || !k.startsWith('chk:')) continue;
+    store.keys().forEach(k => { // logical (scoped) keys — see the per-card loop above
+      if (!k.startsWith('chk:')) return;
       const sep = k.indexOf('::');
-      if (sep < 0) continue;
+      if (sep < 0) return;
       const st = store.get(k, { c: false, r: '' });
       const ok = st.c || st.r === 'g';
       total++;
@@ -1199,7 +1216,7 @@ JS = """(function () {
       if (!bySubj[subj]) bySubj[subj] = { done: 0, total: 0 };
       bySubj[subj].total++;
       if (ok) bySubj[subj].done++;
-    }
+    });
     if (total) {
       let worst = null;
       for (const subj in bySubj) {

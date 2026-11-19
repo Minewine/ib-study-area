@@ -5,7 +5,9 @@ Covers auth, get/save, revisions + 409 on a stale base, partial saves keeping
 other keys, legacy (rev-less) files and clients, history rotation and retrieval,
 export, atomic writes, refusing to overwrite an unreadable file, lockout (per
 username+IP and per IP, expiring), token handling, CSRF guards (JSON-only POST/PUT,
-foreign Origin refused), security headers, and a PHP 7.2 syntax guard (the host runs 7.2)."""
+foreign Origin refused), security headers, roles (migrate-on-read user records) and
+the admin account API (create-user / list-users / set-profile), and a PHP 7.2
+syntax guard (the host runs 7.2)."""
 
 import json
 import os
@@ -60,9 +62,11 @@ def server(tmp_path):
     (data / "state").mkdir(parents=True)
     h = subprocess.run([PHP, "-r", f"echo password_hash('{PASSWORD}', PASSWORD_DEFAULT);"],
                        capture_output=True, text=True, check=True).stdout
-    (data / "users.json").write_text(json.dumps({"tester": h, "other": h}))
+    # "tester" is a legacy pre-roles record (bare hash string); "other" is the new
+    # format {"h": ..., "role": ...} and the admin tests log in with it
+    (data / "users.json").write_text(json.dumps({"tester": h, "other": {"h": h, "role": "admin"}}))
     port = free_port()
-    env = dict(os.environ, NEVAIB_DATA_DIR=str(data))
+    env = dict(os.environ, NEVAIB_DATA_DIR=str(data), NEVAIB_SETUP_KEY="test-setup-key")
     proc = subprocess.Popen([PHP, "-S", f"127.0.0.1:{port}", "-t", str(ROOT), str(ROOT / "tools" / "dev_server.php")],
                             env=env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     base = f"http://127.0.0.1:{port}/api/api.php"
@@ -354,3 +358,168 @@ def test_security_headers(server):
     assert h.get("X-Frame-Options") == "DENY"
     assert "frame-ancestors 'none'" in h.get("Content-Security-Policy", "")
     assert "no-store" in h.get("Cache-Control", "")
+
+
+# ── multi-user: roles on user records + admin account management ─────────────
+
+@php
+def test_legacy_hash_user_still_logs_in_as_student(server):
+    st, d, _ = call(server, "me", token=login(server, "tester"))
+    assert st == 200 and d["user"] == "tester" and d["role"] == "student"
+
+
+@php
+def test_me_and_login_report_role(server):
+    st, d, _ = call(server, "login", {"username": "other", "password": PASSWORD})
+    assert st == 200 and d["role"] == "admin"
+    st, d, _ = call(server, "me", token=d["token"])
+    assert st == 200 and d["user"] == "other" and d["role"] == "admin"
+
+
+@php
+def test_setup_creates_admin_student_or_rejects_role(server):
+    body = {"setup_key": "test-setup-key", "password": PASSWORD}
+    assert call(server, "setup", dict(body, username="parent", role="admin"))[0] == 200
+    assert call(server, "setup", dict(body, username="kid"))[0] == 200   # default role
+    assert call(server, "setup", dict(body, username="x", role="teacher"))[0] == 400
+    users = json.loads((server["data"] / "users.json").read_text())
+    assert users["parent"]["role"] == "admin" and users["parent"]["h"].startswith("$2")
+    assert users["kid"]["role"] == "student"
+    assert isinstance(users["tester"], str)   # legacy entries survive a setup save untouched
+
+
+@php
+def test_create_user_gate_and_csrf(server):
+    assert call(server, "create-user", {"username": "kid", "password": PASSWORD})[0] == 401
+    assert call(server, "create-user", {"username": "kid", "password": PASSWORD}, login(server, "tester"))[0] == 403
+    assert raw(server, "create-user")[0] == 405   # write actions are POST/PUT-only
+    assert raw(server, "create-user", b"username=kid",
+               headers={"Content-Type": "application/x-www-form-urlencoded"})[0] == 415
+    assert raw(server, "set-profile", b"{}", headers={"Content-Type": "text/plain"})[0] == 415
+
+
+@php
+def test_create_user_happy_path(server):
+    tok = login(server, "other")
+    st, d, _ = call(server, "create-user",
+                    {"username": "kid", "password": "kidpass123", "role": "student",
+                     "subjects": ["math-aa-sl", " biology-hl ", "", "math-aa-sl"]}, tok)
+    assert st == 200 and d == {"ok": True, "user": "kid", "role": "student"}
+    users = json.loads((server["data"] / "users.json").read_text())
+    assert users["kid"]["role"] == "student" and users["kid"]["h"].startswith("$2")
+    assert isinstance(users["tester"], str)   # legacy entries stay untouched
+    # the account's state file is seeded with the sanitized subject profile
+    state = json.loads((server["data"] / "state" / "kid.json").read_text())
+    assert state["rev"] == 1 and state["state"]["profile"]["subjects"] == ["math-aa-sl", "biology-hl"]
+    assert state["updated_at"]
+    # first write, no previous version → no history snapshot (same as save-state)
+    assert not (server["data"] / "state" / "history" / "kid").exists()
+    # the new account can log in and reads its seeded profile
+    st, d, _ = call(server, "login", {"username": "kid", "password": "kidpass123"})
+    assert st == 200 and d["role"] == "student"
+    st, d, _ = call(server, "get-state", token=d["token"])
+    assert d["state"]["profile"]["subjects"] == ["math-aa-sl", "biology-hl"]
+
+
+@php
+def test_create_user_validation_and_duplicate(server):
+    tok = login(server, "other")
+    assert call(server, "create-user", {"username": "Bad Name", "password": "kidpass123"}, tok)[0] == 400
+    assert call(server, "create-user", {"username": "ok-name", "password": "short"}, tok)[0] == 400
+    assert call(server, "create-user", {"username": "ok-name", "password": "kidpass123", "role": "teacher"}, tok)[0] == 400
+    # subjects: non-array/non-strings refused; >64 chars and >12 entries refused
+    assert call(server, "create-user", {"username": "ok-name", "password": "kidpass123", "subjects": "math-aa-sl"}, tok)[0] == 400
+    assert call(server, "create-user", {"username": "ok-name", "password": "kidpass123", "subjects": [42]}, tok)[0] == 400
+    assert call(server, "create-user", {"username": "ok-name", "password": "kidpass123", "subjects": ["s" * 65]}, tok)[0] == 400
+    assert call(server, "create-user", {"username": "ok-name", "password": "kidpass123",
+                                        "subjects": [str(i) for i in range(13)]}, tok)[0] == 400
+    assert call(server, "create-user", {"username": "kid", "password": "kidpass123"}, tok)[0] == 200
+    assert call(server, "create-user", {"username": "kid", "password": "kidpass123"}, tok)[0] == 409
+    assert not (server["data"] / "state" / "ok-name.json").exists()   # nothing half-written
+
+
+@php
+def test_list_users_shape_and_admin_gate(server):
+    tok = login(server, "other")
+    call(server, "create-user", {"username": "kid", "password": "kidpass123", "subjects": ["biology-hl"]}, tok)
+    st, d, _ = call(server, "list-users", token=tok)
+    assert st == 200
+    rows = {u["user"]: u for u in d["users"]}
+    assert rows["kid"] == {"user": "kid", "role": "student", "subjects": ["biology-hl"]}
+    assert rows["tester"] == {"user": "tester", "role": "student", "subjects": None}   # legacy account: no profile yet
+    assert rows["other"]["role"] == "admin"
+    blob = json.dumps(d)   # hashes never leave the server
+    assert "$2y$" not in blob and PASSWORD not in blob
+    assert call(server, "list-users", token=login(server, "tester"))[0] == 403
+    assert call(server, "list-users")[0] == 401
+
+
+@php
+def test_set_profile_rev_history_and_gates(server):
+    tok = login(server, "other")
+    call(server, "create-user", {"username": "kid", "password": "kidpass123", "subjects": ["biology-hl"]}, tok)
+    st, d, _ = call(server, "set-profile", {"user": "kid", "subjects": ["math-aa-sl", "history-sl"]}, tok)
+    assert st == 200 and d == {"ok": True, "rev": 2}
+    state = json.loads((server["data"] / "state" / "kid.json").read_text())
+    assert state["rev"] == 2 and state["state"]["profile"]["subjects"] == ["math-aa-sl", "history-sl"]
+    hist = list((server["data"] / "state" / "history" / "kid").glob("*.json"))
+    assert len(hist) == 1
+    prev = json.loads(hist[0].read_text())
+    assert prev["rev"] == 1 and prev["state"]["profile"]["subjects"] == ["biology-hl"]
+    # clearing subjects is a normal update
+    assert call(server, "set-profile", {"user": "kid", "subjects": []}, tok)[0] == 200
+    assert call(server, "set-profile", {"user": "ghost", "subjects": []}, tok)[0] == 404
+    assert call(server, "set-profile", {"user": "kid", "subjects": "math-aa-sl"}, tok)[0] == 400
+    assert call(server, "set-profile", {"user": "kid", "subjects": []}, login(server, "tester"))[0] == 403
+
+
+@php
+def test_no_profile_is_null_not_empty_in_list_users(server):
+    # null = "no profile yet" (admin.html renders the default-all editor for it);
+    # [] is an explicit hide-everything profile — the two must stay distinct
+    tok = login(server, "other")
+    st, d, _ = call(server, "list-users", token=tok)
+    assert st == 200
+    rows = {u["user"]: u for u in d["users"]}
+    assert rows["tester"]["subjects"] is None
+    assert call(server, "set-profile", {"user": "tester", "subjects": []}, tok)[0] == 200
+    st, d, _ = call(server, "list-users", token=tok)
+    assert st == 200
+    rows = {u["user"]: u for u in d["users"]}
+    assert rows["tester"]["subjects"] == []
+
+
+@php
+def test_create_user_without_subjects_seeds_no_profile(server):
+    tok = login(server, "other")
+    assert call(server, "create-user", {"username": "noprofile", "password": "kidpass123"}, tok)[0] == 200
+    st, d, _ = call(server, "list-users", token=tok)
+    assert st == 200
+    rows = {u["user"]: u for u in d["users"]}
+    assert rows["noprofile"]["subjects"] is None
+    # the account's own first save creates the state file — still without a profile
+    st, d, _ = call(server, "login", {"username": "noprofile", "password": "kidpass123"})
+    assert st == 200
+    assert call(server, "save-state", {"state": {"quizlog": [1]}}, d["token"])[0] == 200
+    state = json.loads((server["data"] / "state" / "noprofile.json").read_text())
+    assert "profile" not in state["state"]
+
+
+@php
+def test_save_state_ignores_client_profile_key(server):
+    admin, tok = login(server, "other"), login(server, "tester")
+    call(server, "set-profile", {"user": "tester", "subjects": ["biology-hl"]}, admin)
+    # "profile" is admin-set only: a client pushing its local copy must not clobber it
+    st, _, _ = call(server, "save-state", {"state": {"profile": {"subjects": ["math-aa-sl"]}, "quizlog": [1]}}, tok)
+    assert st == 200
+    state = json.loads((server["data"] / "state" / "tester.json").read_text())
+    assert state["state"]["profile"]["subjects"] == ["biology-hl"]
+    assert state["state"]["quizlog"] == [1]
+
+
+@php
+def test_username_of_only_dots_is_refused(server):
+    # ".." passes the charset regex but would produce state/...json path oddities
+    assert call(server, "setup", {"setup_key": "test-setup-key", "username": "..", "password": PASSWORD})[0] == 400
+    tok = login(server, "other")
+    assert call(server, "create-user", {"username": "..", "password": "kidpass123"}, tok)[0] == 400

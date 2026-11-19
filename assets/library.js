@@ -64,7 +64,8 @@
     set(k, v) {
       try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {}
       try { if (window.Auth && window.Auth.queueSync) window.Auth.queueSync(); } catch (e) {}
-    }
+    },
+    getRaw(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
   };
 
   const state = { items: [], byKey: {}, failed: false };
@@ -80,10 +81,12 @@
   const noteSaves = []; // flushed on pagehide / re-render — the debounce may not get to fire
 
   /* ---------- filters (device-local, deliberately NOT synced) ---------- */
+  // Through NB.store: lands in the active user's scope, and (not a synced key)
+  // is never marked dirty. Raw localStorage would mix accounts once per-user
+  // storage is on.
   function filters() {
-    let f = null;
-    try { f = JSON.parse(localStorage.getItem(FILTER_KEY)); } catch (e) {}
-    f = (f && typeof f === "object") ? f : {};
+    const g = store.get(FILTER_KEY, null);
+    const f = (g && typeof g === "object") ? g : {};
     return {
       subject: typeof f.subject === "string" ? f.subject : "",
       type: TYPE_ORDER.includes(f.type) || f.type === "all" ? f.type : "all",
@@ -92,7 +95,7 @@
   }
 
   function setFilters(patch) {
-    try { localStorage.setItem(FILTER_KEY, JSON.stringify(Object.assign(filters(), patch))); } catch (e) {}
+    store.set(FILTER_KEY, Object.assign(filters(), patch));
     renderResults();
   }
 
@@ -133,7 +136,9 @@
     (scope || document).querySelectorAll(".row[data-key]").forEach((row) => {
       const key = row.dataset.key;
       const st = store.get("chk:" + key, { c: false, r: "" });
-      if (localStorage.getItem("chk:" + key) === null) store.set("chk:" + key, st, { silent: true }); // default row, not a user change
+      // existence check through the store too: a raw read can't see the active
+      // user's scope and would re-seed defaults over their real ticks
+      if (store.getRaw("chk:" + key) === null) store.set("chk:" + key, st, { silent: true }); // default row, not a user change
       const cb = row.querySelector("input[type=checkbox]");
       const sel = row.querySelector("select.rag");
       if (cb) cb.checked = !!st.c;
@@ -193,10 +198,18 @@
   }
 
   /* ---------- renderers ---------- */
+  // Per-user subject profile (assets/profile.js): registry subjects the account
+  // doesn't take are dropped from every list render — the SAME predicate the
+  // dropdown uses (hides(), NOT !allows(): the non-registry groups core-tok-ee /
+  // school / tsm stay for every account, like untagged deadline entries).
+  // Missing NB.profile (stale cached page without store.js) → nothing filtered.
+  const visibleItem = (it) => !(window.NB && window.NB.profile && window.NB.profile.hides(it.subject));
+
   function filtered() {
     const f = filters();
     const q = f.q.trim().toLowerCase();
     return state.items.filter((it) =>
+      visibleItem(it) &&
       (f.type === "all" || it.type === f.type) &&
       (!f.subject || it.subject === f.subject) &&
       (!q || haystack(it).includes(q)));
@@ -261,7 +274,9 @@
   function renderPins() {
     const box = document.getElementById("res-pins");
     if (!box) return;
-    const pins = bookmarks().filter((k) => state.byKey[k]);
+    // pins on a now-hidden subject are hidden from the render but the stored pin
+    // (res-bookmarks) is kept — the account may get the subject back later
+    const pins = bookmarks().filter((k) => state.byKey[k] && visibleItem(state.byKey[k]));
     if (!pins.length) {
       box.innerHTML = "<p class='muted'>Nothing pinned yet — ★ a row on the <a href='library.html'>Library</a> page and it shows up here. Ticks, RAG and pins sync when logged in.</p>";
       return;
@@ -274,7 +289,7 @@
   function renderPapersList() {
     const box = document.getElementById("papers-list");
     if (!box) return;
-    const items = state.items.filter((it) => it.type === "papers");
+    const items = state.items.filter((it) => it.type === "papers" && visibleItem(it));
     if (!items.length) {
       box.innerHTML = "<p class='muted'>No papers in the manifest yet — drop files into <code>library/papers/&lt;subject&gt;/</code>, " +
         "run <code>tools/build_library_manifest.py</code>, refresh; they appear here and on the <a href='library.html'>Library</a> page.</p>";
@@ -297,10 +312,23 @@
     const qInput = document.getElementById("lib-search");
     if (!subjSel || !typeSel || !qInput) return;
     const f = filters();
+    // Per-user subject profile (assets/profile.js): registry subjects the
+    // account doesn't take lose their dropdown option; non-registry groups
+    // (core-tok-ee, school, tsm) stay for every account, like untagged
+    // deadline entries.
     const subjects = groupedBy(state.items, "subject").map((g) => g[0])
+      .filter((it) => !(window.NB && window.NB.profile && window.NB.profile.hides(it.subject)))
       .sort((a, b) => a.subjectLabel.localeCompare(b.subjectLabel));
+    if (f.subject && !subjects.some((it) => it.subject === f.subject)) {
+      // the persisted filter names a subject whose option is gone — reset it,
+      // or the select would show "All subjects" while the results stay
+      // filtered to a subject this account no longer has
+      f.subject = "";
+      store.set(FILTER_KEY, f);
+    }
     subjSel.innerHTML = "<option value=''>All subjects</option>" +
       subjects.map((it) => "<option value='" + esc(it.subject) + "'>" + it.subjectLabel + "</option>").join("");
+    if (!subjects.length) subjSel.style.display = "none"; // nothing left to pick — drop the dropdown
     subjSel.value = f.subject;
     typeSel.value = f.type;
     qInput.value = f.q;

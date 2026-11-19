@@ -9,7 +9,10 @@
    in a persisted "nb-dirty" map; this file pushes them (debounced, on pagehide,
    on reconnect) against the server revision it last saw, and merges instead of
    overwriting whenever the server copy changed. Logged out: localStorage only;
-   the dirty markers make those changes sync at the next login. */
+   the dirty markers make those changes sync at the next login.
+   Storage is per user: on login/connect NB.store.setScope(user) switches the
+   raw layer to that account's keyspace, so a second account on the same browser
+   starts empty instead of seeding itself with the previous user's data. */
 (function () {
   "use strict";
 
@@ -32,7 +35,7 @@
   if (!S || !M) {       // stale cached page without store.js: don't sync blind
     const slot = document.getElementById("auth-slot");
     if (slot) slot.textContent = "Reload the page to enable sync.";
-    window.Auth = { queueSync() {}, pull() {}, login() {}, logout() {}, user: () => null, mergeValue: (k, l, s) => s };
+    window.Auth = { queueSync() {}, pull() {}, login() {}, logout() {}, user: () => null, role: () => null, mergeValue: (k, l, s) => s };
     return;
   }
   const SYNCED_KEYS = S.SYNCED_KEYS;   // + chk:* / week:* rows, sent as "site-state"
@@ -47,9 +50,19 @@
   const same = M.same;
 
   let user = null;
+  // role ("admin"|"student") as declared by the server on login/me — captured
+  // only to show the Admin page link below. NOT trusted for anything
+  // security-critical (the server re-checks the role on every admin action);
+  // a legacy server without the field leaves it null → no link.
+  let role = null;
   let syncTimer = null;
   let syncing = false;
   let legacyServer = null;
+  // false when the storage scope refused to switch (store.setScope): sync is
+  // paused entirely — pulling would merge server state into the previous user's
+  // local scope and later push it to their account. Unreachable with the real
+  // server's username format; this is the safety net.
+  let scopeOk = true;
 
   function esc(s) { return window.NB && window.NB.escapeHtml ? window.NB.escapeHtml(s) : String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;"); }
 
@@ -64,10 +77,12 @@
     const slot = document.getElementById("auth-slot");
     if (!slot) return;
     if (user) {
+      // admin accounts get a link to the admin page (site root; ../ from app/ pages)
+      const admin = role === "admin" ? `<a class="btn fc-mini" href="${location.pathname.indexOf("/app/") >= 0 ? "../admin.html" : "admin.html"}">Admin</a>` : "";
       slot.innerHTML = `
         <span class="auth-user">\uD83D\uDC64 ${esc(user)}</span>
         <button class="btn fc-mini" id="auth-sync">Sync now</button>
-        <span id="auth-status" class="auth-status"></span>
+        <span id="auth-status" class="auth-status"></span>${admin}
         <button class="btn fc-mini" id="auth-logout">Log out</button>`;
       document.getElementById("auth-sync").addEventListener("click", () => { pushNow(true); });
       document.getElementById("auth-logout").addEventListener("click", doLogout);
@@ -197,7 +212,7 @@
   }
 
   async function pushNow(manual) {
-    if (!user || syncing) return false;
+    if (!user || syncing || !scopeOk) return false;
     syncing = true;
     if (!manual) status("Syncing\u2026");
     let ok = false;
@@ -258,7 +273,7 @@
   // debounce, closing the tab). If it doesn't get through, the persisted nb-dirty
   // markers make the next page load push the same changes.
   function flushOnHide() {
-    if (!user || syncing) return;
+    if (!user || syncing || !scopeOk) return;
     const m = meta();
     if (!m || m.user !== user || m.legacy) return;
     const dirty = S.dirty();
@@ -285,6 +300,7 @@
 
   // fetch + merge + push; used on page load and right after login
   async function syncWithServer(isLogin) {
+    if (!scopeOk) return false; // scope refused — never touch server state
     const d = await api("get-state");
     const m = meta();
     const first = !m || m.user !== user;
@@ -308,7 +324,12 @@
       const d = await api("login", { method: "POST", body: { username, password } });
       if (d.token) localStorage.setItem("nb-token", d.token);
       user = d.user;
+      role = typeof d.role === "string" ? d.role : null; // login response carries the role (null on a legacy server)
+      // scope BEFORE pull: the account is seeded from its own keyspace only. A
+      // refused switch pauses sync entirely (see scopeOk above).
+      scopeOk = !(S.setScope && !S.setScope(d.user));
       renderWidget();
+      if (!scopeOk) { status("Storage scope error \u2014 sync paused", "bad"); return; }
       await pull();
     } catch (e) { status(e.message, "bad"); }
   }
@@ -327,6 +348,7 @@
     localStorage.removeItem("nb-token");
     S.remove(META_KEY);
     user = null;
+    role = null;
     renderWidget();
     status("Logged out \u2014 data stays on this device until next login", "");
   }
@@ -336,11 +358,20 @@
     try {
       const d = await api("me");
       user = d.user || null;
+      role = d && typeof d.role === "string" ? d.role : null; // me carries the role too (null while logged out)
       meOk = true;
     } catch (e) { user = null; }
     if (meOk && !user && localStorage.getItem("nb-token")) localStorage.removeItem("nb-token"); // genuinely stale
     renderWidget();
     if (!user) return false;
+    // restored session: the same per-user scope switch login() does (kept across
+    // reloads via nb-active-user, so usually a no-op; not cleared on logout —
+    // logged-out writes belong to the last active user's scope). A refused
+    // switch pauses sync entirely (see scopeOk).
+    if (S.setScope && S.scope && S.scope() !== user) {
+      if (!S.setScope(user)) { scopeOk = false; status("Storage scope error \u2014 sync paused", "bad"); return true; }
+    }
+    scopeOk = true;
     try {
       const changed = await syncWithServer(false);
       if (changed) setTimeout(() => location.reload(), 300);
@@ -366,7 +397,7 @@
     await connect();
   }
 
-  window.Auth = { queueSync, pull, login, logout: doLogout, user: () => user, mergeValue, pushNow, _reconcile: reconcile };
+  window.Auth = { queueSync, pull, login, logout: doLogout, user: () => user, role: () => role, mergeValue, pushNow, _reconcile: reconcile };
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();

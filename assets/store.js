@@ -13,6 +13,11 @@
      on load (each one snapshots the keys it touches first).
    - snapshot(reason, keys): ring of BACKUP_KEEP local safety copies
      ("nb-backup:<ms>") taken before anything replaces local data.
+   - Per-user scope: every account on a device used to share one flat
+     namespace, so a second login could seed an empty account with the first
+     user's data. While a user is active, the raw layer stores every
+     non-reserved key as "<user>:<k>" (see the scope section below); callers
+     keep speaking logical keys. setScope(user)/scope() manage the switch.
    - NB.merge: the per-record merge rules shared by sync (auth.js) and
      backup restore (backup.js). */
 (function () {
@@ -42,10 +47,12 @@
     "q-userbanks", "fc-userdecks", "fc-state", "fc-user",
     "fc-deleted", "fc-edits", "quizlog", "q-errors",
     "tok-objects", "ee-ideas", "io-issues", "ia-debriefs",
-    "res-bookmarks", "res-notes", "res-recent", "pp-scores", "cw-progress", "my-res"
+    "res-bookmarks", "res-notes", "res-recent", "pp-scores", "cw-progress", "my-res",
+    "profile" // per-user profile (a later phase of the multi-user upgrade writes it)
   ];
   // never synced, never in backups: credentials, sync bookkeeping, caches, safety copies
-  const LOCAL_ONLY = ["nb-token", "nb-api", DIRTY_KEY, "nb-sync", SCHEMA_KEY, "fc-seedids", "ai-pref"];
+  const LOCAL_ONLY = ["nb-token", "nb-api", DIRTY_KEY, "nb-sync", SCHEMA_KEY, "fc-seedids", "ai-pref",
+    "nb-active-user", "nb-scoped-v2", "nb-scoped-pending"];
   const LOCAL_ONLY_PREFIXES = [CORRUPT_PREFIX, BACKUP_PREFIX];
 
   const isSiteRow = (k) => typeof k === "string" && (k.indexOf("chk:") === 0 || /^week:\d+$/.test(k));
@@ -88,24 +95,167 @@
 
   const isQuota = (e) => e && (e.name === "QuotaExceededError" || e.name === "NS_ERROR_DOM_QUOTA_REACHED" || e.code === 22 || e.code === 1014);
 
-  // ── raw access ──────────────────────────────────────────────────────────
-  function getRaw(k) { try { return ls ? ls.getItem(k) : null; } catch (e) { return null; } }
+  // ── per-user scope layer ────────────────────────────────────────────────
+  // One flat namespace shared by every account on a device meant a second
+  // login could seed an empty account with the first user's data (auth.js
+  // marks all local synced keys dirty on an empty account) and per-device
+  // dirty markers pushed one user's unsynced work into another's account.
+  // Fix, at the RAW layer: while a user is active, every non-reserved logical
+  // key k is physically stored as "<user>:<k>". Bookkeeping travels through
+  // the same translation, so nb-dirty, nb-backup:* and nb-corrupt:* become
+  // per-user automatically and everything above (get/set, dirty, snapshots,
+  // NB.merge, auth.js) keeps speaking logical keys unchanged. scopeUser ===
+  // null is the "legacy view": plain physical keys, exactly the pre-scope
+  // behaviour, so a device that has never logged in still sees its data.
+  const ACTIVE_KEY = "nb-active-user"; // last active scope — kept on logout ("data stays on this device")
+  const SCOPED_KEY = "nb-scoped-v2";   // one-time marker: the legacy flat namespace has been adopted
+  const PENDING_KEY = "nb-scoped-pending"; // adoption postponed: pins the flat data's rightful owner across retries
+  // never scoped, never moved by the adoption: credentials + global sync/schema bookkeeping
+  const RESERVED_KEYS = ["nb-token", "nb-api", SCHEMA_KEY, "nb-sync", ACTIVE_KEY, SCOPED_KEY, PENDING_KEY];
+  // lowercase only, like the server: two spellings of one account must never
+  // become two scopes (the data would silently split)
+  const USERNAME_RE = /^[a-z0-9._-]{1,30}$/; // server usernames are ^[a-z0-9._-]{2,30}$
+  let scopeUser = null;
+  function phys(k) { return scopeUser && RESERVED_KEYS.indexOf(k) < 0 ? scopeUser + ":" + k : k; }
+  scopeUser = getRaw(ACTIVE_KEY) || null; // raw read: at load time the translation is still identity
+
+  // ── raw access (logical key in, physical key out via phys) ─────────────
+  function getRaw(k) { try { return ls ? ls.getItem(phys(k)) : null; } catch (e) { return null; } }
   function setRaw(k, s) {
     if (!ls) return false;
-    try { ls.setItem(k, s); return true; }
+    try { ls.setItem(phys(k), s); return true; }
     catch (e) {
       if (isQuota(e)) banner("Storage is full \u2014 a change could not be saved (" + k + "). Download a backup on the Cards page, then remove old uploaded banks or decks.");
       else banner("Could not save " + k + ": " + (e && e.message));
       return false;
     }
   }
-  function remove(k) { try { if (ls) ls.removeItem(k); } catch (e) {} }
+  function remove(k) { try { if (ls) ls.removeItem(phys(k)); } catch (e) {} }
+  // Scoped: only this user's physical keys, stripped back to logical names so
+  // progressKeys, the snapshot ring and auth.js rowKeys work unchanged. Legacy
+  // view: unscoped keys, minus the reserved globals (bookkeeping, not data).
   function keys(prefix) {
     const out = [];
     if (!ls) return out;
-    for (let i = 0; i < ls.length; i++) { const k = ls.key(i); if (k !== null && (!prefix || k.indexOf(prefix) === 0)) out.push(k); }
+    const pfx = scopeUser ? scopeUser + ":" : "";
+    for (let i = 0; i < ls.length; i++) {
+      let k = ls.key(i);
+      if (k === null) continue;
+      if (pfx) {
+        if (k.indexOf(pfx) !== 0) continue;
+        k = k.slice(pfx.length); // logical name again
+        if (RESERVED_KEYS.indexOf(k) >= 0) continue; // impossible via phys; belt and braces
+      } else if (RESERVED_KEYS.indexOf(k) >= 0) continue;
+      if (!prefix || k.indexOf(prefix) === 0) out.push(k);
+    }
     return out;
   }
+
+  // ── switching accounts on this device ───────────────────────────────────
+  /* setScope(user): make <user> the active scope. The first call after this
+     feature ships (nb-scoped-v2 unset) MOVES the legacy flat data into the
+     scope of the account it belongs to: the one this device last synced with
+     (raw "nb-sync" — a reserved global), else the user logging in now. Order
+     matters: a safety snapshot of every legacy raw value FIRST, byte-for-byte,
+     into the target's backup ring; if that copy cannot be saved (quota) nothing
+     is moved and the marker stays unset so the next setScope retries — the same
+     "never touch data without a safety copy" rule as reconcile() and migrate().
+     The move writes each scoped copy before dropping its legacy key, so even a
+     mid-move quota error leaves both copies on disk; a key that still fails
+     stays put, the marker remains unset, and the target is pinned (nb-scoped-
+     pending) so a later setScope — even by another user — finishes the same
+     move. The scope switch happens regardless: an empty scope can never upload
+     another user's data. */
+  function setScope(user) {
+    if (typeof user !== "string" || !USERNAME_RE.test(user)) {
+      banner("Could not switch storage to \"" + user + "\": not a valid username.");
+      return false;
+    }
+    if (!getRaw(SCOPED_KEY)) adoptLegacy(user); // getRaw is fine here: the marker is a reserved global
+    scopeUser = user;
+    setRaw(ACTIVE_KEY, user); // raw, global — survives reloads, kept on logout
+    return true;
+  }
+  function scope() { return scopeUser; }
+
+  // One-time legacy adoption. Runs entirely on direct `ls` access, bypassing
+  // phys, so it sees the pre-migration namespace no matter which scope is
+  // active. The target is pinned in "nb-scoped-pending" on the first attempt,
+  // so a postponed attempt retries into the SAME account even if a different
+  // user logs in next. A partially completed attempt (quota mid-move) leaves
+  // the marker unset and some keys flat; the enumeration below recognises keys
+  // that already belong to a scope and leaves them alone, so the retry only
+  // moves what is genuinely still legacy.
+  function adoptLegacy(user) {
+    if (!ls) { setRaw(SCOPED_KEY, "1"); return; }
+    // target: pinned from the first attempt, else the account this device last
+    // synced with (raw "nb-sync" — a reserved global), else the user logging in now
+    let target = null;
+    try { target = ls.getItem(PENDING_KEY); } catch (e) {}
+    if (!target || !USERNAME_RE.test(target)) {
+      target = user;
+      try {
+        const m = JSON.parse(ls.getItem("nb-sync"));
+        if (m && typeof m.user === "string" && USERNAME_RE.test(m.user)) target = m.user;
+      } catch (e) {}
+      try { ls.setItem(PENDING_KEY, target); } catch (e) {} // pin BEFORE anything moves
+    }
+    // every scope this device may already hold keys under: the pinned target,
+    // the last active user, the last synced account, and the user logging in.
+    // A legacy flat key can never collide with these except if an account were
+    // literally named "chk" (legacy checklist rows are the only flat keys that
+    // contain a colon) — acceptable, and skipping beats double-prefixing.
+    const scopes = {};
+    [user, target].forEach(u => { if (u && USERNAME_RE.test(u)) scopes[u] = true; });
+    try {
+      const m = JSON.parse(ls.getItem("nb-sync"));
+      if (m && typeof m.user === "string" && USERNAME_RE.test(m.user)) scopes[m.user] = true;
+    } catch (e) {}
+    try {
+      const active = ls.getItem(ACTIVE_KEY);
+      if (active && USERNAME_RE.test(active)) scopes[active] = true;
+    } catch (e) {}
+    const legacy = [];
+    for (let i = 0; i < ls.length; i++) {
+      const k = ls.key(i);
+      if (!k || RESERVED_KEYS.indexOf(k) >= 0) continue;
+      const c = k.indexOf(":");
+      if (c > 0 && scopes[k.slice(0, c)]) continue; // an existing scope's key, not legacy
+      legacy.push(k);
+    }
+    if (!legacy.length) { setRaw(SCOPED_KEY, "1"); try { ls.removeItem(PENDING_KEY); } catch (e) {} return; }
+    const data = {};
+    legacy.forEach(k => { data[k] = ls.getItem(k); });
+    let at = Date.now();
+    while (ls.getItem(target + ":" + BACKUP_PREFIX + at) !== null) at++;
+    let copied = false;
+    try {
+      ls.setItem(target + ":" + BACKUP_PREFIX + at,
+        JSON.stringify({ reason: "before per-user storage migration", at: new Date(at).toISOString(), schema: SCHEMA_VERSION, keys: data }));
+      copied = true;
+    } catch (e) { copied = false; }
+    if (!copied) {
+      banner("Storage is full \u2014 a safety copy could not be saved, so the move to per-user storage was postponed and nothing was changed. Free up space (download a backup on the Cards page), then reload and log in again.");
+      return; // marker unset → retried on the next setScope, same pinned target
+    }
+    // move: scoped copy written first, then the legacy key dropped. A key that
+    // still cannot be copied (quota mid-move) stays in the flat namespace and
+    // KEEPS the marker unset — marking completion here would orphan it: visible
+    // in no scope, reachable by nothing. The next setScope re-enumerates the
+    // leftovers and finishes the move into the pinned target.
+    let failed = false;
+    legacy.forEach(k => {
+      try { ls.setItem(target + ":" + k, data[k]); ls.removeItem(k); }
+      catch (e) { failed = true; }
+    });
+    if (failed) {
+      banner("Storage is full \u2014 the move to per-user storage is incomplete. Nothing was lost: every remaining item is still in place and covered by the safety copy, and the next login finishes the move. Free up space (download a backup on the Cards page).");
+      return;
+    }
+    try { ls.removeItem(PENDING_KEY); } catch (e) {}
+    setRaw(SCOPED_KEY, "1");
+  }
+
 
   // ── corrupt values are quarantined, not discarded ───────────────────────
   function quarantine(k, raw) {
@@ -176,16 +326,21 @@
     // make room first: drop the oldest beyond KEEP-1, then retry once more on quota
     while (all.length > BACKUP_KEEP - 1) remove(all.shift());
     let okSave = false;
-    try { if (ls) { ls.setItem(BACKUP_PREFIX + at, rec); okSave = true; } } catch (e) {
-      if (all.length) { remove(all.shift()); try { ls.setItem(BACKUP_PREFIX + at, rec); okSave = true; } catch (e2) { okSave = false; } }
+    const snapKey = phys(BACKUP_PREFIX + at); // direct ls write (quota retry below) must stay scoped
+    try { if (ls) { ls.setItem(snapKey, rec); okSave = true; } } catch (e) {
+      if (all.length) { remove(all.shift()); try { ls.setItem(snapKey, rec); okSave = true; } catch (e2) { okSave = false; } }
     }
-    return okSave ? BACKUP_PREFIX + at : null;
+    return okSave ? BACKUP_PREFIX + at : null; // logical id — getSnapshot translates it back
   }
 
   // ── schema version + ordered migrations ─────────────────────────────────
   // Each migration: { to: N, touches: [keys], run(store) }. Runs once, in order,
   // after a snapshot of the keys it touches; a failure stops the chain (data is
   // left as it was and the version is not bumped) and shows a banner.
+  // NOTE: this runs on the ACTIVE scope only, and "nb-schema" is a reserved
+  // global — one version number for the whole device. Any future migration that
+  // transforms data must be scope-aware (it will only see the active user's
+  // keys, and other scopes need the same change on their next load).
   const MIGRATIONS = [
     // v1 = the shapes documented in docs/DEVELOPMENT.md at the time versioning was
     // introduced (fc-state {box,due,seen,t?}, q-errors [{key,…,ts?}], …). Nothing to transform.
@@ -219,7 +374,8 @@
     isSynced, isSiteRow, isLocalOnly, progressKeys,
     dirty, markDirty, clearDirty,
     snapshot, snapshots, getSnapshot,
-    schemaVersion, migrate, banner
+    schemaVersion, migrate, banner,
+    setScope, scope
   };
   NB.store = api;
 

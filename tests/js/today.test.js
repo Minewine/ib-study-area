@@ -1,5 +1,7 @@
 // node --test tests/js — assets/today.js: due-card count, weakest-topic choice,
-// quiz picking and the class-week schedule lookup (pure functions, no DOM).
+// quiz picking and the class-week schedule lookup (pure functions, no DOM),
+// plus the per-user subject profile (assets/profile.js) cases: the class-week
+// section only lists allowed subjects and weak topics skip other subjects.
 "use strict";
 const test = require("node:test");
 const assert = require("node:assert/strict");
@@ -7,7 +9,20 @@ const fs = require("fs");
 const path = require("path");
 const { makeEnv, plain } = require("./harness");
 
+const REPO = path.join(__dirname, "..", "..");
+const J = JSON.stringify;
 const T = () => makeEnv({ readyState: "loading" }).load("store.js").load("today.js").NB.today;
+// with profile.js loaded (store.js first): NB.profile decides the subject list
+const TP = (profile) => {
+  const env = makeEnv({ readyState: "loading", data: profile ? { profile: J({ subjects: profile }) } : {} });
+  env.load("store.js").load("profile.js").load("today.js");
+  return env.NB.today;
+};
+// fetch serving the real library files from the repo (query strings stripped)
+const repoFetch = () => (url) => {
+  const p = path.join(REPO, String(url).split("?")[0].replace(/^.*?(library\/)/, "$1"));
+  return Promise.resolve({ ok: true, json: async () => JSON.parse(fs.readFileSync(p, "utf8")) });
+};
 const SCHEDULE = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "..", "library", "class-schedule.json"), "utf8"));
 
 test("dueCards: counts due seeded cards per deck; skips new, future, retired and deleted cards", () => {
@@ -111,4 +126,44 @@ test("noteLinks: notes, quiz and cards deep links in the notes.js format", () =>
   assert.equal(L.quiz, "quiz.html?from=chem-s1%3Aa%2Cb&n=10&label=S1.4%20Counting%20particles");
   assert.equal(L.cards, "cards.html?from=chem-s1&label=S1.4%20Counting%20particles");
   assert.equal(t.noteLinks({ subject: "x", file: "n.json", code: "1", title: "t" }).quiz, null);
+});
+
+test("profile: weakest topics from subjects outside the profile are skipped", () => {
+  // quizlog branch — subjectForCode maps topic codes to subjects
+  const t = TP(["biology-hl"]);
+  const w = plain(t.weakestTopic([], [
+    { label: "S3.1 The periodic table", pct: 50 }, // chemistry — not her subject
+    { label: "C1.1 Enzymes and metabolism", pct: 60 } // biology — kept
+  ]));
+  assert.equal(w.source, "quizlog");
+  assert.equal(w.code, "C1.1", "chemistry weak topic skipped, biology chosen");
+  // errors branch — records carry the bank's subject
+  const errs = [
+    { key: "chem-x#1", id: "1", bankId: "chem-x", subject: "chemistry-hl", topic: "s3-1", topicLabel: "Periodicity", lastMissed: "2026-11-02" },
+    { key: "bio-y#1", id: "1", bankId: "bio-y", subject: "biology-hl", topic: "c1-1", topicLabel: "Enzymes", lastMissed: "2026-11-01" }
+  ];
+  assert.equal(t.weakestTopic(errs, []).bankId, "bio-y", "the chemistry misses are not a weak spot for her");
+  // unknown subjects (no id recorded) are never hidden
+  const tAll = TP(undefined);
+  assert.equal(plain(tAll.weakestTopic([], [{ label: "S3.1 The periodic table", pct: 50 }])).code, "S3.1", "no profile → chemistry still shown");
+});
+
+test("profile: the class-week section lists only allowed subjects the schedule tracks", async () => {
+  const boot = async (profile) => {
+    const env = makeEnv({ fetch: repoFetch(), readyState: "complete", data: profile ? { profile: J({ subjects: profile }) } : {} });
+    env.load("store.js").load("profile.js");
+    const box = env.document.createElement("div");
+    box.id = "today-body";
+    env.document.body.appendChild(box);
+    env.load("today.js"); // readyState complete → render() runs now, DATA loads async
+    await new Promise(r => setTimeout(r, 80));
+    assert.doesNotMatch(box.textContent, /could not be loaded/, "today.js load error surfaced");
+    const rows = [];
+    (function walk(el) { (el.children || []).forEach(c => { if (c.className === "td-subj") rows.push(c); walk(c); }); })(box);
+    return rows.map(r => r.children[0].children[0].textContent);
+  };
+  assert.deepEqual(plain(await boot(["biology-hl"])), ["Biology HL: "],
+    "one row — allowed and actually tracked by class-schedule.json");
+  assert.deepEqual(plain(await boot(undefined)), ["Biology HL: ", "Chemistry HL: ", "Math AA SL: "],
+    "default-all profile adds no empty rows for the untracked subjects");
 });

@@ -7,7 +7,7 @@
     { d: "2026-09-01", t: "Collaborative Science Project: introduction (periods 4–5)", tag: "sciences" },
     { d: "2026-09-24", t: "Collaborative Science Project: research & planning (periods 1–5)", tag: "sciences" },
     { d: "2026-09-30", t: "CAS: initial interview (in homeroom)", tag: "core" },
-    { d: "2026-12-08", t: "English A Lit HL: practice commentary — first timed Paper 1 rehearsal", tag: "langlit" },
+    { d: "2026-12-08", t: "English A Lit HL: practice commentary — first timed Paper 1 rehearsal", tag: "langlit", subject: "english-lit-hl" },
     { d: "2027-01-12", t: "Revision-only homework window begins (no in-class tests)", tag: "exams" },
     { d: "2027-01-14", t: "First Semester Examinations begin (run to ~22 Jan)", tag: "exams" },
     { d: "2027-02-17", t: "Extended Essay: launch — half-day introduction (periods 1–3)", tag: "ee" },
@@ -16,26 +16,26 @@
     { d: "2027-03-23", t: "Extended Essay: experimental equipment order", tag: "ee" },
     { d: "2027-03-24", t: "University information session", tag: "university" },
     { d: "2027-03-25", t: "TOK Exhibition: plan due", tag: "tok" },
-    { d: "2027-03-26", t: "French A HL: essay (draft) — HL French class; confirm if it applies to her SL course", tag: "langlit" },
+    { d: "2027-03-26", t: "French A HL: essay (draft) — HL French class; confirm if it applies to her SL course", tag: "langlit", subject: "french-a-langlit" },
     { d: "2027-04-14", t: "CAS: second interview (in homeroom)", tag: "core" },
     { d: "2027-04-27", t: "Extended Essay: Phase 2 submission", tag: "ee" },
     { d: "2027-04-28", t: "TOK Exhibition: draft", tag: "tok" },
-    { d: "2027-05-11", t: "English A Lit HL: HL Essay (draft)", tag: "langlit" },
+    { d: "2027-05-11", t: "English A Lit HL: HL Essay (draft)", tag: "langlit", subject: "english-lit-hl" },
     { d: "2027-05-13", t: "Revision-only homework window begins (second semester)", tag: "exams" },
     { d: "2027-05-25", t: "Second Semester Examinations (late May; exact dates per school)", tag: "exams" },
     { d: "2027-06-01", t: "Physics: IA experiment (group 1)", tag: "sixth" },
     { d: "2027-06-03", t: "Physics: IA experiment (group 2)", tag: "sixth" },
     { d: "2027-06-07", t: "CAS: portfolio due (Year 12 checkpoint)", tag: "core" },
     { d: "2027-06-09", t: "EE conference (periods 4–5)", tag: "ee" },
-    { d: "2027-06-14", t: "French A HL: essay (final) — HL French class only", tag: "langlit" },
+    { d: "2027-06-14", t: "French A HL: essay (final) — HL French class only", tag: "langlit", subject: "french-a-langlit" },
     { d: "2027-06-16", t: "TOK Exhibition: final", tag: "tok" },
-    { d: "2027-06-15", t: "Biology: IA experiment day (group 1)", tag: "sciences" },
-    { d: "2027-06-17", t: "Biology: IA experiment day (group 2)", tag: "sciences" },
-    { d: "2027-06-18", t: "English A Lit HL: HL Essay (final)", tag: "langlit" },
+    { d: "2027-06-15", t: "Biology: IA experiment day (group 1)", tag: "sciences", subject: "biology-hl" },
+    { d: "2027-06-17", t: "Biology: IA experiment day (group 2)", tag: "sciences", subject: "biology-hl" },
+    { d: "2027-06-18", t: "English A Lit HL: HL Essay (final)", tag: "langlit", subject: "english-lit-hl" },
     { d: "2027-06-23", t: "Physics: IA report (draft)", tag: "sixth" },
     { d: "2027-06-25", t: "Geography: IA (final)", tag: "sixth" },
-    { d: "2027-09-06", t: "Biology: IA draft due (early Sept, DP2 — approximate)", tag: "sciences" },
-    { d: "2027-11-08", t: "Biology: IA final due (early Nov, DP2 — approximate)", tag: "sciences" }
+    { d: "2027-09-06", t: "Biology: IA draft due (early Sept, DP2 — approximate)", tag: "sciences", subject: "biology-hl" },
+    { d: "2027-11-08", t: "Biology: IA final due (early Nov, DP2 — approximate)", tag: "sciences", subject: "biology-hl" }
   ];
 
   // renderers assume chronological order — sort defensively (the literal has
@@ -60,6 +60,15 @@
   const today = new Date(); today.setHours(0, 0, 0, 0);
   const daysTo = (iso) => Math.round((new Date(iso + "T12:00:00") - today) / 86400000);
 
+  // Per-user subject profile (assets/profile.js — loaded before this file): an
+  // entry tagged with a registry subject the account doesn't take is hidden;
+  // untagged entries (CSP, CAS, EE, TOK, exams, university, sixth-subject) show
+  // for everyone. hides() — not !allows() — so a future non-registry tag can't
+  // hide entries either, matching the other engines. Missing NB.profile (stale
+  // cache — no store.js on this page) → everything shows, the pre-profile behaviour.
+  const P = window.NB && window.NB.profile;
+  const visible = (x) => !x.subject || !P || !P.hides(x.subject);
+
   const esc = (window.NB && window.NB.escapeHtml) || ((s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;"));
   function chip(tag) {
     const t = TAGS[tag] || { label: tag, color: "#5b6b7c" };
@@ -75,7 +84,7 @@
 
   const nextup = document.getElementById("nextup");
   if (nextup) {
-    const upcoming = DEADLINES.filter(x => daysTo(x.d) >= 0).slice(0, 4);
+    const upcoming = DEADLINES.filter(x => visible(x) && daysTo(x.d) >= 0).slice(0, 4);
     nextup.innerHTML = upcoming.length
       ? upcoming.map(x => row(x, false)).join("")
       : "<li>No scheduled deadlines left — well done.</li>";
@@ -83,8 +92,8 @@
 
   const timeline = document.getElementById("timeline");
   if (timeline) {
-    const past = DEADLINES.filter(x => daysTo(x.d) < 0);
-    const future = DEADLINES.filter(x => daysTo(x.d) >= 0);
+    const past = DEADLINES.filter(x => visible(x) && daysTo(x.d) < 0);
+    const future = DEADLINES.filter(x => visible(x) && daysTo(x.d) >= 0);
     timeline.innerHTML =
       (future.length ? `<h3>Upcoming</h3><ul class="links">${future.map(x => row(x, false)).join("")}</ul>` : "") +
       (past.length ? `<h3 class="count">Earlier this year</h3><ul class="links">${past.map(x => row(x, true)).join("")}</ul>` : "") +

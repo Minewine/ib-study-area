@@ -3,12 +3,16 @@
   // fallback for a stale cached page that didn't load store.js.
   const store = (window.NB && window.NB.store) || {
     get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v === null ? d : v; } catch (e) { return d; } },
-    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} },
+    getRaw(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    keys(p) { const out = []; for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k && (!p || k.indexOf(p) === 0)) out.push(k); } return out; }
   };
   document.querySelectorAll('.row[data-key]').forEach(row => {
     const key = row.dataset.key;
     const st = store.get('chk:' + key, { c: false, r: '' });
-    if (localStorage.getItem('chk:' + key) === null) store.set('chk:' + key, st, { silent: true }); // default row, not a user change
+    // existence check through the store too: a raw read can't see the active
+    // user's scope and would re-seed defaults over their real ticks
+    if (store.getRaw('chk:' + key) === null) store.set('chk:' + key, st, { silent: true }); // default row, not a user change
     const cb = row.querySelector('input[type=checkbox]');
     const sel = row.querySelector('select.rag');
     if (cb) cb.checked = !!st.c;
@@ -36,14 +40,13 @@
   document.querySelectorAll('.subj-card').forEach(cardEl => {
     const subj = cardEl.dataset.subject;
     let total = 0, done = 0;
-    for (let i = 0; i < localStorage.length; i++) {
-      const k = localStorage.key(i);
-      if (k && k.startsWith('chk:' + subj + '::')) {
+    store.keys().forEach(k => { // logical (scoped) keys — raw localStorage would miss the active user's rows
+      if (k.startsWith('chk:' + subj + '::')) {
         total++;
         const st = store.get(k, { c: false, r: '' });
         if (st.c || st.r === 'g') done++;
       }
-    }
+    });
     if (total) {
       const pct = Math.round(100 * done / total) + '%';
       const mini = cardEl.querySelector('.bar.mini');
@@ -80,11 +83,10 @@
     }
     const bySubj = {};
     let total = 0, done = 0;
-    for (let i = 0; i < localStorage.length; i++) {
-      const k = localStorage.key(i);
-      if (!k || !k.startsWith('chk:')) continue;
+    store.keys().forEach(k => { // logical (scoped) keys — see the per-card loop above
+      if (!k.startsWith('chk:')) return;
       const sep = k.indexOf('::');
-      if (sep < 0) continue;
+      if (sep < 0) return;
       const st = store.get(k, { c: false, r: '' });
       const ok = st.c || st.r === 'g';
       total++;
@@ -93,7 +95,7 @@
       if (!bySubj[subj]) bySubj[subj] = { done: 0, total: 0 };
       bySubj[subj].total++;
       if (ok) bySubj[subj].done++;
-    }
+    });
     if (total) {
       let worst = null;
       for (const subj in bySubj) {
