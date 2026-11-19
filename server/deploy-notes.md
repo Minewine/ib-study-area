@@ -48,6 +48,10 @@ token/auth flow was verified live after making the file 7.2-safe.
 
 ## Creating accounts (multi-user, 2026-11)
 
+> **Done for this site (19 Nov):** the `admin` account exists, the setup key was used once and
+> blanked again (`action=setup` verified locked). Add students via the admin on the study site's
+> `admin.html`, or the `create-user` curl recipe below.
+
 User records in `~/nevaib-data/users.json` are `{"h": <password-hash>, "role": "admin"|"student"}`.
 Plain-string hash values from before this release keep working and read as role `student` — nothing to
 migrate on the host. Every student account needs a profile (its subject list) or the site shows them

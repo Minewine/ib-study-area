@@ -4,10 +4,10 @@ _Updated 19 Nov 2026 (evening). Background: [HANDOFF.md](HANDOFF.md). Longer-ter
 
 ## Status at a glance
 - **Done and live (18 Nov morning):** PRs #1–#4.
-- **Done, merged into `main`, awaiting deploy:** PRs #5–#16 (cards loading fix, content fixes, content gaps, Today panel, security hardening, weekly summary, exam practice, coursework planner, My resources, Ask an AI). `./dev.sh validate`, `./dev.sh test` and `./dev.sh e2e` pass on `main`.
+- **Done and live (deployed 19 Nov evening):** PRs #1–#16 (topic notes, sync, Today panel, security hardening, weekly summary, exam practice, coursework planner, My resources, Ask an AI). `./dev.sh validate`, `./dev.sh test` and `./dev.sh e2e` pass on `main`.
 - **Done, merged into `main` (Nov 2026), included in the later deploy:** the private cross-check of 25 topic notes and **My resources** on every note (PR #14).
 - **Ask an AI (PRs #15, #16; hardened 19 Nov):** merged into `main` — copies a pre-formatted prompt synchronously, then opens the preferred assistant so she pastes with Ctrl+V; a **Copy the prompt again** button recovers a failed copy or blocked tab. Edit prompts, modes, assistants and `subjectNames` in `library/ai-prompts.json` (placeholders are listed in `_doc`); no code change needed for wording. After editing, run `./dev.sh test`. See [HANDOFF.md](HANDOFF.md).
-- **Multi-user (Nov 2026, uncommitted in the working tree — not on `main` yet):** separate student accounts with their own data (per-user storage scopes) and their own subject lists (`profile` filtering nav/quiz/cards/notes/library/coursework/deadlines), plus a dedicated **admin** account and `admin.html` to create students and set their subjects. Tests green (`./dev.sh test` + e2e incl. two-account scenarios); reviewed with all findings fixed. Next actions: commit → merge to `main` → deploy → bootstrap the admin account (step 5 of the deploy list below). Details in [HANDOFF.md](HANDOFF.md).
+- **Multi-user: done and live (deployed 19 Nov evening, PRs #17–#19):** per-student accounts with isolated data (per-user storage scopes), subject profiles filtering nav/quiz/cards/notes/library/coursework/deadlines, and the **admin** account (`admin` — password held by the family; there is no password-change feature). Students are created via the admin on the study site's `admin.html`, or via the API (see `server/deploy-notes.md`). Neva's login is unchanged and sees all subjects. Details in [HANDOFF.md](HANDOFF.md).
 
 ## 1. Deploy `main` (only with explicit approval)
 1. **Back up first:** the server copy via `api/api.php?action=export` (logged in), and her browser progress with Cards → "Download full backup".
@@ -15,7 +15,7 @@ _Updated 19 Nov 2026 (evening). Background: [HANDOFF.md](HANDOFF.md). Longer-ter
 3. `./dev.sh deploy --confirm`, then type DEPLOY. `api/api.php` goes first.
 4. Hard-refresh (Ctrl+Shift+R) on every device she uses: the new API only accepts the token in a header, so an old cached page may need to log in again. Script versions are bumped so fresh pages load the new code.
 5. Check: log in, do a few cards and a quiz, open Coursework and the Weekly summary, then save a fresh `?action=export` backup.
-5. **Multi-user bootstrap (once, after the deploy):** arm the setup key and create the **admin** account, then blank the key again — recipe in `server/deploy-notes.md`, "Creating accounts". Then log in as admin on `admin.html` and create each student (username, password, subject checkboxes). Neva's existing account needs no changes: no profile key means "all subjects", and her local data is adopted into her scope automatically on her first login after the upgrade. Students created by the admin see only their subjects and start with an empty personal space (they add their own banks/decks via the Upload page).
+5. ~~**Multi-user bootstrap (once, after the deploy)**~~ — ✅ done (19 Nov): the admin account exists, the setup key was blanked again and `action=setup` is verified locked. To add a student: log in as admin on the study site's `admin.html` (local/LAN), or ask for the `create-user` curl recipe. Neva's account needed no changes: no profile key means "all subjects", and her local data is adopted into her scope automatically on her first login after the upgrade.
 6. **Optional:** `~/nevaib-data/config.json` (outside `public_html`) for the weekly e-mail and a separate parent login, plus a cPanel cron job. Recipe in `server/deploy-notes.md`, "Parent weekly summary". Without it the summary page works with her own login.
 
 ## 2. Privacy
@@ -23,6 +23,7 @@ _Updated 19 Nov 2026 (evening). Background: [HANDOFF.md](HANDOFF.md). Longer-ter
 - Don't run the old `python3 -m http.server --bind 0.0.0.0`. Use `./dev.sh start` (local only) or `./dev.sh start --lan` (serves only the built copy).
 
 ## 3. Open questions for the student
+- **Stray `nevac` account** (from the first setup, likely a typo of `neva`): harmless and empty, but there is no delete-account API — remove it by editing `~/nevaib-data/users.json` on the host if you want it gone.
 - **Biology IA experiment day:** group 1 (15 Jun 2027) or group 2 (17 Jun 2027)? Set it in the coursework planner.
 - **Maths exploration:** does the teacher give a page length?
 - **Class schedule:** do the "This week in class" units match her lessons (Biology, Chemistry, Maths)? Edit `library/class-schedule.json`.

@@ -64,7 +64,7 @@ on the same Wi-Fi: `http://<that-ip>:8018`. Home Wi-Fi only — plain HTTP, don'
 6. Each browser runs its first sync after the upgrade in "first sync" mode (union of local + server), so
    nothing is dropped; a card deleted on one device may reappear once on a device that still had it.
 
-## Deploying the multi-user release (2026-11)
+## Multi-user release — deployed 2026-11-19 (checklist kept for reference)
 
 1. `./dev.sh test` + `./dev.sh deploy` (dry run) as above; **`api/api.php` first** as always — the new
    api.php reads both user-record formats and serves both old and new clients, so it is safe on its own.
