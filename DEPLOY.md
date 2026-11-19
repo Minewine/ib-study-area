@@ -1,5 +1,7 @@
 # Getting the study area onto her devices
 
+_Last updated: 19 Nov 2026._
+
 Everything in this folder except `docs/` (your ZIP archive storage) and `tools/`
 (the site generator) **is** the deployable site — plain static files, no build step.
 
@@ -61,6 +63,23 @@ on the same Wi-Fi: `http://<that-ip>:8018`. Home Wi-Fi only — plain HTTP, don'
    `https://rametric.com/nevaib/api/api.php?action=export` (logged in) downloads the stored state.
 6. Each browser runs its first sync after the upgrade in "first sync" mode (union of local + server), so
    nothing is dropped; a card deleted on one device may reappear once on a device that still had it.
+
+## Deploying the multi-user release (2026-11)
+
+1. `./dev.sh test` + `./dev.sh deploy` (dry run) as above; **`api/api.php` first** as always — the new
+   api.php reads both user-record formats and serves both old and new clients, so it is safe on its own.
+2. Old clients against the new api.php keep working; new assets (per-user storage scopes in `store.js`,
+   `profile.js`, admin link in `auth.js`) need the bumped `?v=` numbers, which this release carries on
+   every page. Hard-refresh (Ctrl+Shift+R) on the devices that share a browser.
+3. `~/nevaib-data/state/<user>.json` files need **no migration**. On each browser, the first login moves
+   that device's legacy flat data into the account's storage scope behind a safety snapshot (postponed and
+   retried automatically if storage is full).
+4. Then bootstrap the **admin** account and create the students (recipe:
+   `server/deploy-notes.md`, "Creating accounts"). `admin.html` ships with the rsync deploy automatically;
+   for the standalone `deploy/nevaib/` app build it is not included (the app has no admin page — use the
+   study site for account management).
+5. Never set `NEVAIB_SETUP_KEY` on the live host — it would override the armed setup key in the built
+   `api.php` and re-open one-time account creation after setup was meant to be closed.
 - PDFs open in new tabs from every page.
 - The site works offline from disk too — `index.html` opens fine via `file://`.
 

@@ -55,6 +55,11 @@
 
   async function loadDecks() {
     await loadRegistry();
+    // Per-user subject profile (assets/profile.js): decks for subjects the
+    // account doesn't take are dropped before their files are even fetched.
+    // hides() — not !allows() — would keep non-registry subjects, if the
+    // manifest ever gains one; the user's own decks (fc-userdecks) stay.
+    REGISTRY = REGISTRY.filter(r => !(window.NB && window.NB.profile && window.NB.profile.hides(r.subject)));
     DECKS = [];
     // Fetch all decks in parallel (was one-by-one, which left the dropdowns
     // empty for several seconds); keep manifest order in the result.

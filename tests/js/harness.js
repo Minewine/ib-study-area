@@ -30,16 +30,24 @@ class FakeStorage {
   dump() { return Object.fromEntries(this.m); }
 }
 
-function fakeElement(tag) {
+function fakeElement(tag, text) {
   const el = {
     tagName: String(tag || "div").toUpperCase(), children: [], style: {}, dataset: {}, attrs: {},
-    textContent: "", innerHTML: "", className: "", id: "", value: "",
+    textContent: String(text || ""), innerHTML: "", className: "", id: "", value: "",
     listeners: {},
     get childElementCount() { return this.children.length; },
+    get childNodes() { return this.children; }, // only .length is read off it in the assets
     get firstChild() { return this.children[0] || null; },
     setAttribute(k, v) { this.attrs[k] = v; }, getAttribute(k) { return this.attrs[k]; },
     appendChild(c) { this.children.push(c); c.parent = this; return c; },
     insertBefore(c) { this.children.unshift(c); c.parent = this; return c; },
+    append(...kids) { // DOM append(): strings become text nodes, nodes as-is
+      kids.forEach(k => {
+        if (k === null || k === undefined || k === false) return;
+        if (typeof k === "object") this.appendChild(k);
+        else this.appendChild(fakeElement("#text", String(k)));
+      });
+    },
     remove() { if (this.parent) this.parent.children = this.parent.children.filter(x => x !== this); },
     addEventListener(t, fn) { (this.listeners[t] = this.listeners[t] || []).push(fn); },
     querySelector() { return null; }, querySelectorAll() { return []; },
@@ -65,6 +73,7 @@ function makeEnv(opts) {
       return walk(body);
     },
     createElement: fakeElement,
+    createTextNode(t) { return fakeElement("#text", String(t)); },
     addEventListener(t, fn) { (docListeners[t] = docListeners[t] || []).push(fn); },
     querySelectorAll() { return []; }
   };
@@ -78,6 +87,7 @@ function makeEnv(opts) {
     location: Object.assign({ search: "", hostname: "rametric.com", pathname: "/nevaib/index.html", reload() { ctx.reloads++; } }, opts.location || {}),
     URLSearchParams, setTimeout: opts.setTimeout || setTimeout, clearTimeout, setInterval: () => 0, clearInterval() {},
     Date, JSON, Math, Promise, Map, Set, Array, Object, String, Number, Error, Blob: function () {},
+    Node: function Node() {}, // notes.js tests `c instanceof Node` — a bare stand-in is enough
     fetch: opts.fetch || (() => Promise.reject(new Error("offline"))),
     navigator: {}, reloads: 0
   };

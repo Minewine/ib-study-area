@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin — IB Study Area</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+/* page-local: the shared stylesheet only styles forms/buttons inside #auth-slot,
+   and this page is standalone (no site nav) — everything dynamic here is ad-* */
+#auth-slot{margin:.8rem 1rem 0}
+.ad-form{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:.5rem 0}
+.ad-form input{font:inherit;font-size:.92rem;border:1px solid var(--line);border-radius:8px;padding:.32rem .5rem;background:#fff;box-sizing:border-box}
+.ad-form input:focus{outline:none;border-color:var(--accent)}
+.ad-subs{display:flex;flex-wrap:wrap;gap:.3rem .9rem;margin:.3rem 0}
+.ad-sub{display:inline-flex;align-items:center;gap:.35rem;font-size:.9rem}
+.ad-sub input{margin:0}
+.ad-btn{font:inherit;font-size:.88rem;border:1px solid var(--accent);border-radius:8px;padding:.3rem .7rem;background:var(--accent);color:#fff;cursor:pointer}
+.ad-btn:hover{background:#234d8c}
+.ad-btn.mini{font-size:.8rem;padding:.14rem .55rem;background:#fff;color:var(--accent)}
+.ad-status{font-size:.85rem}
+.ad-status.bad{color:#c23b3b}
+.ad-status.good{color:#2e8b57}
+.ad-row{padding:.5rem 0;border-bottom:1px solid #eef1f4}
+.ad-row:last-child{border-bottom:0}
+.ad-line{display:flex;flex-wrap:wrap;gap:.45rem;align-items:center}
+.ad-chips{display:flex;flex-wrap:wrap;gap:.25rem;flex:1;min-width:8rem}
+.ad-editor{display:none;margin:.4rem 0 0;padding:.45rem .6rem;border:1px dashed var(--line);border-radius:10px}
+.ad-editor.open{display:block}
+.ad-role{background:#eef2f7}
+.ad-role.admin{background:#e9f6ee}
+</style>
+</head>
+<body>
+<div id="auth-slot"></div>
+<main id="admin-main">
+  <section class="card"><p class="muted">Checking who you are…</p></section>
+</main>
+<footer>Private family study area · keep this site and its library non-public</footer>
+<script src="assets/store.js?v=7"></script>
+<script src="assets/profile.js?v=1"></script>
+<script src="assets/auth.js?v=10"></script>
+<script>
+/* Admin page — account list, account creation, per-account subject profiles.
+   Server contract (server/api.php): me → {user, role}; list-users →
+   {users: [{user, role, subjects}]}; create-user → {user, role};
+   set-profile → {rev}. "admin" is only ever a stored record's role; every
+   other record (and every pre-upgrade server) resolves to "student", so this
+   page degrades to "Admins only" instead of leaking anything.
+
+   auth.js owns the login widget above (#auth-slot) but exposes no events and
+   its widget binds the internal login closure — so the page polls
+   window.Auth.user() (an in-memory getter, no network) and rebuilds the view
+   whenever the resolved account changes, which also covers widget logouts. */
+(function () {
+  "use strict";
+  const NB = window.NB || {};
+  const esc = NB.escapeHtml || function (s) {   // the one escaper — usernames are user-derived data
+    return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+  };
+  const $ = function (id) { return document.getElementById(id); };
+
+  // same API resolution as auth.js (kept in step by hand; auth.js is not modified)
+  const LOCAL_HOST = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
+  const API = (LOCAL_HOST && localStorage.getItem("nb-api")) ||
+    (/^(www\.)?rametric\.com$/.test(location.hostname)
+      ? "/nevaib/api/api.php"
+      : "https://rametric.com/nevaib/api/api.php");
+
+  async function api(action, opts) {
+    opts = opts || {};
+    const headers = {};
+    const token = localStorage.getItem("nb-token");   // cross-origin callers can't use cookies
+    if (token) headers["X-Nevaib-Token"] = token;
+    const hasBody = opts.body !== undefined;
+    if (hasBody) headers["Content-Type"] = "application/json";
+    const res = await fetch(API + "?action=" + encodeURIComponent(action), {
+      method: hasBody ? "POST" : (opts.method || "GET"),
+      credentials: "same-origin", headers: headers,
+      body: hasBody ? JSON.stringify(opts.body) : undefined
+    });
+    let data = null;
+    try { data = await res.json(); } catch (e) { throw new Error("bad response (" + res.status + ")"); }
+    if (!res.ok || data.ok === false) {
+      const err = new Error(data.error || ("HTTP " + res.status));
+      err.status = res.status; err.data = data;
+      throw err;
+    }
+    return data;
+  }
+
+  // ── subjects ─────────────────────────────────────────────────────────────
+  function canonical(id) { return NB.canonicalSubject ? NB.canonicalSubject(id) : id; }
+  function subjectLabel(id) {
+    const c = canonical(id);
+    const hit = (NB.SUBJECTS || []).filter(function (s) { return s.id === c; })[0];
+    return hit ? hit.label : c;   // unknown stored id shows as itself — nothing hides silently
+  }
+  function checkboxRow(id, checked) {
+    const c = canonical(id);
+    return '<label class="ad-sub"><input type="checkbox" value="' + esc(c) + '"' + (checked ? " checked" : "") + ">" +
+      esc(subjectLabel(c)) + "</label>";
+  }
+
+  // ── views ────────────────────────────────────────────────────────────────
+  function show(html) { $("admin-main").innerHTML = html; }
+
+  function renderLoggedOut() {
+    show('<section class="card"><h3>Account administration</h3>' +
+      '<p>Log in to manage accounts — use the login box at the top of this page.</p></section>');
+  }
+
+  function renderForbidden(me) {
+    show('<section class="card"><h3>Admins only</h3>' +
+      '<p>Logged in as <strong>' + esc(me.user) + "</strong> — this page manages accounts and needs an admin login.</p></section>");
+  }
+
+  let subs = {};   // username → subjects from the last list-users (null = no profile yet; [] = explicitly empty)
+
+  function accountRow(u) {
+    // subjects null = the account never got a profile (every pre-upgrade account):
+    // that IS the default — all subjects — and the editor opens all-checked. Only an
+    // explicit [] means "no subjects"; NB.profile honours the distinction, so must we.
+    const noProfile = subs[u.user] == null;
+    const stored = noProfile ? [] : subs[u.user];
+    const cur = stored.map(canonical);
+    const chips = stored.map(function (id) { return '<span class="chip">' + esc(subjectLabel(id)) + "</span>"; }).join("");
+    return '<div class="ad-row" data-user="' + esc(u.user) + '">' +
+      '<div class="ad-line">' +
+      "<strong>" + esc(u.user) + "</strong>" +
+      '<span class="chip ad-role ' + esc(u.role) + '">' + esc(u.role) + "</span>" +
+      '<span class="ad-chips">' + (noProfile ? '<span class="muted">all subjects — no profile set yet</span>' : (chips || '<span class="muted">no subjects</span>')) + "</span>" +
+      '<button type="button" class="ad-btn mini" data-edit="' + esc(u.user) + '">Subjects…</button>' +
+      "</div>" +
+      '<div class="ad-editor" data-editor="' + esc(u.user) + '">' +
+      '<div class="ad-subs">' + (NB.SUBJECTS || []).map(function (s) { return checkboxRow(s.id, noProfile || cur.indexOf(s.id) >= 0); }).join("") + "</div>" +
+      '<button type="button" class="ad-btn mini" data-save="' + esc(u.user) + '">Save subjects</button>' +
+      '<span class="ad-status" data-status="' + esc(u.user) + '"></span>' +
+      "</div></div>";
+  }
+
+  async function loadList() {
+    try {
+      const d = await api("list-users");
+      subs = {};
+      (d.users || []).forEach(function (u) { subs[u.user] = u.subjects == null ? null : u.subjects; });   // keep null ("no profile yet") distinct from []
+      const rows = (d.users || []).map(accountRow).join("");
+      $("ad-list").innerHTML = rows || '<p class="muted">No accounts yet.</p>';
+      $("ad-count").textContent = "(" + (d.users || []).length + ")";
+    } catch (e) {
+      $("ad-list").innerHTML = '<p class="muted">Could not load accounts — ' + esc(e.message) + "</p>";
+    }
+  }
+
+  async function renderAdmin() {
+    show('<section class="card"><h3>Accounts <span class="count" id="ad-count"></span></h3>' +
+      '<div id="ad-list"><p class="muted">Loading accounts…</p></div></section>' +
+      '<section class="card"><h3>Add account</h3>' +
+      '<form id="ad-new" class="ad-form">' +
+      '<input id="ad-user" size="16" autocomplete="off" spellcheck="false" placeholder="username" aria-label="username">' +
+      '<input id="ad-pass" type="password" size="16" autocomplete="new-password" placeholder="password" aria-label="password">' +
+      '<span class="muted">min 8 chars</span>' +
+      '<button class="ad-btn" type="submit">Create account</button>' +
+      '<span id="ad-status" class="ad-status"></span>' +
+      '<div id="ad-subjects" class="ad-subs"></div>' +
+      "</form>" +
+      '<p class="muted">New accounts are student accounts. The first admin comes from the one-time setup key on the server.</p>' +
+      "</section>");
+    $("ad-subjects").innerHTML = (NB.SUBJECTS || []).map(function (s) { return checkboxRow(s.id, false); }).join("");
+    $("ad-new").addEventListener("submit", onCreate);
+    $("ad-list").addEventListener("click", onListClick);
+    await loadList();
+  }
+
+  // ── actions ──────────────────────────────────────────────────────────────
+  async function onCreate(e) {
+    e.preventDefault();
+    const st = $("ad-status");
+    st.textContent = "Creating…"; st.className = "ad-status";
+    const subjects = Array.prototype.map.call($("ad-subjects").querySelectorAll("input:checked"), function (c) { return c.value; });
+    // same guard as saveSubjects: an empty list is stored as an explicit
+    // hide-everything profile, not as "no profile yet"
+    if (!subjects.length && !window.confirm("Save with NO subjects? Every subject page, quiz bank, deck and note will be hidden for this account.")) return;
+    try {
+      const d = await api("create-user", { body: { username: $("ad-user").value.trim(), password: $("ad-pass").value, subjects: subjects } });
+      $("ad-user").value = ""; $("ad-pass").value = "";
+      Array.prototype.forEach.call($("ad-subjects").querySelectorAll("input:checked"), function (c) { c.checked = false; });
+      st.textContent = "Created " + d.user; st.className = "ad-status good";
+      await loadList();
+    } catch (err) {
+      st.textContent = err.status === 409 ? "That username already exists." : err.message;
+      st.className = "ad-status bad";
+    }
+  }
+
+  function onListClick(e) {
+    const btn = e.target.closest ? e.target.closest("[data-edit],[data-save]") : null;
+    if (!btn) return;
+    const row = btn.closest(".ad-row");
+    const editor = row.querySelector(".ad-editor");
+    if (btn.getAttribute("data-edit")) { editor.classList.toggle("open"); return; }
+    saveSubjects(btn.getAttribute("data-save"), editor);
+  }
+
+  async function saveSubjects(user, editor) {
+    const st = editor.querySelector("[data-status]");
+    const subjects = Array.prototype.map.call(editor.querySelectorAll('input[type="checkbox"]:checked'), function (c) { return c.value; });
+    // an explicitly empty profile is honoured as hide-everything — usually a careless
+    // click on the default-all editor, so confirm before storing it
+    if (!subjects.length && !window.confirm("Save with NO subjects? Every subject page, quiz bank, deck and note will be hidden for this account.")) return;
+    st.textContent = "Saving…"; st.className = "ad-status";
+    try {
+      await api("set-profile", { body: { user: user, subjects: subjects } });
+      await loadList();   // re-render from the server copy
+    } catch (err) {
+      st.textContent = err.message; st.className = "ad-status bad";
+    }
+  }
+
+  // ── orchestration: resolve once, then follow the widget's account changes ─
+  async function whoami() {
+    try {
+      const d = await api("me");
+      return d.user ? { user: String(d.user), role: d.role || "student" } : null;
+    } catch (e) { return null; }
+  }
+
+  async function tick() {
+    const me = await whoami();
+    if (!me) { renderLoggedOut(); return; }
+    if (me.role !== "admin") { renderForbidden(me); return; }
+    await renderAdmin();
+  }
+
+  let lastSeen = null;
+  tick();
+  setInterval(function () {
+    const u = (window.Auth && window.Auth.user) ? window.Auth.user() : null;
+    if (u === lastSeen) return;   // in-memory getter: free to poll
+    lastSeen = u;
+    tick();
+  }, 1000);
+})();
+</script>
+</body>
+</html>

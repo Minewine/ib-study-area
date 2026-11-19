@@ -8,7 +8,19 @@
   "use strict";
 
   const PATH_BASE = location.pathname.includes("/app/") ? "../" : "";
-  const SUBJECTS = [["biology-hl", "Biology HL"], ["chemistry-hl", "Chemistry HL"], ["maths-aa-sl", "Maths AA SL"]];
+  const NB = window.NB || {};
+  // Per-user subjects (assets/profile.js): the account's canonical subject ids
+  // with registry labels. The literal below is only the stale-cache fallback
+  // for a page that didn't load profile.js. Subjects the class schedule
+  // doesn't track (history/french/english today) drop out at render time, so
+  // a default-all profile adds no empty rows.
+  const SUBJECTS = NB.profile
+    ? NB.profile.subjects().map(id => [id, ((NB.SUBJECTS || []).find(s => s.id === id) || {}).label || id])
+    : [["biology-hl", "Biology HL"], ["chemistry-hl", "Chemistry HL"], ["maths-aa-sl", "Maths AA SL"]];
+  // canonical subject ids both sides: class-schedule.json and this file's own
+  // subjectForCode predate the id scheme ("maths-aa-sl") while NB.profile
+  // stores "math-aa-sl" — the alias map makes the two spellings one id
+  const canon = NB.canonicalSubject || ((x) => x);
   const QUIZ_N = 6;
   const WEAK_PCT = 70;
 
@@ -57,6 +69,9 @@
     const groups = {};
     (errors || []).forEach(e => {
       if (!e || e.resolved || !e.bankId || String(e.bankId).startsWith("user:")) return;
+      // per-user subject profile: a missed question from a subject the account
+      // doesn't take is not a weak spot to re-quiz (unknown subjects stay)
+      if (e.subject && NB.profile && NB.profile.hides(e.subject)) return;
       const key = e.bankId + "|" + (e.topic || "");
       const g = groups[key] = groups[key] || { source: "errors", key, bankId: e.bankId, topic: e.topic || "", topicLabel: e.topicLabel || e.topic || e.bankId, subject: e.subject || null, ids: [], count: 0, last: "" };
       g.count++;
@@ -77,6 +92,7 @@
     const weak = Object.values(byCode)
       .map(c => Object.assign(c, { pct: Math.round(c.pcts.reduce((s, p) => s + p, 0) / c.pcts.length) }))
       .filter(c => c.pct < WEAK_PCT)
+      .filter(c => !(NB.profile && NB.profile.hides(c.subject))) // per-user subject profile
       .sort((a, b) => (a.pct - b.pct) || (a.code < b.code ? -1 : 1));
     return weak[0] || null;
   }
@@ -94,8 +110,12 @@
   }
 
   // Units taught on `date` for one subject, the break (if any) covering it, and the next unit.
+  // The schedule key is found by canonical id (see `canon` above), so callers may
+  // pass either spelling of a subject id.
   function unitsFor(schedule, subject, date) {
-    const s = schedule && schedule.subjects && schedule.subjects[subject];
+    const subs = (schedule && schedule.subjects) || {};
+    const key = Object.keys(subs).find(k => canon(k) === canon(subject));
+    const s = key ? subs[key] : null;
     const units = (s && s.units || []).slice().sort((a, b) => (a.from < b.from ? -1 : a.from > b.from ? 1 : 0));
     const brk = ((schedule && schedule.breaks) || []).find(b => b.from <= date && date <= b.to) || null;
     const current = brk ? [] : units.filter(u => u.from <= date && date <= u.to);
@@ -205,7 +225,12 @@
   function renderClass(box, today) {
     const sec = el("div", { class: "td-block" }, el("h4", {}, "3. This week in class"));
     if (!DATA.schedule) { sec.append(el("p", { class: "muted" }, "The class schedule could not be loaded.")); box.append(sec); return; }
+    // only subjects the schedule actually tracks get a row: a default-all profile
+    // (all six subjects) must not add three empty "no unit listed" rows for the
+    // subjects class-schedule.json doesn't cover; canonical compare — see `canon`
+    const tracked = Object.keys(DATA.schedule.subjects || {}).map(canon);
     SUBJECTS.forEach(([s, label]) => {
+      if (tracked.indexOf(canon(s)) < 0) return;
       const u = unitsFor(DATA.schedule, s, today);
       const row = el("div", { class: "td-subj" }, el("strong", {}, label + ": "));
       if (u.brk) row.append(`${u.brk.label}.`, u.next ? ` Next: ${u.next.unit} from ${fmtDay(u.next.from)}.` : "");

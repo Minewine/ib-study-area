@@ -162,9 +162,14 @@
       const res = await fetch(PATH_BASE + "library/coursework/coursework.json?cb=" + Date.now(), { cache: "no-store" });
       if (!res.ok) throw new Error(res.status);
       DATA = await res.json();
+      // Per-user subject profile (assets/profile.js): tracks for subjects the
+      // account doesn't take are removed before any rendering. Every committed
+      // track carries a subject; a subject-less track would always stay.
+      if (window.NB && window.NB.profile) DATA.tracks = DATA.tracks.filter(t => !t.subject || !window.NB.profile.hides(t.subject));
     } catch (e) { root.textContent = "Could not load the coursework planner content (" + (e && e.message) + "). Reload to try again."; return; }
     const disc = $("cw-disclaimer");
     if (disc) disc.textContent = DATA.disclaimer;
+    if (!DATA.tracks.length) { root.textContent = "No coursework planner tracks for your subjects."; return; }
     const want = new URLSearchParams(location.search).get("track");
     current = DATA.tracks.some(t => t.id === want) ? want : DATA.tracks[0].id;
     render();

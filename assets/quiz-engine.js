@@ -64,11 +64,27 @@ const FALLBACK_BANKS = {
       const manifest = await res.json();
       BANKS = {};
       manifest.forEach(m => {
+        // Per-user subject profile (assets/profile.js): banks for subjects the
+        // account doesn't take never reach the dropdown. hides() — not !allows() —
+        // keeps non-registry subjects (the ia-skills coursework bank) for everyone.
+        if (window.NB && window.NB.profile && window.NB.profile.hides(m.subject)) return;
         BANKS[m.subject] = BANKS[m.subject] || { label: m.subjectLabel, banks: [] };
         BANKS[m.subject].banks.push({ file: m.file, label: m.label });
       });
       return true;
-    } catch (e) { console.warn("quiz manifest load failed — using built-in fallback", e); BANKS = FALLBACK_BANKS; return false; }
+    } catch (e) {
+      console.warn("quiz manifest load failed — using built-in fallback", e);
+      // the fallback gets the same profile filter as the manifest path above: a
+      // restricted student must not see other subjects' banks just because the
+      // manifest fetch failed. hides() (not !allows()) keeps any non-registry
+      // fallback key for everyone, same as ia-skills in the manifest.
+      BANKS = {};
+      Object.keys(FALLBACK_BANKS).forEach((key) => {
+        if (window.NB && window.NB.profile && window.NB.profile.hides(key)) return;
+        BANKS[key] = FALLBACK_BANKS[key];
+      });
+      return false;
+    }
   }
 
 async function init() {

@@ -308,6 +308,15 @@
   async function init() {
     try { MAN = await getJSON("library/topic-notes/manifest.json"); }
     catch (e) { $("nt-index").textContent = "Could not load the notes list: " + e.message; return; }
+    // Per-user subject profile (assets/profile.js): drop the subjects — and
+    // their notes — the account doesn't take, ONCE, so every renderer below
+    // (subject buttons, index, default subject, deep links) filters the same
+    // way. Canonical compare on both sides: this manifest still says
+    // "maths-aa-sl" where profiles store "math-aa-sl".
+    if (window.NB && window.NB.profile) {
+      Object.keys(MAN.subjects).forEach(k => { if (window.NB.profile.hides(k)) delete MAN.subjects[k]; });
+      MAN.notes = MAN.notes.filter(n => !window.NB.profile.hides(n.subject));
+    }
     const p = new URLSearchParams(location.search);
     const last = store.get("notes-last", null) || {};
     const first = Object.keys(MAN.subjects).find(k => MAN.notes.some(n => n.subject === k));

@@ -89,8 +89,13 @@ test("untouched keys take the server value (deletions elsewhere stick), with a l
   const env = await device(server, loggedIn(4, { "fc-user": J([{ id: "u1" }, { id: "u2" }]) }));
   assert.deepEqual(get(env, "fc-user"), [{ id: "u2" }]);
   const snaps = env.NB.store.snapshots();
-  assert.equal(snaps.length, 1);
-  assert.equal(env.NB.store.getSnapshot(snaps[0].id).keys["fc-user"], J([{ id: "u1" }, { id: "u2" }]));
+  // two safety copies now: the one-time "before per-user storage migration"
+  // adoption snapshot (legacy flat data moved into the user's scope on login)
+  // plus this merge's "before merging the server copy"
+  assert.equal(snaps.length, 2);
+  assert.deepEqual(plain(snaps.map(s => s.reason).sort()), ["before merging the server copy", "before per-user storage migration"]);
+  const mergeSnap = snaps.find(s => s.reason === "before merging the server copy");
+  assert.equal(env.NB.store.getSnapshot(mergeSnap.id).keys["fc-user"], J([{ id: "u1" }, { id: "u2" }]));
   assert.equal(env.ctx.reloads, 0); // reload is scheduled via setTimeout 300 ms
   await tick(350);
   assert.equal(env.ctx.reloads, 1, "page reloads so engines re-read");

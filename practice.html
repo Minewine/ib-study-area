@@ -9,12 +9,12 @@
 <body>
 <nav>
   <a href="index.html" class="brand">IB Study Area</a>
-  <a href="math-aa-sl.html">Math AA SL</a>
-  <a href="biology-hl.html">Biology HL</a>
-  <a href="chemistry-hl.html">Chemistry HL</a>
-  <a href="history-sl.html">History SL</a>
-  <a href="french-a-langlit.html">French A</a>
-  <a href="english-lit-hl.html">English Lit HL</a>
+  <a href="math-aa-sl.html" data-subject="math-aa-sl">Math AA SL</a>
+  <a href="biology-hl.html" data-subject="biology-hl">Biology HL</a>
+  <a href="chemistry-hl.html" data-subject="chemistry-hl">Chemistry HL</a>
+  <a href="history-sl.html" data-subject="history-sl">History SL</a>
+  <a href="french-a-langlit.html" data-subject="french-a-langlit">French A</a>
+  <a href="english-lit-hl.html" data-subject="english-lit-hl">English Lit HL</a>
   <a href="core.html">Core</a>
   <a href="practice.html">Practice</a>
   <a href="ia.html">IA &amp; EE</a>
@@ -30,7 +30,8 @@
 (function () {
   function render() {
     let errs = [];
-    try { errs = JSON.parse(localStorage.getItem("q-errors") || "[]"); } catch (e) {}
+    if (window.NB && window.NB.store) errs = window.NB.store.get("q-errors", []); // scoped per account
+    else { try { errs = JSON.parse(localStorage.getItem("q-errors") || "[]"); } catch (e) {} } // stale-cache fallback
     const open = errs.filter(x => !x.resolved);
     const done = errs.length - open.length;
     const s = document.getElementById("err-summary");
@@ -47,8 +48,9 @@
 </script></section><section class="card"><h3>Which sessions actually match her exams</h3><table class='wt'><thead><tr><th>Subject</th><th>Usable papers</th><th>Not usable</th></tr></thead><tbody><tr><td>Math AA SL</td><td>May 2021 → May 2026 (TZ2), Nov sessions too</td><td>May 2021 (COVID format); pre-2021</td></tr><tr><td>Biology HL</td><td>May 2025 · Nov 2025 · May 2026 (+ specimens)</td><td>Everything before May 2025</td></tr><tr><td>Chemistry HL</td><td>May 2025 · Nov 2025 · May 2026 (+ specimens)</td><td>Everything before May 2025</td></tr><tr><td>English A Lit HL</td><td>May 2021 → May 2028 (May 2026+ fully aligned) · 2 official specimens filed locally</td><td>Pre-2021</td></tr><tr><td>History SL</td><td>Specimen papers only — none exist yet</td><td>All archive papers (old guide)</td></tr><tr><td>French A LangLit</td><td>May 2026+ fully; May 2021–Nov 2025 with caveats</td><td>Pre-2021</td></tr></tbody></table><p class='muted'>Papers + markschemes come from school (teachers hold them legally) — drop files into <code>library/papers/&lt;subject&gt;/</code>, run <code>tools/build_library_manifest.py</code> and they surface below (and on the <a href='library.html'>Library</a> page) as they arrive.</p><div id='papers-list'></div></section><section class="card"><h3>Mock schedule — December → January</h3><table class='wt'><thead><tr><th>When</th><th>Mock</th><th>Material</th></tr></thead><tbody><tr><td>Mon 8 Dec 2026</td><td>English A Lit HL — Paper 1 rehearsal (timed, closed-book, two-passage format)</td><td>official specimen (linked on the <a href='english-lit-hl.html'>English hub</a>)</td></tr><tr><td>Jan 12–22 window</td><td>Math AA SL — one full P1 (no calculator) + one full P2 (GDC)</td><td>teacher revision sets until school papers arrive</td></tr><tr><td>Jan 12–22 window</td><td>Biology HL + Chemistry HL — one full timed mock each, per the school's exam format</td><td>teacher sets · quiz-bank written items as markscheme drills</td></tr><tr><td>Night before each paper</td><td>Error-log review only — 15 minutes, no new content</td><td>this page → missed questions</td></tr></tbody></table><p class='muted'>Every mock runs the five-step protocol above. School papers (email ready on the <a href='plan.html'>plan page</a>) slot in as they arrive.</p></section>
 </main>
 <footer>Private family study area · exams <strong>May 2028</strong> · keep this site and its library non-public</footer>
-<script src="assets/store.js?v=6"></script>
-<script src="assets/app.js?v=4"></script>
-<script src="assets/library.js?v=3"></script>
+<script src="assets/store.js?v=7"></script>
+<script src="assets/profile.js?v=1"></script>
+<script src="assets/app.js?v=5"></script>
+<script src="assets/library.js?v=4"></script>
 </body>
 </html>

@@ -120,3 +120,67 @@ test("ai-pref is device-local: not synced, not in backups, and not quarantined a
   assert.ok(!Object.prototype.hasOwnProperty.call(file.keys, "ai-pref"), "preference must not enter a backup");
   assert.equal(e.storage.getItem("ai-pref"), "chatgpt", "raw pref must not be quarantined");
 });
+
+test("subjectNames: proper course names for subjects without -hl/-sl suffix notes", () => {
+  const e = envWith();
+  const subjectOf = (subject) => plain(e.NB.aiPrompt.values({ subject }, CFG)).subject;
+  assert.equal(subjectOf("biology-hl"), "Biology");
+  assert.equal(subjectOf("maths-aa-sl"), "Maths AA");
+  assert.equal(subjectOf("chemistry-hl"), "Chemistry");
+  assert.equal(subjectOf("french-a-langlit"), "French A: Language and Literature");
+  assert.equal(subjectOf("english-lit-hl"), "English A: Literature");
+  assert.equal(subjectOf("history-sl"), "History");
+});
+
+function envForCopy(execOk) {
+  const e = envWith();
+  const ta = {
+    value: "", style: {}, attrs: {}, selected: false, range: null,
+    setAttribute(k, v) { this.attrs[k] = v; },
+    select() { this.selected = true; },
+    setSelectionRange(a, b) { this.range = [a, b]; },
+    remove() {}
+  };
+  e.document.createElement = () => ta;
+  e.document.execCommand = () => execOk;
+  return { e, ta };
+}
+
+test("copyText: execCommand success is 'copied' and selects the whole text (incl. iOS setSelectionRange)", () => {
+  const { e, ta } = envForCopy(true);
+  assert.equal(e.NB.aiPrompt.copyText("hello"), "copied");
+  assert.ok(ta.selected, "textarea selected");
+  assert.deepEqual(ta.range, [0, 5], "full range selected for iOS Safari");
+});
+
+test("copyText: execCommand refusal falls back to the async Clipboard API and reports 'maybe'", () => {
+  const { e } = envForCopy(false);
+  let called = false;
+  e.ctx.navigator = { clipboard: { writeText(text) { called = true; assert.equal(text, "hello"); return Promise.resolve(); } } };
+  assert.equal(e.NB.aiPrompt.copyText("hello"), "maybe");
+  assert.ok(called, "async write attempted");
+});
+
+test("copyText: no execCommand result and no Clipboard API is a failure", () => {
+  const { e } = envForCopy(false);
+  assert.equal(e.NB.aiPrompt.copyText("hello"), "failed");
+});
+
+test("clickMsg tells the truth for every outcome", () => {
+  const e = envWith();
+  const m = e.NB.aiPrompt.clickMsg;
+  assert.match(m("copied", true, true), /Prompt copied/);
+  assert.match(m("maybe", true, true), /Copy the prompt again/, "hedged when only the async write was fired");
+  assert.match(m("maybe", false, true), /blocked the new tab/);
+  assert.match(m("copied", false, true), /blocked the new tab/);
+  assert.match(m("failed", false, true), /Could not copy/);
+  assert.match(m("copied", false, false), /Prompt copied.*no assistant link/);
+  assert.match(m("maybe", false, false), /Copy attempted.*no assistant link/, "must not claim a copy that may not have happened");
+});
+
+test("subjectNames lookup is prototype-safe", () => {
+  const e = envWith();
+  const subjectOf = (subject) => plain(e.NB.aiPrompt.values({ subject }, CFG)).subject;
+  assert.equal(subjectOf("constructor"), "constructor", "not the Object constructor source");
+  assert.equal(subjectOf("__proto__"), "__proto__", "not Object.prototype");
+});

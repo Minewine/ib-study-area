@@ -1,6 +1,11 @@
 {
-  "_doc": "Ask an AI settings for topic notes. Edit this file to change the wording, add a mode, or switch assistants — no code changes needed. Placeholders are filled from the open topic note only (never the student's name, school or grades): {subject} (e.g. Biology), {level} (HL or SL), {topic} (code, title and theme), {understandings} (key-idea cues with statement codes), {keyterms} (term: short definition), {wrong_questions} (stems of unresolved misses on this topic's linked quiz items; our own question text only, no markschemes). Mode templates may use only these placeholders. default_ai must match an assistants[].id. After editing, run ./dev.sh test (or node --test tests/js/ai-prompt.test.js).",
+  "_doc": "Ask an AI settings for topic notes. Edit this file to change the wording, add a mode, or switch assistants — no code changes needed. Placeholders are filled from the open topic note only (never the student's name, school or grades): {subject} (e.g. Biology), {level} (HL or SL), {topic} (code, title and theme), {understandings} (key-idea cues with statement codes), {keyterms} (term: short definition), {wrong_questions} (stems of unresolved misses on this topic's linked quiz items; our own question text only, no markschemes). subjectNames (optional) maps a subject id to a proper course name for {subject}; the level still comes from a -hl/-sl suffix or hlOnly. Mode templates may use only these placeholders. default_ai must match an assistants[].id. After editing, run ./dev.sh test (or node --test tests/js/ai-prompt.test.js).",
   "default_ai": "gemini",
+  "subjectNames": {
+    "english-lit-hl": "English A: Literature",
+    "french-a-langlit": "French A: Language and Literature",
+    "history-sl": "History"
+  },
   "assistants": [
     {"id": "gemini", "name": "Gemini", "url": "https://gemini.google.com/app"},
     {"id": "chatgpt", "name": "ChatGPT", "url": "https://chatgpt.com/"},

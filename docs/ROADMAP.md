@@ -1,5 +1,7 @@
 # Feature Roadmap
 
+_Last updated: 19 Nov 2026._
+
 Scope guard: every item must serve the actual DP1→DP2 sequence (exams May 2028).
 The weekly loop — quiz sessions, flashcards, error log, idea log — is the product;
 features only exist to make that loop easier or more targeted.
@@ -16,6 +18,25 @@ features only exist to make that loop easier or more targeted.
 - [x] **Sync extended** (2026-11-15): four new synced blobs (`tok-objects`, `ee-ideas`, `io-issues`, `ia-debriefs`) via a small `lists.js` engine; verified end-to-end against the local PHP test host (push on first login + restore on a wiped device).
 - [x] **Generator drift repaired** (2026-11-15): practice.html's missed-questions card + script folded into `build_site.py`; ia.html's duplicated paragraph removed at the source; dead duplicate NEXTUP/CALLOUT constants deleted; deadlines.js tail sorted (renderers now sort defensively).
 - [x] **Mock schedule** (2026-11-15): Dec–Jan mock calendar on practice.html (8 Dec English P1 rehearsal + January-window mocks + night-before error-log loop); English A Lit row added to the papers-alignment table.
+
+## Shipped (2026-11-18 → 19)
+
+**Merged on `main` (PRs #5–#16), awaiting deploy** — the live site still runs the 18 Nov morning deploy (#1–#4):
+
+- [x] Cards page loads decks in parallel (#5); content corrections: data-booklet bond enthalpies, half-filled-stability wording, off-syllabus Maths items retired (#6); B2.1–B2.3 + S1.1 cards and all 51 Maths AA SL notes (#7).
+- [x] **Today panel** (#8): due cards, a weakest-topic quiz, this week's class units (`class-schedule.json`).
+- [x] **Security hardening** (#9): login limits/lockout, header-only tokens, CSRF/origin guard, escaping, response headers.
+- [x] **Parent weekly summary** (#10): read-only `app/summary.html` (own login) + `?action=summary` API + optional cron e-mail.
+- [x] **Exam-style practice** (#11): Paper 1A/1B-style Chemistry banks + Biology data-response bank, confidence ratings ("sure"/"guessing"), past-paper score log (`pp-scores`).
+- [x] **Coursework planner** (#12): Bio/Chem scientific investigation + Maths exploration tracks, synced per record; practical/IA skills quiz bank.
+- [x] Docs status update + VISION.md (#13).
+- [x] **Private cross-check + My resources** (#14): 25 notes cross-checked against a commercial set (kept out of the repo; 29 notes gained key ideas/misconceptions), per-note "My resources" links (`my-res`, synced, tombstoned deletes).
+- [x] **Ask an AI** (#15) + copy-before-open fix (#16): copies the filled prompt synchronously, then opens the preferred assistant.
+
+**In the working tree, uncommitted (tested green, not on `main`):**
+
+- [x] **Multi-user upgrade**: every data key physically scoped per account in localStorage (`store.js`); a separate **admin** account + `admin.html` creates students and edits their subject lists (`create-user`/`list-users`/`set-profile`, roles in `users.json`); per-student **subject profiles** (`assets/profile.js` + synced `profile` key) filter nav, dashboard cards, hub sections, quiz banks, decks, notes, library, coursework, the Today panel and tagged deadlines; legacy data adopted into its owner's scope behind a safety snapshot. Reviewed (two passes, all P1/P2 fixed), e2e two-account scenarios included.
+- [x] **Ask-an-AI hardening** (19 Nov): copy tri-state, stale-prompt reset, pop-up hint, double-click guard.
 
 ## Short-term (next 2–4 weeks · before the December break)
 
@@ -52,7 +73,7 @@ features only exist to make that loop easier or more targeted.
 - [ ] **Whole-site dark mode** (currently only the Cards page has it).
 - [ ] **NLP-style marking of written answers** — the wishlist item from the original notes; requires a defined marking methodology and is a real product, not a static-page feature. Revisit only if the self-marking discipline proves weak.
 - [ ] **AI-predicted questions** — the notes' third sourcing idea; gated on a documented methodology mapped to the syllabus (the blind spot the notes themselves flagged).
-- [ ] **Git version control** for `ibsystem/` (recommend: init the repo, commit content, keep `source-archives/` out via .gitignore).
+- [x] **Git version control** — repo live at `github.com/Minewine/ib-study-area` (public; making it private is NEXT-STEPS step 2), `source-archives/` and the copyrighted PDF folders git-ignored.
 
 ## Explicitly not doing
 

@@ -15,6 +15,7 @@ usage() {
                            --lan binds 0.0.0.0 and serves ONLY the built deploy/nevaib
                            copy (never the working tree: .git, deploy/.ftp-credentials).
 ./dev.sh adduser NAME      create/replace a dev account in the dev data dir
+                           (student by default; adduser --admin NAME for admin)
 ./dev.sh test              python tests (pytest) + JS tests (node --test) + php -l
 ./dev.sh e2e               headless-Chrome end-to-end run (tests/e2e; needs npm + Chrome)
 ./dev.sh validate          content validator (tools/validate_content.py)
@@ -53,19 +54,23 @@ cmd_start() {
 }
 
 cmd_adduser() {
+  local role="student"
+  if [[ "${1:-}" == "--admin" ]]; then role="admin"; shift; fi
   local name="${1:-}"
-  [[ -n "$name" ]] || { echo "usage: ./dev.sh adduser NAME" >&2; exit 2; }
+  [[ -n "$name" ]] || { echo "usage: ./dev.sh adduser [--admin] NAME" >&2; exit 2; }
   have php || { echo "php is required" >&2; exit 1; }
   [[ "$name" =~ ^[a-z0-9._-]{2,30}$ ]] || { echo "NAME: 2-30 chars, lowercase letters/digits/._-" >&2; exit 2; }
   mkdir -p "$DATA_DIR/state"
   read -rsp "password for $name (8+ chars): " pw; echo
   [[ ${#pw} -ge 8 ]] || { echo "too short" >&2; exit 2; }
-  NB_USER="$name" NB_PASS="$pw" NB_FILE="$DATA_DIR/users.json" php -r '
+  # new-format record {"h": ..., "role": ...}; the decode/encode round-trip carries
+  # every other entry (including legacy plain-string hashes) through untouched
+  NB_USER="$name" NB_PASS="$pw" NB_ROLE="$role" NB_FILE="$DATA_DIR/users.json" php -r '
     $f = getenv("NB_FILE"); $u = is_file($f) ? json_decode(file_get_contents($f), true) : [];
     if (!is_array($u)) $u = [];
-    $u[getenv("NB_USER")] = password_hash(getenv("NB_PASS"), PASSWORD_DEFAULT);
+    $u[getenv("NB_USER")] = ["h" => password_hash(getenv("NB_PASS"), PASSWORD_DEFAULT), "role" => getenv("NB_ROLE")];
     file_put_contents($f, json_encode($u, JSON_PRETTY_PRINT));'
-  echo "dev account '$name' saved in $DATA_DIR/users.json"
+  echo "dev account '$name' ($role) saved in $DATA_DIR/users.json"
 }
 
 cmd_test() {

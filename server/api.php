@@ -58,6 +58,10 @@ $SESSION_TTL = 30 * 86400;     // absolute lifetime of a cookie session
 $TOKEN_TTL = 90 * 86400;  // login tokens expire after 90 days
 // One-time account creation: set a long random key here, create accounts, then blank it.
 $SETUP_KEY = "";  // e.g. "paste-a-long-random-string"; empty = setup disabled
+// NEVAIB_SETUP_KEY overrides the blank for tests/dev. Kept BELOW the constant (not
+// replacing it): build_deploy.py arms the exact blank line above at deploy time.
+$SETUP_KEY_ENV = getenv("NEVAIB_SETUP_KEY");
+if ($SETUP_KEY_ENV !== false && $SETUP_KEY_ENV !== "") $SETUP_KEY = $SETUP_KEY_ENV;
 $HISTORY_KEEP = 30;  // previous versions kept per user in state/history/<user>/
 // Optional, NOT committed: $DATA_DIR/config.json (outside public_html), e.g.
 //   {"summary_viewers": {"michael": ["neva"]}, "timezone": "Europe/Zurich",
@@ -105,6 +109,48 @@ function write_atomic(string $path, string $data): bool {
 function save_users(array $u): void {
     global $USERS_FILE;
     write_atomic($USERS_FILE, json_encode($u, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+}
+// users.json values are {"h": <hash>, "role": "admin"|"student"} since the multi-user
+// upgrade; older files hold the bare hash string. The read side accepts both shapes
+// (migrate-on-read); records are rewritten in the new shape only when their owner is
+// created, so a legacy entry is never rewritten behind anyone's back.
+function user_hash(array $users, string $u): string {
+    $rec = isset($users[$u]) ? $users[$u] : null;
+    return is_array($rec) ? (string)($rec["h"] ?? "") : (string)$rec;
+}
+function user_role(array $users, string $u): string {
+    $rec = isset($users[$u]) ? $users[$u] : null;
+    return (is_array($rec) && isset($rec["role"]) && $rec["role"] === "admin") ? "admin" : "student";
+}
+// subjects live in each account's state file (state.profile.subjects, written by
+// create-user / set-profile). null = no profile stored yet (no file, unreadable
+// file, or no state.profile.subjects array) — the admin page renders its
+// default-all editor for it; [] is an explicitly stored empty profile and is
+// honoured as hide-everything. The distinction rides through list-users as
+// subjects: null vs subjects: [].
+function profile_subjects(string $name): ?array {
+    $p = state_path($name);
+    if (!is_file($p)) return null;
+    $d = json_decode((string)file_get_contents($p), true);
+    if (!is_array($d) || !isset($d["state"]["profile"]["subjects"]) || !is_array($d["state"]["profile"]["subjects"])) return null;
+    $out = [];
+    foreach ($d["state"]["profile"]["subjects"] as $s) if (is_string($s)) $out[] = $s;
+    return $out;
+}
+// admin-supplied subject list: strings only, trimmed, empties dropped, duplicates
+// collapsed, at most 12 entries of 64 chars (canonical ids live in assets/profile.js)
+function sanitize_subjects($raw): array {
+    if (!is_array($raw)) fail("subjects: must be an array of subject ids");
+    $out = [];
+    foreach ($raw as $s) {
+        if (!is_string($s)) fail("subjects: must be an array of subject ids");
+        $s = trim($s);
+        if ($s === "") continue;
+        if (strlen($s) > 64) fail("subjects: each entry is at most 64 characters");
+        if (!in_array($s, $out, true)) $out[] = $s;
+    }
+    if (count($out) > 12) fail("subjects: at most 12 entries");
+    return $out;
 }
 function safe_user(string $user): string {
     return preg_replace("/[^a-z0-9._-]/", "", strtolower($user));
@@ -232,7 +278,7 @@ $METHOD = strtoupper((string)($_SERVER["REQUEST_METHOD"] ?? "GET"));
 // Content-Type: application/json triggers a CORS preflight that only the allow-listed
 // origins pass. A browser-sent Origin that is neither allow-listed nor this host is
 // refused outright. Reads (GET) stay as they were (the export link opens in a tab).
-$WRITE_ACTIONS = ["setup", "login", "logout", "save-state"];
+$WRITE_ACTIONS = ["setup", "login", "logout", "save-state", "create-user", "set-profile"];
 if (in_array($action, $WRITE_ACTIONS, true)) {
     if ($METHOD !== "POST" && $METHOD !== "PUT") fail("use POST", 405);
     $ctype = strtolower((string)($_SERVER["CONTENT_TYPE"] ?? $_SERVER["HTTP_CONTENT_TYPE"] ?? ""));
@@ -256,10 +302,18 @@ if ($action === "setup") {
     $user = trim((string)($JSON_BODY["username"] ?? ""));
     $pass = (string)($JSON_BODY["password"] ?? "");
     if (!preg_match("/^[a-z0-9._-]{2,30}$/", $user)) fail("username: 2-30 chars, lowercase letters/digits/._-");
+    if (preg_match("/^[.]+$/", $user)) fail("username: 2-30 chars, lowercase letters/digits/._-");   // ".." would become state/...json
     if (strlen($pass) < 8) fail("password: at least 8 characters");
+    // role is how the live host bootstraps its first admin (setup-key ritual above);
+    // everything created without a role stays a plain student account
+    $role = "student";
+    if (array_key_exists("role", $JSON_BODY)) {
+        if ($JSON_BODY["role"] !== "admin" && $JSON_BODY["role"] !== "student") fail("role: \"admin\" or \"student\"");
+        $role = $JSON_BODY["role"];
+    }
     $users = users();
     if (isset($users[$user])) fail("user already exists", 409);
-    $users[$user] = password_hash($pass, PASSWORD_DEFAULT);
+    $users[$user] = ["h" => password_hash($pass, PASSWORD_DEFAULT), "role" => $role];   // new-format record
     save_users($users);
     ok(["created" => $user]);
 }
@@ -276,7 +330,7 @@ if ($action === "login") {
     if (login_locked($user)) { usleep(300000); fail("too many failed attempts — try again in 15 minutes", 429); }
     $users = users();
     // unknown usernames still pay for a hash check, so timing doesn't reveal which exist
-    $hash = isset($users[$user]) ? (string)$users[$user] : '$2y$10$YodVcb.3lMgDl4VqkHGDhO9ZrriNi3iqIBqSrB.j.tMaRXl3Wjlau'  /* hash of a random throwaway string */;
+    $hash = isset($users[$user]) ? user_hash($users, $user) : '$2y$10$YodVcb.3lMgDl4VqkHGDhO9ZrriNi3iqIBqSrB.j.tMaRXl3Wjlau'  /* hash of a random throwaway string */;
     $good = password_verify($pass, $hash) && isset($users[$user]);
     if (!$good) {
         record_fail($user);
@@ -301,7 +355,7 @@ if ($action === "login") {
         foreach (array_slice($mine, 0, count($mine) - 8) as $h) unset($tokens[$h]);
     }
     save_tokens($tokens);
-    ok(["user" => $user, "token" => $token]);
+    ok(["user" => $user, "token" => $token, "role" => user_role($users, $user)]);
 }
 
 if ($action === "logout") {
@@ -337,7 +391,8 @@ if (!$user) {
 }
 
 if ($action === "me") {
-    ok(["user" => $user ?: null]);
+    // role rides along for pages that gate on it (admin.html); null while logged out
+    ok(["user" => $user ?: null, "role" => $user ? user_role(users(), $user) : null]);
 }
 
 // everything below requires a resolved user
@@ -354,6 +409,11 @@ if ($action === "save-state") {
     if (!is_array($body) || !isset($body["state"])) fail("missing 'state'");
     if (!is_array($body["state"])) fail("'state' must be an object");
     $incoming = $body["state"];
+    // "profile" is admin-set only (create-user / set-profile): a client copy is stale by
+    // construction and would clobber an admin's change on the next sync. Dropping it makes
+    // profile an untouched key — the merge below keeps the stored value and the client's
+    // reconcile then takes that server value back as the truth.
+    unset($incoming["profile"]);
 
     // one writer at a time per user: read-check-write happens under this lock
     $lock = fopen(state_path($user) . ".lock", "c");
@@ -417,6 +477,94 @@ if ($action === "history") {
     if (!is_file($f)) fail("not found", 404);
     $d = json_decode((string)file_get_contents($f), true);
     ok(["name" => $name, "state" => $d["state"] ?? null, "updated_at" => $d["updated_at"] ?? null, "rev" => (int)($d["rev"] ?? 0)]);
+}
+
+// ── multi-user admin: role-gated account management ──────────────────────────
+// Roles live on the user record ({"h": ..., "role": ...}); the first admin is
+// bootstrapped via ?action=setup with a role (setup-key ritual above). Subjects
+// are the per-account study profile (canonical ids: assets/profile.js).
+
+// create an account: POST {username, password, role?, subjects?}
+if ($action === "create-user") {
+    $users = users();
+    if (user_role($users, $user) !== "admin") fail("admin account required", 403);
+    $new = trim((string)($JSON_BODY["username"] ?? ""));
+    $pass = (string)($JSON_BODY["password"] ?? "");
+    if (!preg_match("/^[a-z0-9._-]{2,30}$/", $new)) fail("username: 2-30 chars, lowercase letters/digits/._-");
+    if (preg_match("/^[.]+$/", $new)) fail("username: 2-30 chars, lowercase letters/digits/._-");   // ".." would become state/...json
+    if (strlen($pass) < 8) fail("password: at least 8 characters");
+    $role = "student";
+    if (array_key_exists("role", $JSON_BODY)) {
+        if ($JSON_BODY["role"] !== "admin" && $JSON_BODY["role"] !== "student") fail("role: \"admin\" or \"student\"");
+        $role = $JSON_BODY["role"];
+    }
+    // no subjects supplied → null: nothing is seeded, so the account keeps "no profile
+    // yet" (list-users reports subjects: null) instead of an explicit empty profile
+    $subjects = isset($JSON_BODY["subjects"]) ? sanitize_subjects($JSON_BODY["subjects"]) : null;
+    if (isset($users[$new])) fail("user already exists", 409);
+    $users[$new] = ["h" => password_hash($pass, PASSWORD_DEFAULT), "role" => $role];   // new-format record
+    save_users($users);
+    // seed the account's state file so its subject profile exists from day one; like
+    // save-state on a first save there is no previous version → no history copy. The
+    // existence-check + write sit under the SAME per-user flock that save-state and
+    // set-profile take, so a first sync racing the creation either lands first (nothing
+    // is seeded — fine) or the seed is skipped (state already exists): a first save is
+    // never clobbered by the seed.
+    if ($subjects !== null) {
+        $sp = state_path($new);
+        $lock = fopen($sp . ".lock", "c");
+        if ($lock === false || !flock($lock, LOCK_EX)) fail("could not lock state", 503);
+        if (!is_file($sp)) {
+            $encoded = json_encode(["state" => ["profile" => ["subjects" => $subjects]],
+                "updated_at" => gmdate("c"), "rev" => 1], JSON_UNESCAPED_UNICODE);
+            if (!write_atomic($sp, $encoded)) fail("could not write state", 500);
+        }
+        flock($lock, LOCK_UN);
+        fclose($lock);
+    }
+    ok(["user" => $new, "role" => $role]);
+}
+
+// account list for the admin page: GET, admin-only, never any hash material
+if ($action === "list-users") {
+    $users = users();
+    if (user_role($users, $user) !== "admin") fail("admin account required", 403);
+    $out = [];
+    foreach ($users as $name => $rec) {
+        $out[] = ["user" => (string)$name, "role" => user_role($users, (string)$name),
+            "subjects" => profile_subjects((string)$name)];
+    }
+    ok(["users" => $out]);
+}
+
+// set one account's subject profile: POST {user, subjects}
+if ($action === "set-profile") {
+    global $HISTORY_KEEP;
+    $users = users();
+    if (user_role($users, $user) !== "admin") fail("admin account required", 403);
+    $target = trim((string)($JSON_BODY["user"] ?? ""));
+    if (!isset($users[$target])) fail("no such account", 404);
+    $subjects = sanitize_subjects($JSON_BODY["subjects"] ?? null);
+    // same lock + history pattern as save-state, but on the target account and only
+    // touching state["profile"] — the account's own sync keeps its other keys
+    $lock = fopen(state_path($target) . ".lock", "c");
+    if ($lock === false || !flock($lock, LOCK_EX)) fail("could not lock state", 503);
+    $cur = read_state($target);
+    $st = is_array($cur["state"]) ? $cur["state"] : [];
+    $st["profile"] = ["subjects" => $subjects];
+    $rev = $cur["rev"] + 1;
+    $now = gmdate("c");
+    if ($cur["exists"]) {   // previous version → history (kept: newest $HISTORY_KEEP)
+        $hd = history_dir($target);
+        if (!is_dir($hd)) mkdir($hd, 0770, true);
+        $name = $hd . "/" . gmdate("Ymd\THis") . "-r" . str_pad((string)$cur["rev"], 6, "0", STR_PAD_LEFT) . ".json";
+        if (!@copy(state_path($target), $name)) fail("could not keep the previous version — not saving", 500);
+        prune_history($hd, $HISTORY_KEEP);
+    }
+    if (!write_atomic(state_path($target), json_encode(["state" => $st, "updated_at" => $now, "rev" => $rev], JSON_UNESCAPED_UNICODE))) fail("could not write state", 500);
+    flock($lock, LOCK_UN);
+    fclose($lock);
+    ok(["rev" => $rev]);
 }
 
 // parent weekly summary (read-only): ?action=summary&days=7[&user=<name>]
