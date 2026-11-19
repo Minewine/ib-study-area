@@ -1,6 +1,5 @@
-# GitHub Actions workflow — copy to .github/workflows/test.yml to enable.
-# (Not committed there: the token used to push this branch lacks the 'workflow' scope.)
-name: tests
+# GitHub Actions workflow — the live copy is .github/workflows/test.yml; this
+# tools/ file is the source-of-truth template. Keep both in sync.
 
 on:
   push:
@@ -14,9 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v6
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v7
+      - uses: actions/setup-node@v5
         with:
           node-version: "22"
       - name: PHP (runner image ships php-cli)
