@@ -3,7 +3,8 @@
 **STATUS 2026-11-15: DEPLOYED AND LIVE** — `deploy/nevaib/` uploaded via SFTP, verified
 over HTTPS (pages 200, API live, TLS valid for rametric.com). Setup key blanked on the
 host after account creation. The steps below remain the re-deployment procedure for
-content updates.
+content updates. (Last updated: 19 Nov 2026 — multi-user release notes and the
+"Creating accounts" section added; see DEPLOY.md for the release checklist.)
 
 ## Verified live 2026-11-15
 
@@ -44,6 +45,47 @@ token/auth flow was verified live after making the file 7.2-safe.
    refuses to push an armed api.php unless you pass `--allow-setup-key`.
 5. Verify: open `https://rametric.com/nevaib/`, log in, run a session, confirm
    `~/nevaib-data/state/<user>.json` appears (cPanel file manager, outside public_html).
+
+## Creating accounts (multi-user, 2026-11)
+
+User records in `~/nevaib-data/users.json` are `{"h": <password-hash>, "role": "admin"|"student"}`.
+Plain-string hash values from before this release keep working and read as role `student` — nothing to
+migrate on the host. Every student account needs a profile (its subject list) or the site shows them
+*all* subjects, so create students through the admin flow below rather than with the setup key.
+
+**Bootstrap the admin account (once, same ritual as the one-time setup):**
+
+1. Arm the key: put a long random string into `deploy/.setup-key`, rebuild
+   (`python3 -I tools/build_deploy.py`), upload (or edit the uploaded `api/api.php` directly).
+2. Create the admin account — note `"role":"admin"`:
+   ```sh
+   curl -X POST "https://rametric.com/nevaib/api/api.php?action=setup" \
+        -H "Content-Type: application/json" \
+        -d '{"setup_key":"<the key>","username":"<admin-username>","password":"<a-good-password>","role":"admin"}'
+   ```
+   Without the field the account is a plain student.
+3. **Blank `$SETUP_KEY` in the uploaded api.php** and confirm setup returns 403. Delete
+   `deploy/.setup-key` (the push script refuses to upload an armed api.php unless forced).
+   The admin account is not a student: it sees no subject content, only `admin.html`.
+
+**Create students (no key needed, from the admin login):** log in as the admin on
+`https://rametric.com/nevaib/admin.html` — account list, "Add student" form (username, password,
+subject checkboxes), and a per-student subject editor. Under the hood these call:
+
+- `?action=create-user` (POST `{username, password, subjects: ["biology-hl", …]}`) — admin only;
+  creates the record and seeds `state/<user>.json` with `profile.subjects`.
+- `?action=list-users` (GET) — admin only; `[{user, role, subjects}]`, never any hash material.
+- `?action=set-profile` (POST `{user, subjects}`) — admin only; updates the subject list (new revision,
+  history snapshot like a normal save).
+
+Canonical subject ids: `biology-hl`, `chemistry-hl`, `math-aa-sl`, `history-sl`, `french-a-langlit`,
+`english-lit-hl` (`assets/profile.js` normalizes legacy spellings like `maths-aa-sl`). A student whose
+subjects are not in that list simply starts with an empty personal space — they can upload their own
+quiz banks and decks on the Upload page; those are per-account data.
+
+**Existing account (neva):** nothing to do. No profile key means "all six subjects", and her browser
+data is adopted into her per-user storage scope automatically (with a safety snapshot) on her first
+login after the upgrade.
 
 ## Content updates
 

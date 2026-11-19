@@ -1,5 +1,9 @@
 # Handoff Prompt — next phase of development
 
+> **Point-in-time artifact (written 2026-11-15, before PRs #5–#16 and the multi-user work).**
+> For the *current* state, read [HANDOFF.md](HANDOFF.md) and [NEXT-STEPS.md](NEXT-STEPS.md) instead;
+> this prompt is kept only as a reusable template for starting a fresh chat.
+
 Copy everything below the line into a new chat to continue development with full context.
 
 ---

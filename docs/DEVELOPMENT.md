@@ -1,11 +1,13 @@
 # Development Notes
 
+_Last updated: 19 Nov 2026._
+
 Architecture, data schemas, conventions and gotchas for anyone (including future-you)
 touching this site.
 
 ## Architecture
 
-- **Static site, no build step.** 18 study-site pages + 4 practice-app pages (`app/`, LIVE on rametric.com/nevaib) + 8 asset files + JSON data in `library/` (24 quiz banks / 658 items, 24 flashcard decks / 524 cards, and the PDF manifest `library/library-manifest.json` / 127 items). The engines build their pickers from `library/questions/manifest.json` + `library/flashcards/manifest.json`; the Library browser reads `library/library-manifest.json`.
+- **Static site, no build step.** 19 study-site pages (incl. `admin.html`) + 7 practice-app pages (`app/`, LIVE on rametric.com/nevaib) + 17 asset files + JSON data in `library/` (32 quiz banks / 841 items, 28 flashcard decks / 594 cards, 113 topic notes, and the PDF manifest `library/library-manifest.json` / 127 items). The engines build their pickers from `library/questions/manifest.json` + `library/flashcards/manifest.json`; the Library browser reads `library/library-manifest.json`.
 - **Practice app (`app/`)**: `index.html` (launcher), `quiz.html`, `cards.html`, `author.html` (upload/manage/export).
   Engines resolve content via `PATH_BASE` (`../` when served from `/app/`, empty at the root), so the same engine
   files serve both layers. Root `quiz.html`/`flashcards.html` are one-line redirect stubs to the app.
@@ -13,18 +15,24 @@ touching this site.
   + `tools/build_deploy.py` (assembles `deploy/nevaib/` — original content only). See `server/deploy-notes.md`.
 - **auth.js (`assets/`)**: login/logout widget, server pull on load, debounced push on every engine write
   (engines call `Auth.queueSync()` from their `store.set`; `app.js` and the author page do the same after their writes).
-  Logged out = localStorage-only fallback. The API base resolves per origin: pages on rametric.com use
+  Logged out = localStorage-only fallback (in the last active user's scope). Admins get a "Manage accounts" link
+  (→ `admin.html`) from the account's `role`. The API base resolves per origin: pages on rametric.com use
   `/nevaib/api/api.php` (same-origin, session cookie), every other origin (localhost study site, LAN) uses the
   production URL **plus the login token** (`X-Nevaib-Token` header) — cookies can't cross origins, tokens can.
   A dev-only override exists for testing: `?nbapi=<url>` on a localhost page (sticky in localStorage `nb-api`,
   `?nbapi=` resets it).
-- **Hosted backend (`server/api.php`)**: PHP, stdlib only — `login/logout/me/get-state/save-state`. **Must run on
+- **Hosted backend (`server/api.php`)**: PHP, stdlib only — `login/logout/me/get-state/save-state` +
+  admin-only `create-user/list-users/set-profile` (a user record is `{"h": <hash>, "role": "admin"|"student"}`;
+  legacy plain-string hashes still log in and read as role `student` — migrate-on-read, never rewritten).
+  **Must run on
   PHP 7.2+** (the host serves 7.2.34): no `never` return type, no arrow functions, positional
   `session_set_cookie_params`. Passwords: `password_hash`/`password_verify` against `~/nevaib-data/users.json`.
   Per-user state: JSON file per user under `~/nevaib-data/state/` (outside the web root). Sessions: PHP cookies
   (HttpOnly, Secure auto, 30 d) for same-origin callers; login also issues a bearer token (stored sha256-hashed
   in `~/nevaib-data/tokens.json`, 90-day expiry, max 8 per user) for cross-origin callers. Brute-force guard:
-  5 fails → 5-min lockout (`login-fails.json`). Accounts: key-protected `action=setup`. CORS: whitelisted origins
+  5 fails → 5-min lockout (`login-fails.json`). Accounts: key-protected `action=setup` (optional `"role"`
+  field — the one-time bootstrap of the `admin` account); `create-user` seeds the new student's state with
+  their subject `profile`. CORS: whitelisted origins
   (rametric.com, localhost/127.0.0.1, LAN 192.168/10/172.16-31) get `Access-Control-Allow-Origin`; OPTIONS
   preflights answer 204 before auth.
 - **Storage layer** (`assets/store.js`, loaded first on every page that stores anything): `window.NB.store`
@@ -33,14 +41,40 @@ touching this site.
   `nb-schema` holds the data-shape version (currently **1** = the shapes in the table below) and
   `MIGRATIONS` in store.js runs ordered, one-time steps (each snapshots the keys it touches; a failure stops the
   chain without bumping the version). **To change a stored shape:** add `{to: N+1, touches: [keys], run(store)}`,
-  bump `SCHEMA_VERSION`, add a test in `tests/js/store.test.js`. Non-silent writes to synced keys are recorded in
+  bump `SCHEMA_VERSION`, add a test in `tests/js/store.test.js` — note future migrations must be **scope-aware**
+  (they run on whichever scope is active at load). Non-silent writes to synced keys are recorded in
   `nb-dirty` (`{key: ms}`), persisted, so "changed on this device since the last sync" survives reloads,
   offline use and closed tabs. `NB.store.snapshot(reason, keys)` keeps a ring of 3 local safety copies
   (`nb-backup:<ms>`). Each engine keeps its old 3-line helper only as a fallback for a stale cached page
   without store.js.
+- **Per-user scope layer** (`assets/store.js`, added for multi-user): every non-reserved logical key is
+  physically stored as `<username>:<key>` (e.g. `neva:fc-state`) for the active account, so two accounts on one
+  browser never share data. Reserved/global keys: `nb-token`, `nb-api`, `nb-schema`, `nb-sync`,
+  `nb-active-user`, `nb-scoped-v2`, `nb-scoped-pending`. `nb-dirty`, `nb-backup:*`, `nb-corrupt:*` are scoped
+  with the data, so dirty markers and safety copies can never cross accounts. All public APIs keep speaking
+  logical keys — translation happens only in the raw layer (`phys()`), so engines are unaware of scoping.
+  `NB.store.setScope(user)` switches account (called by auth.js on login/session-restore, before any sync);
+  the last active scope persists in `nb-active-user` across reloads and logout ("data stays on this device").
+  The first `setScope` after this feature ships moves the pre-scope flat data into the owning account's scope
+  (`nb-sync.user` if set, else the logging-in user) behind a safety snapshot; a quota failure postpones the
+  move (marker `nb-scoped-v2` stays unset, target pinned in `nb-scoped-pending`, retried at the next login —
+  already-scoped keys are never re-moved). If a refused username ever can't become a scope, auth.js pauses sync
+  entirely rather than merge into the wrong scope.
+- **Subject profiles** (`assets/profile.js`, loaded right after store.js): `NB.SUBJECTS` is the canonical
+  subject registry (6 ids; `NB.subjectAlias` maps the legacy spellings — `maths-aa-sl`, `history`, `french`,
+  `english-lit` — used by older manifests/checklist keys; compare canonical forms on BOTH sides). `NB.profile`
+  reads the synced `profile` state key: `subjects()` = the stored array (canonicalized, deduped) or, when no
+  profile exists, ALL six subjects (default = the historical single-student behaviour; an explicitly empty
+  array hides everything subject-specific). `allows(subject)` / `hides(subject)` drive the engine filters;
+  `hides()` is only true for the six registry subjects, so cross-curricular content (the `ia-skills` quiz bank,
+  `core-tok-ee`/`school`/`tsm` library groups) stays visible to profiled accounts. `applyTo(elements)` hides
+  `[data-subject]` elements outside the profile; it auto-applies on DOMContentLoaded. Engine seams: quiz-engine
+  (manifest banks), flashcards (registry decks), notes (subjects + notes), library (dropdown options), coursework
+  (tracks), today.js (subject list + schedule keys), deadlines.js (tagged entries). Admins manage accounts and
+  subject lists on `admin.html` (server actions `create-user` / `list-users` / `set-profile`, admin-only).
 - **Sync model** (`assets/auth.js`): synced keys = `NB.store.SYNCED_KEYS` (`q-userbanks, fc-userdecks, fc-state,
   fc-user, fc-deleted, fc-edits, quizlog, q-errors, tok-objects, ee-ideas, io-issues, ia-debriefs, res-bookmarks,
-  res-notes, res-recent, cw-progress`) **+ `site-state`** (`{checklists: {"chk:…": {c,r}}, week: {"week:0": "…"}}`, built from
+  res-notes, res-recent, pp-scores, cw-progress, my-res, profile`) **+ `site-state`** (`{checklists: {"chk:…": {c,r}}, week: {"week:0": "…"}}`, built from
   the per-row keys; rows are tracked individually). Rules, applied on page load, after login and on a 409:
   1. `fc-state`, `q-errors`, `quizlog` merge **per record** (`NB.merge.RECORDS`): `fc-state` per card (newest `t`,
      then `seen`, then `due`), `q-errors` union by `key` (newest `ts`, then last attempt/miss date, then attempts;
@@ -50,7 +84,8 @@ touching this site.
   3. Untouched keys take the server value (so deletions made on another device stick).
   4. A device's **first** sync with the account (`nb-sync` missing or another user) unions both copies
      (`NB.merge.union`) instead — nothing on either side is dropped. This also happens once per device after
-     upgrading from the pre-revision client.
+     upgrading from the pre-revision client. All of this runs inside the active user's scope, so a first sync
+     for account B can never union account A's local data (B's scope starts empty and is filled from the server).
   Every local value about to be replaced is snapshotted first; if the snapshot can't be saved the key is left
   alone and not pushed. Pushes send only the changed keys plus `base_rev` (the server revision this device last
   saw, in `nb-sync`); a 409 returns the current server copy, which is merged (rules above) before retrying (max 4
@@ -73,16 +108,18 @@ touching this site.
   (records newest-wins, otherwise the current value wins conflicts and gaps are filled); Replace is an explicit
   opt-in for the keys in the file; "Undo last restore" brings the snapshot back.
 - **Cache-busting convention**: engine script tags carry `?v=N` — bump N in the referencing pages whenever an engine
-  file changes. `store.js` `?v=1` (first script on every storing page), `backup.js` `?v=1` (cards, author),
-  `auth.js` `?v=7`, `quiz-engine.js` `?v=12`, `flashcards.js` `?v=9`, `notes.js` `?v=1` (app/notes.html), `app.js` `?v=3`, `lists.js` `?v=3`
-  (core, ia, french hub, ee, library), `library.js` `?v=2` (library.html, index, practice), `deadlines.js` `?v=2`
-  (index + deadlines). Bank/deck/manifest fetches use `?cb=Date.now()` + `cache: no-store`.
+  file changes. `store.js` `?v=7` (first script on every storing page), `profile.js` `?v=1` (right after store.js),
+  `backup.js` `?v=4` (cards, author), `auth.js` `?v=10`, `quiz-engine.js` `?v=17`, `flashcards.js` `?v=13`,
+  `notes.js` `?v=4` (app/notes.html), `app.js` `?v=5`, `lists.js` `?v=4`
+  (core, ia, french hub, ee, library), `library.js` `?v=4` (library.html, index, practice), `deadlines.js` `?v=5`
+  (index + deadlines), `today.js` `?v=2`, `coursework.js` `?v=2`, `ai-prompt.js` `?v=4`. Bank/deck/manifest fetches use `?cb=Date.now()` + `cache: no-store`.
 - **Vanilla JS, one engine per concern**:
   | File | Owns | Page(s) |
   |---|---|---|
-  | `assets/store.js` | `NB.store` (get/set, quarantine, quota banner, dirty markers, snapshots, schema + migrations) and `NB.merge` rules | every page that stores data (first script) |
+  | `assets/store.js` | `NB.store` (get/set, quarantine, quota banner, dirty markers, snapshots, schema + migrations, **per-user scope layer**, legacy adoption) and `NB.merge` rules | every page that stores data (first script) |
+  | `assets/profile.js` | `NB.SUBJECTS` registry + legacy aliases, `NB.profile` (per-user subject list, `allows`/`hides`/`applyTo` engine + nav filtering) | every storing page (right after store.js), `admin.html`, `deadlines.html` |
   | `assets/backup.js` | `NB.backup`: full backup, validated restore (merge/replace), undo, restore dialog | `app/cards.html`, `app/author.html` |
-  | `assets/auth.js` | Login widget, sync (reconcile, dirty-key pushes with `base_rev`, 409 retry, pagehide flush) | auth pages + app pages |
+  | `assets/auth.js` | Login widget, sync (reconcile, dirty-key pushes with `base_rev`, 409 retry, pagehide flush), role + admin link | auth pages + app pages |
   | `assets/app.js` | Checklist rows (RAG + ticks), progress bars, countdown, this-week inputs | all pages (safe no-op) |
   | `assets/quiz-engine.js` | Session builder, MCQ marking, written self-marking, summaries, `fcSaveFromQuiz()` hook, PATH_BASE content resolution, user-bank merge | `quiz.html` (root + `app/`) |
   | `assets/flashcards.js` | Deck loading, Leitner SRS, session runner, editor, backup/restore buttons (via backup.js), theme, PATH_BASE, user-deck merge | `flashcards.html` (root + `app/`) |
@@ -133,6 +170,10 @@ folders it reads the file list from `library/library-manifest.json`.
 
 ## localStorage keys
 
+Every data key below is physically stored as `<username>:<key>` for the active account (per-user scope layer in
+store.js); the table lists the **logical** names engines use. `nb-*` bookkeeping is global except where marked
+"scoped". A one-time adoption moves pre-scope flat data into the owning account's scope (see Architecture).
+
 | Key | Owner | Contents |
 |---|---|---|
 | `chk:<subject>::<path>` | `app.js` | syllabus checklist row: `{c: bool, r: "r/a/g"}` |
@@ -146,13 +187,17 @@ folders it reads the file list from `library/library-manifest.json`.
 | `q-userbanks` | `app/author.html` + quiz-engine | uploaded quiz banks (per device) |
 | `fc-userdecks` | `app/author.html` + flashcards | uploaded flashcard decks (per device) |
 | `q-errors` | quiz-engine + `practice.html` | missed-question tracker: `{key, subject, topic, topicLabel, format, stem, choices, answer, userAnswer, note, marks, markscheme, tactic, attempts, firstMissed, lastMissed, resolved}` + `id, bankId, ts, lastAttempt, legacyKey` — key = `"<bankId>#<id>"` (bankId = bank file name without `.json`, `user:<slug>` for uploaded banks; ids are only unique per file). Older records keyed by bare id / stem hash are renamed when their bank loads in a session (same id AND same stem), keeping `legacyKey`; unmatched old records stay as they are and remain reviewable. `ts` = last-change ms timestamp for the sync merge. Synced cross-device when logged in |
-| `nb-token` | `auth.js` | login bearer token (sent as `X-Nevaib-Token`) — cross-origin sync |
-| `nb-api` | `auth.js` | dev-only API override set via `?nbapi=` on localhost pages |
-| `nb-schema` | `store.js` | data-shape version (int) — local only |
-| `nb-dirty` | `store.js` / `auth.js` | `{key: ms}` synced keys/rows changed on this device since the last successful sync — local only |
-| `nb-sync` | `auth.js` | `{user, rev, legacy, at}` — server revision this device last synced with — local only |
-| `nb-backup:<ms>` | `store.js` | local safety snapshots `{reason, at, schema, keys: {key: rawJSON}}`, newest 3 — local only |
-| `nb-corrupt:<key>` | `store.js` | quarantined unreadable values `[{key, at, raw}]` — local only, included in backups |
+| `profile` | `profile.js` / server | per-user subject list `{subjects: ["biology-hl", …]}` (canonical ids; absent = all six subjects; empty array = none). Set by an admin via `set-profile`/`create-user`, synced as a normal state key |
+| `nb-token` | `auth.js` | login bearer token (sent as `X-Nevaib-Token`) — cross-origin sync — global |
+| `nb-api` | `auth.js` | dev-only API override set via `?nbapi=` on localhost pages — global |
+| `nb-schema` | `store.js` | data-shape version (int) — global |
+| `nb-dirty` | `store.js` / `auth.js` | `{key: ms}` synced keys/rows changed on this device since the last successful sync — **scoped** per user |
+| `nb-sync` | `auth.js` | `{user, rev, legacy, at}` — server revision this device last synced with — global |
+| `nb-active-user` | `store.js` | last active storage scope (username); kept on logout — global |
+| `nb-scoped-v2` | `store.js` | one-time marker: the legacy flat namespace has been adopted into per-user scopes — global |
+| `nb-scoped-pending` | `store.js` | adoption postponed: pins the flat data's rightful owner across retries — global |
+| `nb-backup:<ms>` | `store.js` | local safety snapshots `{reason, at, schema, keys: {key: rawJSON}}`, newest 3 — **scoped** per user |
+| `nb-corrupt:<key>` | `store.js` | quarantined unreadable values `[{key, at, raw}]` — **scoped** per user, included in backups |
 | `chk:*` / `week:*` | `app.js` | synced inside the `site-state` payload (not as their own keys) |
 | `tok-objects` | `lists.js` (core.html) | TOK exhibition shortlist blob `{items:[{t, done, a: prompt, b: why}]}` |
 | `ee-ideas` | `lists.js` (ee.html) | EE idea-log shortlist blob `{items:[{t, done, a: subject, b: why}]}` |
@@ -162,7 +207,7 @@ folders it reads the file list from `library/library-manifest.json`.
 | `res-bookmarks` | `library.js` | pinned library resources: array of `subject::path` keys (★ on library rows), newest pin first |
 | `res-notes` | `library.js` | per-resource free-text notes `{subject::path: text}` |
 | `res-recent` | `library.js` | recently opened PDFs: array of `subject::path`, newest first, capped at 20 |
-| `lib-filters` | `library.js` | library browser filter state `{subject, type, q}` — device-local, NOT synced |
+| `lib-filters` | `library.js` | library browser filter state `{subject, type, q}` — device-local, NOT synced (but scoped per user) |
 
 `tok-objects`, `ee-ideas`, `io-issues`, `ia-debriefs` and the three `res-*` blobs are plain synced keys (in
 `NB.store.SYNCED_KEYS`; per blob: the device that changed it wins, otherwise the server copy — see Sync model). `q-errors` is synced and merged per record (see Sync model);
