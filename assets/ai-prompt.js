@@ -88,15 +88,24 @@
     ta.style.cssText = "position:fixed;left:-9999px;top:0";
     document.body.appendChild(ta);
     ta.select();
-    try { document.execCommand("copy"); } finally { ta.remove(); }
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; } finally { ta.remove(); }
+    return ok;
   }
 
+  // Copy synchronously while this page still has focus. It must run BEFORE
+  // window.open: once the new tab takes focus, browsers refuse clipboard writes.
   function copyText(text) {
+    let ok = false;
+    try { ok = fallbackCopy(text); } catch (e) { ok = false; }
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      return navigator.clipboard.writeText(text).catch(function () { fallbackCopy(text); });
+      try {
+        const p = navigator.clipboard.writeText(text);
+        if (p && p.catch) p.catch(function () {});
+        ok = true;
+      } catch (e) { /* keep execCommand result */ }
     }
-    fallbackCopy(text);
-    return Promise.resolve();
+    return ok;
   }
 
   function toast(msg) {
@@ -155,9 +164,11 @@
           setPref(sel.value);
           const a = (cfg.assistants || []).find(function (x) { return x.id === sel.value; }) || (cfg.assistants || [])[0];
           const url = a && httpsUrl(a.url);
-          if (url) window.open(url, "_blank", "noopener");
           const text = NB.aiPrompt.lastText = build(note, m.id);
-          copyText(text).then(function () { toast("Prompt copied — press Ctrl+V in the new tab"); });
+          const copied = copyText(text);
+          if (url) window.open(url, "_blank", "noopener");
+          toast(copied ? "Prompt copied — press Ctrl+V in the new tab"
+                       : "Could not copy automatically — please try again");
         });
         modes.appendChild(b);
       });
