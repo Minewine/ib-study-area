@@ -20,6 +20,7 @@ import argparse
 import calendar
 import ftplib
 import os
+import re
 import subprocess
 import sys
 import time
@@ -29,6 +30,22 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "deploy" / "nevaib"
 CRED_FILE = ROOT / "deploy" / ".ftp-credentials"
 DEFAULT_HOST = "ftp.rametric.com"
+
+
+def api_is_armed(api_text: str) -> bool:
+    """True when the built api.php enables public account creation.
+
+    That is exactly a non-empty quoted literal assigned to $SETUP_KEY itself
+    (the ARMED_KEY_LINE baked by build_deploy.py). The NEVAIB_SETUP_KEY
+    env-override lines are never "armed" — they only matter on hosts where
+    someone deliberately set the environment variable — and a blank key is
+    not armed. The old startswith/'""' heuristic false-positived on the
+    env-override line ($SETUP_KEY_ENV = getenv(...)) and blocked deploys.
+    """
+    return any(
+        re.search(r'\$SETUP_KEY\s*=\s*"[^"]+"', line)
+        for line in api_text.splitlines()
+    )
 
 
 def parse_mdtm(raw: str) -> int | None:
@@ -219,11 +236,7 @@ def main() -> None:
         )
 
     api = (OUT / "api/api.php").read_text(encoding="utf-8")
-    armed = any(
-        line.strip().startswith("$SETUP_KEY") and '""' not in line
-        for line in api.splitlines()
-    )
-    if armed and not args.allow_setup_key:
+    if api_is_armed(api) and not args.allow_setup_key:
         sys.exit(
             "deploy/nevaib/api/api.php has an ARMED $SETUP_KEY — pushing it would\n"
             "re-enable public account creation. Delete deploy/.setup-key and\n"
