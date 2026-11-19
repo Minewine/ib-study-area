@@ -21,7 +21,7 @@ features only exist to make that loop easier or more targeted.
 
 ## Shipped (2026-11-18 → 19)
 
-**Merged on `main` (PRs #5–#16), awaiting deploy** — the live site still runs the 18 Nov morning deploy (#1–#4):
+**Deployed live 2026-11-19** (PRs #5–#16):
 
 - [x] Cards page loads decks in parallel (#5); content corrections: data-booklet bond enthalpies, half-filled-stability wording, off-syllabus Maths items retired (#6); B2.1–B2.3 + S1.1 cards and all 51 Maths AA SL notes (#7).
 - [x] **Today panel** (#8): due cards, a weakest-topic quiz, this week's class units (`class-schedule.json`).
@@ -33,7 +33,7 @@ features only exist to make that loop easier or more targeted.
 - [x] **Private cross-check + My resources** (#14): 25 notes cross-checked against a commercial set (kept out of the repo; 29 notes gained key ideas/misconceptions), per-note "My resources" links (`my-res`, synced, tombstoned deletes).
 - [x] **Ask an AI** (#15) + copy-before-open fix (#16): copies the filled prompt synchronously, then opens the preferred assistant.
 
-**In the working tree, uncommitted (tested green, not on `main`):**
+**Deployed live 2026-11-19** (PR #17; deploy-tool fix #19):
 
 - [x] **Multi-user upgrade**: every data key physically scoped per account in localStorage (`store.js`); a separate **admin** account + `admin.html` creates students and edits their subject lists (`create-user`/`list-users`/`set-profile`, roles in `users.json`); per-student **subject profiles** (`assets/profile.js` + synced `profile` key) filter nav, dashboard cards, hub sections, quiz banks, decks, notes, library, coursework, the Today panel and tagged deadlines; legacy data adopted into its owner's scope behind a safety snapshot. Reviewed (two passes, all P1/P2 fixed), e2e two-account scenarios included.
 - [x] **Ask-an-AI hardening** (19 Nov): copy tri-state, stale-prompt reset, pop-up hint, double-click guard.

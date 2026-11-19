@@ -5,14 +5,11 @@ deliberately minimal: one PHP file, JSON storage, a login per student (and one a
 Everything here was built around one idea: **content is only useful if it matches the exact
 syllabus editions she is examined on (May 2028) and the order ISL actually teaches it.**
 
-Status snapshot: **2026-11-19** — hosted at **rametric.com/nevaib (live, verified)** with cross-device
-sync; the live copy still runs the **18 Nov morning deploy** (topic notes, sync, backup/restore).
-`main` has since merged, **awaiting deploy**: Today panel, security hardening, weekly parent summary,
-exam-style practice + confidence ratings + past-paper log, coursework planner, My resources per note,
-and Ask an AI. On top of that, the **working tree holds uncommitted work**: per-user storage scopes,
-a separate admin account + `admin.html`, per-student subject profiles, and the Ask-an-AI copy
-hardening — tested, not yet committed or deployed. See [docs/HANDOFF.md](docs/HANDOFF.md) and
-[docs/NEXT-STEPS.md](docs/NEXT-STEPS.md).
+Status snapshot: **2026-11-19 (evening)** — **rametric.com/nevaib runs the full multi-user release**:
+everything through PR #19 is live (topic notes, Today panel, exam practice, coursework planner,
+weekly parent summary, Ask an AI, security hardening) **plus per-student accounts with isolated
+data, subject profiles, and an admin account**. Nothing is pending deploy. See
+[docs/HANDOFF.md](docs/HANDOFF.md) and [docs/NEXT-STEPS.md](docs/NEXT-STEPS.md).
 
 ---
 
@@ -129,12 +126,12 @@ banner on its hub.
 
 ## Get it onto your laptop
 
-Your copy lives at `~/Projects/ibsystem`. `main` has everything merged so far; the multi-user work is
-uncommitted in the working tree — leave it in place (do not stash/checkout over it):
+Your copy lives at `~/Projects/ibsystem`; everything is merged on `main`:
 
 ```bash
 cd ~/Projects/ibsystem
-git status                      # shows the in-flight work; leave it as is
+git status                      # should be clean
+git switch main && git pull
 ./dev.sh test                   # all tests (needs python3 + uv, node ≥ 18, php)
 ./dev.sh start                  # http://127.0.0.1:8018 — study site + practice app + local API
 ```
@@ -159,9 +156,8 @@ Full handoff: [docs/HANDOFF.md](docs/HANDOFF.md) · what to do next: [docs/NEXT-
 
 ## Next actions (ordered — details in the linked docs)
 
-1. **Deploy `main`** (only with explicit approval — the checklist is NEXT-STEPS step 1), then bootstrap the
-   **admin** account once and create the student accounts (`server/deploy-notes.md`, "Creating accounts").
-   Her existing login `neva` keeps working unchanged.
+1. **Tell her** — the site is live at rametric.com/nevaib with her existing login (`neva`). Accounts are
+   managed by the admin (`admin.html` on the study site, or the API — see `server/deploy-notes.md`).
 2. **Send the school-requests email** (ready to copy at the bottom of `plan.html`) — papers + markschemes, History FA2028 guide/specimens, LangLit materials, IA samples. Then file arrivals into `library/papers/<subject>/` and run `tools/build_library_manifest.py` — they surface on `practice.html` and `library.html` automatically.
 3. **8 December**: English Paper 1 timed rehearsal (specimen on the English hub) → error-log entry. The Dec–Jan mock schedule lives on `practice.html`; the IA debrief boxes on `ia.html` get filled after each bio practice session.
 4. **Confirm with the school**: Nov–Jun calendar dates (only Aug–Oct verified against the official text layer), the English P2 work list (unlocks quote banks). ISL's math unit order is confirmed (see CONTENT-PLAN).
