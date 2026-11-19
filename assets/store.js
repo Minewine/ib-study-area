@@ -45,7 +45,7 @@
     "res-bookmarks", "res-notes", "res-recent", "pp-scores", "cw-progress", "my-res"
   ];
   // never synced, never in backups: credentials, sync bookkeeping, caches, safety copies
-  const LOCAL_ONLY = ["nb-token", "nb-api", DIRTY_KEY, "nb-sync", SCHEMA_KEY, "fc-seedids"];
+  const LOCAL_ONLY = ["nb-token", "nb-api", DIRTY_KEY, "nb-sync", SCHEMA_KEY, "fc-seedids", "ai-pref"];
   const LOCAL_ONLY_PREFIXES = [CORRUPT_PREFIX, BACKUP_PREFIX];
 
   const isSiteRow = (k) => typeof k === "string" && (k.indexOf("chk:") === 0 || /^week:\d+$/.test(k));

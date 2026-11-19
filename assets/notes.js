@@ -3,7 +3,8 @@
    (schema in docs/DEVELOPMENT.md, "Topic notes"). Subject > theme > topic; key ideas are
    recall-first (cue shown, answer revealed on demand). Links open the quiz / cards pages on
    exactly the question and card ids the note lists. Everything is rendered with textContent, except the My resources list,
-   which is built from NB.escapeHtml-escaped strings and only allows http(s):// and file:// links. */
+   which is built from NB.escapeHtml-escaped strings and only allows http(s):// and file:// links.
+   Ask an AI (assets/ai-prompt.js, library/ai-prompts.json) copies a prompt and opens the preferred assistant. */
 (function () {
   "use strict";
 
@@ -251,6 +252,11 @@
     return section("My resources", el("p", { class: "muted" }, "Your own links for this topic (class notes, videos, files on this device). Saved with your progress and synced when you are logged in."), list, form, msg);
   }
 
+  function askAI(note) {
+    return (window.NB && window.NB.aiPrompt && typeof window.NB.aiPrompt.render === "function")
+      ? window.NB.aiPrompt.render(note) : null;
+  }
+
   async function renderNote(subject, topic) {
     const view = $("nt-note");
     const row = MAN.notes.find(n => n.subject === subject && fileId(n.file) === topic);
@@ -267,6 +273,7 @@
         el("p", { class: "muted" }, `${note.themeLabel || ""}${note.levelLabel ? " · " + note.levelLabel : ""}${meta ? " · " + meta : ""}`),
         note.bigPicture ? el("p", { class: "nt-big" }, note.bigPicture) : null,
         practiceLinks(note)),
+      askAI(note),
       myResources(note),
       note.keyIdeas && note.keyIdeas.length ? keyIdeas(note) : null,
       note.keyTerms && note.keyTerms.length ? keyTerms(note) : null,

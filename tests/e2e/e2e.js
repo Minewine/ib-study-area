@@ -17,6 +17,7 @@ let passed = 0; const ok = (name) => { passed++; console.log("ok -", name); };
 
 async function newCtx(browser) {
   const ctx = await browser.createBrowserContext();
+  await ctx.overridePermissions(BASE, ["clipboard-read", "clipboard-write"]);
   const page = await ctx.newPage();
   // tall viewport: the sticky nav would otherwise cover buttons that puppeteer scrolls to the top edge
   await page.setViewport({ width: 1280, height: 2400 });
@@ -123,6 +124,35 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
     assert.ok(Object.values(mr).length === 1 && Object.values(mr)[0].deleted === true, "deletion stored as a tombstone");
     assert.deepStrictEqual(errors.filter(e => !/favicon/.test(e)), [], "my resources console errors");
     ok("My resources: add, escape, reject non-http(s)/file links, delete");
+    // Ask an AI: mode buttons on the note; click copies the prompt and opens the preferred URL
+    await page.goto(`${BASE}/app/notes.html?subject=biology-hl&topic=a1-1`, { waitUntil: "networkidle0" });
+    await page.waitForSelector("#nt-ai-modes button");
+    const modeIds = await page.$$eval("#nt-ai-modes button", bs => bs.map(b => b.dataset.mode));
+    assert.ok(modeIds.includes("explain") && modeIds.includes("quiz") && modeIds.includes("data"), "three core modes: " + modeIds.join(","));
+    await page.evaluate(() => { window.__opened = []; window.open = (u, n, f) => { window.__opened.push({ u, n, f }); return { close() {} }; }; });
+    await page.click('#nt-ai-modes button[data-mode="quiz"]');
+    const opened = await page.evaluate(() => window.__opened);
+    assert.strictEqual(opened.length, 1, "one new tab");
+    assert.strictEqual(opened[0].u, "https://gemini.google.com/app");
+    assert.strictEqual(opened[0].n, "_blank");
+    const copied = await page.evaluate(async () => {
+      try { const t = await navigator.clipboard.readText(); if (t) return t; } catch (e) {}
+      return window.NB.aiPrompt.lastText;
+    });
+    assert.match(copied, /experienced IB Biology HL teacher/);
+    assert.match(copied, /A1\.1 Water/);
+    assert.match(copied, /one question at a time/i);
+    assert.doesNotMatch(copied, /\{[a-z_]+\}/);
+    const toast = await page.$eval("#nt-ai-toast", e => e.textContent);
+    assert.match(toast, /Prompt copied — press Ctrl\+V/);
+    await page.select("#nt-ai-pref", "chatgpt");
+    await page.evaluate(() => { window.__opened = []; });
+    await page.click('#nt-ai-modes button[data-mode="explain"]');
+    const opened2 = await page.evaluate(() => window.__opened);
+    assert.strictEqual(opened2[0].u, "https://chatgpt.com/");
+    assert.strictEqual(await page.evaluate(() => localStorage.getItem("ai-pref")), "chatgpt");
+    assert.deepStrictEqual(errors.filter(e => !/favicon/.test(e)), [], "ask-ai console errors");
+    ok("Ask an AI: buttons present, quiz mode copies a filled prompt, opens Gemini then remembers ChatGPT");
     await ctx.close();
   }
 
