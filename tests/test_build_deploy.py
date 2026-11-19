@@ -67,7 +67,9 @@ def test_built_folder_structure(built):
         "library/questions/manifest.json",
         "library/flashcards/manifest.json",
         "library/class-schedule.json",
+        "library/ai-prompts.json",
         "assets/today.js",
+        "assets/ai-prompt.js",
     ]:
         assert (out / rel).is_file(), rel
 

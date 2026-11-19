@@ -83,6 +83,8 @@ def build(out: Path = OUT, apply_key: bool = True) -> Path:
     copy_tree(ROOT / "library/coursework", out / "library/coursework")
     # class-week schedule for the home page "Today" panel (dates + IB codes only)
     shutil.copy2(ROOT / "library/class-schedule.json", out / "library/class-schedule.json")
+    # Ask an AI prompt templates (no student data; edit this file to change wording)
+    shutil.copy2(ROOT / "library/ai-prompts.json", out / "library/ai-prompts.json")
     (out / "docs").mkdir(parents=True, exist_ok=True)
     shutil.copy2(ROOT / "docs/AUTHORING.md", out / "docs/AUTHORING.md")
     # backend

@@ -1,0 +1,33 @@
+{
+  "_doc": "Ask an AI settings for topic notes. Edit this file to change the wording, add a mode, or switch assistants — no code changes needed. Placeholders are filled from the open topic note only (never the student's name, school or grades): {subject} (e.g. Biology), {level} (HL or SL), {topic} (code, title and theme), {understandings} (key-idea cues with statement codes), {keyterms} (term: short definition), {wrong_questions} (stems of unresolved misses on this topic's linked quiz items; our own question text only, no markschemes). Mode templates may use only these placeholders. default_ai must match an assistants[].id. After editing, run ./dev.sh test (or node --test tests/js/ai-prompt.test.js).",
+  "default_ai": "gemini",
+  "assistants": [
+    {"id": "gemini", "name": "Gemini", "url": "https://gemini.google.com/app"},
+    {"id": "chatgpt", "name": "ChatGPT", "url": "https://chatgpt.com/"},
+    {"id": "claude", "name": "Claude", "url": "https://claude.ai/new"},
+    {"id": "perplexity", "name": "Perplexity", "url": "https://www.perplexity.ai/"}
+  ],
+  "preamble": "You are an experienced IB {subject} {level} teacher. The student is in DP1 (first year of the Diploma Programme) and will sit first exams in May 2028. Stay on the current IB {subject} {level} syllabus for {topic}. If you are unsure, say so. Do not present your questions or marking notes as real IB exam questions, markschemes or exam predictions. Do not ask for or use any personal information about the student.",
+  "modes": [
+    {
+      "id": "explain",
+      "label": "Explain, then check my understanding",
+      "template": "Explain the key ideas of {topic} clearly, at DP1 level, covering:\n\n{understandings}\n\nUse these key terms accurately: {keyterms}\n\nThen check my understanding with a few short questions, waiting for my answer after each one before you continue."
+    },
+    {
+      "id": "quiz",
+      "label": "Quiz me one question at a time",
+      "template": "Quiz me on {topic}, one question at a time, and wait for my answer before you go on or tell me if I am right. Cover:\n\n{understandings}\n\nUse these key terms where they belong: {keyterms}\n\nStart with a straightforward question, then make later ones a little harder. After I answer, give brief feedback and the next question."
+    },
+    {
+      "id": "data",
+      "label": "Data-response in an unfamiliar scenario",
+      "template": "Give me a data-response (data-based) question on {topic} in an unfamiliar scenario, at IB {subject} {level} DP1 standard. Base it on:\n\n{understandings}\n\nUse these key terms where they belong: {keyterms}\n\nInvent a short, plausible data set or experimental context I have not already seen. Ask the question parts and wait for my answers before you comment. Do not present this as a real IB exam question or markscheme."
+    },
+    {
+      "id": "review",
+      "label": "Help with my wrong answers",
+      "template": "I have been getting some questions on {topic} wrong. Here are the question stems from my practice (our own wording, not IB exam papers):\n\n{wrong_questions}\n\nHelp me understand why these are difficult and how to approach them, using:\n\n{understandings}\n\nand these key terms: {keyterms}\n\nWalk me through one at a time and wait for my thoughts. Do not just give the final answer first."
+    }
+  ]
+}

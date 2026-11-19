@@ -1,11 +1,12 @@
 # Next steps (prioritised)
 
-_Updated 18 Nov 2026 (afternoon). Background: [HANDOFF.md](HANDOFF.md). Longer-term ideas: [VISION.md](VISION.md)._
+_Updated 19 Nov 2026 (morning). Background: [HANDOFF.md](HANDOFF.md). Longer-term ideas: [VISION.md](VISION.md)._
 
 ## Status at a glance
 - **Done and live (18 Nov morning):** PRs #1–#4.
 - **Done, merged into `main`, awaiting deploy:** PRs #5–#12 (cards loading fix, content fixes, content gaps, Today panel, security hardening, weekly summary, exam practice, coursework planner). `./dev.sh validate`, `./dev.sh test` and `./dev.sh e2e` pass on `main`.
-- **Done, in a PR (Nov 2026), awaiting deploy:** the private cross-check of 25 topic notes (11 Biology, 9 Chemistry S1–S2, Maths sequences/binomial/finance/triangles/trig) against a commercial revision-notes set held privately outside the repo. Gaps and exam pitfalls were added to 29 notes in our own words, checked against the IB guides; nothing from the source set is in the repo. Also added: **My resources** on every note (her own http(s)/file links, synced key `my-res`, in backups).
+- **Done, merged into `main` (Nov 2026), included in the later deploy:** the private cross-check of 25 topic notes and **My resources** on every note (PR #14).
+- **Done, in a PR, not merged yet:** **Ask an AI** on every topic note — copies a pre-formatted prompt and opens the preferred assistant so she pastes with Ctrl+V. Edit prompts, modes and the default assistant in `library/ai-prompts.json` (placeholders are listed in `_doc`); no code change needed for wording. After editing, run `./dev.sh test`. See [HANDOFF.md](HANDOFF.md).
 
 ## 1. Deploy `main` (only with explicit approval)
 1. **Back up first:** the server copy via `api/api.php?action=export` (logged in), and her browser progress with Cards → "Download full backup".

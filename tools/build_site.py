@@ -279,7 +279,7 @@ BASE = """<!DOCTYPE html>
 __CONTENT__
 </main>
 <footer>Private family study area · exams <strong>May 2028</strong> · keep this site and its library non-public</footer>
-<script src="assets/store.js?v=5"></script>
+<script src="assets/store.js?v=6"></script>
 <script src="assets/app.js?v=4"></script>
 </body>
 </html>

@@ -271,6 +271,9 @@ those questions (bank id = file name without `.json`; unknown ids are skipped an
 `cards.html?from=<deckId>[:ids]&label=…&n=20` starts a card session on those cards: due first, then new, then the rest.
 `notes-last` (`{subject, topic}`) remembers the last opened note — device-local, not synced.
 
+**Ask an AI:** `assets/ai-prompt.js` draws the control on each note. All wording is in `library/ai-prompts.json` (`default_ai`, `assistants[]`, `preamble`, `modes[]`). Placeholders `{subject}` `{level}` `{topic}` `{understandings}` `{keyterms}` `{wrong_questions}` are documented in `_doc` and filled from the note (and, for `{wrong_questions}`, unresolved `q-errors` stems for that note's linked quiz items). A click copies the prompt and `window.open`s the assistant URL; she pastes with Ctrl+V. Preferred assistant: raw `localStorage` key `ai-pref`, in `LOCAL_ONLY`, not synced. To change text or add a mode, edit the JSON and run `./dev.sh test`.
+
+
 ## Generator
 
 `tools/build_site.py` regenerates the 10 base pages (index, 5 hubs, core, practice, ia,

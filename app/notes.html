@@ -44,6 +44,10 @@
 .nt-res li{margin:.2rem 0}
 .nt-res-form{display:flex;flex-wrap:wrap;gap:.3rem;align-items:center}
 .nt-res-form input{font:inherit;padding:.35rem .5rem;border:1px solid var(--line);border-radius:8px;flex:1 1 180px}
+.nt-ai-modes{display:flex;flex-wrap:wrap;gap:.3rem;margin:.3rem 0}
+.nt-ai-pref{display:inline-block;margin:.35rem .5rem .1rem 0;font-size:.9rem}
+.nt-ai-pref select{font:inherit;padding:.2rem .4rem;border:1px solid var(--line);border-radius:8px;background:#fff}
+.nt-ai-toast{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);background:#1c3d5a;color:#fff;padding:.6rem 1rem;border-radius:10px;z-index:9999;box-shadow:0 4px 16px rgba(0,0,0,.2);font-size:.93rem}
 @media (max-width:600px){main{padding:.8rem .6rem 2rem}.card{padding:.8rem .8rem}.nt-list{grid-template-columns:1fr}}
 @media print{.btn{display:none}.nt-answer[hidden]{display:block}}
 </style>
@@ -65,8 +69,9 @@
   <section class="card" id="nt-index"></section>
   <div id="nt-note" hidden></div>
 </main>
-<script src="../assets/store.js?v=5"></script>
-<script src="../assets/notes.js?v=2"></script>
+<script src="../assets/store.js?v=6"></script>
+<script src="../assets/ai-prompt.js?v=1"></script>
+<script src="../assets/notes.js?v=3"></script>
 <script src="../assets/auth.js?v=9"></script>
 </body>
 </html>

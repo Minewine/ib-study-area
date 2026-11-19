@@ -1,6 +1,6 @@
 # NevaIB study area: handoff
 
-_Last updated 18 Nov 2026 (afternoon). Read this first, then [NEXT-STEPS.md](NEXT-STEPS.md); ideas for later are in [VISION.md](VISION.md)._
+_Last updated 19 Nov 2026 (morning). Read this first, then [NEXT-STEPS.md](NEXT-STEPS.md); ideas for later are in [VISION.md](VISION.md)._
 
 ## What the system is
 
@@ -35,6 +35,7 @@ Stack: static HTML, vanilla JS, JSON content, browser localStorage, one PHP file
 | Server: accounts, tokens, atomic per-user state with revision, last 30 versions, export | `server/api.php` |
 | Full backup and validated, merge-by-default restore with undo | `assets/backup.js` (Cards and Upload pages) |
 | Topic notes viewer | `app/notes.html`, `assets/notes.js` |
+| Ask an AI (copy a topic prompt, open the preferred assistant so she pastes with Ctrl+V) | `library/ai-prompts.json`, `assets/ai-prompt.js` |
 | Coursework planner (Bio/Chem scientific investigation, Maths exploration: stages, self-checks, pitfalls, approximate ISL dates) | `app/coursework.html`, `assets/coursework.js`, `library/coursework/coursework.json`; skills quiz `library/questions/ia-practical-skills.json` |
 | Quiz / cards engines (both accept `?from=` deep links from notes) | `assets/quiz-engine.js`, `assets/flashcards.js` |
 | Today panel (due cards, weakest-topic quiz, this week's class units) | `assets/today.js`, `library/class-schedule.json` |
@@ -97,6 +98,9 @@ Stack: static HTML, vanilla JS, JSON content, browser localStorage, one PHP file
 **Live site:** runs the 18 Nov morning deploy (#1–#4). Everything else is on `main` and goes live with the next `./dev.sh deploy --confirm` (see NEXT-STEPS, step 1).
 
 **Notes cross-check and My resources (Nov 2026):** 25 topic notes were cross-checked privately against a commercial revision-notes set (kept outside the repo, never committed). 29 notes gained key ideas (ids `<prefix>-x1`, `-x2`…) and misconceptions in our own words, accurate to the 2025 Biology/Chemistry guides and the AA SL 2021 guide; an 8-word overlap check against the source set and guides is clean. Drafts in the private notes folder mirror the edits, so `tools/import_topic_notes.py` will not undo them. `app/notes.html` now has a **My resources** box per note: she adds her own links (label + http(s):// or file:// URL) and deletes them; stored in the synced key `my-res` (`{id: {note, label, url, t}}`, deletions as tombstones, newest `t` wins in `NB.merge.RECORDS["my-res"]`), validated in backups (`assets/backup.js`), tests in `tests/js/myres.test.js`.
+
+**Ask an AI (Nov 2026):** each topic note has a short mode menu (explain, quiz me, unfamiliar data-response, help with wrong answers) and an assistant picker (Gemini by default; also ChatGPT, Claude, Perplexity). A click copies a filled prompt to the clipboard and opens the preferred assistant in a new tab — she pastes with Ctrl+V. There is no preview and no prompt-in-the-URL. All wording lives in `library/ai-prompts.json` (`default_ai`, `assistants`, shared `preamble`, `modes[].template`). Placeholders (`{subject}`, `{level}`, `{topic}`, `{understandings}`, `{keyterms}`, `{wrong_questions}`) are documented in that file's `_doc` field and are filled from the open note (key-idea cues, key terms, and — for the review mode — stems from `q-errors` on that note's linked quiz items). The prompt never includes her name, school or grades. Preferred assistant is `localStorage` key `ai-pref`: device-only, not in `SYNCED_KEYS`, listed in `LOCAL_ONLY` so it is not backed up or quarantined. To change the text, add a mode, or switch the default assistant, edit `library/ai-prompts.json` and run `./dev.sh test`. Tests: `tests/js/ai-prompt.test.js` and an e2e click on the Biology A1.1 note.
+
 
 ## Reports (Pages)
 
