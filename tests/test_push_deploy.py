@@ -171,3 +171,28 @@ def test_set_remote_mtime_swallows_total_failure():
 
 if __name__ == "__main__":
     sys.exit(pytest.main([__file__]))
+
+
+# ---------- api_is_armed ----------
+
+def test_api_is_armed_blank_key_and_env_override_not_armed():
+    # the real shape of the built api.php since the multi-user upgrade: blank
+    # literal key plus the NEVAIB_SETUP_KEY env-override lines
+    api = (
+        '$SETUP_KEY = "";  // e.g. "paste-a-long-random-string"; empty = setup disabled\n'
+        '$SETUP_KEY_ENV = getenv("NEVAIB_SETUP_KEY");\n'
+        'if ($SETUP_KEY_ENV !== false && $SETUP_KEY_ENV !== "") $SETUP_KEY = $SETUP_KEY_ENV;\n'
+    )
+    assert push_deploy.api_is_armed(api) is False
+
+
+def test_api_is_armed_quoted_literal_flagged():
+    armed = '$SETUP_KEY = "s3cret-key";  // one-time account creation; BLANK AFTER SETUP\n'
+    assert push_deploy.api_is_armed(armed) is True
+
+
+def test_api_is_armed_real_built_file_blank():
+    built = ROOT / "deploy" / "nevaib" / "api" / "api.php"
+    if not built.exists():
+        pytest.skip("no local deploy build present")
+    assert push_deploy.api_is_armed(built.read_text(encoding="utf-8")) is False
