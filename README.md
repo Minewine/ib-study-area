@@ -143,6 +143,7 @@ Full handoff: [docs/HANDOFF.md](docs/HANDOFF.md) · what to do next: [docs/NEXT-
 | Doc | Use it for |
 |---|---|
 | [docs/HANDOFF.md](docs/HANDOFF.md) | Start here: what the system is, architecture, data/sync, what was done, links to the audit Pages |
+| [docs/USER-TEST.md](docs/USER-TEST.md) | **For the student**: a guided click-through test + how to upload your own AI-generated question bank |
 | [docs/NEXT-STEPS.md](docs/NEXT-STEPS.md) | Prioritised next steps: merges, deploy, content fixes, roadmap |
 | [docs/CONTENT-PLAN.md](docs/CONTENT-PLAN.md) | What content exists, what's missing, per-subject priorities, completeness matrix |
 | [docs/ROADMAP.md](docs/ROADMAP.md) | Feature roadmap: shipped / next 2–4 weeks / 2–3 months / later |
