@@ -158,8 +158,12 @@ test("profile: the class-week section lists only allowed subjects the schedule t
     env.load("today.js"); // readyState complete → render() runs now, DATA loads async
     await new Promise(r => setTimeout(r, 80));
     assert.doesNotMatch(box.textContent, /could not be loaded/, "today.js load error surfaced");
+    // only the "3. This week in class" block — the suggestions block reuses .td-subj
+    const blocks = [];
+    (function walk(el) { (el.children || []).forEach(c => { if (c.className === "td-block") blocks.push(c); walk(c); }); })(box);
     const rows = [];
-    (function walk(el) { (el.children || []).forEach(c => { if (c.className === "td-subj") rows.push(c); walk(c); }); })(box);
+    blocks.filter(b => b.children[0] && allText(b.children[0]).startsWith("3."))
+      .forEach(b => b.children.forEach(x => { if (x.className === "td-subj") rows.push(x); }));
     return rows.map(r => r.children[0].children[0].textContent);
   };
   assert.deepEqual(plain(await boot(["biology-hl"])), ["Biology HL: "],
@@ -231,4 +235,296 @@ test("profile: decks for subjects outside the profile are not fetched at all", a
   assert.ok(urls.some(u => u.includes("library/flashcards/manifest")), "manifest itself is fetched");
   assert.ok(!urls.some(u => /library\/flashcards\/(bio|chem)-/.test(u)), "hidden subjects' deck files are skipped");
   assert.match(allText(box), /Nothing due today/, "panel still renders normally");
+});
+
+// ---------- Phase 1 (20 Nov 2026): active units, dated items, lead times, suggestions ----------
+
+test("isISO/addDays: padded calendar dates only, day arithmetic crosses months", () => {
+  const t = T();
+  assert.equal(t.isISO("2026-11-20"), true);
+  assert.equal(t.isISO("2026-2-3"), false, "unpadded");
+  assert.equal(t.isISO("2026-02-30"), false, "impossible day");
+  assert.equal(t.isISO("2026-13-01"), false, "impossible month");
+  assert.equal(t.isISO("garbage"), false);
+  assert.equal(t.isISO(42), false); assert.equal(t.isISO(null), false); assert.equal(t.isISO(undefined), false);
+  assert.equal(t.addDays("2026-11-20", 21), "2026-12-11");
+  assert.equal(t.addDays("2026-11-20", 60), "2027-01-19");
+  assert.equal(t.addDays("2026-12-31", 1), "2027-01-01");
+});
+
+test("activeUnits: from/to boundary dates inclusive; malformed units skipped", () => {
+  const t = T();
+  const sched = { subjects: { "biology-hl": { units: [
+    { from: "2026-11-01", to: "2026-11-20", codes: ["C1.1"], unit: "Enzymes" },
+    { from: "2026-11-21", to: "2026-11-30", codes: ["A2.2"], unit: "Next" },
+    { from: "2026-12-01", codes: ["X"], unit: "no-to" },
+    { to: "2026-12-05", unit: "no-from" },
+    { from: "2027-02-30", to: "2027-03-05", codes: ["X"], unit: "bad-date" },
+    { from: "2026-01-01", to: "2027-12-31", codes: "junk", unit: "Wide" }
+  ] } } };
+  const at = (date) => plain(t.activeUnits(sched, [["biology-hl", "Biology HL"]], date)).map(u => u.unit.unit);
+  assert.deepEqual(at("2026-11-01"), ["Wide", "Enzymes"], "from boundary included");
+  assert.deepEqual(at("2026-11-20"), ["Wide", "Enzymes"], "to boundary included");
+  assert.deepEqual(at("2026-11-21"), ["Wide", "Next"], "day after the close is the next unit");
+  assert.deepEqual(at("2026-12-01"), ["Wide"], "malformed units (missing dates, impossible date) skipped");
+  assert.deepEqual(plain(t.activeUnits(null, [["biology-hl", "B"]], "2026-12-01")), []);
+  assert.deepEqual(plain(t.activeUnits(sched, [], "2026-12-01")), []);
+});
+
+test("datedItems: deadlines + coursework stage dates, profile-hidden subjects dropped, malformed skipped, sorted", () => {
+  const t = T();
+  const dl = [
+    { d: "2026-12-08", t: "English commentary", subject: "english-lit-hl" },
+    { d: "not-a-date", t: "broken date" },
+    { d: "2026-11-25" }, // no label
+    { d: "2026-11-25", t: "CAS thing" },
+    null
+  ];
+  const cw = { tracks: [
+    { id: "bio", subject: "biology-hl", label: "Biology", stages: [
+      { id: "data", title: "Data", dates: [{ date: "2027-06-15", label: "IA experiment day" }, { date: "nope", label: "x" }] },
+      { id: "draft", title: "Draft", dates: "junk" }
+    ] },
+    { id: "fr", subject: "french-a-langlit", label: "French", stages: [{ id: "s", title: "S", dates: [{ date: "2027-01-05", label: "hidden by profile" }] }] }
+  ] };
+  const hides = (id) => id === "english-lit-hl" || id === "french-a-langlit";
+  const items = plain(t.datedItems(dl, cw, hides));
+  assert.deepEqual(items.map(x => [x.date, x.label]), [["2026-11-25", "CAS thing"], ["2027-06-15", "IA experiment day"]]);
+  assert.equal(items[0].href, "../deadlines.html", "deadline rows link the calendar");
+  assert.equal(items[1].href, "coursework.html", "coursework rows link the planner");
+  assert.deepEqual(plain(t.datedItems(null, null, hides)), []);
+  assert.deepEqual(plain(t.datedItems([], {}, hides)), []);
+});
+
+test("nearTermItems / startThinkingItems: windows and boundaries; far-future items appear only in the long lead window", () => {
+  const t = T();
+  const today = "2026-11-20";
+  const mk = (date, label) => ({ date, label, href: "x.html", where: "calendar" });
+  const items = [
+    mk("2026-11-19", "past"),
+    mk(today, "today"),
+    mk("2026-12-11", "lead-edge"),   // today + 21
+    mk("2026-12-12", "just-out"),    // today + 22 → start thinking
+    mk("2027-01-19", "long-edge"),   // today + 60
+    mk("2027-01-20", "too-far"),     // today + 61 → hidden
+    mk("2027-02-17", "ee-launch"),   // far future → hidden today
+    mk("2026-13-01", "bad-month"), mk("nope", "bad"), mk(null, "null")
+  ];
+  assert.deepEqual(plain(t.nearTermItems(items, today, 21)).map(x => x.label), ["today", "lead-edge"]);
+  assert.deepEqual(plain(t.startThinkingItems(items, today, 21, 60)).map(x => x.label), ["just-out", "long-edge"]);
+  // a Feb 2027 item shows up in the long lead window once within 60 days of it
+  const later = "2027-01-10";
+  const feb = [mk("2027-02-17", "ee-launch"), mk("2026-13-01", "bad")];
+  assert.deepEqual(plain(t.nearTermItems(feb, later, 21)).map(x => x.label), [], "still not near-term in January");
+  assert.deepEqual(plain(t.startThinkingItems(feb, later, 21, 60)).map(x => x.label), ["ee-launch"], "EE launch enters the long lead window");
+});
+
+test("suggestActions: ranked cards → mistakes → unit close → deadline prep; reason + href on each; at most two", () => {
+  const t = T();
+  const today = "2026-11-20";
+  const notes = { "biology-hl|C1.1": { subject: "biology-hl", file: "library/topic-notes/biology-hl/c1-1.json", code: "C1.1", title: "Enzymes and metabolism",
+    links: { quizBanks: [{ file: "library/questions/bio-c1-1.json", itemIds: ["a"] }] } } };
+  const units = [{ subject: "biology-hl", label: "Biology HL", unit: { from: "2026-11-02", to: "2026-11-27", codes: ["C1.1"], unit: "Enzymes and metabolism" } }];
+  const near = [{ date: "2026-12-08", label: "English A Lit HL: practice commentary", href: "../deadlines.html", where: "calendar" }];
+  const errs = [
+    { key: "bio-y#1", bankId: "bio-y", topicLabel: "Enzymes", lastMissed: "2026-11-02" },
+    { key: "bio-y#2", bankId: "bio-y", topicLabel: "Enzymes" },
+    { key: "chem-x#1", bankId: "chem-x", topicLabel: "Periodicity", resolved: true }
+  ];
+  const all = plain(t.suggestActions({ today, due: 12, dueHref: "cards.html?from=d1&n=12&label=Due", own: 0, errors: errs, units, notes, nearItems: near }));
+  assert.equal(all.length, 2, "at most two suggestions");
+  assert.match(all[0].title, /12 cards due/); assert.match(all[0].href, /^cards\.html\?/); assert.ok(all[0].reason);
+  assert.match(all[1].title, /Open mistakes on Enzymes/); assert.ok(all[1].reason);
+  assert.equal(all[1].href, "quiz.html?errkeys=bio-y%231,bio-y%232",
+    "retry link packs the group's keys — each key encoded, raw commas between them (quiz-engine splits on ',')");
+
+  const noCards = plain(t.suggestActions({ today, due: 0, own: 0, errors: [], units, notes, nearItems: near }));
+  assert.equal(noCards.length, 2);
+  assert.match(noCards[0].title, /Unit closes this week/, "unit closing within 7 days is suggested");
+  assert.match(noCards[0].href, /^quiz\.html\?from=/, "unit close links the note's quiz bank");
+  assert.match(noCards[0].reason, /27 Nov.*approximate/, "fmtDay renders en-GB like deadlines.js");
+  assert.match(noCards[1].title, /Deadline ahead/); assert.match(noCards[1].reason, /8 Dec/);
+
+  assert.deepEqual(plain(t.suggestActions({ today, due: 0, own: 0, errors: [], units, notes: {}, nearItems: [] })),
+    [], "unit close without a note link is not invented");
+  const farUnit = [{ subject: "biology-hl", label: "Biology HL", unit: { from: today, to: "2027-02-17", codes: ["C1.1"], unit: "X" } }];
+  assert.deepEqual(plain(t.suggestActions({ today, due: 0, own: 0, errors: [], units: farUnit, notes, nearItems: [] })),
+    [], "unit not closing this week → no suggestion");
+  const ownOnly = plain(t.suggestActions({ today, due: 0, own: 3, errors: [], units: [], nearItems: [] }));
+  assert.match(ownOnly[0].title, /3 of your own cards due/); assert.equal(ownOnly[0].href, "cards.html");
+  const singular = plain(t.suggestActions({ today, due: 1, dueHref: "cards.html", own: 0, errors: [], units: [], nearItems: [] }));
+  assert.match(singular[0].title, /^1 card due/, "singular wording");
+  assert.deepEqual(plain(t.suggestActions({ today: "garbage", due: 5 })), [], "a bad today yields nothing");
+  assert.deepEqual(plain(t.suggestActions(null)), []);
+  // hides filters mistakes from subjects outside the profile
+  const profiled = plain(t.suggestActions({ today, due: 0, own: 0,
+    errors: [{ key: "chem-x#1", bankId: "chem-x", subject: "chemistry-hl", topicLabel: "Periodicity" }],
+    hides: (id) => id === "chemistry-hl", units: [], nearItems: [] }));
+  assert.deepEqual(profiled, [], "hidden subjects' mistakes are not suggested");
+});
+
+// panel-level: coming-up block, empty-block hiding, bad data, suggestion rendering
+
+// boot the real render path with NB.deadlines preset (deadlines.js export stand-in)
+const bootDl = async (deadlines, opts) => {
+  const env = makeEnv(Object.assign({ readyState: "complete", fetch: repoFetch() }, opts || {}));
+  env.load("store.js").load("profile.js");
+  const box = env.document.createElement("div");
+  box.id = "today-body";
+  env.document.body.appendChild(box);
+  env.NB.deadlines = deadlines; // read at render time, before the async load settles
+  env.load("today.js");
+  await new Promise(r => setTimeout(r, 80));
+  return { box, env };
+};
+// coursework.json replaced by an empty planner so the dates tested are exactly the injected deadlines
+const noCoursework = (url) => (String(url).includes("coursework")
+  ? Promise.resolve({ ok: true, json: async () => ({ tracks: [] }) })
+  : repoFetch()(url));
+const isoOffset = (n) => { const d = new Date(); d.setDate(d.getDate() + n);
+  return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); };
+
+test("today panel: dated items render near-term, start-thinking label for the long lead window; empty data hides the block entirely", async () => {
+  const { box } = await bootDl([
+    { d: isoOffset(0), t: "Good thing now" },
+    { d: isoOffset(30), t: "Think piece" },
+    { d: isoOffset(90), t: "Too far out" }
+  ], { fetch: noCoursework });
+  assert.match(allText(box), /4\. Coming up/);
+  assert.match(allText(box), /Good thing now/, "near-term item shown");
+  assert.match(allText(box), /\(today\)/, "dated today reads as today");
+  assert.match(allText(box), /Start thinking about Think piece/, "long-lead item labelled 'Start thinking about'");
+  assert.doesNotMatch(allText(box), /Too far out/, "beyond the long lead window → not shown");
+
+  const empty = await bootDl([], { fetch: noCoursework });
+  assert.doesNotMatch(allText(empty.box), /4\. Coming up/, "empty block renders nothing at all");
+  assert.doesNotMatch(allText(empty.box), /Start thinking about/, "no stub for the empty block either");
+});
+
+test("today panel: one malformed record skips itself; schedule, deadlines and the panel still render", async () => {
+  const sched = { subjects: { "biology-hl": { units: [
+    { from: "2000-01-01", to: "2099-12-31", codes: "C1.1", unit: "Wide unit" }, // codes not an array
+    { from: "oops", to: "2099-01-01", codes: [], unit: "Broken unit" },
+    { from: "2027-02-30", to: "2027-03-01", codes: [], unit: "Impossible date" }
+  ] } }, breaks: [{ from: "x", to: "y", label: "Bad break" }] };
+  const fetch = (url) => (String(url).includes("class-schedule")
+    ? Promise.resolve({ ok: true, json: async () => sched }) : noCoursework(url));
+  const { box } = await bootDl([{ d: "garbage", t: "Bad row" }, { d: isoOffset(3), t: "Near thing" }], { fetch });
+  assert.doesNotMatch(allText(box), /could not be loaded/, "no malformed record blanks the panel");
+  assert.match(allText(box), /3\. This week in class/, "schedule section renders");
+  assert.match(allText(box), /Wide unit/, "the valid unit shows (codes guard exercised)");
+  assert.doesNotMatch(allText(box), /Broken unit/, "missing from skipped");
+  assert.doesNotMatch(allText(box), /Impossible date/, "impossible date skipped");
+  assert.doesNotMatch(allText(box), /Bad break/, "malformed break skipped");
+  assert.match(allText(box), /4\. Coming up/, "dates block survives the bad deadline row");
+  assert.match(allText(box), /Near thing/, "the valid deadline still shows");
+  assert.doesNotMatch(allText(box), /Bad row/, "the malformed deadline row is gone");
+});
+
+test("today panel: suggestions render ranked with reason and direct link (cards first, then mistakes)", async () => {
+  const data = {
+    "fc-userdecks": J([{ name: "d", subject: "biology-hl", cards: [{ id: "my-1", front: "F", back: "B" }] }]),
+    "fc-state": J({ "my-1": { box: 1, due: "2026-01-01" } }),
+    "q-errors": J([{ key: "bank-x#7", bankId: "bank-x", subject: "biology-hl", topic: "t1", topicLabel: "Enzymes", lastMissed: "2026-11-01" }])
+  };
+  const { box } = await bootDl([{ d: isoOffset(2), t: "Prep thing" }], { data, fetch: noCoursework });
+  const text = allText(box);
+  assert.match(text, /5\. Suggested next step/);
+  const blocks = [];
+  (function walk(el) { (el.children || []).forEach(c => { if (c.className === "td-block") blocks.push(c); walk(c); }); })(box);
+  const sugg = blocks.find(b => b.children[0] && allText(b.children[0]).startsWith("5."));
+  assert.ok(sugg, "suggestions block found");
+  const rows = sugg.children.filter(x => x.className === "td-subj");
+  assert.deepEqual(rows.map(r => allText(r.children[0])).map(s => s.trim()), ["1 card due", "Open mistakes on Enzymes"],
+    "ranked: cards due first, then open mistakes; deadline prep pushed out by the two-item cap");
+  const hrefs = [];
+  (function walk(el) { if (el.tagName === "A" && el.attrs && el.attrs.href) hrefs.push(el.attrs.href); (el.children || []).forEach(walk); })(sugg);
+  assert.ok(hrefs.some(h => h.startsWith("cards.html")), "cards suggestion carries a direct link");
+  assert.ok(hrefs.some(h => h.startsWith("quiz.html?errkeys=")), "mistakes suggestion carries the retry link");
+});
+
+test("today panel: question manifest and bank files are fetched once, not on every render", async () => {
+  const REPO_Q = path.join(REPO, "library", "questions");
+  const man = JSON.parse(fs.readFileSync(path.join(REPO_Q, "manifest.json"), "utf8"));
+  const bankFile = man[0].file;
+  const bankId = bankFile.split("/").pop().replace(/\.json$/, "");
+  const first = JSON.parse(fs.readFileSync(path.join(REPO, bankFile), "utf8")).items[0];
+  const urls = [];
+  const fetch = (u) => { urls.push(String(u)); return repoFetch()(u); };
+  const env = makeEnv({ readyState: "complete", fetch, data: {
+    "q-errors": J([{ key: bankId + "#" + first.id, id: first.id, bankId: bankId, topic: first.topic, topicLabel: "Cache check", lastMissed: "2026-11-01" }])
+  } });
+  env.load("store.js").load("profile.js");
+  const box = env.document.createElement("div");
+  box.id = "today-body";
+  env.document.body.appendChild(box);
+  env.load("today.js");
+  await new Promise(r => setTimeout(r, 80));
+  env.NB.store.set("quizlog", []); // watched key → debounced re-render
+  await new Promise(r => setTimeout(r, 500));
+  assert.match(allText(box), /Start a 6-question quiz/, "panel re-rendered with the weak topic");
+  assert.equal(urls.filter(u => u.includes("library/questions/manifest.json")).length, 1,
+    "questions manifest fetched once across renders (was: every render)");
+  assert.equal(urls.filter(u => u.includes(bankFile.split("/").pop())).length, 1,
+    "bank file fetched once across renders (was: every render)");
+});
+
+test("suggestActions: a closing unit without a note does not suppress one that has a link", () => {
+  const t = T();
+  const today = "2026-11-20";
+  const notes = { "biology-hl|C1.1": { subject: "biology-hl", file: "library/topic-notes/biology-hl/c1-1.json", code: "C1.1", title: "Enzymes and metabolism",
+    links: { quizBanks: [{ file: "library/questions/bio-c1-1.json" }] } } };
+  const units = [
+    { subject: "math-aa-sl", label: "Math AA SL", unit: { from: "2026-11-16", to: today, codes: ["5.1"], unit: "Differentiation" } }, // closes today, no note
+    { subject: "biology-hl", label: "Biology HL", unit: { from: "2026-11-02", to: "2026-11-27", codes: ["C1.1"], unit: "Enzymes and metabolism" } }
+  ];
+  const s = plain(t.suggestActions({ today, due: 0, own: 0, errors: [], units, notes, nearItems: [] }));
+  assert.equal(s.length, 1);
+  assert.match(s[0].title, /Unit closes this week/);
+  assert.match(s[0].reason, /Enzymes and metabolism/, "the linkable closing unit is used");
+  assert.match(s[0].href, /^quiz\.html\?from=/);
+});
+
+test("datedItems: the same event in the calendar and the planner is listed once; distinct same-day events are kept", () => {
+  const t = T();
+  const dl = [
+    { d: "2027-06-15", t: "Biology: IA experiment day (group 1)" },
+    { d: "2027-01-12", t: "Revision-only homework window begins" }
+  ];
+  const cw = { tracks: [{ id: "bio", subject: "biology-hl", label: "Biology", stages: [
+    { id: "data", title: "Data", dates: [
+      { date: "2027-06-15", label: "Biology IA experiment day (group 1)" }, // same event, different punctuation
+      { date: "2027-06-15", label: "Something else entirely" }              // distinct event, same day
+    ] }
+  ] }] };
+  const items = plain(t.datedItems(dl, cw, null));
+  assert.deepEqual(items.map(x => [x.date, x.label]), [
+    ["2027-01-12", "Revision-only homework window begins"],
+    ["2027-06-15", "Biology: IA experiment day (group 1)"],
+    ["2027-06-15", "Something else entirely"]
+  ], "duplicate event dropped (first source wins), distinct same-day events kept");
+});
+
+test("maths notes resolve across the manifest's legacy 'maths-aa-sl' spelling and a canonical profile", async () => {
+  const sched = { subjects: { "maths-aa-sl": { units: [
+    { from: "2000-01-01", to: isoOffset(3), codes: ["5.1"], unit: "Differentiation" } // closes this week
+  ] } } };
+  const manifest = { notes: [{ subject: "maths-aa-sl", code: "5.1", file: "library/topic-notes/maths-aa-sl/5-1.json" }] };
+  const note = { code: "5.1", title: "Differentiation basics", links: { quizBanks: [{ file: "library/questions/math-aa-1.json", itemIds: [] }] } };
+  const fetch = (url) => {
+    const u = String(url);
+    if (u.includes("class-schedule")) return Promise.resolve({ ok: true, json: async () => sched });
+    if (u.includes("topic-notes/manifest")) return Promise.resolve({ ok: true, json: async () => manifest });
+    if (u.includes("topic-notes/maths-aa-sl")) return Promise.resolve({ ok: true, json: async () => note });
+    return repoFetch()(url);
+  };
+  const { box } = await bootRender({ fetch, data: { profile: J({ subjects: ["math-aa-sl"] }) } });
+  const text = allText(box);
+  assert.match(text, /5\.1 Differentiation basics/, "note found via canon-compare despite the legacy manifest spelling");
+  assert.doesNotMatch(text, /No notes written for these codes yet/, "not treated as noteless");
+  assert.match(text, /Unit closes this week/, "the closing maths unit produces a suggestion");
+  assert.match(text, /Differentiation ends/, "suggestion reason names the unit");
+  const hrefs = [];
+  (function walk(el) { if (el.tagName === "A" && el.attrs && el.attrs.href) hrefs.push(el.attrs.href); (el.children || []).forEach(walk); })(box);
+  assert.ok(hrefs.some(h => h.startsWith("quiz.html?from=math-aa-1")), "suggestion links the note's quiz bank");
 });

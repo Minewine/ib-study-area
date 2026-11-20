@@ -8,6 +8,8 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Quiz — Practice</title>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="stylesheet" href="../assets/style.css">
 <style>
 .q-topic{color:var(--muted);font-size:.85rem;margin-bottom:.4rem}
@@ -38,6 +40,16 @@ textarea{width:100%;font:inherit;padding:.5rem;border:1px solid var(--line);bord
 .setup-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.7rem;margin:.6rem 0}
 .setup-grid label{display:block;font-size:.85rem;color:var(--muted);margin-bottom:.25rem}
 .setup-grid select{width:100%;padding:.4rem;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.setup-grid .q-check{margin-top:1.4rem}
+.setup-grid .q-check label{display:flex;align-items:center;gap:.45rem;margin:0;font-size:.92rem}
+.setup-grid .q-check input{width:auto}
+#q-taught-panel{margin:.7rem 0;font-size:.92rem}
+#q-taught-panel summary{cursor:pointer;font-weight:600}
+.q-taught-row{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;padding:.35rem 0;border-bottom:1px solid var(--line)}
+.q-taught-row:last-child{border-bottom:0}
+.q-taught-name{flex:1;min-width:12rem}
+.q-taught-row select{padding:.25rem .4rem;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.q-taught-hint{color:var(--muted);font-size:.82rem}
 </style>
 </head>
 <body>
@@ -45,8 +57,10 @@ textarea{width:100%;font:inherit;padding:.5rem;border:1px solid var(--line);bord
   <a href="index.html" class="brand">Practice</a>
   <a href="notes.html">Notes</a>
   <a href="quiz.html">Quiz</a>
+  <a href="mistakes.html">Mistakes</a>
   <a href="cards.html">Cards</a>
   <a href="coursework.html">Coursework</a>
+  <a href="resources.html">Resources</a>
   <a href="author.html">Upload</a>
   <span id="auth-slot"></span><a href="../index.html" style="margin-left:auto">← Study site</a>
 </nav>
@@ -60,6 +74,7 @@ textarea{width:100%;font:inherit;padding:.5rem;border:1px solid var(--line);bord
     <div class="setup-grid">
       <div><label for="q-subject">Subject</label><select id="q-subject"></select></div>
       <div><label for="q-topic">Topic</label><select id="q-topic"></select></div>
+      <div><label for="q-set">Set</label><select id="q-set" disabled style="display:none"></select></div>
       <div><label for="q-format">Format</label>
         <select id="q-format">
           <option value="mixed">Mixed (MCQ + written)</option>
@@ -69,6 +84,28 @@ textarea{width:100%;font:inherit;padding:.5rem;border:1px solid var(--line);bord
       <div><label for="q-length">Session length</label>
         <select id="q-length"><option value="20">20 questions</option><option value="10">10 questions</option></select></div>
     </div>
+    <div class="setup-grid">
+      <div><label for="q-diff-min">Difficulty from</label>
+        <select id="q-diff-min">
+          <option value="unrated" selected>Unrated</option>
+          <option value="easy">Easy</option>
+          <option value="standard">Standard</option>
+          <option value="hard">Hard</option>
+        </select></div>
+      <div><label for="q-diff-max">Difficulty to</label>
+        <select id="q-diff-max">
+          <option value="unrated">Unrated</option>
+          <option value="easy">Easy</option>
+          <option value="standard">Standard</option>
+          <option value="hard" selected>Hard</option>
+        </select></div>
+      <div class="q-check"><label for="q-taught-only"><input type="checkbox" id="q-taught-only"> Taught topics only</label></div>
+    </div>
+    <details id="q-taught-panel">
+      <summary>Topics &amp; teaching status</summary>
+      <p class="muted">Topics are suggested as “taught” once every syllabus code they cover has finished in the class schedule. Your own choice here always wins and syncs across devices.</p>
+      <div id="q-taught-list"></div>
+    </details>
     <div id="q-error"></div>
     <button id="q-start" class="btn primary">Start session</button>
     <button id="q-review-btn" class="btn">Review past errors</button>
@@ -89,18 +126,19 @@ textarea{width:100%;font:inherit;padding:.5rem;border:1px solid var(--line);bord
   <section class="card" id="summary" style="display:none"></section>
 
   <section class="card" id="papers">
-    <h3>Past-paper scores</h3>
+    <h3>Exam results &amp; reflections</h3>
     <div id="pp-panel"></div>
   </section>
 
   <p><a href="../plan.html">← How sessions fit the weekly plan</a></p>
 </main>
 <footer>Private family study area · exams <strong>May 2028</strong> · keep this site and its library non-public</footer>
-<script src="../assets/store.js?v=7"></script>
+<script src="../assets/store.js?v=8"></script>
 <script src="../assets/profile.js?v=1"></script>
 <script src="../assets/confidence.js?v=1"></script>
-<script src="../assets/quiz-engine.js?v=17"></script>
-<script src="../assets/papers.js?v=1"></script>
+<script src="../assets/bank-schema.js?v=1"></script>
+<script src="../assets/quiz-engine.js?v=20"></script>
+<script src="../assets/papers.js?v=2"></script>
 <script src="../assets/auth.js?v=10"></script>
 </body>
 </html>

@@ -8,6 +8,8 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Practice — home</title>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="stylesheet" href="../assets/style.css">
 <style>
   .big-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:1rem 0}
@@ -28,8 +30,10 @@
   <a href="index.html" class="brand">Practice</a>
   <a href="notes.html">Notes</a>
   <a href="quiz.html">Quiz</a>
+  <a href="mistakes.html">Mistakes</a>
   <a href="cards.html">Cards</a>
   <a href="coursework.html">Coursework</a>
+  <a href="resources.html">Resources</a>
   <a href="author.html">Upload</a>
   <span id="auth-slot"></span><a href="../index.html" style="margin-left:auto">← Study site</a>
 </nav>
@@ -47,7 +51,9 @@
     <a href="quiz.html"><strong>Quiz →</strong><span>20-question sessions by subject/topic. MCQs marked instantly; written answers self-marked against markschemes; weak-topic flags at the end.</span></a>
     <a href="cards.html"><strong>Flashcards →</strong><span>Spaced repetition (Leitner boxes). Due-today tracking, mastery %, keyboard shortcuts (space flips, 1/2/3 rates).</span></a>
     <a href="coursework.html"><strong>Coursework →</strong><span>Step-by-step planner for the Biology and Chemistry investigations and the Maths exploration: self-check lists, common pitfalls, school dates, your own notes.</span></a>
-    <a href="author.html"><strong>Upload content →</strong><span>Add your own quiz banks and flashcard decks (JSON files), manage them, and back up everything you've created.</span></a>
+    <a href="mistakes.html"><strong>Mistakes →</strong><span>Every wrong answer, with its why: error type, reflection and retry history. Retry one question or file it away as not relevant.</span></a>
+    <a href="resources.html"><strong>Resources →</strong><span>Your own collection of links (videos, class notes, files), tagged by subject and topic. Reading and watching around the loop — never quiz content.</span></a>
+    <a href="author.html"><strong>Upload content →</strong><span>Ask an AI for a practice set, paste or upload JSON (checked before import), manage and edit what you've added, and back everything up.</span></a>
     <!-- study-site-only --><a href="../index.html"><strong>Study site →</strong><span>Subject hubs, syllabus checklists, deadlines, plan, reference — the full study area.</span></a><!-- /study-site-only -->
   </div>
 
@@ -62,10 +68,11 @@
   </section>
 </main>
 <footer>Private family use · exams <strong>May 2028</strong> · keep this app and its content non-public · <a href="summary.html">Weekly summary (parent)</a></footer>
-<script src="../assets/store.js?v=7"></script>
+<script src="../assets/store.js?v=8"></script>
 <script src="../assets/profile.js?v=1"></script>
 <script src="../assets/auth.js?v=10"></script>
-<script src="../assets/today.js?v=3"></script>
+<script src="../assets/deadlines.js?v=6"></script>
+<script src="../assets/today.js?v=5"></script>
 <script>
   // Belt and braces: if today.js fails to load or run at all (stale cache, 404,
   // early exception), the panel must not sit on "Loading…" forever.

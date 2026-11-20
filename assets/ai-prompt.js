@@ -1,12 +1,16 @@
 /* Ask an AI on a topic note: copy a prompt from library/ai-prompts.json and open the preferred assistant.
    Click a mode → the prompt is copied synchronously while this page still has focus, then the assistant
-   opens in a new tab; she pastes with Ctrl+V. Pref (ai-pref) is device-local, not synced. */
+   opens in a new tab; she pastes with Ctrl+V. Pref (ai-pref) is device-local, not synced.
+
+   render(note, opts) also powers the Upload page's "Ask an AI for a practice set" picker: pass a note-like
+   object built from a topic-notes manifest entry (subject/code/title/themeLabel/topicKey) and
+   opts = {modes: ["bankgen"], heading, help} to show only the generation mode with picker wording. */
 (function () {
   "use strict";
   const NB = window.NB = window.NB || {};
   const PATH_BASE = location.pathname.includes("/app/") ? "../" : "";
   const PREF_KEY = "ai-pref";
-  const KNOWN = ["subject", "level", "topic", "understandings", "keyterms", "wrong_questions"];
+  const KNOWN = ["subject", "level", "topic", "understandings", "keyterms", "wrong_questions", "subjectid", "topickey"];
   const fileId = (f) => String(f).split("/").pop().replace(/\.json$/i, "");
   const tidy = (s) => String(s || "").replace(/[ \t]+\n/g, "\n").replace(/ {2,}/g, " ").replace(/\n{3,}/g, "\n\n").trim();
   const httpsUrl = (u) => { const s = String(u || "").trim(); return /^https:\/\/[^\s<]+$/i.test(s) ? s : ""; };
@@ -72,7 +76,20 @@
     const sl = subjectLevel(note || {}, config);
     const codeTitle = [note && note.code, note && note.title].filter(Boolean).join(" ");
     const theme = note && note.themeLabel ? " (" + note.themeLabel + ")" : "";
-    return { subject: sl.subject, level: sl.level, topic: (codeTitle || "this topic") + theme, understandings: understandings(note || {}), keyterms: keyterms(note || {}), wrong_questions: wrongQuestions(note || {}) };
+    return {
+      subject: sl.subject,
+      level: sl.level,
+      topic: (codeTitle || "this topic") + theme,
+      // raw ids for prompts that must produce machine-shaped output (bank JSON):
+      // subjectid = the exact subject id the quiz engine groups by, topickey = the
+      // short topic key the Upload page's banks use (notes.js sets note.topicKey;
+      // the Upload picker passes the manifest entry's file basename).
+      subjectid: String((note && note.subject) || ""),
+      topickey: String((note && note.topicKey) || ""),
+      understandings: understandings(note || {}),
+      keyterms: keyterms(note || {}),
+      wrong_questions: wrongQuestions(note || {}),
+    };
   }
 
   function fill(template, vals) {
@@ -153,13 +170,17 @@
     return loadP;
   }
 
-  function render(note) {
+  // opts (all optional): {modes: ["bankgen", …]} shows a subset of the configured
+  // modes (default: every mode in library/ai-prompts.json, i.e. the notes page);
+  // {heading}, {help} override the card title/intro for non-note placements.
+  function render(note, opts) {
+    const o = opts || {};
     const box = document.createElement("section");
     box.className = "card nt-sec nt-ai";
     box.id = "nt-ai";
-    const h = document.createElement("h3"); h.textContent = "Ask an AI"; box.appendChild(h);
+    const h = document.createElement("h3"); h.textContent = o.heading || "Ask an AI"; box.appendChild(h);
     const help = document.createElement("p"); help.className = "muted";
-    help.textContent = "Copies a prompt for this topic and opens your preferred assistant. Paste with Ctrl+V (Cmd+V on a Mac).";
+    help.textContent = o.help || "Copies a prompt for this topic and opens your preferred assistant. Paste with Ctrl+V (Cmd+V on a Mac).";
     box.appendChild(help);
     const modes = document.createElement("div"); modes.className = "nt-ai-modes"; modes.id = "nt-ai-modes";
     const picker = document.createElement("label"); picker.className = "nt-ai-pref";
@@ -192,6 +213,7 @@
         sel.appendChild(o);
       });
       (cfg.modes || []).forEach(function (m) {
+        if (o.modes && o.modes.indexOf(m.id) < 0) return;
         const b = document.createElement("button");
         b.type = "button"; b.className = "btn nt-mini"; b.dataset.mode = m.id;
         b.textContent = m.label;

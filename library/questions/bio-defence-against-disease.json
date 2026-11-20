@@ -2,6 +2,7 @@
   "subject": "biology-hl",
   "topic": "defence-against-disease",
   "topicLabel": "C3.2 — Defence against disease (Feb–Mar unit)",
+  "codes": ["C3.2"],
   "items": [
     {"id": "im01", "format": "mcq", "stem": "Which line of defence involves the skin and mucous membranes?",
      "choices": ["First line — barrier defence", "Second line — innate immunity", "Third line — adaptive immunity", "Fourth line — vaccination"], "answer": 0,

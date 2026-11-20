@@ -22,6 +22,12 @@ LONGEST_WARN = 0.40  # correct option strictly longest in more than 40% of a ban
 MIN_MCQ_FOR_CUE_CHECK = 8
 # U+00B4 (acute accent) has replaced superscript-4 in generated content before ("10²´")
 CORRUPT_CHARS = {"\u00b4": "acute accent (corrupted superscript?)"}
+# Item difficulty: absent (or unknown) pools as "Unrated" in the UI; a stored "unrated"
+# is a mistake — the field should be omitted. DIFFICULTIES stays the four metadata buckets.
+DIFFICULTIES = ("unrated", "easy", "standard", "hard")
+STORED_DIFFICULTIES = ("easy", "standard", "hard")
+# Bank-level syllabus codes use the IB style of library/class-schedule.json ("S1.1", "A1.1", "2.1")
+CODE_RE = re.compile(r"^[A-Z]?\d+\.\d+$")
 
 
 def norm(text):
@@ -46,9 +52,56 @@ def load(path):
         return None, f"{e}"
 
 
+# computed metadata written by tools/build_questions_manifest.py must match the banks;
+# the aggregation is duplicated here so a stale manifest can't silently drift
+META_KEYS = ("topic", "topicLabel", "set", "setOrder", "codes", "paperStyle", "calculatorFree", "counts", "topics")
+
+
+def bank_metadata(bank, bid):
+    """Mirror of tools/build_questions_manifest.py::bank_metadata (same aggregation rules)."""
+    meta = {}
+    for field in ("topic", "topicLabel"):
+        if field in bank:
+            meta[field] = bank[field]
+    for field in ("set", "setOrder", "codes", "paperStyle", "calculatorFree"):
+        if field in bank:
+            meta[field] = bank[field]
+    items = [it for it in bank.get("items", []) if it.get("retired") is not True]
+    meta["counts"] = {
+        "mcq": sum(1 for it in items if it.get("format") == "mcq"),
+        "written": sum(1 for it in items if it.get("format") == "written"),
+        "total": len(items),
+    }
+    topics, by_topic = [], {}
+    for it in items:
+        topic = it.get("topic") or bank.get("topic") or bid
+        entry = by_topic.get(topic)
+        if entry is None:
+            entry = {"topic": topic, "topicLabel": it.get("topicLabel") or bank.get("topicLabel") or topic,
+                     "count": 0, "difficulty": {d: 0 for d in DIFFICULTIES}}
+            by_topic[topic] = entry
+            topics.append(entry)
+        entry["count"] += 1
+        difficulty = it.get("difficulty")
+        entry["difficulty"][difficulty if difficulty in DIFFICULTIES else "unrated"] += 1
+    meta["topics"] = topics
+    return meta
+
+
 # ---------- quiz banks ----------
+# manifest labels double as practice-set names for banks without an explicit "set";
+# the manifest itself is checked later in the manifests section
+manifest_labels = {}
+qmanifest, qmanifest_err = load(ROOT / "library/questions/manifest.json")
+if not qmanifest_err and isinstance(qmanifest, list):
+    for e in qmanifest:
+        if isinstance(e, dict) and e.get("file"):
+            manifest_labels[os.path.normpath(str(e["file"]))] = e.get("label")
+
 quiz_ids_per_file = {}
 ids_by_subject = {}  # subject -> {id: [bank files]}
+banks_by_rel = {}  # "library/questions/<file>" -> parsed bank, for the manifest metadata check
+set_names = {}  # (subject, effective topic) -> [(effective set name, bank file)]
 bank_files = sorted((ROOT / "library/questions").glob("*.json"))
 total_q = 0
 for b in bank_files:
@@ -87,6 +140,15 @@ for b in bank_files:
             fails.append(f"quiz bank {b.name} item {it.get('id')}: missing stem")
         if "retired" in it and (it["retired"] is not True or not it.get("retiredReason")):
             fails.append(f"quiz bank {b.name} item {it.get('id')}: 'retired' must be true and come with a 'retiredReason'")
+        if "difficulty" in it and it["difficulty"] not in STORED_DIFFICULTIES:
+            if it["difficulty"] == "unrated":
+                fails.append(
+                    f"quiz bank {b.name} item {it.get('id')}: difficulty 'unrated' must be omitted (absent means unrated)"
+                )
+            else:
+                fails.append(
+                    f"quiz bank {b.name} item {it.get('id')}: difficulty must be easy, standard or hard (got {it['difficulty']!r})"
+                )
     # exact duplicates (same stem, choices and key) inflate counts and topic stats
     seen_items = {}
     for it in d.get("items", []):
@@ -97,6 +159,16 @@ for b in bank_files:
             )
         else:
             seen_items[k] = it.get("id")
+    # practice-set metadata used by the quiz picker (Subject -> topic -> set hierarchy)
+    if "set" in d and (not isinstance(d["set"], str) or not d["set"].strip()):
+        fails.append(f"quiz bank {b.name}: 'set' must be a non-empty string")
+    if "setOrder" in d and (not isinstance(d["setOrder"], int) or isinstance(d["setOrder"], bool)):
+        fails.append(f"quiz bank {b.name}: 'setOrder' must be an integer")
+    if "codes" in d and (
+        not isinstance(d["codes"], list)
+        or any(not isinstance(c, str) or not CODE_RE.match(c) for c in d["codes"])
+    ):
+        fails.append(f"quiz bank {b.name}: 'codes' must be IB codes like \"S1.1\", \"A1.1\" or \"2.1\"")
     # answer-cue checks
     mcqs = [
         it for it in d.get("items", [])
@@ -138,6 +210,16 @@ for b in bank_files:
         if i:
             ids_by_subject.setdefault(d.get("subject"), {}).setdefault(i, []).append(b.name)
     quiz_ids_per_file[b.name] = set(ids)
+    bank_rel = os.path.normpath(f"library/questions/{b.name}")
+    banks_by_rel[bank_rel] = d
+    # effective practice-set name: the bank's "set", else the manifest label for the file.
+    # The picker lists sets under EFFECTIVE (item-level) topics, so a collision is judged
+    # per effective topic from the bank's topics[] aggregation (bank-level topic as the
+    # fallback when a bank has no active items) — one bank legitimately appears in several.
+    set_name = d.get("set") or manifest_labels.get(bank_rel)
+    eff_topics = [t["topic"] for t in bank_metadata(d, b.stem)["topics"]] or [d.get("topic")]
+    for t in eff_topics:
+        set_names.setdefault((d.get("subject"), t), []).append((set_name, b.name))
     total_q += len(d.get("items", []))
 
 # ids only need to be unique per file (missed questions are keyed <bank>#<id>), but a
@@ -147,6 +229,21 @@ for subj, by_id in sorted(ids_by_subject.items(), key=lambda kv: str(kv[0])):
     if dup:
         sample = ", ".join(f"{i} ({' / '.join(sorted(f))})" for i, f in sorted(dup.items())[:5])
         warns.append(f"subject {subj}: {len(dup)} question id(s) reused across banks, e.g. {sample}")
+
+# set names must be unique within one subject + effective topic: the quiz picker lists
+# the sets by name under each topic, so two identical names would be indistinguishable.
+# Same-file repeats are fine — a multi-topic bank carries its set into every topic.
+for (subj, topic), named in sorted(set_names.items(), key=lambda kv: str(kv[0])):
+    by_name = {}
+    for name, fname in named:
+        if name:
+            by_name.setdefault(name, set()).add(fname)
+    for name, fnames in sorted(by_name.items(), key=lambda kv: str(kv[0])):
+        if len(fnames) > 1:
+            warns.append(
+                f"subject {subj} topic {topic}: set name {name!r} used by {len(fnames)} banks "
+                f"({' / '.join(sorted(fnames))}) — set names must be unique within a topic"
+            )
 
 # ---------- flashcard decks (ids unique GLOBALLY — SRS state is keyed by id) ----------
 fc_ids = {}
@@ -193,6 +290,21 @@ for name, folder, key in [
     for e in m:
         if not (ROOT / e.get("file", "")).exists():
             fails.append(f"{name}: manifest points to missing file {e.get('file')}")
+    if name == "questions/manifest.json" and isinstance(m, list):
+        for e in m:
+            if not isinstance(e, dict) or not e.get("file") or ("counts" not in e and "topics" not in e):
+                continue  # pre-metadata (or missing/malformed) entry — nothing to verify
+            bank = banks_by_rel.get(os.path.normpath(str(e["file"])))
+            if bank is None:
+                continue  # missing file or broken JSON is reported elsewhere
+            expected = bank_metadata(bank, Path(str(e["file"])).stem)
+            diff = [k for k in META_KEYS
+                    if (k in e) != (k in expected) or (k in e and e[k] != expected[k])]
+            if diff:
+                fails.append(
+                    f"{name}: metadata for {e['file']} doesn't match the bank ({', '.join(diff)}); "
+                    "run tools/build_questions_manifest.py"
+                )
 
 # ---------- topic notes (library/topic-notes) ----------
 NOTE_REQUIRED = {"schemaVersion": int, "id": str, "subject": str, "code": str, "title": str,

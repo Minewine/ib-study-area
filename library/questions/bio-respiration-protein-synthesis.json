@@ -2,6 +2,7 @@
  "subject": "biology-hl",
  "topic": "respiration-protein-synthesis",
  "topicLabel": "C1.2 — Cell respiration & D1.2 — Protein synthesis (Feb–Mar unit)",
+ "codes": ["C1.2", "D1.2"],
  "items": [
   {
    "id": "rs01",

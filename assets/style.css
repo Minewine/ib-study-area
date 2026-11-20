@@ -21,6 +21,7 @@ h3:not(:first-child){margin-top:1rem}
 .row .name{flex:1;font-size:.95rem}
 .row a{font-size:.85rem;white-space:nowrap}
 select.rag{border:1px solid var(--line);border-radius:8px;padding:.15rem .35rem;font-size:.85rem;background:#fff}
+.row[hidden]{display:none} /* checklist search (chk-search) hides non-matching rows */
 .bar{height:8px;border-radius:999px;background:#e7ebef;position:relative;margin:.4rem 0 .8rem;overflow:hidden}
 .bar::after{content:"";position:absolute;inset:0;width:var(--pct,0%);border-radius:999px;background:var(--accent)}
 table.wt{border-collapse:collapse;width:100%;font-size:.93rem}

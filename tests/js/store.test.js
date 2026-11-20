@@ -136,6 +136,11 @@ test("merge.union keeps everything from both sides", () => {
   assert.deepEqual(plain(union("chk:a", { c: false, r: "r" }, { c: true, r: "g" })), { c: false, r: "r" }, "a real choice wins");
   assert.equal(union("week:1", "", "plan"), "plan");
   assert.deepEqual(plain(union("q-errors", null, [{ key: "k" }])), [{ key: "k" }]);
+  // field-aware q-errors merge: a wins, the loser's unique fields fill in
+  assert.deepEqual(plain(union("q-errors",
+    [{ key: "k", ts: 9, reflection: "watch the sign" }],
+    [{ key: "k", ts: 3, errorType: "misread", retries: [{ ts: 1, correct: false }] }])),
+    [{ key: "k", ts: 9, reflection: "watch the sign", errorType: "misread", retries: [{ ts: 1, correct: false }] }]);
 });
 
 test("merge.RECORDS.quizlog: union, newest first, never truncates below input size", () => {

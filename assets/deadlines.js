@@ -1,5 +1,7 @@
 /* ISL Year 12 deadline calendar (2026–27), transcribed from the school calendar.
-   Renders: #nextup (dashboard, next 4 upcoming) and #timeline (deadlines page). */
+   Renders: #nextup (dashboard, next 4 upcoming) and #timeline (deadlines page).
+   Also exports the list as NB.deadlines for the practice home's Today panel
+   (assets/today.js) — single source for these dates. */
 (function () {
   "use strict";
 
@@ -41,6 +43,9 @@
   // renderers assume chronological order — sort defensively (the literal has
   // drifted out of order once already)
   DEADLINES.sort((a, b) => (a.d < b.d ? -1 : a.d > b.d ? 1 : 0));
+
+  window.NB = window.NB || {};
+  window.NB.deadlines = DEADLINES;
 
   const TAGS = {
     sciences: { label: "Sciences", color: "#2e8b57" },

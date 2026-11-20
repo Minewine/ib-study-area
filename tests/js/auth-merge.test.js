@@ -2,7 +2,7 @@
 // Run: node --test tests/js/*.test.js   (no dependencies)
 const assert = require("assert");
 const nodeTest = require("node:test");
-const { makeEnv } = require("./harness");
+const { makeEnv, plain } = require("./harness");
 const env = makeEnv({ fetch: () => Promise.reject(new Error("offline")) }).load("store.js").load("auth.js");
 const ctx = env.ctx;
 const M = ctx.window.Auth.mergeValue;
@@ -39,6 +39,34 @@ t("q-errors: union by key, newest ts wins", () => {
   const m = M("q-errors", local, server);
   assert.strictEqual(m.length, 3);
   assert.strictEqual(m.find(e => e.key === "bank-a#b01").resolved, true);
+});
+t("q-errors: same key merges field-aware — retries unioned, deduped by ts+correct, ascending", () => {
+  const local = [{ key: "k1", ts: 300, retries: [{ ts: 1, correct: false }, { ts: 9, correct: false }] }];
+  const server = [{ key: "k1", ts: 200, retries: [{ ts: 1, correct: false }, { ts: 2, correct: true }] }];
+  const e = M("q-errors", local, server).find(x => x.key === "k1");
+  assert.deepStrictEqual(plain(e.retries), [{ ts: 1, correct: false }, { ts: 2, correct: true }, { ts: 9, correct: false }]);
+});
+t("q-errors: winner's reflection/errorType win; missing ones fill from the loser", () => {
+  const local = [{ key: "k1", ts: 300, errorType: "careless" }];
+  const server = [{ key: "k1", ts: 200, errorType: "misread", reflection: "re-read the stem" }];
+  const e = M("q-errors", local, server).find(x => x.key === "k1");
+  assert.strictEqual(e.errorType, "careless", "winner's value wins");
+  assert.strictEqual(e.reflection, "re-read the stem", "loser fills the winner's gap");
+});
+t("q-errors: retries only on the loser are kept; retired fields never fill in from the loser", () => {
+  const local = [{ key: "k1", ts: 300 }];
+  const server = [{ key: "k1", ts: 200, retries: [{ ts: 4, correct: true, conf: "sure" }], retired: true, retiredReason: "off-syllabus", retiredAt: 9 }];
+  const e = M("q-errors", local, server).find(x => x.key === "k1");
+  assert.deepStrictEqual(plain(e.retries), [{ ts: 4, correct: true, conf: "sure" }]);
+  assert.strictEqual(e.retired, undefined);
+  assert.strictEqual(e.retiredReason, undefined);
+  assert.strictEqual(e.retiredAt, undefined);
+});
+t("q-errors: records without the new fields merge exactly as before", () => {
+  const local = [{ key: "k1", attempts: 3, ts: 300, resolved: true }];
+  const server = [{ key: "k1", attempts: 2, ts: 200, resolved: false }];
+  const e = M("q-errors", local, server).find(x => x.key === "k1");
+  assert.deepStrictEqual(Object.keys(e).sort(), ["attempts", "key", "resolved", "ts"], "no retries/reflection/errorType keys invented");
 });
 t("q-errors: legacy records ranked by dates/attempts", () => {
   const m = M("q-errors", [{ key: "b01", lastMissed: "2026-11-10", attempts: 1 }], [{ key: "b01", lastMissed: "2026-11-15", attempts: 2 }]);

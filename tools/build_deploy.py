@@ -27,7 +27,17 @@ OUT = ROOT / "deploy" / "nevaib"
 KEY_FILE = ROOT / "deploy" / ".setup-key"
 ZIP_FILE = ROOT / "deploy" / "nevaib.zip"
 
-PAGES = ["index.html", "notes.html", "quiz.html", "cards.html", "author.html", "summary.html", "coursework.html"]
+PAGES = [
+    "index.html",
+    "notes.html",
+    "quiz.html",
+    "mistakes.html",
+    "cards.html",
+    "author.html",
+    "summary.html",
+    "coursework.html",
+    "resources.html",
+]
 
 EMPTY_KEY_LINE = (
     '$SETUP_KEY = "";  // e.g. "paste-a-long-random-string"; empty = setup disabled'
@@ -65,7 +75,9 @@ def build_pages(out: Path) -> None:
         t = t.replace('<p><a href="../plan.html">', "<p>")
         # blocks that only make sense next to the local study site (e.g. the
         # "Study site →" launcher card, which would link the app to itself)
-        t = re.sub(r"<!-- study-site-only -->.*?<!-- /study-site-only -->", "", t, flags=re.S)
+        t = re.sub(
+            r"<!-- study-site-only -->.*?<!-- /study-site-only -->", "", t, flags=re.DOTALL
+        )
         (out / page).write_text(t, encoding="utf-8")
 
 
@@ -82,9 +94,13 @@ def build(out: Path = OUT, apply_key: bool = True) -> Path:
     # coursework planner content (original wording; no IB or school documents)
     copy_tree(ROOT / "library/coursework", out / "library/coursework")
     # class-week schedule for the home page "Today" panel (dates + IB codes only)
-    shutil.copy2(ROOT / "library/class-schedule.json", out / "library/class-schedule.json")
+    shutil.copy2(
+        ROOT / "library/class-schedule.json", out / "library/class-schedule.json"
+    )
     # Ask an AI prompt templates (no student data; edit this file to change wording)
     shutil.copy2(ROOT / "library/ai-prompts.json", out / "library/ai-prompts.json")
+    # root favicon.ico (the app pages link svg+png icons; this covers the rest)
+    shutil.copy2(ROOT / "favicon.ico", out / "favicon.ico")
     (out / "docs").mkdir(parents=True, exist_ok=True)
     shutil.copy2(ROOT / "docs/AUTHORING.md", out / "docs/AUTHORING.md")
     # backend

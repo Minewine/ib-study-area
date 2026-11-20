@@ -48,11 +48,12 @@
     "fc-deleted", "fc-edits", "quizlog", "q-errors",
     "tok-objects", "ee-ideas", "io-issues", "ia-debriefs",
     "res-bookmarks", "res-notes", "res-recent", "pp-scores", "cw-progress", "my-res",
+    "topic-taught",
     "profile" // per-user profile (a later phase of the multi-user upgrade writes it)
   ];
   // never synced, never in backups: credentials, sync bookkeeping, caches, safety copies
   const LOCAL_ONLY = ["nb-token", "nb-api", DIRTY_KEY, "nb-sync", SCHEMA_KEY, "fc-seedids", "ai-pref",
-    "nb-active-user", "nb-scoped-v2", "nb-scoped-pending"];
+    "nb-active-user", "nb-scoped-v2", "nb-scoped-pending", "mistakes-filters"];
   const LOCAL_ONLY_PREFIXES = [CORRUPT_PREFIX, BACKUP_PREFIX];
 
   const isSiteRow = (k) => typeof k === "string" && (k.indexOf("chk:") === 0 || /^week:\d+$/.test(k));
@@ -390,6 +391,27 @@
   const fcRank = (s) => [s && s.t || 0, s && s.seen || 0, String(s && s.due || "")];
   const errRank = (e) => [e && e.ts || 0, String(e && (e.lastAttempt > e.lastMissed ? e.lastAttempt : e.lastMissed) || ""), e && e.attempts || 0];
 
+  // Field-aware merge of two q-error records with the same key (Phase 2). `w` is the
+  // errRank winner, `l` the loser. retries are a union of both devices' outcomes
+  // (deduped by ts+correct identity, ascending by ts — the engines cap at 20 on their
+  // next write); reflection/errorType fill in from the loser only when the winner
+  // lacks them; retired/retiredReason/retiredAt ride the winner alone, since ts
+  // already decides retire/restore races. Records without the optional fields are
+  // untouched by all of this.
+  const errMerge = (w, l) => {
+    const out = Object.assign({}, w);
+    const seen = new Set(), retries = [];
+    (Array.isArray(w.retries) ? w.retries : []).concat(Array.isArray(l.retries) ? l.retries : []).forEach(r => {
+      if (!r || typeof r !== "object") return;
+      const id = JSON.stringify([r.ts, r.correct]);
+      if (seen.has(id)) return;
+      seen.add(id); retries.push(r);
+    });
+    if (retries.length) out.retries = retries.sort((x, y) => (x.ts || 0) - (y.ts || 0));
+    ["reflection", "errorType"].forEach(f => { if (out[f] === undefined && l[f] !== undefined) out[f] = l[f]; });
+    return out;
+  };
+
   // Record-level mergers: merge(a, b) — on a tie b wins. Used for sync (a = local,
   // b = server) and restore (a = backup, b = local). Records are never dropped.
   const RECORDS = {
@@ -400,8 +422,10 @@
       Object.keys(a).forEach(id => { if (!(id in out) || newer(a[id], out[id], fcRank)) out[id] = a[id]; });
       return out;
     },
-    // [ {key, …, ts?} ] — union by key, newest wins; a record renamed by the quiz's
-    // key migration doesn't come back under its legacy key from an older copy
+    // [ {key, …, ts?} ] — union by key, newest wins, merged field-aware when the
+    // same record exists on both sides (errMerge: retries union, reflection/
+    // errorType fill-in, retired fields ride the winner); a record renamed by the
+    // quiz's key migration doesn't come back under its legacy key from an older copy
     "q-errors": function (a, b) {
       if (!Array.isArray(a)) return b; if (!Array.isArray(b)) return a;
       const byKey = new Map();
@@ -409,7 +433,7 @@
       a.forEach(e => {
         if (!e || !e.key) return;
         const cur = byKey.get(e.key);
-        if (!cur || newer(e, cur, errRank)) byKey.set(e.key, e);
+        byKey.set(e.key, cur ? errMerge(newer(e, cur, errRank) ? e : cur, newer(e, cur, errRank) ? cur : e) : e);
       });
       const out = Array.from(byKey.values());
       const renamed = new Set(out.map(e => e.legacyKey).filter(Boolean));
@@ -456,6 +480,15 @@
     // "My resources" on topic notes {itemId: {note, label, url, t} | {note, deleted: true, t}}:
     // per item the newest t wins; a deletion is a newer tombstone, so an older copy can't revive it
     "my-res": function (a, b) {
+      if (!isObj(a)) return b; if (!isObj(b)) return a;
+      const out = Object.assign({}, b);
+      Object.keys(a).forEach(id => { if (!(id in out) || newer(a[id], out[id], (r) => [r && r.t || 0])) out[id] = a[id]; });
+      return out;
+    },
+    // topic teaching-status overrides {topicKey: {taught, t}} — per topic the newest
+    // edit wins; taught:false is a real record (a deliberate "not yet"), so it
+    // survives a merge like any other; a record without t ranks as t=0
+    "topic-taught": function (a, b) {
       if (!isObj(a)) return b; if (!isObj(b)) return a;
       const out = Object.assign({}, b);
       Object.keys(a).forEach(id => { if (!(id in out) || newer(a[id], out[id], (r) => [r && r.t || 0])) out[id] = a[id]; });

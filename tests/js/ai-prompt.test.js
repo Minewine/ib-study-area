@@ -39,7 +39,7 @@ test("config: default_ai, https assistants, modes use only known placeholders", 
   }
   assert.ok(Array.isArray(CFG.modes) && CFG.modes.length >= 3);
   const ids = new Set();
-  const known = new Set(["subject", "level", "topic", "understandings", "keyterms", "wrong_questions"]);
+  const known = new Set(["subject", "level", "topic", "understandings", "keyterms", "wrong_questions", "subjectid", "topickey"]);
   for (const m of CFG.modes) {
     assert.ok(m.id && m.label && m.template, m.id);
     assert.ok(!ids.has(m.id), "duplicate mode " + m.id);
@@ -58,6 +58,9 @@ test("every topic note renders every mode with no leftover placeholders", () => 
   const leftover = [];
   for (const f of files) {
     const note = JSON.parse(fs.readFileSync(f, "utf8"));
+    // notes.js sets note.topicKey = the URL topic (file basename) before rendering;
+    // mirror that contract here so {topickey}-using modes are filled the same way.
+    note.topicKey = path.basename(f, ".json");
     for (const m of CFG.modes) {
       const text = e.NB.aiPrompt.build(note, m.id, CFG);
       assert.ok(text.length > 40, f + " " + m.id + " too short");
@@ -66,6 +69,27 @@ test("every topic note renders every mode with no leftover placeholders", () => 
     }
   }
   assert.deepEqual(leftover, []);
+});
+
+test("bankgen mode: a manifest-entry-shaped note fills the raw subject id and topic key", () => {
+  const e = envWith();
+  // exactly what author.html's picker passes: a topic-notes manifest entry + topicKey
+  const entry = { subject: "biology-hl", code: "A1.1", title: "Water", themeLabel: "Unity and diversity", hlOnly: false, topicKey: "a1-1" };
+  const vals = plain(e.NB.aiPrompt.values(entry, CFG));
+  assert.equal(vals.subjectid, "biology-hl");
+  assert.equal(vals.topickey, "a1-1");
+  assert.match(vals.topic, /A1\.1 Water/);
+  const text = e.NB.aiPrompt.build(entry, "bankgen", CFG);
+  assert.match(text, /experienced IB Biology HL teacher/);
+  assert.match(text, /"subject": "biology-hl"/);
+  assert.match(text, /"topic": "a1-1"/);
+  assert.match(text, /0-based index/);
+  assert.doesNotMatch(text, /\{[a-z_]+\}/);
+  assert.doesNotMatch(text, /Neva|Lausanne|Rametric/i);
+  // without a topicKey the placeholder empties (caller contract) rather than leaking braces
+  const noKey = e.NB.aiPrompt.build({ subject: "chemistry-hl", code: "S1.1", title: "Particulate nature" }, "bankgen", CFG);
+  assert.doesNotMatch(noKey, /\{[a-z_]+\}/);
+  assert.match(noKey, /"subject": "chemistry-hl"/);
 });
 
 test("Biology A1.1 quiz mode names the subject, topic and understandings", () => {

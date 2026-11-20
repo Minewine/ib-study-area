@@ -2,6 +2,7 @@
  "subject": "chemistry-hl",
  "topic": "chem-tools",
  "topicLabel": "Tools & inquiry: measurement, uncertainty, graphs and evaluation",
+ "codes": ["R1.3", "R2.2", "S1.5", "R1.1", "R2.3", "R3.1", "R3.2", "R1.2", "S3.2", "R2.1"],
  "paperStyle": "1B",
  "about": "Original practice questions written for the IB Chemistry 2025 guide (HL). Not IB past-paper questions or markschemes, and not a prediction of exam questions. Data-based and experimental-skills practice; a calculator is allowed.",
  "items": [

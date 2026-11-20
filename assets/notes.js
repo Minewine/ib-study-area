@@ -265,6 +265,7 @@
     let note;
     try { note = cache[row.file] = cache[row.file] || await getJSON(row.file); }
     catch (e) { view.append(el("p", { class: "nt-err" }, "Could not load this note: " + e.message)); return; }
+    note.topicKey = topic; // {topickey} in the Ask-an-AI "write a practice set" mode (ai-prompt.js values())
     const meta = [note.hlOnly ? "HL only" : null, note.taughtStatus ? "School: " + note.taughtStatus : null, note.status === "draft" ? "draft" : null].filter(Boolean).join(" · ");
     view.append(
       el("div", { class: "card nt-head" },

@@ -8,6 +8,8 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Upload — Practice</title>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="stylesheet" href="../assets/style.css">
 <style>
   .up-zone{border:2px dashed var(--line);border-radius:12px;padding:1.2rem;text-align:center;background:#fafbfc}
@@ -24,6 +26,25 @@
   .ed-lbl{display:block;font-size:.85rem;color:var(--muted);margin:.5rem 0 .2rem}
   #ed-formwrap input[type=text],#ed-formwrap input[type=number],#ed-formwrap textarea,#ed-newbank-form input[type=text]{width:100%;padding:.4rem;border:1px solid var(--line);border-radius:8px;font:inherit}
   .ed-answer{margin:.5rem 0}
+  /* AI practice-set picker (section 1) */
+  .ai-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.7rem;margin:.6rem 0}
+  .ai-grid select{width:100%;padding:.4rem;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+  .nt-ai{padding:.2rem 0}
+  /* staged-import preview (section 2) */
+  #preview-panel{border-top:1px dashed var(--line);margin-top:1rem;padding-top:.8rem}
+  .pv-item{border:1px solid var(--line);border-radius:10px;background:#fff;padding:.6rem .8rem;margin:.5rem 0}
+  .pv-head{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:.3rem}
+  .pv-head code{color:var(--muted)}
+  .pv-head .pv-remove{margin-left:auto}
+  .pv-l{display:block;font-size:.85rem;color:var(--muted);margin:.4rem 0 .15rem}
+  .pv-item textarea,.pv-item input[type=text],.pv-item input[type=number]{display:block;width:100%;box-sizing:border-box;padding:.4rem;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+  .pv-item textarea{resize:vertical}
+  .pv-choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.4rem}
+  .pv-choice{display:flex;align-items:center;gap:.4rem}
+  .pv-choice input[type=radio]{flex:none}
+  .pv-status{font-size:.92rem;margin:.5rem 0}
+  .pv-status.ok{color:#2e8b57}
+  .pv-status.bad{color:#c23b3b}
 </style>
 </head>
 <body>
@@ -31,34 +52,59 @@
   <a href="index.html" class="brand">Practice</a>
   <a href="notes.html">Notes</a>
   <a href="quiz.html">Quiz</a>
+  <a href="mistakes.html">Mistakes</a>
   <a href="cards.html">Cards</a>
   <a href="coursework.html">Coursework</a>
+  <a href="resources.html">Resources</a>
   <a href="author.html">Upload</a>
   <span id="auth-slot"></span><a href="../index.html" style="margin-left:auto">← Study site</a>
 </nav>
 <main>
   <h2>Upload your own content</h2>
-  <p class="muted">Add your own quiz banks and flashcard decks as JSON files — or write and edit quiz items directly with the item editor below (format: <a href="../docs/AUTHORING.md" target="_blank">docs/AUTHORING.md</a> — templates in <code>library/templates/</code>). Uploaded content is stored in this browser and appears automatically in the Quiz and Cards pickers.</p>
+  <p class="muted">Five sections: ask an AI to write a practice set for a topic (1), upload or paste JSON with a check-first preview (2), manage what you've added (3), edit quiz items by hand (4), back everything up (5). Format: <a href="../docs/AUTHORING.md" target="_blank">docs/AUTHORING.md</a> — templates in <code>library/templates/</code>. Uploaded content is stored in this browser and appears automatically in the Quiz and Cards pickers; resources you collect live on their own <a href="resources.html">Resources</a> page.</p>
 
   <section class="card">
-    <h3>1 · Upload a JSON file</h3>
-    <div class="up-zone" id="drop-zone">
-      <p><input type="file" id="file-input" accept=".json,application/json" multiple></p>
-      <p class="muted">or drop .json files here · or paste JSON below and press Add</p>
-      <textarea id="paste-box" placeholder='{"subject": "chemistry-hl", "topic": "...", "topicLabel": "...", "items": [ ... ] }'></textarea>
-      <p><button id="paste-add" class="btn">Add pasted JSON</button></p>
+    <h3>1 · Ask an AI for a practice set</h3>
+    <p class="muted">Pick a topic, copy the ready-made prompt and send it to your AI — then paste the JSON it returns into section 2 below, where it is checked, shown for editing and imported in one batch. Nothing is sent anywhere by this site: you copy and paste yourself. The same prompt is available on every topic note ("Write a practice set to import" in its Ask an AI box).</p>
+    <div class="ai-grid">
+      <div><label class="ed-lbl" for="ai-subject">Subject</label><select id="ai-subject"></select></div>
+      <div><label class="ed-lbl" for="ai-topic">Topic</label><select id="ai-topic"></select></div>
     </div>
-    <div id="upload-results"></div>
+    <div id="ai-card"><p class="muted">Loading topics…</p></div>
   </section>
 
   <section class="card">
-    <h3>2 · Manage uploaded content</h3>
+    <h3>2 · Upload a JSON file</h3>
+    <div class="up-zone" id="drop-zone">
+      <p><input type="file" id="file-input" accept=".json,application/json" multiple></p>
+      <p class="muted">or drop .json files here · or paste JSON below and press Preview (files upload straight away; pasted banks open a check-first preview)</p>
+      <textarea id="paste-box" placeholder='{"subject": "chemistry-hl", "topic": "...", "topicLabel": "...", "items": [ ... ] }'></textarea>
+      <p><button id="paste-add" class="btn">Preview pasted JSON</button></p>
+    </div>
+    <div id="upload-results"></div>
+    <div id="preview-panel" hidden>
+      <h3>Preview — check before importing</h3>
+      <p class="muted">Fix anything that looks wrong (the validator re-checks as you type), remove items you don't want, then import the whole set in one batch. Nothing is saved until you press Import.</p>
+      <div class="ed-grid">
+        <div><label class="ed-lbl" for="pv-name">Bank name (must be unique, ends in .json)</label><input id="pv-name" type="text"></div>
+        <div><label class="ed-lbl" for="pv-label">Label shown in the Quiz picker</label><input id="pv-label" type="text"></div>
+      </div>
+      <p class="muted" id="pv-summary"></p>
+      <div id="pv-items"></div>
+      <p class="muted" id="pv-more" hidden></p>
+      <p id="pv-status" class="pv-status" role="status"></p>
+      <p><button id="pv-import" class="btn primary">Import bank</button> <button id="pv-cancel" class="btn" type="button">Discard</button></p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h3>3 · Manage uploaded content</h3>
     <div id="manage-quiz"><h3 class="count">Quiz banks</h3><div id="quiz-list"><p class="muted">None uploaded yet.</p></div></div>
     <div id="manage-cards"><h3 class="count">Flashcard decks</h3><div id="deck-list"><p class="muted">None uploaded yet.</p></div></div>
   </section>
 
   <section class="card">
-    <h3>3 · Edit quiz items</h3>
+    <h3>4 · Edit quiz items</h3>
     <p class="muted">Add, edit and delete items in your own quiz banks without editing JSON — pick a bank below, or create a new one and start writing. Changes appear immediately in the Quiz picker (and sync when logged in).</p>
     <div class="ed-grid">
       <div><label class="ed-lbl" for="ed-bank">Bank</label><select id="ed-bank"></select></div>
@@ -69,6 +115,8 @@
         <div><label class="ed-lbl" for="ed-nb-subject">Subject (e.g. chemistry-hl)</label><input id="ed-nb-subject" type="text" list="ed-subjects"></div>
         <div><label class="ed-lbl" for="ed-nb-topic">Topic key</label><input id="ed-nb-topic" type="text" placeholder="enzymes-metabolism"></div>
         <div><label class="ed-lbl" for="ed-nb-topiclabel">Topic label (shown in pickers)</label><input id="ed-nb-topiclabel" type="text"></div>
+        <div><label class="ed-lbl" for="ed-nb-set">Set name (optional)</label><input id="ed-nb-set" type="text" placeholder="Practice set 1"></div>
+        <div><label class="ed-lbl" for="ed-nb-setorder">Set order (optional)</label><input id="ed-nb-setorder" type="number" step="1" placeholder="1"></div>
       </div>
       <datalist id="ed-subjects"><option value="biology-hl"></option><option value="chemistry-hl"></option><option value="math-aa-sl"></option></datalist>
       <button id="ed-nb-create" class="btn primary">Create bank</button>
@@ -83,6 +131,13 @@
           <label><input type="radio" name="ed-fmt" value="mcq" checked> mcq</label>
           <label><input type="radio" name="ed-fmt" value="written"> written</label>
         </div>
+        <div><label class="ed-lbl" for="ed-difficulty">Difficulty (optional)</label>
+          <select id="ed-difficulty" style="width:100%;padding:.4rem;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff">
+            <option value="">Unrated</option>
+            <option value="easy">Easy</option>
+            <option value="standard">Standard</option>
+            <option value="hard">Hard</option>
+          </select></div>
       </div>
       <label class="ed-lbl" for="ed-stem">Stem</label>
       <textarea id="ed-stem" rows="2"></textarea>
@@ -117,7 +172,7 @@
   </section>
 
   <section class="card">
-    <h3>4 · Backup &amp; move between devices</h3>
+    <h3>5 · Backup &amp; move between devices</h3>
     <p class="muted">Logged in, everything syncs on its own. The backup file holds all progress and uploads in this browser (quiz, cards, missed questions, checklists, lists, notes). Restoring shows what's in the file and <strong>merges</strong> it in by default, after saving a safety copy; older exports from this page still work.</p>
     <button id="export-btn" class="btn primary">Download full backup (JSON)</button>
     <label class="btn" for="import-file" style="margin-left:.5rem">Restore from file…</label><input type="file" id="import-file" accept=".json,application/json" style="display:none">
@@ -128,9 +183,12 @@
 </main>
 <footer>Private family use · exams <strong>May 2028</strong> · keep this app and its content non-public</footer>
 
-<script src="../assets/store.js?v=7"></script>
+<script src="../assets/store.js?v=8"></script>
 <script src="../assets/profile.js?v=1"></script>
-<script src="../assets/backup.js?v=4"></script>
+<script src="../assets/backup.js?v=6"></script>
+<script src="../assets/bank-schema.js?v=1"></script>
+<script src="../assets/ai-prompt.js?v=5"></script>
+<script src="../assets/bank-import.js?v=1"></script>
 <script>
 (function () {
   "use strict";
@@ -141,6 +199,10 @@
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} try { if (window.Auth && window.Auth.queueSync) window.Auth.queueSync(); } catch (e) {} }
   };
   const QBANKS = "q-userbanks", FDECKS = "fc-userdecks";
+  // NB.bankSchema (assets/bank-schema.js) holds the shared validators + vocabulary;
+  // null only on a stale cached page that didn't load it — uploads then fail with
+  // a "reload" hint instead of saving unvalidated content.
+  const BS = (window.NB && window.NB.bankSchema) || null;
 
   function result(ok, msg) {
     const d = document.createElement("div");
@@ -150,36 +212,25 @@
   }
 
   function validateQuizBank(bank) {
-    if (typeof bank.subject !== "string" || !bank.subject.trim()) return "missing 'subject' (e.g. chemistry-hl)";
-    if (!Array.isArray(bank.items) || bank.items.length === 0) return "missing or empty 'items' array";
-    const ids = new Set();
-    for (const it of bank.items) {
-      if (!it.id) return "an item is missing 'id'";
-      if (ids.has(it.id)) return "duplicate id '" + it.id + "' (ids must be unique within the file)";
-      ids.add(it.id);
-      if (!it.stem) return "item '" + it.id + "': missing 'stem'";
-      if (it.format === "mcq") {
-        if (!Array.isArray(it.choices) || it.choices.length < 2) return "item '" + it.id + "': needs at least 2 choices";
-        if (!Number.isInteger(it.answer) || it.answer < 0 || it.answer >= it.choices.length) return "item '" + it.id + "': 'answer' must be the 0-based index of the correct choice";
-      } else if (it.format === "written") {
-        if (!it.marks || !Array.isArray(it.markscheme) || !it.markscheme.length) return "item '" + it.id + "': written items need 'marks' and a markscheme array";
-      } else return "item '" + it.id + "': format must be 'mcq' or 'written'";
-    }
-    return null;
+    return BS ? BS.validateQuizBank(bank) : "the page is stale — reload it so the bank validator (assets/bank-schema.js) loads, then try again";
   }
 
   function validateDeck(deck, existingIds) {
-    if (typeof deck.subject !== "string" || !deck.subject.trim()) return "missing 'subject' (e.g. biology-hl)";
-    if (typeof deck.topic !== "string" || !deck.topic.trim()) return "missing 'topic' (must match the quiz bank's topic key)";
-    if (!Array.isArray(deck.cards) || deck.cards.length === 0) return "missing or empty 'cards' array";
-    for (const c of deck.cards) {
-      if (!c.id) return "a card is missing 'id'";
-      if (existingIds.has(c.id)) return "card id '" + c.id + "' already exists in another deck — make ids globally unique (e.g. prefix them)";
-      if (!c.front || !c.back) return "card '" + c.id + "': 'front' and 'back' are both required";
-      if (c.type && c.type !== "qa" && c.type !== "term") return "card '" + c.id + "': type must be 'qa' or 'term'";
-      existingIds.add(c.id);
+    return BS ? BS.validateDeck(deck, existingIds) : "the page is stale — reload it so the bank validator (assets/bank-schema.js) loads, then try again";
+  }
+
+  // Advisory set-name suggestion for the topic just uploaded into (never renames
+  // anything). banks is the stored list INCLUDING the new entry; it is excluded here.
+  function setSuggestion(data, banks, entry) {
+    if (!BS) return "";
+    const topic = data.topic || "(none)";
+    const names = banks.filter(b => b !== entry && b.subject === data.subject && (b.topic || "(none)") === topic)
+      .map(b => b.set || b.label).filter(Boolean);
+    if (!data.set && names.length) return " Suggested next set name for this topic: " + BS.nextSetName(names, topic);
+    if (data.set && names.indexOf(data.set) >= 0) {
+      return " A set called \"" + data.set + "\" already exists in this topic — suggested next name: " + BS.nextSetName(names.filter(n => n !== data.set), topic);
     }
-    return null;
+    return "";
   }
 
   function existingFlashcardIds() {
@@ -210,8 +261,10 @@
       if (!entry.label) entry.label = data.topicLabel || sourceName;
       if (!entry.subjectLabel) entry.subjectLabel = data.subject;
       banks.push(entry);
-      if (store.set(QBANKS, banks) === false) return result(false, sourceName + ": storage is full — the bank could not be saved. Download a full backup (section 4), delete some uploaded banks above, then try again.");
-      result(true, sourceName + ": quiz bank saved (" + data.items.length + " items, subject " + data.subject + ") — it now appears in the Quiz picker.");
+      if (store.set(QBANKS, banks) === false) return result(false, sourceName + ": storage is full — the bank could not be saved. Download a full backup (section 5), delete some uploaded banks above, then try again.");
+      const topic = data.topic || "(none)";
+      const setName = data.set || entry.label;
+      result(true, sourceName + ": saved — " + data.items.length + " questions · topic \"" + (data.topicLabel || data.topic || "(none)") + "\" · set \"" + setName + "\"" + setSuggestion(data, banks, entry));
       renderManage();
     } else if (Array.isArray(data.cards)) {
       existingFlashcardIds().then(ids => {
@@ -222,7 +275,7 @@
         const entry = Object.assign({}, data, { name: sourceName, uploaded: new Date().toISOString().slice(0, 10) });
         if (!entry.subjectLabel) entry.subjectLabel = data.subject;
         decks.push(entry);
-        if (store.set(FDECKS, decks) === false) return result(false, sourceName + ": storage is full — the deck could not be saved. Download a full backup (section 4), delete some uploaded decks above, then try again.");
+        if (store.set(FDECKS, decks) === false) return result(false, sourceName + ": storage is full — the deck could not be saved. Download a full backup (section 5), delete some uploaded decks above, then try again.");
         result(true, sourceName + ": flashcard deck saved (" + data.cards.length + " cards, subject " + data.subject + ") — it now appears in the Cards picker.");
         renderManage();
       });
@@ -275,10 +328,191 @@
     });
   });
 
-  // paste path
-  document.getElementById("paste-add").addEventListener("click", () => {
-    processContent(document.getElementById("paste-box").value, "pasted JSON");
+  // paste path — staged import: parse + validate + preview/edit (assets/bank-import.js)
+  // BEFORE anything is saved. File uploads keep the direct path above (any size, no
+  // per-item editors); pasted AI banks are exactly what the preview is for.
+  const BI = (window.NB && window.NB.bankImport) || null;
+  let staged = null;
+
+  function closePreview() {
+    staged = null;
+    document.getElementById("preview-panel").hidden = true;
+  }
+
+  function pvStatus(err) {
+    const st = document.getElementById("pv-status");
+    if (err) { st.textContent = err; st.className = "pv-status bad"; return; }
+    const bankErr = BI.validate(staged);
+    if (bankErr) { st.textContent = bankErr; st.className = "pv-status bad"; return; }
+    const n = staged.data.items.length;
+    st.textContent = "Ready to import — " + n + " question" + (n === 1 ? "" : "s") + " will be saved as one bank.";
+    st.className = "pv-status ok";
+  }
+
+  function pvRow(it, i) {
+    const head = `<div class="pv-head"><strong>${i + 1}</strong> <code>${esc(it.id)}</code> <span class="chip">${esc(it.format === "written" ? "written · " + (it.marks || "?") + (it.marks === 1 ? " mark" : " marks") : "MCQ")}</span><button type="button" class="fc-mini pv-remove" data-i="${i}">Remove</button></div>` +
+      `<label class="pv-l">Question<textarea class="pv-stem" rows="2">${esc(it.stem || "")}</textarea></label>`;
+    let body;
+    if (it.format === "mcq") {
+      if ((it.choices || []).length > 4) {
+        body = `<p class="muted">This item has ${it.choices.length} choices — the preview edits items with up to 4. Import it and edit afterwards in the item editor.</p>`;
+      } else {
+        body = `<div class="pv-choices">` + (it.choices || []).map((c, j) =>
+          `<label class="pv-choice"><input type="radio" name="pv-a-${i}" data-i="${i}" value="${j}"${it.answer === j ? " checked" : ""}><input type="text" class="pv-c" data-j="${j}" value="${esc(c)}" aria-label="Choice ${j + 1}"></label>`).join("") +
+          `</div><label class="pv-l">Note (why the answer is right)<textarea class="pv-note" rows="2">${esc(it.note || "")}</textarea></label>`;
+      }
+    } else {
+      body = `<label class="pv-l">Marks<input type="number" class="pv-marks" min="1" value="${esc(String(it.marks || ""))}"></label>` +
+        `<label class="pv-l">Markscheme (one marking point per line)<textarea class="pv-ms" rows="3">${esc((it.markscheme || []).join("\n"))}</textarea></label>` +
+        `<label class="pv-l">Tactic (optional)<textarea class="pv-tactic" rows="2">${esc(it.tactic || "")}</textarea></label>`;
+    }
+    return `<div class="pv-item" data-pv="${i}">${head}${body}</div>`;
+  }
+
+  // one delegated listener pair for the whole preview list (attached once at init —
+  // renderPreview() runs again after every remove/re-stage and must not re-bind)
+  function pvApplyRow(i) {
+    const box = document.getElementById("pv-items");
+    const row = box.querySelector('.pv-item[data-pv="' + i + '"]');
+    if (!row || !staged) return;
+    const item = staged.data.items[i];
+    const patch = { stem: row.querySelector(".pv-stem").value };
+    const noteEl = row.querySelector(".pv-note");
+    if (noteEl) patch.note = noteEl.value;
+    if (item.format === "mcq" && row.querySelector(".pv-c")) {
+      patch.choices = [...row.querySelectorAll(".pv-c")].sort((a, b) => (parseInt(a.dataset.j, 10) || 0) - (parseInt(b.dataset.j, 10) || 0)).map(c => c.value);
+      const a = row.querySelector("input[type=radio]:checked");
+      if (a) patch.answer = a.value;
+    } else if (item.format === "written") {
+      const m = row.querySelector(".pv-marks");
+      if (m) patch.marks = m.value;
+      const ms = row.querySelector(".pv-ms");
+      if (ms) patch.markscheme = ms.value;
+      const tc = row.querySelector(".pv-tactic");
+      if (tc) patch.tactic = tc.value;
+    }
+    const r = BI.editItem(staged, i, patch);
+    pvStatus(r.error);
+  }
+
+  function renderPreview() {
+    const panel = document.getElementById("preview-panel");
+    panel.hidden = false;
+    document.getElementById("pv-name").value = staged.name;
+    document.getElementById("pv-label").value = staged.data.topicLabel || "";
+    const items = staged.data.items;
+    const nMcq = items.filter(i => i.format === "mcq").length;
+    // textContent is inert — no esc() here (it would double-escape)
+    document.getElementById("pv-summary").textContent =
+      staged.data.subject + " · " + (staged.data.topicLabel || staged.data.topic || "(no topic)") +
+      " · " + items.length + " question" + (items.length === 1 ? "" : "s") + " (" + nMcq + " MCQ, " + (items.length - nMcq) + " written)";
+    const box = document.getElementById("pv-items");
+    box.innerHTML = items.slice(0, BI.MAX_EDIT_ITEMS).map(pvRow).join("");
+    const more = document.getElementById("pv-more");
+    more.hidden = items.length <= BI.MAX_EDIT_ITEMS;
+    if (!more.hidden) more.textContent = "…and " + (items.length - BI.MAX_EDIT_ITEMS) + " more items, imported as-is — edit them afterwards in the item editor (section 4).";
+    box.querySelectorAll(".pv-remove").forEach(b => b.addEventListener("click", () => {
+      const r = BI.removeItem(staged, parseInt(b.dataset.i, 10));
+      if (r.error) { pvStatus(r.error); return; }
+      renderPreview();
+    }));
+    pvStatus(null);
+  }
+
+  document.getElementById("pv-name").addEventListener("input", () => { if (staged) staged.name = document.getElementById("pv-name").value.trim(); });
+  // delegated edit wiring for the preview rows — attached ONCE here (renderPreview
+  // re-runs after every remove/re-stage and must not stack listeners on #pv-items)
+  document.getElementById("pv-items").addEventListener("input", (e) => {
+    const item = e.target.closest(".pv-item");
+    if (!item) return;
+    const i = parseInt(item.dataset.pv, 10);
+    if (!isNaN(i)) pvApplyRow(i);
   });
+  document.getElementById("pv-items").addEventListener("change", (e) => {
+    if (e.target.type !== "radio") return;
+    const item = e.target.closest(".pv-item");
+    if (!item) return;
+    const i = parseInt(item.dataset.pv, 10);
+    if (!isNaN(i)) pvApplyRow(i);
+  });
+  document.getElementById("pv-label").addEventListener("input", () => { if (staged) staged.data.topicLabel = document.getElementById("pv-label").value.trim(); });
+  document.getElementById("pv-cancel").addEventListener("click", closePreview);
+  document.getElementById("pv-import").addEventListener("click", () => {
+    if (!staged) return;
+    const name = document.getElementById("pv-name").value.trim() || staged.name;
+    const banks = store.get(QBANKS, []);
+    if (banks.some(b => b.name === name)) { pvStatus('"' + name + '" already exists — pick another bank name above.'); return; }
+    staged.name = name;
+    const res = BI.finalize(staged);
+    if (res.error) { pvStatus(res.error); return; }
+    banks.push(res.entry);
+    if (store.set(QBANKS, banks) === false) { pvStatus("storage is full — the bank could not be saved. Download a full backup (section 5), delete some uploaded banks, then try again."); return; }
+    result(true, res.entry.name + ": imported — " + res.entry.items.length + " questions · topic \"" + (res.entry.topicLabel || res.entry.topic || "(none)") + "\"" + setSuggestion(res.entry, banks, res.entry));
+    closePreview();
+    document.getElementById("paste-box").value = "";
+    renderManage();
+  });
+
+  document.getElementById("paste-add").addEventListener("click", () => {
+    const text = document.getElementById("paste-box").value;
+    if (!BI) return processContent(text, "pasted JSON"); // stale cached page: fall back to the direct import
+    const res = BI.stage(text, store.get(QBANKS, []).map(b => b.name));
+    if (res.error) return result(false, "pasted JSON: " + res.error);
+    staged = res.staged;
+    renderPreview();
+  });
+
+  // ── section 1: Ask an AI for a practice set (assets/ai-prompt.js, bankgen mode) ──
+  function initAiCard() {
+    const selS = document.getElementById("ai-subject"), selT = document.getElementById("ai-topic"), card = document.getElementById("ai-card");
+    if (!selS || !selT || !card) return;
+    if (!(window.NB && NB.aiPrompt && typeof NB.aiPrompt.render === "function")) {
+      card.innerHTML = '<p class="muted">The prompt builder (assets/ai-prompt.js) did not load — reload the page. The prompt is also on every topic note.</p>';
+      return;
+    }
+    const base = location.pathname.includes("/app/") ? "../" : "";
+    const allowed = (NB.SUBJECTS || []).filter(s => !(NB.profile && NB.profile.hides(s.id)));
+    selS.innerHTML = '<option value=""></option>' + allowed.map(s => `<option value="${esc(s.id)}">${esc(s.label)}</option>`).join("");
+    let notes = null;
+    const topicKey = (f) => String(f).split("/").pop().replace(/\.json$/i, "");
+    const topics = (subj) => (notes || []).filter(n => n.subject === subj && !(NB.profile && NB.profile.hides(n.subject)));
+    function drawCard() {
+      card.textContent = "";
+      const entry = topics(selS.value).find(n => topicKey(n.file) === selT.value);
+      if (!entry) { card.innerHTML = '<p class="muted">Pick a subject and a topic that has topic notes (see also: the prompt on any topic note).</p>'; return; }
+      const note = { subject: entry.subject, id: entry.id, code: entry.code, title: entry.title, themeLabel: entry.themeLabel, hlOnly: entry.hlOnly, topicKey: topicKey(entry.file) };
+      card.appendChild(NB.aiPrompt.render(note, {
+        modes: ["bankgen"],
+        heading: "Copy the prompt & open your AI",
+        help: "Copies the filled prompt, then opens the assistant in a new tab — paste with Ctrl+V, send it, and copy the JSON code block it returns. Nothing is sent by this site itself.",
+      }));
+    }
+    function fillTopics() {
+      const list = topics(selS.value);
+      selT.innerHTML = list.length
+        ? list.map(n => `<option value="${esc(topicKey(n.file))}">${esc((n.code ? n.code + " " : "") + n.title)}</option>`).join("")
+        : '<option value="">(this subject has no topic notes yet)</option>';
+      drawCard();
+    }
+    selS.addEventListener("change", fillTopics);
+    selT.addEventListener("change", drawCard);
+    fetch(base + "library/topic-notes/manifest.json", { cache: "no-store" })
+      .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(manifest => {
+        notes = manifest.notes || [];
+        // deep links (from a resource's "Make questions…" link): ?ai-subject=…&ai-topic=…
+        const q = new URLSearchParams(location.search);
+        const qs = q.get("ai-subject"), qt = q.get("ai-topic");
+        if (qs && allowed.some(s => s.id === qs)) selS.value = qs;
+        fillTopics();
+        // match by option value (no hand-built attribute selector to escape)
+        if (qt && [...selT.options].some(o => o.value === qt)) selT.value = qt;
+        drawCard();
+      })
+      .catch(() => {
+        card.innerHTML = '<p class="muted">Could not load the topic list — use the "Write a practice set to import" button on any topic note (Notes page) instead.</p>';
+      });
+  }
 
   // export / import
   function exportBank(bank) {
@@ -381,6 +615,8 @@
     document.getElementById("ed-stem").value = item.stem || "";
     const written = item.format === "written";
     document.querySelector(`input[name="ed-fmt"][value="${written ? "written" : "mcq"}"]`).checked = true;
+    // difficulty only pre-fills for a valid stored value; "" means unrated/absent
+    document.getElementById("ed-difficulty").value = BS && BS.DIFFICULTIES.indexOf(item.difficulty) >= 0 ? item.difficulty : "";
     const choices = item.choices || [];
     for (let c = 0; c < 4; c++) document.getElementById("ed-c" + c).value = choices[c] || "";
     const ans = written || !Number.isInteger(item.answer) || item.answer < 0 || item.answer > 3 ? 0 : item.answer;
@@ -412,6 +648,9 @@
     if (!bank) return;
     const fmt = document.querySelector('input[name="ed-fmt"]:checked').value;
     const item = { id: document.getElementById("ed-id").value.trim(), format: fmt, stem: document.getElementById("ed-stem").value.trim() };
+    // difficulty is written only when chosen — the key stays absent (old item shape) for unrated
+    const diff = document.getElementById("ed-difficulty").value;
+    if (diff) item.difficulty = diff;
     if (fmt === "mcq") {
       const raw = [0, 1, 2, 3].map(c => document.getElementById("ed-c" + c).value.trim());
       const marked = parseInt(document.querySelector('input[name="ed-answer"]:checked').value, 10);
@@ -433,7 +672,7 @@
     const err = validateQuizBank(cand);
     if (err) { alert("Cannot save item: " + err); return; }
     bank.items = cand.items;
-    if (store.set(QBANKS, banks) === false) { alert("Storage is full — the change could not be saved. Download a full backup (section 4) and delete some uploaded banks, then try again."); return; }
+    if (store.set(QBANKS, banks) === false) { alert("Storage is full — the change could not be saved. Download a full backup (section 5) and delete some uploaded banks, then try again."); return; }
     renderManage();
   });
 
@@ -449,19 +688,31 @@
     const topic = document.getElementById("ed-nb-topic").value.trim();
     const topicLabel = document.getElementById("ed-nb-topiclabel").value.trim();
     if (!subject || !topic || !topicLabel) { alert("Subject, topic and topic label are all required."); return; }
+    const set = document.getElementById("ed-nb-set").value.trim();
+    const setOrderRaw = document.getElementById("ed-nb-setorder").value.trim();
+    const setOrderNum = Number(setOrderRaw);
+    // Number() (not parseInt): "3.5" must be rejected, not silently truncated to 3
+    if (setOrderRaw !== "" && (!Number.isFinite(setOrderNum) || !Number.isInteger(setOrderNum))) { alert("Set order must be a whole number (or left empty)."); return; }
+    const setOrder = setOrderRaw === "" ? null : setOrderNum;
     const name = "created-" + topic + ".json";
     const banks = store.get(QBANKS, []);
     if (banks.some(b => b.name === name)) { alert(name + " already exists — delete it first or pick a different topic key."); return; }
-    banks.push({ subject: subject, topic: topic, topicLabel: topicLabel, items: [], name: name, uploaded: new Date().toISOString().slice(0, 10), label: topicLabel, subjectLabel: subject });
+    // set/setOrder land in the created bank JSON only when actually filled in
+    banks.push(Object.assign(
+      { subject: subject, topic: topic, topicLabel: topicLabel, items: [], name: name, uploaded: new Date().toISOString().slice(0, 10), label: topicLabel, subjectLabel: subject },
+      set ? { set: set } : {},
+      Number.isInteger(setOrder) ? { setOrder: setOrder } : {}
+    ));
     store.set(QBANKS, banks);
     document.getElementById("ed-newbank-form").style.display = "none";
-    ["ed-nb-subject", "ed-nb-topic", "ed-nb-topiclabel"].forEach(id => { document.getElementById(id).value = ""; });
+    ["ed-nb-subject", "ed-nb-topic", "ed-nb-topiclabel", "ed-nb-set", "ed-nb-setorder"].forEach(id => { document.getElementById(id).value = ""; });
     renderManage();
     document.getElementById("ed-bank").value = banks.length - 1;
     renderEditorList();
   });
 
   renderManage();
+  initAiCard();
 })();
 </script>
 <script src="../assets/auth.js?v=10"></script>

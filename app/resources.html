@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- security: see server/deploy-notes.md "Security headers" -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://rametric.com https://www.rametric.com http://localhost:* http://127.0.0.1:*; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Resources — Practice</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+.btn{display:inline-block;padding:.45rem .9rem;border:1px solid var(--line);border-radius:10px;background:#fff;font:inherit;cursor:pointer;color:var(--ink);text-decoration:none;margin:.15rem .25rem .15rem 0}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.res-filters{display:flex;flex-wrap:wrap;gap:.7rem;align-items:flex-end;margin:.5rem 0 .8rem}
+.res-filters label{display:block;font-size:.85rem;color:var(--muted)}
+.res-filters select,.res-filters input{display:block;margin-top:.2rem;padding:.4rem;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.res-q-label input{width:220px}
+.res-add{border:1px solid var(--line);border-radius:10px;background:#fff;padding:.6rem .8rem;margin:.4rem 0 1rem}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.5rem .9rem}
+.res-grid label,.res-editor label{display:block;font-size:.85rem;color:var(--muted);margin:.25rem 0}
+.res-grid input,.res-grid select,.res-editor input,.res-editor select,.res-editor textarea{display:block;width:100%;box-sizing:border-box;margin-top:.2rem;padding:.4rem;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+.res-editor textarea,.res-grid input[type=checkbox]{width:auto}
+.res-url-label{grid-column:1/-1}
+.res-row{border:1px solid var(--line);border-radius:10px;background:#fff;padding:.6rem .8rem;margin:.5rem 0}
+.res-head{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;margin-bottom:.15rem}
+.res-link{font-weight:600;font-size:.98rem;color:var(--accent);text-decoration:none}
+.res-link:hover{text-decoration:underline}
+.res-comment{font-size:.92rem;margin-top:.2rem;white-space:pre-line}
+.res-actions{margin-top:.45rem}
+.res-editor{border-top:1px dashed var(--line);margin-top:.45rem;padding-top:.45rem}
+.res-editor textarea{resize:vertical}
+.res-msg{color:#b3261e;font-size:.9rem}
+@media (max-width:600px){main{padding:.8rem .6rem 2rem}.res-q-label input{width:100%}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="brand">Practice</a>
+  <a href="notes.html">Notes</a>
+  <a href="quiz.html">Quiz</a>
+  <a href="mistakes.html">Mistakes</a>
+  <a href="cards.html">Cards</a>
+  <a href="coursework.html">Coursework</a>
+  <a href="resources.html" class="active">Resources</a>
+  <a href="author.html">Upload</a>
+  <span id="auth-slot"></span><a href="../index.html" style="margin-left:auto">← Study site</a>
+</nav>
+<main>
+  <h2>My resources</h2>
+  <p class="muted">Links you collect yourself, tagged by subject and topic — the reading and watching that surrounds the <a href="quiz.html">quiz</a>/<a href="cards.html">cards</a> loop without feeding it. The same list also appears on each <a href="notes.html">topic note</a>'s "My resources" box when a resource is linked to that topic.</p>
+  <section class="card" id="resources-panel"><p class="muted">Loading…</p></section>
+</main>
+<footer>Private family use · exams <strong>May 2028</strong> · keep this app and its content non-public</footer>
+<script src="../assets/store.js?v=8"></script>
+<script src="../assets/profile.js?v=1"></script>
+<script src="../assets/resources.js?v=1"></script>
+<script src="../assets/auth.js?v=10"></script>
+</body>
+</html>

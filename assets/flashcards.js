@@ -68,12 +68,13 @@
         const res = await fetch(PATH_BASE + r.file + "?cb=" + Date.now(), { cache: "no-store" });
         if (!res.ok) throw new Error(res.status + " " + r.file);
         const d = await res.json();
-        return { id: String(r.file).split("/").pop().replace(/\.json$/i, ""), subject: d.subject || r.subject, subjectLabel: r.subjectLabel, topic: d.topic, topicLabel: d.topicLabel, cards: d.cards || [] };
+        // set/setOrder ride along for the topic picker's set info + ordering (both optional)
+        return { id: String(r.file).split("/").pop().replace(/\.json$/i, ""), subject: d.subject || r.subject, subjectLabel: r.subjectLabel, topic: d.topic, topicLabel: d.topicLabel, set: d.set, setOrder: d.setOrder, cards: d.cards || [] };
       } catch (e) { console.warn("deck failed:", r.file, e); return null; }
     }));
     loaded.forEach(d => { if (d) DECKS.push(d); });
     store.get("fc-userdecks", []).forEach(ud => {
-      DECKS.push({ subject: ud.subject, subjectLabel: ud.subjectLabel || ud.subject, topic: ud.topic, topicLabel: ud.topicLabel || ud.topic, cards: ud.cards || [] });
+      DECKS.push({ subject: ud.subject, subjectLabel: ud.subjectLabel || ud.subject, topic: ud.topic, topicLabel: ud.topicLabel || ud.topic, set: ud.set, setOrder: ud.setOrder, cards: ud.cards || [] });
     });
     rebuild();
   }
@@ -396,7 +397,8 @@
   // dark rules never applied. Attribute names are case-insensitive in HTML,
   // so setAttribute("data-fcTheme", …) matches the selector.
   function applyTheme() {
-    const saved = store.get("fc-theme", null) || (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    // light is the site-wide default by design — dark applies only after toggling (stored per profile)
+    const saved = store.get("fc-theme", null) || "light";
     document.documentElement.setAttribute("data-fcTheme", saved);
     const btn = $("fc-theme-btn");
     if (btn) btn.textContent = saved === "dark" ? "Light mode" : "Dark mode";
@@ -436,6 +438,7 @@
     fillTopics();
     $("fc-start").addEventListener("click", startSession);
     $("fc-open-editor").addEventListener("click", () => { $("setup").style.display = "none"; $("editor").style.display = ""; renderEditor(); });
+    $("fc-runner-edit").addEventListener("click", () => { $("runner").style.display = "none"; $("editor").style.display = ""; renderEditor(); });
     // the editor's card list must follow the Deck dropdown (it previously kept
     // showing the old deck's cards until the next save/delete — looked frozen)
     if ($("ed-deck")) $("ed-deck").addEventListener("change", renderEditorList);
@@ -447,13 +450,35 @@
     applyTheme();
     renderProgress();
   }
+  // Topic dropdown: decks already pool per subject::topic in groups(), so the
+  // options carry real card counts (CARDS is post retired/delete/edit filtering)
+  // plus the deck set names when the decks of a topic carry one. Values stay
+  // "subject::topic" — buildQueue is untouched. Topics order by setOrder only
+  // when every visible group has one (else the load order is kept).
   function fillTopics() {
     const subj = $("fc-subject").value;
     const topic = $("fc-topic");
+    const prev = topic.value;
     topic.innerHTML = '<option value="*">All topics in this selection</option>';
-    DECKS.filter(d => subj === "*" || d.subject === subj).forEach(d => {
-      const o = document.createElement("option"); o.value = d.subject + "::" + d.topic; o.textContent = d.subjectLabel + " \u2014 " + d.topicLabel; topic.appendChild(o);
+    const gs = groups().filter(g => subj === "*" || g.subject === subj);
+    const groupOrder = (g) => {
+      const decks = DECKS.filter(d => d.subject === g.subject && d.topic === g.topic);
+      return decks.length && decks.every(d => d.setOrder != null) ? decks[0].setOrder : null;
+    };
+    const ordered = gs.every(g => groupOrder(g) != null) ? gs.slice().sort((a, b) => groupOrder(a) - groupOrder(b)) : gs;
+    ordered.forEach(g => {
+      const decks = DECKS.filter(d => d.subject === g.subject && d.topic === g.topic);
+      const sets = [...new Set(decks.map(d => d.set).filter(Boolean))];
+      let suffix = "";
+      if (sets.length === 1) suffix = " — " + sets[0];
+      else if (sets.length > 1) suffix = " (sets: " + sets.join(", ") + ")";
+      const o = document.createElement("option");
+      o.value = g.subject + "::" + g.topic;
+      o.textContent = g.subjectLabel + " — " + g.topicLabel + " · " + g.total + " cards" + suffix;
+      topic.appendChild(o);
     });
+    // keep the current selection across re-renders (subject change → new list → all)
+    topic.value = (prev && ordered.some(g => g.subject + "::" + g.topic === prev)) ? prev : "*";
   }
 
   function fromLink() {

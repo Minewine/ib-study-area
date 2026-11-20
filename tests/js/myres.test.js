@@ -47,3 +47,29 @@ test("backup: my-res is exported, unsafe or malformed links are dropped on resto
   const bad = b.NB.backup.parse(J({ format: "nevaib-backup", version: 3, keys: { "my-res": [] } }));
   assert.ok(!bad.keys || !bad.keys["my-res"], "wrong shape rejected");
 });
+
+// Page-level resources (no note; subject/topic/type/comment tags) share the key:
+// accepted on restore, tombstones need neither url nor label, junk still dropped.
+test("backup: tagged page-level resources restore; tombstone without url survives; tagged junk dropped", () => {
+  const mk2 = (data) => makeEnv({ storage: new FakeStorage(data) }).load("store.js").load("backup.js");
+  const good = {
+    subject: "biology-hl", topic: "a1-1", type: "video",
+    label: "Khan academy water", url: "https://example.org/water", comment: "good osmosis bit", t: 10,
+  };
+  const a = mk2({ "my-res": J({ p1: good }) });
+  const file = plain(a.NB.backup.collect());
+  assert.ok(file.keys["my-res"].p1, "tagged record exported");
+  file.keys["my-res"].badT1 = { subject: "chemistry-hl", label: "", url: "", deleted: true, t: 20 }; // tombstone: no url/label needed
+  file.keys["my-res"].badJ1 = { subject: "chemistry-hl", label: "no url", t: 21 };
+  file.keys["my-res"].badJ2 = { subject: "chemistry-hl", label: "js", url: "javascript:alert(1)", t: 22 };
+  file.keys["my-res"].badJ3 = { subject: "", label: "empty subject", url: "https://x", t: 23 };
+  file.keys["my-res"].badJ4 = { note: "bio-a1-1", comment: "x".repeat(501), label: "long comment", url: "https://x", t: 24 };
+  const b = mk2({});
+  const p = b.NB.backup.parse(J(file));
+  assert.equal(p.ok, true, p.errors.join("; "));
+  assert.ok(plain(p.warnings).some(w => /4 unreadable record.*my-res/.test(w)), "junk tagged records reported");
+  assert.equal(b.NB.backup.restore(p, "merge").ok, true);
+  const got = plain(b.NB.store.get("my-res"));
+  assert.deepEqual(Object.keys(got).sort(), ["badT1", "p1"], "tagged record + bare tombstone kept, junk dropped");
+  assert.equal(got.p1.comment, "good osmosis bit");
+});

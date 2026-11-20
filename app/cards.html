@@ -8,6 +8,8 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Cards — Practice</title>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="stylesheet" href="../assets/style.css">
 <style>
 :root{--fcbg:#f6f7f9;--fccard:#ffffff;--fctext:#1d2733;--fcmut:#5b6b7c;--fcline:#dfe4ea;--fcacc:#2c5fa8;--fcgood:#2e8b57;--fcwarn:#d99a1b;--fcbad:#c23b3b}
@@ -47,7 +49,8 @@ main{color:var(--fctext)}
 .btn.primary{background:var(--fcacc);color:#fff;border-color:var(--fcacc)}
 .btn:disabled{opacity:.5;cursor:default}
 #fc-error{color:var(--fcbad);font-size:.9rem;min-height:1.1rem}
-@media (max-width:560px){.fc-card{min-height:200px;padding:1.1rem}.fc-ratebtns{grid-template-columns:1fr}}
+#fc-runner-edit{float:right}
+@media (max-width:560px){.fc-card{min-height:200px;padding:1.1rem}.fc-ratebtns{grid-template-columns:1fr}#fc-runner-edit{float:none;margin:0 0 .5rem}}
 </style>
 </head>
 <body>
@@ -55,8 +58,10 @@ main{color:var(--fctext)}
   <a href="index.html" class="brand">Practice</a>
   <a href="notes.html">Notes</a>
   <a href="quiz.html">Quiz</a>
+  <a href="mistakes.html">Mistakes</a>
   <a href="cards.html">Cards</a>
   <a href="coursework.html">Coursework</a>
+  <a href="resources.html">Resources</a>
   <a href="author.html">Upload</a>
   <span id="auth-slot"></span><a href="../index.html" style="margin-left:auto">← Study site</a>
 </nav>
@@ -82,7 +87,8 @@ main{color:var(--fctext)}
     </div>
     <div id="fc-error"></div>
     <button id="fc-start" class="btn primary">Start session</button>
-    <button id="fc-open-editor" class="btn">Edit cards</button>
+    <button id="fc-open-editor" class="btn">Edit &amp; add cards</button>
+    <p class="muted" style="margin:.3rem 0 1rem">Opens the card editor. Your own cards are stored in this browser; deleting or editing a seeded card is kept as an override, so re-downloading decks never resurrects removed cards.</p>
     <h3>Backup / move between devices</h3>
     <p class="muted">Logged in, progress syncs on its own. A backup file holds everything in this browser — quiz and card progress, missed questions, checklists, lists and notes, uploads. Restoring <strong>merges</strong> it in (nothing here is lost unless you choose Replace), after saving a safety copy.</p>
     <button id="fc-export" class="btn">Download full backup</button>
@@ -96,6 +102,7 @@ main{color:var(--fctext)}
   </section>
 
   <section class="card" id="runner" style="display:none">
+    <button id="fc-runner-edit" class="btn fc-mini">Edit cards</button>
     <div class="muted" id="fc-progress"></div>
     <div class="muted" id="fc-topicline"></div>
     <div class="fc-card" id="fc-card"><div id="fc-front"></div><div id="fc-back"></div></div>
@@ -113,6 +120,7 @@ main{color:var(--fctext)}
 
   <section class="card" id="editor" style="display:none">
     <h3>Edit cards</h3>
+    <p class="muted" style="margin:.2rem 0 .8rem">Cards you create are yours and live in this browser. Changes to seeded cards are saved as overrides — deck files are never changed.</p>
     <div class="setup-grid">
       <div><label for="ed-deck">Deck</label><select id="ed-deck"></select></div>
     </div>
@@ -135,10 +143,10 @@ main{color:var(--fctext)}
   </section>
 </main>
 <footer>Private family study area · exams <strong>May 2028</strong> · keep this site and its library non-public</footer>
-<script src="../assets/store.js?v=7"></script>
+<script src="../assets/store.js?v=8"></script>
 <script src="../assets/profile.js?v=1"></script>
-<script src="../assets/backup.js?v=4"></script>
-<script src="../assets/flashcards.js?v=14"></script>
+<script src="../assets/backup.js?v=6"></script>
+<script src="../assets/flashcards.js?v=16"></script>
 <script>
 document.getElementById("fc-close-editor").addEventListener("click", () => {
   document.getElementById("editor").style.display = "none";
