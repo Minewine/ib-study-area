@@ -11,6 +11,10 @@ weekly parent summary, Ask an AI, security hardening) **plus per-student account
 data, subject profiles, and an admin account**. Nothing is pending deploy. See
 [docs/HANDOFF.md](docs/HANDOFF.md) and [docs/NEXT-STEPS.md](docs/NEXT-STEPS.md).
 
+Next focus (2026-11-20): flashcard/quiz **organisation improvements** based on student feedback —
+higher upload limits, folders/practice sets, a mistake log, math filtering, card editing, and
+Today-panel suggestions. Details in [docs/NEXT-STEPS.md](docs/NEXT-STEPS.md).
+
 ---
 
 ## What is built

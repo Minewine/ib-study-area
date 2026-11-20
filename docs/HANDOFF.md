@@ -1,6 +1,10 @@
 # NevaIB study area: handoff
 
-_Last updated 19 Nov 2026 (evening). Read this first, then [NEXT-STEPS.md](NEXT-STEPS.md); ideas for later are in [VISION.md](VISION.md)._
+_Last updated 20 Nov 2026. Read this first, then [NEXT-STEPS.md](NEXT-STEPS.md); ideas for later are in [VISION.md](VISION.md)._
+
+**Next focus (20 Nov 2026):** flashcard/quiz organisation improvements based on student feedback —
+higher upload limits, folders/practice sets, a mistake log, filtering maths items, card editing,
+and Today-panel suggestions. Details in [NEXT-STEPS.md](NEXT-STEPS.md).
 
 ## What the system is
 

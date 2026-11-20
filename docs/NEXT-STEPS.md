@@ -1,8 +1,11 @@
 # Next steps (prioritised)
 
-_Updated 19 Nov 2026 (evening). Background: [HANDOFF.md](HANDOFF.md). Longer-term ideas: [VISION.md](VISION.md)._
+_Updated 20 Nov 2026. Background: [HANDOFF.md](HANDOFF.md). Longer-term ideas: [VISION.md](VISION.md)._
 
 ## Status at a glance
+- **Next focus (20 Nov 2026):** flashcard/quiz **organisation improvements based on student feedback** —
+  higher upload limits, folders/practice sets, a mistake log, filtering maths items, card editing, and
+  Today-panel suggestions. This takes priority over new content batches for now.
 - **Done and live (18 Nov morning):** PRs #1–#4.
 - **Done and live (deployed 19 Nov evening):** PRs #1–#16 (topic notes, sync, Today panel, security hardening, weekly summary, exam practice, coursework planner, My resources, Ask an AI). `./dev.sh validate`, `./dev.sh test` and `./dev.sh e2e` pass on `main`.
 - **Done, merged into `main` (Nov 2026), included in the later deploy:** the private cross-check of 25 topic notes and **My resources** on every note (PR #14).
