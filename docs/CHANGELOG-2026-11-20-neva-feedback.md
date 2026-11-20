@@ -167,3 +167,33 @@ Phase 0 was committed first (`58f6539 fix: phase 0 — …`) and the favicon SVG
    (privacy / OAuth / cost) — revisit when she asks.
 5. Repo privacy: the GitHub repo is still **public** (NEXT-STEPS §2) — making it private remains
    an open, family-owned decision.
+
+## Consolidation verification (20 Nov 2026 smoke pass)
+
+`./dev.sh validate` (green, warnings only), `./dev.sh test` (196 JS tests + pytest + php lint),
+`./dev.sh e2e` (33 checks) — all pass. Browser smoke pass on a local dev server (logged-in):
+
+- Quiz picker: subject → topic → set cascade; taught-status labels + "Topics & teaching status"
+  panel render; **difficulty filter verified end-to-end** (Easy–Standard session on a 62-question
+  topic served exactly the 16 rated easy/standard uploads, excluding 42 unrated + 2 hard).
+- Upload: two 10-question pasted banks imported via the staged preview under one topic → picker
+  shows **3 sets** (42 + 10 + 10) under that topic.
+- Mistake log: error type + reflection saved and rendered; correct retry flips the card to
+  **Recovered ("green", "last retry correct")**; retire → reason → **Retired** view → Restore all
+  verified (retire itself uses a native `prompt()`, fine in real browsers).
+- Cards editor reachable via "Edit & add cards" next to Start session; deck dropdown populated;
+  card edit saved and rendered.
+- Biology hub: A→B→C→D→Tools heading order correct; search narrows 43 rows and clearing restores all.
+- Today panel loads without hanging, suggestions carry reasons and links. Favicon serves (`.ico`
+  + SVG/PNG/apple-touch links). Light mode is the fresh-load default (`data-fcTheme="light"`).
+
+Rough edges noted (not fixed here — small, non-blocking):
+
+- The picker's topic/set dropdown counts stay unfiltered by design (the difficulty range applies
+  when the session starts, with a "short session" notice); a student may expect the counts to move.
+- The mistake-log "Not relevant…" flow asks for its reason via a native `prompt()` — works, but an
+  inline form would be more consistent with the rest of the page.
+- Validator warnings (non-blocking, content quality): biology question id `wp01` is reused across
+  two banks (respiration/protein-synthesis vs water-potential/origin-cells); several banks have
+  skewed MCQ answer-key positions and correct-option-length cues (display is shuffled at runtime,
+  so impact is limited).

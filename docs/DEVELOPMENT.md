@@ -1,14 +1,14 @@
 # Development Notes
 
-_Last updated: 19 Nov 2026._
+_Last updated: 20 Nov 2026._
 
 Architecture, data schemas, conventions and gotchas for anyone (including future-you)
 touching this site.
 
 ## Architecture
 
-- **Static site, no build step.** 19 study-site pages (incl. `admin.html`) + 7 practice-app pages (`app/`, LIVE on rametric.com/nevaib) + 17 asset files + JSON data in `library/` (32 quiz banks / 841 items, 28 flashcard decks / 594 cards, 113 topic notes, and the PDF manifest `library/library-manifest.json` / 127 items). The engines build their pickers from `library/questions/manifest.json` + `library/flashcards/manifest.json`; the Library browser reads `library/library-manifest.json`.
-- **Practice app (`app/`)**: `index.html` (launcher), `quiz.html`, `cards.html`, `author.html` (upload/manage/export).
+- **Static site, no build step.** 19 study-site pages (incl. `admin.html`) + 9 practice-app pages (`app/`, LIVE on rametric.com/nevaib) + 22 asset files + JSON data in `library/` (32 quiz banks / 841 items, 28 flashcard decks / 594 cards, 113 topic notes, and the PDF manifest `library/library-manifest.json` / 127 items). The engines build their pickers from `library/questions/manifest.json` + `library/flashcards/manifest.json`; the Library browser reads `library/library-manifest.json`.
+- **Practice app (`app/`)**: `index.html` (launcher), `quiz.html`, `cards.html`, `notes.html`, `mistakes.html` (mistake log), `coursework.html`, `resources.html`, `author.html` (upload/manage/export), `summary.html` (parent weekly summary).
   Engines resolve content via `PATH_BASE` (`../` when served from `/app/`, empty at the root), so the same engine
   files serve both layers. Root `quiz.html`/`flashcards.html` are one-line redirect stubs to the app.
 - **Hosted deployment**: `server/api.php` (auth + per-user state, PHP sessions, JSON files under the cPanel home)
@@ -73,7 +73,7 @@ touching this site.
   (tracks), today.js (subject list + schedule keys), deadlines.js (tagged entries). Admins manage accounts and
   subject lists on `admin.html` (server actions `create-user` / `list-users` / `set-profile`, admin-only).
 - **Sync model** (`assets/auth.js`): synced keys = `NB.store.SYNCED_KEYS` (`q-userbanks, fc-userdecks, fc-state,
-  fc-user, fc-deleted, fc-edits, quizlog, q-errors, tok-objects, ee-ideas, io-issues, ia-debriefs, res-bookmarks,
+  fc-user, fc-deleted, fc-edits, quizlog, q-errors, topic-taught, tok-objects, ee-ideas, io-issues, ia-debriefs, res-bookmarks,
   res-notes, res-recent, pp-scores, cw-progress, my-res, profile`) **+ `site-state`** (`{checklists: {"chk:…": {c,r}}, week: {"week:0": "…"}}`, built from
   the per-row keys; rows are tracked individually). Rules, applied on page load, after login and on a 409:
   1. `fc-state`, `q-errors`, `quizlog` merge **per record** (`NB.merge.RECORDS`): `fc-state` per card (newest `t`,
@@ -195,7 +195,7 @@ store.js); the table lists the **logical** names engines use. `nb-*` bookkeeping
 | `q-userbanks` | `app/author.html` + quiz-engine | uploaded quiz banks (per device) |
 | `fc-userdecks` | `app/author.html` + flashcards | uploaded flashcard decks (per device) |
 | `topic-taught` | quiz-engine | per-topic teaching-status overrides `{topicKey: {taught: bool, t}}` — written by the Quiz page's "Topics & teaching status" panel; topics without an override fall back to the class-schedule suggestion. Synced and merged **per topic** (newest `t` wins) |
-| `q-errors` | quiz-engine + `practice.html` | missed-question tracker: `{key, subject, topic, topicLabel, format, stem, choices, answer, userAnswer, note, marks, markscheme, tactic, attempts, firstMissed, lastMissed, resolved}` + `id, bankId, ts, lastAttempt, legacyKey` — key = `"<bankId>#<id>"` (bankId = bank file name without `.json`, `user:<slug>` for uploaded banks; ids are only unique per file). Older records keyed by bare id / stem hash are renamed when their bank loads in a session (same id AND same stem), keeping `legacyKey`; unmatched old records stay as they are and remain reviewable. `ts` = last-change ms timestamp for the sync merge. **Mistake-log fields (all optional, written by the mistakes page, never required):** `errorType` (`careless|misread|content|time|other`), `reflection` (≤500 chars), `retries` `[{ts, correct, conf?}]` (capped 20, written by the quiz engine), `retired` + `retiredReason` (≤200) + `retiredAt` (reversible soft-hide — excluded from review and unresolved counts, never hard-deleted). Synced cross-device when logged in |
+| `q-errors` | quiz-engine + `practice.html` + `assets/mistakes.js` | missed-question tracker: `{key, subject, topic, topicLabel, format, stem, choices, answer, userAnswer, note, marks, markscheme, tactic, attempts, firstMissed, lastMissed, resolved}` + `id, bankId, ts, lastAttempt, legacyKey` — key = `"<bankId>#<id>"` (bankId = bank file name without `.json`, `user:<slug>` for uploaded banks; ids are only unique per file). Older records keyed by bare id / stem hash are renamed when their bank loads in a session (same id AND same stem), keeping `legacyKey`; unmatched old records stay as they are and remain reviewable. `ts` = last-change ms timestamp for the sync merge. **Mistake-log fields (all optional, written by the mistakes page, never required):** `errorType` (`careless|misread|content|time|other`), `reflection` (≤500 chars), `retries` `[{ts, correct, conf?}]` (capped 20, written by the quiz engine), `retired` + `retiredReason` (≤200) + `retiredAt` (reversible soft-hide — excluded from review and unresolved counts, never hard-deleted). Synced cross-device when logged in |
 | `my-res` | `assets/notes.js` + `assets/resources.js` | her own resources/links `{id: {note?, subject?, topic?, type?, comment?, label, url, t}}` — `note` = topic-note id (the per-note "My resources" box), `subject`/`topic`/`type` (`website|video|doc|practice|other`)/`comment` (≤500) = the Resources page's tags. `url` must be `http(s)://` or `file://` (≤2000 chars; links only — never file contents). Deletion = tombstone `{note?/subject?, deleted: true, t}`; merged per id, newest `t` wins; `assets/backup.js` validates the extended shape. Resources are never read by the quiz/card engines |
 | `mistakes-filters` | `assets/mistakes.js` | the mistake-log page's filter state `{status, subject, q}` — LOCAL_ONLY (device-local, per-user scoped, never synced or backed up) |
 | `profile` | `profile.js` / server | per-user subject list `{subjects: ["biology-hl", …]}` (canonical ids; absent = all six subjects; empty array = none). Set by an admin via `set-profile`/`create-user`, synced as a normal state key |

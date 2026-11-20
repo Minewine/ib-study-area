@@ -24,7 +24,7 @@ then usage: December 8 English rehearsal, January mocks, IA debriefs, EE shortli
 | Module | Page | Notes |
 |---|---|---|
 | Dashboard | `index.html` | Countdown to May 2028, "this week" box, 6 subject progress cards, next school deadlines |
-| Subject hubs (6) | `math-aa-sl.html` `biology-hl.html` `chemistry-hl.html` `history-sl.html` `french-a-langlit.html` `english-lit-hl.html` | Verified assessment weightings, currency banners (which papers/guides match), syllabus checklists linked to notes PDFs, IA corners, ISL teaching-sequence panels (bio/chem), teaching hours (math) |
+| Subject hubs (6) | `math-aa-sl.html` `biology-hl.html` `chemistry-hl.html` `history-sl.html` `french-a-langlit.html` `english-lit-hl.html` | Verified assessment weightings, currency banners (which papers/guides match), syllabus checklists linked to notes PDFs (biology grouped under searchable A–D theme headings), IA corners, ISL teaching-sequence panels (bio/chem), teaching hours (math) |
 | Core | `core.html` | TOK (exhibition 33% / essay 67%), **new EE guide** (first assessment 2027), CAS + TOK exhibition object shortlist (tracked, synced) |
 | EE workspace | `ee.html` | Idea-log shortlist (tracked, synced), one-page proposal checklist mapped to the new-EE criteria, DP1 timeline, reflection-session guidance |
 | Quiz engine | `quiz.html` | 20-question sessions, filtered by subject/topic/format; **practice sets grouped under topics, difficulty-range filter (easy/standard/hard/unrated), taught-topics-only toggle with a "Topics & teaching status" panel**; instant MCQ marking; written answers self-marked against markschemes; weak-topic flags + tactics; "＋ Flashcard" button on every answer |
@@ -77,6 +77,9 @@ ibsystem/
 │   ├── CONTENT-PLAN.md       ← per-subject content status + what to add next
 │   ├── ROADMAP.md            ← feature roadmap (shipped / short / medium / later)
 │   ├── DEVELOPMENT.md        ← architecture, data schemas, localStorage keys, gotchas
+│   ├── AUTHORING.md          ← how to add quiz banks/decks (schema, practice sets, AI prompt)
+│   ├── USER-TEST.md          ← student user-test guide (+ AI bank-generation prompt)
+│   ├── CHANGELOG-2026-11-20-neva-feedback.md ← what changed in phases 0–5 (student feedback batch)
 │   ├── MAINTENANCE.md        ← weekly/termly checklists
 │   └── VISION.md             ← ideas for later (nothing committed)
 ├── index.html … *.html       ← study-site pages (see table above) + admin.html (account admin)
@@ -106,7 +109,7 @@ ibsystem/
 │   ├── official/             ← PDFs from ibo.org (guides, specimens, briefs, booklets, EE guide)
 │   ├── school/               ← ISL course documents (bio outline, chem at-a-glance, math syllabus)
 │   ├── notes/                ← topic PDFs, organised by ISL teaching order
-│   ├── questions/            ← 32 quiz banks (841 items) — schema in DEVELOPMENT.md
+│   ├── questions/            ← 32 quiz banks (841 items) + manifest.json (picker metadata) — schema in DEVELOPMENT.md
 │   ├── flashcards/           ← 28 decks (594 cards) — schema in DEVELOPMENT.md
 │   ├── topic-notes/          ← 113 original notes (JSON, per subject) + syllabus maps
 │   ├── coursework/           ← coursework planner content
@@ -114,7 +117,10 @@ ibsystem/
 │   └── library-manifest.json ← auto-built index of every PDF (127 items) — rebuild after changes
 ├── source-archives/          ← original downloaded ZIPs (kept as provenance; deletable once confident)
 ├── tools/build_site.py       ← generator for 10 study-site pages — see DEVELOPMENT.md (generated files must match it)
-└── tools/build_library_manifest.py ← rebuilds library/library-manifest.json from the PDF tree
+├── tools/build_library_manifest.py ← rebuilds library/library-manifest.json from the PDF tree
+├── tools/build_questions_manifest.py ← rebuilds library/questions/manifest.json (picker metadata)
+├── tools/validate_content.py ← pre-commit content validator (./dev.sh validate)
+└── tools/build_deploy.py     ← assembles deploy/nevaib/ (original content only)
 ```
 
 ## How content is organised

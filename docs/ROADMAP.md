@@ -13,6 +13,10 @@ features only exist to make that loop easier or more targeted.
 Student-feedback improvement phases (built across 20 Nov sessions; consolidated, tested and
 committed the same day — deploy pending approval):
 
+- [x] **Phase 0 — baseline review + Today panel loading/error states** (commit `58f6539`): every
+  Today fetch gets a 10 s timeout with explicit error states; dark-mode attribute mismatch fixed
+  (`data-fcTheme`); Cards editor deck dropdown, uploaded-deck edits, quiz-upload manage list,
+  storage-full reporting and deck-id collisions fixed; upload limits measured and documented (no cap).
 - [x] **Phase 1 — practice sets + filters**: banks/decks carry optional `set`/`setOrder`/`codes`
   (+ `paperStyle`/`calculatorFree`) and item-level `difficulty` (`easy|standard|hard`, absent =
   unrated — zero migration); the Quiz picker groups banks as **sets under their topics**, adds a
@@ -96,7 +100,7 @@ committed the same day — deploy pending approval):
 - [ ] **Fill the IA debriefs** after each session (Nov hydrogen-peroxide, Jan beetroot/osmosis) — the page and storage are live; the content is hers to capture.
 - [ ] **EE shortlist → proposal**: she keeps the idea log current in `ee.html`; shortlist ready at the Feb 17 launch, proposal checklist ticked with the supervisor before Mar 2. TOK object candidates accumulate on `core.html` (plan due Mar 25).
 - [x] **Quiz banks one unit ahead** (2026-11-15): chem kinetics + equilibrium (Feb–Mar) and bio respiration/protein synthesis built, each with a flashcard deck — the whole Feb–Mar queue is in place.
-- [x] **Flashcards decks kept current** (2026-11-15): every DP1 science/math unit covered + French terminology (35) + English literary terms (42); 23 decks / 484 cards total.
+- [x] **Flashcards decks kept current** (2026-11-15): every DP1 science/math unit covered + French terminology (35) + English literary terms (42); 23 decks / 484 cards at the time — now 28 decks / 594 cards.
 - [x] **Progress dashboard v2** (2026-11-15): "Progress pulse" card on the study dashboard — quiz-score trend (last 5 sessions), flashcards due/mastered/seen, checklist % overall + weakest subject. Checklist % denominator fixed (untouched rows now initialise on hub visits).
 - [x] **Deployment** (2026-11-15): live at rametric.com/nevaib over HTTPS, verified end-to-end (api auth, CORS preflights, token sync). Host runs PHP 7.2 — api.php written for it. Remaining habit: `push_deploy.py` for updates + cPanel backup of `~/nevaib-data/`.
 - [x] **Study-site sync** (2026-11-15): hub checklist ticks (`chk:*`) + this-week items sync cross-device via a batched `site-state` payload (token auth + CORS in api.php; per-row merge, first-login migration without data loss — browser-verified).
@@ -126,7 +130,9 @@ committed the same day — deploy pending approval):
 
 ---
 
-## Next phase (handoff prompt ready)
+## Next phase
 
-The prioritized next-phase list and the full handoff prompt live in
-[NEXT-PHASE-PROMPT.md](NEXT-PHASE-PROMPT.md) — paste it into a fresh chat to continue.
+~~The prioritized next-phase list and the full handoff prompt live in
+[NEXT-PHASE-PROMPT.md](NEXT-PHASE-PROMPT.md)~~ — **superseded 20 Nov 2026**: that prompt describes the
+phases 1–5 work, which is now done (see "Shipped (2026-11-20)" above). Next actions are in
+[NEXT-STEPS.md](NEXT-STEPS.md): merge the consolidation branch, then the gated deploy.

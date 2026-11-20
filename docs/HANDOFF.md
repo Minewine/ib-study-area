@@ -39,9 +39,10 @@ from `build_deploy.py`'s deploy list (would have 404ed once deployed) and from t
 cards. Tests: `tests/js/resources.test.js`, `tests/js/bank-import.test.js` (new), extended
 `ai-prompt`/`myres`/`backup` tests + e2e section 8.
 
-**Next focus (20 Nov 2026):** flashcard/quiz organisation improvements based on student feedback —
-folders/practice sets, a mistake log, filtering maths items, card editing, and Today-panel suggestions.
-Details in [NEXT-STEPS.md](NEXT-STEPS.md).
+**Next focus (20 Nov 2026, updated by the consolidation pass):** the organisation work above — practice
+sets, mistake log, card editing, Today suggestions — is **done** (see the consolidation block at the top
+and [CHANGELOG-2026-11-20-neva-feedback.md](CHANGELOG-2026-11-20-neva-feedback.md)). The next step is the
+gated deploy of that batch to rametric.com/nevaib (NEXT-STEPS.md §1); further content batches follow after it.
 
 **Phase 0 complete (20 Nov 2026, before the above work):** the existing app was reviewed against the live
 site and the real flows before anything new gets built. The live deploy (rametric.com/nevaib) matches `main`

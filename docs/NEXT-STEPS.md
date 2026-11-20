@@ -34,10 +34,12 @@ _Updated 20 Nov 2026. Background: [HANDOFF.md](HANDOFF.md). Longer-term ideas: [
   ceiling is the browser's localStorage quota, which now reports as a clear error on the Upload page.
   Kept: malformed-JSON, duplicate-id and per-item validation. Caveat: a ~6 MB user-state file can make the
   sync push sluggish on the next load (seen once with the 40k-item test bank) — not a concern at realistic sizes.
-- **Next focus (20 Nov 2026):** flashcard/quiz **organisation improvements based on student feedback** —
-  folders/practice sets, a mistake log, filtering maths items, card editing, and Today-panel suggestions
-  (the "higher upload limits" item is resolved: there is no cap — see the measured behaviour above).
-  This takes priority over new content batches for now.
+- **Next focus (20 Nov 2026, updated by the consolidation pass):** the organisation improvements —
+  folders/practice sets, mistake log, filtering, card editing, Today-panel suggestions — are **built,
+  tested and committed** on the branch `feat/neva-feedback-consolidation` (open merge request; see
+  [CHANGELOG-2026-11-20-neva-feedback.md](CHANGELOG-2026-11-20-neva-feedback.md)). The "higher upload
+  limits" item is resolved too: there is no cap — see the measured behaviour above. **Next action: merge
+  that branch, then deploy (§1).** New content batches follow after the deploy.
 - **Done and live (18 Nov morning):** PRs #1–#4.
 - **Done and live (deployed 19 Nov evening):** PRs #1–#16 (topic notes, sync, Today panel, security hardening, weekly summary, exam practice, coursework planner, My resources, Ask an AI). `./dev.sh validate`, `./dev.sh test` and `./dev.sh e2e` pass on `main`.
 - **Done, merged into `main` (Nov 2026), included in the later deploy:** the private cross-check of 25 topic notes and **My resources** on every note (PR #14).
@@ -45,8 +47,9 @@ _Updated 20 Nov 2026. Background: [HANDOFF.md](HANDOFF.md). Longer-term ideas: [
 - **Multi-user: done and live (deployed 19 Nov evening, PRs #17–#19):** per-student accounts with isolated data (per-user storage scopes), subject profiles filtering nav/quiz/cards/notes/library/coursework/deadlines, and the **admin** account (`admin` — password held by the family; there is no password-change feature). Students are created via the admin on the study site's `admin.html`, or via the API (see `server/deploy-notes.md`). Neva's login is unchanged and sees all subjects. Details in [HANDOFF.md](HANDOFF.md).
 
 ## 1. Deploy `main` (only with explicit approval)
+0. **Merge the consolidation branch first:** `origin/main` still predates phases 0–5 — deploying it as-is would ship the pre-phase site. Merge `feat/neva-feedback-consolidation` (open merge request) into `main`, then run the steps below on the updated `main`.
 1. **Back up first:** the server copy via `api/api.php?action=export` (logged in), and her browser progress with Cards → "Download full backup".
-2. `git switch main && git pull && ./dev.sh test && ./dev.sh deploy`. This is a dry run: check the list includes `api/api.php`, `api/summary.php`, `api/weekly_email.php`, `coursework.html`, `summary.html`, and no PDFs or private folders.
+2. `git switch main && git pull && ./dev.sh test && ./dev.sh deploy`. This is a dry run: check the list includes `api/api.php`, `api/summary.php`, `api/weekly_email.php`, `coursework.html`, `summary.html`, `app/mistakes.html`, `app/resources.html`, and no PDFs or private folders.
 3. `./dev.sh deploy --confirm`, then type DEPLOY. `api/api.php` goes first.
 4. Hard-refresh (Ctrl+Shift+R) on every device she uses: the new API only accepts the token in a header, so an old cached page may need to log in again. Script versions are bumped so fresh pages load the new code.
 5. Check: log in, do a few cards and a quiz, open Coursework and the Weekly summary, then save a fresh `?action=export` backup.
