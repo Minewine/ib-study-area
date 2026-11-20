@@ -3,6 +3,18 @@
 _Updated 20 Nov 2026. Background: [HANDOFF.md](HANDOFF.md). Longer-term ideas: [VISION.md](VISION.md)._
 
 ## Status at a glance
+- **Consolidation complete (20 Nov 2026):** all five student-feedback phases reviewed together,
+  verified (`./dev.sh validate` + `./dev.sh test` + e2e green) and committed as one batch —
+  phase-by-phase status, data-model notes and follow-ups in
+  [CHANGELOG-2026-11-20-neva-feedback.md](CHANGELOG-2026-11-20-neva-feedback.md). **Deploy is the
+  next step and stays gated on explicit approval (section 1 below).**
+- **Phase 4 complete (20 Nov 2026):** **resources + AI-assisted authoring** — a Resources page for
+  her own links (tagged subject/topic, synced via `my-res`, never quiz content, no file contents in
+  localStorage), and the AI workflow moved into the Upload page: pick a topic → copy a prompt that
+  carries the exact subject id and topic key → paste the returned JSON into a **preview** that
+  validates and lets her edit/remove items → **Import** the whole set in one batch. Same button on
+  every topic note. No external API calls; Classroom import and in-app generation stay deferred.
+  Details in [HANDOFF.md](HANDOFF.md) and docs/AUTHORING.md.
 - **Phase 0 complete (20 Nov 2026):** pre-improvement review of the existing app before the flashcard/quiz
   organisation work. Verified: the live site (rametric.com/nevaib) matches `main` byte-for-byte (209 files;
   the only difference is the not-yet-deployed favicon commit). Today panel: adds a 10 s fetch timeout plus

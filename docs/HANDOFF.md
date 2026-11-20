@@ -1,6 +1,43 @@
 # NevaIB study area: handoff
 
-_Last updated 20 Nov 2026 (Phase 0 review). Read this first, then [NEXT-STEPS.md](NEXT-STEPS.md); ideas for later are in [VISION.md](VISION.md)._
+_Last updated 20 Nov 2026 (consolidation pass — phases 0–5 reviewed, tested, committed). Read this first, then [NEXT-STEPS.md](NEXT-STEPS.md); ideas for later are in [VISION.md](VISION.md)._
+
+**Consolidation (20 Nov 2026):** the student-feedback phases were built in separate sessions and
+this pass reviewed, verified and committed them together — phase-by-phase status, data-model notes
+and follow-ups live in [CHANGELOG-2026-11-20-neva-feedback.md](CHANGELOG-2026-11-20-neva-feedback.md).
+Short version: **phase 1** practice sets + taught/difficulty filters (`assets/bank-schema.js`,
+quiz picker, `topic-taught`, `tools/build_questions_manifest.py`, no upload cap); **phase 2**
+mistake log (`app/mistakes.html` + `assets/mistakes.js`: error type, reflection, retries,
+reversible "not relevant"); **phase 3** Biology A–D hub navigation + search and Today suggestions
+with visible reasons (pinned-clock e2e); **phase 4** Resources page + AI-assisted bank authoring
+with a staged check-first preview (details below); **phase 5** favicon PNG fallbacks (now
+committed — the pages referenced them but the binaries were untracked), editor discoverability
+copy, Cards light-mode default. Verification: `./dev.sh validate` + `./dev.sh test` (196 node
+tests + pytest + php) + `./dev.sh e2e` (33 checks) all pass. Known follow-ups: no e2e coverage yet
+for the phase-1 picker controls or the mistake-log page interactions (unit-tested); deploy of the
+batch is pending explicit approval.
+
+**Phase 4 complete (20 Nov 2026): resources + AI-assisted authoring.** She can save
+resources (title, subject, topic, type, link, note) on a new **Resources** page
+(`app/resources.html` + `assets/resources.js`, stored in the existing synced `my-res` key with
+optional subject/topic/type/comment fields — tombstone deletes and the newest-`t` merge are
+unchanged, `assets/backup.js` validates the extended shape). Resources are links only
+(`http(s)://`/`file://`, ≤2000 chars; no base64 in localStorage) and are never read by the quiz
+or card engines. The AI path is built into the **Upload page, section 1**: pick subject/topic →
+**Copy the prompt & open your AI** (mode `bankgen` in `library/ai-prompts.json`, using new
+`{subjectid}`/`{topickey}` placeholders; `ai-prompt.js` gained `render(note, opts)` for the
+picker) → paste the JSON into the paste box, which now **stages** it
+(`assets/bank-import.js`): validate → editable preview (per-item stem/choices/answer/marks,
+remove items, unique suggested `ai-<topic>.json` name) → **Import bank** in one batch into
+`q-userbanks`, byte-shape-equal to a file upload. The same "Write a practice set to import"
+button sits in every topic note's Ask an AI box. Files still upload directly; very large
+pastes get per-item editors for the first 200 items only (the rest import as-is).
+Documented in docs/AUTHORING.md ("AI-assisted authoring", "My
+resources") and docs/USER-TEST.md §2–3. Explicitly deferred: Google Classroom import and true
+in-app generation (privacy/OAuth/cost). Also fixed while wiring: `mistakes.html` was missing
+from `build_deploy.py`'s deploy list (would have 404ed once deployed) and from the launcher
+cards. Tests: `tests/js/resources.test.js`, `tests/js/bank-import.test.js` (new), extended
+`ai-prompt`/`myres`/`backup` tests + e2e section 8.
 
 **Next focus (20 Nov 2026):** flashcard/quiz organisation improvements based on student feedback —
 folders/practice sets, a mistake log, filtering maths items, card editing, and Today-panel suggestions.
@@ -72,6 +109,8 @@ Stack: static HTML, vanilla JS, JSON content, browser localStorage, one PHP file
 | Full backup and validated, merge-by-default restore with undo | `assets/backup.js` (Cards and Upload pages) |
 | Topic notes viewer | `app/notes.html`, `assets/notes.js` |
 | Ask an AI (copy a topic prompt, open the preferred assistant so she pastes with Ctrl+V) | `library/ai-prompts.json`, `assets/ai-prompt.js` |
+| Resources page (her own links, tagged subject/topic — never quiz content) | `app/resources.html`, `assets/resources.js` (synced `my-res`) |
+| AI practice-set picker + staged paste import (validate → edit → import in one batch) | `app/author.html` §1–2, `assets/bank-import.js`, `library/ai-prompts.json` (`bankgen` mode) |
 | Coursework planner (Bio/Chem scientific investigation, Maths exploration: stages, self-checks, pitfalls, approximate ISL dates) | `app/coursework.html`, `assets/coursework.js`, `library/coursework/coursework.json`; skills quiz `library/questions/ia-practical-skills.json` |
 | Quiz / cards engines (both accept `?from=` deep links from notes) | `assets/quiz-engine.js`, `assets/flashcards.js` |
 | Today panel (due cards, weakest-topic quiz, this week's class units) | `assets/today.js`, `library/class-schedule.json` |
