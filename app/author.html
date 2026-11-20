@@ -183,16 +183,18 @@
   }
 
   function existingFlashcardIds() {
-    // seed decks (via manifest) + previously uploaded decks + user-created cards
+    // seed decks (via manifest) + previously uploaded decks + user-created cards.
+    // Fetched fresh on every deck upload: a cached snapshot would go stale when a
+    // deploy adds library decks, and silently skip the collision check.
     const ids = new Set();
     const add = (id) => { if (id) ids.add(id); };
-    const seeds = store.get("fc-seedids", null);
-    if (seeds) { seeds.forEach(add); return Promise.resolve(ids); }
-    return fetch("../assets/flashcards.js").catch(() => null) // warm-up no-op
-      .then(() => fetch((location.pathname.includes("/app/") ? "../" : "") + "library/flashcards/manifest.json"))
+    store.get("fc-user", []).forEach(c => add(c.id));
+    store.get(FDECKS, []).forEach(d => (d.cards || []).forEach(c => add(c.id)));
+    const base = location.pathname.includes("/app/") ? "../" : "";
+    return fetch(base + "library/flashcards/manifest.json")
       .then(r => r.json())
-      .then(manifest => Promise.all(manifest.map(m => fetch(m.file).then(r => r.json()).then(d => d.cards.forEach(c => add(c.id))).catch(() => {}))))
-      .then(() => { store.set("fc-seedids", [...ids]); return ids; })
+      .then(manifest => Promise.all(manifest.map(m => fetch(base + m.file).then(r => r.json()).then(d => (d.cards || []).forEach(c => add(c.id))).catch(() => {}))))
+      .then(() => ids)
       .catch(() => ids);
   }
 
@@ -208,8 +210,9 @@
       if (!entry.label) entry.label = data.topicLabel || sourceName;
       if (!entry.subjectLabel) entry.subjectLabel = data.subject;
       banks.push(entry);
-      store.set(QBANKS, banks);
+      if (store.set(QBANKS, banks) === false) return result(false, sourceName + ": storage is full — the bank could not be saved. Download a full backup (section 4), delete some uploaded banks above, then try again.");
       result(true, sourceName + ": quiz bank saved (" + data.items.length + " items, subject " + data.subject + ") — it now appears in the Quiz picker.");
+      renderManage();
     } else if (Array.isArray(data.cards)) {
       existingFlashcardIds().then(ids => {
         const err = validateDeck(data, ids);
@@ -219,7 +222,7 @@
         const entry = Object.assign({}, data, { name: sourceName, uploaded: new Date().toISOString().slice(0, 10) });
         if (!entry.subjectLabel) entry.subjectLabel = data.subject;
         decks.push(entry);
-        store.set(FDECKS, decks);
+        if (store.set(FDECKS, decks) === false) return result(false, sourceName + ": storage is full — the deck could not be saved. Download a full backup (section 4), delete some uploaded decks above, then try again.");
         result(true, sourceName + ": flashcard deck saved (" + data.cards.length + " cards, subject " + data.subject + ") — it now appears in the Cards picker.");
         renderManage();
       });
@@ -430,7 +433,7 @@
     const err = validateQuizBank(cand);
     if (err) { alert("Cannot save item: " + err); return; }
     bank.items = cand.items;
-    store.set(QBANKS, banks);
+    if (store.set(QBANKS, banks) === false) { alert("Storage is full — the change could not be saved. Download a full backup (section 4) and delete some uploaded banks, then try again."); return; }
     renderManage();
   });
 

@@ -69,7 +69,7 @@ Fill this EXACT JSON shape:
 }
 
 Rules:
-- 8 questions total: 5 MCQ (ids p01–p05), 3 written (ids p06–p08).
+- 8 questions total: 5 MCQ (ids p01–p05), 3 written (ids p06–p08). (The 8 is only this example's size for the AI to generate — the app accepts banks of any size; the real limit is browser storage.)
 - "answer" is the 0-based index into "choices" (first option = 0).
 - Every item repeats the same "topic" as the bank.
 - MCQ distractors must be plausible — real misconceptions, not joke answers.

@@ -106,6 +106,19 @@
     };
   }
 
+  // Locate a card that came from an uploaded deck (fc-userdecks) so edits and
+  // deletes land in the deck itself — exported JSON stays truthful, instead of
+  // the card silently reappearing from the deck entry (the old seed-override path).
+  function findUserDeckCard(id) {
+    const decks = store.get("fc-userdecks", []);
+    for (let i = 0; i < decks.length; i++) {
+      const cards = decks[i].cards || [];
+      const j = cards.findIndex(c => c && c.id === id);
+      if (j >= 0) return { decks, i, j, card: cards[j] };
+    }
+    return null;
+  }
+
   function groups() {
     const g = {};
     for (const c of CARDS) {
@@ -226,19 +239,24 @@
   // ---------- editor ----------
   function renderEditor() {
     const sel = $("ed-deck");
+    const prev = sel.value; // keep the current deck selected across saves/deletes
+    const values = [];
     sel.innerHTML = "";
     groups().forEach((g) => {
+      values.push(g.subject + "::" + g.topic);
       const o = document.createElement("option");
       o.value = g.subject + "::" + g.topic;
-      o.textContent = g.subjectLabel + " \u2014 " + g.topicLabel + ` (${g.total})`;
+      o.textContent = g.subjectLabel + " — " + g.topicLabel + ` (${g.total})`;
       sel.appendChild(o);
     });
     const mine = CARDS.filter(c => !c.seed);
     if (mine.length) {
+      values.push("*user*");
       const o = document.createElement("option");
       o.value = "*user*"; o.textContent = "My created cards (" + mine.length + ")";
       sel.appendChild(o);
     }
+    if (prev && values.includes(prev)) sel.value = prev;
     renderEditorList();
   }
 
@@ -258,7 +276,9 @@
       if (!c) return;
       if (b.dataset.act === "del") {
         const { user, deleted } = loadState();
-        if (c.seed) { deleted.push(id); store.set("fc-deleted", deleted); }
+        const loc = findUserDeckCard(id);
+        if (loc) { loc.decks[loc.i].cards.splice(loc.j, 1); store.set("fc-userdecks", loc.decks); }
+        else if (c.seed) { deleted.push(id); store.set("fc-deleted", deleted); }
         else { store.set("fc-user", user.filter(x => x.id !== id)); }
         rebuild(); renderEditor(); renderProgress();
       } else {
@@ -269,15 +289,27 @@
         $("ed-tags").value = (c.tags || []).join(", ");
         $("ed-topic").value = c.topic;
         $("ed-topiclabel").value = c.topicLabel || "";
+        // deck cards take their topic from the deck file; edits to it would be
+        // silently dropped, so say so instead of showing two editable fields
+        $("ed-topic").disabled = c.seed;
+        $("ed-topiclabel").disabled = c.seed;
+        $("ed-topic").title = c.seed ? "Comes from the deck file — only cards you create yourself can pick a topic" : "";
+        $("ed-topiclabel").title = $("ed-topic").title;
       }
     }));
     $("ed-add").onclick = () => {
       $("ed-formwrap").style.display = "";
       $("ed-id").value = "";
       $("ed-front").value = ""; $("ed-back").value = ""; $("ed-tags").value = "definition";
-      const g = groups()[0];
-      $("ed-topic").value = g ? g.topic : "";
+      // pre-fill the topic from the deck currently selected in the dropdown (was
+      // always groups()[0], so a card added while viewing deck X landed in deck Y's topic)
+      const key = $("ed-deck").value;
+      const g = key === "*user*" ? null : groups().find(x => (x.subject + "::" + x.topic) === key) || groups()[0];
+      $("ed-topic").value = g ? g.topic : "user";
       $("ed-topiclabel").value = g ? g.topicLabel : "";
+      $("ed-topic").disabled = false;
+      $("ed-topiclabel").disabled = false;
+      $("ed-topic").title = ""; $("ed-topiclabel").title = "";
     };
     $("ed-save").onclick = () => {
       const id = $("ed-id").value;
@@ -290,7 +322,16 @@
       };
       if (!card.front || !card.back) { alert("Front and back are both required."); return; }
       const { user, deleted, edits } = loadState();
-      if (id && CARDS.find(x => x.id === id && x.seed)) { edits[id] = { front: card.front, back: card.back, tags: card.tags }; store.set("fc-edits", edits); }
+      const loc = id ? findUserDeckCard(id) : null;
+      if (loc) {
+        // uploaded-deck card: update the deck entry itself, keeping its id and type
+        loc.decks[loc.i].cards[loc.j] = Object.assign({}, loc.card, {
+          front: card.front, back: card.back, tags: card.tags,
+          topic: card.topic, topicLabel: card.topicLabel
+        });
+        store.set("fc-userdecks", loc.decks);
+      }
+      else if (id && CARDS.find(x => x.id === id && x.seed)) { edits[id] = { front: card.front, back: card.back, tags: card.tags }; store.set("fc-edits", edits); }
       else if (id && CARDS.find(x => x.id === id)) { store.set("fc-user", user.map(x => x.id === id ? card : x)); }
       else { user.push(card); store.set("fc-user", user); }
       rebuild(); renderEditor(); renderProgress();
@@ -350,14 +391,18 @@
   }
 
   // ---------- theme ----------
+  // NB: the attribute is set with setAttribute, not dataset — dataset.fcTheme
+  // writes "data-fc-theme", but the CSS below matches "data-fcTheme", so the
+  // dark rules never applied. Attribute names are case-insensitive in HTML,
+  // so setAttribute("data-fcTheme", …) matches the selector.
   function applyTheme() {
     const saved = store.get("fc-theme", null) || (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    document.documentElement.dataset.fcTheme = saved;
+    document.documentElement.setAttribute("data-fcTheme", saved);
     const btn = $("fc-theme-btn");
     if (btn) btn.textContent = saved === "dark" ? "Light mode" : "Dark mode";
   }
   function toggleTheme() {
-    const next = document.documentElement.dataset.fcTheme === "dark" ? "light" : "dark";
+    const next = document.documentElement.getAttribute("data-fcTheme") === "dark" ? "light" : "dark";
     store.set("fc-theme", next);
     applyTheme();
   }
@@ -391,6 +436,9 @@
     fillTopics();
     $("fc-start").addEventListener("click", startSession);
     $("fc-open-editor").addEventListener("click", () => { $("setup").style.display = "none"; $("editor").style.display = ""; renderEditor(); });
+    // the editor's card list must follow the Deck dropdown (it previously kept
+    // showing the old deck's cards until the next save/delete — looked frozen)
+    if ($("ed-deck")) $("ed-deck").addEventListener("change", renderEditorList);
     $("fc-export").addEventListener("click", doExport);
     $("fc-import").addEventListener("click", doImport);
     if ($("fc-import-file")) $("fc-import-file").addEventListener("change", doImportFile);

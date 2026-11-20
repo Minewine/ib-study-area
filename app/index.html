@@ -65,6 +65,15 @@
 <script src="../assets/store.js?v=7"></script>
 <script src="../assets/profile.js?v=1"></script>
 <script src="../assets/auth.js?v=10"></script>
-<script src="../assets/today.js?v=2"></script>
+<script src="../assets/today.js?v=3"></script>
+<script>
+  // Belt and braces: if today.js fails to load or run at all (stale cache, 404,
+  // early exception), the panel must not sit on "Loading…" forever.
+  setTimeout(function () {
+    var b = document.getElementById("today-body");
+    if (b && b.textContent.indexOf("Loading today's plan") !== -1)
+      b.innerHTML = '<p class="muted">Today\'s plan could not be loaded (the page script did not run). The Quiz and Cards pages still work.</p>';
+  }, 8000);
+</script>
 </body>
 </html>

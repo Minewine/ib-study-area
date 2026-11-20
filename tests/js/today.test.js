@@ -167,3 +167,68 @@ test("profile: the class-week section lists only allowed subjects the schedule t
   assert.deepEqual(plain(await boot(undefined)), ["Biology HL: ", "Chemistry HL: ", "Math AA SL: "],
     "default-all profile adds no empty rows for the untracked subjects");
 });
+
+// ---------- Phase 0 (20 Nov 2026): loading must never stick, failures must look failed ----------
+
+// fake DOM: append() never updates textContent — read the subtree instead
+const allText = (el) => (el.textContent || "") + (el.children || []).map(allText).join("");
+// boot the real render path with an injectable fetch; returns { box, env }
+const bootRender = async (opts) => {
+  const env = makeEnv(Object.assign({ readyState: "complete", fetch: repoFetch() }, opts || {}));
+  env.load("store.js").load("profile.js");
+  const box = env.document.createElement("div");
+  box.id = "today-body";
+  env.document.body.appendChild(box);
+  env.load("today.js"); // readyState complete → render() runs now, DATA loads async
+  await new Promise(r => setTimeout(r, 80));
+  return { box, env };
+};
+
+test("today panel: failed deck / notes manifests show error states, not silent 'empty' panels", async () => {
+  const { box } = await bootRender({
+    fetch: (url) => {
+      const u = String(url);
+      if (u.includes("flashcards/manifest")) return Promise.resolve({ ok: false, status: 500, json: async () => ({}) });
+      if (u.includes("topic-notes/manifest")) return Promise.reject(new Error("offline"));
+      return repoFetch()(url);
+    }
+  });
+  assert.match(allText(box), /Card decks could not be loaded/, "deck failure says so instead of 'Nothing due today'");
+  assert.match(allText(box), /Notes could not be loaded/, "notes failure says so instead of 'no notes written'");
+  assert.match(allText(box), /class schedule could not be loaded|This week in class/, "schedule section renders");
+  assert.doesNotMatch(allText(box), /Nothing due today/, "the misleading empty state must not appear");
+});
+
+test("today panel: a hung fetch times out and the panel still renders (never stuck on Loading)", async () => {
+  // fast-fire only the fetch-abort timers (>= 10s); the 300ms debounce stays real
+  const fastTimeout = (fn, ms) => (ms >= 10000 ? setTimeout(fn, 0) : setTimeout(fn, ms));
+  // a fetch that never settles on its own but honours the abort signal, as real fetch does
+  const hung = (url, init) => new Promise((res, rej) => {
+    if (init && init.signal) init.signal.addEventListener("abort", () => rej(new Error("This operation was aborted")));
+  });
+  const { box, env } = await bootRender({ setTimeout: fastTimeout, fetch: hung });
+  assert.doesNotMatch(allText(box), /Loading today's plan/, "the panel must not sit on Loading forever");
+  assert.match(allText(box), /Card decks could not be loaded/, "aborted fetches degrade to per-section error states");
+  // a failed/hung first render must not block later re-renders (rendering guard resets)
+  env.NB.store.set("fc-user", [{ id: "u-1", front: "F", back: "B" }]);
+  env.NB.store.set("fc-state", { "u-1": { box: 1, due: "2026-01-01", seen: 1, t: 0 } });
+  await new Promise(r => setTimeout(r, 500));
+  assert.match(allText(box), /Plus 1 of your own card/, "onChange re-render ran after the degraded load");
+});
+
+test("today panel: uploaded decks (fc-userdecks) count towards due cards", async () => {
+  const { box, env } = await bootRender();
+  env.NB.store.set("fc-userdecks", [{ name: "my-deck.json", subject: "biology-hl", cards: [{ id: "my-1", front: "F", back: "B" }] }]);
+  env.NB.store.set("fc-state", { "my-1": { box: 1, due: "2026-01-01", seen: 1, t: 0 } });
+  await new Promise(r => setTimeout(r, 500));
+  assert.match(allText(box), /1 card due today/, "uploaded-deck card due today is counted");
+});
+
+test("profile: decks for subjects outside the profile are not fetched at all", async () => {
+  const urls = [];
+  const fetch = (u) => { urls.push(String(u)); return repoFetch()(u); };
+  const { box } = await bootRender({ data: { profile: J({ subjects: ["math-aa-sl"] }) }, fetch });
+  assert.ok(urls.some(u => u.includes("library/flashcards/manifest")), "manifest itself is fetched");
+  assert.ok(!urls.some(u => /library\/flashcards\/(bio|chem)-/.test(u)), "hidden subjects' deck files are skipped");
+  assert.match(allText(box), /Nothing due today/, "panel still renders normally");
+});

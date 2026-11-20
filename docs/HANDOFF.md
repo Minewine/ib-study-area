@@ -1,10 +1,39 @@
 # NevaIB study area: handoff
 
-_Last updated 20 Nov 2026. Read this first, then [NEXT-STEPS.md](NEXT-STEPS.md); ideas for later are in [VISION.md](VISION.md)._
+_Last updated 20 Nov 2026 (Phase 0 review). Read this first, then [NEXT-STEPS.md](NEXT-STEPS.md); ideas for later are in [VISION.md](VISION.md)._
 
 **Next focus (20 Nov 2026):** flashcard/quiz organisation improvements based on student feedback —
-higher upload limits, folders/practice sets, a mistake log, filtering maths items, card editing,
-and Today-panel suggestions. Details in [NEXT-STEPS.md](NEXT-STEPS.md).
+folders/practice sets, a mistake log, filtering maths items, card editing, and Today-panel suggestions.
+Details in [NEXT-STEPS.md](NEXT-STEPS.md).
+
+**Phase 0 complete (20 Nov 2026, before the above work):** the existing app was reviewed against the live
+site and the real flows before anything new gets built. The live deploy (rametric.com/nevaib) matches `main`
+byte-for-byte except the not-yet-deployed favicon commit. Logged-in testing (identical local build) found and
+fixed, all verified in the browser and by `./dev.sh test`:
+
+- **Today panel** (`assets/today.js`): every fetch now has a 10 s timeout; a failed class-schedule, decks or
+  notes load shows an explicit error state instead of a silent "empty" panel ("Nothing due today" / "No notes
+  written yet"); a failed script load shows an error after 8 s (`app/index.html` fallback) — the panel can no
+  longer sit on "Loading…" indefinitely. Also: decks for subjects outside the account's profile are no longer
+  fetched/counted (mirrors Cards), and uploaded decks (`fc-userdecks`) now count towards due cards.
+- **Dark mode never applied** (Cards page): the CSS matched `data-fcTheme` while JS wrote `data-fc-theme` via
+  `dataset` — fixed with `setAttribute`; verified dark applies and persists across reloads.
+- **Cards editor**: the Deck dropdown now re-renders the card list on change (it previously kept the old deck's
+  cards until the next save — looked frozen); the selection survives saves; topic fields are disabled for deck
+  cards instead of being silently dropped; "＋ Add card" pre-fills the selected deck's topic (was always the
+  first deck); editing/deleting an uploaded deck's card updates the deck entry itself (previously hidden
+  `fc-edits`/`fc-deleted` overrides, so exported deck JSON silently reverted).
+- **Upload page** (`app/author.html`): quiz uploads refresh the manage list immediately; a storage-full write is
+  reported as an error on the page (was a green "saved" message); the deck-id collision check now works on
+  `/app/` pages (it fetched library decks without the `../` prefix, got 404s, cached the empty set forever in
+  `fc-seedids`) and also checks previously uploaded decks and user cards; no caching, so library growth is seen.
+- **Upload limits confirmed:** there is no question-count or file-size cap in code — measured imports up to
+  40,000 items (~6 MB). The real ceiling is the browser's localStorage quota; the failure now surfaces as a
+  clear error. Validation kept as-is (malformed JSON, duplicate ids, per-item schema). Details + measurements
+  in [NEXT-STEPS.md](NEXT-STEPS.md).
+- Known, left as-is: the quiz-item editor form handles at most 4 choices (items with more are guarded by an
+  alert pointing at export/re-upload); the Maths hub has no checklist yet (see NEXT-STEPS §5); `practice.html`
+  still builds its missed-question list unescaped (local-only page, pre-existing).
 
 ## What the system is
 

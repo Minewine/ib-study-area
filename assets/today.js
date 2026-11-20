@@ -152,41 +152,68 @@
     kids.flat().forEach(k => { if (k === null || k === undefined || k === false) return; n.append(typeof k === "string" ? document.createTextNode(k) : k); });
     return n;
   };
-  const getJSON = (path) => fetch(PATH_BASE + path, { cache: "no-cache" }).then(r => { if (!r.ok) throw new Error(r.status + " " + path); return r.json(); });
+  // Every fetch gets a hard timeout: a request that never settles must not leave
+  // the panel stuck on "Loading today's plan…" (the render guard can't reset until
+  // load() settles, so a hung fetch would also block all re-renders).
+  const FETCH_TIMEOUT = 10000;
+  const getJSON = (path) => {
+    const ctrl = typeof AbortController === "function" ? new AbortController() : null;
+    const timer = ctrl ? setTimeout(() => ctrl.abort(), FETCH_TIMEOUT) : null;
+    const clear = () => { if (timer !== null) clearTimeout(timer); };
+    return fetch(PATH_BASE + path, { cache: "no-cache", signal: ctrl ? ctrl.signal : undefined }).then(
+      (r) => { clear(); if (!r.ok) throw new Error(r.status + " " + path); return r.json(); },
+      (e) => { clear(); throw e; }
+    );
+  };
   const fmtDay = (iso) => { const [y, m, d] = iso.split("-").map(Number); return new Date(y, m - 1, d).toLocaleDateString(undefined, { day: "numeric", month: "short" }); };
 
   let DATA = null; // { schedule, manifest, notes: {subject|code: note}, cards: [...] }
 
   async function load() {
+    const failed = { decks: false, notes: false }; // surfaced as error states, not silent "empty" panels
     const [schedule, manifest, registry] = await Promise.all([
       getJSON("library/class-schedule.json").catch(() => null),
-      getJSON("library/topic-notes/manifest.json").catch(() => null),
-      getJSON("library/flashcards/manifest.json").catch(() => [])
+      getJSON("library/topic-notes/manifest.json").catch(() => { failed.notes = true; return null; }),
+      getJSON("library/flashcards/manifest.json").catch(() => { failed.decks = true; return []; })
     ]);
     const today = isoDate(new Date());
     const wanted = [];
     SUBJECTS.forEach(([s]) => unitsFor(schedule, s, today).current.forEach(u => u.codes.forEach(c => wanted.push([s, c]))));
     const entries = (manifest && manifest.notes) || [];
     const notes = {};
+    // Per-user subject profile (assets/profile.js): decks for subjects the account
+    // doesn't take are dropped before their files are fetched (mirrors flashcards.js).
+    const visible = (registry || []).filter(r => !(NB.profile && NB.profile.hides(r.subject)));
     const decks = await Promise.all([
       Promise.all(wanted.map(([s, c]) => {
         const m = entries.find(n => n.subject === s && n.code === c);
         return m ? getJSON(m.file).then(n => { notes[s + "|" + c] = Object.assign({ file: m.file }, n); }).catch(() => {}) : null;
       })),
-      Promise.all((registry || []).map(r => getJSON(r.file).then(d => (d.cards || []).map(c => ({ id: c.id, deck: fileId(r.file), retired: c.retired === true }))).catch(() => [])))
+      Promise.all(visible.map(r => getJSON(r.file).then(d => (d.cards || []).map(c => ({ id: c.id, deck: fileId(r.file), retired: c.retired === true }))).catch(() => { failed.decks = true; return []; })))
     ]).then(([, d]) => d);
-    DATA = { schedule, manifest, entries, notes, cards: [].concat(...decks) };
+    DATA = { schedule, manifest, entries, notes, cards: [].concat(...decks), failed };
   }
 
   function renderCards(box, today) {
+    const failedDecks = !!(DATA.failed && DATA.failed.decks);
     const st = store.get("fc-state", {});
     const deleted = store.get("fc-deleted", []);
-    const d = dueCards(DATA.cards, st, today, deleted);
+    // Uploaded decks (fc-userdecks) are not in the library manifest; their cards
+    // live in storage, so they are counted without a fetch. deck: null → they add
+    // to the total but never to the per-deck deep link (dueCardsHref skips it).
+    const uploaded = store.get("fc-userdecks", []).map(d => (d.cards || []).map(c => ({ id: c.id, deck: null, retired: c.retired === true })));
+    const d = dueCards(DATA.cards.concat(...uploaded), st, today, deleted);
     const own = dueUserCards(store.get("fc-user", []), st, today, deleted);
     const href = dueCardsHref(d.byDeck, d.total);
     const sec = el("div", { class: "td-block" }, el("h4", {}, "1. Flashcards"));
-    if (d.total) sec.append(el("p", {}, `${d.total} card${d.total === 1 ? "" : "s"} due today. `), href ? el("a", { class: "td-btn", href }, "Start due cards") : null);
-    else sec.append(el("p", {}, "Nothing due today. ", d.fresh ? `There are ${d.fresh} cards you haven't started; the class topics below link to the right deck.` : ""));
+    if (d.total) {
+      sec.append(el("p", {}, `${d.total} card${d.total === 1 ? "" : "s"} due today. `), href ? el("a", { class: "td-btn", href }, "Start due cards") : null);
+      if (failedDecks) sec.append(el("p", { class: "muted" }, "Some card decks could not be loaded, so this count may be low."));
+    } else {
+      sec.append(el("p", {}, failedDecks
+        ? "Card decks could not be loaded — the Cards page still works."
+        : "Nothing due today. " + (d.fresh ? `There are ${d.fresh} cards you haven't started; the class topics below link to the right deck.` : "")));
+    }
     if (own) sec.append(el("p", { class: "muted" }, `Plus ${own} of your own card${own === 1 ? "" : "s"} due. They're on the `, el("a", { href: "cards.html" }, "Cards"), " page."));
     box.append(sec);
   }
@@ -251,7 +278,7 @@
             L.cards ? [" · ", el("a", { href: L.cards }, "cards")] : null));
         }));
         if (links.childNodes.length) row.append(links);
-        else row.append(el("span", { class: "muted" }, " No notes written for these codes yet."));
+        else row.append(el("span", { class: "muted" }, (DATA.failed && DATA.failed.notes) ? " Notes could not be loaded." : " No notes written for these codes yet."));
       }
       sec.append(row);
     });
@@ -275,7 +302,8 @@
       box.append(out);
       await quizDone;
     } catch (e) {
-      box.textContent = "Today's plan could not be loaded. The Quiz and Cards pages still work.";
+      box.textContent = "";
+      box.append(el("p", { class: "muted" }, "Today's plan could not be loaded (" + ((e && e.message) || "error") + "). The Quiz and Cards pages still work."));
     } finally { rendering = false; }
   }
 
