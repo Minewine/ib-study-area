@@ -1,0 +1,251 @@
+{
+ "subject": "biology-hl",
+ "topic": "bio-b4-1",
+ "topicLabel": "B4.1 Adaptation to environment",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "B4.1"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "b41-x01",
+   "format": "mcq",
+   "topic": "bio-b4-1",
+   "topicLabel": "B4.1 Adaptation to environment",
+   "difficulty": "easy",
+   "stem": "A habitat is:",
+   "choices": [
+    "The role a species plays in its community",
+    "All the populations in an area",
+    "The place where a species normally lives",
+    "The range of temperatures a species tolerates"
+   ],
+   "answer": 2,
+   "note": "Habitat = location (and its conditions). The role is the niche."
+  },
+  {
+   "id": "b41-x02",
+   "format": "mcq",
+   "topic": "bio-b4-1",
+   "topicLabel": "B4.1 Adaptation to environment",
+   "difficulty": "easy",
+   "stem": "Which is an abiotic factor?",
+   "choices": [
+    "Soil pH",
+    "Predation",
+    "Competition",
+    "Parasitism"
+   ],
+   "answer": 0,
+   "note": "Abiotic = non-living (temperature, light, pH, water, salinity). The others are biotic interactions."
+  },
+  {
+   "id": "b41-x03",
+   "format": "mcq",
+   "topic": "bio-b4-1",
+   "topicLabel": "B4.1 Adaptation to environment",
+   "difficulty": "easy",
+   "stem": "Marram grass has rolled leaves with stomata inside the roll. This is an adaptation to:",
+   "choices": [
+    "Absorb more light on shaded forest floors",
+    "Increase gas exchange in waterlogged soil",
+    "Trap insects for extra nitrogen",
+    "Reduce water loss in dry, windy sand dunes"
+   ],
+   "answer": 3,
+   "note": "Rolling traps humid air around the stomata, reducing the water vapour gradient and transpiration."
+  },
+  {
+   "id": "b41-x04",
+   "format": "mcq",
+   "topic": "bio-b4-1",
+   "topicLabel": "B4.1 Adaptation to environment",
+   "difficulty": "standard",
+   "stem": "A species' range of tolerance for a factor is:",
+   "choices": [
+    "The best value of the factor for growth",
+    "The limits between which it can survive",
+    "The area of land a species occupies",
+    "The number of offspring it produces"
+   ],
+   "answer": 1,
+   "note": "Within the range it can survive; the optimum is where it does best. Outside the limits it cannot persist."
+  },
+  {
+   "id": "b41-x05",
+   "format": "mcq",
+   "topic": "bio-b4-1",
+   "topicLabel": "B4.1 Adaptation to environment",
+   "difficulty": "standard",
+   "stem": "To study how plant distribution changes from a footpath into a meadow, the best sampling method is:",
+   "choices": [
+    "A transect with quadrats placed at regular intervals",
+    "Random quadrats placed across the whole meadow and footpath",
+    "Capture–mark–release–recapture",
+    "Counting every plant in the meadow"
+   ],
+   "answer": 0,
+   "note": "Transects show change along an environmental gradient; random sampling estimates overall abundance."
+  },
+  {
+   "id": "b41-x06",
+   "format": "mcq",
+   "topic": "bio-b4-1",
+   "topicLabel": "B4.1 Adaptation to environment",
+   "difficulty": "standard",
+   "stem": "Coral reefs need water that is:",
+   "choices": [
+    "Cold, deep, dark and rich in nutrients",
+    "Fresh, fast-flowing, muddy and nutrient-rich",
+    "Warm, deep and with no light at all",
+    "Warm, clear, shallow and low in nutrients"
+   ],
+   "answer": 3,
+   "note": "Reef corals rely on photosynthetic zooxanthellae, so they need light (clear, shallow water) and warmth."
+  },
+  {
+   "id": "b41-x07",
+   "format": "mcq",
+   "topic": "bio-b4-1",
+   "topicLabel": "B4.1 Adaptation to environment",
+   "difficulty": "standard",
+   "stem": "Which adaptation helps cacti survive in hot deserts?",
+   "choices": [
+    "Large thin leaves to absorb more light",
+    "Shallow roots that only reach wet soil",
+    "Spines instead of leaves to reduce surface area",
+    "Many stomata open during the hottest hours"
+   ],
+   "answer": 2,
+   "note": "Reduced leaf area, thick stems storing water, CAM photosynthesis with stomata open at night all reduce water loss."
+  },
+  {
+   "id": "b41-x08",
+   "format": "mcq",
+   "topic": "bio-b4-1",
+   "topicLabel": "B4.1 Adaptation to environment",
+   "difficulty": "hard",
+   "stem": "A climograph shows:",
+   "choices": [
+    "Average daily light hours at different latitudes and altitudes",
+    "Mean monthly temperature and precipitation for a location",
+    "The number of species found in each biome",
+    "The change in population size over a year"
+   ],
+   "answer": 1,
+   "note": "Climographs combine temperature (line) and rainfall (bars), which largely determine the biome."
+  },
+  {
+   "id": "b41-x09",
+   "format": "mcq",
+   "topic": "bio-b4-1",
+   "topicLabel": "B4.1 Adaptation to environment",
+   "difficulty": "hard",
+   "stem": "Hot deserts and tropical rainforests differ mainly in:",
+   "choices": [
+    "Temperature, which is much lower in deserts all year",
+    "Light intensity, which is low in deserts for most of the year",
+    "Precipitation, which is very low in deserts and high in rainforests",
+    "Soil pH, which is the main factor deciding the biome"
+   ],
+   "answer": 2,
+   "note": "Both can be warm; the large difference in rainfall determines which biome forms."
+  },
+  {
+   "id": "b41-x10",
+   "format": "mcq",
+   "topic": "bio-b4-1",
+   "topicLabel": "B4.1 Adaptation to environment",
+   "difficulty": "hard",
+   "stem": "Plants in tropical rainforests often have leaves with drip tips. This adaptation:",
+   "choices": [
+    "Collects and stores water so the plant can survive the dry seasons",
+    "Lets rainwater run off quickly, reducing the growth of fungi and algae",
+    "Reduces light absorption in the bright canopy",
+    "Reduces the loss of carbon dioxide from the leaf"
+   ],
+   "answer": 1,
+   "note": "High rainfall and humidity encourage microbial growth on wet leaves; drip tips help them dry."
+  },
+  {
+   "id": "b41-x11",
+   "format": "mcq",
+   "topic": "bio-b4-1",
+   "topicLabel": "B4.1 Adaptation to environment",
+   "difficulty": "hard",
+   "stem": "Which observation best supports the idea that temperature limits the distribution of a plant species?",
+   "choices": [
+    "It is found only below a certain altitude on all mountains studied",
+    "It grows faster when fertiliser is added",
+    "It is eaten by more herbivores in summer than in the winter months",
+    "It is found in both sunny and shaded places"
+   ],
+   "answer": 0,
+   "note": "A consistent upper limit linked to colder conditions at altitude suggests temperature (or a correlated factor) is limiting."
+  },
+  {
+   "id": "b41-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b4-1",
+   "topicLabel": "B4.1 Adaptation to environment",
+   "difficulty": "standard",
+   "stem": "Outline how a transect can be used to investigate the effect of an abiotic factor on plant distribution.",
+   "markscheme": [
+    "Lay a tape along the environmental gradient (1)",
+    "Place quadrats at regular intervals and record species abundance/percentage cover (1)",
+    "Measure the abiotic factor (e.g. light, soil moisture) at each quadrat (1)",
+    "Repeat transects and look for correlation (1)"
+   ],
+   "tactic": "Method: sampling, measurement of the factor, analysis."
+  },
+  {
+   "id": "b41-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b4-1",
+   "topicLabel": "B4.1 Adaptation to environment",
+   "difficulty": "standard",
+   "stem": "Explain two adaptations of an animal to a hot desert.",
+   "markscheme": [
+    "Example: concentrated urine / long loops of Henle reduce water loss (1)",
+    "Example: nocturnal behaviour / burrowing avoids heat (1)",
+    "Example: large ears increase heat loss (1)",
+    "Each adaptation linked to survival in heat or drought (1)"
+   ],
+   "tactic": "Each adaptation needs a \"so that\" consequence."
+  },
+  {
+   "id": "b41-x14",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b4-1",
+   "topicLabel": "B4.1 Adaptation to environment",
+   "difficulty": "hard",
+   "stem": "Explain why the same biome can be found on different continents.",
+   "markscheme": [
+    "Biome determined mainly by climate (temperature and rainfall) (1)",
+    "Similar climates occur at similar latitudes on different continents (1)",
+    "Similar selection pressures produce similar adaptations (convergent evolution) (1)"
+   ],
+   "tactic": "Link climate → biome → adaptations."
+  },
+  {
+   "id": "b41-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-b4-1",
+   "topicLabel": "B4.1 Adaptation to environment",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) Percentage cover of an invented moss and light intensity were recorded along a 10 m transect from a forest edge: 0 m 2%, 1200 lux; 2 m 8%, 800 lux; 4 m 25%, 400 lux; 6 m 40%, 200 lux; 8 m 45%, 150 lux; 10 m 44%, 140 lux.\n(a) Describe the relationship between light and moss cover. (b) Suggest a reason for the pattern. (c) State why this does not prove that light is the cause.",
+   "markscheme": [
+    "(a) As light intensity decreases, moss cover increases (negative correlation); levels off at about 45% below 200 lux (1)",
+    "(b) Moss tolerates shade / is outcompeted by light-demanding plants / dries out in bright light (1)",
+    "(c) Other factors change along the transect (e.g. humidity, soil moisture, temperature) (1)",
+    "Correlation does not show causation without a controlled experiment (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

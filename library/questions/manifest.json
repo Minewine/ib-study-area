@@ -2617,5 +2617,155 @@
     }
    }
   ]
+ },
+ {
+  "file": "library/questions/bio-b3-1-exam-practice.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL",
+  "label": "B3.1 Gas exchange — exam practice (mixed difficulty, written + data response)",
+  "topic": "bio-b3-1",
+  "topicLabel": "B3.1 Gas exchange",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "B3.1"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "bio-b3-1",
+    "topicLabel": "B3.1 Gas exchange",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 6,
+     "hard": 6
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/bio-b3-2-exam-practice.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL",
+  "label": "B3.2 Transport — exam practice (mixed difficulty, written + data response)",
+  "topic": "bio-b3-2",
+  "topicLabel": "B3.2 Transport",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "B3.2"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "bio-b3-2",
+    "topicLabel": "B3.2 Transport",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 6,
+     "hard": 6
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/bio-b4-1-exam-practice.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL",
+  "label": "B4.1 Adaptation to environment — exam practice (mixed difficulty, written + data response)",
+  "topic": "bio-b4-1",
+  "topicLabel": "B4.1 Adaptation to environment",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "B4.1"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "bio-b4-1",
+    "topicLabel": "B4.1 Adaptation to environment",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 6,
+     "hard": 6
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/bio-b4-2-exam-practice.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL",
+  "label": "B4.2 Ecological niches — exam practice (mixed difficulty, written + data response)",
+  "topic": "bio-b4-2",
+  "topicLabel": "B4.2 Ecological niches",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "B4.2"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "bio-b4-2",
+    "topicLabel": "B4.2 Ecological niches",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 6,
+     "hard": 6
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/bio-c4-1-exam-practice.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL",
+  "label": "C4.1 Populations and communities — exam practice (mixed difficulty, written + data response)",
+  "topic": "bio-c4-1",
+  "topicLabel": "C4.1 Populations and communities",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "C4.1"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "bio-c4-1",
+    "topicLabel": "C4.1 Populations and communities",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 6,
+     "hard": 6
+    }
+   }
+  ]
  }
 ]

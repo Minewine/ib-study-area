@@ -1,0 +1,251 @@
+{
+ "subject": "biology-hl",
+ "topic": "bio-b3-1",
+ "topicLabel": "B3.1 Gas exchange",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "B3.1"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "b31-x01",
+   "format": "mcq",
+   "topic": "bio-b3-1",
+   "topicLabel": "B3.1 Gas exchange",
+   "difficulty": "easy",
+   "stem": "Which property is shared by efficient gas exchange surfaces?",
+   "choices": [
+    "Large surface area and thin, moist, permeable surface",
+    "Small surface area and a thick, waterproof surface",
+    "Few blood vessels and a dry, waxy surface to reduce water loss",
+    "A thick layer of muscle around the surface"
+   ],
+   "answer": 0,
+   "note": "Large area, short diffusion distance, moisture and permeability maximise the rate of diffusion."
+  },
+  {
+   "id": "b31-x02",
+   "format": "mcq",
+   "topic": "bio-b3-1",
+   "topicLabel": "B3.1 Gas exchange",
+   "difficulty": "easy",
+   "stem": "Gases move across the alveolar wall by:",
+   "choices": [
+    "Active transport using ATP",
+    "Diffusion down their concentration gradients",
+    "Osmosis through aquaporins in the alveolar wall",
+    "Exocytosis of gas-filled vesicles"
+   ],
+   "answer": 1,
+   "note": "O₂ diffuses from alveoli into blood; CO₂ in the reverse direction. Ventilation and blood flow maintain the gradients."
+  },
+  {
+   "id": "b31-x03",
+   "format": "mcq",
+   "topic": "bio-b3-1",
+   "topicLabel": "B3.1 Gas exchange",
+   "difficulty": "easy",
+   "stem": "During inhalation:",
+   "choices": [
+    "The diaphragm relaxes and domes upward, decreasing volume",
+    "The internal intercostal muscles contract and the ribs move down",
+    "The diaphragm contracts and flattens, increasing thorax volume",
+    "Air is pushed in because pressure in the lungs rises"
+   ],
+   "answer": 2,
+   "note": "Increased volume → lower pressure in the lungs → air flows in. Exhalation at rest is mostly passive recoil."
+  },
+  {
+   "id": "b31-x04",
+   "format": "mcq",
+   "topic": "bio-b3-1",
+   "topicLabel": "B3.1 Gas exchange",
+   "difficulty": "standard",
+   "stem": "Type II pneumocytes secrete surfactant, which:",
+   "choices": [
+    "Kills bacteria that reach the alveoli in inhaled air",
+    "Increases the thickness of the alveolar wall for protection",
+    "Carries oxygen across the membrane into red blood cells",
+    "Reduces surface tension so alveoli do not collapse"
+   ],
+   "answer": 3,
+   "note": "Surfactant lowers the cohesive forces of the water film, preventing alveoli sticking together on exhalation."
+  },
+  {
+   "id": "b31-x05",
+   "format": "mcq",
+   "topic": "bio-b3-1",
+   "topicLabel": "B3.1 Gas exchange",
+   "difficulty": "standard",
+   "stem": "Tidal volume is:",
+   "choices": [
+    "The maximum volume of air that can be breathed out",
+    "The air remaining in the lungs after maximum exhalation",
+    "The total volume of the lungs at full inhalation",
+    "The volume of air breathed in or out in a normal breath"
+   ],
+   "answer": 3,
+   "note": "Vital capacity = maximum exhaled after maximum inhalation; residual volume remains in the lungs."
+  },
+  {
+   "id": "b31-x06",
+   "format": "mcq",
+   "topic": "bio-b3-1",
+   "topicLabel": "B3.1 Gas exchange",
+   "difficulty": "standard",
+   "stem": "Stomata in leaves allow:",
+   "choices": [
+    "Water to be pumped into the leaf by active transport",
+    "Light to enter the mesophyll layer more easily",
+    "Diffusion of CO₂ in and O₂ and water vapour out",
+    "Sugars to be transported to other parts of the plant"
+   ],
+   "answer": 2,
+   "note": "Stomata are gas exchange pores, controlled by guard cells. Loss of water vapour through them is transpiration."
+  },
+  {
+   "id": "b31-x07",
+   "format": "mcq",
+   "topic": "bio-b3-1",
+   "topicLabel": "B3.1 Gas exchange",
+   "difficulty": "standard",
+   "stem": "Which change would increase the rate of transpiration?",
+   "choices": [
+    "Higher temperature",
+    "Higher humidity",
+    "Lower light intensity",
+    "Closed stomata"
+   ],
+   "answer": 0,
+   "note": "Warmth increases evaporation and diffusion. High humidity reduces the water vapour gradient; darkness closes stomata."
+  },
+  {
+   "id": "b31-x08",
+   "format": "mcq",
+   "topic": "bio-b3-1",
+   "topicLabel": "B3.1 Gas exchange",
+   "difficulty": "hard",
+   "stem": "The oxygen dissociation curve of adult haemoglobin is S-shaped because of:",
+   "choices": [
+    "Competition between oxygen and carbon dioxide for the same binding site",
+    "Cooperative binding: each O₂ that binds makes the next bind more easily",
+    "The haem groups saturating one at a time at equal rates",
+    "Myoglobin releasing oxygen to haemoglobin in muscles"
+   ],
+   "answer": 1,
+   "note": "Binding of one O₂ changes the shape of the protein (allosteric), raising affinity of the remaining sites."
+  },
+  {
+   "id": "b31-x09",
+   "format": "mcq",
+   "topic": "bio-b3-1",
+   "topicLabel": "B3.1 Gas exchange",
+   "difficulty": "hard",
+   "stem": "The Bohr shift moves the oxygen dissociation curve to the right when:",
+   "choices": [
+    "Carbon dioxide concentration falls, as in the alveoli",
+    "Temperature falls in resting muscle tissue",
+    "Carbon dioxide concentration rises, as in respiring tissues",
+    "The pH of the blood rises above its normal value in the lungs"
+   ],
+   "answer": 2,
+   "note": "CO₂ lowers pH; haemoglobin's affinity for O₂ falls, so more O₂ is released where it is needed."
+  },
+  {
+   "id": "b31-x10",
+   "format": "mcq",
+   "topic": "bio-b3-1",
+   "topicLabel": "B3.1 Gas exchange",
+   "difficulty": "hard",
+   "stem": "Fetal haemoglobin has a higher affinity for oxygen than adult haemoglobin. This allows:",
+   "choices": [
+    "The fetus to release more CO₂ into the amniotic fluid",
+    "The mother to load more oxygen in her own lungs",
+    "The fetal heart to pump blood faster",
+    "Oxygen to pass from the mother's blood to the fetus in the placenta"
+   ],
+   "answer": 3,
+   "note": "At the same pO₂, fetal Hb is more saturated, so O₂ moves from maternal to fetal blood. Its curve lies to the left."
+  },
+  {
+   "id": "b31-x11",
+   "format": "mcq",
+   "topic": "bio-b3-1",
+   "topicLabel": "B3.1 Gas exchange",
+   "difficulty": "hard",
+   "stem": "A student counts 45 stomata in a field of view of area 0.15 mm². What is the stomatal density?",
+   "choices": [
+    "300 mm⁻²",
+    "6.75 mm⁻²",
+    "0.0033 mm⁻²",
+    "30 mm⁻²"
+   ],
+   "answer": 0,
+   "note": "Density = count ÷ area = 45 ÷ 0.15 = 300 stomata per mm²."
+  },
+  {
+   "id": "b31-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b3-1",
+   "topicLabel": "B3.1 Gas exchange",
+   "difficulty": "standard",
+   "stem": "Explain how the structure of the alveolus is adapted for gas exchange.",
+   "markscheme": [
+    "Wall one cell thick (type I pneumocytes), short diffusion distance (1)",
+    "Many alveoli give a large surface area (1)",
+    "Dense capillary network maintains concentration gradients (1)",
+    "Moist lining lets gases dissolve; surfactant prevents collapse (1)"
+   ],
+   "tactic": "Pair each feature with its effect on diffusion."
+  },
+  {
+   "id": "b31-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b3-1",
+   "topicLabel": "B3.1 Gas exchange",
+   "difficulty": "standard",
+   "stem": "Describe how a spirometer can be used to measure tidal volume and vital capacity.",
+   "markscheme": [
+    "Subject breathes normally into the spirometer; the height of each trace is the tidal volume (1)",
+    "For vital capacity, maximum inhalation followed by maximum exhalation (1)",
+    "Volume read from the calibrated trace / repeat for a mean (1)"
+   ],
+   "tactic": "Method: what the subject does, what is read from the trace."
+  },
+  {
+   "id": "b31-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-b3-1",
+   "topicLabel": "B3.1 Gas exchange",
+   "difficulty": "hard",
+   "stem": "Explain how the Bohr shift helps supply oxygen to actively respiring muscle.",
+   "markscheme": [
+    "Respiring muscle produces CO₂ (1)",
+    "CO₂ forms carbonic acid, lowering the pH (1)",
+    "Haemoglobin's affinity for oxygen decreases / curve shifts to the right (1)",
+    "More oxygen is released (unloaded) at the same pO₂ in the muscle (1)"
+   ],
+   "tactic": "Cause-and-effect chain: from respiration to unloading."
+  },
+  {
+   "id": "b31-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-b3-1",
+   "topicLabel": "B3.1 Gas exchange",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) Percentage saturation of two invented animals' haemoglobin at different pO₂ (kPa): pO₂ 2 — animal X 20%, animal Y 45%; pO₂ 4 — X 50%, Y 80%; pO₂ 8 — X 88%, Y 96%; pO₂ 12 — X 97%, Y 98%.\n(a) Compare the curves of X and Y. (b) Suggest which animal lives at high altitude, with a reason. (c) Calculate the difference in saturation at 4 kPa.",
+   "markscheme": [
+    "(a) Both reach near-full saturation at 12 kPa; Y is more saturated at low pO₂ (curve to the left) (1)",
+    "(b) Y: higher affinity lets it load O₂ where pO₂ is low (1)",
+    "Example data quoted (e.g. 45% vs 20% at 2 kPa) (1)",
+    "(c) 80 − 50 = 30 percentage points (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

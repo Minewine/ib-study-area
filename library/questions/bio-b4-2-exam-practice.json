@@ -1,0 +1,251 @@
+{
+ "subject": "biology-hl",
+ "topic": "bio-b4-2",
+ "topicLabel": "B4.2 Ecological niches",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "B4.2"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "b42-x01",
+   "format": "mcq",
+   "topic": "bio-b4-2",
+   "topicLabel": "B4.2 Ecological niches",
+   "difficulty": "easy",
+   "stem": "An ecological niche is:",
+   "choices": [
+    "Only the physical place where a species lives and feeds",
+    "The role of a species, including its habitat, interactions and resource use",
+    "The number of individuals of a species in an area",
+    "The highest trophic level a species reaches"
+   ],
+   "answer": 1,
+   "note": "Niche = how a species fits into its ecosystem: habitat, food, timing, interactions."
+  },
+  {
+   "id": "b42-x02",
+   "format": "mcq",
+   "topic": "bio-b4-2",
+   "topicLabel": "B4.2 Ecological niches",
+   "difficulty": "easy",
+   "stem": "An obligate anaerobe:",
+   "choices": [
+    "Is poisoned by oxygen and can only respire anaerobically",
+    "Can respire with or without oxygen, depending on conditions",
+    "Requires oxygen for respiration",
+    "Uses light energy to make ATP"
+   ],
+   "answer": 0,
+   "note": "Obligate anaerobes die in oxygen; facultative anaerobes can switch; obligate aerobes need O₂."
+  },
+  {
+   "id": "b42-x03",
+   "format": "mcq",
+   "topic": "bio-b4-2",
+   "topicLabel": "B4.2 Ecological niches",
+   "difficulty": "easy",
+   "stem": "Saprotrophs obtain nutrition by:",
+   "choices": [
+    "Ingesting living organisms and digesting them inside a gut",
+    "Making all their own carbon compounds by photosynthesis",
+    "Living inside a host and taking its food",
+    "Secreting enzymes onto dead matter and absorbing the products"
+   ],
+   "answer": 3,
+   "note": "External digestion of dead organic matter (e.g. many fungi and bacteria) recycles nutrients."
+  },
+  {
+   "id": "b42-x04",
+   "format": "mcq",
+   "topic": "bio-b4-2",
+   "topicLabel": "B4.2 Ecological niches",
+   "difficulty": "standard",
+   "stem": "Euglena can photosynthesise in light and ingest food in darkness. It is therefore:",
+   "choices": [
+    "An obligate autotroph",
+    "A saprotroph",
+    "A mixotroph",
+    "A chemoautotroph"
+   ],
+   "answer": 2,
+   "note": "Mixotrophs combine autotrophic and heterotrophic nutrition."
+  },
+  {
+   "id": "b42-x05",
+   "format": "mcq",
+   "topic": "bio-b4-2",
+   "topicLabel": "B4.2 Ecological niches",
+   "difficulty": "standard",
+   "stem": "Holozoic nutrition involves:",
+   "choices": [
+    "Absorption of nutrients through the body surface only, without a gut",
+    "Synthesis of food using energy from light",
+    "Ingestion, digestion, absorption, assimilation and egestion",
+    "Breakdown of dead matter outside the body"
+   ],
+   "answer": 2,
+   "note": "Holozoic = ingesting food and digesting it internally, as in most animals."
+  },
+  {
+   "id": "b42-x06",
+   "format": "mcq",
+   "topic": "bio-b4-2",
+   "topicLabel": "B4.2 Ecological niches",
+   "difficulty": "standard",
+   "stem": "Herbivore teeth are often adapted with:",
+   "choices": [
+    "Broad, flat molars for grinding plant material",
+    "Long, pointed canines for gripping and killing prey",
+    "Sharp carnassials for slicing meat",
+    "No molars at all"
+   ],
+   "answer": 0,
+   "note": "Plant material needs grinding to break cell walls. Canines and carnassials are carnivore features."
+  },
+  {
+   "id": "b42-x07",
+   "format": "mcq",
+   "topic": "bio-b4-2",
+   "topicLabel": "B4.2 Ecological niches",
+   "difficulty": "standard",
+   "stem": "Many plants produce toxic secondary compounds in their leaves. This is an adaptation to:",
+   "choices": [
+    "Attract pollinators",
+    "Reduce herbivory",
+    "Increase photosynthesis",
+    "Store excess water"
+   ],
+   "answer": 1,
+   "note": "Chemical defences (e.g. alkaloids, tannins) deter or poison herbivores."
+  },
+  {
+   "id": "b42-x08",
+   "format": "mcq",
+   "topic": "bio-b4-2",
+   "topicLabel": "B4.2 Ecological niches",
+   "difficulty": "hard",
+   "stem": "The fundamental niche of a species is:",
+   "choices": [
+    "The narrower niche it actually occupies when competitors are present",
+    "The habitat where its population is largest",
+    "The role it has in only one food chain",
+    "The full range of conditions and resources it could use without competitors"
+   ],
+   "answer": 3,
+   "note": "Competition, predation and other interactions usually restrict a species to a smaller realised niche."
+  },
+  {
+   "id": "b42-x09",
+   "format": "mcq",
+   "topic": "bio-b4-2",
+   "topicLabel": "B4.2 Ecological niches",
+   "difficulty": "hard",
+   "stem": "The competitive exclusion principle states that:",
+   "choices": [
+    "Two species always share resources equally",
+    "The larger species always outcompetes the smaller",
+    "Competition between two species always leads to extinction of both of them",
+    "Two species cannot occupy the same niche indefinitely in the same place"
+   ],
+   "answer": 3,
+   "note": "One species will outcompete the other, unless their niches differ (resource partitioning)."
+  },
+  {
+   "id": "b42-x10",
+   "format": "mcq",
+   "topic": "bio-b4-2",
+   "topicLabel": "B4.2 Ecological niches",
+   "difficulty": "hard",
+   "stem": "Archaea are an example of:",
+   "choices": [
+    "A group of eukaryotes that live only in extremely hot or salty habitats",
+    "A type of virus that infects bacteria",
+    "A domain of prokaryotes with diverse ways of obtaining energy",
+    "A kingdom of fungi that live in soils"
+   ],
+   "answer": 2,
+   "note": "Archaea include methanogens, halophiles and others using chemical or light energy; not all live in extremes."
+  },
+  {
+   "id": "b42-x11",
+   "format": "mcq",
+   "topic": "bio-b4-2",
+   "topicLabel": "B4.2 Ecological niches",
+   "difficulty": "hard",
+   "stem": "Two barnacle species live on rocky shores. Species A is found only in the upper zone, but if species B is removed from the lower zone, A also grows there. This shows that:",
+   "choices": [
+    "Competition with B makes A's realised niche smaller than its fundamental niche",
+    "A cannot tolerate conditions in the lower zone",
+    "B's fundamental niche is limited to the upper zone of the rocky shore",
+    "Both species have identical realised niches on the rocky shore"
+   ],
+   "answer": 0,
+   "note": "A could live lower down (fundamental niche) but is excluded there by B — competition narrows A's realised niche."
+  },
+  {
+   "id": "b42-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b4-2",
+   "topicLabel": "B4.2 Ecological niches",
+   "difficulty": "standard",
+   "stem": "Compare the adaptations of a named predator and its prey.",
+   "markscheme": [
+    "Predator adaptation named, e.g. forward-facing eyes for judging distance (1)",
+    "Prey adaptation named, e.g. eyes on side of head for wide field of view (1)",
+    "Further paired adaptation, e.g. speed/camouflage/warning colours (1)",
+    "Each linked to catching or avoiding capture (1)"
+   ],
+   "tactic": "Pair predator and prey features that are related."
+  },
+  {
+   "id": "b42-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b4-2",
+   "topicLabel": "B4.2 Ecological niches",
+   "difficulty": "standard",
+   "stem": "Outline the differences between autotrophic and heterotrophic nutrition.",
+   "markscheme": [
+    "Autotrophs make their own carbon compounds from inorganic sources (1)",
+    "Using energy from light (photo-) or chemical reactions (chemo-) (1)",
+    "Heterotrophs obtain carbon compounds from other organisms (1)"
+   ],
+   "tactic": "Use precise terms: inorganic carbon source vs organic food."
+  },
+  {
+   "id": "b42-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-b4-2",
+   "topicLabel": "B4.2 Ecological niches",
+   "difficulty": "hard",
+   "stem": "Distinguish between fundamental and realised niches and explain how competition affects them.",
+   "markscheme": [
+    "Fundamental niche: full potential range of conditions/resources a species could use (1)",
+    "Realised niche: the part actually occupied (1)",
+    "Competition from other species restricts the realised niche (1)",
+    "Competitive exclusion / resource partitioning allows coexistence (1)"
+   ],
+   "tactic": "Definitions first, then mechanism with an example if you have one."
+  },
+  {
+   "id": "b42-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-b4-2",
+   "topicLabel": "B4.2 Ecological niches",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) Two invented flour beetle species were grown alone and together in containers at 30 °C for 120 days. Final population: species P alone 420; species Q alone 380; together P 410, Q 0.\n(a) Describe the effect of growing the species together. (b) Explain the result using a named ecological principle. (c) Predict what might happen at a different temperature, and explain.",
+   "markscheme": [
+    "(a) P barely changed (420 to 410) while Q was eliminated (380 to 0) (1)",
+    "(b) Competitive exclusion: both use the same resources/same niche; P outcompeted Q (1)",
+    "(c) Q might win/coexist at another temperature (1)",
+    "Because competitive ability depends on tolerance/optimum conditions for each species (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}
