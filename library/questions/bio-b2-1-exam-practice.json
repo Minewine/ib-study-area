@@ -1,0 +1,251 @@
+{
+ "subject": "biology-hl",
+ "topic": "bio-b2-1",
+ "topicLabel": "B2.1 Membranes and membrane transport",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "B2.1"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "b21-x01",
+   "format": "mcq",
+   "topic": "bio-b2-1",
+   "topicLabel": "B2.1 Membranes and membrane transport",
+   "difficulty": "easy",
+   "stem": "Phospholipids form a bilayer in water because:",
+   "choices": [
+    "They have hydrophilic heads and hydrophobic tails",
+    "They are entirely hydrophobic molecules",
+    "They form covalent bonds with the surrounding water molecules",
+    "Their tails are attracted to water molecules"
+   ],
+   "answer": 0,
+   "note": "Amphipathic molecules arrange with heads facing water on both sides and tails facing each other inside."
+  },
+  {
+   "id": "b21-x02",
+   "format": "mcq",
+   "topic": "bio-b2-1",
+   "topicLabel": "B2.1 Membranes and membrane transport",
+   "difficulty": "easy",
+   "stem": "Which molecule can cross a membrane by simple diffusion through the bilayer?",
+   "choices": [
+    "Glucose",
+    "Sodium ions",
+    "Proteins",
+    "Oxygen"
+   ],
+   "answer": 3,
+   "note": "Small, non-polar molecules (O₂, CO₂) pass through the hydrophobic core. Ions and polar molecules like glucose need proteins; proteins need vesicles."
+  },
+  {
+   "id": "b21-x03",
+   "format": "mcq",
+   "topic": "bio-b2-1",
+   "topicLabel": "B2.1 Membranes and membrane transport",
+   "difficulty": "easy",
+   "stem": "Facilitated diffusion differs from active transport because facilitated diffusion:",
+   "choices": [
+    "Moves substances against their gradient using energy from ATP hydrolysis",
+    "Needs no membrane proteins",
+    "Moves substances down their concentration gradient without ATP",
+    "Only moves water"
+   ],
+   "answer": 2,
+   "note": "Facilitated diffusion is passive, through channel or carrier proteins. Active transport uses pump proteins and ATP to move substances against the gradient."
+  },
+  {
+   "id": "b21-x04",
+   "format": "mcq",
+   "topic": "bio-b2-1",
+   "topicLabel": "B2.1 Membranes and membrane transport",
+   "difficulty": "standard",
+   "stem": "In the fluid mosaic model, \"mosaic\" refers to:",
+   "choices": [
+    "Phospholipids that move freely sideways",
+    "Proteins scattered in the phospholipid bilayer",
+    "Cholesterol molecules wedged between the fatty acid tails",
+    "Carbohydrates forming a coat outside"
+   ],
+   "answer": 1,
+   "note": "\"Fluid\" = phospholipids and proteins move laterally; \"mosaic\" = the pattern of proteins embedded in the bilayer."
+  },
+  {
+   "id": "b21-x05",
+   "format": "mcq",
+   "topic": "bio-b2-1",
+   "topicLabel": "B2.1 Membranes and membrane transport",
+   "difficulty": "standard",
+   "stem": "Glycoproteins on the outer surface of a plasma membrane are involved mainly in:",
+   "choices": [
+    "Active transport of ions",
+    "Cell recognition and cell adhesion",
+    "Increasing membrane fluidity in the cold",
+    "Synthesis of ATP"
+   ],
+   "answer": 1,
+   "note": "Carbohydrate chains act as markers (e.g. blood groups, self vs non-self) and help cells stick together."
+  },
+  {
+   "id": "b21-x06",
+   "format": "mcq",
+   "topic": "bio-b2-1",
+   "topicLabel": "B2.1 Membranes and membrane transport",
+   "difficulty": "standard",
+   "stem": "Phospholipids with more unsaturated fatty acid tails make a membrane:",
+   "choices": [
+    "More fluid, because kinks stop tails packing closely",
+    "Less fluid, because double bonds are stronger",
+    "More rigid, because tails are straighter",
+    "Unchanged, because tails do not affect fluidity"
+   ],
+   "answer": 0,
+   "note": "Cis double bonds put kinks in tails, so they pack loosely. Organisms in cold environments increase unsaturation to stay fluid."
+  },
+  {
+   "id": "b21-x07",
+   "format": "mcq",
+   "topic": "bio-b2-1",
+   "topicLabel": "B2.1 Membranes and membrane transport",
+   "difficulty": "standard",
+   "stem": "Cholesterol in animal cell membranes:",
+   "choices": [
+    "Forms hydrophilic channels so ions can pass through the bilayer",
+    "Carries out active transport using ATP",
+    "Regulates fluidity, reducing it at higher temperatures",
+    "Acts as a receptor for hormones"
+   ],
+   "answer": 2,
+   "note": "Cholesterol sits between phospholipid tails and restrains movement, stabilising fluidity over a range of temperatures."
+  },
+  {
+   "id": "b21-x08",
+   "format": "mcq",
+   "topic": "bio-b2-1",
+   "topicLabel": "B2.1 Membranes and membrane transport",
+   "difficulty": "hard",
+   "stem": "The sodium–potassium pump moves ions in each cycle as follows:",
+   "choices": [
+    "2 Na⁺ out and 3 K⁺ in, using one ATP",
+    "3 Na⁺ in and 2 K⁺ out, using no ATP",
+    "1 Na⁺ out and 1 K⁺ in, using two ATP",
+    "3 Na⁺ out and 2 K⁺ in, using one ATP"
+   ],
+   "answer": 3,
+   "note": "Three sodium ions are pumped out and two potassium ions in, per ATP hydrolysed — this builds the resting potential gradient."
+  },
+  {
+   "id": "b21-x09",
+   "format": "mcq",
+   "topic": "bio-b2-1",
+   "topicLabel": "B2.1 Membranes and membrane transport",
+   "difficulty": "hard",
+   "stem": "Glucose is absorbed into intestinal cells against its concentration gradient by a sodium–glucose cotransporter. The energy for this comes directly from:",
+   "choices": [
+    "ATP binding to the cotransporter protein",
+    "Diffusion of glucose down its own concentration gradient into the cell",
+    "Osmosis of water into the epithelial cell",
+    "The sodium concentration gradient made by the Na⁺/K⁺ pump"
+   ],
+   "answer": 3,
+   "note": "Indirect (secondary) active transport: Na⁺ moves down its gradient, carrying glucose with it. The pump using ATP maintains the Na⁺ gradient."
+  },
+  {
+   "id": "b21-x10",
+   "format": "mcq",
+   "topic": "bio-b2-1",
+   "topicLabel": "B2.1 Membranes and membrane transport",
+   "difficulty": "hard",
+   "stem": "A voltage-gated potassium channel opens when:",
+   "choices": [
+    "The membrane potential changes to a particular value",
+    "Acetylcholine binds to a receptor site on the channel protein",
+    "ATP is hydrolysed by the channel",
+    "The concentration of K⁺ outside rises"
+   ],
+   "answer": 0,
+   "note": "Voltage-gated channels respond to membrane potential (e.g. during an action potential). The nicotinic acetylcholine receptor is a ligand-gated channel."
+  },
+  {
+   "id": "b21-x11",
+   "format": "mcq",
+   "topic": "bio-b2-1",
+   "topicLabel": "B2.1 Membranes and membrane transport",
+   "difficulty": "hard",
+   "stem": "Endocytosis and exocytosis depend on:",
+   "choices": [
+    "Channel proteins that open wide enough to let large molecules through the membrane",
+    "Simple diffusion of water through aquaporins",
+    "The fluidity of the membrane, which allows vesicles to bud off and fuse",
+    "The rigidity of the membrane, which keeps vesicles in shape"
+   ],
+   "answer": 2,
+   "note": "Fluid membranes can pinch in (endocytosis) or fuse with vesicles (exocytosis); both use ATP."
+  },
+  {
+   "id": "b21-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b2-1",
+   "topicLabel": "B2.1 Membranes and membrane transport",
+   "difficulty": "standard",
+   "stem": "Explain how the structure of the phospholipid bilayer makes the membrane partially permeable.",
+   "markscheme": [
+    "Hydrophobic core of fatty acid tails (1)",
+    "Prevents passage of ions and polar molecules (1)",
+    "Small non-polar molecules (and small amounts of water) can diffuse through (1)",
+    "Proteins are needed for other substances, giving selectivity (1)"
+   ],
+   "tactic": "Link structure → property → consequence, per marking point."
+  },
+  {
+   "id": "b21-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b2-1",
+   "topicLabel": "B2.1 Membranes and membrane transport",
+   "difficulty": "standard",
+   "stem": "Distinguish between channel proteins and pump proteins.",
+   "markscheme": [
+    "Channel proteins allow passive movement (down a gradient); pumps move substances against a gradient (1)",
+    "Pumps need ATP/energy; channels do not (1)",
+    "Channels form a pore; pumps change shape to carry the substance (1)"
+   ],
+   "tactic": "Distinguish: pair each feature on the same line."
+  },
+  {
+   "id": "b21-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-b2-1",
+   "topicLabel": "B2.1 Membranes and membrane transport",
+   "difficulty": "hard",
+   "stem": "Describe how the sodium–potassium pump works.",
+   "markscheme": [
+    "Three Na⁺ bind to the pump from inside the cell (1)",
+    "ATP is hydrolysed and a phosphate attaches, so the pump changes shape and releases Na⁺ outside (1)",
+    "Two K⁺ bind from outside, causing the phosphate to be released (1)",
+    "The pump returns to its original shape and releases K⁺ inside (1)"
+   ],
+   "tactic": "Mechanisms: number each step and say what triggers the next."
+  },
+  {
+   "id": "b21-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-b2-1",
+   "topicLabel": "B2.1 Membranes and membrane transport",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) Beetroot pieces were heated for 1 minute at different temperatures, then left in water. Red pigment leaking out was measured as light absorbance (invented data): 20 °C 0.05; 40 °C 0.08; 50 °C 0.22; 60 °C 0.61; 70 °C 0.95.\n(a) Describe the effect of temperature on pigment leakage. (b) Explain the results in terms of membrane structure. (c) State two variables that must be controlled.",
+   "markscheme": [
+    "(a) Little change from 20 to 40 °C (0.05 to 0.08), then a sharp rise to 0.95 at 70 °C (1)",
+    "(b) Higher temperature increases fluidity / phospholipids move more (1)",
+    "Membrane proteins denature above about 40–50 °C, leaving gaps (1)",
+    "(c) Two of: size/surface area of beetroot pieces; volume of water; time in water; beetroot rinsed before; same beetroot source (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

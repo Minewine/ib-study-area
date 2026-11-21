@@ -1,0 +1,249 @@
+{
+ "subject": "chemistry-hl",
+ "topic": "chem-r1-2",
+ "topicLabel": "R1.2 Energy cycles in reactions",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "R1.2"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "r12-x01",
+   "format": "mcq",
+   "topic": "chem-r1-2",
+   "topicLabel": "R1.2 Energy cycles in reactions",
+   "difficulty": "easy",
+   "stem": "Bond breaking is:",
+   "choices": [
+    "Exothermic, because energy is released when atoms separate",
+    "Endothermic, because energy is needed to separate atoms",
+    "Endothermic, because energy is released to the surroundings",
+    "Exothermic, because the products are more stable than reactants"
+   ],
+   "answer": 1,
+   "note": "Breaking bonds always absorbs energy; forming bonds always releases it. ΔH = Σ(bonds broken) − Σ(bonds formed)."
+  },
+  {
+   "id": "r12-x02",
+   "format": "mcq",
+   "topic": "chem-r1-2",
+   "topicLabel": "R1.2 Energy cycles in reactions",
+   "difficulty": "easy",
+   "stem": "Hess's law states that:",
+   "choices": [
+    "The enthalpy change depends on the number of steps in the route",
+    "Energy is lost as heat at every step of a reaction pathway",
+    "The enthalpy change of a reaction is independent of the route taken",
+    "Enthalpy changes can only be measured directly by calorimetry"
+   ],
+   "answer": 2,
+   "note": "Because enthalpy is a state function, any route from the same reactants to the same products has the same ΔH."
+  },
+  {
+   "id": "r12-x03",
+   "format": "mcq",
+   "topic": "chem-r1-2",
+   "topicLabel": "R1.2 Energy cycles in reactions",
+   "difficulty": "easy",
+   "stem": "The standard enthalpy of formation of an element in its standard state is:",
+   "choices": [
+    "Zero",
+    "Always positive",
+    "Always negative",
+    "Equal to its bond enthalpy"
+   ],
+   "answer": 0,
+   "note": "By definition ΔHf° = 0 for elements in their standard states (e.g. O₂(g), C(graphite))."
+  },
+  {
+   "id": "r12-x04",
+   "format": "mcq",
+   "topic": "chem-r1-2",
+   "topicLabel": "R1.2 Energy cycles in reactions",
+   "difficulty": "standard",
+   "stem": "Use bond enthalpies (kJ mol⁻¹: H–H 436, Cl–Cl 242, H–Cl 431) to find ΔH for H₂(g) + Cl₂(g) → 2HCl(g).",
+   "choices": [
+    "+184 kJ",
+    "−247 kJ",
+    "+247 kJ",
+    "−184 kJ"
+   ],
+   "answer": 3,
+   "note": "Broken: 436 + 242 = 678. Formed: 2 × 431 = 862. ΔH = 678 − 862 = −184 kJ."
+  },
+  {
+   "id": "r12-x05",
+   "format": "mcq",
+   "topic": "chem-r1-2",
+   "topicLabel": "R1.2 Energy cycles in reactions",
+   "difficulty": "standard",
+   "stem": "Use bond enthalpies (kJ mol⁻¹: C–H 414, O=O 498, C=O 804, O–H 463) to estimate ΔH for CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(g).",
+   "choices": [
+    "+808 kJ",
+    "−1006 kJ",
+    "−808 kJ",
+    "−310 kJ"
+   ],
+   "answer": 2,
+   "note": "Broken: 4(414) + 2(498) = 2652. Formed: 2(804) + 4(463) = 3460. ΔH = 2652 − 3460 = −808 kJ."
+  },
+  {
+   "id": "r12-x06",
+   "format": "mcq",
+   "topic": "chem-r1-2",
+   "topicLabel": "R1.2 Energy cycles in reactions",
+   "difficulty": "standard",
+   "stem": "Using ΔHf° values (kJ mol⁻¹: CH₄ −74, CO₂ −394, H₂O(l) −286), the enthalpy of combustion of methane is:",
+   "choices": [
+    "−606 kJ mol⁻¹",
+    "−892 kJ mol⁻¹",
+    "−754 kJ mol⁻¹",
+    "+892 kJ mol⁻¹"
+   ],
+   "answer": 1,
+   "note": "ΔHc = ΣΔHf(products) − ΣΔHf(reactants) = (−394 + 2(−286)) − (−74) = −892. O₂ has ΔHf = 0."
+  },
+  {
+   "id": "r12-x07",
+   "format": "mcq",
+   "topic": "chem-r1-2",
+   "topicLabel": "R1.2 Energy cycles in reactions",
+   "difficulty": "standard",
+   "stem": "Why is ΔH from average bond enthalpies different from the value found with ΔHf data?",
+   "choices": [
+    "Bond enthalpies are averages from many compounds and apply to gases",
+    "Bond enthalpies include the energy of intermolecular forces",
+    "ΔHf values are only estimates from calorimetry experiments",
+    "Bond enthalpies only apply to reactions at high pressure"
+   ],
+   "answer": 0,
+   "note": "Average bond enthalpies ignore the specific molecular environment, and they assume all species are gaseous."
+  },
+  {
+   "id": "r12-x08",
+   "format": "mcq",
+   "topic": "chem-r1-2",
+   "topicLabel": "R1.2 Energy cycles in reactions",
+   "difficulty": "hard",
+   "stem": "Given: C(s) + O₂(g) → CO₂(g) ΔH = −394 kJ; CO(g) + ½O₂(g) → CO₂(g) ΔH = −283 kJ. Find ΔH for C(s) + ½O₂(g) → CO(g).",
+   "choices": [
+    "−677 kJ",
+    "+111 kJ",
+    "−394 kJ",
+    "−111 kJ"
+   ],
+   "answer": 3,
+   "note": "Route: C → CO₂ (−394), then reverse CO → CO₂ (+283). ΔH = −394 + 283 = −111 kJ."
+  },
+  {
+   "id": "r12-x09",
+   "format": "mcq",
+   "topic": "chem-r1-2",
+   "topicLabel": "R1.2 Energy cycles in reactions",
+   "difficulty": "hard",
+   "stem": "In a Born–Haber cycle for NaCl, which step is exothermic?",
+   "choices": [
+    "Atomisation of sodium",
+    "First electron affinity of chlorine",
+    "First ionisation energy of sodium",
+    "Atomisation of chlorine"
+   ],
+   "answer": 1,
+   "note": "Adding an electron to a Cl atom releases energy (−349 kJ mol⁻¹). Atomisation and ionisation are endothermic."
+  },
+  {
+   "id": "r12-x10",
+   "format": "mcq",
+   "topic": "chem-r1-2",
+   "topicLabel": "R1.2 Energy cycles in reactions",
+   "difficulty": "hard",
+   "stem": "Which equation represents the lattice enthalpy of MgO, as defined in the data booklet?",
+   "choices": [
+    "Mg²⁺(g) + O²⁻(g) → MgO(s)",
+    "Mg(s) + ½O₂(g) → MgO(s)",
+    "MgO(s) → Mg(g) + O(g)",
+    "MgO(s) → Mg²⁺(g) + O²⁻(g)"
+   ],
+   "answer": 3,
+   "note": "The data booklet defines lattice enthalpy as the endothermic separation of the solid into gaseous ions, so values are positive."
+  },
+  {
+   "id": "r12-x11",
+   "format": "mcq",
+   "topic": "chem-r1-2",
+   "topicLabel": "R1.2 Energy cycles in reactions",
+   "difficulty": "hard",
+   "stem": "The second electron affinity of oxygen, O⁻(g) + e⁻ → O²⁻(g), is endothermic because:",
+   "choices": [
+    "Oxygen has a low nuclear charge",
+    "The electron enters a new, outer shell",
+    "The electron is added to an ion that is already negative",
+    "Oxide ions are smaller than oxygen atoms"
+   ],
+   "answer": 2,
+   "note": "Repulsion between O⁻ and the incoming electron must be overcome, so energy is absorbed (about +753 kJ mol⁻¹)."
+  },
+  {
+   "id": "r12-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r1-2",
+   "topicLabel": "R1.2 Energy cycles in reactions",
+   "difficulty": "standard",
+   "stem": "Using bond enthalpies (kJ mol⁻¹: C=C 614, C–C 346, C–H 414, H–H 436), calculate ΔH for C₂H₄(g) + H₂(g) → C₂H₆(g).",
+   "markscheme": [
+    "Bonds broken: C=C + 4 C–H + H–H = 614 + 1656 + 436 = 2706 kJ (1)",
+    "Bonds formed: C–C + 6 C–H = 346 + 2484 = 2830 kJ (1)",
+    "ΔH = 2706 − 2830 = −124 kJ mol⁻¹ (1)"
+   ],
+   "tactic": "Draw full structures and count every bond before you add."
+  },
+  {
+   "id": "r12-x13",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-r1-2",
+   "topicLabel": "R1.2 Energy cycles in reactions",
+   "difficulty": "standard",
+   "stem": "Explain why the value in the previous question differs from the value found using ΔHf° data (−136 kJ mol⁻¹).",
+   "markscheme": [
+    "Bond enthalpies are average values from a range of compounds (1)",
+    "The actual bonds in ethene/ethane differ from the average (1)"
+   ],
+   "tactic": "Give the reason and say which value is more reliable (ΔHf°)."
+  },
+  {
+   "id": "r12-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "chem-r1-2",
+   "topicLabel": "R1.2 Energy cycles in reactions",
+   "difficulty": "hard",
+   "stem": "Construct a Born–Haber cycle calculation for the lattice enthalpy of KCl. Data (kJ mol⁻¹): ΔHf(KCl) −437; atomisation K +89; atomisation Cl (½Cl₂ → Cl) +121; first IE of K +419; first EA of Cl −349.",
+   "markscheme": [
+    "ΔHf = ΔHat(K) + ΔHat(Cl) + IE + EA − ΔHlattice (1)",
+    "−437 = 89 + 121 + 419 − 349 − ΔHlattice (1)",
+    "ΔHlattice = 89 + 121 + 419 − 349 + 437 (1)",
+    "= +717 kJ mol⁻¹ (1)"
+   ],
+   "tactic": "Write the cycle as one equation before substituting; check the sign convention of the data booklet (lattice enthalpy positive)."
+  },
+  {
+   "id": "r12-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "chem-r1-2",
+   "topicLabel": "R1.2 Energy cycles in reactions",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) A student measured ΔH for two reactions by calorimetry: (1) MgO(s) + 2HCl(aq) → MgCl₂(aq) + H₂O(l) ΔH₁ = −146 kJ mol⁻¹; (2) Mg(s) + 2HCl(aq) → MgCl₂(aq) + H₂(g) ΔH₂ = −452 kJ mol⁻¹. Given ΔHf(H₂O(l)) = −286 kJ mol⁻¹.\n(a) Use Hess's law to determine ΔHf of MgO. (b) The literature value is −602 kJ mol⁻¹. Calculate the percentage error. (c) Explain why ΔHf of MgO cannot easily be measured directly.",
+   "markscheme": [
+    "(a) Mg + ½O₂ → MgO: ΔH = ΔH₂ − ΔH₁ + ΔHf(H₂O) (1)",
+    "= −452 + 146 − 286 = −592 kJ mol⁻¹ (1)",
+    "(b) (602 − 592)/602 × 100 = 1.7% (1)",
+    "(c) Burning Mg gives a very fast, very hot reaction / heat is hard to capture / some Mg may not react completely (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

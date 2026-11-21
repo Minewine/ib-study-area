@@ -1,0 +1,250 @@
+{
+ "subject": "chemistry-hl",
+ "topic": "chem-r1-4",
+ "topicLabel": "R1.4 Entropy and spontaneity (additional higher level)",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "R1.4"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "r14-x01",
+   "format": "mcq",
+   "topic": "chem-r1-4",
+   "topicLabel": "R1.4 Entropy and spontaneity (additional higher level)",
+   "difficulty": "easy",
+   "stem": "Entropy is a measure of:",
+   "choices": [
+    "The total heat energy stored in a substance",
+    "The dispersal of energy and matter, often seen as disorder",
+    "The rate at which a reaction proceeds",
+    "The energy needed to start a reaction"
+   ],
+   "answer": 1,
+   "note": "S measures how spread out energy and particles are. Gases > liquids > solids."
+  },
+  {
+   "id": "r14-x02",
+   "format": "mcq",
+   "topic": "chem-r1-4",
+   "topicLabel": "R1.4 Entropy and spontaneity (additional higher level)",
+   "difficulty": "easy",
+   "stem": "Which change has the largest increase in entropy?",
+   "choices": [
+    "H₂O(g) → H₂O(l)",
+    "H₂O(l) → H₂O(s)",
+    "H₂O(s) at 200 K → H₂O(s) at 250 K",
+    "H₂O(l) → H₂O(g)"
+   ],
+   "answer": 3,
+   "note": "Liquid → gas gives the biggest increase in dispersal. Cooling and condensing decrease entropy."
+  },
+  {
+   "id": "r14-x03",
+   "format": "mcq",
+   "topic": "chem-r1-4",
+   "topicLabel": "R1.4 Entropy and spontaneity (additional higher level)",
+   "difficulty": "easy",
+   "stem": "A reaction is spontaneous at a given temperature when:",
+   "choices": [
+    "ΔG is negative",
+    "ΔH is positive",
+    "ΔS is negative",
+    "ΔG is positive"
+   ],
+   "answer": 0,
+   "note": "ΔG = ΔH − TΔS < 0 means the reaction is thermodynamically favourable. It may still be slow (kinetics)."
+  },
+  {
+   "id": "r14-x04",
+   "format": "mcq",
+   "topic": "chem-r1-4",
+   "topicLabel": "R1.4 Entropy and spontaneity (additional higher level)",
+   "difficulty": "standard",
+   "stem": "Predict the sign of ΔS for N₂(g) + 3H₂(g) → 2NH₃(g).",
+   "choices": [
+    "Positive, because a new compound is formed",
+    "Zero, because all species are gases",
+    "Negative, because the number of gas moles decreases from 4 to 2",
+    "Positive, because the reaction is exothermic"
+   ],
+   "answer": 2,
+   "note": "Fewer moles of gas → less dispersal → ΔS < 0. Count gas moles first."
+  },
+  {
+   "id": "r14-x05",
+   "format": "mcq",
+   "topic": "chem-r1-4",
+   "topicLabel": "R1.4 Entropy and spontaneity (additional higher level)",
+   "difficulty": "standard",
+   "stem": "Using S° values (J K⁻¹ mol⁻¹: N₂ 192, H₂ 131, NH₃ 193), ΔS° for N₂ + 3H₂ → 2NH₃ is:",
+   "choices": [
+    "−199 J K⁻¹ mol⁻¹",
+    "+199 J K⁻¹ mol⁻¹",
+    "−130 J K⁻¹ mol⁻¹",
+    "−323 J K⁻¹ mol⁻¹"
+   ],
+   "answer": 0,
+   "note": "ΔS = 2(193) − (192 + 3 × 131) = 386 − 585 = −199. Use the coefficients."
+  },
+  {
+   "id": "r14-x06",
+   "format": "mcq",
+   "topic": "chem-r1-4",
+   "topicLabel": "R1.4 Entropy and spontaneity (additional higher level)",
+   "difficulty": "standard",
+   "stem": "A reaction has ΔH > 0 and ΔS > 0. It is spontaneous:",
+   "choices": [
+    "At all temperatures",
+    "Only above a certain temperature",
+    "At no temperature",
+    "Only below a certain temperature"
+   ],
+   "answer": 1,
+   "note": "ΔG = ΔH − TΔS is negative only when TΔS > ΔH, i.e. at high T."
+  },
+  {
+   "id": "r14-x07",
+   "format": "mcq",
+   "topic": "chem-r1-4",
+   "topicLabel": "R1.4 Entropy and spontaneity (additional higher level)",
+   "difficulty": "standard",
+   "stem": "For a reaction with ΔH = −92 kJ mol⁻¹ and ΔS = −199 J K⁻¹ mol⁻¹, ΔG at 298 K is:",
+   "choices": [
+    "−151 kJ mol⁻¹",
+    "+59 300 kJ mol⁻¹",
+    "−33 kJ mol⁻¹",
+    "+33 kJ mol⁻¹"
+   ],
+   "answer": 2,
+   "note": "ΔG = −92 − 298 × (−0.199) = −92 + 59.3 = −32.7 kJ mol⁻¹. Convert ΔS to kJ."
+  },
+  {
+   "id": "r14-x08",
+   "format": "mcq",
+   "topic": "chem-r1-4",
+   "topicLabel": "R1.4 Entropy and spontaneity (additional higher level)",
+   "difficulty": "hard",
+   "stem": "Above what temperature does the reaction in the previous question stop being spontaneous?",
+   "choices": [
+    "About 298 K",
+    "About 2.2 K",
+    "About 0.46 K",
+    "About 462 K"
+   ],
+   "answer": 3,
+   "note": "ΔG = 0 when T = ΔH/ΔS = 92 000 ÷ 199 = 462 K. Above this, the −TΔS term outweighs ΔH."
+  },
+  {
+   "id": "r14-x09",
+   "format": "mcq",
+   "topic": "chem-r1-4",
+   "topicLabel": "R1.4 Entropy and spontaneity (additional higher level)",
+   "difficulty": "hard",
+   "stem": "CaCO₃(s) → CaO(s) + CO₂(g) has ΔH = +178 kJ mol⁻¹ and ΔS = +161 J K⁻¹ mol⁻¹. The minimum temperature for decomposition is about:",
+   "choices": [
+    "1.1 K",
+    "290 K",
+    "833 K",
+    "1106 K"
+   ],
+   "answer": 3,
+   "note": "T = ΔH ÷ ΔS = 178 000 ÷ 161 = 1106 K. Units: J with J."
+  },
+  {
+   "id": "r14-x10",
+   "format": "mcq",
+   "topic": "chem-r1-4",
+   "topicLabel": "R1.4 Entropy and spontaneity (additional higher level)",
+   "difficulty": "hard",
+   "stem": "ΔG° for a reaction is −17.1 kJ mol⁻¹ at 298 K. Which is correct about K?",
+   "choices": [
+    "K is greater than 1, so products are favoured at equilibrium",
+    "K is less than 1, so reactants are favoured",
+    "K equals 1, so neither is favoured",
+    "K is negative because ΔG° is negative"
+   ],
+   "answer": 0,
+   "note": "ΔG° = −RT ln K. Negative ΔG° → ln K > 0 → K > 1 (here K ≈ 1000)."
+  },
+  {
+   "id": "r14-x11",
+   "format": "mcq",
+   "topic": "chem-r1-4",
+   "topicLabel": "R1.4 Entropy and spontaneity (additional higher level)",
+   "difficulty": "hard",
+   "stem": "Which statement about ΔG and the position of equilibrium is correct?",
+   "choices": [
+    "A negative ΔG° means the reaction goes to completion",
+    "ΔG° depends on how fast the reaction reaches equilibrium",
+    "At equilibrium ΔG = 0 for the reaction mixture",
+    "A positive ΔG° means no products form at all"
+   ],
+   "answer": 2,
+   "note": "ΔG of the mixture falls to zero at equilibrium. ΔG° only tells you where the equilibrium lies (K), never the rate."
+  },
+  {
+   "id": "r14-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r1-4",
+   "topicLabel": "R1.4 Entropy and spontaneity (additional higher level)",
+   "difficulty": "standard",
+   "stem": "Explain why the dissolving of ammonium nitrate in water is spontaneous even though it is endothermic.",
+   "markscheme": [
+    "ΔS is positive: ions are released from the lattice and become dispersed in solution (1)",
+    "TΔS is larger than ΔH (at room temperature) (1)",
+    "So ΔG = ΔH − TΔS is negative (1)"
+   ],
+   "tactic": "Use the equation explicitly: state signs of ΔH and ΔS, then the sign of ΔG."
+  },
+  {
+   "id": "r14-x13",
+   "format": "written",
+   "marks": 4,
+   "topic": "chem-r1-4",
+   "topicLabel": "R1.4 Entropy and spontaneity (additional higher level)",
+   "difficulty": "hard",
+   "stem": "For the reaction 2SO₂(g) + O₂(g) → 2SO₃(g), ΔH = −198 kJ mol⁻¹ and ΔS = −188 J K⁻¹ mol⁻¹. (a) Calculate ΔG at 700 K. (b) Comment on spontaneity at this temperature and at higher temperatures.",
+   "markscheme": [
+    "(a) ΔG = −198 − 700 × (−0.188) (1)",
+    "= −198 + 131.6 = −66.4 kJ mol⁻¹ (1)",
+    "(b) Spontaneous at 700 K (ΔG < 0) (1)",
+    "Above ~1053 K (ΔH/ΔS) ΔG becomes positive, so not spontaneous (1)"
+   ],
+   "tactic": "Always convert J to kJ before combining ΔH with TΔS."
+  },
+  {
+   "id": "r14-x14",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r1-4",
+   "topicLabel": "R1.4 Entropy and spontaneity (additional higher level)",
+   "difficulty": "hard",
+   "stem": "Calculate the equilibrium constant K at 298 K for a reaction with ΔG° = −5.70 kJ mol⁻¹. (R = 8.31 J K⁻¹ mol⁻¹)",
+   "markscheme": [
+    "ln K = −ΔG°/RT = 5700 ÷ (8.31 × 298) (1)",
+    "ln K = 2.30 (1)",
+    "K = 9.98 ≈ 10.0 (1)"
+   ],
+   "tactic": "Use J, not kJ, in ΔG° = −RT ln K."
+  },
+  {
+   "id": "r14-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "chem-r1-4",
+   "topicLabel": "R1.4 Entropy and spontaneity (additional higher level)",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) ΔG° for an invented reaction was measured at several temperatures: 300 K −20.0; 400 K −8.0; 500 K +4.0 kJ mol⁻¹. ΔG° = ΔH° − TΔS° is a straight line.\n(a) Use the data to determine ΔS° (gradient). (b) Determine ΔH° (intercept at T = 0). (c) Find the temperature at which ΔG° = 0 and state what it means.",
+   "markscheme": [
+    "(a) Gradient = (4.0 − (−20.0)) ÷ (500 − 300) = +0.120 kJ K⁻¹ mol⁻¹; ΔS° = −gradient = −120 J K⁻¹ mol⁻¹ (1)",
+    "(b) ΔH° = ΔG° + TΔS° = −20.0 + 300 × (−0.120) = −56.0 kJ mol⁻¹ (1)",
+    "(c) T = ΔH°/ΔS° = −56.0 ÷ −0.120 = 467 K (1)",
+    "Above 467 K the reaction is no longer spontaneous / K < 1 (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

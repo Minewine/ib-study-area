@@ -1,0 +1,250 @@
+{
+ "subject": "chemistry-hl",
+ "topic": "chem-r2-3",
+ "topicLabel": "R2.3 How far? The extent of chemical change",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "R2.3"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "r23-x01",
+   "format": "mcq",
+   "topic": "chem-r2-3",
+   "topicLabel": "R2.3 How far? The extent of chemical change",
+   "difficulty": "easy",
+   "stem": "At dynamic equilibrium:",
+   "choices": [
+    "Forward and reverse rates are equal, so concentrations stay constant",
+    "The forward and reverse reactions have both stopped completely",
+    "The concentrations of reactants and products are always equal",
+    "The forward reaction is faster than the reverse reaction"
+   ],
+   "answer": 0,
+   "note": "Both reactions continue at the same rate in a closed system; concentrations stop changing but need not be equal."
+  },
+  {
+   "id": "r23-x02",
+   "format": "mcq",
+   "topic": "chem-r2-3",
+   "topicLabel": "R2.3 How far? The extent of chemical change",
+   "difficulty": "easy",
+   "stem": "Which is the equilibrium expression for N₂(g) + 3H₂(g) ⇌ 2NH₃(g)?",
+   "choices": [
+    "Kc = [N₂][H₂]³ ÷ [NH₃]²",
+    "Kc = 2[NH₃] ÷ ([N₂] × 3[H₂])",
+    "Kc = [NH₃]² ÷ ([N₂][H₂]³)",
+    "Kc = [NH₃] ÷ ([N₂][H₂])"
+   ],
+   "answer": 2,
+   "note": "Products over reactants, each concentration raised to its coefficient."
+  },
+  {
+   "id": "r23-x03",
+   "format": "mcq",
+   "topic": "chem-r2-3",
+   "topicLabel": "R2.3 How far? The extent of chemical change",
+   "difficulty": "easy",
+   "stem": "A catalyst added to a system at equilibrium will:",
+   "choices": [
+    "Shift the equilibrium towards the products",
+    "Shift the equilibrium towards the reactants",
+    "Increase the value of Kc",
+    "Not change the position of equilibrium"
+   ],
+   "answer": 3,
+   "note": "It speeds up forward and reverse reactions equally, so equilibrium is reached faster but its position and K are unchanged."
+  },
+  {
+   "id": "r23-x04",
+   "format": "mcq",
+   "topic": "chem-r2-3",
+   "topicLabel": "R2.3 How far? The extent of chemical change",
+   "difficulty": "standard",
+   "stem": "For 2SO₂(g) + O₂(g) ⇌ 2SO₃(g), ΔH < 0, which change increases the equilibrium yield of SO₃?",
+   "choices": [
+    "Increasing the temperature",
+    "Increasing the pressure",
+    "Adding a catalyst",
+    "Removing some oxygen"
+   ],
+   "answer": 1,
+   "note": "3 mol gas → 2 mol gas: higher pressure favours fewer moles. Higher T favours the endothermic (reverse) direction."
+  },
+  {
+   "id": "r23-x05",
+   "format": "mcq",
+   "topic": "chem-r2-3",
+   "topicLabel": "R2.3 How far? The extent of chemical change",
+   "difficulty": "standard",
+   "stem": "For an exothermic forward reaction, increasing the temperature:",
+   "choices": [
+    "Decreases the value of K",
+    "Increases the value of K",
+    "Does not change the value of K",
+    "Makes K equal to 1"
+   ],
+   "answer": 0,
+   "note": "K depends only on temperature. Heating favours the endothermic direction, here the reverse, so K falls."
+  },
+  {
+   "id": "r23-x06",
+   "format": "mcq",
+   "topic": "chem-r2-3",
+   "topicLabel": "R2.3 How far? The extent of chemical change",
+   "difficulty": "standard",
+   "stem": "A large value of Kc (e.g. 10¹⁰) indicates that:",
+   "choices": [
+    "The reaction is very fast",
+    "The equilibrium lies far to the right",
+    "The reaction has a large activation energy",
+    "The equilibrium lies far to the left"
+   ],
+   "answer": 1,
+   "note": "K tells you the extent of reaction, not the rate. K ≫ 1 → mostly products."
+  },
+  {
+   "id": "r23-x07",
+   "format": "mcq",
+   "topic": "chem-r2-3",
+   "topicLabel": "R2.3 How far? The extent of chemical change",
+   "difficulty": "standard",
+   "stem": "For H₂(g) + I₂(g) ⇌ 2HI(g), the equilibrium concentrations are [H₂] = 0.10, [I₂] = 0.10, [HI] = 0.70 mol dm⁻³. Kc is:",
+   "choices": [
+    "70",
+    "7.0",
+    "0.020",
+    "49"
+   ],
+   "answer": 3,
+   "note": "Kc = 0.70² ÷ (0.10 × 0.10) = 0.49 ÷ 0.010 = 49 (no units, as moles of gas are equal on both sides)."
+  },
+  {
+   "id": "r23-x08",
+   "format": "mcq",
+   "topic": "chem-r2-3",
+   "topicLabel": "R2.3 How far? The extent of chemical change",
+   "difficulty": "hard",
+   "stem": "For a reaction with Kc = 49, a mixture has reaction quotient Q = 10. The reaction will:",
+   "choices": [
+    "Proceed in reverse until Q = Kc",
+    "Stay unchanged because the system is at equilibrium",
+    "Proceed forward until Q = Kc",
+    "Proceed forward until Q = 0"
+   ],
+   "answer": 2,
+   "note": "Q < K → too few products, so net forward reaction until Q rises to K."
+  },
+  {
+   "id": "r23-x09",
+   "format": "mcq",
+   "topic": "chem-r2-3",
+   "topicLabel": "R2.3 How far? The extent of chemical change",
+   "difficulty": "hard",
+   "stem": "If Kc for A ⇌ 2B is 4.0, what is Kc for 2B ⇌ A?",
+   "choices": [
+    "4.0",
+    "−4.0",
+    "16",
+    "0.25"
+   ],
+   "answer": 3,
+   "note": "Reversing a reaction inverts K: 1/4.0 = 0.25."
+  },
+  {
+   "id": "r23-x10",
+   "format": "mcq",
+   "topic": "chem-r2-3",
+   "topicLabel": "R2.3 How far? The extent of chemical change",
+   "difficulty": "hard",
+   "stem": "1.00 mol H₂ and 1.00 mol I₂ are placed in a 1.00 dm³ flask; Kc = 49 for H₂ + I₂ ⇌ 2HI. What is [HI] at equilibrium?",
+   "choices": [
+    "1.56 mol dm⁻³",
+    "0.778 mol dm⁻³",
+    "0.222 mol dm⁻³",
+    "7.00 mol dm⁻³"
+   ],
+   "answer": 0,
+   "note": "(2x)² ÷ (1 − x)² = 49 → 2x ÷ (1 − x) = 7 → x = 0.778; [HI] = 2x = 1.56 mol dm⁻³."
+  },
+  {
+   "id": "r23-x11",
+   "format": "mcq",
+   "topic": "chem-r2-3",
+   "topicLabel": "R2.3 How far? The extent of chemical change",
+   "difficulty": "hard",
+   "stem": "ΔG° = −RT ln K. A reaction with K = 1.0 × 10⁻⁵ at 298 K has:",
+   "choices": [
+    "A negative ΔG°, so products are favoured",
+    "A positive ΔG°, so reactants are favoured",
+    "ΔG° = 0, as K is very small",
+    "A positive ΔG°, so it can never occur"
+   ],
+   "answer": 1,
+   "note": "ln K < 0 → ΔG° > 0 (≈ +28.5 kJ mol⁻¹). Some products still form; the equilibrium simply lies to the left."
+  },
+  {
+   "id": "r23-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r2-3",
+   "topicLabel": "R2.3 How far? The extent of chemical change",
+   "difficulty": "standard",
+   "stem": "State and explain the effect of increasing pressure on N₂(g) + 3H₂(g) ⇌ 2NH₃(g).",
+   "markscheme": [
+    "Equilibrium shifts to the right / more NH₃ (1)",
+    "Right side has fewer gas moles (2 vs 4) (1)",
+    "System opposes the change by reducing the pressure (Le Châtelier) (1)"
+   ],
+   "tactic": "Pressure: count gas moles on each side, then apply Le Châtelier."
+  },
+  {
+   "id": "r23-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r2-3",
+   "topicLabel": "R2.3 How far? The extent of chemical change",
+   "difficulty": "standard",
+   "stem": "Explain why industrial ammonia production uses a moderate temperature (about 450 °C) even though the forward reaction is exothermic.",
+   "markscheme": [
+    "Lower temperature gives a higher equilibrium yield (1)",
+    "But the rate would be too slow at low temperature (1)",
+    "450 °C is a compromise between yield and rate (with a catalyst) (1)"
+   ],
+   "tactic": "Compromise questions: yield argument, rate argument, then the conclusion."
+  },
+  {
+   "id": "r23-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "chem-r2-3",
+   "topicLabel": "R2.3 How far? The extent of chemical change",
+   "difficulty": "hard",
+   "stem": "0.200 mol of PCl₅ is placed in a 1.00 dm³ container: PCl₅(g) ⇌ PCl₃(g) + Cl₂(g). At equilibrium, 0.050 mol of Cl₂ is present. Calculate Kc.",
+   "markscheme": [
+    "Change: PCl₅ −0.050; PCl₃ +0.050; Cl₂ +0.050 (1)",
+    "Equilibrium: PCl₅ 0.150, PCl₃ 0.050, Cl₂ 0.050 mol dm⁻³ (1)",
+    "Kc = (0.050 × 0.050) ÷ 0.150 (1)",
+    "Kc = 0.017 (0.0167) mol dm⁻³ (1)"
+   ],
+   "tactic": "ICE table: Initial, Change (using the mole ratio), Equilibrium — then substitute."
+  },
+  {
+   "id": "r23-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "chem-r2-3",
+   "topicLabel": "R2.3 How far? The extent of chemical change",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) For an invented gas-phase reaction X ⇌ Y, the % of Y at equilibrium was measured: 300 K 80%; 400 K 62%; 500 K 41%.\n(a) Deduce whether the forward reaction is exothermic or endothermic, with a reason. (b) Calculate Kc at 400 K. (c) Predict the effect on Kc of adding a catalyst at 400 K.",
+   "markscheme": [
+    "(a) Exothermic (1)",
+    "Yield of Y falls as temperature rises, so the reverse (endothermic) direction is favoured at high T (1)",
+    "(b) Kc = [Y]/[X] = 62/38 = 1.6 (1)",
+    "(c) No change in Kc (equilibrium reached faster) (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}
