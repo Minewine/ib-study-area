@@ -1,0 +1,251 @@
+{
+ "subject": "biology-hl",
+ "topic": "bio-b3-2",
+ "topicLabel": "B3.2 Transport",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "B3.2"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "b32-x01",
+   "format": "mcq",
+   "topic": "bio-b3-2",
+   "topicLabel": "B3.2 Transport",
+   "difficulty": "easy",
+   "stem": "Which feature of capillaries makes them suitable for exchange?",
+   "choices": [
+    "Thick muscular walls that withstand pressure",
+    "Valves that prevent the backflow of blood",
+    "Walls one cell thick, sometimes with pores",
+    "Elastic fibres that recoil after each heartbeat"
+   ],
+   "answer": 2,
+   "note": "Thin, permeable walls and a large total surface area allow exchange with tissues."
+  },
+  {
+   "id": "b32-x02",
+   "format": "mcq",
+   "topic": "bio-b3-2",
+   "topicLabel": "B3.2 Transport",
+   "difficulty": "easy",
+   "stem": "Arteries have thick walls with elastic and muscle tissue because they:",
+   "choices": [
+    "Carry blood at high pressure away from the heart",
+    "Carry blood at low pressure back to the heart",
+    "Exchange materials with the body's tissues",
+    "Contain valves to stop blood flowing backward"
+   ],
+   "answer": 0,
+   "note": "Elastic fibres stretch and recoil, maintaining pressure; muscle adjusts diameter."
+  },
+  {
+   "id": "b32-x03",
+   "format": "mcq",
+   "topic": "bio-b3-2",
+   "topicLabel": "B3.2 Transport",
+   "difficulty": "easy",
+   "stem": "Water is carried from roots to leaves in:",
+   "choices": [
+    "Phloem sieve tubes",
+    "Xylem vessels",
+    "Companion cells",
+    "Guard cells"
+   ],
+   "answer": 1,
+   "note": "Xylem conducts water and minerals; phloem transports sugars (translocation)."
+  },
+  {
+   "id": "b32-x04",
+   "format": "mcq",
+   "topic": "bio-b3-2",
+   "topicLabel": "B3.2 Transport",
+   "difficulty": "standard",
+   "stem": "Veins contain valves because:",
+   "choices": [
+    "Blood pressure is high, so valves slow the blood",
+    "Valves help to oxygenate the blood",
+    "Valves pump blood back to the heart",
+    "Blood pressure is low, so valves stop backflow"
+   ],
+   "answer": 3,
+   "note": "Low pressure in veins could let blood flow backwards; valves and skeletal muscle contractions keep it moving to the heart."
+  },
+  {
+   "id": "b32-x05",
+   "format": "mcq",
+   "topic": "bio-b3-2",
+   "topicLabel": "B3.2 Transport",
+   "difficulty": "standard",
+   "stem": "A coronary occlusion is dangerous because it:",
+   "choices": [
+    "Stops blood leaving the left ventricle into the aorta",
+    "Causes the valves of the heart to close permanently",
+    "Prevents the lungs from receiving any oxygen",
+    "Blocks blood supply to heart muscle, depriving it of oxygen"
+   ],
+   "answer": 3,
+   "note": "Blocked coronary arteries starve cardiac muscle of oxygen; the tissue can die (heart attack)."
+  },
+  {
+   "id": "b32-x06",
+   "format": "mcq",
+   "topic": "bio-b3-2",
+   "topicLabel": "B3.2 Transport",
+   "difficulty": "standard",
+   "stem": "In the cohesion–tension theory, water is pulled up the xylem because:",
+   "choices": [
+    "Root cells pump water molecules upward through the xylem by active transport",
+    "Phloem pushes water up as sugars are loaded",
+    "Evaporation from leaves creates tension, and cohesion holds the column together",
+    "Water is attracted upward by sunlight"
+   ],
+   "answer": 2,
+   "note": "Transpiration pulls water (tension); hydrogen bonds (cohesion) and adhesion to xylem walls keep the column continuous."
+  },
+  {
+   "id": "b32-x07",
+   "format": "mcq",
+   "topic": "bio-b3-2",
+   "topicLabel": "B3.2 Transport",
+   "difficulty": "standard",
+   "stem": "The pulse felt in an artery is caused by:",
+   "choices": [
+    "A surge of blood at high pressure each time the ventricles contract",
+    "The closing of valves in the veins near the skin",
+    "The rhythmic contraction of smooth muscles in the artery wall itself",
+    "The blood returning to the atria between beats"
+   ],
+   "answer": 0,
+   "note": "Each ventricular contraction sends a pressure wave along the arteries."
+  },
+  {
+   "id": "b32-x08",
+   "format": "mcq",
+   "topic": "bio-b3-2",
+   "topicLabel": "B3.2 Transport",
+   "difficulty": "hard",
+   "stem": "Tissue fluid forms at the arterial end of a capillary because:",
+   "choices": [
+    "Plasma proteins leave the capillary and pull water out",
+    "Hydrostatic pressure is higher than the osmotic pull of plasma proteins",
+    "Active transport by endothelial cells pumps plasma out of the capillary",
+    "Osmotic pressure is higher than hydrostatic pressure"
+   ],
+   "answer": 1,
+   "note": "High pressure forces fluid out; at the venous end, pressure drops and water returns by osmosis. Excess drains into lymph."
+  },
+  {
+   "id": "b32-x09",
+   "format": "mcq",
+   "topic": "bio-b3-2",
+   "topicLabel": "B3.2 Transport",
+   "difficulty": "hard",
+   "stem": "During ventricular systole:",
+   "choices": [
+    "The atrioventricular valves close and the semilunar valves open",
+    "The atrioventricular valves open and the semilunar valves close",
+    "Both sets of valves are open",
+    "Blood flows from the atria into the ventricles"
+   ],
+   "answer": 0,
+   "note": "Ventricles contract: pressure shuts AV valves (first heart sound) and opens semilunar valves into arteries."
+  },
+  {
+   "id": "b32-x10",
+   "format": "mcq",
+   "topic": "bio-b3-2",
+   "topicLabel": "B3.2 Transport",
+   "difficulty": "hard",
+   "stem": "Translocation in phloem moves sucrose from source to sink because:",
+   "choices": [
+    "Sucrose diffuses down its gradient through the xylem",
+    "Loading of sucrose at the source draws in water, and the pressure pushes sap to the sink",
+    "Transpiration pulls sap from leaves towards the roots",
+    "Companion cells contract rhythmically and squeeze the sap along the sieve tubes towards the roots"
+   ],
+   "answer": 1,
+   "note": "Mass flow: loading lowers water potential at the source; water enters from xylem; hydrostatic pressure drives flow to the sink."
+  },
+  {
+   "id": "b32-x11",
+   "format": "mcq",
+   "topic": "bio-b3-2",
+   "topicLabel": "B3.2 Transport",
+   "difficulty": "hard",
+   "stem": "Root pressure is generated by:",
+   "choices": [
+    "Evaporation of water from the leaves pulling the whole water column upward",
+    "Cohesion between water molecules in the xylem",
+    "Active transport of mineral ions into the xylem, followed by osmosis",
+    "Contraction of cells in the root cortex"
+   ],
+   "answer": 2,
+   "note": "Ions pumped into the xylem lower water potential; water follows by osmosis, building pressure (important in spring, before leaves open)."
+  },
+  {
+   "id": "b32-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b3-2",
+   "topicLabel": "B3.2 Transport",
+   "difficulty": "standard",
+   "stem": "Compare the structure of arteries and veins.",
+   "markscheme": [
+    "Both have three layers / a lumen lined with endothelium (1)",
+    "Arteries have thicker walls with more muscle and elastic tissue (1)",
+    "Veins have a larger lumen (1)",
+    "Veins have valves; arteries do not (except at the heart) (1)"
+   ],
+   "tactic": "Compare: one similarity, then paired differences with reasons if asked."
+  },
+  {
+   "id": "b32-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b3-2",
+   "topicLabel": "B3.2 Transport",
+   "difficulty": "standard",
+   "stem": "Explain how water moves from the soil into the xylem of a root.",
+   "markscheme": [
+    "Root hair cells have a large surface area (1)",
+    "Mineral ions actively transported into root cells, lowering water potential (1)",
+    "Water moves in by osmosis and passes across the cortex to the xylem (1)"
+   ],
+   "tactic": "Follow the water: soil → root hair → cortex → xylem, with the mechanism at each step."
+  },
+  {
+   "id": "b32-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-b3-2",
+   "topicLabel": "B3.2 Transport",
+   "difficulty": "hard",
+   "stem": "Describe the events of the cardiac cycle from atrial systole to diastole.",
+   "markscheme": [
+    "Atria contract, pushing blood into the ventricles (AV valves open) (1)",
+    "Ventricles contract; AV valves close; semilunar valves open; blood enters arteries (1)",
+    "Ventricles relax; semilunar valves close as arterial pressure exceeds ventricular pressure (1)",
+    "Atria fill with blood from veins during diastole (1)"
+   ],
+   "tactic": "Sequence with valve positions at each stage: valves move because of pressure differences."
+  },
+  {
+   "id": "b32-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-b3-2",
+   "topicLabel": "B3.2 Transport",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) Water uptake by a leafy shoot was measured with a potometer under four conditions (mm³ min⁻¹): still air 20 °C 12; moving air 20 °C 21; still air 30 °C 19; still air 20 °C with leaves coated in grease on lower surfaces 3.\n(a) Calculate the percentage increase caused by moving air. (b) Explain the effect of greasing the lower surfaces. (c) State why a potometer measures water uptake rather than transpiration directly.",
+   "markscheme": [
+    "(a) (21 − 12)/12 × 100 = 75% (1)",
+    "(b) Most stomata are on the lower surface; grease blocks them so little water vapour is lost (1)",
+    "Less transpiration means less tension, so uptake falls (to 3) (1)",
+    "(c) Some water taken up is used in photosynthesis / to keep cells turgid (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

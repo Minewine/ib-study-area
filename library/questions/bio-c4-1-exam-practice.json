@@ -1,0 +1,251 @@
+{
+ "subject": "biology-hl",
+ "topic": "bio-c4-1",
+ "topicLabel": "C4.1 Populations and communities",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "C4.1"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "c41-x01",
+   "format": "mcq",
+   "topic": "bio-c4-1",
+   "topicLabel": "C4.1 Populations and communities",
+   "difficulty": "easy",
+   "stem": "A population is:",
+   "choices": [
+    "All the organisms of different species living in one area",
+    "All the members of a species throughout the world at any time",
+    "Members of one species living in the same area at the same time",
+    "A group of species that interact in a food web"
+   ],
+   "answer": 2,
+   "note": "A community is all the interacting populations of different species in an area."
+  },
+  {
+   "id": "c41-x02",
+   "format": "mcq",
+   "topic": "bio-c4-1",
+   "topicLabel": "C4.1 Populations and communities",
+   "difficulty": "easy",
+   "stem": "Quadrat sampling is suitable for estimating the population size of:",
+   "choices": [
+    "Fast-moving animals such as deer",
+    "Sessile organisms such as plants",
+    "Birds that migrate each year",
+    "Fish in a large lake"
+   ],
+   "answer": 1,
+   "note": "Quadrats suit organisms that do not move. Mobile animals need capture–mark–release–recapture."
+  },
+  {
+   "id": "c41-x03",
+   "format": "mcq",
+   "topic": "bio-c4-1",
+   "topicLabel": "C4.1 Populations and communities",
+   "difficulty": "easy",
+   "stem": "The carrying capacity of an environment is:",
+   "choices": [
+    "The number of species living in it",
+    "The rate at which a population grows",
+    "The minimum population size needed to avoid the species becoming extinct",
+    "The maximum population size it can support sustainably"
+   ],
+   "answer": 3,
+   "note": "Limited resources (food, space, water) set the carrying capacity, K."
+  },
+  {
+   "id": "c41-x04",
+   "format": "mcq",
+   "topic": "bio-c4-1",
+   "topicLabel": "C4.1 Populations and communities",
+   "difficulty": "standard",
+   "stem": "40 snails are marked and released. Later, 50 are captured, of which 8 are marked. The estimated population is:",
+   "choices": [
+    "250",
+    "90",
+    "320",
+    "10"
+   ],
+   "answer": 0,
+   "note": "Lincoln index N = (M × n) ÷ m = (40 × 50) ÷ 8 = 250."
+  },
+  {
+   "id": "c41-x05",
+   "format": "mcq",
+   "topic": "bio-c4-1",
+   "topicLabel": "C4.1 Populations and communities",
+   "difficulty": "standard",
+   "stem": "An assumption of capture–mark–release–recapture is that:",
+   "choices": [
+    "Marked individuals are easier to catch",
+    "The population changes size between samples",
+    "Marks fall off some animals before the second sample is taken",
+    "Marked individuals mix randomly with the population"
+   ],
+   "answer": 3,
+   "note": "Also: marking does not harm or affect behaviour, and there is no significant birth, death or migration between samples."
+  },
+  {
+   "id": "c41-x06",
+   "format": "mcq",
+   "topic": "bio-c4-1",
+   "topicLabel": "C4.1 Populations and communities",
+   "difficulty": "standard",
+   "stem": "In a sigmoid population growth curve, the transitional phase occurs because:",
+   "choices": [
+    "Limiting factors start to reduce the growth rate",
+    "Birth rate rises sharply as resources become more plentiful",
+    "Death rate falls to zero",
+    "Immigration stops completely"
+   ],
+   "answer": 0,
+   "note": "As density rises, competition for resources, predation and disease increase, slowing growth until K is reached."
+  },
+  {
+   "id": "c41-x07",
+   "format": "mcq",
+   "topic": "bio-c4-1",
+   "topicLabel": "C4.1 Populations and communities",
+   "difficulty": "standard",
+   "stem": "A relationship in which both species benefit is:",
+   "choices": [
+    "Parasitism",
+    "Mutualism",
+    "Predation",
+    "Competition"
+   ],
+   "answer": 1,
+   "note": "E.g. root nodules with Rhizobium, zooxanthellae in corals. Parasitism benefits one at the other's expense."
+  },
+  {
+   "id": "c41-x08",
+   "format": "mcq",
+   "topic": "bio-c4-1",
+   "topicLabel": "C4.1 Populations and communities",
+   "difficulty": "hard",
+   "stem": "Which is a density-dependent factor?",
+   "choices": [
+    "A forest fire caused by lightning",
+    "An unusually cold winter",
+    "Spread of an infectious disease",
+    "A volcanic eruption"
+   ],
+   "answer": 2,
+   "note": "Disease spreads faster when individuals are crowded. Weather events and disasters act regardless of density."
+  },
+  {
+   "id": "c41-x09",
+   "format": "mcq",
+   "topic": "bio-c4-1",
+   "topicLabel": "C4.1 Populations and communities",
+   "difficulty": "hard",
+   "stem": "Predator and prey populations often cycle, with predator peaks lagging behind prey peaks, because:",
+   "choices": [
+    "Predators and prey reproduce at exactly the same time",
+    "Prey numbers depend only on the weather",
+    "Predators eat other predators when prey numbers rise",
+    "Predator numbers rise only after prey are plentiful, then fall after prey decline"
+   ],
+   "answer": 3,
+   "note": "Abundant prey → more predator offspring → prey decline → predator decline (lag due to reproduction time)."
+  },
+  {
+   "id": "c41-x10",
+   "format": "mcq",
+   "topic": "bio-c4-1",
+   "topicLabel": "C4.1 Populations and communities",
+   "difficulty": "hard",
+   "stem": "A chi-squared test for association between two plant species in quadrats gives χ² = 6.2 with 1 degree of freedom (critical value at p = 0.05 is 3.84). The conclusion is:",
+   "choices": [
+    "Reject the null hypothesis: there is a significant association",
+    "Accept the null hypothesis: the species are distributed independently",
+    "The result is not significant because 6.2 is less than 3.84",
+    "No conclusion can be drawn from χ² tests"
+   ],
+   "answer": 0,
+   "note": "χ² > critical value → the difference between observed and expected is unlikely to be chance (p < 0.05)."
+  },
+  {
+   "id": "c41-x11",
+   "format": "mcq",
+   "topic": "bio-c4-1",
+   "topicLabel": "C4.1 Populations and communities",
+   "difficulty": "hard",
+   "stem": "Allelopathy is:",
+   "choices": [
+    "A plant forming a mutualism with nitrogen-fixing bacteria",
+    "A predator controlling the population of its prey",
+    "Release of chemicals by a plant that inhibit other plants nearby",
+    "Competition for light between members of the same plant species"
+   ],
+   "answer": 2,
+   "note": "E.g. black walnut releasing juglone. A chemical form of competition."
+  },
+  {
+   "id": "c41-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-c4-1",
+   "topicLabel": "C4.1 Populations and communities",
+   "difficulty": "standard",
+   "stem": "Outline how to estimate the population size of a plant species in a field using random quadrats.",
+   "markscheme": [
+    "Use random numbers to place quadrats (coordinates on a grid) (1)",
+    "Count the number of individuals in each quadrat (1)",
+    "Calculate mean per quadrat and multiply by (total area ÷ quadrat area) (1)"
+   ],
+   "tactic": "Random sampling: say how randomness is achieved and how you scale up."
+  },
+  {
+   "id": "c41-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-c4-1",
+   "topicLabel": "C4.1 Populations and communities",
+   "difficulty": "standard",
+   "stem": "Explain why an invasive species can cause a decline in native species.",
+   "markscheme": [
+    "No natural predators/pathogens in the new area, so the population grows rapidly (1)",
+    "Outcompetes native species for resources (1)",
+    "May prey on, or transmit disease to, native species (1)"
+   ],
+   "tactic": "Link the lack of controls to the effects on natives."
+  },
+  {
+   "id": "c41-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-c4-1",
+   "topicLabel": "C4.1 Populations and communities",
+   "difficulty": "hard",
+   "stem": "Distinguish between top-down and bottom-up control of a community, with an example of each.",
+   "markscheme": [
+    "Top-down: population controlled by consumers/predators at a higher trophic level (1)",
+    "Example, e.g. sea otters controlling sea urchins (kelp forests) (1)",
+    "Bottom-up: controlled by availability of resources/producers at lower levels (1)",
+    "Example, e.g. nutrient supply limiting phytoplankton and the food chain above it (1)"
+   ],
+   "tactic": "Definitions plus a named example for each."
+  },
+  {
+   "id": "c41-x15",
+   "format": "written",
+   "marks": 5,
+   "topic": "bio-c4-1",
+   "topicLabel": "C4.1 Populations and communities",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) Presence of two invented plant species in 100 quadrats: both 38; species A only 12; species B only 10; neither 40.\n(a) Calculate the expected number of quadrats with both species if they are distributed independently. (b) State the null hypothesis. (c) The χ² value is 31.4 (critical value 3.84, 1 degree of freedom). State and explain the conclusion. (d) Suggest an ecological reason for the result.",
+   "markscheme": [
+    "(a) A present in 50 quadrats, B in 48 (1)",
+    "Expected both = (50 × 48) ÷ 100 = 24 (1)",
+    "(b) There is no association between the distributions of A and B (they are independent) (1)",
+    "(c) 31.4 > 3.84, so reject the null hypothesis: positive association (38 observed vs 24 expected) (1)",
+    "(d) Both prefer the same abiotic conditions, or one benefits the other (e.g. shelter) (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}
