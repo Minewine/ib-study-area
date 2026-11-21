@@ -2,9 +2,10 @@
    A small "Feedback" button (bottom-right) on the practice pages opens a
    lightweight modal (type / area / title / description + an optional
    "Include current page and topic" checkbox) and POSTs JSON to the Signalbox
-   feedback endpoint. No stored data, no store.js dependency. Everything
-   configurable lives in the FEEDBACK_CONFIG block below — the endpoint URL
-   and the app key are PLACEHOLDERS until the Signalbox side confirms them.
+   install at rametric.com/signalbox (api.php?action=submit; the app key must
+   match an app_keys entry in the host's signalbox/config.php). No stored
+   data, no store.js dependency. Everything configurable lives in the
+   FEEDBACK_CONFIG block below.
 
    CSP note: the app pages carry a meta CSP whose connect-src whitelist allows
    only 'self' + rametric.com/www.rametric.com + localhost. The endpoint host
@@ -28,13 +29,15 @@
   if (NB.feedback) return;
 
   var FEEDBACK_CONFIG = {
-    app: "nevaib",
-    endpoint: "https://rametric.com/feedback/api.php?action=submit", // PLACEHOLDER — confirm Signalbox URL
-    appKey: "CHANGE_ME_APP_KEY" // PLACEHOLDER — set the Signalbox app key
+    app: "ibsystem", // the app name this key belongs to in the host's signalbox/config.php
+    endpoint: "https://rametric.com/signalbox/api.php?action=submit", // the Signalbox install (api.php also takes action in the body)
+    appKey: "bd5ade5aacafc8cbb71f150cb57ee2ee73f052b96ed59549" // the "ibsystem" app key from the host's signalbox/config.php (public by design — a spam gate, not a secret)
   };
 
-  const TYPES = ["bug", "improvement", "idea"];
-  const TYPE_LABELS = { bug: "Bug", improvement: "Improvement", idea: "Idea" };
+  // Signalbox types are bug / feature / improvement / question; the widget offers
+  // three of them and shows "Idea" as the label for a feature request.
+  const TYPES = ["bug", "improvement", "feature"];
+  const TYPE_LABELS = { bug: "Bug", improvement: "Improvement", feature: "Idea" };
   const AREAS = ["quiz", "cards", "today", "notes", "upload", "other"];
   const AREA_LABELS = { quiz: "Quiz", cards: "Cards", today: "Today", notes: "Notes", upload: "Upload", other: "Other" };
   const AREA_BY_PAGE = { index: "today", quiz: "quiz", cards: "cards", notes: "notes", author: "upload" }; // mistakes/coursework/resources → other
@@ -48,7 +51,7 @@
     const area = String(i.area || "");
     const title = String(i.title == null ? "" : i.title).trim();
     const body = String(i.body == null ? "" : i.body).trim();
-    if (TYPES.indexOf(type) < 0) throw new Error("Choose a feedback type (bug, improvement or idea).");
+    if (TYPES.indexOf(type) < 0) throw new Error("Choose a feedback type (bug, improvement or feature).");
     if (AREAS.indexOf(area) < 0) throw new Error("Choose an area (quiz, cards, today, notes, upload or other).");
     if (!title) throw new Error("Add a short title so the feedback is easy to triage.");
     if (!body) throw new Error("Describe the feedback — a sentence or two is enough.");

@@ -7,14 +7,16 @@ Read this first, then [NEXT-STEPS.md](NEXT-STEPS.md); ideas for later are in [VI
 
 **Signalbox feedback widget (21 Nov 2026):** the eight practice pages (`app/` — not `summary.html`) gained a small
 bottom-right **Feedback** button (`assets/feedback.js?v=1`, after `profile.js`): a lightweight modal (Bug /
-Improvement / Idea, area, title, description + an optional "Include current page and topic" checkbox that picks up the
-Quiz/Cards selects or the Notes URL params and the logged-in username) that POSTs JSON
-(`{app, key, type, area, title, body, context}`) to the Signalbox feedback endpoint and shows success/error inline.
-The endpoint URL and the app key are the two `PLACEHOLDER` values in the `FEEDBACK_CONFIG` block at the top of
-`assets/feedback.js` — set both before this works against the real Signalbox (never commit the real key into docs),
-and keep the endpoint host inside the pages' CSP `connect-src` whitelist (`rametric.com` today). The POST goes
-through `fetch()` — never a real `<form action>` (`form-action 'self'` would block it). Verification:
-`node --test tests/js/feedback.test.js` (part of `./dev.sh test`). Details:
+Improvement / Idea — sent as `feature` since that is Signalbox's vocabulary —, area, title, description + an optional
+"Include current page and topic" checkbox that picks up the Quiz/Cards selects or the Notes URL params and the
+logged-in username) that POSTs JSON (`{app, key, type, area, title, body, context}`) to the Signalbox install at
+`https://rametric.com/signalbox/api.php?action=submit` and shows success/error inline. The endpoint is wired; the
+one remaining value is the app key in the `FEEDBACK_CONFIG` block at the top of `assets/feedback.js` — it must match
+an `app_keys` entry in the host's `signalbox/config.php` (app `ibsystem`; the key ships in the public JS file by
+design — it is a spam gate, not a secret — but keep it out of docs), and the endpoint host must stay inside the
+pages' CSP `connect-src` whitelist (`rametric.com` today). The POST goes through `fetch()` — never a real
+`<form action>` (`form-action 'self'` would block it). Verification: `node --test tests/js/feedback.test.js`
+(part of `./dev.sh test`). Details:
 [CHANGELOG-2026-11-21-signalbox-feedback.md](CHANGELOG-2026-11-21-signalbox-feedback.md).
 
 **WP4 exam reflections (21 Nov 2026):** the Quiz page's past-paper log (`pp-scores`) gained an

@@ -117,7 +117,7 @@ touching this site.
   `notes.js` `?v=5` + `ai-prompt.js` `?v=5` (app/notes.html; ai-prompt also on author), `app.js` `?v=6`,
   `lists.js` `?v=4` (core, ia, french hub, ee, library), `library.js` `?v=4` (library.html, index, practice),
   `deadlines.js` `?v=6` (index + deadlines), `today.js` `?v=8`, `coursework.js` `?v=2`,
-  `feedback.js` `?v=1` (the 8 `app/` practice pages, after `profile.js`),
+  `feedback.js` `?v=2` (the 8 `app/` practice pages, after `profile.js`),
   `papers.js` `?v=3` / `confidence.js` `?v=1` (quiz). Bank/deck/manifest fetches use `?cb=Date.now()` + `cache: no-store`.
 - **Vanilla JS, one engine per concern**:
   | File | Owns | Page(s) |
@@ -132,7 +132,7 @@ touching this site.
   | `assets/deadlines.js` | Deadline data + `#nextup` / `#timeline` renderers | `index.html`, `deadlines.html` |
   | `assets/lists.js` | Tracked lists (`data-list` containers) + debrief notes (`textarea[data-note]`), one synced blob each | `core.html`, `ia.html`, `french-a-langlit.html`, `ee.html` |
   | `assets/library.js` | Library browser over `library/library-manifest.json`: filter bar (subject/type/free-text), rows reusing the hub-row convention, ★ pins / notes / recent tracking, `#res-pins` + `#papers-list` renderers | `library.html`, `index.html`, `practice.html` |
-  | `assets/feedback.js` | `NB.feedback`: Feedback widget (bottom-right button + modal), payload build/validation, JSON POST to the Signalbox feedback endpoint (`FEEDBACK_CONFIG` at the top of the file) | the 8 `app/` practice pages (after `profile.js`) |
+  | `assets/feedback.js` | `NB.feedback`: Feedback widget (bottom-right button + modal), payload build/validation, JSON POST to the Signalbox install at `rametric.com/signalbox/api.php` (`FEEDBACK_CONFIG` at the top of the file) | the 8 `app/` practice pages (after `profile.js`) |
 - **State** lives in `localStorage` (per browser/device — see table below).
 - **Python** is used only for one-off scripts, run with `python3 -I` (`tools/build_site.py`,
   past extraction scripts). Nothing at runtime needs Python except the file server.

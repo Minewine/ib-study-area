@@ -31,11 +31,17 @@ store.js, SYNCED_KEYS or backups._
   the server's `error` message or `"HTTP <status>"` — the auth.js convention), plus `config`.
 
 ### Config (the one place to edit — `FEEDBACK_CONFIG` at the top of the file)
-The endpoint URL and the app key are the two `PLACEHOLDER` constants at the top of `assets/feedback.js` —
-edit them there (config values stay out of docs). CSP constraint: every app page's meta CSP whitelists only `'self'` +
-rametric.com/www.rametric.com + localhost in `connect-src` — the endpoint host must stay inside that
-whitelist (or all nine pages' CSP need editing along with it). The POST always goes through `fetch()`;
-a real `<form action>` would be blocked by `form-action 'self'`.
+_Wired on 21 Nov 2026 to the real Signalbox install (deployed at `rametric.com/signalbox/` the same day):_
+the endpoint is `https://rametric.com/signalbox/api.php?action=submit` (Signalbox's api.php takes `action`
+from the query string or the JSON body; the app key rides in the body `key` field). The widget's types
+follow Signalbox's vocabulary (`bug / feature / improvement / question`): the modal's "Idea" label sends
+`feature`. The one deploy-time value is the app key in `FEEDBACK_CONFIG` — it must match the app's entry in
+the host's `signalbox/config.php` `app_keys` map (app `ibsystem`). The key ships in the public JS file by
+design — it is a spam gate, not a secret — but keep it out of docs. CSP constraint: every app page's meta
+CSP whitelists only `'self'` + rametric.com/www.rametric.com + localhost in `connect-src` — the endpoint
+host must stay inside that whitelist (or all nine pages' CSP need editing along with it). The POST always
+goes through `fetch()`; a real `<form action>` would be blocked by `form-action 'self'`. Script tags bump
+`feedback.js?v=2`.
 
 ## Files touched
 
