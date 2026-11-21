@@ -81,6 +81,13 @@
 
   function rebuild() {
     const { user, deleted, edits } = loadState();
+    // Cards made from a quiz question that is now hidden (synced "q-hidden",
+    // assets/qhidden.js — this page loads it like store.js) stay out until the
+    // question is restored: fcSaveFromQuiz stamps new cards with their question
+    // key (qkey). Cards without qkey (seed decks, older user cards) always pass;
+    // fc-deleted/fc-edits semantics are untouched.
+    const qh = window.NB && window.NB.qhidden;
+    const hiddenQkeys = qh ? qh.hiddenIds(store.get("q-hidden", {})) : null;
     CARDS = [];
     for (const d of DECKS) {
       for (const c of d.cards) {
@@ -93,6 +100,7 @@
     }
     for (const c of user) {
       if (deleted.includes(c.id)) continue;
+      if (hiddenQkeys && c.qkey && hiddenQkeys.has(c.qkey)) continue;
       const lbl = c.topicLabel || (c.topic || "user cards");
       CARDS.push(Object.assign({}, c, { subject: c.subject || "user", subjectLabel: "My cards", topic: c.topic || "user", topicLabel: lbl, seed: false }));
     }

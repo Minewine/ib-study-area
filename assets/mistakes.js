@@ -6,9 +6,15 @@
    optional fields (written by the quiz engine / this page, never required):
      errorType?  "careless" | "misread" | "content" | "time" | "other" ("" = untagged)
      reflection? ≤500 chars
-     retries?    [{ts, correct, conf?}] — capped at 20 by the quiz engine
+     retries?    [{ts, correct, conf?, response?, awarded?}] — capped at 20 by the
+                 quiz engine; response/awarded ride wrong/partial WRITTEN attempts
+                 only (the bounded answer copy + the self-awarded mark)
+     response?   ≤2000 chars — the latest wrong/partial written answer as typed
+     awarded?    the self-awarded mark for that latest attempt (wrong/partial
+                 written attempts only; MCQ attempts carry neither field)
      dueAt?      epoch ms — when the spaced retest next comes due (quiz engine);
-                 shown on open rows, cleared when a due retest is answered right
+                 shown on open rows; the second correct due retest in a row recovers
+                 the record and clears it (the first success schedules a 7-day follow-up)
      retired? / retiredReason? / retiredAt? — reversible soft-hide ("not relevant");
                  restore writes an explicit retired:false (dropping reason/at) and
                  bumps ts — the sync/backup merge reads a MISSING retired field as
@@ -149,6 +155,7 @@
       <div class="mk-stem">${esc(excerpt(e.stem, 120))}</div>
       <div class="mk-meta muted">${[missedTxt, `${attempts} attempt${attempts === 1 ? "" : "s"}`, retryTxt, dueTxt].filter(Boolean).map(esc).join(" \u00b7 ")}</div>
       ${e.reflection ? `<div class="mk-reflect">${esc(String(e.reflection))}</div>` : ""}
+      ${e.response ? `<div class="mk-reflect">Answer${e.awarded != null ? ` (${esc(String(e.awarded))}/${esc(String(e.marks))})` : ""}: ${esc(excerpt(e.response, 600))}</div>` : ""}
       ${st === "retired" ? `<div class="mk-why muted">Not relevant${e.retiredReason ? ": " + esc(String(e.retiredReason)) : ""}.</div>` : ""}
       <div class="mk-actions">
         ${st === "retired" ? "" : `<a class="btn mk-retry" href="quiz.html?errkeys=${encodeURIComponent(e.key)}">Retry this question</a>`}

@@ -159,10 +159,17 @@
   }
 
   // Up to half the session from the topic's missed questions, the rest from other
-  // (active) items of the same topic, else of the whole bank.
+  // (active) items of the same topic, else of the whole bank. Hidden questions
+  // (synced "q-hidden", assets/qhidden.js — this page loads it like store.js)
+  // never serve the Today pick; the key needs the weak-spot's bank id because raw
+  // bank items carry no bankId of their own. History paths (weakestTopic) stay
+  // ungated — hiding a question must not rewrite the past.
   function pickQuizIds(items, weak, n, rnd) {
     n = n || QUIZ_N;
-    const active = (items || []).filter(it => it && it.id && it.retired !== true);
+    const qh = NB.qhidden;
+    const hidden = qh ? qh.hiddenIds(store.get("q-hidden", {})) : new Set();
+    const isHidden = (it) => !!(qh && weak && weak.bankId && hidden.has(qh.keyFor(weak.bankId, it.id)));
+    const active = (items || []).filter(it => it && it.id && it.retired !== true && !isHidden(it));
     const ids = new Set(active.map(it => it.id));
     const missed = ((weak && weak.ids) || []).filter(id => ids.has(id)).slice(0, Math.ceil(n / 2));
     const sameTopic = active.filter(it => weak && weak.topic && it.topic === weak.topic);

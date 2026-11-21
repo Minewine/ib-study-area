@@ -15,7 +15,8 @@
     "x ≤ 2"
    ],
    "answer": 1,
-   "note": "Square roots need x − 2 ≥ 0 → x ≥ 2. The endpoint is included, so ≥ not >."
+   "note": "Square roots need x − 2 ≥ 0 → x ≥ 2. The endpoint is included, so ≥ not >.",
+   "difficulty": "easy"
   },
   {
    "id": "f02",
@@ -29,7 +30,8 @@
     "y > 3"
    ],
    "answer": 2,
-   "note": "Minimum value of x² is 0, so f ≥ 3 — and the minimum is attained, hence ≥ not >."
+   "note": "Minimum value of x² is 0, so f ≥ 3 — and the minimum is attained, hence ≥ not >.",
+   "difficulty": "easy"
   },
   {
    "id": "f03",
@@ -43,7 +45,8 @@
     "36"
    ],
    "answer": 2,
-   "note": "(f ∘ g)(3) = f(g(3)) = f(9) = 2×9 − 5 = 13. Work inside-out."
+   "note": "(f ∘ g)(3) = f(g(3)) = f(9) = 2×9 − 5 = 13. Work inside-out.",
+   "difficulty": "easy"
   },
   {
    "id": "f04",
@@ -57,7 +60,8 @@
     "49"
    ],
    "answer": 1,
-   "note": "f(2) = −1, then g(−1) = 1. Reversing the order changes the answer — composition is not commutative."
+   "note": "f(2) = −1, then g(−1) = 1. Reversing the order changes the answer — composition is not commutative.",
+   "difficulty": "easy"
   },
   {
    "id": "f05",
@@ -71,7 +75,8 @@
     "f⁻¹(x) = (x + 1)/3"
    ],
    "answer": 0,
-   "note": "Swap x and y, solve for y: y = 3x + 1 → x = 3y + 1 → y = (x − 1)/3."
+   "note": "Swap x and y, solve for y: y = 3x + 1 → x = 3y + 1 → y = (x − 1)/3.",
+   "difficulty": "easy"
   },
   {
    "id": "f06",
@@ -85,7 +90,8 @@
     "y = −x"
    ],
    "answer": 2,
-   "note": "Swapping x and y mirrors every point across y = x. Useful GDC check: draw f, y = x and f⁻¹ together."
+   "note": "Swapping x and y mirrors every point across y = x. Useful GDC check: draw f, y = x and f⁻¹ together.",
+   "difficulty": "easy"
   },
   {
    "id": "f07",
@@ -99,7 +105,8 @@
     "x = 6"
    ],
    "answer": 1,
-   "note": "Zeroes are where f(x) = 0: 2x + 6 = 0 → x = −3."
+   "note": "Zeroes are where f(x) = 0: 2x + 6 = 0 → x = −3.",
+   "difficulty": "easy"
   },
   {
    "id": "f08",
@@ -113,7 +120,8 @@
     "−3"
    ],
    "answer": 1,
-   "note": "m = (10 − 4)/(3 − 1) = 6/2 = 3. Rise over run — keep the order consistent in both numerator and denominator."
+   "note": "m = (10 − 4)/(3 − 1) = 6/2 = 3. Rise over run — keep the order consistent in both numerator and denominator.",
+   "difficulty": "easy"
   },
   {
    "id": "f09",
@@ -127,7 +135,8 @@
     "y = 3x + 2"
    ],
    "answer": 1,
-   "note": "Gradient-intercept form: y = mx + c with m = −3, c = 2."
+   "note": "Gradient-intercept form: y = mx + c with m = −3, c = 2.",
+   "difficulty": "easy"
   },
   {
    "id": "f10",
@@ -141,7 +150,8 @@
     "x = −1 and x = −8"
    ],
    "answer": 1,
-   "note": "Factorising: (x − 2)(x − 4) = 0 → 2 and 4. Check by sum = 6, product = 8."
+   "note": "Factorising: (x − 2)(x − 4) = 0 → 2 and 4. Check by sum = 6, product = 8.",
+   "difficulty": "easy"
   },
   {
    "id": "f11",
@@ -155,7 +165,8 @@
     "(2, 0)"
    ],
    "answer": 0,
-   "note": "Axis of symmetry x = −b/2a = 3; y = 9 − 18 + 8 = −1. Vertex sits on the axis, midway between the roots."
+   "note": "Axis of symmetry x = −b/2a = 3; y = 9 − 18 + 8 = −1. Vertex sits on the axis, midway between the roots.",
+   "difficulty": "easy"
   },
   {
    "id": "f12",
@@ -169,7 +180,8 @@
     "y = 5"
    ],
    "answer": 2,
-   "note": "Vertex form a(x − h)² + k puts the axis at x = h. The (x − 1) inside means h = 1 — the sign flips."
+   "note": "Vertex form a(x − h)² + k puts the axis at x = h. The (x − 1) inside means h = 1 — the sign flips.",
+   "difficulty": "easy"
   },
   {
    "id": "f13",
@@ -183,7 +195,8 @@
     "Four roots"
    ],
    "answer": 1,
-   "note": "Δ = b² − 4ac = 16 − 16 = 0 → one repeated root. Δ > 0 two roots, Δ < 0 none."
+   "note": "Δ = b² − 4ac = 16 − 16 = 0 → one repeated root. Δ > 0 two roots, Δ < 0 none.",
+   "difficulty": "easy"
   },
   {
    "id": "f14",
@@ -197,7 +210,8 @@
     "k = ±9"
    ],
    "answer": 1,
-   "note": "Equal roots ⇒ Δ = 0: k² − 36 = 0 → k = ±6. Both signs — forgetting the negative is the classic slip."
+   "note": "Equal roots ⇒ Δ = 0: k² − 36 = 0 → k = ±6. Both signs — forgetting the negative is the classic slip.",
+   "difficulty": "standard"
   },
   {
    "id": "f15",
@@ -211,7 +225,8 @@
     "A minimum value of −4 at x = 2"
    ],
    "answer": 1,
-   "note": "a = −3 < 0 opens downward → maximum. h = −2 (from x + 2), k = −4."
+   "note": "a = −3 < 0 opens downward → maximum. h = −2 (from x + 2), k = −4.",
+   "difficulty": "easy"
   },
   {
    "id": "f16",
@@ -225,7 +240,8 @@
     "6"
    ],
    "answer": 2,
-   "note": "f(1) = 2 → f(2) = 3 → f(3) = 4. Iterate step by step — don't cube anything."
+   "note": "f(1) = 2 → f(2) = 3 → f(3) = 4. Iterate step by step — don't cube anything.",
+   "difficulty": "easy"
   },
   {
    "id": "f17",
@@ -239,7 +255,8 @@
     "y = 5"
    ],
    "answer": 1,
-   "note": "A function needs one output per input: ±√x gives two outputs for x > 0 — it fails the vertical line test."
+   "note": "A function needs one output per input: ±√x gives two outputs for x > 0 — it fails the vertical line test.",
+   "difficulty": "easy"
   },
   {
    "id": "f18",
@@ -253,7 +270,8 @@
     "x = 2"
    ],
    "answer": 1,
-   "note": "Denominator cannot vanish: x − 3 ≠ 0 → x ≠ 3. Numerator zeros are fine — that's just a root."
+   "note": "Denominator cannot vanish: x − 3 ≠ 0 → x ≠ 3. Numerator zeros are fine — that's just a root.",
+   "difficulty": "easy"
   },
   {
    "id": "f19",
@@ -267,7 +285,8 @@
     "15"
    ],
    "answer": 2,
-   "note": "m = (7 − 3)/2 = 2, so f(x) = 2x + 3 → f(5) = 13."
+   "note": "m = (7 − 3)/2 = 2, so f(x) = 2x + 3 → f(5) = 13.",
+   "difficulty": "standard"
   },
   {
    "id": "f20",
@@ -281,7 +300,8 @@
     "f(x) = √x"
    ],
    "answer": 0,
-   "note": "Applying 1/x twice returns x. Self-inverse functions sit on the line y = x symmetrically."
+   "note": "Applying 1/x twice returns x. Self-inverse functions sit on the line y = x symmetrically.",
+   "difficulty": "easy"
   },
   {
    "id": "f21",
@@ -295,7 +315,8 @@
     "(c) Vertex (2, −1) from vertex form (1)",
     "a = 1 > 0 opens upward → minimum (1)"
    ],
-   "tactic": "Vertex form, zeros and sketch flow naturally from completing the square — do it once, get three answers. GDC can verify, Paper 1 must show working."
+   "tactic": "Vertex form, zeros and sketch flow naturally from completing the square — do it once, get three answers. GDC can verify, Paper 1 must show working.",
+   "difficulty": "standard"
   },
   {
    "id": "f22",
@@ -308,7 +329,8 @@
     "(b) 2x² − 1 = 49 → x² = 25 (1)",
     "x = ±5 — both roots (1)"
    ],
-   "tactic": "Write the composition explicitly before algebra: f(g(x)) means substitute g into f. Quadratics give two answers — say both."
+   "tactic": "Write the composition explicitly before algebra: f(g(x)) means substitute g into f. Quadratics give two answers — say both.",
+   "difficulty": "standard"
   },
   {
    "id": "fnx1",
@@ -323,6 +345,7 @@
    ],
    "answer": 1,
    "note": "(11 − 3)/(6 − 2) = 8/4 = 2. Same order in numerator and denominator.",
+   "difficulty": "easy",
    "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit"
   },
   {
@@ -338,6 +361,7 @@
    ],
    "answer": 1,
    "note": "Average each coordinate: ((−1+3)/2, (2+5)/2) = (1, 3.5).",
+   "difficulty": "easy",
    "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit"
   },
   {
@@ -353,6 +377,7 @@
    ],
    "answer": 0,
    "note": "x = −b/2a = 6/2 = 3 — also the midpoint between the roots (2 and 4).",
+   "difficulty": "easy",
    "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit"
   },
   {
@@ -368,6 +393,7 @@
    ],
    "answer": 1,
    "note": "Δ = 16 − 16 = 0 → one repeated root — the parabola touches the x-axis at its vertex.",
+   "difficulty": "easy",
    "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit"
   },
   {
@@ -383,6 +409,7 @@
    ],
    "answer": 0,
    "note": "OUTSIDE the brackets → vertical, direction as written. f(x + 3) would shift LEFT 3 (inside = opposite).",
+   "difficulty": "easy",
    "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit"
   },
   {
@@ -398,6 +425,7 @@
    ],
    "answer": 1,
    "note": "INSIDE → horizontal, opposite direction: −2 in the brackets moves the graph RIGHT 2.",
+   "difficulty": "easy",
    "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit"
   },
   {
@@ -413,6 +441,7 @@
    ],
    "answer": 1,
    "note": "Denominator cannot be zero. Numerator zeros are fine — those are just roots.",
+   "difficulty": "easy",
    "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit"
   },
   {
@@ -428,6 +457,7 @@
    ],
    "answer": 1,
    "note": "x² + 1 = 17 → x² = 16 → x = ±4. Two solutions — quadratics always give both.",
+   "difficulty": "standard",
    "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit"
   },
   {
@@ -442,6 +472,7 @@
    ],
    "answer": 0,
    "note": "y − 3 = 2(x − 2) → y = 2x − 1. Point-slope form — substitute the point to check.",
+   "difficulty": "easy",
    "id": "fn01",
    "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit"
   },
@@ -458,6 +489,7 @@
    ],
    "answer": 2,
    "note": "Perpendicular gradients multiply to −1: m₂ = −1/m₁ = −½. Negative reciprocal — the standard result.",
+   "difficulty": "easy",
    "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit"
   },
   {
@@ -473,6 +505,7 @@
    ],
    "answer": 2,
    "note": "x = −b/2a = 3; substitute back: 9 − 18 + 8 = −1 → vertex (3, −1), a minimum (a > 0).",
+   "difficulty": "easy",
    "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit"
   },
   {
@@ -488,6 +521,7 @@
     "(b) Midpoint = ((1+5)/2, (3+11)/2) = (3, 7) (2)"
    ],
    "tactic": "Line questions: gradient first, then substitute one point to find c — verify with the second point before moving on.",
+   "difficulty": "standard",
    "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit"
   },
   {
@@ -503,6 +537,7 @@
     "The roots are symmetric about x = 2 — a useful check (1)"
    ],
    "tactic": "Completing the square gives vertex AND roots in one move: the vertex sits on the axis of symmetry, halfway between the roots. Sketching verifies all three.",
+   "difficulty": "standard",
    "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit"
   }
  ]

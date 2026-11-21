@@ -62,6 +62,14 @@
   let BANKS = {};
   // confidence helpers (assets/confidence.js); the no-op fallback only covers a stale cached page
   const C = (window.NB && window.NB.conf) || { tally: () => ({ sure: 0, sureRight: 0, guess: 0, guessRight: 0 }), confidentWrong: () => [], logField: () => null, describe: () => "", applyToError: (r) => r, confidentWrongErrors: () => [] };
+  // question-level hide flags (assets/qhidden.js, synced key "q-hidden"); the
+  // passthrough fallback only covers a stale cached page that didn't load the
+  // module — nothing counts as hidden then
+  const QH = (window.NB && window.NB.qhidden) || {
+    keyFor: (b, id) => String(b == null ? "" : b) + "#" + String(id == null ? "" : id),
+    hiddenIds: () => new Set(),
+    filterItems: (items) => (Array.isArray(items) ? items : [])
+  };
 
 const FALLBACK_BANKS = {
     "biology-hl": { label: "Biology HL", banks: [
@@ -213,6 +221,7 @@ async function init() {
     topic.value = (prev && [...topic.children].some(c => c.value === prev)) ? prev : "*";
     syncSetSelect();
     renderTaughtPanel();
+    renderHiddenPanel();
   }
 
   // The Set dropdown narrows one topic to a single practice set; hidden (and
@@ -362,6 +371,99 @@ async function init() {
     else map[topicKey] = { taught: value !== "not-taught", status: value, t: Date.now() };
     store.set("topic-taught", map);
     fillTopics(); // option suffixes + the panel itself re-render from the new map
+  }
+
+  // ── question-level hide flag (synced "q-hidden" map, assets/qhidden.js) ────
+  // Hidden questions stay out of NEW quiz sessions (bankItems filters them), out
+  // of the Today page's quiz pick and out of new from-quiz flashcards; the current
+  // session and the q-errors/review history are unaffected. Restore lives on the
+  // Quiz page's hidden panel below. Both mutators are read-modify-write of the
+  // whole map (the setTaughtOverride pattern) and are exported for the node tests.
+  function hideQuestion(bankId, id, reason, nowMs, label) {
+    let map = store.get("q-hidden", {});
+    if (!map || typeof map !== "object" || Array.isArray(map)) map = {};
+    const r = String(reason == null ? "" : reason).trim().slice(0, 200); // bounds like mistakes.js retire()
+    const l = String(label == null ? "" : label).trim().slice(0, 120);
+    const entry = { hidden: true, t: nowMs == null ? Date.now() : nowMs };
+    if (r) entry.reason = r; // empty after bounding → dropped, not stored as ""
+    if (l) entry.label = l;
+    map[QH.keyFor(bankId, id)] = entry;
+    return store.set("q-hidden", map) !== false;
+  }
+  // Restore writes an explicit {hidden:false, t} sentinel (never a delete): the
+  // sync/backup merge (assets/store.js RECORDS["q-hidden"], newest t per entry)
+  // would otherwise let another device's stale hide win the union. Reason/label
+  // are dropped — restore means gone. No stored entry → nothing to restore → false
+  // (mirrors mistakes.js restore()).
+  function restoreQuestion(bankId, id, nowMs) {
+    let map = store.get("q-hidden", {});
+    if (!map || typeof map !== "object" || Array.isArray(map)) map = {};
+    const k = QH.keyFor(bankId, id);
+    if (!map[k]) return false;
+    map[k] = { hidden: false, t: nowMs == null ? Date.now() : nowMs };
+    return store.set("q-hidden", map) !== false;
+  }
+
+  // "Hide question…" button, next to the Flashcard button in both after-answer
+  // action blocks (wired like the fc button). An optional reason prompt; cancel
+  // leaves the button untouched. The item is NOT removed from the current session.
+  function wireHideBtn(btn, it) {
+    if (!btn) return;
+    btn.addEventListener("click", () => {
+      const reason = typeof prompt === "function" ? prompt("Why hide this question? (optional)") : "";
+      if (reason === null) return; // cancelled
+      // live items carry bankId; review items (built from q-errors records) carry
+      // the record's own errKey — the authoritative key, and for legacy/migrated
+      // records (id stored as null, the key holding the real id or a "stem-…"
+      // fallback) the ONLY one that matches the filters: keyFor(bankId, it.id)
+      // would write "<bankId>#", which gates nothing. Splitting errKey (at the
+      // FIRST "#", like renderHiddenPanel) reproduces the record's key exactly.
+      const ek = String(it.errKey || "");
+      const at = ek.indexOf("#");
+      const bankId = at >= 0 ? ek.slice(0, at) : it.bankId;
+      const id = at >= 0 ? ek.slice(at + 1) : it.id;
+      hideQuestion(bankId, id, reason, null, String(it.stem || "").slice(0, 120));
+      btn.textContent = "\u2713 Hidden \u2014 restore via Quiz page";
+      btn.disabled = true;
+    });
+  }
+
+  // "Hidden questions" restore panel (quiz.html, below the taught panel). Follows
+  // renderTaughtPanel: the whole build is wrapped in try/catch — a bug here must
+  // never break session setup. Newest hide first; per row the stored label (else
+  // the key) + optional reason + Restore, then the panel re-renders.
+  function renderHiddenPanel() {
+    const panel = $("q-hidden-panel");
+    const list = $("q-hidden-list");
+    const summary = $("q-hidden-summary");
+    if (!panel || !list) return;
+    try {
+      const map = store.get("q-hidden", {});
+      const hidden = QH.hiddenIds(map);
+      const rows = Object.keys(map)
+        .filter(k => hidden.has(k))
+        .map(k => ({ key: k, e: map[k] }))
+        .sort((x, y) => ((y.e && y.e.t) || 0) - ((x.e && x.e.t) || 0));
+      if (summary) summary.textContent = rows.length ? `Hidden questions (${rows.length})` : "Hidden questions";
+      clearEl(list);
+      if (!rows.length) {
+        const p = document.createElement("p"); p.className = "muted"; p.textContent = "Nothing hidden.";
+        list.appendChild(p); return;
+      }
+      rows.forEach(({ key, e }) => {
+        const at = key.indexOf("#");
+        const bankId = at >= 0 ? key.slice(0, at) : key;
+        const id = at >= 0 ? key.slice(at + 1) : "";
+        const row = document.createElement("div"); row.className = "q-taught-row"; // reuses the taught rows' layout styles
+        const name = document.createElement("span"); name.className = "q-taught-name";
+        name.textContent = ((e && e.label) || key) + (e && e.reason ? " — " + e.reason : "");
+        row.appendChild(name);
+        const btn = document.createElement("button"); btn.className = "btn"; btn.textContent = "Restore";
+        btn.addEventListener("click", () => { restoreQuestion(bankId, id); renderHiddenPanel(); });
+        row.appendChild(btn);
+        list.appendChild(row);
+      });
+    } catch (e) { clearEl(list); }
   }
 
   // Normalized COPY of a difficulty histogram ({unrated,easy,standard,hard},
@@ -560,24 +662,65 @@ async function init() {
     return r >= a && r <= b;
   }
 
+  // Effective difficulty of an item: a valid DIFFICULTIES value, else "unrated"
+  // (same ranking difficultyPass uses internally).
+  const effDifficulty = (it) => (DIFFICULTIES.indexOf(it && it.difficulty) >= 0 ? it.difficulty : "unrated");
+
+  /* Pure session picker (exported for tests). opts = {dmin, dmax, format, n,
+     fillUnrated}:
+     - format "mixed" (or falsy) keeps every item; anything else keeps only
+       items with it.format === format;
+     - the rated pool is the items inside the [dmin, dmax] range
+       (difficultyPass swaps crossed bounds; absent/unknown difficulty ranks
+       "unrated");
+     - when fillUnrated !== false, items whose effective difficulty is exactly
+       "unrated" and which are NOT already in the rated pool top the session up
+       once the rated ones run short — out-of-range rated items (e.g. hard) are
+       excluded entirely and never fill in. A range that itself includes
+       "unrated" already holds those items, so no duplicates;
+     - the two pools are shuffled separately, then use = rated ++ topUp, cut to
+       n (n < 1 / garbage → an empty session, never a throw).
+     Returns {use, ratedCount, unratedCount}, the counts covering what actually
+     went into `use` after the cut. */
+  function pickSessionItems(items, opts) {
+    const o = opts || {};
+    const req = parseInt(o.n, 10);
+    const n = isNaN(req) ? 0 : Math.max(0, req);
+    const list = Array.isArray(items) ? items.filter(it => it != null) : [];
+    const pool = (!o.format || o.format === "mixed") ? list : list.filter(it => it.format === o.format);
+    const rated = shuffle(pool.filter(it => difficultyPass(it, o.dmin, o.dmax)));
+    const inRated = new Set(rated);
+    const topUp = o.fillUnrated === false ? [] : shuffle(pool.filter(it => !inRated.has(it) && effDifficulty(it) === "unrated"));
+    const use = rated.concat(topUp).slice(0, n);
+    let ratedCount = 0, unratedCount = 0;
+    use.forEach(it => (inRated.has(it) ? ratedCount++ : unratedCount++));
+    return { use, ratedCount, unratedCount };
+  }
+
   async function bankItems(b) {
     const bid = bankIdFor(b);
-    if (b.inline) return (b.items || []).filter(isActive).map(it => ({ ...it, topic: it.topic || b.topic || bid, topicLabel: it.topicLabel || b.topicLabel, bank: b.label, bankId: bid }));
+    // Question-level hide flags (synced "q-hidden" map, assets/qhidden.js): hidden
+    // questions never serve a NEW session — both the picker (startSession) and the
+    // note deep links (startFromLink) build on this. Retired semantics untouched.
+    const hiddenMap = store.get("q-hidden", {});
+    if (b.inline) return QH.filterItems((b.items || []).filter(isActive).map(it => ({ ...it, topic: it.topic || b.topic || bid, topicLabel: it.topicLabel || b.topicLabel, bank: b.label, bankId: bid })), hiddenMap);
     const res = await fetch(PATH_BASE + b.file + "?cb=" + Date.now(), { cache: "no-store" });
     if (!res.ok) throw new Error(res.status + " " + b.file);
     const data = await res.json();
     // untagged items inherit the bank's topic (else they'd all pool under "undefined").
     // Retired items (off-syllabus, kept so ids and progress stay valid) never enter a session.
     // Item-level topicLabel (mixed-topic banks such as the Paper 1A/1B sets) wins over the bank's.
-    return data.items.filter(isActive).map(it => ({ ...it, topic: it.topic || data.topic || bid, topicLabel: it.topicLabel || data.topicLabel, bank: b.label, bankId: bid, paperStyle: it.paperStyle || data.paperStyle || null, calculatorFree: !!(it.calculatorFree || data.calculatorFree) }));
+    return QH.filterItems(data.items.filter(isActive).map(it => ({ ...it, topic: it.topic || data.topic || bid, topicLabel: it.topicLabel || data.topicLabel, bank: b.label, bankId: bid, paperStyle: it.paperStyle || data.paperStyle || null, calculatorFree: !!(it.calculatorFree || data.calculatorFree) })), hiddenMap);
   }
 
   // Deep link from a topic note: quiz.html?from=<bankId>[:id1,id2…]&from=…&label=…&n=20
-  // (no ids = the whole bank). Unknown banks/ids are skipped and reported.
+  // (no ids = the whole bank). Unknown banks/ids are skipped and reported; hidden
+  // questions (q-hidden) are skipped too and counted separately from "not found".
   async function startFromLink(params) {
     const wanted = params.getAll("from").map(f => { const [bank, ids] = f.split(":"); return { bank, ids: ids ? ids.split(",").filter(Boolean) : null }; });
     const n = Math.max(1, parseInt(params.get("n") || "20", 10) || 20);
-    let items = [], subject = null, missing = 0;
+    let items = [], subject = null, missing = 0, hiddenN = 0;
+    const hiddenSet = QH.hiddenIds(store.get("q-hidden", {})); // bankItems already filtered the same map
     try {
       for (const w of wanted) {
         let found = null;
@@ -585,17 +728,31 @@ async function init() {
         if (!found) { missing += w.ids ? w.ids.length : 1; continue; }
         const all = await bankItems(found);
         const pick = w.ids ? all.filter(it => w.ids.includes(it.id)) : all;
-        if (w.ids) missing += w.ids.length - pick.length;
+        if (w.ids) {
+          // hidden ids are already filtered out of `all` by bankItems — count them
+          // separately so they are reported as skipped, not "not found"
+          const hid = w.ids.filter(id => hiddenSet.has(QH.keyFor(w.bank, id))).length;
+          hiddenN += hid;
+          missing += w.ids.length - pick.length - hid;
+        } else {
+          hiddenSet.forEach(k => { if (String(k).indexOf(w.bank + "#") === 0) hiddenN++; }); // whole-bank link: every stored hide was skipped
+        }
         items = items.concat(pick);
       }
     } catch (e) { $("q-error").textContent = "Could not load question bank: " + e.message; return false; }
-    if (!items.length) { $("q-error").textContent = "None of the questions linked from that note could be found."; return false; }
+    if (!items.length) {
+      // say WHY nothing serves — hidden skips are not "not found" (same wording as the notice bit)
+      $("q-error").textContent = "None of the questions linked from that note could be found." +
+        (hiddenN ? " " + hiddenN + " hidden question(s) skipped." : "");
+      return false;
+    }
     migrateErrorKeys(items);
     shuffle(items);
     const use = items.slice(0, n);
     const label = (params.get("label") || "Topic quiz").slice(0, 80);
     const bits = [`${label}: ${use.length} of ${items.length} linked question${items.length === 1 ? "" : "s"}.`];
     if (missing) bits.push(`${missing} linked item(s) not found.`);
+    if (hiddenN) bits.push(`${hiddenN} hidden question(s) skipped.`);
     session = { items: use, idx: 0, results: [], subject, label, requested: use.length, fromLink: true, notice: bits.join(" ") };
     $("setup").style.display = "none";
     $("runner").style.display = "";
@@ -662,16 +819,27 @@ async function init() {
     } catch (e) { $("q-error").textContent = "Could not load question bank: " + e.message; return; }
     migrateErrorKeys(items);
     // empty values (select present but without options — e.g. a stale page) count
-    // as the defaults, exactly like missing selects do
+    // as the defaults, exactly like missing selects do. Default range easy→standard:
+    // a session is built on rated foundation/core questions, with unrated ones only
+    // topping it up when the rated pool runs short (q-diff-fill, on by default).
     const dminEl = $("q-diff-min"), dmaxEl = $("q-diff-max");
-    const dmin = dminEl && dminEl.value ? dminEl.value : "unrated";
-    const dmax = dmaxEl && dmaxEl.value ? dmaxEl.value : "hard";
-    if (dmin !== "unrated" || dmax !== "hard") items = items.filter(it => difficultyPass(it, dmin, dmax));
-    if (format !== "mixed") items = items.filter(it => it.format === format);
-    shuffle(items);
-    const use = items.slice(0, n);
-    if (!use.length) { $("q-error").textContent = "No questions match those filters — try widening the difficulty range or including not-yet-taught topics."; return; }
-    session = { items: use, idx: 0, results: [], subject: key, label: BANKS[key].label, requested: n, notice: items.length < n ? `Bank has ${items.length} matching questions (asked for ${n}) — short session.` : "" };
+    const dmin = dminEl && dminEl.value ? dminEl.value : "easy";
+    const dmax = dmaxEl && dmaxEl.value ? dmaxEl.value : "standard";
+    const fillEl = $("q-diff-fill");
+    const fillUnrated = !(fillEl && !fillEl.checked);
+    const { use, ratedCount, unratedCount } = pickSessionItems(items, { dmin, dmax, format, n, fillUnrated });
+    if (!use.length) {
+      // the top-up tip only makes sense when the top-up is actually off
+      const tips = fillUnrated
+        ? "Try widening the difficulty range or including not-yet-taught topics."
+        : "Try widening the difficulty range, switching the unrated top-up on, or including not-yet-taught topics.";
+      $("q-error").textContent = "No questions match those filters — this subject may not have rated questions at that difficulty yet. " + tips;
+      return;
+    }
+    const bits = [];
+    if (unratedCount > 0) bits.push(`${ratedCount} of ${use.length} from rated questions; ${unratedCount} unrated added to fill the session.`);
+    if (use.length < n) bits.push(`Asked for ${n} — only ${use.length} question${use.length === 1 ? "" : "s"} matched, so the session is short.`);
+    session = { items: use, idx: 0, results: [], subject: key, label: BANKS[key].label, requested: n, notice: bits.join(" ") };
     $("setup").style.display = "none";
     $("runner").style.display = "";
     renderQuestion();
@@ -700,7 +868,7 @@ async function init() {
                  <ol>${it.markscheme.map(m => `<li>${esc(m)}</li>`).join("")}</ol>
                  <p class="muted">Self-score honestly — the gap analysis only works if you don't inflate.</p>
                  <div class="q-score">Score: <select id="q-selfscore">${Array.from({ length: (it.marks || 1) + 1 }, (_, k) => `<option value="${k}">${k} / ${esc(it.marks)}</option>`).join("")}</select></div>
-                 <div class="q-actions"><button id="q-fc" class="btn">＋ Flashcard</button><button id="q-next" class="btn primary">Next question</button></div>
+                 <div class="q-actions"><button id="q-fc" class="btn">＋ Flashcard</button><button id="q-hide" class="btn">Hide question…</button><button id="q-next" class="btn primary">Next question</button></div>
                </div>`;
     }
     box.innerHTML = html;
@@ -734,11 +902,17 @@ async function init() {
         const after = document.createElement("div");
         after.className = "q-note" + (right ? " good" : " bad");
         after.innerHTML = (right ? "\u2713 Correct. " : "\u2717 Not quite. ") + (!right && conf === "sure" ? "<strong>You were sure \u2014 this goes on your \u201cconfident but wrong\u201d list.</strong> " : "") + esc(it.note || "") +
-          `<div class="q-actions"><button id="q-fc" class="btn">\uff0b Flashcard</button><button id="q-next" class="btn primary">Next question</button></div>`;
+          `<div class="q-actions"><button id="q-fc" class="btn">\uff0b Flashcard</button><button id="q-hide" class="btn">Hide question\u2026</button><button id="q-next" class="btn primary">Next question</button></div>`;
         box.appendChild(after);
         $("q-next").addEventListener("click", nextQuestion);
         const fcBtn = document.getElementById("q-fc");
-        if (fcBtn) fcBtn.addEventListener("click", () => { fcSaveFromQuiz(it); fcBtn.textContent = "\u2713 Saved to Cards"; fcBtn.disabled = true; });
+        if (fcBtn) fcBtn.addEventListener("click", () => {
+          const ok = fcSaveFromQuiz(it); // false → the question is hidden: no card written
+          fcBtn.textContent = ok ? "\u2713 Saved to Cards" : "Hidden \u2014 not saved";
+          fcBtn.disabled = true;
+        });
+        const hideBtn = document.getElementById("q-hide");
+        if (hideBtn) wireHideBtn(hideBtn, it);
       };
       $("q-sure").addEventListener("click", () => check("sure"));
       $("q-guess").addEventListener("click", () => check("guess"));
@@ -752,12 +926,22 @@ async function init() {
       $("q-reveal").addEventListener("click", () => reveal("sure"));
       $("q-reveal-guess").addEventListener("click", () => reveal("guess"));
       const fcBtn = document.getElementById("q-fc");
-      if (fcBtn) fcBtn.addEventListener("click", () => { fcSaveFromQuiz(it); fcBtn.textContent = "\u2713 Saved to Cards"; fcBtn.disabled = true; });
+      if (fcBtn) fcBtn.addEventListener("click", () => {
+        const ok = fcSaveFromQuiz(it); // false → the question is hidden: no card written
+        fcBtn.textContent = ok ? "\u2713 Saved to Cards" : "Hidden \u2014 not saved";
+        fcBtn.disabled = true;
+      });
+      const hideBtn = document.getElementById("q-hide");
+      if (hideBtn) wireHideBtn(hideBtn, it);
       $("q-next").addEventListener("click", () => {
         const got = parseInt($("q-selfscore").value, 10);
         session.results.push(resultFor(it, "written", got, it.marks, conf));
-        if (session.review) markReviewResult(it, got >= it.marks, conf);
-        else if (got < it.marks) recordError(it, { selfScore: got, conf });
+        // the typed response is still live in the textarea here — a bounded copy +
+        // the self-awarded mark ride the mistake record and its retry entries, so
+        // the Mistakes log can show what was actually written ("correct" = got ≥
+        // marks; wrong-or-partial = got < marks stores the extras)
+        if (session.review) markReviewResult(it, got >= it.marks, conf, { response: $("q-answer").value, awarded: got });
+        else if (got < it.marks) recordError(it, { response: $("q-answer").value, awarded: got, conf });
         nextQuestion();
       });
     }
@@ -949,46 +1133,94 @@ async function init() {
   // local calendar date (was UTC via toISOString — wrong between midnight and 01:00/02:00 in Zurich)
   function today() { const d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
 
+  // Bounded copy of a written answer for the mistake record: trim + ≤2000 chars
+  // (write-side precedent: the ≤500 reflection / ≤200 retire-reason caps in
+  // assets/mistakes.js). Exported for the node tests.
+  const boundResponse = (v) => String(v == null ? "" : v).trim().slice(0, 2000);
+
   // retries: one {ts, correct, conf?} entry per attempt outcome, capped at 20 (the
   // attempts counter totals the wrong outcomes — see applyRetry); absent on records
-  // never re-attempted.
-  const pushRetry = (e, correct, conf) => {
+  // never re-attempted. A wrong/partial WRITTEN attempt (extra) also carries the
+  // bounded response copy + the self-awarded mark; MCQ and correct outcomes keep
+  // the plain shape.
+  const pushRetry = (e, correct, conf, extra) => {
     const r = { ts: Date.now(), correct: !!correct };
     if (conf) r.conf = conf;
+    if (!correct && extra) {
+      const resp = boundResponse(extra.response);
+      if (resp) r.response = resp;
+      if (extra.awarded !== undefined) r.awarded = extra.awarded;
+    }
     e.retries = (Array.isArray(e.retries) ? e.retries : []).concat([r]).slice(-20);
   };
 
   // Spaced retests of missed questions (docs/NEXT-STEPS.md H4–H9): a record gains an
-  // optional `dueAt` (epoch ms) — when it next comes back for a scheduled retest. The
-  // ladder: 7 days after the first wrong outcome, 30 days after any later one.
+  // optional `dueAt` (epoch ms) — when it next comes back for a scheduled retest.
+  // Wrong outcomes never push the retest far out: the miss ladder comes back in 1 day
+  // after the first miss, 2 days after the second, 3 days after any later one (capped).
+  // Only a successful retrieval — a correct answer at/after the scheduled retest —
+  // lengthens the interval: it schedules a 7-day follow-up while the record stays open,
+  // and a correct answer at/after THAT follow-up (the second success in a row, read off
+  // the retry tail — no extra record field) recovers it and clears the schedule.
   // `attempts` counts the wrong outcomes (misses + wrong review retries). Records
   // without dueAt (legacy, or recovered — the schedule is cleared on recovery) read as
   // due now; a correct answer BEFORE the scheduled retest is practice only.
-  const DUE_DELAY_FIRST_DAYS = 7, DUE_DELAY_LATER_DAYS = 30, DAY_MS = 86400000;
-  const dueDelayMs = (attempts) => ((attempts || 0) <= 1 ? DUE_DELAY_FIRST_DAYS : DUE_DELAY_LATER_DAYS) * DAY_MS;
+  const DUE_DELAY_MISS_DAYS = [1, 2, 3], DUE_DELAY_SUCCESS_DAYS = 7, DAY_MS = 86400000;
+  const dueDelayMs = (attempts) => DUE_DELAY_MISS_DAYS[Math.max(0, Math.min(((attempts || 0) | 0) - 1, DUE_DELAY_MISS_DAYS.length - 1))] * DAY_MS;
   const nextDueAt = (rec, nowMs) => (nowMs == null ? Date.now() : nowMs) + dueDelayMs(rec && rec.attempts);
   const isDue = (rec, nowMs) => !!rec && !rec.resolved && !rec.retired && (rec.dueAt == null || rec.dueAt <= (nowMs == null ? Date.now() : nowMs));
+  // trailing run of correct outcomes in the retry history (0 when the tail is a wrong
+  // outcome or the history is missing/corrupt) — how many successful retrievals in a row
+  const tailCorrects = (rec) => {
+    const r = rec && Array.isArray(rec.retries) ? rec.retries : [];
+    let n = 0;
+    for (let i = r.length - 1; i >= 0 && r[i] && r[i].correct; i--) n++;
+    return n;
+  };
 
   // One review outcome applied to a stored record (mutates it; exported for tests —
   // markReviewResult calls this). wrong: re-opens a recovered record (a wrong retry
-  // used to leave it resolved) and schedules the next retest. correct: before the
-  // scheduled time it is practice only — the record stays open and keeps its schedule;
-  // at/after the scheduled time (or on legacy records without a schedule) it recovers
-  // and the schedule is cleared. conf rides the retry entry, as markReviewResult
-  // has always recorded it.
-  const applyRetry = (rec, correct, conf, nowMs) => {
+  // used to leave it resolved) and schedules the next retest on the short miss ladder.
+  // correct: before the scheduled time it is practice only — the record stays open and
+  // keeps its schedule; at/after the scheduled time it is a successful retrieval — the
+  // first one lengthens the interval (a 7-day follow-up, record still open) and the
+  // second one in a row recovers it and clears the schedule; legacy records without a
+  // schedule (and recovered ones) still recover on the first correct answer. conf rides
+  // the retry entry, as markReviewResult has always recorded it. For a wrong WRITTEN
+  // retry, extra ({response, awarded}) rides the retry entry AND updates the
+  // record-level fields, mirroring recordError's repeat-miss branch.
+  const applyRetry = (rec, correct, conf, nowMs, extra) => {
     const now = nowMs == null ? Date.now() : nowMs;
     rec.lastAttempt = today();
-    pushRetry(rec, correct, conf);
+    pushRetry(rec, correct, conf, extra);
     if (!correct) {
       rec.attempts = (rec.attempts || 0) + 1;
       rec.resolved = false;
       rec.dueAt = nextDueAt(rec, now);
-    } else if (rec.dueAt == null || rec.dueAt <= now) {
-      rec.resolved = true;
-      delete rec.dueAt;
+      applyWritten(rec, extra);
+    } else if (rec.dueAt == null) {
+      rec.resolved = true; // legacy/recovered: no schedule → the first correct recovers, as before
+    } else if (rec.dueAt <= now) {
+      if (tailCorrects(rec) >= 2) {
+        rec.resolved = true; // second successful retrieval in a row → recovered
+        delete rec.dueAt;
+      } else {
+        rec.dueAt = now + DUE_DELAY_SUCCESS_DAYS * DAY_MS; // first success → 7-day follow-up, still open
+      }
     }
     rec.ts = now;
+    return rec;
+  };
+
+  // Record-level fields of the latest wrong/partial WRITTEN attempt (both
+  // recordError branches and applyRetry's wrong path): response is stored only
+  // when its bounded copy is non-empty (dropped otherwise), awarded whenever the
+  // outcome is a wrong/partial written attempt. MCQ attempts pass no extra → both
+  // fields end up absent, exactly like userAnswer for them.
+  const applyWritten = (rec, extra) => {
+    const resp = boundResponse(extra && extra.response);
+    if (resp) rec.response = resp; else delete rec.response;
+    if (extra && extra.awarded !== undefined) rec.awarded = extra.awarded; else delete rec.awarded;
     return rec;
   };
 
@@ -1001,9 +1233,10 @@ async function init() {
       existing.lastMissed = today();
       existing.resolved = false;
       existing.ts = Date.now();
-      pushRetry(existing, false);
-      existing.dueAt = nextDueAt(existing, existing.ts); // repeat miss → retest in 30 days
+      pushRetry(existing, false, undefined, extra);
+      existing.dueAt = nextDueAt(existing, existing.ts); // repeat miss → 2–3 days out (the short miss ladder)
       if (extra && extra.userChoice !== undefined) existing.userAnswer = extra.userChoice; // latest wrong choice
+      applyWritten(existing, extra); // latest miss's bounded response + awarded mark
       C.applyToError(existing, extra && extra.conf, true);
     } else {
       errs.push({
@@ -1015,17 +1248,18 @@ async function init() {
         tactic: it.tactic || "", attempts: 1, firstMissed: today(), lastMissed: today(), resolved: false,
         ts: Date.now()
       });
-      errs[errs.length - 1].dueAt = nextDueAt(errs[errs.length - 1], errs[errs.length - 1].ts); // first miss → retest in 7 days
+      applyWritten(errs[errs.length - 1], extra); // first miss: bounded response + awarded mark, no retry entry
+      errs[errs.length - 1].dueAt = nextDueAt(errs[errs.length - 1], errs[errs.length - 1].ts); // first miss → retest in 1 day
       C.applyToError(errs[errs.length - 1], extra && extra.conf, true);
     }
     store.set("q-errors", errs);
   }
 
-  function markReviewResult(it, correct, conf) {
+  function markReviewResult(it, correct, conf, extra) {
     const errs = store.get("q-errors", []);
     const e = errs.find(x => x.key === it.errKey);
     if (e) {
-      applyRetry(e, correct, conf);
+      applyRetry(e, correct, conf, null, extra);
       C.applyToError(e, conf, !correct);
       store.set("q-errors", errs);
     }
@@ -1131,10 +1365,17 @@ async function init() {
     return true;
   }
 
+  // ＋ Flashcard from a quiz answer. Refused (returns false) while the question is
+  // hidden — no card is written. New cards are stamped with their question key
+  // (qkey) so flashcards.js can keep them out while the question stays hidden;
+  // older cards without qkey are unaffected.
   function fcSaveFromQuiz(it) {
+    const qkey = errKeyFor(it);
+    if (QH.hiddenIds(store.get("q-hidden", {})).has(qkey)) return false;
     const user = store.get("fc-user", []);
-    user.push({ id: "u-" + Date.now(), type: "qa", subject: session.subject || it.subject || "user", topic: it.topic, topicLabel: it.topicLabel || "", tags: ["from-quiz"], front: String(it.stem).slice(0, 160), back: String(it.note || (it.markscheme || []).join(" ") || "").slice(0, 400) });
+    user.push({ id: "u-" + Date.now(), type: "qa", subject: session.subject || it.subject || "user", topic: it.topic, topicLabel: it.topicLabel || "", tags: ["from-quiz"], front: String(it.stem).slice(0, 160), back: String(it.note || (it.markscheme || []).join(" ") || "").slice(0, 400), qkey: qkey });
     store.set("fc-user", user);
+    return true;
   }
   function reset() {
     $("summary").style.display = "none";
@@ -1146,7 +1387,16 @@ async function init() {
   // (buildTopics/taughtState/difficultyPass and the display-name helpers) is
   // exported for the node tests
   window.NB = window.NB || {};
-  window.NB.quizEngine = { isActive, bankItems, buildTopics, taughtState, difficultyPass, DIFFICULTY_ORDER, pickReviewErrors, migrateUserBankKeys, disambiguateSetNames, unratedSuffix, TAUGHT_SUFFIX, dueDelayMs, nextDueAt, isDue, applyRetry, recordError };
+  window.NB.quizEngine = { isActive, bankItems, buildTopics, taughtState, difficultyPass, pickSessionItems, DIFFICULTY_ORDER, pickReviewErrors, migrateUserBankKeys, disambiguateSetNames, unratedSuffix, TAUGHT_SUFFIX, dueDelayMs, nextDueAt, isDue, applyRetry, recordError, markReviewResult, boundResponse, hideQuestion, restoreQuestion, fcSaveFromQuiz };
+
+  // the hidden panel re-renders when "q-hidden" changes (sync arriving, another
+  // tab, or this page's own hide/restore) — the same debounced watch as
+  // assets/mistakes.js; the storage event only fires in OTHER tabs, where keys
+  // are physical ("<user>:q-hidden"), hence the suffix match
+  let hiddenTimer = null;
+  const renderHiddenLater = () => { clearTimeout(hiddenTimer); hiddenTimer = setTimeout(renderHiddenPanel, 300); };
+  if (store.onChange) store.onChange((k) => { if (k === "q-hidden") renderHiddenLater(); });
+  window.addEventListener("storage", (e) => { if (e && e.key && e.key.indexOf("q-hidden") >= 0) renderHiddenLater(); });
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();

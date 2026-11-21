@@ -5,6 +5,18 @@ _Last updated 21 Nov 2026 (WP4 exam reflections + WP3 tiered Today suggestions; 
 batch (reliability fixes + WP1–WP4): [CHANGELOG-2026-11-21-study-loop.md](CHANGELOG-2026-11-21-study-loop.md).
 Read this first, then [NEXT-STEPS.md](NEXT-STEPS.md); ideas for later are in [VISION.md](VISION.md)._
 
+**Signalbox feedback widget (21 Nov 2026):** the eight practice pages (`app/` — not `summary.html`) gained a small
+bottom-right **Feedback** button (`assets/feedback.js?v=1`, after `profile.js`): a lightweight modal (Bug /
+Improvement / Idea, area, title, description + an optional "Include current page and topic" checkbox that picks up the
+Quiz/Cards selects or the Notes URL params and the logged-in username) that POSTs JSON
+(`{app, key, type, area, title, body, context}`) to the Signalbox feedback endpoint and shows success/error inline.
+The endpoint URL and the app key are the two `PLACEHOLDER` values in the `FEEDBACK_CONFIG` block at the top of
+`assets/feedback.js` — set both before this works against the real Signalbox (never commit the real key into docs),
+and keep the endpoint host inside the pages' CSP `connect-src` whitelist (`rametric.com` today). The POST goes
+through `fetch()` — never a real `<form action>` (`form-action 'self'` would block it). Verification:
+`node --test tests/js/feedback.test.js` (part of `./dev.sh test`). Details:
+[CHANGELOG-2026-11-21-signalbox-feedback.md](CHANGELOG-2026-11-21-signalbox-feedback.md).
+
 **WP4 exam reflections (21 Nov 2026):** the Quiz page's past-paper log (`pp-scores`) gained an
 aggregation layer: a **Score trend** list (one line per subject, each scored point shown
 `score/max (pct%) on D Mon`, ascending, last 5) and a **By topic** table (per subject+topic:
@@ -33,18 +45,50 @@ data changed. Script version bumped (`today.js ?v=7`). Verification: `./dev.sh v
 [CHANGELOG-2026-11-21-wp3-today-panel.md](CHANGELOG-2026-11-21-wp3-today-panel.md).
 
 **WP2 spaced mistake retests (21 Nov 2026):** the mistake log now drives follow-up practice on a
-schedule. `q-errors` records gain one optional `dueAt` (epoch ms): the first wrong outcome schedules
-a retest 7 days out, any later wrong outcome 30 days out; "Review past errors" and the Today panel
+schedule. `q-errors` records gain one optional `dueAt` (epoch ms): wrong outcomes come back on a
+short ladder — 1 day after the first miss, 2 after the second, 3 after any later one (capped) — and
+only a successful retrieval (a correct answer at/after the due date) lengthens the interval, to a
+7-day follow-up; the second success in a row recovers the record; "Review past errors" and the Today panel
 serve/list only due records (the `quiz.html?errkeys=` deep links and the confident-but-wrong review
 stay ungated); a wrong review retry re-opens a recovered record (an old bug let it stay recovered)
-and `attempts` now counts wrong outcomes; a correct answer before the due date is practice only —
-at/after it the record recovers and the schedule clears (legacy records without `dueAt` recover as
-before). No schema bump, no migration, nothing hard-deleted; the sync merge fills `dueAt` from the
+and `attempts` now counts wrong outcomes; a correct answer before the due date is practice only
+(legacy records without `dueAt` recover on the first correct answer as before). No schema bump, no migration, nothing hard-deleted; the sync merge fills `dueAt` from the
 loser when the winner lacks it. Script versions bumped (`store.js ?v=10` on 23 pages + the build
 template, `quiz-engine.js ?v=22`, `today.js ?v=6`, `mistakes.js ?v=2`). Verification: `./dev.sh
 validate` + `./dev.sh test` (269 node tests + 230 pytest + php) + `./dev.sh e2e` (39 checks).
 Details + migration notes:
 [CHANGELOG-2026-11-21-wp2-mistake-retries.md](CHANGELOG-2026-11-21-wp2-mistake-retries.md).
+
+**Written-answer capture + question-level hide (21 Nov 2026):** written answers marked wrong or
+partial now store a bounded copy of her response (`response` ≤2000) + the self-awarded mark
+(`awarded`) on the q-errors record and on `retries[]` entries (`pushRetry`/`applyRetry`/
+`markReviewResult` gained an optional `extra`); the mistake log shows "Answer (2/3): …". A new
+synced key `q-hidden` (`bankId#id` → `{hidden, t, reason?, label?}`, newest-`t` per entry,
+restore = explicit `{hidden:false, t}` sentinel) hides a single question from future quizzes,
+Today picks and cards until restored from the Quiz page's "Hidden questions" panel — separate
+from the record-level "not relevant" flag and bank-level `retired:true`; review paths and the
+mistake log stay unfiltered by design. New pure helper module `assets/qhidden.js` (loaded by
+quiz/index/cards before their engine scripts); from-quiz cards stamp `qkey` and are suppressed
+while hidden. Additive only (no schema bump, no migration, no server change; `store.js ?v=11`
+on 22 pages + the build_site.py template, `quiz-engine.js ?v=24`, `mistakes.js ?v=3`,
+`flashcards.js ?v=17`, `today.js ?v=8`). Verification: `./dev.sh test` (349 node + 230 pytest)
++ manifest `--check`. Details:
+[CHANGELOG-2026-11-21-written-responses-and-hide.md](CHANGELOG-2026-11-21-written-responses-and-hide.md).
+
+**Difficulty defaults + first Maths batch (21 Nov 2026):** quiz sessions now prefer rated
+Foundation (easy) + Core (standard) — `pickSessionItems` in `assets/quiz-engine.js` builds the
+session from rated easy/standard questions first and tops up from unrated only when short (new
+`q-diff-fill` checkbox, on by default; hard/Stretch stays an explicit choice; deep links and the
+Mistakes flows are untouched). The AI bankgen prompt emits `suggestedDifficulty`, shown as
+unreviewed in the Upload preview until applied — importing without applying strips it
+(`bank-import.js` suggestion helpers + finalize strip, with an import-time confirmation). First
+tagged batch: 78 Maths AA SL items across the taught Functions (2.1–2.3, 2.4–2.5) and Calculus
+banks, picked from `library/class-schedule.json`; labels use the stored easy/standard/hard
+vocabulary with Foundation/Core/Stretch as picker wording. Additive only (optional item
+`difficulty` in three bank files; no schema bump, no migration; `quiz-engine.js ?v=23`,
+`bank-import.js ?v=2`). Verification: `./dev.sh test` (295 node + 230 pytest) + manifest
+`--check`. Details:
+[CHANGELOG-2026-11-21-difficulty-first-batch.md](CHANGELOG-2026-11-21-difficulty-first-batch.md).
 
 **WP1 hierarchy polish (21 Nov 2026):** the practice-set hierarchy was polished for repeated
 uploads and not-yet-taught topics — teaching status is three-state (not yet taught / learning /

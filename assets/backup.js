@@ -69,6 +69,12 @@
     // "learning"|"ready"); an unknown status means the file came from a newer
     // app — that record is dropped (a warning), not restored half-understood
     "topic-taught": { type: isObj, record: (r) => isObj(r) && typeof r.taught === "boolean" && (r.t === undefined || typeof r.t === "number") && (r.status === undefined || ["not-taught", "learning", "ready"].indexOf(r.status) >= 0), label: "topic teaching status" },
+    // per-question hide flags (assets/qhidden.js): hidden must be a real boolean
+    // (a restore sentinel is hidden:false, never a delete); reason/label are
+    // optional strings. Bogus entries are dropped with a warning, never half-kept.
+    "q-hidden": { type: isObj, record: (r) => isObj(r) && (r.hidden === true || r.hidden === false) &&
+      (r.t === undefined || typeof r.t === "number") &&
+      (r.reason === undefined || isStr(r.reason)) && (r.label === undefined || isStr(r.label)), label: "hidden questions" },
     "fc-theme": { type: (v) => v === "dark" || v === "light", label: "theme" },
     "lib-filters": { type: isObj, label: "library filters" }
   };

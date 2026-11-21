@@ -7,7 +7,7 @@ touching this site.
 
 ## Architecture
 
-- **Static site, no build step.** 19 study-site pages (incl. `admin.html`) + 9 practice-app pages (`app/`, LIVE on rametric.com/nevaib) + 22 asset files + JSON data in `library/` (32 quiz banks / 841 items, 28 flashcard decks / 594 cards, 113 topic notes, and the PDF manifest `library/library-manifest.json` / 127 items). The engines build their pickers from `library/questions/manifest.json` + `library/flashcards/manifest.json`; the Library browser reads `library/library-manifest.json`.
+- **Static site, no build step.** 19 study-site pages (incl. `admin.html`) + 9 practice-app pages (`app/`, LIVE on rametric.com/nevaib) + 23 asset files + JSON data in `library/` (32 quiz banks / 841 items, 28 flashcard decks / 594 cards, 113 topic notes, and the PDF manifest `library/library-manifest.json` / 127 items). The engines build their pickers from `library/questions/manifest.json` + `library/flashcards/manifest.json`; the Library browser reads `library/library-manifest.json`.
 - **Practice app (`app/`)**: `index.html` (launcher), `quiz.html`, `cards.html`, `notes.html`, `mistakes.html` (mistake log), `coursework.html`, `resources.html`, `author.html` (upload/manage/export), `summary.html` (parent weekly summary).
   Engines resolve content via `PATH_BASE` (`../` when served from `/app/`, empty at the root), so the same engine
   files serve both layers. Root `quiz.html`/`flashcards.html` are one-line redirect stubs to the app.
@@ -73,12 +73,13 @@ touching this site.
   (tracks), today.js (subject list + schedule keys), deadlines.js (tagged entries). Admins manage accounts and
   subject lists on `admin.html` (server actions `create-user` / `list-users` / `set-profile`, admin-only).
 - **Sync model** (`assets/auth.js`): synced keys = `NB.store.SYNCED_KEYS` (`q-userbanks, fc-userdecks, fc-state,
-  fc-user, fc-deleted, fc-edits, quizlog, q-errors, topic-taught, tok-objects, ee-ideas, io-issues, ia-debriefs, res-bookmarks,
+  fc-user, fc-deleted, fc-edits, quizlog, q-errors, topic-taught, q-hidden, tok-objects, ee-ideas, io-issues, ia-debriefs, res-bookmarks,
   res-notes, res-recent, pp-scores, cw-progress, my-res, profile`) **+ `site-state`** (`{checklists: {"chk:…": {c,r}}, week: {"week:0": "…"}}`, built from
   the per-row keys; rows are tracked individually). Rules, applied on page load, after login and on a 409:
-  1. `fc-state`, `q-errors`, `quizlog` merge **per record** (`NB.merge.RECORDS`): `fc-state` per card (newest `t`,
+  1. `fc-state`, `q-errors`, `quizlog`, `topic-taught`, `q-hidden` merge **per record** (`NB.merge.RECORDS`): `fc-state` per card (newest `t`,
      then `seen`, then `due`), `q-errors` union by `key` (newest `ts`, then last attempt/miss date, then attempts;
-     a key renamed by the quiz migration — `legacyKey` — isn't resurrected), `quizlog` union, newest first.
+     a key renamed by the quiz migration — `legacyKey` — isn't resurrected), `topic-taught`/`q-hidden` per topic/question
+     (newest `t` wins; a `q-hidden` restore is an explicit `{hidden:false, t}` sentinel), `quizlog` union, newest first.
   2. Any other key or checklist row **this device changed** since its last sync (`nb-dirty`) keeps the local value
      and is pushed.
   3. Untouched keys take the server value (so deletions made on another device stick).
@@ -108,13 +109,15 @@ touching this site.
   (records newest-wins, otherwise the current value wins conflicts and gaps are filled); Replace is an explicit
   opt-in for the keys in the file; "Undo last restore" brings the snapshot back.
 - **Cache-busting convention**: engine script tags carry `?v=N` — bump N in the referencing pages whenever an engine
-  file changes. `store.js` `?v=10` (first script on every storing page), `profile.js` `?v=1` (right after store.js),
+  file changes. `store.js` `?v=11` (first script on every storing page), `profile.js` `?v=1` (right after store.js),
   `backup.js` `?v=7` (cards, author), `bank-schema.js` `?v=2` (quiz, author — before quiz-engine/inline author script),
-  `bank-import.js` `?v=1` (author), `auth.js` `?v=10`, `quiz-engine.js` `?v=22`, `flashcards.js` `?v=16`,
-  `mistakes.js` `?v=2` (app/mistakes.html), `resources.js` `?v=1` (app/resources.html),
+  `qhidden.js` `?v=1` (quiz — before quiz-engine; app home — before today.js; cards — before flashcards.js),
+  `bank-import.js` `?v=2` (author), `auth.js` `?v=10`, `quiz-engine.js` `?v=24`, `flashcards.js` `?v=17`,
+  `mistakes.js` `?v=3` (app/mistakes.html), `resources.js` `?v=1` (app/resources.html),
   `notes.js` `?v=5` + `ai-prompt.js` `?v=5` (app/notes.html; ai-prompt also on author), `app.js` `?v=6`,
   `lists.js` `?v=4` (core, ia, french hub, ee, library), `library.js` `?v=4` (library.html, index, practice),
-  `deadlines.js` `?v=6` (index + deadlines), `today.js` `?v=7`, `coursework.js` `?v=2`,
+  `deadlines.js` `?v=6` (index + deadlines), `today.js` `?v=8`, `coursework.js` `?v=2`,
+  `feedback.js` `?v=1` (the 8 `app/` practice pages, after `profile.js`),
   `papers.js` `?v=3` / `confidence.js` `?v=1` (quiz). Bank/deck/manifest fetches use `?cb=Date.now()` + `cache: no-store`.
 - **Vanilla JS, one engine per concern**:
   | File | Owns | Page(s) |
@@ -129,6 +132,7 @@ touching this site.
   | `assets/deadlines.js` | Deadline data + `#nextup` / `#timeline` renderers | `index.html`, `deadlines.html` |
   | `assets/lists.js` | Tracked lists (`data-list` containers) + debrief notes (`textarea[data-note]`), one synced blob each | `core.html`, `ia.html`, `french-a-langlit.html`, `ee.html` |
   | `assets/library.js` | Library browser over `library/library-manifest.json`: filter bar (subject/type/free-text), rows reusing the hub-row convention, ★ pins / notes / recent tracking, `#res-pins` + `#papers-list` renderers | `library.html`, `index.html`, `practice.html` |
+  | `assets/feedback.js` | `NB.feedback`: Feedback widget (bottom-right button + modal), payload build/validation, JSON POST to the Signalbox feedback endpoint (`FEEDBACK_CONFIG` at the top of the file) | the 8 `app/` practice pages (after `profile.js`) |
 - **State** lives in `localStorage` (per browser/device — see table below).
 - **Python** is used only for one-off scripts, run with `python3 -I` (`tools/build_site.py`,
   past extraction scripts). Nothing at runtime needs Python except the file server.
@@ -162,10 +166,16 @@ Open a page once with `?nbapi=/api/api.php` to point it at the local API (localh
   `auth-merge.test.js`, `bank-schema.test.js` (upload validators incl. the optional
   `set`/`setOrder`/`codes`/`difficulty` fields, next-set-name suggestion, `nextSetOrder`),
   `quiz-picker.test.js`
-  (subject → topic → set model, difficulty-range filter, taught-topics filter, three-state
+  (subject → topic → set model, difficulty-range filter + rated-preference session pick
+  (`pickSessionItems`), taught-topics filter, three-state
   teaching status, per-set difficulty histograms, set-name disambiguation, same-id/two-bank
   progress separation),
-  `taught.test.js` (`topic-taught` storage + per-topic newest-`t` merge + status carry-over).
+  `taught.test.js` (`topic-taught` storage + per-topic newest-`t` merge + status carry-over),
+  `written-responses.test.js` (the bounded written-answer copy + self-awarded mark on q-errors
+  records and retry entries, `boundResponse`, the errMerge pins for the new fields),
+  `qhidden.test.js` (the `q-hidden` hide-flag key: pure module, sync registration + per-question
+  newest-`t` merge + restore sentinel, backup validator, serving gates in bankItems /
+  startFromLink / today / flashcards, mutators + hide button + restore panel).
 - `tests/test_api.py`: `server/api.php` on `php -S` with a temp data dir (skipped without php): auth,
   revisions + 409, partial saves, legacy files and clients, history rotation, export, atomic writes,
   unreadable file, lockout, plus a PHP 7.2 syntax guard.
@@ -198,7 +208,8 @@ store.js); the table lists the **logical** names engines use. `nb-*` bookkeeping
 | `q-userbanks` | `app/author.html` + quiz-engine | uploaded quiz banks (per device) |
 | `fc-userdecks` | `app/author.html` + flashcards | uploaded flashcard decks (per device) |
 | `topic-taught` | quiz-engine | per-topic teaching-status overrides `{topicKey: {taught: bool, t, status?: "not-taught"\|"learning"\|"ready"}}` — written by the Quiz page's "Topics & teaching status" panel (Auto / Not yet / Learning / Ready to revise). `taught` stays consistent with `status` (`(status === "not-taught") === !taught`) so a client predating `status` keeps showing the same thing; a legacy bool-only record reads as `ready` when true. Topics without an override fall back to the class-schedule suggestion (still two-state: taught / not-taught). Synced and merged **per topic** (newest `t` wins; a valid `status` consistent with the winner's `taught` is carried over from the older record so an old client can't erase it) |
-| `q-errors` | quiz-engine + `practice.html` + `assets/mistakes.js` | missed-question tracker: `{key, subject, topic, topicLabel, format, stem, choices, answer, userAnswer, note, marks, markscheme, tactic, attempts, firstMissed, lastMissed, resolved}` + `id, bankId, ts, lastAttempt, legacyKey` — key = `"<bankId>#<id>"` (bankId = bank file name without `.json`, `user:<slug>` for uploaded banks; ids are only unique per file). Older records keyed by bare id / stem hash are renamed when their bank loads in a session (same id AND same stem), keeping `legacyKey`; unmatched old records stay as they are and remain reviewable. `ts` = last-change ms timestamp for the sync merge. **Optional fields (written by the quiz engine / the mistakes page, never required):** `errorType` (`careless|misread|content|time|other`), `reflection` (≤500 chars), `retries` `[{ts, correct, conf?}]` (capped 20, written by the quiz engine; `attempts` totals the wrong outcomes — misses plus wrong review retries), `dueAt` (epoch ms, written by the quiz engine — when the record next comes due for its **spaced retest**: 7 days after the first wrong outcome, 30 days after any later one; a wrong retry re-opens a recovered record and reschedules; a correct answer at/after the due date recovers and clears it, before the date it is practice only; absent = due now, so legacy records behave as before; due-gated in "Review past errors" and the Today suggestions, bypassed by the `errkeys=` deep links and the confident-but-wrong review), `retired` + `retiredReason` (≤200) + `retiredAt` (reversible soft-hide — excluded from review and unresolved counts, never hard-deleted). Sync merge is field-aware (retries unioned; `reflection`/`errorType`/`dueAt` fill in from the loser only when the errRank winner lacks them; retirement preserved when the winner has no `retired` field). Synced cross-device when logged in |
+| `q-hidden` | quiz-engine (`assets/qhidden.js`) | per-question hide flags `{"<bankId>#<itemId>": {hidden: bool, t, reason? ≤200, label? ≤120}}` — written by the Quiz page's "Hide question…" button and restored from its "Hidden questions" panel (a restore writes an explicit `{hidden:false, t}` **sentinel**, never a delete, so a newer restore beats an older hide in the merge). Hidden questions never serve a NEW quiz session (bankItems), the Today quiz pick or a new from-quiz flashcard (cards carry a `qkey` stamp); the current session, reviews and the q-errors history are unaffected. Synced and merged **per question** (newest `t` wins; garbage entries dropped). Consumers read it via `NB.qhidden` (`keyFor`/`hiddenIds`/`filterItems`) |
+| `q-errors` | quiz-engine + `practice.html` + `assets/mistakes.js` | missed-question tracker: `{key, subject, topic, topicLabel, format, stem, choices, answer, userAnswer, note, marks, markscheme, tactic, attempts, firstMissed, lastMissed, resolved}` + `id, bankId, ts, lastAttempt, legacyKey` — key = `"<bankId>#<id>"` (bankId = bank file name without `.json`, `user:<slug>` for uploaded banks; ids are only unique per file). Older records keyed by bare id / stem hash are renamed when their bank loads in a session (same id AND same stem), keeping `legacyKey`; unmatched old records stay as they are and remain reviewable. `ts` = last-change ms timestamp for the sync merge. **Optional fields (written by the quiz engine / the mistakes page, never required):** `errorType` (`careless|misread|content|time|other`), `reflection` (≤500 chars), `retries` `[{ts, correct, conf?, response?, awarded?}]` (capped 20, written by the quiz engine; `attempts` totals the wrong outcomes — misses plus wrong review retries; `response` ≤2000 chars + `awarded` mark ride wrong/partial WRITTEN attempts only), `response` (≤2000 chars — the latest wrong/partial written answer as typed) + `awarded` (its self-awarded mark; MCQ attempts carry neither), `dueAt` (epoch ms, written by the quiz engine — when the record next comes due for its **spaced retest**: the miss ladder — 1 day after the first wrong outcome, 2 after the second, 3 after any later one, capped, so wrongs never push the retest further out; a wrong retry re-opens a recovered record and reschedules; a correct answer at/after the due date is a successful retrieval — the first one schedules a 7-day follow-up with the record still open, the second in a row recovers and clears it; before the due date it is practice only; absent = due now, so legacy records recover on the first correct answer as before; due-gated in "Review past errors" and the Today suggestions, bypassed by the `errkeys=` deep links and the confident-but-wrong review), `retired` + `retiredReason` (≤200) + `retiredAt` (reversible soft-hide — excluded from review and unresolved counts, never hard-deleted). Sync merge is field-aware (retries unioned; `reflection`/`errorType`/`dueAt` fill in from the loser only when the errRank winner lacks them; retirement preserved when the winner has no `retired` field). Synced cross-device when logged in |
 | `my-res` | `assets/notes.js` + `assets/resources.js` | her own resources/links `{id: {note?, subject?, topic?, type?, comment?, label, url, t}}` — `note` = topic-note id (the per-note "My resources" box), `subject`/`topic`/`type` (`website|video|doc|practice|other`)/`comment` (≤500) = the Resources page's tags. `url` must be `http(s)://` or `file://` (≤2000 chars; links only — never file contents). Deletion = tombstone `{note?/subject?, deleted: true, t}`; merged per id, newest `t` wins; `assets/backup.js` validates the extended shape. Resources are never read by the quiz/card engines |
 | `mistakes-filters` | `assets/mistakes.js` | the mistake-log page's filter state `{status, subject, q}` — LOCAL_ONLY (device-local, per-user scoped, never synced or backed up) |
 | `profile` | `profile.js` / server | per-user subject list `{subjects: ["biology-hl", …]}` (canonical ids; absent = all six subjects; empty array = none). Set by an admin via `set-profile`/`create-user`, synced as a normal state key |

@@ -30,9 +30,9 @@ const rec = (over) => Object.assign({
 }, over);
 
 // ── 1. millisecond boundaries ──────────────────────────────────────────────
-test("applyRetry boundary: correct at dueAt-1ms stays open with the schedule kept; correct AT dueAt recovers; isDue at exactly dueAt", () => {
+test("applyRetry boundary: correct at dueAt-1ms stays open with the schedule kept; correct AT dueAt is the first success (7-day follow-up); isDue at exactly dueAt", () => {
   const { QE } = engine();
-  const due = 7 * DAY;
+  const due = 1 * DAY;
   const early = rec({ attempts: 1, resolved: false, dueAt: due });
   QE.applyRetry(early, true, null, due - 1);
   assert.equal(early.resolved, false, "1ms before the retest it is still practice, not recovery");
@@ -41,14 +41,17 @@ test("applyRetry boundary: correct at dueAt-1ms stays open with the schedule kep
   assert.equal(early.retries.length, 1, "the practice attempt is still recorded");
   const at = rec({ attempts: 1, resolved: false, dueAt: due });
   QE.applyRetry(at, true, null, due);
-  assert.equal(at.resolved, true, "dueAt == nowMs is at/after → recovered");
+  assert.equal(at.resolved, false, "dueAt == nowMs is a successful retrieval — the first one, so not recovered yet");
+  assert.equal(at.dueAt, due + 7 * DAY, "the first success lengthens the interval to the 7-day follow-up");
+  QE.applyRetry(at, true, null, due + 7 * DAY);
+  assert.equal(at.resolved, true, "the second consecutive success recovers");
   assert.equal(at.dueAt, undefined, "the schedule is cleared on recovery");
   assert.equal(QE.isDue(rec({ dueAt: due }), due), true, "isDue boundary: dueAt == nowMs is due (also pinned in mistake-schedule.test.js)");
   assert.equal(QE.isDue(rec({ dueAt: due }), due - 1), false);
 });
 
 // ── 2. the ladder AFTER recovery ───────────────────────────────────────────
-test("re-miss after recovery: a wrong retry re-opens the record on the 30-day rung; reflection/errorType survive recovery and the re-miss", () => {
+test("re-miss after recovery: a wrong retry re-opens the record on the short miss ladder; reflection/errorType survive recovery and the re-miss", () => {
   const { QE } = engine();
   const now = 40 * DAY;
   const e = rec({
@@ -59,7 +62,7 @@ test("re-miss after recovery: a wrong retry re-opens the record on the 30-day ru
   QE.applyRetry(e, false, null, now);
   assert.equal(e.resolved, false, "the re-miss re-opens the record");
   assert.equal(e.attempts, 2, "attempts counts the new wrong outcome");
-  assert.equal(e.dueAt, now + 30 * DAY, "attempts ≥ 2 → 30-day rung; there is never a second 7-day rung");
+  assert.equal(e.dueAt, now + 2 * DAY, "attempts 2 → the 2-day rung of the short miss ladder");
   assert.equal(e.reflection, "watch the units", "applyRetry touches only outcome/schedule fields");
   assert.equal(e.errorType, "misread");
   assert.equal(e.retries.length, 3, "the wrong outcome is appended to the kept history");
@@ -67,16 +70,16 @@ test("re-miss after recovery: a wrong retry re-opens the record on the 30-day ru
   const deep = rec({ attempts: 2, resolved: true, ts: 40 * DAY });
   QE.applyRetry(deep, false, null, 41 * DAY);
   assert.equal(deep.attempts, 3);
-  assert.equal(deep.dueAt, 41 * DAY + 30 * DAY);
+  assert.equal(deep.dueAt, 41 * DAY + 3 * DAY, "attempts ≥ 3 → the capped 3-day rung");
 });
 
-test("recordError on a recovered stored record: re-opens it, attempts 1→2, the schedule is re-written +30 days", () => {
+test("recordError on a recovered stored record: re-opens it, attempts 1→2, the schedule is re-written +2 days", () => {
   const { env, QE } = engine({ "q-errors": J([rec({ attempts: 1, resolved: true, ts: 8 * DAY, dueAt: undefined })]) });
   QE.recordError({ id: "1", bankId: "bio-y", format: "mcq", stem: "s" }, { userChoice: 1 });
   const e = plain(env.NB.store.get("q-errors"))[0];
   assert.equal(e.resolved, false, "the repeat miss re-opens the recovered record");
   assert.equal(e.attempts, 2);
-  assert.equal(e.dueAt - e.ts, 30 * DAY, "the 30-day rung, measured from the write (Date.now() is the real clock here)");
+  assert.equal(e.dueAt - e.ts, 2 * DAY, "the 2-day rung, measured from the write (Date.now() is the real clock here)");
   assert.match(e.lastMissed, /^\d{4}-\d{2}-\d{2}$/, "lastMissed re-stamped with the local date");
   assert.equal(e.firstMissed, "2026-11-20", "firstMissed keeps the original miss date");
 });
@@ -92,14 +95,14 @@ test("retries cap: applyRetry/recordError keep appending past 20 while the ladde
   assert.ok(full.retries[19].ts > 20, "…stamped with the real clock, not a fixture ts");
   assert.equal(full.retries[0].ts, 2, "the OLDEST entry was dropped to make room");
   assert.equal(full.attempts, 4, "the ladder reads attempts, not the (capped) history");
-  assert.equal(full.dueAt, 10 * DAY + 30 * DAY);
+  assert.equal(full.dueAt, 10 * DAY + 3 * DAY, "attempts ≥ 3 → the capped 3-day rung");
   // the same cap through the storage round-trip (recordError → pushRetry)
   env.storage.setItem("q-errors", J([rec({ key: "bio-y#2", id: "2", attempts: 3, retries: history })]));
   QE.recordError({ id: "2", bankId: "bio-y", format: "mcq", stem: "s2" }, { userChoice: 1 });
   const e = plain(env.NB.store.get("q-errors"))[0];
   assert.equal(e.retries.length, 20);
   assert.equal(e.attempts, 4);
-  assert.equal(e.dueAt - e.ts, 30 * DAY);
+  assert.equal(e.dueAt - e.ts, 3 * DAY);
 });
 
 // ── 4. errMerge × dueAt (the sync/restore merge) ───────────────────────────
@@ -139,7 +142,7 @@ test("errMerge: a recovered winner stays resolved; a stale loser's resurrected d
   // and the next wrong retry overwrites the resurrected value with a live schedule
   QE.applyRetry(merged, false, null, 400 * DAY);
   assert.equal(merged.resolved, false);
-  assert.equal(merged.dueAt, 400 * DAY + 30 * DAY);
+  assert.equal(merged.dueAt, 400 * DAY + 2 * DAY, "attempts 2 → the 2-day rung of the short miss ladder");
 });
 
 test("errMerge: an open winner keeps its state over a resolved loser — open does not inherit 'resolved' from a stale copy", () => {
@@ -254,15 +257,15 @@ test("hostile stored data in the pure helpers: string/negative dueAt, attempts u
   assert.equal(str.resolved, false, "…and it blocks recovery too: '2026-11-28' <= 1000 is false, so even a correct answer stays practice");
   assert.equal(str.dueAt, "2026-11-28", "the corrupt value is left as-is (a wrong retry rewrites it — see the recordError test)");
   assert.equal(QE.isDue(rec({ dueAt: -1 }), 1000), true, "a negative dueAt is long past due → due");
-  // attempts undefined/null read as "first miss" → the 7-day rung
+  // attempts undefined/null read as "first miss" → the 1-day rung
   const fresh = rec({ attempts: undefined, resolved: false });
   QE.applyRetry(fresh, false, null, 1000);
   assert.equal(fresh.attempts, 1);
-  assert.equal(fresh.dueAt, 1000 + 7 * DAY, "attempts 1 after the increment → 7-day rung");
-  assert.equal(QE.dueDelayMs(null), 7 * DAY);
-  assert.equal(QE.dueDelayMs(undefined), 7 * DAY);
-  assert.equal(QE.nextDueAt(null, 1000), 1000 + 7 * DAY, "nextDueAt tolerates a missing record");
-  assert.equal(QE.nextDueAt({ attempts: null }, 1000), 1000 + 7 * DAY);
+  assert.equal(fresh.dueAt, 1000 + 1 * DAY, "attempts 1 after the increment → 1-day rung");
+  assert.equal(QE.dueDelayMs(null), 1 * DAY);
+  assert.equal(QE.dueDelayMs(undefined), 1 * DAY);
+  assert.equal(QE.nextDueAt(null, 1000), 1000 + 1 * DAY, "nextDueAt tolerates a missing record");
+  assert.equal(QE.nextDueAt({ attempts: null }, 1000), 1000 + 1 * DAY);
   // a non-array retries field is rebuilt, not concatenated onto or crashed on
   const junk = rec({ retries: "junk" });
   QE.applyRetry(junk, true, null, 1000);
@@ -275,7 +278,7 @@ test("recordError on hostile stored data: string dueAt + null attempts are rewri
   const e = plain(env.NB.store.get("q-errors"))[0];
   assert.equal(e.attempts, 1, "null attempts reads as the first miss (0 + 1)");
   assert.equal(typeof e.dueAt, "number", "the corrupt string schedule is replaced by a real epoch ms");
-  assert.equal(e.dueAt - e.ts, 7 * DAY, "attempts 1 after the increment → the 7-day rung");
+  assert.equal(e.dueAt - e.ts, 1 * DAY, "attempts 1 after the increment → the 1-day rung");
   assert.equal(e.resolved, false);
 });
 

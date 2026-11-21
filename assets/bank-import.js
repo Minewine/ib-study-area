@@ -140,18 +140,79 @@
     return { ok: true };
   }
 
+  // AI-generated banks may carry a per-item `suggestedDifficulty` from the authoring
+  // prompt. A stored bank must never ship one — the suggestion stays an unreviewed
+  // hint until the student checks it and applies it in the Upload preview, which
+  // turns it into a real `difficulty` and deletes the key.
+  const FALLBACK_DIFFICULTIES = ["easy", "standard", "hard"]; // when bank-schema.js is absent
+  const validDifficulty = (v) => ((NB.bankSchema && NB.bankSchema.DIFFICULTIES) || FALLBACK_DIFFICULTIES).indexOf(v) >= 0;
+
+  // the item's AI suggestion, or null when there is none / it is not a real difficulty
+  function suggestionFor(item) {
+    return item && validDifficulty(item.suggestedDifficulty) ? item.suggestedDifficulty : null;
+  }
+
+  // Apply item[index]'s suggestion: same validate-then-commit pattern as editItem —
+  // the swap happens on a copy and only a valid result is committed.
+  function applySuggestion(staged, index) {
+    if (!staged || !staged.data || !Array.isArray(staged.data.items)) return { error: "nothing staged" };
+    const item = staged.data.items[index];
+    if (!item) return { error: "no such item" };
+    const s = suggestionFor(item);
+    if (!s) return { error: "no difficulty suggestion on this item" };
+    const cand = JSON.parse(JSON.stringify(item));
+    cand.difficulty = s;
+    delete cand.suggestedDifficulty;
+    const items = staged.data.items.slice();
+    items[index] = cand;
+    const err = validateCandidate(staged, items);
+    if (err) return { error: err };
+    staged.data.items[index] = cand;
+    return { ok: true };
+  }
+
+  // Apply every item's suggestion in one go: patches are validated ONCE over the
+  // whole bank, and only a valid result is committed — a failure leaves staged
+  // exactly as it was. → {ok, applied} | {error}
+  function applyAllSuggestions(staged) {
+    if (!staged || !staged.data || !Array.isArray(staged.data.items)) return { error: "nothing staged" };
+    const items = staged.data.items.map(item => {
+      const s = suggestionFor(item);
+      if (!s) return item;
+      const cand = JSON.parse(JSON.stringify(item));
+      cand.difficulty = s;
+      delete cand.suggestedDifficulty;
+      return cand;
+    });
+    const applied = staged.data.items.length - items.filter((it, i) => it === staged.data.items[i]).length;
+    if (!applied) return { ok: true, applied: 0 };
+    const err = validateCandidate(staged, items);
+    if (err) return { error: err };
+    staged.data.items = items;
+    return { ok: true, applied: applied };
+  }
+
   // → {ok, entry} | {error}. The entry mirrors author.html's processContent
   // storage shape exactly (id/name/uploaded/label/subjectLabel defaults included).
+  // Any residual `suggestedDifficulty` is stripped from the entry copy — a stored
+  // bank must never carry an unreviewed suggestion (an unapplied one is simply
+  // dropped; the item stays unrated until someone rates it).
   function finalize(staged) {
     if (!staged || !staged.data) return { error: "nothing staged" };
-    const err = validate(staged);
-    if (err) return { error: err };
     const data = staged.data;
-    const entry = Object.assign({}, data, { id: NB.bankImport.newBankId(), name: String(staged.name || "").trim() || suggestName(data, []), uploaded: new Date().toISOString().slice(0, 10) });
+    const items = (Array.isArray(data.items) ? data.items : []).map(item => {
+      if (!item || item.suggestedDifficulty === undefined) return item;
+      const copy = JSON.parse(JSON.stringify(item));
+      delete copy.suggestedDifficulty;
+      return copy;
+    });
+    const err = validateCandidate(staged, items);
+    if (err) return { error: err };
+    const entry = Object.assign({}, data, { items: items, id: NB.bankImport.newBankId(), name: String(staged.name || "").trim() || suggestName(data, []), uploaded: new Date().toISOString().slice(0, 10) });
     if (!entry.label) entry.label = data.topicLabel || entry.name;
     if (!entry.subjectLabel) entry.subjectLabel = data.subject;
     return { ok: true, entry: entry };
   }
 
-  NB.bankImport = { MAX_EDIT_ITEMS, stage, validate, editItem, removeItem, finalize, suggestName, newBankId };
+  NB.bankImport = { MAX_EDIT_ITEMS, stage, validate, editItem, removeItem, suggestionFor, applySuggestion, applyAllSuggestions, finalize, suggestName, newBankId };
 })();

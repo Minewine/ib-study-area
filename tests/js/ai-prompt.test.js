@@ -84,6 +84,11 @@ test("bankgen mode: a manifest-entry-shaped note fills the raw subject id and to
   assert.match(text, /"subject": "biology-hl"/);
   assert.match(text, /"topic": "a1-1"/);
   assert.match(text, /0-based index/);
+  assert.match(text, /suggestedDifficulty/, "the prompt asks for an AI difficulty suggestion on every item");
+  assert.match(text, /"suggestedDifficulty": "easy"/, "the mcq exemplar suggests easy");
+  assert.match(text, /"suggestedDifficulty": "standard"/, "the written exemplar suggests standard");
+  assert.match(text, /"easy" = single-step recall.*"standard" = .*multi-step.*"hard" = .*multi-topic/, "the easy/standard/hard scale is defined");
+  assert.match(text, /unreviewed/, "suggestions stay unreviewed until applied in the Upload preview");
   assert.doesNotMatch(text, /\{[a-z_]+\}/);
   assert.doesNotMatch(text, /Neva|Lausanne|Rametric/i);
   // without a topicKey the placeholder empties (caller contract) rather than leaking braces

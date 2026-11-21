@@ -33,8 +33,10 @@ Schema (return ONLY this JSON, no commentary):
   "items": [
     { "id": "<topic-01>", "format": "mcq", "stem": "…",
       "choices": ["…", "…", "…", "…"], "answer": 0,
+      "suggestedDifficulty": "…",
       "note": "why the right answer is right + the trap in the wrong ones" },
     { "id": "<topic-21>", "format": "written", "marks": 4, "stem": "…",
+      "suggestedDifficulty": "…",
       "markscheme": ["point (1)", "point (1)"],
       "tactic": "how to attack this question type" }
   ]
@@ -48,6 +50,10 @@ Quality rules — these are hard requirements:
 - Mix recall, application and data/calculation items roughly 40/40/20.
 - Ids: <topic>-01 … sequential, unique.
 - Difficulty: ~30% easy, 50% standard, 20% hard.
+- "suggestedDifficulty" on every item is your best guess: "easy" = single-step recall or
+  direct substitution, "standard" = a typical exam-style multi-step question, "hard" =
+  extended, multi-step or multi-topic work. Suggestions only — the app keeps them marked
+  unreviewed until the student checks and applies them in the Upload preview.
 ```
 
 ---
@@ -61,7 +67,11 @@ Quality rules — these are hard requirements:
    (`{"file": "library/questions/<name>.json", "subject": "...", "subjectLabel": "...", "label": "..."}`).
 4. **Spot-check 5 items against the notes/guide** — AI-generated items fail on FACTS, not
    format. Wrong questions are worse than missing ones; delete anything doubtful.
-5. **Refresh the Quiz page** — the new bank appears in the picker (bump `?v=N` if it
+5. **Apply the difficulty suggestions** — after the spot-check, check each AI-suggested
+   difficulty in the Upload preview and apply it (per item, or "Apply all suggestions");
+   fix wrong ones by hand instead. Nothing unreviewed ships: importing strips any
+   suggestion you did not apply.
+6. **Refresh the Quiz page** — the new bank appears in the picker (bump `?v=N` if it
    doesn't; see docs/DEVELOPMENT.md cache-busting).
 
 ---

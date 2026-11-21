@@ -1,7 +1,8 @@
 // node --test tests/js — the spaced-retest schedule over "q-errors"
-// (assets/quiz-engine.js): the 7/30-day due ladder, the pure retry applier
-// (applyRetry), the due gate in pickReviewErrors, and recordError's repeat-miss
-// preservation. The engine is loaded WITHOUT firing DOMContentLoaded
+// (assets/quiz-engine.js): the short miss ladder (1/2/3 days) plus the 7-day
+// success follow-up, the pure retry applier (applyRetry), the due gate in
+// pickReviewErrors, and recordError's repeat-miss preservation. The engine is
+// loaded WITHOUT firing DOMContentLoaded
 // (readyState "loading"), like quiz-picker.test.js — only exported functions
 // are exercised; the pure helpers take an explicit nowMs (no date faking).
 "use strict";
@@ -20,16 +21,17 @@ const rec = (over) => Object.assign({
 }, over);
 
 // ── due ladder ─────────────────────────────────────────────────────────────
-test("dueDelayMs: first wrong outcome → 7 days, any later one → 30 days; nextDueAt adds it to now", () => {
+test("dueDelayMs: wrong outcomes stay short — first miss → 1 day, second → 2, any later one → 3 (capped); nextDueAt adds it to now", () => {
   const { QE } = engine();
-  assert.equal(QE.dueDelayMs(0), 7 * DAY, "a brand-new record reads as the first miss");
-  assert.equal(QE.dueDelayMs(1), 7 * DAY);
-  assert.equal(QE.dueDelayMs(2), 30 * DAY);
-  assert.equal(QE.dueDelayMs(9), 30 * DAY);
-  assert.equal(QE.dueDelayMs(undefined), 7 * DAY);
-  assert.equal(QE.nextDueAt({ attempts: 1 }, 1000), 1000 + 7 * DAY);
-  assert.equal(QE.nextDueAt({ attempts: 2 }, 1000), 1000 + 30 * DAY);
-  assert.equal(QE.nextDueAt({}, 1000), 1000 + 7 * DAY, "no attempts yet = first miss");
+  assert.equal(QE.dueDelayMs(0), 1 * DAY, "a brand-new record reads as the first miss");
+  assert.equal(QE.dueDelayMs(1), 1 * DAY);
+  assert.equal(QE.dueDelayMs(2), 2 * DAY);
+  assert.equal(QE.dueDelayMs(3), 3 * DAY);
+  assert.equal(QE.dueDelayMs(9), 3 * DAY, "wrong outcomes never push the retest past the 3-day cap");
+  assert.equal(QE.dueDelayMs(undefined), 1 * DAY);
+  assert.equal(QE.nextDueAt({ attempts: 1 }, 1000), 1000 + 1 * DAY);
+  assert.equal(QE.nextDueAt({ attempts: 2 }, 1000), 1000 + 2 * DAY);
+  assert.equal(QE.nextDueAt({}, 1000), 1000 + 1 * DAY, "no attempts yet = first miss");
 });
 
 test("isDue: open + due (or no dueAt) → true; resolved, retired and not-yet-due → false", () => {
@@ -46,16 +48,16 @@ test("isDue: open + due (or no dueAt) → true; resolved, retired and not-yet-du
 });
 
 // ── applyRetry ─────────────────────────────────────────────────────────────
-test("applyRetry wrong: re-opens a resolved record, counts the wrong outcome, reschedules +30 days", () => {
+test("applyRetry wrong: re-opens a resolved record, counts the wrong outcome, reschedules on the short ladder", () => {
   const { QE } = engine();
   const now = 10 * DAY;
-  // missed once (attempts 1), recovered at the 7-day retest (resolved, schedule cleared),
+  // missed once (attempts 1), recovered (resolved, schedule cleared),
   // then missed again in a LATER review — the old bug left it resolved forever
   const e = rec({ attempts: 1, resolved: true, ts: 8 * DAY, retries: [{ ts: 8 * DAY, correct: true }] });
   QE.applyRetry(e, false, "guess", now);
   assert.equal(e.resolved, false, "a wrong retry re-opens the record");
   assert.equal(e.attempts, 2, "attempts counts wrong outcomes");
-  assert.equal(e.dueAt, now + 30 * DAY, "second wrong outcome → 30-day retest");
+  assert.equal(e.dueAt, now + 2 * DAY, "second wrong outcome → retest 2 days out (still short)");
   assert.equal(e.ts, now);
   assert.ok(e.lastAttempt, "lastAttempt written (local date)");
   assert.equal(e.retries.length, 2);
@@ -77,17 +79,42 @@ test("applyRetry correct BEFORE the scheduled retest: practice only — stays op
   assert.equal(e.retries[0].correct, true);
 });
 
-test("applyRetry correct AT/AFTER the scheduled retest: recovered, schedule cleared", () => {
+test("applyRetry correct AT/AFTER the scheduled retest: first success → 7-day follow-up (still open); second success in a row → recovered", () => {
   const { QE } = engine();
-  const e = rec({ attempts: 1, resolved: false, dueAt: 7 * DAY });
-  QE.applyRetry(e, true, null, 7 * DAY);
-  assert.equal(e.resolved, true, "dueAt == now recovers");
+  const e = rec({ attempts: 1, resolved: false, dueAt: 1 * DAY });
+  QE.applyRetry(e, true, null, 1 * DAY);
+  assert.equal(e.resolved, false, "the first successful retrieval moves the record toward recovered — it is not recovered yet");
+  assert.equal(e.dueAt, 1 * DAY + 7 * DAY, "the interval is lengthened to a 7-day follow-up");
+  assert.equal(e.ts, 1 * DAY);
+  QE.applyRetry(e, true, null, 8 * DAY);
+  assert.equal(e.resolved, true, "the second consecutive successful retrieval recovers the record");
   assert.equal(e.dueAt, undefined, "the schedule is cleared on recovery");
-  assert.equal(e.ts, 7 * DAY);
-  const late = rec({ attempts: 2, resolved: false, dueAt: 37 * DAY });
+  const late = rec({ attempts: 2, resolved: false, dueAt: 37 * DAY, retries: [{ ts: 30 * DAY, correct: false }] });
   QE.applyRetry(late, true, null, 40 * DAY);
-  assert.equal(late.resolved, true, "a late retest recovers too");
-  assert.equal(late.dueAt, undefined);
+  assert.equal(late.resolved, false, "a success right after a wrong is only the FIRST success — follow-up, not recovery");
+  assert.equal(late.dueAt, 40 * DAY + 7 * DAY, "a late retest schedules the follow-up too");
+});
+
+// The requested scenario, end to end on one record: first wrong → short interval,
+// second wrong → still short, correct (on time) → longer interval; the follow-up
+// success then recovers it. Every interval change after the wrongs is earned by a
+// successful retrieval — wrongs alone never push the retest past the 3-day cap.
+test("the spaced loop on one record: miss → 1 day, miss again → 2 days, due retest right → 7-day follow-up, follow-up right → recovered", () => {
+  const { QE } = engine();
+  const e = rec({ attempts: 0, resolved: false, retries: [] });
+  QE.applyRetry(e, false, null, 0); // first wrong
+  assert.equal(e.attempts, 1);
+  assert.equal(e.dueAt, 1 * DAY, "first wrong → retest in 1 day");
+  QE.applyRetry(e, false, null, 1 * DAY); // second wrong (at the 1-day retest)
+  assert.equal(e.attempts, 2);
+  assert.equal(e.dueAt, 3 * DAY, "second wrong → still short: 2 days after the miss");
+  QE.applyRetry(e, true, null, 3 * DAY); // correct at the scheduled retest
+  assert.equal(e.resolved, false, "a success is not recovery yet — the record stays open");
+  assert.equal(e.dueAt, 10 * DAY, "correct → longer interval: the 7-day follow-up");
+  assert.equal(e.attempts, 2, "the correct answer does not count as a wrong outcome");
+  QE.applyRetry(e, true, null, 10 * DAY); // correct at the follow-up
+  assert.equal(e.resolved, true, "the second successful retrieval recovers the record");
+  assert.equal(e.dueAt, undefined, "the schedule is cleared on recovery");
 });
 
 test("applyRetry: legacy record without dueAt recovers on the first correct answer", () => {
@@ -137,7 +164,7 @@ test("recordError repeat miss: same record updated (no duplicate), reflection/er
   assert.equal(e.attempts, 3, "the miss is counted");
   assert.equal(e.resolved, false);
   assert.equal(e.userAnswer, 1, "the latest wrong choice overwrites the stored one");
-  assert.equal(e.dueAt, e.ts + 30 * DAY, "a later wrong outcome → 30-day retest");
+  assert.equal(e.dueAt, e.ts + 3 * DAY, "a later wrong outcome → the capped 3-day rung (attempts 2→3)");
   // snapshot + tag fields the repeat miss must not touch
   assert.equal(e.stem, "Why do water molecules attract each other?");
   assert.deepEqual(plain(e.choices), ["a", "b", "c"]);
@@ -151,14 +178,15 @@ test("recordError repeat miss: same record updated (no duplicate), reflection/er
   assert.equal(e.retries[1].correct, false);
 });
 
-// A wrong retry always lands on the 30-day rung: the record carries at least the
-// first miss (attempts ≥ 1), so the increment takes it past the ladder's first step.
-// The 7-day rung itself is set when the record is CREATED (recordError's new-record
-// branch — it needs a live session, so it is pinned by e2e: miss today → dueAt ≈ +7d).
-test("applyRetry wrong on a once-missed record: attempts 1 → 2, so the retest lands 30 days out", () => {
+// A wrong retry always lands on the short miss ladder: the record carries at least the
+// first miss (attempts ≥ 1), so the increment gives 2 days, and the cap holds every
+// deeper hole to 3. The 1-day first rung itself is set when the record is CREATED
+// (recordError's new-record branch — it needs a live session, so it is pinned by e2e:
+// miss today → dueAt ≈ +1d).
+test("applyRetry wrong on a once-missed record: attempts 1 → 2, so the retest lands 2 days out", () => {
   const { QE } = engine();
   const e = rec({ attempts: 1, resolved: false });
   QE.applyRetry(e, false, null, 1000);
   assert.equal(e.attempts, 2);
-  assert.equal(e.dueAt, 1000 + 30 * DAY);
+  assert.equal(e.dueAt, 1000 + 2 * DAY);
 });
