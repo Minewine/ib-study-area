@@ -1,0 +1,251 @@
+{
+ "subject": "biology-hl",
+ "topic": "bio-a1-2",
+ "topicLabel": "A1.2 Nucleic acids",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "A1.2"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "a12-x01",
+   "format": "mcq",
+   "topic": "bio-a1-2",
+   "topicLabel": "A1.2 Nucleic acids",
+   "difficulty": "easy",
+   "stem": "A nucleotide consists of:",
+   "choices": [
+    "A hexose sugar, a phosphate group and a nitrogen-containing amino acid",
+    "A pentose sugar, a fatty acid and a nitrogenous base",
+    "A pentose sugar, a phosphate group and a nitrogenous base",
+    "Glycerol, a phosphate group and a nitrogenous base"
+   ],
+   "answer": 2,
+   "note": "Nucleotides are the monomers of DNA and RNA. Phosphate links to the sugar of the next nucleotide."
+  },
+  {
+   "id": "a12-x02",
+   "format": "mcq",
+   "topic": "bio-a1-2",
+   "topicLabel": "A1.2 Nucleic acids",
+   "difficulty": "easy",
+   "stem": "Which base is found in RNA but not in DNA?",
+   "choices": [
+    "Uracil",
+    "Thymine",
+    "Adenine",
+    "Guanine"
+   ],
+   "answer": 0,
+   "note": "RNA has A, U, C, G; DNA has A, T, C, G."
+  },
+  {
+   "id": "a12-x03",
+   "format": "mcq",
+   "topic": "bio-a1-2",
+   "topicLabel": "A1.2 Nucleic acids",
+   "difficulty": "easy",
+   "stem": "In DNA, the two strands are held together by:",
+   "choices": [
+    "Covalent bonds between the sugars",
+    "Hydrogen bonds between complementary bases",
+    "Ionic bonds between phosphate groups",
+    "Peptide bonds between the bases"
+   ],
+   "answer": 1,
+   "note": "A–T and C–G pair by hydrogen bonds; the backbone of each strand is held by covalent bonds."
+  },
+  {
+   "id": "a12-x04",
+   "format": "mcq",
+   "topic": "bio-a1-2",
+   "topicLabel": "A1.2 Nucleic acids",
+   "difficulty": "standard",
+   "stem": "A DNA sample contains 22% adenine. What percentage is cytosine?",
+   "choices": [
+    "22%",
+    "56%",
+    "44%",
+    "28%"
+   ],
+   "answer": 3,
+   "note": "A = T = 22% → A + T = 44%; C + G = 56% → C = 28%."
+  },
+  {
+   "id": "a12-x05",
+   "format": "mcq",
+   "topic": "bio-a1-2",
+   "topicLabel": "A1.2 Nucleic acids",
+   "difficulty": "standard",
+   "stem": "Which is a difference between DNA and RNA?",
+   "choices": [
+    "DNA is single-stranded; RNA is double-stranded",
+    "DNA contains uracil; RNA contains thymine",
+    "DNA contains deoxyribose; RNA contains ribose",
+    "DNA has phosphate; RNA has none"
+   ],
+   "answer": 2,
+   "note": "DNA: deoxyribose, double helix, thymine. RNA: ribose, usually single strand, uracil."
+  },
+  {
+   "id": "a12-x06",
+   "format": "mcq",
+   "topic": "bio-a1-2",
+   "topicLabel": "A1.2 Nucleic acids",
+   "difficulty": "standard",
+   "stem": "The sugar–phosphate backbone of a nucleic acid strand is formed by:",
+   "choices": [
+    "Hydrogen bonds between the hydroxyl groups of neighbouring deoxyribose sugars along the same strand",
+    "Covalent bonds between the phosphate of one nucleotide and the sugar of the next",
+    "Covalent bonds between neighbouring bases",
+    "Ionic bonds between neighbouring phosphates"
+   ],
+   "answer": 1,
+   "note": "Condensation reactions link nucleotides into a strong backbone, with bases projecting to one side."
+  },
+  {
+   "id": "a12-x07",
+   "format": "mcq",
+   "topic": "bio-a1-2",
+   "topicLabel": "A1.2 Nucleic acids",
+   "difficulty": "standard",
+   "stem": "DNA can store a huge amount of information because:",
+   "choices": [
+    "The sequence of its four bases can vary without limit along the molecule",
+    "It contains twenty different bases",
+    "Its sugar–phosphate backbone varies in each gene",
+    "Each nucleotide carries a different amino acid"
+   ],
+   "answer": 0,
+   "note": "Information is in the base sequence; any sequence is possible, so the number of combinations is enormous."
+  },
+  {
+   "id": "a12-x08",
+   "format": "mcq",
+   "topic": "bio-a1-2",
+   "topicLabel": "A1.2 Nucleic acids",
+   "difficulty": "hard",
+   "stem": "The two strands of DNA are antiparallel, which means:",
+   "choices": [
+    "Both strands run 5′→3′ in the same direction",
+    "The strands are twisted in opposite directions",
+    "One strand is DNA and the other RNA",
+    "One runs 5′→3′ and the other 3′→5′"
+   ],
+   "answer": 3,
+   "note": "The 5′ end (phosphate) of one strand is opposite the 3′ end (OH) of the other."
+  },
+  {
+   "id": "a12-x09",
+   "format": "mcq",
+   "topic": "bio-a1-2",
+   "topicLabel": "A1.2 Nucleic acids",
+   "difficulty": "hard",
+   "stem": "Purines always pair with pyrimidines because:",
+   "choices": [
+    "Purines and pyrimidines have the same number of rings",
+    "One two-ring base plus one single-ring base gives a constant helix width",
+    "Purines can only form one hydrogen bond",
+    "Pyrimidines are larger than purines"
+   ],
+   "answer": 1,
+   "note": "A and G are purines (two rings); C and T are pyrimidines (one ring). A purine–pyrimidine pair fits the helix exactly."
+  },
+  {
+   "id": "a12-x10",
+   "format": "mcq",
+   "topic": "bio-a1-2",
+   "topicLabel": "A1.2 Nucleic acids",
+   "difficulty": "hard",
+   "stem": "The Hershey–Chase experiment showed that DNA is the genetic material because:",
+   "choices": [
+    "Radioactive sulfur in the viral protein coats was found inside the infected bacteria after the viruses were removed",
+    "Viruses without DNA could still infect bacteria",
+    "DNA was found in larger amounts than protein in viruses",
+    "Radioactive phosphorus (in DNA) entered bacteria, but radioactive sulfur (in protein) did not"
+   ],
+   "answer": 3,
+   "note": "³²P labels DNA, ³⁵S labels protein. Only the ³²P was found in infected bacteria and passed to new viruses."
+  },
+  {
+   "id": "a12-x11",
+   "format": "mcq",
+   "topic": "bio-a1-2",
+   "topicLabel": "A1.2 Nucleic acids",
+   "difficulty": "hard",
+   "stem": "Nucleosomes help to package DNA in eukaryotes. Each consists of:",
+   "choices": [
+    "DNA wrapped around a core of eight histone proteins",
+    "RNA wrapped around a core of DNA polymerase",
+    "A single histone wrapped around a loop of RNA",
+    "A ring of DNA in the cytoplasm of a bacterium"
+   ],
+   "answer": 0,
+   "note": "DNA coils around histone octamers like beads on a string, condensing it and helping regulate gene expression."
+  },
+  {
+   "id": "a12-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-a1-2",
+   "topicLabel": "A1.2 Nucleic acids",
+   "difficulty": "standard",
+   "stem": "Outline the structure of DNA.",
+   "markscheme": [
+    "Double helix of two antiparallel polynucleotide strands (1)",
+    "Sugar–phosphate backbone with bases pointing inward (1)",
+    "Complementary base pairing A–T, C–G by hydrogen bonds (1)"
+   ],
+   "tactic": "Outline = key features, not the full detail."
+  },
+  {
+   "id": "a12-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-a1-2",
+   "topicLabel": "A1.2 Nucleic acids",
+   "difficulty": "standard",
+   "stem": "Compare the structure of DNA and RNA.",
+   "markscheme": [
+    "Both are polymers of nucleotides with a sugar–phosphate backbone (1)",
+    "DNA has deoxyribose; RNA has ribose (1)",
+    "DNA has thymine; RNA has uracil (1)",
+    "DNA is double-stranded; RNA is usually single-stranded (1)"
+   ],
+   "tactic": "At least one similarity and three paired differences."
+  },
+  {
+   "id": "a12-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-a1-2",
+   "topicLabel": "A1.2 Nucleic acids",
+   "difficulty": "hard",
+   "stem": "Explain how Chargaff's data helped falsify the tetranucleotide hypothesis.",
+   "markscheme": [
+    "The hypothesis said DNA had a repeating unit of the four bases in equal amounts (1)",
+    "Chargaff found base proportions differed between species (1)",
+    "But A = T and C = G in each species (1)",
+    "Unequal proportions meant DNA could vary enough to carry information (1)"
+   ],
+   "tactic": "Falsification: state the prediction, the data, and why they conflict."
+  },
+  {
+   "id": "a12-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-a1-2",
+   "topicLabel": "A1.2 Nucleic acids",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) Base composition (%) of DNA from four invented organisms: P A 30, T 30, G 20, C 20; Q A 18, T 18, G 32, C 32; R A 25, T 15, G 35, C 25; S A 26, T 26, G 24, C 24.\n(a) Identify the organism whose DNA is likely to be single-stranded, with a reason. (b) Calculate the ratio (A+T)/(G+C) for organism Q. (c) Suggest why DNA from Q would need a higher temperature to separate its strands than DNA from P.",
+   "markscheme": [
+    "(a) R, because A ≠ T and G ≠ C, so bases are not paired (1)",
+    "(b) 36 ÷ 64 = 0.56 (1)",
+    "(c) Q has more G–C pairs (1)",
+    "G–C pairs have three hydrogen bonds (A–T has two), so more energy is needed to separate the strands (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

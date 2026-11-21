@@ -1,0 +1,249 @@
+{
+ "subject": "chemistry-hl",
+ "topic": "chem-s1-1",
+ "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "S1.1"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "s11-x01",
+   "format": "mcq",
+   "topic": "chem-s1-1",
+   "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+   "difficulty": "easy",
+   "stem": "Which of these is a compound?",
+   "choices": [
+    "Oxygen gas, O₂",
+    "Water, H₂O",
+    "Air",
+    "Brass"
+   ],
+   "answer": 1,
+   "note": "A compound has two or more elements chemically bonded in a fixed ratio. O₂ is an element; air and brass (an alloy) are mixtures."
+  },
+  {
+   "id": "s11-x02",
+   "format": "mcq",
+   "topic": "chem-s1-1",
+   "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+   "difficulty": "easy",
+   "stem": "Which technique separates the dyes in a sample of ink?",
+   "choices": [
+    "Filtration",
+    "Crystallisation",
+    "Fractional distillation of air",
+    "Paper chromatography"
+   ],
+   "answer": 3,
+   "note": "Components travel different distances depending on their attraction to the paper vs solubility in the solvent."
+  },
+  {
+   "id": "s11-x03",
+   "format": "mcq",
+   "topic": "chem-s1-1",
+   "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+   "difficulty": "easy",
+   "stem": "Which change of state is exothermic?",
+   "choices": [
+    "Freezing",
+    "Melting",
+    "Boiling",
+    "Sublimation"
+   ],
+   "answer": 0,
+   "note": "Energy is released when attractions form between particles (freezing, condensation, deposition)."
+  },
+  {
+   "id": "s11-x04",
+   "format": "mcq",
+   "topic": "chem-s1-1",
+   "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+   "difficulty": "standard",
+   "stem": "Convert −23 °C to kelvin.",
+   "choices": [
+    "−250 K",
+    "296 K",
+    "250 K",
+    "23 K"
+   ],
+   "answer": 2,
+   "note": "T(K) = T(°C) + 273 = −23 + 273 = 250 K."
+  },
+  {
+   "id": "s11-x05",
+   "format": "mcq",
+   "topic": "chem-s1-1",
+   "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+   "difficulty": "standard",
+   "stem": "Doubling the absolute temperature of a gas doubles:",
+   "choices": [
+    "The mass of each particle",
+    "The number of particles",
+    "The average kinetic energy of its particles",
+    "The average speed of the particles, since kinetic energy is proportional to speed"
+   ],
+   "answer": 2,
+   "note": "Average kinetic energy is proportional to absolute temperature. Speed increases by √2, not 2."
+  },
+  {
+   "id": "s11-x06",
+   "format": "mcq",
+   "topic": "chem-s1-1",
+   "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+   "difficulty": "standard",
+   "stem": "During boiling of a pure liquid, the temperature stays constant because:",
+   "choices": [
+    "Energy is used to overcome intermolecular forces, not to increase kinetic energy",
+    "The liquid stops absorbing energy from the heat source once it reaches its boiling point and begins to bubble",
+    "Particles lose kinetic energy as they become a gas",
+    "Bonds within the molecules are broken"
+   ],
+   "answer": 0,
+   "note": "The energy supplied separates particles (latent heat). Covalent bonds within molecules are not broken."
+  },
+  {
+   "id": "s11-x07",
+   "format": "mcq",
+   "topic": "chem-s1-1",
+   "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+   "difficulty": "standard",
+   "stem": "Which mixture is best separated by simple distillation?",
+   "choices": [
+    "Sand from water",
+    "Two immiscible liquids",
+    "Iron from sulfur",
+    "Water from salt solution"
+   ],
+   "answer": 3,
+   "note": "Distillation separates a volatile solvent from dissolved solids. Use filtration for sand; a separating funnel for immiscible liquids; a magnet for iron."
+  },
+  {
+   "id": "s11-x08",
+   "format": "mcq",
+   "topic": "chem-s1-1",
+   "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+   "difficulty": "hard",
+   "stem": "A heating curve of a pure substance has a horizontal section for melting that is much shorter than the one for boiling. This is because:",
+   "choices": [
+    "Melting happens at a lower temperature, so less heat is supplied",
+    "More energy is needed to separate particles completely into a gas",
+    "The substance has a higher specific heat capacity as a solid",
+    "Covalent bonds break during boiling but not melting"
+   ],
+   "answer": 1,
+   "note": "Boiling separates particles fully against all remaining attractions; melting only loosens them."
+  },
+  {
+   "id": "s11-x09",
+   "format": "mcq",
+   "topic": "chem-s1-1",
+   "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+   "difficulty": "hard",
+   "stem": "Which state symbol equation represents sublimation of iodine?",
+   "choices": [
+    "I₂(s) → I₂(l)",
+    "I₂(g) → I₂(s)",
+    "I₂(l) → I₂(g)",
+    "I₂(s) → I₂(g)"
+   ],
+   "answer": 3,
+   "note": "Sublimation = solid directly to gas. The reverse (g → s) is deposition."
+  },
+  {
+   "id": "s11-x10",
+   "format": "mcq",
+   "topic": "chem-s1-1",
+   "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+   "difficulty": "hard",
+   "stem": "In a mixture of ethanol (boiling point 78 °C) and water (100 °C), fractional distillation works because:",
+   "choices": [
+    "Ethanol vapour reaches the top of the column first, as it has the lower boiling point",
+    "Water evaporates first because it has stronger forces",
+    "The two liquids are immiscible and form separate layers",
+    "Ethanol freezes at a higher temperature than water"
+   ],
+   "answer": 0,
+   "note": "Repeated condensation and evaporation in the column enrich the more volatile component in the vapour."
+  },
+  {
+   "id": "s11-x11",
+   "format": "mcq",
+   "topic": "chem-s1-1",
+   "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+   "difficulty": "hard",
+   "stem": "Which statement about a heterogeneous mixture is correct?",
+   "choices": [
+    "It has a uniform composition throughout",
+    "It has a non-uniform composition, with visibly different parts",
+    "It is always a solution of a solid in a liquid",
+    "Its components are chemically bonded"
+   ],
+   "answer": 1,
+   "note": "Heterogeneous mixtures (e.g. sand in water) have distinct phases; homogeneous mixtures (solutions) are uniform."
+  },
+  {
+   "id": "s11-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s1-1",
+   "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+   "difficulty": "standard",
+   "stem": "Describe, in terms of particles, what happens when ice melts.",
+   "markscheme": [
+    "Energy is absorbed by the particles (1)",
+    "Particles vibrate more and overcome some of the intermolecular forces (hydrogen bonds) (1)",
+    "Particles move from fixed positions to moving past each other, still close together (1)"
+   ],
+   "tactic": "Particle descriptions: arrangement, movement, energy."
+  },
+  {
+   "id": "s11-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s1-1",
+   "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+   "difficulty": "standard",
+   "stem": "Outline how to obtain pure, dry salt crystals from a mixture of salt and sand.",
+   "markscheme": [
+    "Add water and stir to dissolve the salt (1)",
+    "Filter to remove sand (residue) (1)",
+    "Evaporate/heat the filtrate to crystallise the salt, then dry (1)"
+   ],
+   "tactic": "Separation sequences: one technique per step, in order."
+  },
+  {
+   "id": "s11-x14",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s1-1",
+   "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+   "difficulty": "hard",
+   "stem": "Explain why the temperature of a pure substance stays constant while it changes state, even though it is being heated.",
+   "markscheme": [
+    "Energy supplied is used to overcome attractions between particles (1)",
+    "Average kinetic energy of the particles does not increase (1)",
+    "Temperature measures average kinetic energy, so it stays constant (1)"
+   ],
+   "tactic": "Link temperature to kinetic energy explicitly."
+  },
+  {
+   "id": "s11-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "chem-s1-1",
+   "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) A pure substance was heated at a constant rate. Temperature (°C) every minute from 0 to 10 min: −20, −8, 4, 5, 5, 5, 20, 41, 62, 80, 80.\n(a) State the melting point. (b) Estimate the boiling point. (c) Identify the state of the substance at 7 min. (d) Explain how the data show that the substance is pure.",
+   "markscheme": [
+    "(a) 5 °C (accept 4–5 °C) (1)",
+    "(b) 80 °C (1)",
+    "(c) Liquid (1)",
+    "(d) Sharp, constant melting temperature (plateau) rather than melting over a range (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

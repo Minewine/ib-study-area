@@ -1,0 +1,249 @@
+{
+ "subject": "chemistry-hl",
+ "topic": "chem-s1-3",
+ "topicLabel": "S1.3 Electron configurations",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "S1.3"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "s13-x01",
+   "format": "mcq",
+   "topic": "chem-s1-3",
+   "topicLabel": "S1.3 Electron configurations",
+   "difficulty": "easy",
+   "stem": "What is the full electron configuration of sulfur (Z = 16)?",
+   "choices": [
+    "1s² 2s² 2p⁶ 3s² 3p⁶",
+    "1s² 2s² 2p⁶ 3s² 3p⁴",
+    "1s² 2s² 2p⁶ 3s⁴ 3p²",
+    "1s² 2s² 2p⁴ 3s² 3p⁶"
+   ],
+   "answer": 1,
+   "note": "Fill in order 1s, 2s, 2p, 3s, 3p: 2 + 2 + 6 + 2 + 4 = 16."
+  },
+  {
+   "id": "s13-x02",
+   "format": "mcq",
+   "topic": "chem-s1-3",
+   "topicLabel": "S1.3 Electron configurations",
+   "difficulty": "easy",
+   "stem": "A line emission spectrum shows that electrons in atoms:",
+   "choices": [
+    "Can have any energy at all",
+    "Are found in the nucleus",
+    "Move in straight lines between nuclei",
+    "Can only have certain fixed energies"
+   ],
+   "answer": 3,
+   "note": "Discrete lines = transitions between fixed energy levels, each emitting a photon of a specific frequency."
+  },
+  {
+   "id": "s13-x03",
+   "format": "mcq",
+   "topic": "chem-s1-3",
+   "topicLabel": "S1.3 Electron configurations",
+   "difficulty": "easy",
+   "stem": "The maximum number of electrons in a p sublevel is:",
+   "choices": [
+    "6",
+    "2",
+    "8",
+    "10"
+   ],
+   "answer": 0,
+   "note": "Three p orbitals × 2 electrons each = 6. s holds 2, d holds 10, f holds 14."
+  },
+  {
+   "id": "s13-x04",
+   "format": "mcq",
+   "topic": "chem-s1-3",
+   "topicLabel": "S1.3 Electron configurations",
+   "difficulty": "standard",
+   "stem": "What is the electron configuration of Fe²⁺ (Z = 26)?",
+   "choices": [
+    "[Ar] 4s² 3d⁴",
+    "[Ar] 4s² 3d⁶",
+    "[Ar] 3d⁶",
+    "[Ar] 4s¹ 3d⁵"
+   ],
+   "answer": 2,
+   "note": "Fe is [Ar] 4s² 3d⁶. Transition metals lose 4s electrons first when forming ions."
+  },
+  {
+   "id": "s13-x05",
+   "format": "mcq",
+   "topic": "chem-s1-3",
+   "topicLabel": "S1.3 Electron configurations",
+   "difficulty": "standard",
+   "stem": "Chromium (Z = 24) has the configuration:",
+   "choices": [
+    "[Ar] 4s² 3d⁴",
+    "[Ar] 4s¹ 3d⁵",
+    "[Ar] 3d⁶",
+    "[Ar] 4s² 4p⁴"
+   ],
+   "answer": 1,
+   "note": "A half-filled 3d sublevel is more stable; Cr and Cu are the two exceptions to learn."
+  },
+  {
+   "id": "s13-x06",
+   "format": "mcq",
+   "topic": "chem-s1-3",
+   "topicLabel": "S1.3 Electron configurations",
+   "difficulty": "standard",
+   "stem": "Hund's rule states that electrons in orbitals of equal energy:",
+   "choices": [
+    "Pair up in the first orbital before filling the next",
+    "Always have opposite spins in separate orbitals",
+    "Fill the orbital with the highest energy first",
+    "Occupy them singly with parallel spins before pairing"
+   ],
+   "answer": 3,
+   "note": "Singly occupied, parallel spins minimise repulsion. The Pauli principle limits each orbital to two electrons with opposite spins."
+  },
+  {
+   "id": "s13-x07",
+   "format": "mcq",
+   "topic": "chem-s1-3",
+   "topicLabel": "S1.3 Electron configurations",
+   "difficulty": "standard",
+   "stem": "In the hydrogen emission spectrum, lines in the visible region are produced when electrons fall to:",
+   "choices": [
+    "The n = 1 level",
+    "The n = 3 level",
+    "The n = 2 level",
+    "Infinity"
+   ],
+   "answer": 2,
+   "note": "Transitions to n = 2 (Balmer series) are visible; to n = 1 are UV (Lyman)."
+  },
+  {
+   "id": "s13-x08",
+   "format": "mcq",
+   "topic": "chem-s1-3",
+   "topicLabel": "S1.3 Electron configurations",
+   "difficulty": "hard",
+   "stem": "Lines in a hydrogen emission series get closer together at higher frequency because:",
+   "choices": [
+    "The energy levels converge as n increases",
+    "Electrons move more slowly at higher levels",
+    "Higher levels hold more electrons",
+    "The nucleus attracts outer electrons more strongly"
+   ],
+   "answer": 0,
+   "note": "Energy differences between successive levels decrease, so lines converge to a limit corresponding to ionisation."
+  },
+  {
+   "id": "s13-x09",
+   "format": "mcq",
+   "topic": "chem-s1-3",
+   "topicLabel": "S1.3 Electron configurations",
+   "difficulty": "hard",
+   "stem": "The convergence limit of the Lyman series is at 3.29 × 10¹⁵ Hz. The ionisation energy of hydrogen is about: (h = 6.63 × 10⁻³⁴ J s, NA = 6.02 × 10²³ mol⁻¹)",
+   "choices": [
+    "2.18 kJ mol⁻¹",
+    "1310 kJ mol⁻¹",
+    "131 kJ mol⁻¹",
+    "13 100 kJ mol⁻¹"
+   ],
+   "answer": 1,
+   "note": "E = hν = 2.18 × 10⁻¹⁸ J per atom; × NA = 1.31 × 10⁶ J mol⁻¹ = 1310 kJ mol⁻¹."
+  },
+  {
+   "id": "s13-x10",
+   "format": "mcq",
+   "topic": "chem-s1-3",
+   "topicLabel": "S1.3 Electron configurations",
+   "difficulty": "hard",
+   "stem": "The first ionisation energy of oxygen is lower than that of nitrogen because:",
+   "choices": [
+    "Oxygen has a smaller nuclear charge than nitrogen",
+    "Oxygen's outer electron is in a new shell",
+    "Nitrogen's 2p electrons are shielded more",
+    "Oxygen has a paired 2p electron that experiences extra repulsion"
+   ],
+   "answer": 3,
+   "note": "N: 2p³ (one in each orbital). O: 2p⁴ has one pair; repulsion makes it easier to remove."
+  },
+  {
+   "id": "s13-x11",
+   "format": "mcq",
+   "topic": "chem-s1-3",
+   "topicLabel": "S1.3 Electron configurations",
+   "difficulty": "hard",
+   "stem": "Successive ionisation energies of an element (kJ mol⁻¹): 578, 1817, 2745, 11 577, 14 842. The element is in group:",
+   "choices": [
+    "13",
+    "3",
+    "2",
+    "15"
+   ],
+   "answer": 0,
+   "note": "The big jump is after the 3rd electron, so there are 3 outer (valence) electrons — group 13 (e.g. aluminium)."
+  },
+  {
+   "id": "s13-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s1-3",
+   "topicLabel": "S1.3 Electron configurations",
+   "difficulty": "standard",
+   "stem": "Explain how a line emission spectrum provides evidence for energy levels in atoms.",
+   "markscheme": [
+    "Electrons absorb energy and are excited to higher levels (1)",
+    "They fall back to lower levels, emitting photons (1)",
+    "Each line has a specific frequency/energy, so only certain energy differences (levels) exist (1)"
+   ],
+   "tactic": "Link the observation (discrete lines) to the model (fixed levels)."
+  },
+  {
+   "id": "s13-x13",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-s1-3",
+   "topicLabel": "S1.3 Electron configurations",
+   "difficulty": "standard",
+   "stem": "Draw the orbital diagram (arrows in boxes) for the 2p sublevel of nitrogen and state the rule it illustrates.",
+   "markscheme": [
+    "Three boxes each with one arrow, all pointing the same way (1)",
+    "Hund's rule (electrons occupy degenerate orbitals singly with parallel spins first) (1)"
+   ],
+   "tactic": "Draw boxes for every orbital in the sublevel, even empty ones."
+  },
+  {
+   "id": "s13-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "chem-s1-3",
+   "topicLabel": "S1.3 Electron configurations",
+   "difficulty": "hard",
+   "stem": "Explain the general increase in first ionisation energy across period 3, and the decrease from Mg to Al.",
+   "markscheme": [
+    "Nuclear charge increases across the period (1)",
+    "Electrons added to the same shell, so shielding similar; electrons held more strongly (1)",
+    "Al's outer electron is in a 3p orbital (1)",
+    "3p is higher in energy/further from the nucleus and shielded by 3s, so easier to remove (1)"
+   ],
+   "tactic": "Explain trends with nuclear charge, shielding and distance; exceptions with sublevels."
+  },
+  {
+   "id": "s13-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "chem-s1-3",
+   "topicLabel": "S1.3 Electron configurations",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) Successive ionisation energies (kJ mol⁻¹) of an invented element Z: 1st 496, 2nd 4562, 3rd 6910, 4th 9543.\n(a) Deduce the group of Z, with a reason. (b) Explain why the second ionisation energy is so much larger than the first. (c) Predict the formula of the chloride of Z.",
+   "markscheme": [
+    "(a) Group 1: large jump after the first electron, so one valence electron (1)",
+    "(b) The 2nd electron is removed from a full inner shell (1)",
+    "closer to the nucleus and less shielded, so held much more strongly (1)",
+    "(c) ZCl (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

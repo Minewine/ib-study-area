@@ -1,0 +1,251 @@
+{
+ "subject": "biology-hl",
+ "topic": "bio-b1-2",
+ "topicLabel": "B1.2 Proteins",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "B1.2"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "b12-x01",
+   "format": "mcq",
+   "topic": "bio-b1-2",
+   "topicLabel": "B1.2 Proteins",
+   "difficulty": "easy",
+   "stem": "Amino acids are joined in a polypeptide by:",
+   "choices": [
+    "Peptide bonds formed in condensation reactions",
+    "Glycosidic bonds formed in hydrolysis reactions",
+    "Hydrogen bonds formed between R groups",
+    "Ester bonds formed in condensation reactions"
+   ],
+   "answer": 0,
+   "note": "The amine of one amino acid and the carboxyl of the next react, releasing water."
+  },
+  {
+   "id": "b12-x02",
+   "format": "mcq",
+   "topic": "bio-b1-2",
+   "topicLabel": "B1.2 Proteins",
+   "difficulty": "easy",
+   "stem": "Which part of an amino acid differs between the twenty types?",
+   "choices": [
+    "The amine group",
+    "The carboxyl group",
+    "The R group (side chain)",
+    "The central carbon atom"
+   ],
+   "answer": 2,
+   "note": "All share the same backbone (amine, carboxyl, central C with H). The R group gives each its properties."
+  },
+  {
+   "id": "b12-x03",
+   "format": "mcq",
+   "topic": "bio-b1-2",
+   "topicLabel": "B1.2 Proteins",
+   "difficulty": "easy",
+   "stem": "Essential amino acids are those that:",
+   "choices": [
+    "Are found in every protein of the body",
+    "Cannot be made by the body and must be in the diet",
+    "Are needed only during growth in children",
+    "Are made in the liver from other amino acids whenever the diet lacks them"
+   ],
+   "answer": 1,
+   "note": "Non-essential amino acids can be synthesised from others; essential ones must be eaten."
+  },
+  {
+   "id": "b12-x04",
+   "format": "mcq",
+   "topic": "bio-b1-2",
+   "topicLabel": "B1.2 Proteins",
+   "difficulty": "standard",
+   "stem": "How many different tripeptides can be made from the 20 amino acids?",
+   "choices": [
+    "60",
+    "400",
+    "1140",
+    "8000"
+   ],
+   "answer": 3,
+   "note": "20³ = 8000. Each position can be any of 20 amino acids."
+  },
+  {
+   "id": "b12-x05",
+   "format": "mcq",
+   "topic": "bio-b1-2",
+   "topicLabel": "B1.2 Proteins",
+   "difficulty": "standard",
+   "stem": "A protein is denatured by high temperature. This means that:",
+   "choices": [
+    "Its three-dimensional shape is changed because bonds that hold it are broken",
+    "Its amino acid sequence is changed because heat breaks the peptide bonds between neighbouring residues",
+    "It is broken down into its separate amino acids",
+    "It is converted into a carbohydrate molecule"
+   ],
+   "answer": 0,
+   "note": "Denaturation breaks hydrogen, ionic and other bonds of the 3D structure; peptide bonds remain intact."
+  },
+  {
+   "id": "b12-x06",
+   "format": "mcq",
+   "topic": "bio-b1-2",
+   "topicLabel": "B1.2 Proteins",
+   "difficulty": "standard",
+   "stem": "Extreme pH denatures proteins mainly by:",
+   "choices": [
+    "Breaking the peptide bonds of the primary structure so the chain splits into short fragments",
+    "Adding extra amino acids to the polypeptide chain",
+    "Removing all water molecules from the protein",
+    "Changing the charges on R groups, disrupting ionic and hydrogen bonds"
+   ],
+   "answer": 3,
+   "note": "Added H⁺ or OH⁻ alter the ionisation of R groups, changing the interactions that hold the shape."
+  },
+  {
+   "id": "b12-x07",
+   "format": "mcq",
+   "topic": "bio-b1-2",
+   "topicLabel": "B1.2 Proteins",
+   "difficulty": "standard",
+   "stem": "A diet lacking one essential amino acid would most directly limit:",
+   "choices": [
+    "Synthesis of all carbohydrates in the body",
+    "The absorption of fats from the gut",
+    "Synthesis of proteins that contain that amino acid",
+    "The production of ATP in mitochondria"
+   ],
+   "answer": 2,
+   "note": "Ribosomes need every amino acid in the sequence; missing one stops synthesis of proteins containing it."
+  },
+  {
+   "id": "b12-x08",
+   "format": "mcq",
+   "topic": "bio-b1-2",
+   "topicLabel": "B1.2 Proteins",
+   "difficulty": "hard",
+   "stem": "The primary structure of a protein is:",
+   "choices": [
+    "The coiling of the chain into an α-helix",
+    "The sequence of amino acids in the polypeptide",
+    "The overall three-dimensional folded shape",
+    "The arrangement of several polypeptides together"
+   ],
+   "answer": 1,
+   "note": "Primary = sequence; secondary = α-helix/β-pleated sheet (backbone H-bonds); tertiary = 3D fold; quaternary = several chains."
+  },
+  {
+   "id": "b12-x09",
+   "format": "mcq",
+   "topic": "bio-b1-2",
+   "topicLabel": "B1.2 Proteins",
+   "difficulty": "hard",
+   "stem": "Which bond is involved in secondary but not tertiary structure stabilisation?",
+   "choices": [
+    "Disulfide bonds formed between the R groups of two cysteines far apart in the chain",
+    "Ionic bonds between charged R groups",
+    "Hydrophobic interactions between non-polar R groups",
+    "Hydrogen bonds between C=O and N–H groups of the backbone"
+   ],
+   "answer": 3,
+   "note": "Secondary structure comes from regular backbone hydrogen bonding. Tertiary structure depends on R-group interactions."
+  },
+  {
+   "id": "b12-x10",
+   "format": "mcq",
+   "topic": "bio-b1-2",
+   "topicLabel": "B1.2 Proteins",
+   "difficulty": "hard",
+   "stem": "Haemoglobin is described as a conjugated protein with quaternary structure because it:",
+   "choices": [
+    "Has four polypeptide chains plus non-polypeptide haem groups",
+    "Has one polypeptide chain folded into a globular shape",
+    "Is made of fibres that give strength",
+    "Contains only amino acids and nothing else"
+   ],
+   "answer": 0,
+   "note": "Four subunits (2 α, 2 β) each with a haem group (prosthetic group)."
+  },
+  {
+   "id": "b12-x11",
+   "format": "mcq",
+   "topic": "bio-b1-2",
+   "topicLabel": "B1.2 Proteins",
+   "difficulty": "hard",
+   "stem": "Collagen differs from insulin because collagen is:",
+   "choices": [
+    "Globular, with a compact shape and a binding site",
+    "Soluble in blood plasma and acts as a hormone",
+    "Fibrous, with long parallel chains giving tensile strength",
+    "Made of a single short polypeptide chain"
+   ],
+   "answer": 2,
+   "note": "Fibrous proteins are insoluble and structural (collagen, keratin). Globular proteins (insulin, enzymes) are soluble and functional."
+  },
+  {
+   "id": "b12-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b1-2",
+   "topicLabel": "B1.2 Proteins",
+   "difficulty": "standard",
+   "stem": "Outline how a peptide bond is formed between two amino acids.",
+   "markscheme": [
+    "Condensation reaction (1)",
+    "Between the carboxyl group of one amino acid and the amine group of the other (1)",
+    "A molecule of water is released and a C–N (peptide) bond forms (1)"
+   ],
+   "tactic": "Name the reaction type, the groups involved and the product released."
+  },
+  {
+   "id": "b12-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b1-2",
+   "topicLabel": "B1.2 Proteins",
+   "difficulty": "standard",
+   "stem": "Explain why proteins can have a very wide range of structures and functions.",
+   "markscheme": [
+    "Twenty different amino acids, with different R groups (1)",
+    "Can be joined in any sequence and chain length (1)",
+    "Different sequences fold into different 3D shapes, determining function (1)"
+   ],
+   "tactic": "Diversity explanations: number of building blocks, sequence, shape."
+  },
+  {
+   "id": "b12-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-b1-2",
+   "topicLabel": "B1.2 Proteins",
+   "difficulty": "hard",
+   "stem": "Explain how the R groups of amino acids determine the tertiary structure of a protein.",
+   "markscheme": [
+    "Hydrophobic R groups cluster inside, away from water (1)",
+    "Ionic bonds between positively and negatively charged R groups (1)",
+    "Hydrogen bonds between polar R groups (1)",
+    "Disulfide (covalent) bonds between cysteine R groups (1)",
+    "Together these determine the specific 3D shape (1)"
+   ],
+   "tactic": "Name each bond type and say which R groups form it."
+  },
+  {
+   "id": "b12-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-b1-2",
+   "topicLabel": "B1.2 Proteins",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) An enzyme extract was kept at different temperatures for 10 minutes, then tested at 30 °C. Activity remaining (%): 30 °C 100; 45 °C 96; 55 °C 60; 65 °C 12; 75 °C 0.\n(a) Describe the pattern. (b) Explain the result at 75 °C. (c) Explain why the activity was tested at 30 °C after the heat treatment.",
+   "markscheme": [
+    "(a) Little loss up to 45 °C (96%); sharp fall above 45 °C to 0% at 75 °C (1)",
+    "(b) The enzyme was denatured: bonds holding the 3D shape broke and the active site changed permanently (1)",
+    "(c) To measure only the permanent effect of heating (denaturation) (1)",
+    "and keep the temperature of the assay constant as a controlled variable (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

@@ -1,0 +1,249 @@
+{
+ "subject": "chemistry-hl",
+ "topic": "chem-s1-2",
+ "topicLabel": "S1.2 The nuclear atom",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "S1.2"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "s12-x01",
+   "format": "mcq",
+   "topic": "chem-s1-2",
+   "topicLabel": "S1.2 The nuclear atom",
+   "difficulty": "easy",
+   "stem": "An atom of ³⁷Cl contains:",
+   "choices": [
+    "17 protons, 37 neutrons, 17 electrons",
+    "20 protons, 17 neutrons, 20 electrons",
+    "17 protons, 20 neutrons, 18 electrons",
+    "17 protons, 20 neutrons, 17 electrons"
+   ],
+   "answer": 3,
+   "note": "Atomic number 17 = protons (= electrons in the atom). Neutrons = 37 − 17 = 20."
+  },
+  {
+   "id": "s12-x02",
+   "format": "mcq",
+   "topic": "chem-s1-2",
+   "topicLabel": "S1.2 The nuclear atom",
+   "difficulty": "easy",
+   "stem": "Isotopes of an element have:",
+   "choices": [
+    "The same number of neutrons but different numbers of protons",
+    "The same number of protons but different numbers of neutrons",
+    "Different numbers of protons and electrons",
+    "The same mass number but different atomic numbers"
+   ],
+   "answer": 1,
+   "note": "Isotopes have identical chemical properties (same electron configuration) but different masses."
+  },
+  {
+   "id": "s12-x03",
+   "format": "mcq",
+   "topic": "chem-s1-2",
+   "topicLabel": "S1.2 The nuclear atom",
+   "difficulty": "easy",
+   "stem": "Which particle has a relative charge of −1 and negligible mass?",
+   "choices": [
+    "Proton",
+    "Neutron",
+    "Electron",
+    "Alpha particle"
+   ],
+   "answer": 2,
+   "note": "Proton: +1, mass 1; neutron: 0, mass 1; electron: −1, mass ≈ 1/1836."
+  },
+  {
+   "id": "s12-x04",
+   "format": "mcq",
+   "topic": "chem-s1-2",
+   "topicLabel": "S1.2 The nuclear atom",
+   "difficulty": "standard",
+   "stem": "How many electrons are in the ion ³²S²⁻?",
+   "choices": [
+    "18",
+    "16",
+    "14",
+    "32"
+   ],
+   "answer": 0,
+   "note": "Sulfur has 16 protons; a 2− charge means 2 extra electrons: 18."
+  },
+  {
+   "id": "s12-x05",
+   "format": "mcq",
+   "topic": "chem-s1-2",
+   "topicLabel": "S1.2 The nuclear atom",
+   "difficulty": "standard",
+   "stem": "Chlorine is 75.78% ³⁵Cl (34.97) and 24.22% ³⁷Cl (36.97). Its relative atomic mass is:",
+   "choices": [
+    "35.97",
+    "35.45",
+    "36.00",
+    "35.00"
+   ],
+   "answer": 1,
+   "note": "Ar = 0.7578 × 34.97 + 0.2422 × 36.97 = 35.45."
+  },
+  {
+   "id": "s12-x06",
+   "format": "mcq",
+   "topic": "chem-s1-2",
+   "topicLabel": "S1.2 The nuclear atom",
+   "difficulty": "standard",
+   "stem": "Isotopes of the same element have different:",
+   "choices": [
+    "Chemical properties in reactions",
+    "Numbers of electrons in their atoms",
+    "Positions in the periodic table",
+    "Physical properties such as density and rate of diffusion"
+   ],
+   "answer": 3,
+   "note": "Chemical properties depend on electrons; mass differences affect physical properties."
+  },
+  {
+   "id": "s12-x07",
+   "format": "mcq",
+   "topic": "chem-s1-2",
+   "topicLabel": "S1.2 The nuclear atom",
+   "difficulty": "standard",
+   "stem": "Rutherford's gold foil experiment showed that:",
+   "choices": [
+    "Most of the atom's mass is in a small, positive nucleus",
+    "Electrons orbit the nucleus in fixed energy levels",
+    "Atoms are solid spheres of positive charge",
+    "Neutrons are found in the nucleus"
+   ],
+   "answer": 0,
+   "note": "Most alpha particles passed straight through (mostly empty space); a few were deflected strongly (small dense positive nucleus)."
+  },
+  {
+   "id": "s12-x08",
+   "format": "mcq",
+   "topic": "chem-s1-2",
+   "topicLabel": "S1.2 The nuclear atom",
+   "difficulty": "hard",
+   "stem": "Boron has two isotopes, ¹⁰B (10.01) and ¹¹B (11.01). Its Ar is 10.81. What is the percentage abundance of ¹⁰B?",
+   "choices": [
+    "80%",
+    "81%",
+    "20%",
+    "19%"
+   ],
+   "answer": 2,
+   "note": "x(10.01) + (1 − x)(11.01) = 10.81 → x = 0.20."
+  },
+  {
+   "id": "s12-x09",
+   "format": "mcq",
+   "topic": "chem-s1-2",
+   "topicLabel": "S1.2 The nuclear atom",
+   "difficulty": "hard",
+   "stem": "In a mass spectrum of an element, the peaks show:",
+   "choices": [
+    "The number of electrons in each energy level",
+    "The m/z values of isotopes and their relative abundances",
+    "The energy of electrons emitted by the atoms",
+    "The number of protons in each atom"
+   ],
+   "answer": 1,
+   "note": "Each isotope gives a peak at its m/z (charge usually 1+); peak heights give relative abundance."
+  },
+  {
+   "id": "s12-x10",
+   "format": "mcq",
+   "topic": "chem-s1-2",
+   "topicLabel": "S1.2 The nuclear atom",
+   "difficulty": "hard",
+   "stem": "A mass spectrum of gallium shows peaks at m/z 69 (60.1%) and 71 (39.9%). The Ar of gallium to 3 s.f. is:",
+   "choices": [
+    "70.0",
+    "69.0",
+    "69.8",
+    "70.2"
+   ],
+   "answer": 2,
+   "note": "0.601 × 69 + 0.399 × 71 = 69.8 (using precise isotope masses gives 69.72)."
+  },
+  {
+   "id": "s12-x11",
+   "format": "mcq",
+   "topic": "chem-s1-2",
+   "topicLabel": "S1.2 The nuclear atom",
+   "difficulty": "hard",
+   "stem": "A mass spectrum of chlorine gas (Cl₂) shows peaks at m/z 70, 72 and 74. The peak at 72 is due to:",
+   "choices": [
+    "³⁷Cl–³⁷Cl molecules",
+    "³⁵Cl–³⁵Cl molecules",
+    "Single ³⁶Cl atoms",
+    "³⁵Cl–³⁷Cl molecules"
+   ],
+   "answer": 3,
+   "note": "35 + 37 = 72. Peaks at 70 and 74 are ³⁵Cl₂ and ³⁷Cl₂."
+  },
+  {
+   "id": "s12-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s1-2",
+   "topicLabel": "S1.2 The nuclear atom",
+   "difficulty": "standard",
+   "stem": "Explain why isotopes of an element have the same chemical properties.",
+   "markscheme": [
+    "Same number of protons (1)",
+    "So same number of electrons (1)",
+    "Same electron configuration, which determines chemical reactions (1)"
+   ],
+   "tactic": "Chemical properties ↔ electrons; physical properties ↔ mass."
+  },
+  {
+   "id": "s12-x13",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-s1-2",
+   "topicLabel": "S1.2 The nuclear atom",
+   "difficulty": "standard",
+   "stem": "Determine the numbers of protons, neutrons and electrons in ⁵⁶Fe³⁺.",
+   "markscheme": [
+    "26 protons and 30 neutrons (1)",
+    "23 electrons (1)"
+   ],
+   "tactic": "Ions: protons fixed by the element; subtract the charge from the electron count."
+  },
+  {
+   "id": "s12-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "chem-s1-2",
+   "topicLabel": "S1.2 The nuclear atom",
+   "difficulty": "hard",
+   "stem": "Copper has two isotopes, ⁶³Cu (62.93) and ⁶⁵Cu (64.93). Its Ar is 63.55. Calculate the percentage abundance of each isotope.",
+   "markscheme": [
+    "Let fraction of ⁶³Cu = x (1)",
+    "62.93x + 64.93(1 − x) = 63.55 (1)",
+    "x = 1.38 ÷ 2.00 = 0.69 (1)",
+    "⁶³Cu 69%, ⁶⁵Cu 31% (1)"
+   ],
+   "tactic": "Set up one equation with one unknown; check the abundances add to 100%."
+  },
+  {
+   "id": "s12-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "chem-s1-2",
+   "topicLabel": "S1.2 The nuclear atom",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) A mass spectrum of an invented element X shows peaks at m/z 24 (78.9%), 25 (10.0%) and 26 (11.1%).\n(a) Calculate the relative atomic mass of X to 2 decimal places. (b) Suggest the identity of X using the periodic table. (c) State why a peak at m/z 12 might also appear.",
+   "markscheme": [
+    "(a) (24 × 78.9 + 25 × 10.0 + 26 × 11.1) ÷ 100 (1)",
+    "= 24.32 (1)",
+    "(b) Magnesium (Ar 24.31) (1)",
+    "(c) Ions with a 2+ charge give m/z = 24 ÷ 2 = 12 (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}
