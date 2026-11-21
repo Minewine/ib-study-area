@@ -57,6 +57,10 @@ Optional fields (all validated; unknown values are rejected, absent fields chang
   they describe what the set emulates.
 - Item-level `difficulty`: `"easy"`, `"standard"` or `"hard"`, per question. Untagged questions
   show and filter as **Unrated** — only tag what you know; nothing guesses a rating for you.
+  Quiz sessions default to rated **Foundation (easy) + Core (standard)** first and only top up
+  from unrated when the rated pool runs short (top-up checkbox, on by default; hard/Stretch stays
+  opt-in). AI-generated banks carry `suggestedDifficulty` instead — the Upload preview shows it
+  as unreviewed until you apply it, and importing without applying discards it.
 
 ### 2. Flashcard deck (`library/flashcards/*.json`)
 
@@ -144,7 +148,8 @@ one fact per card).
   fallback banks simply appear as one set each, without metadata.
 
 Topic options show question counts and teaching status; the **Taught topics only** filter and
-the optional difficulty range (Unrated < easy < standard < hard) then apply to specific topics
+the difficulty range (Unrated < easy < standard < hard — default easy→standard, filling any
+shortfall from unrated) then apply to specific topics
 and to *Mixed* alike. Teaching status is suggested from `library/class-schedule.json` (a topic
 whose codes are all in units that have finished) and can be overridden per topic in the
 "Topics & teaching status" panel on the Quiz page (stored in the synced `topic-taught` key).

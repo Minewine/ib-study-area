@@ -49,6 +49,7 @@
     "tok-objects", "ee-ideas", "io-issues", "ia-debriefs",
     "res-bookmarks", "res-notes", "res-recent", "pp-scores", "cw-progress", "my-res",
     "topic-taught",
+    "q-hidden", // per-question hide flags {"<bankId>#<itemId>": {hidden, t, reason?, label?}}
     "profile" // per-user profile (a later phase of the multi-user upgrade writes it)
   ];
   // never synced, never in backups: credentials, sync bookkeeping, caches, safety copies
@@ -538,6 +539,23 @@
         if (!(id in out)) { out[id] = a[id]; return; }
         const w = newer(a[id], out[id], (r) => [r && r.t || 0]) ? a[id] : out[id];
         out[id] = taughtStatusFill(w, w === a[id] ? out[id] : a[id]);
+      });
+      return out;
+    },
+    // per-question hide flags {"<bankId>#<itemId>": {hidden, t, reason?, label?}}
+    // (assets/qhidden.js) — per question the newest t wins; every question from
+    // either side survives, garbage entries (non-objects) are dropped. A restore
+    // is an explicit {hidden:false, t} sentinel written by quiz-engine.js, so a
+    // newer restore always beats an older hide (deleting the entry would let the
+    // other device's stale hide win the union).
+    "q-hidden": function (a, b) {
+      if (!isObj(a)) return b; if (!isObj(b)) return a;
+      const out = {};
+      const t = (r) => [r && r.t || 0];
+      new Set(Object.keys(a).concat(Object.keys(b))).forEach(id => {
+        const x = a[id], y = b[id];
+        if (!isObj(x) && !isObj(y)) return; // garbage on both sides → dropped
+        out[id] = !isObj(x) ? y : !isObj(y) ? x : (newer(x, y, t) ? x : y); // tie → y (b)
       });
       return out;
     }

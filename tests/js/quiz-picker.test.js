@@ -1,11 +1,15 @@
 // node --test tests/js — quiz-engine's topic picker: the pure model
-// (buildTopics), the teaching-status resolver (taughtState) and the
-// difficulty-range filter (difficultyPass). The engine is loaded WITHOUT firing
-// DOMContentLoaded (readyState "loading"), exactly like retired.test.js parks
-// boot() — so no fetches run and only the exported pure functions are exercised.
+// (buildTopics), the teaching-status resolver (taughtState), the
+// difficulty-range filter (difficultyPass) and the session picker
+// (pickSessionItems: rated-first selection + unrated top-up). The engine is
+// loaded WITHOUT firing DOMContentLoaded (readyState "loading"), exactly like
+// retired.test.js parks boot() — so no fetches run and only the exported pure
+// functions are exercised.
 "use strict";
 const test = require("node:test");
 const assert = require("node:assert/strict");
+const fs = require("fs");
+const path = require("path");
 const { makeEnv, plain } = require("./harness");
 
 function engine() {
@@ -228,6 +232,131 @@ test("difficultyPass: crossed-over min/max are swapped, not silently empty", () 
   assert.equal(QE.difficultyPass({ difficulty: "unrated" }, "standard", "easy"), false);
 });
 
+// ── pickSessionItems: rated-first selection + unrated top-up ────────────────
+const mkItem = (id, difficulty, format) => Object.assign({ id, format: format || "mcq", stem: "s" }, difficulty ? { difficulty } : {});
+
+test("pickSessionItems: rated questions fill the session first — n inside the rated pool never pulls unrated or hard", () => {
+  const { QE } = engine();
+  const items = [
+    mkItem("u1"), mkItem("e1", "easy"), mkItem("s1", "standard"), mkItem("h1", "hard"),
+    mkItem("e2", "easy"), mkItem("s2", "standard"), mkItem("u2")
+  ];
+  const r = QE.pickSessionItems(items, { dmin: "easy", dmax: "standard", n: 4, fillUnrated: true });
+  assert.equal(r.use.length, 4);
+  assert.deepEqual(plain(r.use.map(it => it.id).sort()), ["e1", "e2", "s1", "s2"], "only rated easy/standard items — the unrated and hard ones stay out");
+  assert.equal(r.ratedCount, 4, "all four came from the rated pool");
+  assert.equal(r.unratedCount, 0);
+});
+
+test("pickSessionItems: a short rated pool tops up with unrated — hard never fills in", () => {
+  const { QE } = engine();
+  const items = [mkItem("e1", "easy"), mkItem("h1", "hard"), mkItem("h2", "hard"), mkItem("u1"), mkItem("u2"), mkItem("u3")];
+  const r = QE.pickSessionItems(items, { dmin: "easy", dmax: "standard", n: 4, fillUnrated: true });
+  assert.equal(r.use.length, 4);
+  assert.equal(r.ratedCount, 1, "the one rated item comes first");
+  assert.equal(r.unratedCount, 3, "three unrated items fill the rest of the session");
+  const ids = plain(r.use.map(it => it.id));
+  assert.equal(ids[0], "e1", "rated items precede the top-up");
+  assert.deepEqual(ids.slice(1).sort(), ["u1", "u2", "u3"]);
+  assert.ok(!ids.includes("h1") && !ids.includes("h2"), "out-of-range hard items never serve, not even as fill");
+});
+
+test("pickSessionItems: fillUnrated false keeps a short rated-only session", () => {
+  const { QE } = engine();
+  const items = [mkItem("e1", "easy"), mkItem("u1"), mkItem("u2")];
+  const r = QE.pickSessionItems(items, { dmin: "easy", dmax: "standard", n: 3, fillUnrated: false });
+  assert.deepEqual(plain(r.use.map(it => it.id)), ["e1"], "only the rated item serves");
+  assert.equal(r.ratedCount, 1);
+  assert.equal(r.unratedCount, 0);
+});
+
+test("pickSessionItems: an unrated-inclusive range never duplicates the unrated top-up", () => {
+  const { QE } = engine();
+  const items = [mkItem("u1"), mkItem("u2"), mkItem("e1", "easy"), mkItem("h1", "hard")];
+  const r = QE.pickSessionItems(items, { dmin: "unrated", dmax: "standard", n: 10, fillUnrated: true });
+  assert.deepEqual(plain(r.use.map(it => it.id).sort()), ["e1", "u1", "u2"], "unrated items are already in the rated pool — no second copy, hard excluded");
+  assert.equal(r.ratedCount, 3, "everything served came from the rated pool");
+  assert.equal(r.unratedCount, 0);
+  const ids = plain(r.use.map(it => it.id));
+  assert.equal(new Set(ids).size, ids.length, "no duplicate ids in the session");
+});
+
+test("pickSessionItems: crossed min/max are swapped, like difficultyPass", () => {
+  const { QE } = engine();
+  const items = [mkItem("e1", "easy"), mkItem("s1", "standard"), mkItem("h1", "hard")];
+  const r = QE.pickSessionItems(items, { dmin: "standard", dmax: "easy", n: 10, fillUnrated: false });
+  assert.deepEqual(plain(r.use.map(it => it.id).sort()), ["e1", "s1"], "standard..easy reads as easy..standard");
+});
+
+test("pickSessionItems: the format filter narrows both pools", () => {
+  const { QE } = engine();
+  const items = [
+    mkItem("m1", "easy", "mcq"), mkItem("w1", "easy", "written"), mkItem("m2", null, "mcq"),
+    mkItem("w2", null, "written"), mkItem("m3", "hard", "mcq")
+  ];
+  const mcq = QE.pickSessionItems(items, { dmin: "easy", dmax: "standard", format: "mcq", n: 5, fillUnrated: true });
+  assert.ok(mcq.use.every(it => it.format === "mcq"), "only mcq items serve: " + JSON.stringify(plain(mcq.use.map(it => it.id))));
+  assert.equal(mcq.ratedCount, 1, "m1 is the only in-range mcq");
+  assert.equal(mcq.unratedCount, 1, "m2 tops the session up (unrated mcq); m3 (hard mcq) stays out");
+  const written = QE.pickSessionItems(items, { dmin: "easy", dmax: "standard", format: "written", n: 5, fillUnrated: true });
+  assert.deepEqual(plain(written.use.map(it => it.id).sort()), ["w1", "w2"], "written-only: the rated item first, the unrated one fills");
+  const mixed = QE.pickSessionItems(items, { dmin: "easy", dmax: "standard", format: "mixed", n: 5, fillUnrated: true });
+  assert.equal(mixed.use.length, 4, "mixed keeps every format");
+  assert.ok(mixed.use.some(it => it.format === "mcq") && mixed.use.some(it => it.format === "written"));
+});
+
+test("pickSessionItems: degenerate inputs — empty bank, null items, n < 1, garbage n — stay empty, never throw", () => {
+  const { QE } = engine();
+  assert.deepEqual(plain(QE.pickSessionItems([], { dmin: "easy", dmax: "standard", n: 5, fillUnrated: true })), { use: [], ratedCount: 0, unratedCount: 0 });
+  assert.equal(QE.pickSessionItems(null, { dmin: "easy", dmax: "standard", n: 5 }).use.length, 0);
+  const items = [mkItem("e1", "easy"), mkItem("u1")];
+  assert.equal(QE.pickSessionItems(items, { dmin: "easy", dmax: "standard", n: 0, fillUnrated: true }).use.length, 0, "n < 1 → nothing serves");
+  assert.equal(QE.pickSessionItems(items, { dmin: "easy", dmax: "standard", n: "junk", fillUnrated: true }).use.length, 0, "garbage n → nothing serves");
+});
+
+test("pickSessionItems: absent or null opts yield an empty session; a null element inside the bank is dropped", () => {
+  const { QE } = engine();
+  const items = [mkItem("e1", "easy"), null, mkItem("u1")];
+  assert.deepEqual(plain(QE.pickSessionItems(items)), { use: [], ratedCount: 0, unratedCount: 0 }, "no opts at all → n is absent → nothing serves, never throws");
+  assert.deepEqual(plain(QE.pickSessionItems(items, null)), { use: [], ratedCount: 0, unratedCount: 0 }, "null opts behave exactly like absent opts");
+  const r = QE.pickSessionItems(items, { dmin: "easy", dmax: "standard", n: 5, fillUnrated: true });
+  assert.deepEqual(plain(r.use.map(it => it.id).sort()), ["e1", "u1"], "the null element is filtered out; the rated item leads and the unrated one tops up");
+  assert.equal(r.ratedCount, 1, "only the easy item came from the rated pool");
+  assert.equal(r.unratedCount, 1, "the unrated item filled the rest");
+});
+
+test("pickSessionItems: fillUnrated false with zero rated items serves nothing — the unrated pool alone cannot fill", () => {
+  const { QE } = engine();
+  const items = [mkItem("u1"), mkItem("u2"), mkItem("h1", "hard")];
+  const r = QE.pickSessionItems(items, { dmin: "easy", dmax: "standard", n: 5, fillUnrated: false });
+  assert.deepEqual(plain(r.use), [], "no rated item and no top-up allowed → an empty session");
+  assert.equal(r.ratedCount, 0);
+  assert.equal(r.unratedCount, 0);
+});
+
+test("pickSessionItems: garbage bounds clamp to the bottom of the scale — only unrated items serve, never throws", () => {
+  const { QE } = engine();
+  const items = [mkItem("e1", "easy"), mkItem("u1"), mkItem("u2")];
+  const r = QE.pickSessionItems(items, { dmin: "junk", dmax: 42, n: 10, fillUnrated: false });
+  assert.deepEqual(plain(r.use.map(it => it.id).sort()), ["u1", "u2"], "invalid dmin/dmax clamp to rank 0 (unrated) like difficultyPass's Math.max(0, …) — the easy item is out of range");
+  assert.equal(r.ratedCount, 2, "clamped unrated items sit inside the range pool, so they count as rated");
+  assert.equal(r.unratedCount, 0);
+});
+
+// ── real-data acceptance: the seeded math functions bank serves a full default session ──
+test("pickSessionItems: real math functions bank fills a default easy..standard session with rated items only", () => {
+  const { QE } = engine();
+  const file = path.resolve(__dirname, "..", "..", "library", "questions", "math-aa-functions-2-1-to-2-3.json");
+  const bank = JSON.parse(fs.readFileSync(file, "utf8"));
+  const rated = bank.items.filter(it => QE.difficultyPass(it, "easy", "standard"));
+  assert.ok(rated.length >= 20, "the bank holds at least 20 rated (easy/standard) items, found " + rated.length);
+  const r = QE.pickSessionItems(bank.items, { dmin: "easy", dmax: "standard", format: "mixed", n: 20, fillUnrated: true });
+  assert.equal(r.use.length, 20);
+  assert.equal(r.ratedCount, 20, "the whole session comes from rated questions");
+  assert.equal(r.unratedCount, 0, "no unrated top-up was needed");
+  assert.ok(r.use.every(it => it.difficulty === "easy" || it.difficulty === "standard"), "every served item is easy or standard");
+});
+
 // ── per-set histograms, paperOnly, unratedSuffix, disambiguateSetNames ─────
 test("buildTopics: per-set difficulties come from the manifest topic (meta) or the item aggregate (inline); absent → null", () => {
   const { QE } = engine();
@@ -412,13 +541,15 @@ async function bootWith(opts) {
   const env = makeEnv({ fetch, readyState: "loading", data: opts.data });
   // q-sure/q-guess/q-conf: renderQuestion wires these by id after writing innerHTML
   // (the fake DOM doesn't parse markup, so they must exist as elements up front);
-  // q-reveal/q-selfscore/q-next/q-ms are the written-path counterparts, q-again the
-  // summary's button (the last test to answer a whole session reaches summarize()).
+  // q-reveal/q-answer/q-selfscore/q-next/q-ms are the written-path counterparts
+  // (q-answer holds the typed response the q-next handler stores with a miss),
+  // q-again the summary's button (the last test to answer a whole session reaches
+  // summarize()).
   ["q-subject", "q-topic", "q-set", "q-format", "q-length", "q-diff-min", "q-diff-max",
    "q-taught-only", "q-taught-panel", "q-taught-list", "q-start", "q-error",
    "q-progress", "q-box", "setup", "runner", "summary", "q-log",
    "q-conf", "q-sure", "q-guess", "q-reveal", "q-reveal-guess", "q-ms",
-   "q-selfscore", "q-next", "q-again"].forEach(id => addEl(env, id));
+   "q-answer", "q-selfscore", "q-next", "q-again"].forEach(id => addEl(env, id));
   env.load("store.js").load("quiz-engine.js");
   env.fire("document", "DOMContentLoaded");
   await tick(40); // manifest fetch + the background teaching-meta fetch + re-render
@@ -538,7 +669,7 @@ test("picker wiring: taught-only keeps taught + unknown topics; overrides exclud
   assert.match(env.document.getElementById("q-progress").textContent, /Question 1 \/ 1/, "only the untaught/unknown topic's item");
 });
 
-test("picker wiring: difficulty range filters items; an empty result shows the extended message", async () => {
+test("picker wiring: rated defaults build on rated items, unrated tops up; fill off + hard-only can come up empty", async () => {
   const env = await bootPicker();
   const subj = env.document.getElementById("q-subject");
   subj.value = "chemistry-hl";
@@ -549,13 +680,21 @@ test("picker wiring: difficulty range filters items; an empty result shows the e
   const start = env.document.getElementById("q-start").listeners.click[0];
   await start();
   await tick(10);
-  assert.match(env.document.getElementById("q-progress").textContent, /Question 1 \/ 1/, "only a3 is easy; unrated items rank below easy");
+  assert.match(env.document.getElementById("q-progress").textContent, /Question 1 \/ 5/,
+    "a3 is the only rated (easy) item; the 4 unrated ones top the session up (q-diff-fill defaults on)");
+  // fill off: the unrated top-up no longer pads the session
+  addEl(env, "q-diff-fill").checked = false;
+  await start();
+  await tick(10);
+  assert.match(env.document.getElementById("q-progress").textContent, /Question 1 \/ 1/, "only a3 (easy) serves without the top-up; unrated items rank below easy");
   env.document.getElementById("q-diff-min").value = "hard";
   env.document.getElementById("q-diff-max").value = "hard";
   await start();
   await tick(10);
   // the previous start already hid setup; the signal here is the extended error message
-  assert.match(env.document.getElementById("q-error").textContent, /No questions match those filters — try widening the difficulty range or including not-yet-taught topics\./);
+  const err = env.document.getElementById("q-error").textContent;
+  assert.match(err, /No questions match those filters/, "nothing is rated at hard");
+  assert.match(err, /unrated top-up/, "it suggests switching the unrated top-up on (and widening the range / including untaught topics)");
 });
 
 // ── topic scoping of sessions (P1 regression: multi-topic banks must not leak) ──
@@ -828,6 +967,7 @@ test("picker wiring: crossed difficulty bounds are swapped at start, not silentl
   env.document.getElementById("q-length").value = "20";
   env.document.getElementById("q-diff-min").value = "hard";
   env.document.getElementById("q-diff-max").value = "easy";
+  addEl(env, "q-diff-fill").checked = false; // isolate the swap: no unrated top-up padding
   await (env.document.getElementById("q-start").listeners.click[0])();
   await tick(10);
   assert.match(env.document.getElementById("q-progress").textContent, /Question 1 \/ 1/,

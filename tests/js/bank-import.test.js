@@ -98,6 +98,99 @@ test("removeItem: items can be trimmed; the last one cannot (a bank needs items)
   assert.ok(bi.removeItem(staged, 99).error, "out-of-range index refused");
 });
 
+// ── AI difficulty suggestions: unreviewed until applied in the preview ──────
+test("suggestionFor: a valid suggestion passes through; invalid, absent or non-item returns null", () => {
+  const sf = BI(mk()).suggestionFor;
+  assert.equal(sf({ suggestedDifficulty: "easy" }), "easy");
+  assert.equal(sf({ suggestedDifficulty: "standard" }), "standard");
+  assert.equal(sf({ suggestedDifficulty: "hard" }), "hard");
+  assert.equal(sf({ suggestedDifficulty: "impossible" }), null, "not a real difficulty value");
+  assert.equal(sf({ suggestedDifficulty: "" }), null);
+  assert.equal(sf({}), null, "no suggestion on the item");
+  assert.equal(sf(null), null, "no item at all");
+  assert.equal(sf(42), null, "a truthy non-object item carries no suggestion");
+});
+
+test("applySuggestion: the suggestion becomes the item's difficulty and the key is deleted; no suggestion → error, staged unchanged", () => {
+  const e = mk();
+  const bi = BI(e);
+  const bank = mkBank();
+  bank.items[0].suggestedDifficulty = "hard";
+  const staged = bi.stage(J(bank), []).staged;
+  const r = bi.applySuggestion(staged, 0);
+  assert.ok(r.ok, r.error);
+  const item = staged.data.items[0]; // committed applies replace the object — re-read
+  assert.equal(item.difficulty, "hard", "the suggestion was applied as the real difficulty");
+  assert.equal(item.suggestedDifficulty, undefined, "the unreviewed key is gone after applying");
+  const snapshot = J(staged.data);
+  const miss = bi.applySuggestion(staged, 1);
+  assert.ok(miss.error, "item 2 carries no suggestion");
+  assert.equal(miss.error, "no difficulty suggestion on this item");
+  assert.equal(J(staged.data), snapshot, "a failed apply leaves staged unchanged");
+  assert.ok(bi.applySuggestion(staged, 99).error, "out-of-range index refused");
+});
+
+test("applyAllSuggestions: applies every suggestion and reports the count; nothing suggested applies 0", () => {
+  const e = mk();
+  const bi = BI(e);
+  const bank = mkBank();
+  bank.items[0].suggestedDifficulty = "easy";
+  bank.items[2].suggestedDifficulty = "standard";
+  const staged = bi.stage(J(bank), []).staged;
+  const r = bi.applyAllSuggestions(staged);
+  assert.ok(r.ok, r.error);
+  assert.equal(r.applied, 2, "two suggestions applied");
+  assert.equal(staged.data.items[0].difficulty, "easy");
+  assert.equal(staged.data.items[0].suggestedDifficulty, undefined);
+  assert.equal(staged.data.items[2].difficulty, "standard");
+  assert.equal(staged.data.items[2].suggestedDifficulty, undefined);
+  assert.equal(staged.data.items[1].difficulty, undefined, "an item without a suggestion is untouched");
+  const none = bi.stage(J(mkBank()), []).staged;
+  assert.deepEqual(plain(bi.applyAllSuggestions(none)), { ok: true, applied: 0 }, "nothing suggested → nothing applied");
+});
+
+test("applyAllSuggestions: a validation failure rejects the whole batch and leaves staged unchanged", () => {
+  const e = mk();
+  const bi = BI(e);
+  const bank = mkBank();
+  bank.items[1].suggestedDifficulty = "easy";
+  const staged = bi.stage(J(bank), []).staged;
+  staged.data.items[0].answer = 99; // pre-break the bank: mcq answer out of range
+  const snapshot = J(staged.data);
+  const r = bi.applyAllSuggestions(staged);
+  assert.ok(r.error, "the batch is rejected by the validator");
+  assert.equal(J(staged.data), snapshot, "the failed batch left staged exactly as it was");
+  assert.equal(staged.data.items[1].suggestedDifficulty, "easy", "the suggestion was not consumed");
+  assert.equal(staged.data.items[1].difficulty, undefined, "the difficulty was not applied");
+});
+
+test("finalize: residual suggestedDifficulty is stripped from every item; a hand-authored difficulty survives", () => {
+  const e = mk();
+  const bi = BI(e);
+  bi.newBankId = () => "ub-test";
+  const bank = mkBank();
+  bank.items[0].suggestedDifficulty = "standard"; // never applied
+  bank.items[1].difficulty = "hard";              // rated by hand before staging
+  const staged = bi.stage(J(bank), []).staged;
+  const res = bi.finalize(staged);
+  assert.ok(res.ok, res.error);
+  res.entry.items.forEach(it => assert.equal(it.suggestedDifficulty, undefined, it.id + " must not carry an unreviewed suggestion into storage"));
+  assert.equal(res.entry.items[0].difficulty, undefined, "an unapplied suggestion is dropped, not committed as difficulty");
+  assert.equal(res.entry.items[1].difficulty, "hard", "the hand-authored difficulty survives the strip");
+  assert.equal(staged.data.items[0].suggestedDifficulty, "standard", "finalize never mutates the staged data (the preview still shows the chip)");
+});
+
+test("finalize: a bank with no suggestions finalizes unchanged — the strip is a no-op pass-through", () => {
+  const e = mk();
+  const bi = BI(e);
+  bi.newBankId = () => "ub-test";
+  const staged = bi.stage(J(mkBank()), []).staged;
+  const snapshot = J(staged.data.items);
+  const res = bi.finalize(staged);
+  assert.ok(res.ok, res.error);
+  assert.equal(J(res.entry.items), snapshot, "zero suggestions → every item passes through byte-identical (no key added, none stripped)");
+});
+
 test("finalize: entry matches the file-upload storage shape exactly (id/name/uploaded/label/subjectLabel)", () => {
   const e = mk();
   const bi = BI(e);

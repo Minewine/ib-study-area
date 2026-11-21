@@ -90,6 +90,7 @@
         <div><label class="ed-lbl" for="pv-label">Label shown in the Quiz picker</label><input id="pv-label" type="text"></div>
       </div>
       <p class="muted" id="pv-summary"></p>
+      <p id="pv-suggest-row" hidden><button id="pv-apply-all" class="fc-mini" type="button"></button> <span class="muted">AI-suggested difficulties stay marked unreviewed until you apply them — importing without applying discards them.</span></p>
       <div id="pv-items"></div>
       <p class="muted" id="pv-more" hidden></p>
       <p id="pv-status" class="pv-status" role="status"></p>
@@ -183,12 +184,13 @@
 </main>
 <footer>Private family use · exams <strong>May 2028</strong> · keep this app and its content non-public</footer>
 
-<script src="../assets/store.js?v=10"></script>
+<script src="../assets/store.js?v=11"></script>
 <script src="../assets/profile.js?v=1"></script>
+<script src="../assets/feedback.js?v=1"></script>
 <script src="../assets/backup.js?v=7"></script>
 <script src="../assets/bank-schema.js?v=2"></script>
 <script src="../assets/ai-prompt.js?v=5"></script>
-<script src="../assets/bank-import.js?v=1"></script>
+<script src="../assets/bank-import.js?v=2"></script>
 <script>
 (function () {
   "use strict";
@@ -393,8 +395,15 @@
     st.className = "pv-status ok";
   }
 
+  // AI difficulty suggestions (assets/bank-import.js): shown as unreviewed chips until
+  // applied — applying turns the suggestion into the item's real `difficulty`.
+  const SUGGEST_LABEL = { easy: "Foundation (easy)", standard: "Core (standard)", hard: "Stretch (hard)" };
+  const suggestCount = () => staged.data.items.filter(it => BI.suggestionFor(it)).length;
+
   function pvRow(it, i) {
-    const head = `<div class="pv-head"><strong>${i + 1}</strong> <code>${esc(it.id)}</code> <span class="chip">${esc(it.format === "written" ? "written · " + (it.marks || "?") + (it.marks === 1 ? " mark" : " marks") : "MCQ")}</span><button type="button" class="fc-mini pv-remove" data-i="${i}">Remove</button></div>` +
+    const s = BI.suggestionFor(it);
+    const sug = s ? `<span class="chip">AI suggested: ${SUGGEST_LABEL[s]} — unreviewed</span><button type="button" class="fc-mini pv-apply" data-i="${i}">Apply</button>` : "";
+    const head = `<div class="pv-head"><strong>${i + 1}</strong> <code>${esc(it.id)}</code> <span class="chip">${esc(it.format === "written" ? "written · " + (it.marks || "?") + (it.marks === 1 ? " mark" : " marks") : "MCQ")}</span>${sug}<button type="button" class="fc-mini pv-remove" data-i="${i}">Remove</button></div>` +
       `<label class="pv-l">Question<textarea class="pv-stem" rows="2">${esc(it.stem || "")}</textarea></label>`;
     let body;
     if (it.format === "mcq") {
@@ -455,6 +464,17 @@
     const more = document.getElementById("pv-more");
     more.hidden = items.length <= BI.MAX_EDIT_ITEMS;
     if (!more.hidden) more.textContent = "…and " + (items.length - BI.MAX_EDIT_ITEMS) + " more items, imported as-is — edit them afterwards in the item editor (section 4).";
+    const sugRow = document.getElementById("pv-suggest-row");
+    const nSug = suggestCount();
+    sugRow.hidden = nSug === 0;
+    if (nSug) {
+      document.getElementById("pv-apply-all").textContent = "Apply all suggestions (" + nSug + ")";
+    }
+    box.querySelectorAll(".pv-apply").forEach(b => b.addEventListener("click", () => {
+      const r = BI.applySuggestion(staged, parseInt(b.dataset.i, 10));
+      if (r.error) { pvStatus(r.error); return; }
+      renderPreview();
+    }));
     box.querySelectorAll(".pv-remove").forEach(b => b.addEventListener("click", () => {
       const r = BI.removeItem(staged, parseInt(b.dataset.i, 10));
       if (r.error) { pvStatus(r.error); return; }
@@ -480,6 +500,12 @@
     if (!isNaN(i)) pvApplyRow(i);
   });
   document.getElementById("pv-label").addEventListener("input", () => { if (staged) staged.data.topicLabel = document.getElementById("pv-label").value.trim(); });
+  document.getElementById("pv-apply-all").addEventListener("click", () => {
+    if (!staged) return;
+    const r = BI.applyAllSuggestions(staged);
+    if (r.error) { pvStatus(r.error); return; }
+    renderPreview();
+  });
   document.getElementById("pv-cancel").addEventListener("click", closePreview);
   document.getElementById("pv-import").addEventListener("click", () => {
     if (!staged) return;
@@ -487,6 +513,12 @@
     const banks = store.get(QBANKS, []);
     if (banks.some(b => b.name === name)) { pvStatus('"' + name + '" already exists — pick another bank name above.'); return; }
     staged.name = name;
+    // importing strips any suggestion you did not apply (bank-import.js finalize) — say so
+    // before it happens, so unreviewed suggestions are never lost silently
+    const nSug = suggestCount();
+    if (nSug > 0 && !confirm(nSug === 1
+      ? "1 AI difficulty suggestion is still unapplied — importing discards it. Import anyway?"
+      : nSug + " AI difficulty suggestions are still unapplied — importing discards them. Import anyway?")) return;
     const res = BI.finalize(staged);
     if (res.error) { pvStatus(res.error); return; }
     const displayName = res.entry.set || res.entry.label;

@@ -19,6 +19,23 @@ _Updated 21 Nov 2026. Background: [HANDOFF.md](HANDOFF.md). Longer-term ideas: [
   due (cards, open mistakes), then enrichment. Every suggestion carries a title, a reason and a
   link; no stored data changed. Details:
   [CHANGELOG-2026-11-21-wp3-today-panel.md](CHANGELOG-2026-11-21-wp3-today-panel.md).
+- **Written-answer capture + question-level hide complete (21 Nov 2026):** written answers
+  marked wrong/partial now store a bounded copy of her response + the self-awarded mark in the
+  q-errors attempt history (the mistake log shows "Answer (2/3): …"), and a new synced
+  `q-hidden` flag hides a single question from future quizzes, Today picks and cards until she
+  restores it from the Quiz page (separate from the record-level "not relevant" and bank-level
+  retired). Data changes are additive only (optional fields + one new synced key; no schema
+  bump, no migration, no server change). Details:
+  [CHANGELOG-2026-11-21-written-responses-and-hide.md](CHANGELOG-2026-11-21-written-responses-and-hide.md).
+- **Difficulty defaults + first Maths batch complete (21 Nov 2026):** a normal quiz session now
+  prefers rated **Foundation (easy) + Core (standard)** and only fills shortfalls from unrated
+  questions (top-up checkbox, on by default; hard/Stretch stays opt-in) — she can run a Maths
+  session on easier, taught material with no manual exclusion. The AI bankgen prompt emits
+  `suggestedDifficulty`, shown as unreviewed in the Upload preview until applied (importing
+  without applying strips it); first tagged batch = 78 Maths AA SL questions across the taught
+  Functions + Calculus banks. Data changes are additive only (optional per-item `difficulty` in
+  three bank files; no schema bump, no migration). Details:
+  [CHANGELOG-2026-11-21-difficulty-first-batch.md](CHANGELOG-2026-11-21-difficulty-first-batch.md).
 - **WP1 hierarchy polish complete (21 Nov 2026):** the practice-set hierarchy now survives
   **repeated uploads** (unique `set` names + `setOrder` stamped at upload; stored banks never
   rewritten; legacy duplicate names disambiguated display-only) and **topics she hasn't learned**
@@ -127,9 +144,12 @@ Still open:
 
 ## 8. Remaining technical roadmap (audit Page)
 - **H4–H9** from the technical audit:
-  - ~~spaced retests of missed questions at 7 and 30 days~~ Done (Nov 2026, WP2): `q-errors` records
-    carry an optional `dueAt` — the first wrong outcome schedules a retest 7 days out, any later
-    wrong outcome 30 days out; "Review past errors" and the Today suggestions serve/list only due
+  - ~~spaced retests of missed questions at 7 and 30 days~~ Done (Nov 2026, WP2; ladder shortened
+    shortly after): `q-errors` records carry an optional `dueAt` — wrong outcomes come back on a
+    short ladder (1 day after the first miss, 2 after the second, 3 after any later one, capped),
+    and only a successful retrieval — a correct answer at/after the due date — lengthens the
+    interval (a 7-day follow-up); the second success in a row recovers the record; "Review past
+    errors" and the Today suggestions serve/list only due
     records, and the mistake-log deep links bypass the schedule
     ([CHANGELOG-2026-11-21-wp2-mistake-retries.md](CHANGELOG-2026-11-21-wp2-mistake-retries.md));
   - exam-style timed practice (untimed Paper 1A/1B-style banks done in PR #11);

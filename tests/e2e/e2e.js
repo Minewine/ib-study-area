@@ -797,8 +797,10 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
     assert.match(copied, /"topic": "a1-1"/);
     assert.match(copied, /A1\.1 Water/);
     assert.match(copied, /0-based index/);
+    assert.match(copied, /suggestedDifficulty/, "the prompt asks for an AI difficulty suggestion on every item");
+    assert.match(copied, /unreviewed/, "the prompt says suggestions stay unreviewed until applied in the Upload preview");
     assert.doesNotMatch(copied, /\{[a-z_]+\}/);
-    ok("AI picker: deep link prefills bio/a1-1, bankgen prompt carries the exact subject id + topic key, copy-before-open preserved");
+    ok("AI picker: deep link prefills bio/a1-1, bankgen prompt carries the exact subject id + topic key + unreviewed difficulty suggestions, copy-before-open preserved");
     // 8d. staged import: paste → preview → edit a stem → Import in one batch
     const aiBank = JSON.stringify({ subject: "biology-hl", topic: "a1-1", topicLabel: "A1.1 Water", items: [
       { id: "p01", format: "mcq", topic: "a1-1", stem: "Why is water polar?", choices: ["O is more electronegative", "the molecule is symmetric", "hydrogen is heavier"], answer: 0, note: "electronegativity difference" },

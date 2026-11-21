@@ -24,15 +24,25 @@ committed the same day — deploy pending approval):
   status" panel (`topic-taught`, synced per topic). Shared validators live in `assets/bank-schema.js`
   (same rules run in `tools/validate_content.py`); `tools/build_questions_manifest.py` computes the
   picker metadata. Upload limits confirmed: no cap (40k items import; ceiling = localStorage quota).
+  Follow-up shipped 21 Nov 2026: sessions default to rated foundation/core first with an explicit
+  unrated top-up (hard opt-in), the AI bankgen prompt emits `suggestedDifficulty` (unreviewed
+  until applied in the Upload preview), and the first 78-question Maths batch (taught Functions +
+  Calculus banks) is tagged —
+  [CHANGELOG-2026-11-21-difficulty-first-batch.md](CHANGELOG-2026-11-21-difficulty-first-batch.md).
 - [x] **Phase 2 — mistake log** (`app/mistakes.html` + `assets/mistakes.js`): every wrong answer
   with error type, reflection (≤500), retry history (capped 20); recovered vs unresolved vs
   **"not relevant"** (reversible soft-hide, never deleted); status/subject/search filters;
   one-question retry deep links (`quiz.html?errkeys=`). Spaced retests (WP2, 21 Nov 2026): records
-  gain an optional `dueAt` — a miss comes back for a scheduled retest after 7 days, any later wrong
-  outcome after 30; review and the Today suggestions are due-gated (deep links bypass), a wrong
-  retry re-opens a recovered record, and only a correct answer at/after the scheduled date recovers
-  it. Sync-merge of the new `q-errors` fields is field-aware (retries union, reflection/dueAt
-  fill-in, retired rides the winner).
+  gain an optional `dueAt` — wrong outcomes come back on a short ladder (1 day after the first miss,
+  2 after the second, 3 after any later one, capped); only a correct answer at/after the scheduled
+  date lengthens the interval (a 7-day follow-up), and the second success in a row recovers it;
+  review and the Today suggestions are due-gated (deep links bypass), a wrong
+  retry re-opens a recovered record. Sync-merge of the new `q-errors` fields is field-aware (retries union, reflection/dueAt
+  fill-in, retired rides the winner). Follow-up shipped 21 Nov 2026: written wrong/partial
+  attempts also store a bounded copy of her response + the self-awarded mark (shown in the log
+  as "Answer (2/3): …"), and a new synced `q-hidden` flag hides a single question from future
+  quizzes, Today picks and cards until restored from the Quiz page —
+  [CHANGELOG-2026-11-21-written-responses-and-hide.md](CHANGELOG-2026-11-21-written-responses-and-hide.md).
 - [x] **Phase 3 — biology navigation + today suggestions**: Biology hub checklist grouped under
   **A/B/C/D theme headings with live search** (empty state + heading hiding); Today panel adds
   **ranked suggestions with visible reasons** (open mistakes → retry link, closing units → note

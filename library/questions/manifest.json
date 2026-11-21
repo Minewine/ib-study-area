@@ -340,9 +340,9 @@
     "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit",
     "count": 35,
     "difficulty": {
-     "unrated": 35,
-     "easy": 0,
-     "standard": 0,
+     "unrated": 0,
+     "easy": 28,
+     "standard": 7,
      "hard": 0
     }
    }
@@ -366,9 +366,9 @@
     "topicLabel": "Functions (2.4–2.5) — further functions & transformations (next unit)",
     "count": 21,
     "difficulty": {
-     "unrated": 21,
-     "easy": 0,
-     "standard": 0,
+     "unrated": 0,
+     "easy": 17,
+     "standard": 4,
      "hard": 0
     }
    }
@@ -473,10 +473,10 @@
     "topicLabel": "Calculus (5.1–5.6)",
     "count": 22,
     "difficulty": {
-     "unrated": 22,
-     "easy": 0,
-     "standard": 0,
-     "hard": 0
+     "unrated": 0,
+     "easy": 9,
+     "standard": 12,
+     "hard": 1
     }
    }
   ]
