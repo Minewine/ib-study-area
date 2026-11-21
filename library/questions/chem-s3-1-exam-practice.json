@@ -1,0 +1,250 @@
+{
+ "subject": "chemistry-hl",
+ "topic": "chem-s3-1",
+ "topicLabel": "S3.1 The periodic table: classification of elements",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "S3.1"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "s31-x01",
+   "format": "mcq",
+   "topic": "chem-s3-1",
+   "topicLabel": "S3.1 The periodic table: classification of elements",
+   "difficulty": "easy",
+   "stem": "Elements in the same group of the periodic table have the same:",
+   "choices": [
+    "Number of electron shells",
+    "Number of neutrons",
+    "Atomic mass",
+    "Number of valence electrons"
+   ],
+   "answer": 3,
+   "note": "Groups share outer electron configurations, so similar chemical properties. Periods share the number of occupied shells."
+  },
+  {
+   "id": "s31-x02",
+   "format": "mcq",
+   "topic": "chem-s3-1",
+   "topicLabel": "S3.1 The periodic table: classification of elements",
+   "difficulty": "easy",
+   "stem": "Going down group 1, the reactivity of the metals:",
+   "choices": [
+    "Increases, because the outer electron is lost more easily",
+    "Decreases, because the atoms get larger and hold their outer electron more tightly",
+    "Increases, because the nuclear charge decreases",
+    "Stays the same, because they have one valence electron"
+   ],
+   "answer": 0,
+   "note": "Larger atoms with more shielding hold the outer electron less strongly, so it is lost more easily."
+  },
+  {
+   "id": "s31-x03",
+   "format": "mcq",
+   "topic": "chem-s3-1",
+   "topicLabel": "S3.1 The periodic table: classification of elements",
+   "difficulty": "easy",
+   "stem": "Which oxide dissolves in water to form an acidic solution?",
+   "choices": [
+    "Na₂O",
+    "MgO",
+    "SO₃",
+    "CaO"
+   ],
+   "answer": 2,
+   "note": "Non-metal oxides are acidic (SO₃ → H₂SO₄). Metal oxides are basic (Na₂O → NaOH)."
+  },
+  {
+   "id": "s31-x04",
+   "format": "mcq",
+   "topic": "chem-s3-1",
+   "topicLabel": "S3.1 The periodic table: classification of elements",
+   "difficulty": "standard",
+   "stem": "Across period 3 from Na to Cl, atomic radius:",
+   "choices": [
+    "Increases, because more electrons are added to each atom and they repel each other more strongly",
+    "Decreases, because nuclear charge increases while shielding stays similar",
+    "Decreases, because more shells are added",
+    "Stays the same, because electrons enter the same shell"
+   ],
+   "answer": 1,
+   "note": "Greater nuclear charge pulls the same shell closer."
+  },
+  {
+   "id": "s31-x05",
+   "format": "mcq",
+   "topic": "chem-s3-1",
+   "topicLabel": "S3.1 The periodic table: classification of elements",
+   "difficulty": "standard",
+   "stem": "Electronegativity is defined as:",
+   "choices": [
+    "The ability of an atom to attract a bonding pair of electrons",
+    "The energy released when a gaseous atom gains an electron to form a negative ion",
+    "The energy needed to remove an electron from an atom",
+    "The charge on an ion of the element"
+   ],
+   "answer": 0,
+   "note": "Electronegativity increases across a period and up a group; fluorine is highest."
+  },
+  {
+   "id": "s31-x06",
+   "format": "mcq",
+   "topic": "chem-s3-1",
+   "topicLabel": "S3.1 The periodic table: classification of elements",
+   "difficulty": "standard",
+   "stem": "When chlorine water is added to potassium bromide solution:",
+   "choices": [
+    "No reaction occurs, because bromine is more reactive",
+    "Chlorine forms, because bromide is oxidised",
+    "Potassium chloride precipitates as a white solid",
+    "Bromine forms, because chlorine is more reactive than bromine"
+   ],
+   "answer": 3,
+   "note": "Cl₂ + 2Br⁻ → 2Cl⁻ + Br₂ (orange/yellow). A more reactive halogen displaces a less reactive one."
+  },
+  {
+   "id": "s31-x07",
+   "format": "mcq",
+   "topic": "chem-s3-1",
+   "topicLabel": "S3.1 The periodic table: classification of elements",
+   "difficulty": "standard",
+   "stem": "Which ion is smaller than its atom?",
+   "choices": [
+    "Cl⁻",
+    "O²⁻",
+    "Na⁺",
+    "S²⁻"
+   ],
+   "answer": 2,
+   "note": "Cations lose the outer shell and are smaller. Anions gain electrons, increasing repulsion, so they are larger."
+  },
+  {
+   "id": "s31-x08",
+   "format": "mcq",
+   "topic": "chem-s3-1",
+   "topicLabel": "S3.1 The periodic table: classification of elements",
+   "difficulty": "hard",
+   "stem": "Which property is characteristic of transition elements?",
+   "choices": [
+    "Low melting points",
+    "Variable oxidation states",
+    "Only colourless compounds",
+    "Single fixed ionic charge"
+   ],
+   "answer": 1,
+   "note": "Transition elements show variable oxidation states, coloured compounds, catalytic activity and complex ion formation."
+  },
+  {
+   "id": "s31-x09",
+   "format": "mcq",
+   "topic": "chem-s3-1",
+   "topicLabel": "S3.1 The periodic table: classification of elements",
+   "difficulty": "hard",
+   "stem": "Transition elements show variable oxidation states because:",
+   "choices": [
+    "They have very few electrons in total",
+    "The 4s and 3d sublevels are close in energy",
+    "Their 3d sublevel is always full",
+    "They have large atomic radii"
+   ],
+   "answer": 1,
+   "note": "Electrons from both 4s and 3d can be lost with similar energy, giving several possible ion charges."
+  },
+  {
+   "id": "s31-x10",
+   "format": "mcq",
+   "topic": "chem-s3-1",
+   "topicLabel": "S3.1 The periodic table: classification of elements",
+   "difficulty": "hard",
+   "stem": "Zinc is in the d-block but is not considered a transition element because:",
+   "choices": [
+    "Its atoms have no 3d electrons",
+    "It forms many coloured compounds",
+    "It has no 4s electrons in the atom",
+    "Its only ion, Zn²⁺, has a full 3d sublevel"
+   ],
+   "answer": 3,
+   "note": "A transition element forms at least one stable ion with a partially filled d sublevel. Zn²⁺ is [Ar] 3d¹⁰."
+  },
+  {
+   "id": "s31-x11",
+   "format": "mcq",
+   "topic": "chem-s3-1",
+   "topicLabel": "S3.1 The periodic table: classification of elements",
+   "difficulty": "hard",
+   "stem": "What is the oxidation state of iron in [Fe(CN)₆]³⁻?",
+   "choices": [
+    "+3",
+    "+6",
+    "−3",
+    "+2"
+   ],
+   "answer": 0,
+   "note": "6 × (−1) for CN⁻ = −6; overall −3, so Fe = +3."
+  },
+  {
+   "id": "s31-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s3-1",
+   "topicLabel": "S3.1 The periodic table: classification of elements",
+   "difficulty": "standard",
+   "stem": "Describe the reaction of sodium with water and write a balanced equation.",
+   "markscheme": [
+    "Sodium floats, melts into a ball, fizzes/moves around (1)",
+    "Hydrogen gas and an alkaline solution form (1)",
+    "2Na(s) + 2H₂O(l) → 2NaOH(aq) + H₂(g) (1)"
+   ],
+   "tactic": "Describe = observations; include state symbols in the equation."
+  },
+  {
+   "id": "s31-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s3-1",
+   "topicLabel": "S3.1 The periodic table: classification of elements",
+   "difficulty": "standard",
+   "stem": "Explain the trend in first ionisation energy down group 1.",
+   "markscheme": [
+    "Ionisation energy decreases down the group (1)",
+    "Atomic radius increases / outer electron further from the nucleus (1)",
+    "More shielding by inner shells, so weaker attraction despite larger nuclear charge (1)"
+   ],
+   "tactic": "Trend first, then distance and shielding."
+  },
+  {
+   "id": "s31-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "chem-s3-1",
+   "topicLabel": "S3.1 The periodic table: classification of elements",
+   "difficulty": "hard",
+   "stem": "Explain why transition element compounds are often coloured.",
+   "markscheme": [
+    "Ligands split the d orbitals into two energy levels (1)",
+    "Electrons absorb light of a specific frequency to move to the higher level (1)",
+    "The complementary colour is transmitted/reflected (1)",
+    "Requires a partially filled d sublevel (1)"
+   ],
+   "tactic": "Coloured compounds: splitting, absorption, complementary colour."
+  },
+  {
+   "id": "s31-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "chem-s3-1",
+   "topicLabel": "S3.1 The periodic table: classification of elements",
+   "difficulty": "hard",
+   "stem": "Data response (data booklet values). Atomic (covalent) radii in pm for period 3: Na 160, Mg 140, Al 124, Si 114, P 109, S 104, Cl 100. First ionisation energies (kJ mol⁻¹): Na 496, Mg 738, Al 578, Si 787, P 1012, S 1000, Cl 1251.\n(a) Describe the trend in atomic radius. (b) Identify the two exceptions to the increase in ionisation energy. (c) Explain one of the exceptions.",
+   "markscheme": [
+    "(a) Radius decreases from Na (160 pm) to Cl (100 pm) (1)",
+    "(b) Mg to Al and P to S (1)",
+    "(c) Al: electron removed from 3p, higher energy/shielded by 3s; or S: paired 3p electron repelled, easier to remove (1)",
+    "Correct link to electron configuration given (1)"
+   ],
+   "tactic": "Data questions: quote values with units when describing a trend, then explain with nuclear charge, shielding and sublevels."
+  }
+ ]
+}

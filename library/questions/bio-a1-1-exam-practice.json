@@ -1,0 +1,250 @@
+{
+ "subject": "biology-hl",
+ "topic": "bio-a1-1",
+ "topicLabel": "A1.1 Water",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "A1.1"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "a11-x01",
+   "format": "mcq",
+   "topic": "bio-a1-1",
+   "topicLabel": "A1.1 Water",
+   "difficulty": "easy",
+   "stem": "A hydrogen bond between water molecules forms between:",
+   "choices": [
+    "Two hydrogen atoms of neighbouring water molecules sharing a pair of electrons covalently",
+    "The oxygen atoms of two neighbouring water molecules",
+    "An H⁺ ion and an OH⁻ ion in the liquid",
+    "A partially positive H on one molecule and a partially negative O on another"
+   ],
+   "answer": 3,
+   "note": "Polarity gives δ+ hydrogens and δ− oxygen; the attraction between them is a hydrogen bond (weaker than covalent)."
+  },
+  {
+   "id": "a11-x02",
+   "format": "mcq",
+   "topic": "bio-a1-1",
+   "topicLabel": "A1.1 Water",
+   "difficulty": "easy",
+   "stem": "Cohesion of water molecules allows:",
+   "choices": [
+    "Water to dissolve sodium chloride",
+    "Water to be pulled up xylem under tension",
+    "Ice to float on liquid water",
+    "Water to stick to the xylem walls"
+   ],
+   "answer": 1,
+   "note": "Cohesion (water–water hydrogen bonds) keeps the column continuous. Adhesion is water sticking to other surfaces."
+  },
+  {
+   "id": "a11-x03",
+   "format": "mcq",
+   "topic": "bio-a1-1",
+   "topicLabel": "A1.1 Water",
+   "difficulty": "easy",
+   "stem": "Pond skaters can walk on water because of:",
+   "choices": [
+    "Surface tension, caused by cohesion",
+    "Adhesion between water and their legs",
+    "The high specific heat capacity of water",
+    "Water being a good solvent"
+   ],
+   "answer": 0,
+   "note": "Hydrogen bonds at the surface resist being stretched, forming a surface \"skin\"."
+  },
+  {
+   "id": "a11-x04",
+   "format": "mcq",
+   "topic": "bio-a1-1",
+   "topicLabel": "A1.1 Water",
+   "difficulty": "standard",
+   "stem": "Adhesion of water to cellulose in plant cell walls is important because it:",
+   "choices": [
+    "Prevents water evaporating from the leaf surface by holding it tightly inside the cell walls",
+    "Makes the cellulose fibres dissolve in water",
+    "Draws water through cell walls and up narrow tubes by capillary action",
+    "Allows ions to cross the plasma membrane"
+   ],
+   "answer": 2,
+   "note": "Water is attracted to hydrophilic cellulose, moving through walls and into thin spaces (capillarity)."
+  },
+  {
+   "id": "a11-x05",
+   "format": "mcq",
+   "topic": "bio-a1-1",
+   "topicLabel": "A1.1 Water",
+   "difficulty": "standard",
+   "stem": "Which substance is hydrophobic?",
+   "choices": [
+    "A triglyceride (fat)",
+    "Glucose",
+    "Sodium chloride",
+    "An amino acid with a charged R group"
+   ],
+   "answer": 0,
+   "note": "Non-polar molecules cannot form hydrogen bonds with water. Glucose and ions are hydrophilic."
+  },
+  {
+   "id": "a11-x06",
+   "format": "mcq",
+   "topic": "bio-a1-1",
+   "topicLabel": "A1.1 Water",
+   "difficulty": "standard",
+   "stem": "Water's high specific heat capacity means that:",
+   "choices": [
+    "Water heats up very quickly in sunlight, so shallow ponds become too hot for most organisms",
+    "Large bodies of water change temperature slowly, giving stable habitats",
+    "Water boils at a low temperature",
+    "Ice sinks to the bottom of lakes in winter"
+   ],
+   "answer": 1,
+   "note": "Much energy is needed to break hydrogen bonds before temperature rises, buffering aquatic habitats."
+  },
+  {
+   "id": "a11-x07",
+   "format": "mcq",
+   "topic": "bio-a1-1",
+   "topicLabel": "A1.1 Water",
+   "difficulty": "standard",
+   "stem": "Evaporation of sweat cools the body because:",
+   "choices": [
+    "Water vapour reflects heat away from the skin",
+    "Sweat contains salts that absorb heat",
+    "Water has a low specific heat capacity",
+    "Breaking hydrogen bonds to evaporate water absorbs a lot of heat"
+   ],
+   "answer": 3,
+   "note": "Water's high latent heat of vaporisation removes much heat per gram evaporated."
+  },
+  {
+   "id": "a11-x08",
+   "format": "mcq",
+   "topic": "bio-a1-1",
+   "topicLabel": "A1.1 Water",
+   "difficulty": "standard",
+   "stem": "Why is blood plasma able to transport glucose and sodium ions, but cholesterol is carried in lipoproteins?",
+   "choices": [
+    "Cholesterol molecules are too small to stay suspended in plasma without being bound to a carrier",
+    "Glucose and ions are carried bound to red blood cells",
+    "Glucose and ions are hydrophilic and dissolve; cholesterol is hydrophobic",
+    "Cholesterol reacts with water if it is not protected"
+   ],
+   "answer": 2,
+   "note": "Polar and charged substances dissolve; non-polar ones need carriers to travel in watery plasma."
+  },
+  {
+   "id": "a11-x09",
+   "format": "mcq",
+   "topic": "bio-a1-1",
+   "topicLabel": "A1.1 Water",
+   "difficulty": "hard",
+   "stem": "One hypothesis for the origin of Earth's water is that it was delivered by:",
+   "choices": [
+    "Photosynthesis by the first cyanobacteria",
+    "Condensation of water from the Sun's outer layers",
+    "Asteroids and comets that collided with the early Earth",
+    "The breakdown of glucose in the first cells"
+   ],
+   "answer": 2,
+   "note": "Water-rich asteroids/comets are thought to have brought water. Earth's distance from the Sun let it stay liquid."
+  },
+  {
+   "id": "a11-x10",
+   "format": "mcq",
+   "topic": "bio-a1-1",
+   "topicLabel": "A1.1 Water",
+   "difficulty": "hard",
+   "stem": "The \"Goldilocks zone\" around a star is the region where:",
+   "choices": [
+    "Planets have an atmosphere made of oxygen",
+    "Planets have the same mass as Earth",
+    "Life has been confirmed to exist",
+    "Temperatures allow liquid water to exist on a planet's surface"
+   ],
+   "answer": 3,
+   "note": "Liquid water is considered necessary for life as we know it, so the search for life focuses there."
+  },
+  {
+   "id": "a11-x11",
+   "format": "mcq",
+   "topic": "bio-a1-1",
+   "topicLabel": "A1.1 Water",
+   "difficulty": "hard",
+   "stem": "Ice is less dense than liquid water. The biological significance is that:",
+   "choices": [
+    "Ice sinks to the bottom and keeps the lake bed cold, so bottom-dwelling animals stay dormant",
+    "Ice floats and insulates the water below, so aquatic life survives winter",
+    "Ice reflects heat into the water below the surface",
+    "Lakes freeze from the bottom upward, protecting the surface"
+   ],
+   "answer": 1,
+   "note": "Hydrogen bonds in ice hold molecules further apart. Floating ice insulates the liquid water beneath."
+  },
+  {
+   "id": "a11-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-a1-1",
+   "topicLabel": "A1.1 Water",
+   "difficulty": "standard",
+   "stem": "Explain how the polarity of water molecules makes water a good solvent.",
+   "markscheme": [
+    "Water molecules have δ− oxygen and δ+ hydrogens (1)",
+    "They are attracted to ions and polar molecules (1)",
+    "Water molecules surround each solute particle (hydration shell), separating them (1)"
+   ],
+   "tactic": "Start with the cause (polarity), finish with the consequence (dissolving)."
+  },
+  {
+   "id": "a11-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-a1-1",
+   "topicLabel": "A1.1 Water",
+   "difficulty": "standard",
+   "stem": "Compare the thermal properties of water and air as habitats for animals.",
+   "markscheme": [
+    "Water has a much higher specific heat capacity than air (1)",
+    "Water temperature is more stable / changes slowly (1)",
+    "Water conducts heat away faster, so animals lose body heat more quickly in water (1)",
+    "Air temperature can fluctuate widely (day/night, seasons) (1)"
+   ],
+   "tactic": "Compare = paired statements about the same property."
+  },
+  {
+   "id": "a11-x14",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-a1-1",
+   "topicLabel": "A1.1 Water",
+   "difficulty": "hard",
+   "stem": "Explain why water's cohesion and adhesion are both needed for transport in xylem.",
+   "markscheme": [
+    "Cohesion: hydrogen bonds between water molecules keep the column continuous (1)",
+    "Tension from transpiration is transmitted down the column (1)",
+    "Adhesion to the hydrophilic xylem walls supports the column and helps it rise (1)"
+   ],
+   "tactic": "Name both properties and say what each does separately."
+  },
+  {
+   "id": "a11-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-a1-1",
+   "topicLabel": "A1.1 Water",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) Temperatures of a small pond and the air above it were recorded over 24 h in summer: air minimum 9 °C, maximum 31 °C; pond minimum 18 °C, maximum 23 °C.\n(a) Calculate the temperature range for air and for pond water. (b) Explain the difference using a property of water. (c) Suggest one advantage of this for organisms living in the pond.",
+   "markscheme": [
+    "(a) Air range 22 °C; pond range 5 °C (1)",
+    "(b) Water has a high specific heat capacity (1)",
+    "Much energy is needed to change its temperature because hydrogen bonds must be broken/formed (1)",
+    "(c) Stable temperature, so enzymes work near their optimum / organisms need fewer adaptations to temperature change (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

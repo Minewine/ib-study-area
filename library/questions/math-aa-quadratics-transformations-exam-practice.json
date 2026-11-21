@@ -1,0 +1,271 @@
+{
+ "subject": "math-aa-sl",
+ "topic": "math-y12-quadratics",
+ "topicLabel": "Quadratics, solving equations and transformations (2.6, 2.7, 2.10, 2.11)",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "2.6",
+  "2.7",
+  "2.10",
+  "2.11"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "qdr-x01",
+   "format": "mcq",
+   "topic": "math-y12-quadratics",
+   "topicLabel": "Quadratics, solving equations and transformations (2.6, 2.7, 2.10, 2.11)",
+   "difficulty": "easy",
+   "stem": "What is the vertex of y = (x − 3)² + 5?",
+   "choices": [
+    "(−3, 5)",
+    "(3, −5)",
+    "(5, 3)",
+    "(3, 5)"
+   ],
+   "answer": 3,
+   "note": "In y = a(x − h)² + k the vertex is (h, k). Watch the sign inside the bracket."
+  },
+  {
+   "id": "qdr-x02",
+   "format": "mcq",
+   "topic": "math-y12-quadratics",
+   "topicLabel": "Quadratics, solving equations and transformations (2.6, 2.7, 2.10, 2.11)",
+   "difficulty": "easy",
+   "stem": "Solve x² − 5x + 6 = 0.",
+   "choices": [
+    "x = −2 or x = −3",
+    "x = 1 or x = 6",
+    "x = 2 or x = 3",
+    "x = −1 or x = 6"
+   ],
+   "answer": 2,
+   "note": "(x − 2)(x − 3) = 0. Check: 2 × 3 = 6 and 2 + 3 = 5."
+  },
+  {
+   "id": "qdr-x03",
+   "format": "mcq",
+   "topic": "math-y12-quadratics",
+   "topicLabel": "Quadratics, solving equations and transformations (2.6, 2.7, 2.10, 2.11)",
+   "difficulty": "easy",
+   "stem": "Find the axis of symmetry of y = 2x² − 8x + 1.",
+   "choices": [
+    "x = 2",
+    "x = −2",
+    "x = 4",
+    "x = 8"
+   ],
+   "answer": 0,
+   "note": "x = −b/(2a) = 8/4 = 2."
+  },
+  {
+   "id": "qdr-x04",
+   "format": "mcq",
+   "topic": "math-y12-quadratics",
+   "topicLabel": "Quadratics, solving equations and transformations (2.6, 2.7, 2.10, 2.11)",
+   "difficulty": "standard",
+   "stem": "Find the discriminant of 2x² + 3x − 5.",
+   "choices": [
+    "−31",
+    "49",
+    "1",
+    "19"
+   ],
+   "answer": 1,
+   "note": "Δ = b² − 4ac = 9 − 4(2)(−5) = 9 + 40 = 49. Two real roots (a perfect square, so rational roots)."
+  },
+  {
+   "id": "qdr-x05",
+   "format": "mcq",
+   "topic": "math-y12-quadratics",
+   "topicLabel": "Quadratics, solving equations and transformations (2.6, 2.7, 2.10, 2.11)",
+   "difficulty": "standard",
+   "stem": "kx² + 4x + 1 = 0 has two equal roots. Find k.",
+   "choices": [
+    "k = −4",
+    "k = 16",
+    "k = 4",
+    "k = 1/4"
+   ],
+   "answer": 2,
+   "note": "Equal roots: Δ = 0. 16 − 4k = 0, so k = 4."
+  },
+  {
+   "id": "qdr-x06",
+   "format": "mcq",
+   "topic": "math-y12-quadratics",
+   "topicLabel": "Quadratics, solving equations and transformations (2.6, 2.7, 2.10, 2.11)",
+   "difficulty": "standard",
+   "stem": "Write x² + 6x + 2 in the form (x + p)² + q.",
+   "choices": [
+    "(x + 3)² − 7",
+    "(x + 3)² + 2",
+    "(x + 6)² − 34",
+    "(x − 3)² − 7"
+   ],
+   "answer": 0,
+   "note": "Halve the x-coefficient: (x + 3)² = x² + 6x + 9, then subtract 7 to get + 2."
+  },
+  {
+   "id": "qdr-x07",
+   "format": "mcq",
+   "topic": "math-y12-quadratics",
+   "topicLabel": "Quadratics, solving equations and transformations (2.6, 2.7, 2.10, 2.11)",
+   "difficulty": "standard",
+   "stem": "The graph of y = f(x) is translated by the vector (2, −3). The new graph is:",
+   "choices": [
+    "y = f(x + 2) − 3",
+    "y = f(x − 2) − 3",
+    "y = f(x − 2) + 3",
+    "y = f(x + 3) − 2"
+   ],
+   "answer": 1,
+   "note": "A shift of +2 in x appears as (x − 2) inside the function; −3 in y is outside."
+  },
+  {
+   "id": "qdr-x08",
+   "format": "mcq",
+   "topic": "math-y12-quadratics",
+   "topicLabel": "Quadratics, solving equations and transformations (2.6, 2.7, 2.10, 2.11)",
+   "difficulty": "standard",
+   "stem": "The transformation y = f(x) → y = 2f(x) is:",
+   "choices": [
+    "A horizontal stretch, scale factor 2",
+    "A horizontal stretch, scale factor 1/2",
+    "A vertical stretch, scale factor 1/2",
+    "A vertical stretch, scale factor 2"
+   ],
+   "answer": 3,
+   "note": "A number multiplying the whole function acts vertically, as written."
+  },
+  {
+   "id": "qdr-x09",
+   "format": "mcq",
+   "topic": "math-y12-quadratics",
+   "topicLabel": "Quadratics, solving equations and transformations (2.6, 2.7, 2.10, 2.11)",
+   "difficulty": "hard",
+   "stem": "The point (4, 6) lies on y = f(x). Which point must lie on y = 3f(x/2)?",
+   "choices": [
+    "(2, 18)",
+    "(8, 2)",
+    "(2, 2)",
+    "(8, 18)"
+   ],
+   "answer": 3,
+   "note": "f(x/2) is a horizontal stretch factor 2 (x → 8); 3f is a vertical stretch factor 3 (y → 18)."
+  },
+  {
+   "id": "qdr-x10",
+   "format": "mcq",
+   "topic": "math-y12-quadratics",
+   "topicLabel": "Quadratics, solving equations and transformations (2.6, 2.7, 2.10, 2.11)",
+   "difficulty": "hard",
+   "stem": "Find all values of k for which x² + kx + 9 = 0 has no real roots.",
+   "choices": [
+    "k > 6",
+    "−6 < k < 6",
+    "k < −6 or k > 6",
+    "−3 < k < 3"
+   ],
+   "answer": 1,
+   "note": "No real roots: k² − 36 < 0, so −6 < k < 6. Sketch the parabola in k to choose inside or outside."
+  },
+  {
+   "id": "qdr-x11",
+   "format": "mcq",
+   "topic": "math-y12-quadratics",
+   "topicLabel": "Quadratics, solving equations and transformations (2.6, 2.7, 2.10, 2.11)",
+   "difficulty": "hard",
+   "stem": "A quadratic has roots −1 and 5 and its graph passes through (0, −10). Its equation is:",
+   "choices": [
+    "y = (x + 1)(x − 5)",
+    "y = 2(x − 1)(x + 5)",
+    "y = 2(x + 1)(x − 5)",
+    "y = −2(x + 1)(x − 5)"
+   ],
+   "answer": 2,
+   "note": "y = a(x + 1)(x − 5); at x = 0, −5a = −10, so a = 2."
+  },
+  {
+   "id": "qdr-x12",
+   "format": "mcq",
+   "topic": "math-y12-quadratics",
+   "topicLabel": "Quadratics, solving equations and transformations (2.6, 2.7, 2.10, 2.11)",
+   "difficulty": "hard",
+   "stem": "Using technology, the solution of x³ + x − 3 = 0 is closest to:",
+   "choices": [
+    "x = 1.21",
+    "x = 1.44",
+    "x = 3.00",
+    "x = 0.79"
+   ],
+   "answer": 0,
+   "note": "Graph y = x³ + x − 3 and find the zero: 1.2134... (Check: 1.21³ + 1.21 ≈ 2.98.)"
+  },
+  {
+   "id": "qdr-x13",
+   "format": "written",
+   "marks": 4,
+   "topic": "math-y12-quadratics",
+   "topicLabel": "Quadratics, solving equations and transformations (2.6, 2.7, 2.10, 2.11)",
+   "difficulty": "standard",
+   "stem": "f(x) = x² − 4x − 5.\n(a) Factorise f(x) and write down the x-intercepts of its graph.\n(b) Write f(x) in the form (x − h)² + k and write down the vertex.",
+   "markscheme": [
+    "(x − 5)(x + 1) (1)",
+    "x-intercepts (−1, 0) and (5, 0) (1)",
+    "(x − 2)² − 9 (1)",
+    "Vertex (2, −9) (1)"
+   ],
+   "tactic": "Write down = no working needed, but give coordinates as points."
+  },
+  {
+   "id": "qdr-x14",
+   "format": "written",
+   "marks": 3,
+   "topic": "math-y12-quadratics",
+   "topicLabel": "Quadratics, solving equations and transformations (2.6, 2.7, 2.10, 2.11)",
+   "difficulty": "standard",
+   "stem": "Solve 2x² − 3x − 4 = 0, giving exact answers.",
+   "markscheme": [
+    "Δ = 9 + 32 = 41 (1)",
+    "x = (3 ± √41)/4 (1)",
+    "Both roots stated (1)"
+   ],
+   "tactic": "'Exact' means leave surds — no decimals."
+  },
+  {
+   "id": "qdr-x15",
+   "format": "written",
+   "marks": 5,
+   "topic": "math-y12-quadratics",
+   "topicLabel": "Quadratics, solving equations and transformations (2.6, 2.7, 2.10, 2.11)",
+   "difficulty": "hard",
+   "stem": "The graph of f(x) = x² is transformed to give g(x) = −2(x + 1)² + 8.\n(a) Describe fully a sequence of transformations.\n(b) Write down the vertex and the range of g.\n(c) Find the x-intercepts of g.",
+   "markscheme": [
+    "Reflection in the x-axis and vertical stretch, scale factor 2 (1)",
+    "Translation by the vector (−1, 8) (1)",
+    "Vertex (−1, 8); range g(x) ≤ 8 (1)",
+    "(x + 1)² = 4 (1)",
+    "x = 1 or x = −3 (1)"
+   ],
+   "tactic": "'Describe fully' needs the type, the direction and the factor or vector for each step."
+  },
+  {
+   "id": "qdr-x16",
+   "format": "written",
+   "marks": 4,
+   "topic": "math-y12-quadratics",
+   "topicLabel": "Quadratics, solving equations and transformations (2.6, 2.7, 2.10, 2.11)",
+   "difficulty": "hard",
+   "stem": "A ball is thrown upwards. Its height in metres after t seconds is h(t) = −4.9t² + 19.6t + 1.5.\n(a) Find the maximum height.\n(b) Find when the ball hits the ground.",
+   "markscheme": [
+    "t = −b/(2a) = 19.6/9.8 = 2 s (1)",
+    "h(2) = 21.1 m (1)",
+    "Set h(t) = 0 and solve (GDC or formula) (1)",
+    "t ≈ 4.08 s (negative root rejected) (1)"
+   ],
+   "tactic": "Reject answers that make no sense in context, and say why."
+  }
+ ]
+}

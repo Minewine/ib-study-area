@@ -1,0 +1,249 @@
+{
+ "subject": "biology-hl",
+ "topic": "bio-b1-1",
+ "topicLabel": "B1.1 Carbohydrates and lipids",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "B1.1"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "b11-x01",
+   "format": "mcq",
+   "topic": "bio-b1-1",
+   "topicLabel": "B1.1 Carbohydrates and lipids",
+   "difficulty": "easy",
+   "stem": "Carbon can form a huge variety of compounds because each carbon atom:",
+   "choices": [
+    "Forms four covalent bonds, including chains and rings",
+    "Forms ionic bonds with many other elements, both metals and non-metals",
+    "Can lose four electrons to become a stable ion",
+    "Forms only single bonds with hydrogen atoms"
+   ],
+   "answer": 0,
+   "note": "Four covalent bonds allow branching chains, rings, and double bonds — the basis of organic diversity."
+  },
+  {
+   "id": "b11-x02",
+   "format": "mcq",
+   "topic": "bio-b1-1",
+   "topicLabel": "B1.1 Carbohydrates and lipids",
+   "difficulty": "easy",
+   "stem": "A condensation reaction between two monosaccharides:",
+   "choices": [
+    "Forms a peptide bond and releases water",
+    "Forms a glycosidic bond and releases water",
+    "Breaks a glycosidic bond and uses water",
+    "Forms an ester bond and uses water"
+   ],
+   "answer": 1,
+   "note": "Condensation joins monomers, releasing H₂O. Hydrolysis is the reverse, using water."
+  },
+  {
+   "id": "b11-x03",
+   "format": "mcq",
+   "topic": "bio-b1-1",
+   "topicLabel": "B1.1 Carbohydrates and lipids",
+   "difficulty": "easy",
+   "stem": "Which polysaccharide is the main energy store in animals?",
+   "choices": [
+    "Starch",
+    "Cellulose",
+    "Glycogen",
+    "Chitin"
+   ],
+   "answer": 2,
+   "note": "Glycogen is highly branched, stored in liver and muscle. Starch is the plant store; cellulose is structural."
+  },
+  {
+   "id": "b11-x04",
+   "format": "mcq",
+   "topic": "bio-b1-1",
+   "topicLabel": "B1.1 Carbohydrates and lipids",
+   "difficulty": "standard",
+   "stem": "Glucose is suited to its role in transport and as a substrate for respiration because it is:",
+   "choices": [
+    "Insoluble, so it does not affect the water potential of cells it is stored in",
+    "Large and branched, so it stores much energy",
+    "Hydrophobic, so it crosses membranes easily",
+    "Soluble and small, and easily oxidised to release energy"
+   ],
+   "answer": 3,
+   "note": "Glucose dissolves in plasma/sap and is used directly in respiration. Being soluble, it does affect osmosis, so it is stored as polymers."
+  },
+  {
+   "id": "b11-x05",
+   "format": "mcq",
+   "topic": "bio-b1-1",
+   "topicLabel": "B1.1 Carbohydrates and lipids",
+   "difficulty": "standard",
+   "stem": "Starch and glycogen are good storage molecules mainly because they are:",
+   "choices": [
+    "Soluble, so they move easily around the body to the tissues that need energy",
+    "Made of β-glucose, which cannot be digested",
+    "Compact and insoluble, so they do not affect osmosis",
+    "Rich in nitrogen for making proteins"
+   ],
+   "answer": 2,
+   "note": "Many glucose units are stored in a small space without changing water potential; branching allows rapid release."
+  },
+  {
+   "id": "b11-x06",
+   "format": "mcq",
+   "topic": "bio-b1-1",
+   "topicLabel": "B1.1 Carbohydrates and lipids",
+   "difficulty": "standard",
+   "stem": "Cellulose is strong because:",
+   "choices": [
+    "Alternate β-glucose units form straight chains linked by hydrogen bonds into microfibrils",
+    "α-glucose units form a tightly coiled and highly branched helix whose many 1,6 links resist stretching",
+    "It is highly branched like glycogen",
+    "It contains peptide bonds between monomers"
+   ],
+   "answer": 0,
+   "note": "Straight chains lie in parallel, cross-linked by many hydrogen bonds into microfibrils with high tensile strength."
+  },
+  {
+   "id": "b11-x07",
+   "format": "mcq",
+   "topic": "bio-b1-1",
+   "topicLabel": "B1.1 Carbohydrates and lipids",
+   "difficulty": "standard",
+   "stem": "A triglyceride is formed from:",
+   "choices": [
+    "Three glycerols and one fatty acid by hydrolysis",
+    "One glucose and three fatty acids by condensation",
+    "Two fatty acids and a phosphate group",
+    "One glycerol and three fatty acids by condensation"
+   ],
+   "answer": 3,
+   "note": "Three ester bonds form, releasing three water molecules."
+  },
+  {
+   "id": "b11-x08",
+   "format": "mcq",
+   "topic": "bio-b1-1",
+   "topicLabel": "B1.1 Carbohydrates and lipids",
+   "difficulty": "standard",
+   "stem": "An unsaturated fatty acid contains:",
+   "choices": [
+    "Only single bonds between carbon atoms",
+    "At least one C=C double bond in its hydrocarbon chain",
+    "A phosphate group attached to the chain",
+    "More hydrogen than a saturated fatty acid of equal length"
+   ],
+   "answer": 1,
+   "note": "Double bonds (cis) create kinks; unsaturated fats are usually liquid at room temperature (oils)."
+  },
+  {
+   "id": "b11-x09",
+   "format": "mcq",
+   "topic": "bio-b1-1",
+   "topicLabel": "B1.1 Carbohydrates and lipids",
+   "difficulty": "hard",
+   "stem": "Lipids are used for long-term energy storage rather than carbohydrates because they:",
+   "choices": [
+    "Can be broken down more quickly than glycogen",
+    "Release about twice as much energy per gram and are insoluble",
+    "Are soluble and travel easily in the blood",
+    "Contain nitrogen needed for growth"
+   ],
+   "answer": 1,
+   "note": "More energy per gram and no effect on osmosis. Glycogen is better for rapid release."
+  },
+  {
+   "id": "b11-x10",
+   "format": "mcq",
+   "topic": "bio-b1-1",
+   "topicLabel": "B1.1 Carbohydrates and lipids",
+   "difficulty": "hard",
+   "stem": "Phospholipids form bilayers because:",
+   "choices": [
+    "They are entirely hydrophobic and avoid water",
+    "They form hydrogen bonds between their fatty acid tails, holding the two layers of tails tightly together",
+    "Their glycerol forms covalent bonds with water",
+    "They have a hydrophilic phosphate head and hydrophobic fatty acid tails"
+   ],
+   "answer": 3,
+   "note": "Amphipathic: heads face water, tails face each other in the middle of the bilayer."
+  },
+  {
+   "id": "b11-x11",
+   "format": "mcq",
+   "topic": "bio-b1-1",
+   "topicLabel": "B1.1 Carbohydrates and lipids",
+   "difficulty": "hard",
+   "stem": "Steroid hormones such as testosterone can pass through plasma membranes because they are:",
+   "choices": [
+    "Lipid-based and non-polar, so they dissolve in the bilayer",
+    "Small polar molecules that use aquaporins",
+    "Proteins that are carried in vesicles",
+    "Charged ions that use channel proteins"
+   ],
+   "answer": 0,
+   "note": "Steroids have a four-ring lipid structure; they diffuse through the hydrophobic core and act on intracellular receptors."
+  },
+  {
+   "id": "b11-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b1-1",
+   "topicLabel": "B1.1 Carbohydrates and lipids",
+   "difficulty": "standard",
+   "stem": "Explain how the structure of glycogen makes it suitable as an energy store.",
+   "markscheme": [
+    "Many glucose units in one molecule / compact (1)",
+    "Insoluble so does not affect water potential (1)",
+    "Highly branched, giving many ends for enzymes so glucose can be released quickly (1)"
+   ],
+   "tactic": "Each structural point needs its functional consequence."
+  },
+  {
+   "id": "b11-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b1-1",
+   "topicLabel": "B1.1 Carbohydrates and lipids",
+   "difficulty": "standard",
+   "stem": "Distinguish between saturated and unsaturated fatty acids.",
+   "markscheme": [
+    "Saturated: only single C–C bonds; unsaturated: one or more C=C double bonds (1)",
+    "Saturated chains are straight and pack closely; unsaturated (cis) have kinks (1)",
+    "Saturated fats are usually solid at room temperature; unsaturated usually liquid (1)"
+   ],
+   "tactic": "Distinguish = paired contrasts on the same line."
+  },
+  {
+   "id": "b11-x14",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b1-1",
+   "topicLabel": "B1.1 Carbohydrates and lipids",
+   "difficulty": "hard",
+   "stem": "Outline how adipose tissue is adapted for its roles in animals.",
+   "markscheme": [
+    "Stores triglycerides, a compact energy store (high energy per gram) (1)",
+    "Acts as thermal insulation under the skin (low conductivity) (1)",
+    "Cushions/protects organs; buoyancy in aquatic mammals (1)"
+   ],
+   "tactic": "Outline roles and the property that suits each."
+  },
+  {
+   "id": "b11-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-b1-1",
+   "topicLabel": "B1.1 Carbohydrates and lipids",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) Energy released per gram (kJ g⁻¹) measured by calorimetry: glucose 15.6; starch 16.8; olive oil 37.1; butter fat 36.4.\n(a) Calculate how many times more energy per gram the olive oil released than glucose. (b) Explain why lipids release more energy per gram. (c) Suggest why the measured values may be lower than published values.",
+   "markscheme": [
+    "(a) 37.1 ÷ 15.6 = 2.4 times (1)",
+    "(b) Lipids have a higher proportion of C–H bonds / less oxygen per gram (1)",
+    "More hydrogen is available for oxidation in respiration, so more energy is released (1)",
+    "(c) Heat lost to the surroundings / incomplete combustion (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}
