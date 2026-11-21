@@ -26,7 +26,7 @@ test("buildPayload: full valid payload shape (app/key/type/area/title/body + con
     context: { page: "quiz", subject: "biology-hl", topic: "A1.1 Water" }, user: "neva"
   }));
   assert.deepEqual(p, {
-    app: "nevaib", key: "CHANGE_ME_APP_KEY", type: "bug", area: "quiz",
+    app: "ibsystem", key: e.NB.feedback.config.appKey, type: "bug", area: "quiz",
     title: "Timer stops", body: "The timer froze.",
     context: { page: "quiz", subject: "biology-hl", topic: "A1.1 Water", user: "neva" }
   });
@@ -48,7 +48,7 @@ test("buildPayload validation: blank fields and unknown enum values throw friend
   assert.throws(() => b(Object.assign({}, VALID, { title: "" })), /title/i);
   assert.throws(() => b(Object.assign({}, VALID, { title: "   " })), /title/i);
   assert.throws(() => b(Object.assign({}, VALID, { body: "  " })), /describe/i);
-  assert.throws(() => b(Object.assign({}, VALID, { type: "feature" })), /type/i);
+  assert.throws(() => b(Object.assign({}, VALID, { type: "idea" })), /type/i);
   assert.throws(() => b(Object.assign({}, VALID, { area: "blog" })), /area/i);
   assert.throws(() => b({}), /type/i, "nothing at all → type is the first complaint");
 });
@@ -56,14 +56,15 @@ test("buildPayload validation: blank fields and unknown enum values throw friend
 test("buildPayload validation matrix: every valid type × area is accepted; each bad value (incl. case/whitespace) throws", () => {
   const e = envWith();
   const b = e.NB.feedback.buildPayload;
-  for (const type of ["bug", "improvement", "idea"]) {
+  for (const type of ["bug", "improvement", "feature"]) {
     for (const area of ["quiz", "cards", "today", "notes", "upload", "other"]) {
       const p = plain(b(Object.assign({}, VALID, { type, area })));
       assert.equal(p.type, type);
       assert.equal(p.area, area);
     }
   }
-  for (const bad of ["", null, "Bug", "BUG", "feature", "bug ", "  "]) { // enums are exact, case- and space-sensitive
+  // the widget shows "Idea" but sends "feature" (Signalbox's vocabulary); "idea" itself is not a valid type
+  for (const bad of ["", null, "Bug", "BUG", "idea", "feature ", "bug ", "  "]) { // enums are exact, case- and space-sensitive
     assert.throws(() => b(Object.assign({}, VALID, { type: bad })), /type/i, "bad type " + JSON.stringify(String(bad)));
   }
   for (const bad of ["", null, "Quiz", "homepage", "cards ", "other "]) {
@@ -219,9 +220,12 @@ test("no fetch happens at module load; boot injects the style block and the butt
   assert.ok(e.document.getElementById("sbx-styles"), "the style block is injected");
 });
 
-test("config: endpoint host stays on rametric.com (the pages' CSP connect-src whitelist)", () => {
+test("config: endpoint is the Signalbox install on rametric.com (the pages' CSP connect-src whitelist)", () => {
   const e = envWith();
   const c = plain(e.NB.feedback.config);
-  assert.deepEqual(c, { app: "nevaib", endpoint: "https://rametric.com/feedback/api.php?action=submit", appKey: "CHANGE_ME_APP_KEY" });
+  assert.equal(c.app, "ibsystem");
+  assert.equal(c.endpoint, "https://rametric.com/signalbox/api.php?action=submit");
   assert.ok(c.endpoint.startsWith("https://rametric.com/"), "endpoint host must stay CSP-whitelisted");
+  assert.equal(typeof c.appKey, "string");
+  assert.ok(c.appKey.length > 0, "an app key must be configured");
 });
