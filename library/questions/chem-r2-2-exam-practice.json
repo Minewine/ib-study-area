@@ -1,0 +1,251 @@
+{
+ "subject": "chemistry-hl",
+ "topic": "chem-r2-2",
+ "topicLabel": "R2.2 How fast? The rate of chemical change",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "R2.2"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "r22-x01",
+   "format": "mcq",
+   "topic": "chem-r2-2",
+   "topicLabel": "R2.2 How fast? The rate of chemical change",
+   "difficulty": "easy",
+   "stem": "For a reaction to occur, particles must collide with:",
+   "choices": [
+    "Energy at least equal to Ea and the correct orientation",
+    "Any amount of energy, as long as they collide often",
+    "Energy greater than ΔH for the overall reaction",
+    "The correct orientation only, whatever their energy"
+   ],
+   "answer": 0,
+   "note": "Collision theory: successful collisions need E ≥ Ea and an appropriate geometry."
+  },
+  {
+   "id": "r22-x02",
+   "format": "mcq",
+   "topic": "chem-r2-2",
+   "topicLabel": "R2.2 How fast? The rate of chemical change",
+   "difficulty": "easy",
+   "stem": "Increasing the concentration of a reactant in solution increases the rate because:",
+   "choices": [
+    "Each collision has more energy than before",
+    "The activation energy of the reaction is lowered",
+    "The particles move faster at the same temperature",
+    "Collisions between reactant particles happen more frequently"
+   ],
+   "answer": 3,
+   "note": "More particles per unit volume → more collisions per second. Energy per collision is unchanged."
+  },
+  {
+   "id": "r22-x03",
+   "format": "mcq",
+   "topic": "chem-r2-2",
+   "topicLabel": "R2.2 How fast? The rate of chemical change",
+   "difficulty": "easy",
+   "stem": "A catalyst increases the rate of reaction by:",
+   "choices": [
+    "Increasing the kinetic energy of the reacting particles",
+    "Shifting the position of equilibrium to the products",
+    "Providing an alternative pathway with a lower activation energy",
+    "Increasing the enthalpy change of the reaction"
+   ],
+   "answer": 2,
+   "note": "A catalyst lowers Ea; it is not consumed, and does not change ΔH or the equilibrium position."
+  },
+  {
+   "id": "r22-x04",
+   "format": "mcq",
+   "topic": "chem-r2-2",
+   "topicLabel": "R2.2 How fast? The rate of chemical change",
+   "difficulty": "standard",
+   "stem": "On a Maxwell–Boltzmann distribution, raising the temperature:",
+   "choices": [
+    "Moves the peak left and raises it, with fewer particles above Ea",
+    "Moves the peak right and lowers it, with more particles above Ea",
+    "Moves Ea to the left, so more particles can react",
+    "Increases the total area under the curve"
+   ],
+   "answer": 1,
+   "note": "The curve flattens and shifts right; the area (number of particles) is unchanged; the fraction with E ≥ Ea increases a lot."
+  },
+  {
+   "id": "r22-x05",
+   "format": "mcq",
+   "topic": "chem-r2-2",
+   "topicLabel": "R2.2 How fast? The rate of chemical change",
+   "difficulty": "standard",
+   "stem": "Powdered marble reacts faster with acid than marble chips of the same mass because the powder has:",
+   "choices": [
+    "A lower activation energy than the chips",
+    "A larger surface area, so more frequent collisions",
+    "More calcium carbonate particles in total",
+    "Particles that move faster in the acid"
+   ],
+   "answer": 1,
+   "note": "Same mass, more exposed surface → more collisions per second at the surface."
+  },
+  {
+   "id": "r22-x06",
+   "format": "mcq",
+   "topic": "chem-r2-2",
+   "topicLabel": "R2.2 How fast? The rate of chemical change",
+   "difficulty": "standard",
+   "stem": "Which method is suitable for following the rate of CaCO₃(s) + 2HCl(aq) → CaCl₂(aq) + H₂O(l) + CO₂(g)?",
+   "choices": [
+    "Measuring the colour change with a colorimeter",
+    "Measuring the change in pressure of a sealed liquid",
+    "Measuring the volume of the solid with a ruler",
+    "Measuring the loss of mass on a balance over time"
+   ],
+   "answer": 3,
+   "note": "CO₂ escapes, so mass falls with time (or collect gas in a syringe). There is no coloured species."
+  },
+  {
+   "id": "r22-x07",
+   "format": "mcq",
+   "topic": "chem-r2-2",
+   "topicLabel": "R2.2 How fast? The rate of chemical change",
+   "difficulty": "standard",
+   "stem": "The rate equation is rate = k[A]²[B]. If [A] is doubled and [B] is halved, the rate:",
+   "choices": [
+    "Doubles",
+    "Quadruples",
+    "Stays the same",
+    "Halves"
+   ],
+   "answer": 0,
+   "note": "Factor = 2² × ½ = 2."
+  },
+  {
+   "id": "r22-x08",
+   "format": "mcq",
+   "topic": "chem-r2-2",
+   "topicLabel": "R2.2 How fast? The rate of chemical change",
+   "difficulty": "hard",
+   "stem": "For rate = k[A][B]², what are the units of k when concentration is in mol dm⁻³ and rate in mol dm⁻³ s⁻¹?",
+   "choices": [
+    "mol⁻¹ dm³ s⁻¹",
+    "mol² dm⁻⁶ s⁻¹",
+    "mol⁻² dm⁶ s⁻¹",
+    "s⁻¹"
+   ],
+   "answer": 2,
+   "note": "Overall order 3: k = rate ÷ conc³ → (mol dm⁻³ s⁻¹) ÷ (mol³ dm⁻⁹) = mol⁻² dm⁶ s⁻¹."
+  },
+  {
+   "id": "r22-x09",
+   "format": "mcq",
+   "topic": "chem-r2-2",
+   "topicLabel": "R2.2 How fast? The rate of chemical change",
+   "difficulty": "hard",
+   "stem": "A reaction is first order in X. A graph of rate against [X] is:",
+   "choices": [
+    "A straight line through the origin",
+    "A horizontal line",
+    "A curve with increasing gradient",
+    "A straight line with a negative gradient"
+   ],
+   "answer": 0,
+   "note": "First order: rate ∝ [X]. Zero order gives a horizontal line; second order a curve upward."
+  },
+  {
+   "id": "r22-x10",
+   "format": "mcq",
+   "topic": "chem-r2-2",
+   "topicLabel": "R2.2 How fast? The rate of chemical change",
+   "difficulty": "hard",
+   "stem": "The mechanism of a reaction is: Step 1 (slow) NO₂ + NO₂ → NO₃ + NO; Step 2 (fast) NO₃ + CO → NO₂ + CO₂. The rate equation is:",
+   "choices": [
+    "rate = k[NO₂][CO]",
+    "rate = k[NO₂]²",
+    "rate = k[NO₃][CO]",
+    "rate = k[NO₂]²[CO]"
+   ],
+   "answer": 1,
+   "note": "The rate-determining (slow) step involves two NO₂, so CO does not appear in the rate equation."
+  },
+  {
+   "id": "r22-x11",
+   "format": "mcq",
+   "topic": "chem-r2-2",
+   "topicLabel": "R2.2 How fast? The rate of chemical change",
+   "difficulty": "hard",
+   "stem": "A reaction's rate constant doubles from 300 K to 310 K. Using the Arrhenius equation, Ea is about: (R = 8.31 J K⁻¹ mol⁻¹)",
+   "choices": [
+    "5.4 kJ mol⁻¹",
+    "540 kJ mol⁻¹",
+    "0.54 kJ mol⁻¹",
+    "54 kJ mol⁻¹"
+   ],
+   "answer": 3,
+   "note": "ln(k₂/k₁) = (Ea/R)(1/T₁ − 1/T₂): ln 2 = Ea/8.31 × (1.075 × 10⁻⁴) → Ea ≈ 53 600 J mol⁻¹."
+  },
+  {
+   "id": "r22-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r2-2",
+   "topicLabel": "R2.2 How fast? The rate of chemical change",
+   "difficulty": "standard",
+   "stem": "Explain, using collision theory, why a 10 °C rise in temperature can roughly double the rate of many reactions.",
+   "markscheme": [
+    "Particles have more kinetic energy and collide more frequently (1)",
+    "Much larger proportion of collisions have energy ≥ Ea (1)",
+    "The second effect is the main reason for the large increase (1)"
+   ],
+   "tactic": "Mention both factors, then say which dominates."
+  },
+  {
+   "id": "r22-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r2-2",
+   "topicLabel": "R2.2 How fast? The rate of chemical change",
+   "difficulty": "standard",
+   "stem": "Sketch a Maxwell–Boltzmann distribution and use it to explain how a catalyst increases the rate.",
+   "markscheme": [
+    "Axes: number/fraction of particles vs kinetic energy; curve starts at origin, does not meet the x-axis (1)",
+    "Catalysed Ea marked at lower energy than uncatalysed Ea (1)",
+    "Larger area beyond the catalysed Ea, so more particles have enough energy to react (1)"
+   ],
+   "tactic": "Label both Ea values on the energy axis; shade or name the area that matters."
+  },
+  {
+   "id": "r22-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "chem-r2-2",
+   "topicLabel": "R2.2 How fast? The rate of chemical change",
+   "difficulty": "hard",
+   "stem": "Data for A + B → C: Exp 1 [A] 0.10, [B] 0.10, rate 2.0 × 10⁻⁴; Exp 2 [A] 0.20, [B] 0.10, rate 8.0 × 10⁻⁴; Exp 3 [A] 0.10, [B] 0.30, rate 6.0 × 10⁻⁴ (mol dm⁻³ and mol dm⁻³ s⁻¹). Deduce the rate equation and calculate k with units.",
+   "markscheme": [
+    "Exp 1→2: [A] doubles, rate × 4, so second order in A (1)",
+    "Exp 1→3: [B] triples, rate × 3, so first order in B (1)",
+    "rate = k[A]²[B] (1)",
+    "k = 2.0 × 10⁻⁴ ÷ (0.10² × 0.10) = 0.20 mol⁻² dm⁶ s⁻¹ (1)"
+   ],
+   "tactic": "Change one concentration at a time; compare the factor in rate with the factor in concentration."
+  },
+  {
+   "id": "r22-x15",
+   "format": "written",
+   "marks": 5,
+   "topic": "chem-r2-2",
+   "topicLabel": "R2.2 How fast? The rate of chemical change",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) Magnesium ribbon (0.050 g) reacted with excess HCl. Volume of H₂ (cm³) at 0, 10, 20, 30, 40, 60 s: 0, 18, 31, 40, 45, 48.\n(a) Calculate the mean rate over the first 20 s. (b) Describe how the rate changes and explain why. (c) Suggest why the final volume is 48 cm³ and not more. (d) Suggest one source of random error.",
+   "markscheme": [
+    "(a) 31 ÷ 20 = 1.55 cm³ s⁻¹ (1)",
+    "(b) Rate decreases over time (18 cm³ in first 10 s, 5 cm³ from 30–40 s) (1)",
+    "Because the Mg is used up/surface area falls and acid concentration falls, so fewer collisions per second (1)",
+    "(c) Mg is the limiting reactant; all of it has reacted (1)",
+    "(d) e.g. reading the syringe/timing by eye, or ribbon length varying (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

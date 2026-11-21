@@ -2007,5 +2007,311 @@
     }
    }
   ]
+ },
+ {
+  "file": "library/questions/bio-a2-1-exam-practice.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL",
+  "label": "A2.1 Origins of cells — exam practice (mixed difficulty, written + data response)",
+  "topic": "bio-a2-1",
+  "topicLabel": "A2.1 Origins of cells",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "A2.1"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "bio-a2-1",
+    "topicLabel": "A2.1 Origins of cells",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 7,
+     "hard": 5
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/bio-b2-1-exam-practice.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL",
+  "label": "B2.1 Membranes and membrane transport — exam practice (mixed difficulty, written + data response)",
+  "topic": "bio-b2-1",
+  "topicLabel": "B2.1 Membranes and membrane transport",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "B2.1"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "bio-b2-1",
+    "topicLabel": "B2.1 Membranes and membrane transport",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 6,
+     "hard": 6
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/bio-c1-2-exam-practice.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL",
+  "label": "C1.2 Cell respiration — exam practice (mixed difficulty, written + data response)",
+  "topic": "bio-c1-2",
+  "topicLabel": "C1.2 Cell respiration",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "C1.2"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "bio-c1-2",
+    "topicLabel": "C1.2 Cell respiration",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 5,
+     "hard": 7
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/bio-d2-3-exam-practice.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL",
+  "label": "D2.3 Water potential — exam practice (mixed difficulty, written + data response)",
+  "topic": "bio-d2-3",
+  "topicLabel": "D2.3 Water potential",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "D2.3"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "bio-d2-3",
+    "topicLabel": "D2.3 Water potential",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 5,
+     "hard": 7
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/chem-r1-2-exam-practice.json",
+  "subject": "chemistry-hl",
+  "subjectLabel": "Chemistry HL",
+  "label": "R1.2 Energy cycles in reactions — exam practice (mixed difficulty, written + data response)",
+  "topic": "chem-r1-2",
+  "topicLabel": "R1.2 Energy cycles in reactions",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "R1.2"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "chem-r1-2",
+    "topicLabel": "R1.2 Energy cycles in reactions",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 6,
+     "hard": 6
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/chem-r1-4-exam-practice.json",
+  "subject": "chemistry-hl",
+  "subjectLabel": "Chemistry HL",
+  "label": "R1.4 Entropy and spontaneity (additional higher level) — exam practice (mixed difficulty, written + data response)",
+  "topic": "chem-r1-4",
+  "topicLabel": "R1.4 Entropy and spontaneity (additional higher level)",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "R1.4"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "chem-r1-4",
+    "topicLabel": "R1.4 Entropy and spontaneity (additional higher level)",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 5,
+     "hard": 7
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/chem-r2-2-exam-practice.json",
+  "subject": "chemistry-hl",
+  "subjectLabel": "Chemistry HL",
+  "label": "R2.2 How fast? The rate of chemical change — exam practice (mixed difficulty, written + data response)",
+  "topic": "chem-r2-2",
+  "topicLabel": "R2.2 How fast? The rate of chemical change",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "R2.2"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "chem-r2-2",
+    "topicLabel": "R2.2 How fast? The rate of chemical change",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 6,
+     "hard": 6
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/chem-r2-3-exam-practice.json",
+  "subject": "chemistry-hl",
+  "subjectLabel": "Chemistry HL",
+  "label": "R2.3 How far? The extent of chemical change — exam practice (mixed difficulty, written + data response)",
+  "topic": "chem-r2-3",
+  "topicLabel": "R2.3 How far? The extent of chemical change",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "R2.3"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "chem-r2-3",
+    "topicLabel": "R2.3 How far? The extent of chemical change",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 6,
+     "hard": 6
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/math-aa-exp-logs-exam-practice.json",
+  "subject": "math-aa-sl",
+  "subjectLabel": "Math AA SL",
+  "label": "Exponents and logarithms (1.5, 1.7, 2.9, 2.10) — exam practice (mixed difficulty, written + data response)",
+  "topic": "math-y12-exp-logs",
+  "topicLabel": "Exponents and logarithms (1.5, 1.7, 2.9, 2.10)",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "1.5",
+   "1.7",
+   "2.9",
+   "2.10"
+  ],
+  "counts": {
+   "mcq": 12,
+   "written": 4,
+   "total": 16
+  },
+  "topics": [
+   {
+    "topic": "math-y12-exp-logs",
+    "topicLabel": "Exponents and logarithms (1.5, 1.7, 2.9, 2.10)",
+    "count": 16,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 4,
+     "standard": 7,
+     "hard": 5
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/math-aa-trig-equations-functions-exam-practice.json",
+  "subject": "math-aa-sl",
+  "subjectLabel": "Math AA SL",
+  "label": "Trigonometric equations and functions (3.6–3.8, 2.11) — exam practice (mixed difficulty, written + data response)",
+  "topic": "math-y12-trig-functions",
+  "topicLabel": "Trigonometric equations and functions (3.6–3.8, 2.11)",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "3.6",
+   "3.7",
+   "3.8",
+   "2.11"
+  ],
+  "counts": {
+   "mcq": 12,
+   "written": 4,
+   "total": 16
+  },
+  "topics": [
+   {
+    "topic": "math-y12-trig-functions",
+    "topicLabel": "Trigonometric equations and functions (3.6–3.8, 2.11)",
+    "count": 16,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 6,
+     "hard": 7
+    }
+   }
+  ]
  }
 ]

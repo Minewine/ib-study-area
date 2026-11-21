@@ -1,0 +1,252 @@
+{
+ "subject": "biology-hl",
+ "topic": "bio-d2-3",
+ "topicLabel": "D2.3 Water potential",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "D2.3"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "d23-x01",
+   "format": "mcq",
+   "topic": "bio-d2-3",
+   "topicLabel": "D2.3 Water potential",
+   "difficulty": "easy",
+   "stem": "Osmosis is the net movement of water:",
+   "choices": [
+    "Across a partially permeable membrane from lower to higher solute concentration",
+    "Across any membrane, from a higher to a lower solute concentration, by diffusion",
+    "Through channel proteins against its own concentration gradient using ATP",
+    "Of solute particles from high to low concentration in a solution"
+   ],
+   "answer": 0,
+   "note": "Water moves passively towards the higher solute concentration (lower water potential), through the membrane and aquaporins."
+  },
+  {
+   "id": "d23-x02",
+   "format": "mcq",
+   "topic": "bio-d2-3",
+   "topicLabel": "D2.3 Water potential",
+   "difficulty": "easy",
+   "stem": "An animal cell placed in a strongly hypotonic solution will:",
+   "choices": [
+    "Lose water and shrink",
+    "Stay unchanged in volume",
+    "Gain solutes by active transport",
+    "Take in water and may burst"
+   ],
+   "answer": 3,
+   "note": "Hypotonic = lower solute concentration outside, so water enters. Without a wall, animal cells can lyse."
+  },
+  {
+   "id": "d23-x03",
+   "format": "mcq",
+   "topic": "bio-d2-3",
+   "topicLabel": "D2.3 Water potential",
+   "difficulty": "easy",
+   "stem": "Why are solutions given into the blood in hospitals made isotonic?",
+   "choices": [
+    "To kill any bacteria present in the patient's blood",
+    "To stop blood cells gaining or losing water by osmosis",
+    "To raise blood pressure quickly",
+    "To provide energy for respiration"
+   ],
+   "answer": 1,
+   "note": "Isotonic saline has the same solute concentration as body fluids, so cells neither swell nor shrink."
+  },
+  {
+   "id": "d23-x04",
+   "format": "mcq",
+   "topic": "bio-d2-3",
+   "topicLabel": "D2.3 Water potential",
+   "difficulty": "standard",
+   "stem": "Water is a good solvent for ions and polar molecules because:",
+   "choices": [
+    "It has a high specific heat capacity",
+    "It is less dense as a solid than as a liquid",
+    "Its polar molecules form shells around them",
+    "It has strong covalent bonds"
+   ],
+   "answer": 2,
+   "note": "Solvation: partial charges of water attract ions and polar groups, surrounding and separating them."
+  },
+  {
+   "id": "d23-x05",
+   "format": "mcq",
+   "topic": "bio-d2-3",
+   "topicLabel": "D2.3 Water potential",
+   "difficulty": "standard",
+   "stem": "A plant cell placed in a concentrated sugar solution becomes plasmolysed. This means:",
+   "choices": [
+    "The cell wall bursts as water floods into the vacuole",
+    "The membrane pulls away from the wall as the vacuole loses water",
+    "The cell becomes fully turgid",
+    "The cell takes up sugar until it is isotonic"
+   ],
+   "answer": 1,
+   "note": "Water leaves by osmosis; the protoplast shrinks away from the wall. The wall itself stays intact."
+  },
+  {
+   "id": "d23-x06",
+   "format": "mcq",
+   "topic": "bio-d2-3",
+   "topicLabel": "D2.3 Water potential",
+   "difficulty": "standard",
+   "stem": "Potato cylinders are placed in sucrose solutions for 24 hours. Mass does not change at 0.30 mol dm⁻³. This indicates that:",
+   "choices": [
+    "The potato cells are dead at this concentration",
+    "Sucrose has entered the potato cells by active transport",
+    "The potato tissue is isotonic with 0.30 mol dm⁻³ sucrose",
+    "Water potential inside is higher than outside"
+   ],
+   "answer": 2,
+   "note": "No net osmosis means equal water potential/solute concentration. Plot % change in mass and read the x-intercept."
+  },
+  {
+   "id": "d23-x07",
+   "format": "mcq",
+   "topic": "bio-d2-3",
+   "topicLabel": "D2.3 Water potential",
+   "difficulty": "hard",
+   "stem": "What is the water potential of pure water at atmospheric pressure?",
+   "choices": [
+    "−100 kPa",
+    "100 kPa",
+    "It depends on temperature only",
+    "0 kPa"
+   ],
+   "answer": 3,
+   "note": "By definition, pure water at standard pressure has Ψ = 0. Adding solutes makes Ψ negative."
+  },
+  {
+   "id": "d23-x08",
+   "format": "mcq",
+   "topic": "bio-d2-3",
+   "topicLabel": "D2.3 Water potential",
+   "difficulty": "hard",
+   "stem": "A plant cell has solute potential −800 kPa and pressure potential +300 kPa. Its water potential is:",
+   "choices": [
+    "−500 kPa",
+    "−1100 kPa",
+    "+500 kPa",
+    "−300 kPa"
+   ],
+   "answer": 0,
+   "note": "Ψ = Ψs + Ψp = −800 + 300 = −500 kPa."
+  },
+  {
+   "id": "d23-x09",
+   "format": "mcq",
+   "topic": "bio-d2-3",
+   "topicLabel": "D2.3 Water potential",
+   "difficulty": "hard",
+   "stem": "The cell above (Ψ = −500 kPa) is placed in a solution with Ψ = −700 kPa. What happens?",
+   "choices": [
+    "Water enters the cell",
+    "No net movement",
+    "Water leaves the cell",
+    "Solute enters the cell"
+   ],
+   "answer": 2,
+   "note": "Water moves from higher (−500) to lower (−700) water potential, so out of the cell."
+  },
+  {
+   "id": "d23-x10",
+   "format": "mcq",
+   "topic": "bio-d2-3",
+   "topicLabel": "D2.3 Water potential",
+   "difficulty": "hard",
+   "stem": "A fully turgid plant cell in pure water has a water potential of 0 kPa because:",
+   "choices": [
+    "Its solute potential has become zero",
+    "Water has stopped moving across its membrane completely",
+    "All solutes have diffused out of its vacuole into the pure water around it",
+    "Its pressure potential has risen to equal its solute potential in size"
+   ],
+   "answer": 3,
+   "note": "At full turgor Ψp = −Ψs, so Ψ = 0, equal to pure water. Water still crosses the membrane, but with no net flow."
+  },
+  {
+   "id": "d23-x11",
+   "format": "mcq",
+   "topic": "bio-d2-3",
+   "topicLabel": "D2.3 Water potential",
+   "difficulty": "hard",
+   "stem": "Animal cells lack a cell wall. Which statement about their water potential is correct?",
+   "choices": [
+    "Pressure potential is close to zero, so water potential ≈ solute potential",
+    "Pressure potential is always very high",
+    "Water potential is always positive, because water enters freely by osmosis",
+    "Solute potential is always zero"
+   ],
+   "answer": 0,
+   "note": "With no wall to push back, little pressure builds, so Ψ ≈ Ψs. This is why animal cells burst rather than become turgid."
+  },
+  {
+   "id": "d23-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-d2-3",
+   "topicLabel": "D2.3 Water potential",
+   "difficulty": "standard",
+   "stem": "Compare the effects of a hypotonic solution on an animal cell and a plant cell.",
+   "markscheme": [
+    "Both take in water by osmosis (1)",
+    "Animal cell swells and may burst (lysis) (1)",
+    "Plant cell becomes turgid but does not burst (1)",
+    "Cell wall resists expansion / pressure potential builds (1)"
+   ],
+   "tactic": "Comparison: one shared point, then paired differences with the reason."
+  },
+  {
+   "id": "d23-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-d2-3",
+   "topicLabel": "D2.3 Water potential",
+   "difficulty": "standard",
+   "stem": "Explain how pressure potential and solute potential together determine the direction of water movement into a plant cell.",
+   "markscheme": [
+    "Water potential = solute potential + pressure potential (1)",
+    "Solutes lower water potential, drawing water in (1)",
+    "As water enters, the wall exerts pressure, raising pressure potential (1)",
+    "Water moves until water potential is equal inside and outside (1)"
+   ],
+   "tactic": "Use Ψ = Ψs + Ψp and describe how each term changes over time."
+  },
+  {
+   "id": "d23-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-d2-3",
+   "topicLabel": "D2.3 Water potential",
+   "difficulty": "hard",
+   "stem": "Cell X has Ψs = −1200 kPa and Ψp = +500 kPa. Adjacent cell Y has Ψs = −900 kPa and Ψp = +400 kPa. Determine the direction of water movement between them, showing your working.",
+   "markscheme": [
+    "Ψ(X) = −1200 + 500 = −700 kPa (1)",
+    "Ψ(Y) = −900 + 400 = −500 kPa (1)",
+    "Water moves from Y to X (1)",
+    "because water moves from higher to lower water potential (1)"
+   ],
+   "tactic": "Show both sums before deciding; quote the rule."
+  },
+  {
+   "id": "d23-x15",
+   "format": "written",
+   "marks": 5,
+   "topic": "bio-d2-3",
+   "topicLabel": "D2.3 Water potential",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) Cylinders of an invented root vegetable were placed in sucrose solutions for 24 h. % change in mass: 0.0 mol dm⁻³ +18%; 0.2 +7%; 0.4 −3%; 0.6 −11%; 0.8 −17%.\n(a) Estimate the sucrose concentration that is isotonic with the tissue. (b) Explain the result at 0.8 mol dm⁻³. (c) Explain why % change in mass, not change in mass, is used. (d) Suggest why the change between 0.6 and 0.8 is smaller than between 0 and 0.2.",
+   "markscheme": [
+    "(a) Between 0.2 and 0.4: about 0.34 mol dm⁻³ (interpolation; accept 0.32–0.36) (1)",
+    "(b) Solution has lower water potential than the cells, so water leaves by osmosis and mass falls (1)",
+    "(c) Cylinders have different starting masses, so % allows fair comparison (1)",
+    "(d) Cells become plasmolysed / little water left in vacuoles to lose / cell walls limit shrinkage (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

@@ -1,0 +1,253 @@
+{
+ "subject": "biology-hl",
+ "topic": "bio-a2-1",
+ "topicLabel": "A2.1 Origins of cells",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "A2.1"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "a21-x01",
+   "format": "mcq",
+   "topic": "bio-a2-1",
+   "topicLabel": "A2.1 Origins of cells",
+   "difficulty": "easy",
+   "stem": "Which condition is thought to have been true of the early Earth's atmosphere before life began?",
+   "choices": [
+    "High concentration of ozone",
+    "Little or no free oxygen",
+    "About 21% oxygen, as today",
+    "No carbon-containing gases"
+   ],
+   "answer": 1,
+   "note": "The early atmosphere was reducing, with little O₂ (and so no ozone layer, letting UV reach the surface). Oxygen built up later from photosynthesis."
+  },
+  {
+   "id": "a21-x02",
+   "format": "mcq",
+   "topic": "bio-a2-1",
+   "topicLabel": "A2.1 Origins of cells",
+   "difficulty": "easy",
+   "stem": "The Miller–Urey experiment showed that:",
+   "choices": [
+    "Organic molecules such as amino acids can form from inorganic gases",
+    "Living cells can arise spontaneously from simple organic molecules in water",
+    "RNA can copy itself without any enzymes",
+    "DNA was the first genetic material"
+   ],
+   "answer": 0,
+   "note": "It simulated early-Earth gases, water and lightning and produced amino acids — evidence for abiotic synthesis of carbon compounds, not for the origin of cells themselves."
+  },
+  {
+   "id": "a21-x03",
+   "format": "mcq",
+   "topic": "bio-a2-1",
+   "topicLabel": "A2.1 Origins of cells",
+   "difficulty": "easy",
+   "stem": "Why could the first cells not have formed by spontaneous generation in today's conditions?",
+   "choices": [
+    "Today's oceans contain far too much salt for any membranes to form",
+    "Modern temperatures are too high for any organic molecule",
+    "Today's atmosphere lacks nitrogen for building amino acids",
+    "Organic molecules would be consumed by existing organisms or oxidised"
+   ],
+   "answer": 3,
+   "note": "Today, oxygen and living things destroy or use simple organic molecules before they can accumulate. Cells arise only from pre-existing cells."
+  },
+  {
+   "id": "a21-x04",
+   "format": "mcq",
+   "topic": "bio-a2-1",
+   "topicLabel": "A2.1 Origins of cells",
+   "difficulty": "standard",
+   "stem": "Which property of fatty acids made the formation of the first membranes possible?",
+   "choices": [
+    "They are fully hydrophilic and dissolve easily in water",
+    "They are fully hydrophobic and sink to the bottom of the ocean",
+    "They are amphipathic, so they assemble into vesicles in water",
+    "They form hydrogen bonds with each other to make a solid layer"
+   ],
+   "answer": 2,
+   "note": "A hydrophilic head and hydrophobic tail make fatty acids self-assemble into spherical bilayer vesicles, giving a separate internal compartment."
+  },
+  {
+   "id": "a21-x05",
+   "format": "mcq",
+   "topic": "bio-a2-1",
+   "topicLabel": "A2.1 Origins of cells",
+   "difficulty": "standard",
+   "stem": "RNA is a likely candidate for the first genetic material because it can:",
+   "choices": [
+    "Form a stable double helix like DNA",
+    "Store information and act as a catalyst",
+    "Code for proteins without any ribosomes",
+    "Be made only inside living cells"
+   ],
+   "answer": 1,
+   "note": "Ribozymes show RNA can catalyse reactions, including forming peptide bonds, while also storing a base sequence that can be copied."
+  },
+  {
+   "id": "a21-x06",
+   "format": "mcq",
+   "topic": "bio-a2-1",
+   "topicLabel": "A2.1 Origins of cells",
+   "difficulty": "standard",
+   "stem": "LUCA (the last universal common ancestor) is best described as:",
+   "choices": [
+    "The first cell that ever existed on Earth",
+    "A virus that infected all early cells",
+    "A single-celled eukaryote that later gave rise to all plants and animals",
+    "The most recent population from which all current life descends"
+   ],
+   "answer": 3,
+   "note": "LUCA is not the first life; other lineages existed and went extinct. All living organisms share its universal genetic code and features."
+  },
+  {
+   "id": "a21-x07",
+   "format": "mcq",
+   "topic": "bio-a2-1",
+   "topicLabel": "A2.1 Origins of cells",
+   "difficulty": "standard",
+   "stem": "Which evidence supports the idea that all living organisms share a common ancestor?",
+   "choices": [
+    "All use the same genetic code with only minor variations",
+    "All have mitochondria to release energy from glucose in respiration",
+    "All are made of more than one type of cell",
+    "All reproduce sexually using gametes"
+   ],
+   "answer": 0,
+   "note": "The near-universal genetic code (and shared genes, ribosomes, ATP) points to a single common origin."
+  },
+  {
+   "id": "a21-x08",
+   "format": "mcq",
+   "topic": "bio-a2-1",
+   "topicLabel": "A2.1 Origins of cells",
+   "difficulty": "standard",
+   "stem": "Where might LUCA have lived, according to some evidence from genes shared by all bacteria and archaea?",
+   "choices": [
+    "In surface rock pools with high oxygen",
+    "In the upper atmosphere",
+    "Near deep-sea hydrothermal vents",
+    "On land in dry soil"
+   ],
+   "answer": 2,
+   "note": "Genes shared by both domains suggest a heat-tolerant, anaerobic life near vents, with chemical energy and mineral catalysts available."
+  },
+  {
+   "id": "a21-x09",
+   "format": "mcq",
+   "topic": "bio-a2-1",
+   "topicLabel": "A2.1 Origins of cells",
+   "difficulty": "hard",
+   "stem": "Which of these is a challenge in explaining the origin of cells, rather than evidence that has been reproduced experimentally?",
+   "choices": [
+    "The formation of amino acids from simple gases with an energy source",
+    "The formation of vesicles from fatty acids in water",
+    "The origin of a self-replicating molecule with a catalytic function",
+    "The synthesis of simple sugars from formaldehyde"
+   ],
+   "answer": 2,
+   "note": "Abiotic amino acids, vesicles and some sugars have been produced in the lab; how self-replication arose remains the key unsolved step."
+  },
+  {
+   "id": "a21-x10",
+   "format": "mcq",
+   "topic": "bio-a2-1",
+   "topicLabel": "A2.1 Origins of cells",
+   "difficulty": "hard",
+   "stem": "Approximate dating of LUCA to about 4 billion years ago is based mainly on:",
+   "choices": [
+    "Fossils of LUCA cells found in ancient rocks from hydrothermal vents",
+    "Radioactive dating of the RNA found in modern cells",
+    "Counting the layers in stromatolites from that time",
+    "Molecular clock estimates from differences in shared gene sequences"
+   ],
+   "answer": 3,
+   "note": "Molecular clocks use mutation rates in shared genes, calibrated against fossils and geology. No fossil of LUCA exists."
+  },
+  {
+   "id": "a21-x11",
+   "format": "mcq",
+   "topic": "bio-a2-1",
+   "topicLabel": "A2.1 Origins of cells",
+   "difficulty": "hard",
+   "stem": "Cells need a membrane before they can become units of natural selection because a membrane:",
+   "choices": [
+    "Makes the cell large enough to see under a microscope",
+    "Keeps a cell's own molecules together, so their products benefit that cell",
+    "Stops all mutations happening in the genetic material",
+    "Lets every molecule pass freely in and out, so nutrients are never limiting"
+   ],
+   "answer": 1,
+   "note": "Compartmentalisation keeps enzymes, RNA and their products together, so a better variant benefits its own vesicle and can be selected."
+  },
+  {
+   "id": "a21-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-a2-1",
+   "topicLabel": "A2.1 Origins of cells",
+   "difficulty": "standard",
+   "stem": "Outline the evidence from the Miller–Urey experiment for the origin of carbon compounds on Earth.",
+   "markscheme": [
+    "Simulated early atmosphere: methane, ammonia, hydrogen, water vapour (1)",
+    "Electric sparks simulated lightning as an energy source (1)",
+    "Amino acids/organic compounds formed (after about a week) (1)",
+    "Shows carbon compounds could form without living organisms (abiotically) (1)"
+   ],
+   "tactic": "Outline experiments as: set-up → result → what it shows."
+  },
+  {
+   "id": "a21-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-a2-1",
+   "topicLabel": "A2.1 Origins of cells",
+   "difficulty": "standard",
+   "stem": "Explain the importance of vesicle formation in the origin of cells.",
+   "markscheme": [
+    "Fatty acids/phospholipids spontaneously form vesicles in water (1)",
+    "Vesicles separate internal contents from the surroundings (1)",
+    "Allows different internal chemistry/concentrations (1)",
+    "Keeps molecules (e.g. RNA) together so they can interact (1)"
+   ],
+   "tactic": "Link each structural event to the advantage it gives."
+  },
+  {
+   "id": "a21-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-a2-1",
+   "topicLabel": "A2.1 Origins of cells",
+   "difficulty": "hard",
+   "stem": "Describe the main stages thought to be needed for the origin of the first cells.",
+   "markscheme": [
+    "Synthesis of simple organic molecules (e.g. amino acids, nucleotides) (1)",
+    "Assembly of these into polymers (1)",
+    "Formation of self-replicating molecules (e.g. RNA) to allow inheritance (1)",
+    "Formation of membranes / compartments (vesicles) (1)",
+    "Linking these with a source of energy / metabolism (1)"
+   ],
+   "tactic": "Sequence questions: give steps in order and name what each step makes possible."
+  },
+  {
+   "id": "a21-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-a2-1",
+   "topicLabel": "A2.1 Origins of cells",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) In an invented laboratory test of early-Earth chemistry, mixtures of gases were exposed to sparks for 7 days. Mass of amino acids formed (mg): Mixture A (CH₄, NH₃, H₂, H₂O) 12.0; Mixture B (CO₂, N₂, H₂O) 0.8; Mixture C (CO₂, N₂, H₂O, plus iron sulfide mineral) 3.5.\n(a) Calculate how many times more amino acids formed in A than in B. (b) Suggest why mixture A gave the highest yield. (c) Suggest what the result for mixture C indicates about possible sites for the origin of life.",
+   "markscheme": [
+    "(a) 12.0 ÷ 0.8 = 15 times (1)",
+    "(b) Mixture A is reducing / contains hydrogen-rich gases so carbon compounds form more easily (1)",
+    "(c) Mineral catalysts increased the yield compared with B (3.5 vs 0.8 mg) (1)",
+    "This supports sites rich in minerals, such as hydrothermal vents (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

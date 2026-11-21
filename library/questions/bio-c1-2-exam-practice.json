@@ -1,0 +1,254 @@
+{
+ "subject": "biology-hl",
+ "topic": "bio-c1-2",
+ "topicLabel": "C1.2 Cell respiration",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "C1.2"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "c12-x01",
+   "format": "mcq",
+   "topic": "bio-c1-2",
+   "topicLabel": "C1.2 Cell respiration",
+   "difficulty": "easy",
+   "stem": "ATP is used as the immediate energy source in cells because:",
+   "choices": [
+    "It stores very large amounts of energy for long-term use",
+    "It can be transported easily between cells in the blood plasma",
+    "It releases energy in small, usable amounts and is easily regenerated",
+    "It is the only molecule that contains phosphate groups"
+   ],
+   "answer": 2,
+   "note": "ATP → ADP + Pi releases a manageable amount of energy; ATP is soluble, moves within cells and is quickly re-made by respiration. It is not a long-term store."
+  },
+  {
+   "id": "c12-x02",
+   "format": "mcq",
+   "topic": "bio-c1-2",
+   "topicLabel": "C1.2 Cell respiration",
+   "difficulty": "easy",
+   "stem": "Which is a product of anaerobic respiration in human muscle?",
+   "choices": [
+    "Ethanol",
+    "Lactate",
+    "Oxygen",
+    "Glycerol"
+   ],
+   "answer": 1,
+   "note": "Humans make lactate; yeast makes ethanol and CO₂. Anaerobic respiration yields only 2 ATP per glucose (from glycolysis)."
+  },
+  {
+   "id": "c12-x03",
+   "format": "mcq",
+   "topic": "bio-c1-2",
+   "topicLabel": "C1.2 Cell respiration",
+   "difficulty": "easy",
+   "stem": "Cell respiration differs from gas exchange because respiration:",
+   "choices": [
+    "Is a set of enzyme-controlled reactions that release energy inside cells",
+    "Is the movement of air into and out of the lungs by ventilation muscles",
+    "Is the diffusion of oxygen across the alveolar wall",
+    "Only happens in organisms with lungs"
+   ],
+   "answer": 0,
+   "note": "Respiration is a cellular chemical process; ventilation and gas exchange supply its oxygen and remove its CO₂."
+  },
+  {
+   "id": "c12-x04",
+   "format": "mcq",
+   "topic": "bio-c1-2",
+   "topicLabel": "C1.2 Cell respiration",
+   "difficulty": "standard",
+   "stem": "In a respirometer, the soda lime / KOH is included to:",
+   "choices": [
+    "Supply oxygen for the organisms to respire",
+    "Keep the temperature inside the respirometer constant throughout",
+    "Kill microorganisms on the surface of seeds",
+    "Absorb carbon dioxide so volume change shows oxygen uptake"
+   ],
+   "answer": 3,
+   "note": "With CO₂ absorbed, the fall in gas volume equals the O₂ used — the coloured liquid moves towards the organisms."
+  },
+  {
+   "id": "c12-x05",
+   "format": "mcq",
+   "topic": "bio-c1-2",
+   "topicLabel": "C1.2 Cell respiration",
+   "difficulty": "standard",
+   "stem": "The main reason aerobic respiration produces much more ATP than anaerobic respiration is that:",
+   "choices": [
+    "Glycolysis happens twice as fast when oxygen is present",
+    "Oxidative phosphorylation in mitochondria uses oxygen as the final electron acceptor",
+    "Anaerobic respiration uses up ATP to make lactate",
+    "Aerobic respiration breaks down twice as many glucose molecules per minute as anaerobic"
+   ],
+   "answer": 1,
+   "note": "Glycolysis gives 2 ATP either way; with oxygen, pyruvate is fully oxidised and the electron transport chain makes most of the ATP (about 30+)."
+  },
+  {
+   "id": "c12-x06",
+   "format": "mcq",
+   "topic": "bio-c1-2",
+   "topicLabel": "C1.2 Cell respiration",
+   "difficulty": "standard",
+   "stem": "Where does glycolysis take place?",
+   "choices": [
+    "Cytoplasm",
+    "Mitochondrial matrix",
+    "Inner mitochondrial membrane",
+    "Intermembrane space"
+   ],
+   "answer": 0,
+   "note": "Glycolysis is in the cytoplasm; the link reaction and Krebs cycle in the matrix; the ETC on the cristae."
+  },
+  {
+   "id": "c12-x07",
+   "format": "mcq",
+   "topic": "bio-c1-2",
+   "topicLabel": "C1.2 Cell respiration",
+   "difficulty": "hard",
+   "stem": "In the link reaction, pyruvate is converted to acetyl CoA. This involves:",
+   "choices": [
+    "Phosphorylation of pyruvate using two ATP",
+    "Reduction of pyruvate to lactate",
+    "Splitting each pyruvate into two molecules of glycerate phosphate",
+    "Decarboxylation and oxidation, producing CO₂ and reduced NAD"
+   ],
+   "answer": 3,
+   "note": "Pyruvate loses CO₂ (decarboxylation) and hydrogen (oxidation, reducing NAD); the acetyl group joins coenzyme A."
+  },
+  {
+   "id": "c12-x08",
+   "format": "mcq",
+   "topic": "bio-c1-2",
+   "topicLabel": "C1.2 Cell respiration",
+   "difficulty": "hard",
+   "stem": "During chemiosmosis, ATP synthase makes ATP using energy from:",
+   "choices": [
+    "Electrons passing directly through ATP synthase",
+    "Oxygen reacting with hydrogen inside ATP synthase",
+    "Protons diffusing back into the matrix down their gradient",
+    "Hydrolysis of glucose molecules in the intermembrane space"
+   ],
+   "answer": 2,
+   "note": "The ETC pumps protons into the intermembrane space; their flow back through ATP synthase drives ATP formation."
+  },
+  {
+   "id": "c12-x09",
+   "format": "mcq",
+   "topic": "bio-c1-2",
+   "topicLabel": "C1.2 Cell respiration",
+   "difficulty": "hard",
+   "stem": "Why does the electron transport chain stop if oxygen is absent?",
+   "choices": [
+    "No final electron acceptor removes electrons, so carriers stay reduced",
+    "Oxygen is needed to make the carriers in the chain",
+    "Protons can only cross the inner membrane when oxygen is also present there",
+    "ATP synthase is made of oxygen-containing amino acids"
+   ],
+   "answer": 0,
+   "note": "Oxygen accepts electrons and protons to form water. Without it, the chain backs up, NAD is not regenerated and the Krebs cycle stops."
+  },
+  {
+   "id": "c12-x10",
+   "format": "mcq",
+   "topic": "bio-c1-2",
+   "topicLabel": "C1.2 Cell respiration",
+   "difficulty": "hard",
+   "stem": "Per molecule of glucose, the Krebs cycle turns:",
+   "choices": [
+    "Once, because one glucose enters the cycle",
+    "Four times, once for each carbon atom",
+    "Six times, once for each carbon atom in glucose",
+    "Twice, because glycolysis produces two pyruvate"
+   ],
+   "answer": 3,
+   "note": "Each glucose gives 2 pyruvate → 2 acetyl CoA → 2 turns of the cycle."
+  },
+  {
+   "id": "c12-x11",
+   "format": "mcq",
+   "topic": "bio-c1-2",
+   "topicLabel": "C1.2 Cell respiration",
+   "difficulty": "hard",
+   "stem": "Lipids yield more energy per gram than carbohydrates in respiration mainly because:",
+   "choices": [
+    "Lipids are respired anaerobically to make more ATP",
+    "Lipids bypass the electron transport chain completely",
+    "Fatty acids contain more C–H bonds and less oxygen per gram",
+    "Glycerol is converted directly into ATP"
+   ],
+   "answer": 2,
+   "note": "More hydrogen per gram means more reduced NAD/FAD and so more ATP from the ETC. Fatty acids enter as acetyl CoA after β-oxidation (no glycolysis)."
+  },
+  {
+   "id": "c12-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-c1-2",
+   "topicLabel": "C1.2 Cell respiration",
+   "difficulty": "standard",
+   "stem": "Compare aerobic and anaerobic respiration in humans.",
+   "markscheme": [
+    "Both start with glycolysis / produce pyruvate / produce ATP (1)",
+    "Aerobic uses oxygen; anaerobic does not (1)",
+    "Aerobic produces CO₂ and water; anaerobic produces lactate (1)",
+    "Aerobic yields much more ATP per glucose (about 30+) than anaerobic (2)",
+    "Aerobic involves mitochondria; anaerobic is in the cytoplasm only (1)"
+   ],
+   "tactic": "Compare = at least one similarity plus differences side by side."
+  },
+  {
+   "id": "c12-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-c1-2",
+   "topicLabel": "C1.2 Cell respiration",
+   "difficulty": "standard",
+   "stem": "Outline why anaerobic respiration in yeast is used in baking and brewing.",
+   "markscheme": [
+    "Yeast converts glucose to ethanol and CO₂ without oxygen (1)",
+    "CO₂ makes dough rise (bubbles) (1)",
+    "Ethanol is the alcohol produced in brewing (1)",
+    "Ethanol in bread evaporates during baking (1)"
+   ],
+   "tactic": "Applications: name the product and say why it is useful in each case."
+  },
+  {
+   "id": "c12-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-c1-2",
+   "topicLabel": "C1.2 Cell respiration",
+   "difficulty": "hard",
+   "stem": "Explain how the structure of the mitochondrion is adapted to its function in aerobic respiration.",
+   "markscheme": [
+    "Cristae (folded inner membrane) give a large surface area for ETC and ATP synthase (1)",
+    "Small intermembrane space so a high proton concentration builds quickly (1)",
+    "Matrix contains enzymes for the link reaction and Krebs cycle (1)",
+    "Inner membrane impermeable to protons except through ATP synthase (1)",
+    "Own DNA/ribosomes to make some proteins (1)"
+   ],
+   "tactic": "Structure–function: each structure plus how it helps."
+  },
+  {
+   "id": "c12-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-c1-2",
+   "topicLabel": "C1.2 Cell respiration",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) Germinating seeds were placed in a respirometer with KOH at 25 °C (invented data). The coloured liquid moved 32 mm in 20 min. The capillary tube has a cross-sectional area of 0.80 mm².\n(a) Calculate the volume of oxygen used. (b) Calculate the rate of oxygen uptake in mm³ min⁻¹. (c) Explain why the liquid moved towards the seeds. (d) Suggest a control for this experiment.",
+   "markscheme": [
+    "(a) 32 × 0.80 = 25.6 mm³ (1)",
+    "(b) 25.6 ÷ 20 = 1.28 mm³ min⁻¹ (1)",
+    "(c) Seeds take in O₂; CO₂ produced is absorbed by KOH, so gas volume/pressure falls (1)",
+    "(d) Same set-up with glass beads / boiled (dead) seeds of equal volume (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}
