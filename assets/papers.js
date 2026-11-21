@@ -26,6 +26,7 @@
   const isDate = (d) => typeof d === "string" && /^\d{4}-\d{2}-\d{2}$/.test(d);
   const esc = (window.NB && window.NB.escapeHtml) || ((s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;"));
   const today = () => { const d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); };
+  const fmtDay = (iso) => { const d = new Date(iso + "T12:00:00"); return isNaN(d) ? iso : d.toLocaleDateString("en-GB", { day: "numeric", month: "short" }); };
 
   // returns an error message, or "" when the entry is valid
   function check(r) {
@@ -87,12 +88,53 @@
     (records || list()).forEach(r => { (by[r.subject] = by[r.subject] || []).push(r); });
     return Object.keys(by).map(k => {
       const rs = by[k]; // already newest first
-      const scored = rs.filter(r => typeof r.score === "number" && typeof r.max === "number");
+      const scored = rs.filter(r => typeof r.score === "number" && typeof r.max === "number" && r.max > 0);
       const last3 = scored.slice(0, 3);
       return { subject: k, label: subjectLabel(k), count: scored.length,
         latest: scored.length ? pct(scored[0]) : 0,
         recentMean: last3.length ? Math.round(last3.reduce((s, r) => s + pct(r), 0) / last3.length) : 0,
         reflections: rs.length - scored.length };
+    });
+  }
+
+  // per subject+topic: scored papers, scoreless reflections, latest result and an
+  // ascending score chain (last 5) for trends. Records without a topic fall into
+  // the subject's "(whole paper)" group; a group with no scored records never
+  // invents a denominator — latest stays null and points stays empty.
+  function topicSummary(records) {
+    const by = {};
+    (records || list()).filter(r => r && !r.deleted && r.id).forEach(r => {
+      const t = String(r.topic || "").trim() || null;
+      const k = r.subject + "\u0000" + (t || "");
+      (by[k] = by[k] || { subject: r.subject, topic: t, rs: [] }).rs.push(r);
+    });
+    return Object.keys(by).sort((a, b) => {
+      const A = by[a], B = by[b];
+      return String(A.subject).localeCompare(String(B.subject)) || String(A.topic || "").localeCompare(String(B.topic || ""));
+    }).map(k => {
+      const g = by[k];
+      const scored = g.rs.filter(r => typeof r.score === "number" && typeof r.max === "number" && r.max > 0);
+      const asc = scored.slice().sort((a, b) => String(a.date).localeCompare(String(b.date)) || (a.ts || 0) - (b.ts || 0));
+      const last = asc.length ? asc[asc.length - 1] : null;
+      return { subject: g.subject, label: subjectLabel(g.subject), topic: g.topic,
+        topicLabel: g.topic || "(whole paper)", scored: scored.length,
+        reflections: g.rs.length - scored.length,
+        latest: last ? { score: last.score, max: last.max, pct: pct(last), date: last.date } : null,
+        points: asc.slice(-5).map(r => ({ date: r.date, score: r.score, max: r.max, pct: pct(r) })) };
+    });
+  }
+  // whole-subject view across the scored records: the ascending score chain (last
+  // 5) for the trend line; scoreless reflections are counted but never scored
+  function subjectTrend(records) {
+    const by = {};
+    (records || list()).filter(r => r && !r.deleted && r.id).forEach(r => { (by[r.subject] = by[r.subject] || []).push(r); });
+    return Object.keys(by).sort((a, b) => String(a).localeCompare(String(b))).map(k => {
+      const rs = by[k];
+      const scored = rs.filter(r => typeof r.score === "number" && typeof r.max === "number" && r.max > 0);
+      const asc = scored.slice().sort((a, b) => String(a.date).localeCompare(String(b.date)) || (a.ts || 0) - (b.ts || 0));
+      return { subject: k, label: subjectLabel(k), scored: scored.length,
+        reflections: rs.length - scored.length,
+        points: asc.slice(-5).map(r => ({ date: r.date, score: r.score, max: r.max, pct: pct(r) })) };
     });
   }
 
@@ -113,7 +155,9 @@
       <div id="pp-error" class="pp-error"></div>
       <button id="pp-add" class="btn primary">Save score</button>
       <div id="pp-summary"></div>
-      <div id="pp-list"></div>`;
+      <div id="pp-list"></div>
+      <div id="pp-trends"></div>
+      <div id="pp-topics"></div>`;
     el.querySelector("#pp-date").value = today();
     el.querySelector("#pp-add").addEventListener("click", () => {
       const v = (id) => el.querySelector("#" + id).value;
@@ -148,13 +192,30 @@
           return `<tr><td>${esc(r.date)}</td><td>${esc(subjectLabel(r.subject))}</td><td><span class="chip pp-src">${esc(src)}</span></td><td>${esc(paper)}</td><td>${score}</td><td>${esc(r.notes || "")}</td><td><button class="btn pp-del" data-id="${esc(r.id)}" title="Delete this entry">Delete</button></td></tr>`;
         }).join("")}</tbody></table>`
       : "<p class='muted'>No papers logged yet.</p>";
+    // trends: per-subject score chain, then the by-topic breakdown — both only
+    // when there is anything to show, and every score shown with its denominator
+    const trends = subjectTrend(rows).filter(t => t.points.length);
+    el.querySelector("#pp-trends").innerHTML = trends.length
+      ? `<h3>Score trend</h3><ul class="links">${trends.map(t =>
+          `<li><strong>${esc(t.label)}</strong>: ${t.points.map(p => `${esc(p.score)}/${esc(p.max)} (${p.pct}%) on ${esc(fmtDay(p.date))}`).join(" \u2192 ")}</li>`).join("")}</ul>`
+      : "";
+    const topics = topicSummary(rows);
+    el.querySelector("#pp-topics").innerHTML = topics.length
+      ? `<h3>By topic</h3><table class="pp-table"><thead><tr><th>Subject</th><th>Topic</th><th>Scored</th><th>Reflections</th><th>Latest</th><th>Trend</th></tr></thead><tbody>${topics.map(g => {
+          const point = (p) => `${esc(p.score)}/${esc(p.max)} (${p.pct}%)`;
+          const dash = `<span class="muted">\u2014</span>`;
+          const latest = g.latest ? point(g.latest) : dash;
+          const chain = g.points.length ? g.points.map(point).join(" \u2192 ") : dash;
+          return `<tr><td>${esc(g.label)}</td><td>${esc(g.topicLabel)}</td><td>${g.scored}</td><td>${g.reflections}</td><td>${latest}</td><td>${chain}</td></tr>`;
+        }).join("")}</tbody></table>`
+      : "";
     el.querySelectorAll(".pp-del").forEach(b => b.addEventListener("click", () => {
       if (typeof confirm === "function" && !confirm("Delete this score?")) return;
       remove(b.getAttribute("data-id")); render(el);
     }));
   }
 
-  NB.papers = { KEY, SUBJECTS, check, list, add, remove, summary, pct, mount };
+  NB.papers = { KEY, SUBJECTS, check, list, add, remove, summary, topicSummary, subjectTrend, pct, mount };
   const boot = () => { const el = document.getElementById("pp-panel"); if (el && S) mount(el); };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();

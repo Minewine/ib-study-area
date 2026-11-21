@@ -5,14 +5,17 @@ deliberately minimal: one PHP file, JSON storage, a login per student (and one a
 Everything here was built around one idea: **content is only useful if it matches the exact
 syllabus editions she is examined on (May 2028) and the order ISL actually teaches it.**
 
-Status snapshot: **2026-11-20 (consolidation)** — **rametric.com/nevaib runs the multi-user release**
+Status snapshot: **2026-11-21** — **rametric.com/nevaib runs the multi-user release**
 (everything through PR #19). Built locally since then, awaiting deploy: the 20 Nov student-feedback
 phases — **practice sets + taught/difficulty filters (phase 1)**, a **mistake log (phase 2)**,
 **biology A–D navigation + search and Today suggestions with reasons (phase 3)**, a **Resources
 page + AI-assisted bank authoring with a check-first preview (phase 4)**, and favicon/editor-copy/
-light-mode polish (phase 5). Everything passes `./dev.sh validate` + `./dev.sh test` + e2e. See
-[docs/HANDOFF.md](docs/HANDOFF.md), [docs/NEXT-STEPS.md](docs/NEXT-STEPS.md) and the phase summary
-[docs/CHANGELOG-2026-11-20-neva-feedback.md](docs/CHANGELOG-2026-11-20-neva-feedback.md).
+light-mode polish (phase 5) — plus the 21 Nov work packages (hierarchy polish, spaced mistake
+retests, tiered Today suggestions, exam-reflection summaries). Everything passes `./dev.sh
+validate` + `./dev.sh test` + e2e. See
+[docs/HANDOFF.md](docs/HANDOFF.md), [docs/NEXT-STEPS.md](docs/NEXT-STEPS.md), the phase summary
+[docs/CHANGELOG-2026-11-20-neva-feedback.md](docs/CHANGELOG-2026-11-20-neva-feedback.md) and the
+21 Nov batch summary [docs/CHANGELOG-2026-11-21-study-loop.md](docs/CHANGELOG-2026-11-21-study-loop.md).
 
 Next focus (2026-11-20): **deploy this batch** (only with explicit approval — NEXT-STEPS step 1),
 then usage: December 8 English rehearsal, January mocks, IA debriefs, EE shortlist.
@@ -27,12 +30,12 @@ then usage: December 8 English rehearsal, January mocks, IA debriefs, EE shortli
 | Subject hubs (6) | `math-aa-sl.html` `biology-hl.html` `chemistry-hl.html` `history-sl.html` `french-a-langlit.html` `english-lit-hl.html` | Verified assessment weightings, currency banners (which papers/guides match), syllabus checklists linked to notes PDFs (biology grouped under searchable A–D theme headings), IA corners, ISL teaching-sequence panels (bio/chem), teaching hours (math) |
 | Core | `core.html` | TOK (exhibition 33% / essay 67%), **new EE guide** (first assessment 2027), CAS + TOK exhibition object shortlist (tracked, synced) |
 | EE workspace | `ee.html` | Idea-log shortlist (tracked, synced), one-page proposal checklist mapped to the new-EE criteria, DP1 timeline, reflection-session guidance |
-| Quiz engine | `quiz.html` | 20-question sessions, filtered by subject/topic/format; **practice sets grouped under topics, difficulty-range filter (easy/standard/hard/unrated), taught-topics-only toggle with a "Topics & teaching status" panel**; instant MCQ marking; written answers self-marked against markschemes; weak-topic flags + tactics; "＋ Flashcard" button on every answer |
+| Quiz engine | `quiz.html` | 20-question sessions, filtered by subject/topic/format; **practice sets grouped under topics, difficulty-range filter (easy/standard/hard/unrated with unrated counts shown), taught-topics-only toggle with a "Topics & teaching status" panel (not yet taught / learning / ready to revise)**; Paper 1A/1B practice labelled in topic and set lists; instant MCQ marking; written answers self-marked against markschemes; weak-topic flags + tactics; "＋ Flashcard" button on every answer |
 | Topic notes | `app/notes.html` | 113 original notes (Biology HL 40, Chemistry HL 22, Maths AA SL 51) by syllabus code: recall-first key ideas, key terms (+ card), common mistakes, worked examples, practice prompts (self-check points, not IB markschemes), booklet pointers, one-tap quiz/flashcards on the linked items; **My resources** box per note (her own links, synced); **Ask an AI** copies a pre-filled prompt and opens the preferred assistant — including "Write a practice set to import"; linked from every matching checklist row |
-| Mistake log | `app/mistakes.html` | every wrong answer with its why: error type (careless/misread/content/time/other), reflection, retry history; recovered ("green") vs unresolved vs "not relevant" (reversible); filter by status/subject/search; one-question retry deep links |
+| Mistake log | `app/mistakes.html` | every wrong answer with its why: error type (careless/misread/content/time/other), reflection, retry history; recovered ("green") vs unresolved vs "not relevant" (reversible); unresolved rows show when the next spaced retest comes due (7/30-day ladder); filter by status/subject/search; one-question retry deep links |
 | Resources | `app/resources.html` | her own collection of links (videos, class notes, files), tagged by subject/topic/type — never quiz content; links only (http/file), synced; each row offers "Make questions…" into the Upload page's AI flow |
-| Today panel | `app/index.html` | due cards, a 6-question quiz on the weakest topic, this week's class units from `library/class-schedule.json`, plus **ranked suggestions with visible reasons** (open mistakes, closing units, deadline prep) and near/long-lead dated items |
-| Exam practice | `app/quiz.html` | Paper 1A/1B-style Chemistry banks, Biology data-response practice, "sure/guessing" confidence ratings, past-paper score log |
+| Today panel | `app/index.html` | due cards, a 6-question quiz on the weakest topic, this week's class units from `library/class-schedule.json`, plus **tiered suggestions with visible reasons, capped at three** (deadline / unit close / next-unit planning first, then due review, then enrichment) and near/long-lead dated items |
+| Exam practice | `app/quiz.html` | Paper 1A/1B-style Chemistry banks, Biology data-response practice, "sure/guessing" confidence ratings, past-paper score log with a per-subject score trend and a by-topic summary |
 | Coursework planner | `app/coursework.html` | Bio/Chem scientific investigation + Maths exploration: stages, self-checks, pitfalls, her own dates (synced per record) |
 | Weekly summary | `app/summary.html` | read-only parent view (own login) + optional cron e-mail |
 | Accounts & admin | `admin.html` | per-student logins with isolated data and subject profiles; an admin account creates students and sets their subjects (in the working tree, see status above) |
@@ -80,6 +83,7 @@ ibsystem/
 │   ├── AUTHORING.md          ← how to add quiz banks/decks (schema, practice sets, AI prompt)
 │   ├── USER-TEST.md          ← student user-test guide (+ AI bank-generation prompt)
 │   ├── CHANGELOG-2026-11-20-neva-feedback.md ← what changed in phases 0–5 (student feedback batch)
+│   ├── CHANGELOG-2026-11-21-study-loop.md  ← 21 Nov batch: reliability fixes + WP1–WP4 (one page)
 │   ├── MAINTENANCE.md        ← weekly/termly checklists
 │   └── VISION.md             ← ideas for later (nothing committed)
 ├── index.html … *.html       ← study-site pages (see table above) + admin.html (account admin)
@@ -94,11 +98,11 @@ ibsystem/
 │   ├── quiz-engine.js        ← quiz sessions (topics/sets, difficulty + taught filters) + flashcard hook
 │   ├── bank-schema.js        ← shared bank/deck validators (upload + library, same rules)
 │   ├── flashcards.js         ← SRS engine + editor
-│   ├── today.js              ← Today panel (due cards, weakest topic, class week, suggestions with reasons)
-│   ├── mistakes.js           ← mistake log over q-errors (tags, reflections, retire/restore)
+│   ├── today.js              ← Today panel (due cards, weakest topic, class week, tiered suggestions)
+│   ├── mistakes.js           ← mistake log over q-errors (tags, reflections, retest schedule, retire/restore)
 │   ├── resources.js          ← Resources page engine (my-res links, tagged, never quiz content)
 │   ├── coursework.js         ← coursework planner
-│   ├── confidence.js/papers.js ← confidence ratings + past-paper score log
+│   ├── confidence.js/papers.js ← confidence ratings + past-paper score log (score trend + by-topic summary)
 │   ├── notes.js/ai-prompt.js ← topic-notes viewer + Ask an AI (incl. practice-set prompt mode)
 │   ├── bank-import.js        ← Upload page staged paste import (validate → preview/edit → import)
 │   ├── backup.js             ← full backup + validated, merge-by-default restore
@@ -173,6 +177,7 @@ Full handoff: [docs/HANDOFF.md](docs/HANDOFF.md) · what to do next: [docs/NEXT-
 | [docs/NEXT-PHASE-PROMPT.md](docs/NEXT-PHASE-PROMPT.md) | Point-in-time handoff prompt (superseded by HANDOFF.md for current state) |
 | [docs/QUIZ-GENERATION-PROMPT.md](docs/QUIZ-GENERATION-PROMPT.md) | Reusable prompt for generating new question batches |
 | [docs/CHANGELOG-2026-11-20-neva-feedback.md](docs/CHANGELOG-2026-11-20-neva-feedback.md) | Phase-by-phase summary of the 20 Nov student-feedback work (phases 0–5) |
+| [docs/CHANGELOG-2026-11-21-study-loop.md](docs/CHANGELOG-2026-11-21-study-loop.md) | One-page summary of the 21 Nov study-loop batch (reliability fixes + WP1–WP4), per-WP changelogs linked |
 
 ## Next actions (ordered — details in the linked docs)
 

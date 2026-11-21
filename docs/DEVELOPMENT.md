@@ -1,6 +1,6 @@
 # Development Notes
 
-_Last updated: 20 Nov 2026._
+_Last updated: 21 Nov 2026._
 
 Architecture, data schemas, conventions and gotchas for anyone (including future-you)
 touching this site.
@@ -108,14 +108,14 @@ touching this site.
   (records newest-wins, otherwise the current value wins conflicts and gaps are filled); Replace is an explicit
   opt-in for the keys in the file; "Undo last restore" brings the snapshot back.
 - **Cache-busting convention**: engine script tags carry `?v=N` — bump N in the referencing pages whenever an engine
-  file changes. `store.js` `?v=8` (first script on every storing page), `profile.js` `?v=1` (right after store.js),
-  `backup.js` `?v=6` (cards, author), `bank-schema.js` `?v=1` (quiz, author — before quiz-engine/inline author script),
-  `bank-import.js` `?v=1` (author), `auth.js` `?v=10`, `quiz-engine.js` `?v=20`, `flashcards.js` `?v=16`,
-  `mistakes.js` `?v=1` (app/mistakes.html), `resources.js` `?v=1` (app/resources.html),
+  file changes. `store.js` `?v=10` (first script on every storing page), `profile.js` `?v=1` (right after store.js),
+  `backup.js` `?v=7` (cards, author), `bank-schema.js` `?v=2` (quiz, author — before quiz-engine/inline author script),
+  `bank-import.js` `?v=1` (author), `auth.js` `?v=10`, `quiz-engine.js` `?v=22`, `flashcards.js` `?v=16`,
+  `mistakes.js` `?v=2` (app/mistakes.html), `resources.js` `?v=1` (app/resources.html),
   `notes.js` `?v=5` + `ai-prompt.js` `?v=5` (app/notes.html; ai-prompt also on author), `app.js` `?v=6`,
   `lists.js` `?v=4` (core, ia, french hub, ee, library), `library.js` `?v=4` (library.html, index, practice),
-  `deadlines.js` `?v=6` (index + deadlines), `today.js` `?v=5`, `coursework.js` `?v=2`,
-  `papers.js` `?v=2` / `confidence.js` `?v=1` (quiz). Bank/deck/manifest fetches use `?cb=Date.now()` + `cache: no-store`.
+  `deadlines.js` `?v=6` (index + deadlines), `today.js` `?v=7`, `coursework.js` `?v=2`,
+  `papers.js` `?v=3` / `confidence.js` `?v=1` (quiz). Bank/deck/manifest fetches use `?cb=Date.now()` + `cache: no-store`.
 - **Vanilla JS, one engine per concern**:
   | File | Owns | Page(s) |
   |---|---|---|
@@ -160,9 +160,12 @@ Open a page once with `?nbapi=/api/api.php` to point it at the local API (localh
   local data, `me` failing, checklist defaults, legacy server, storage full — against `fake-server.js`),
   `backup.test.js` (v1/v2/server-export fixtures, round trip, merge vs replace, undo, malformed input),
   `auth-merge.test.js`, `bank-schema.test.js` (upload validators incl. the optional
-  `set`/`setOrder`/`codes`/`difficulty` fields, next-set-name suggestion), `quiz-picker.test.js`
-  (subject → topic → set model, difficulty-range filter, taught-topics filter),
-  `taught.test.js` (`topic-taught` storage + per-topic newest-`t` merge).
+  `set`/`setOrder`/`codes`/`difficulty` fields, next-set-name suggestion, `nextSetOrder`),
+  `quiz-picker.test.js`
+  (subject → topic → set model, difficulty-range filter, taught-topics filter, three-state
+  teaching status, per-set difficulty histograms, set-name disambiguation, same-id/two-bank
+  progress separation),
+  `taught.test.js` (`topic-taught` storage + per-topic newest-`t` merge + status carry-over).
 - `tests/test_api.py`: `server/api.php` on `php -S` with a temp data dir (skipped without php): auth,
   revisions + 409, partial saves, legacy files and clients, history rotation, export, atomic writes,
   unreadable file, lockout, plus a PHP 7.2 syntax guard.
@@ -194,8 +197,8 @@ store.js); the table lists the **logical** names engines use. `nb-*` bookkeeping
 | `fc-theme` | `flashcards.js` | "light"/"dark" for the Cards page |
 | `q-userbanks` | `app/author.html` + quiz-engine | uploaded quiz banks (per device) |
 | `fc-userdecks` | `app/author.html` + flashcards | uploaded flashcard decks (per device) |
-| `topic-taught` | quiz-engine | per-topic teaching-status overrides `{topicKey: {taught: bool, t}}` — written by the Quiz page's "Topics & teaching status" panel; topics without an override fall back to the class-schedule suggestion. Synced and merged **per topic** (newest `t` wins) |
-| `q-errors` | quiz-engine + `practice.html` + `assets/mistakes.js` | missed-question tracker: `{key, subject, topic, topicLabel, format, stem, choices, answer, userAnswer, note, marks, markscheme, tactic, attempts, firstMissed, lastMissed, resolved}` + `id, bankId, ts, lastAttempt, legacyKey` — key = `"<bankId>#<id>"` (bankId = bank file name without `.json`, `user:<slug>` for uploaded banks; ids are only unique per file). Older records keyed by bare id / stem hash are renamed when their bank loads in a session (same id AND same stem), keeping `legacyKey`; unmatched old records stay as they are and remain reviewable. `ts` = last-change ms timestamp for the sync merge. **Mistake-log fields (all optional, written by the mistakes page, never required):** `errorType` (`careless|misread|content|time|other`), `reflection` (≤500 chars), `retries` `[{ts, correct, conf?}]` (capped 20, written by the quiz engine), `retired` + `retiredReason` (≤200) + `retiredAt` (reversible soft-hide — excluded from review and unresolved counts, never hard-deleted). Synced cross-device when logged in |
+| `topic-taught` | quiz-engine | per-topic teaching-status overrides `{topicKey: {taught: bool, t, status?: "not-taught"\|"learning"\|"ready"}}` — written by the Quiz page's "Topics & teaching status" panel (Auto / Not yet / Learning / Ready to revise). `taught` stays consistent with `status` (`(status === "not-taught") === !taught`) so a client predating `status` keeps showing the same thing; a legacy bool-only record reads as `ready` when true. Topics without an override fall back to the class-schedule suggestion (still two-state: taught / not-taught). Synced and merged **per topic** (newest `t` wins; a valid `status` consistent with the winner's `taught` is carried over from the older record so an old client can't erase it) |
+| `q-errors` | quiz-engine + `practice.html` + `assets/mistakes.js` | missed-question tracker: `{key, subject, topic, topicLabel, format, stem, choices, answer, userAnswer, note, marks, markscheme, tactic, attempts, firstMissed, lastMissed, resolved}` + `id, bankId, ts, lastAttempt, legacyKey` — key = `"<bankId>#<id>"` (bankId = bank file name without `.json`, `user:<slug>` for uploaded banks; ids are only unique per file). Older records keyed by bare id / stem hash are renamed when their bank loads in a session (same id AND same stem), keeping `legacyKey`; unmatched old records stay as they are and remain reviewable. `ts` = last-change ms timestamp for the sync merge. **Optional fields (written by the quiz engine / the mistakes page, never required):** `errorType` (`careless|misread|content|time|other`), `reflection` (≤500 chars), `retries` `[{ts, correct, conf?}]` (capped 20, written by the quiz engine; `attempts` totals the wrong outcomes — misses plus wrong review retries), `dueAt` (epoch ms, written by the quiz engine — when the record next comes due for its **spaced retest**: 7 days after the first wrong outcome, 30 days after any later one; a wrong retry re-opens a recovered record and reschedules; a correct answer at/after the due date recovers and clears it, before the date it is practice only; absent = due now, so legacy records behave as before; due-gated in "Review past errors" and the Today suggestions, bypassed by the `errkeys=` deep links and the confident-but-wrong review), `retired` + `retiredReason` (≤200) + `retiredAt` (reversible soft-hide — excluded from review and unresolved counts, never hard-deleted). Sync merge is field-aware (retries unioned; `reflection`/`errorType`/`dueAt` fill in from the loser only when the errRank winner lacks them; retirement preserved when the winner has no `retired` field). Synced cross-device when logged in |
 | `my-res` | `assets/notes.js` + `assets/resources.js` | her own resources/links `{id: {note?, subject?, topic?, type?, comment?, label, url, t}}` — `note` = topic-note id (the per-note "My resources" box), `subject`/`topic`/`type` (`website|video|doc|practice|other`)/`comment` (≤500) = the Resources page's tags. `url` must be `http(s)://` or `file://` (≤2000 chars; links only — never file contents). Deletion = tombstone `{note?/subject?, deleted: true, t}`; merged per id, newest `t` wins; `assets/backup.js` validates the extended shape. Resources are never read by the quiz/card engines |
 | `mistakes-filters` | `assets/mistakes.js` | the mistake-log page's filter state `{status, subject, q}` — LOCAL_ONLY (device-local, per-user scoped, never synced or backed up) |
 | `profile` | `profile.js` / server | per-user subject list `{subjects: ["biology-hl", …]}` (canonical ids; absent = all six subjects; empty array = none). Set by an admin via `set-profile`/`create-user`, synced as a normal state key |
@@ -251,7 +254,11 @@ its unit `topic` code; notes state the fact and the trap — never hedge. All of
 display name, unique per topic), `setOrder` (int), `codes` (IB codes for the taught suggestion),
 `paperStyle`/`calculatorFree` (Paper-style labelling) and item `difficulty` (`easy|standard|hard`,
 absent = Unrated — never guessed) are **optional**; the Quiz picker groups banks as sets under
-their effective topics (item `topic`, else the bank's, else the filename stem).
+their effective topics (item `topic`, else the bank's, else the filename stem). At upload time the
+Upload page stamps `setOrder` (next per-topic number via `nextSetOrder`) and, only when the
+display name would collide with an existing set in the same topic, a unique `set` name — never
+renaming or rewriting already-stored banks (legacy duplicate names are disambiguated at display
+time only, in the picker).
 
 ### Flashcard deck (`library/flashcards/*.json`)
 ```json

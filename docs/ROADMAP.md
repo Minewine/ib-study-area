@@ -1,6 +1,6 @@
 # Feature Roadmap
 
-_Last updated: 20 Nov 2026._
+_Last updated: 21 Nov 2026._
 
 Scope guard: every item must serve the actual DP1→DP2 sequence (exams May 2028).
 The weekly loop — quiz sessions, flashcards, error log, idea log — is the product;
@@ -27,12 +27,20 @@ committed the same day — deploy pending approval):
 - [x] **Phase 2 — mistake log** (`app/mistakes.html` + `assets/mistakes.js`): every wrong answer
   with error type, reflection (≤500), retry history (capped 20); recovered vs unresolved vs
   **"not relevant"** (reversible soft-hide, never deleted); status/subject/search filters;
-  one-question retry deep links (`quiz.html?errkeys=`). Sync-merge of the new `q-errors` fields is
-  field-aware (retries union, reflection fill-in, retired rides the winner).
+  one-question retry deep links (`quiz.html?errkeys=`). Spaced retests (WP2, 21 Nov 2026): records
+  gain an optional `dueAt` — a miss comes back for a scheduled retest after 7 days, any later wrong
+  outcome after 30; review and the Today suggestions are due-gated (deep links bypass), a wrong
+  retry re-opens a recovered record, and only a correct answer at/after the scheduled date recovers
+  it. Sync-merge of the new `q-errors` fields is field-aware (retries union, reflection/dueAt
+  fill-in, retired rides the winner).
 - [x] **Phase 3 — biology navigation + today suggestions**: Biology hub checklist grouped under
   **A/B/C/D theme headings with live search** (empty state + heading hiding); Today panel adds
   **ranked suggestions with visible reasons** (open mistakes → retry link, closing units → note
   link, deadline prep) capped at two, plus near/long-lead dated items; pinned-clock e2e.
+  Tiered ranking (WP3, 21 Nov 2026): the block is now capped at three and ordered tier A
+  urgency/planning (deadline, unit close — always linkable — next-unit plan-ahead) → tier B
+  due review → tier C enrichment
+  ([CHANGELOG-2026-11-21-wp3-today-panel.md](CHANGELOG-2026-11-21-wp3-today-panel.md)).
 - [x] **Phase 4 — resources + AI-assisted authoring** (`app/resources.html`): she saves her own
   links (title, subject, topic, type, note) tagged to a syllabus topic and optionally shown on
   that topic's note; stored in the synced `my-res` key, tombstone deletes, links only
@@ -71,7 +79,7 @@ committed the same day — deploy pending approval):
 - [x] **Today panel** (#8): due cards, a weakest-topic quiz, this week's class units (`class-schedule.json`).
 - [x] **Security hardening** (#9): login limits/lockout, header-only tokens, CSRF/origin guard, escaping, response headers.
 - [x] **Parent weekly summary** (#10): read-only `app/summary.html` (own login) + `?action=summary` API + optional cron e-mail.
-- [x] **Exam-style practice** (#11): Paper 1A/1B-style Chemistry banks + Biology data-response bank, confidence ratings ("sure"/"guessing"), past-paper score log (`pp-scores`).
+- [x] **Exam-style practice** (#11): Paper 1A/1B-style Chemistry banks + Biology data-response bank, confidence ratings ("sure"/"guessing"), past-paper score log (`pp-scores`) — since WP4 (21 Nov 2026) with a per-subject score trend and a by-topic summary (scoreless reflections counted, never given a denominator).
 - [x] **Coursework planner** (#12): Bio/Chem scientific investigation + Maths exploration tracks, synced per record; practical/IA skills quiz bank.
 - [x] Docs status update + VISION.md (#13).
 - [x] **Private cross-check + My resources** (#14): 25 notes cross-checked against a commercial set (kept out of the repo; 29 notes gained key ideas/misconceptions), per-note "My resources" links (`my-res`, synced, tombstoned deletes).

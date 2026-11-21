@@ -143,6 +143,38 @@ test("merge.union keeps everything from both sides", () => {
     [{ key: "k", ts: 9, reflection: "watch the sign", errorType: "misread", retries: [{ ts: 1, correct: false }] }]);
 });
 
+test("merge q-errors: dueAt fills in from the loser when the winner lacks it; retirement/reflection semantics unchanged", () => {
+  const { union } = boot().NB.merge;
+  // the spaced-retest schedule (dueAt) follows the reflection/errorType rule: a copy
+  // without the field (e.g. a client predating it) inherits the other side's schedule
+  assert.deepEqual(plain(union("q-errors",
+    [{ key: "k", ts: 9, reflection: "watch the sign" }],
+    [{ key: "k", ts: 3, dueAt: 123, errorType: "misread" }])),
+    [{ key: "k", ts: 9, reflection: "watch the sign", dueAt: 123, errorType: "misread" }]);
+  // both sides have it → the errRank winner's value wins, like every other scalar
+  assert.deepEqual(plain(union("q-errors",
+    [{ key: "k", ts: 9, dueAt: 555 }],
+    [{ key: "k", ts: 3, dueAt: 123 }])),
+    [{ key: "k", ts: 9, dueAt: 555 }]);
+  // retirement sentinel still pins exactly as before the field existed:
+  // a retire survives a newer copy that has NO retired field at all…
+  assert.deepEqual(plain(union("q-errors",
+    [{ key: "k", ts: 9, dueAt: 555 }],
+    [{ key: "k", ts: 3, retired: true, retiredReason: "off-syllabus", retiredAt: 9 }])),
+    [{ key: "k", ts: 9, dueAt: 555, retired: true, retiredReason: "off-syllabus", retiredAt: 9 }]);
+  // …an explicit retired:false restore (newer ts) beats a retired loser…
+  assert.deepEqual(plain(union("q-errors",
+    [{ key: "k", ts: 9, retired: false }],
+    [{ key: "k", ts: 3, retired: true, retiredReason: "off-syllabus", retiredAt: 9 }])),
+    [{ key: "k", ts: 9, retired: false }]);
+  // …and a stale winner without the field does not resurrect retirement over an
+  // explicit retired:false loser
+  assert.deepEqual(plain(union("q-errors",
+    [{ key: "k", ts: 9, dueAt: 555 }],
+    [{ key: "k", ts: 3, retired: false }])),
+    [{ key: "k", ts: 9, dueAt: 555, retired: false }]);
+});
+
 test("merge.RECORDS.quizlog: union, newest first, never truncates below input size", () => {
   const { RECORDS } = boot().NB.merge;
   const a = [{ date: "2026-11-18", label: "A", got: 1, max: 2, pct: 50 }];

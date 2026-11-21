@@ -394,11 +394,13 @@
   // Field-aware merge of two q-error records with the same key (Phase 2). `w` is the
   // errRank winner, `l` the loser. retries are a union of both devices' outcomes
   // (deduped by ts+correct identity, ascending by ts — the engines cap at 20 on their
-  // next write); reflection/errorType fill in from the loser only when the winner
-  // lacks them. Retirement is preserved from the loser when the winner has NO retired
-  // field at all — a client predating the feature cannot erase "not relevant" by
-  // overwriting the record. An explicit retired:false (a restore, mistakes.js) is a
-  // real answer and still wins. Records without the optional fields are untouched.
+  // next write); reflection/errorType/dueAt fill in from the loser only when the winner
+  // lacks them (dueAt — the spaced-retest schedule — rides the errRank winner when both
+  // sides have it, like every other scalar). Retirement is preserved from the loser when
+  // the winner has NO retired field at all — a client predating the feature cannot erase
+  // "not relevant" by overwriting the record. An explicit retired:false (a restore,
+  // mistakes.js) is a real answer and still wins. Records without the optional fields
+  // are untouched.
   const errMerge = (w, l) => {
     const out = Object.assign({}, w);
     const seen = new Set(), retries = [];
@@ -409,12 +411,28 @@
       seen.add(id); retries.push(r);
     });
     if (retries.length) out.retries = retries.sort((x, y) => (x.ts || 0) - (y.ts || 0));
-    ["reflection", "errorType"].forEach(f => { if (out[f] === undefined && l[f] !== undefined) out[f] = l[f]; });
+    ["reflection", "errorType", "dueAt"].forEach(f => { if (out[f] === undefined && l[f] !== undefined) out[f] = l[f]; });
     if (out.retired === undefined && l.retired !== undefined) {
       out.retired = l.retired;
       if (out.retired) ["retiredReason", "retiredAt"].forEach(f => { if (out[f] === undefined && l[f] !== undefined) out[f] = l[f]; });
     }
     return out;
+  };
+
+  // Field-aware fill for a merged topic-taught record (assets/quiz-engine.js reads
+  // the optional status). `w` is the newest-t winner, `l` the loser. When the
+  // winner predates the status field (no status key at all — an old client's
+  // record), a valid status on the loser is carried over rather than lost, but
+  // only when it implies the winner's taught value ((status === "not-taught") ===
+  // !taught): a contradictory or garbage status is dropped instead of creating a
+  // record the quiz engine would have to second-guess. A winner that HAS a status
+  // (or isn't a proper record) is returned untouched.
+  const TAUGHT_STATUSES = ["not-taught", "learning", "ready"];
+  const taughtStatusFill = (w, l) => {
+    if (!isObj(w) || !isObj(l)) return w;
+    if (w.status !== undefined || typeof w.taught !== "boolean") return w;
+    if (TAUGHT_STATUSES.indexOf(l.status) < 0 || (l.status === "not-taught") !== !w.taught) return w;
+    return Object.assign({}, w, { status: l.status });
   };
 
   // Record-level mergers: merge(a, b) — on a tie b wins. Used for sync (a = local,
@@ -429,8 +447,8 @@
     },
     // [ {key, …, ts?} ] — union by key, newest wins, merged field-aware when the
     // same record exists on both sides (errMerge: retries union, reflection/
-    // errorType fill in from the loser when missing, retirement preserved when the
-    // winner has no retired field); a record renamed by the quiz's key migration
+    // errorType/dueAt fill in from the loser when missing, retirement preserved when
+    // the winner has no retired field); a record renamed by the quiz's key migration
     // that comes back under its legacy key from an older copy is folded in and dropped
     "q-errors": function (a, b) {
       if (!Array.isArray(a)) return b; if (!Array.isArray(b)) return a;
@@ -505,13 +523,22 @@
       Object.keys(a).forEach(id => { if (!(id in out) || newer(a[id], out[id], (r) => [r && r.t || 0])) out[id] = a[id]; });
       return out;
     },
-    // topic teaching-status overrides {topicKey: {taught, t}} — per topic the newest
-    // edit wins; taught:false is a real record (a deliberate "not yet"), so it
-    // survives a merge like any other; a record without t ranks as t=0
+    // topic teaching-status overrides {topicKey: {taught, t, status?}} — per topic
+    // the newest edit wins; taught:false is a real record (a deliberate "not yet"),
+    // so it survives a merge like any other; a record without t ranks as t=0. The
+    // optional status ("not-taught"|"learning"|"ready") fills in from the older
+    // record when the newest winner has none — a client predating the status field
+    // must not erase a learning/ready status set on another device (the errMerge
+    // retirement precedent) — but only a status that implies the winner's taught
+    // value is carried over; garbage or contradictory ones are dropped.
     "topic-taught": function (a, b) {
       if (!isObj(a)) return b; if (!isObj(b)) return a;
       const out = Object.assign({}, b);
-      Object.keys(a).forEach(id => { if (!(id in out) || newer(a[id], out[id], (r) => [r && r.t || 0])) out[id] = a[id]; });
+      Object.keys(a).forEach(id => {
+        if (!(id in out)) { out[id] = a[id]; return; }
+        const w = newer(a[id], out[id], (r) => [r && r.t || 0]) ? a[id] : out[id];
+        out[id] = taughtStatusFill(w, w === a[id] ? out[id] : a[id]);
+      });
       return out;
     }
   };

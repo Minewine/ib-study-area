@@ -7,6 +7,8 @@
      errorType?  "careless" | "misread" | "content" | "time" | "other" ("" = untagged)
      reflection? ≤500 chars
      retries?    [{ts, correct, conf?}] — capped at 20 by the quiz engine
+     dueAt?      epoch ms — when the spaced retest next comes due (quiz engine);
+                 shown on open rows, cleared when a due retest is answered right
      retired? / retiredReason? / retiredAt? — reversible soft-hide ("not relevant");
                  restore writes an explicit retired:false (dropping reason/at) and
                  bumps ts — the sync/backup merge reads a MISSING retired field as
@@ -119,6 +121,8 @@
     return new Date(y, m - 1, d).toLocaleDateString(undefined, { day: "numeric", month: "short" });
   };
   const fmtTs = (ts) => { const d = new Date(ts); return isNaN(d.getTime()) ? "" : d.toLocaleDateString(undefined, { day: "numeric", month: "short" }); };
+  // local YYYY-MM-DD from epoch ms (the quiz engine's dueAt schedule, shown as written)
+  const isoDay = (ms) => { const d = new Date(ms); return isNaN(d.getTime()) ? "" : d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); };
   const lastRetry = (e) => { const r = (Array.isArray(e.retries) ? e.retries : []).filter(x => x && typeof x === "object"); return r.length ? r[r.length - 1] : null; };
   const excerpt = (s, n) => { s = String(s || ""); return s.length > n ? s.slice(0, n).trimEnd() + "…" : s; };
 
@@ -132,6 +136,7 @@
     const missedTxt = missed.length === 2 && missed[0] !== missed[1] ? `Missed ${missed[0]} \u2192 ${missed[1]}` : (missed.length ? `Missed ${missed[missed.length - 1]}` : "");
     const attempts = e.attempts || 1;
     const retryTxt = retries ? `last retry ${retries.correct ? "correct" : "wrong"} ${fmtTs(retries.ts)}` : "";
+    const dueTxt = st === "open" && e.dueAt != null ? `due ${isoDay(e.dueAt)}` : "";
     const typeTxt = typeLabel(e.errorType);
     const notes = (e.subject && e.topic)
       ? `<a class="btn" href="notes.html?subject=${encodeURIComponent(e.subject)}&topic=${encodeURIComponent(e.topic)}">Open topic notes</a>` : "";
@@ -142,7 +147,7 @@
         ${typeTxt ? `<span class="chip mk-type">${esc(typeTxt)}</span>` : ""}
       </div>
       <div class="mk-stem">${esc(excerpt(e.stem, 120))}</div>
-      <div class="mk-meta muted">${[missedTxt, `${attempts} attempt${attempts === 1 ? "" : "s"}`, retryTxt].filter(Boolean).map(esc).join(" \u00b7 ")}</div>
+      <div class="mk-meta muted">${[missedTxt, `${attempts} attempt${attempts === 1 ? "" : "s"}`, retryTxt, dueTxt].filter(Boolean).map(esc).join(" \u00b7 ")}</div>
       ${e.reflection ? `<div class="mk-reflect">${esc(String(e.reflection))}</div>` : ""}
       ${st === "retired" ? `<div class="mk-why muted">Not relevant${e.retiredReason ? ": " + esc(String(e.retiredReason)) : ""}.</div>` : ""}
       <div class="mk-actions">
