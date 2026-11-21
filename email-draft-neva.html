@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Email draft for Neva — click Copy, paste into Gmail</title>
+<style>
+  body { font-family: Arial, Helvetica, sans-serif; background: #f2f4f7; margin: 0; padding: 24px; }
+  .toolbar { max-width: 720px; margin: 0 auto 14px; display: flex; gap: 12px; align-items: center; }
+  #copyBtn { font-size: 16px; padding: 10px 22px; background: #1a73e8; color: #fff; border: 0; border-radius: 6px; cursor: pointer; }
+  #copyBtn:hover { background: #1765cc; }
+  #status { color: #188038; font-size: 15px; }
+  .email { max-width: 720px; margin: 0 auto; background: #fff; border: 1px solid #d7dbe0; border-radius: 8px; padding: 28px 32px; color: #202124; font-size: 15px; line-height: 1.55; }
+  .subject { color: #5f6368; font-size: 13px; margin: 0 0 14px; }
+  .subject b { color: #202124; font-size: 15px; }
+  .email a { color: #1a56db; }
+  ul { padding-left: 22px; }
+  li { margin: 0 0 10px; }
+  .sig { margin-top: 18px; }
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <button id="copyBtn" type="button">Copy email</button>
+  <span id="status"></span>
+</div>
+
+<div class="email" id="email">
+  <p class="subject">Subject: <b>Your study-site wish list — built ✅</b></p>
+
+  <p>Hi Neva,</p>
+
+  <p>Remember the feedback you gave after testing the study area? I spent today turning your suggestions into the real thing. Everything is built, tested (196 automated checks + 33 end-to-end browser tests — all green), and on its way to the site with the next update.</p>
+
+  <p>Here's what you asked for, and where each one lives on GitHub:</p>
+
+  <ul>
+    <li><b>"Practice sets, not one giant pile"</b> — questions now group into named practice sets under each topic, with a difficulty filter (easy → hard) and a "taught topics only" toggle, so revision can match what you've actually covered in class. → <a href="https://github.com/Minewine/ib-study-area/pull/22">Pull request #22 — "Phases 1-5"</a></li>
+    <li><b>"I want to know <i>why</i> I got things wrong"</b> — a proper Mistake Log: every wrong answer saved with an error type (careless / misread / didn't know it / out of time), your own reflection, retry history, and a "green" flag once you've answered it right in a review. There's also a "not relevant" button for the ones that don't matter. → <a href="https://github.com/Minewine/ib-study-area/pull/22/files">Pull request #22 — the mistake log</a></li>
+    <li><b>"Finding things in Biology is a mess"</b> — the Biology hub now follows the official A/B/C/D theme order, with instant search across all 43 syllabus rows. → <a href="https://github.com/Minewine/ib-study-area/pull/22">Pull request #22</a></li>
+    <li><b>"Fix my own cards"</b> — the Cards editor is easy to find (right next to Start session) and edits to any card now stick. → <a href="https://github.com/Minewine/ib-study-area/commit/58f6539">Fixed in the phase-0 pass</a></li>
+    <li><b>"Tell me <i>why</i> the app is suggesting something"</b> — the Today panel now shows ranked suggestions with the reason next to each one (open mistakes, units closing this week, deadlines coming up), and it fails gracefully instead of hanging. → <a href="https://github.com/Minewine/ib-study-area/pull/22">Pull request #22</a></li>
+    <li><b>"Somewhere to keep my links"</b> — a new Resources page: save videos, class notes and files, tagged by subject and topic, with one-tap "make questions from this". → <a href="https://github.com/Minewine/ib-study-area/pull/22/files">Pull request #22</a></li>
+    <li><b>"Let me write practice sets with an AI"</b> — pick a topic, copy a ready-made prompt, paste the JSON back into a check-first preview, and it lands straight in the Quiz picker. And no more mystery cap: uploads of 40,000+ questions work. → <a href="https://github.com/Minewine/ib-study-area/pull/22">Pull request #22</a></li>
+    <li><b>Bonus:</b> the app finally has its own favicon (study-themed 📚) — <a href="https://github.com/Minewine/ib-study-area/commit/d86c0ec">here's that commit</a>.</li>
+  </ul>
+
+  <p>The full what-changed write-up is here, if you're curious: <a href="https://github.com/Minewine/ib-study-area/blob/feat/neva-feedback-consolidation/docs/CHANGELOG-2026-11-20-neva-feedback.md">CHANGELOG-2026-11-20-neva-feedback.md</a></p>
+
+  <p>It all goes live on the site after I press the deploy button (deliberately still off until I've merged and double-checked). Once it's up, hard-refresh the app on each device and everything above appears.</p>
+
+  <p>Happy revising — and send the next batch of complaints whenever you're ready. They genuinely shape the thing.</p>
+
+  <p class="sig">Love,<br>(…)</p>
+</div>
+
+<script>
+  var EMAIL_HTML = document.getElementById("email").innerHTML;
+  var EMAIL_TEXT = (function () {
+    var el = document.getElementById("email").cloneNode(true);
+    el.querySelectorAll("a").forEach(function (a) {
+      a.replaceWith(document.createTextNode(a.textContent + " (" + a.href + ")"));
+    });
+    return el.innerText;
+  })();
+
+  function setStatus(ok, msg) {
+    var s = document.getElementById("status");
+    s.textContent = msg;
+    s.style.color = ok ? "#188038" : "#c5221f";
+  }
+
+  document.getElementById("copyBtn").addEventListener("click", function () {
+    var item = { "text/html": new Blob([EMAIL_HTML], { type: "text/html" }), "text/plain": new Blob([EMAIL_TEXT], { type: "text/plain" }) };
+    if (navigator.clipboard && window.ClipboardItem) {
+      navigator.clipboard.write([new ClipboardItem(item)]).then(
+        function () { setStatus(true, "Copied — paste into Gmail (Ctrl+V); bold and links survive."); },
+        function () { legacyCopy(); }
+      );
+    } else { legacyCopy(); }
+  });
+
+  function legacyCopy() {
+    var holder = document.createElement("div");
+    holder.contentEditable = "true";
+    holder.innerHTML = EMAIL_HTML;
+    holder.style.position = "fixed"; holder.style.left = "-9999px";
+    document.body.appendChild(holder);
+    var range = document.createRange(); range.selectNodeContents(holder);
+    var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+    var ok = document.execCommand("copy");
+    sel.removeAllRanges(); document.body.removeChild(holder);
+    setStatus(ok, ok ? "Copied — paste into Gmail (Ctrl+V)." : "Copy failed — select the letter manually with Ctrl+A, Ctrl+C.");
+  }
+</script>
+</body>
+</html>

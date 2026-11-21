@@ -312,11 +312,13 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
   assert.ok(!/undefined/.test(setupText), "old quizlog entry renders without 'undefined'");
   ok("setup shows the confident-but-wrong panel; old quizlog entries render");
 
-  // review mode works on migrated + legacy + new records
+  // review mode works on migrated + legacy records — the freshly missed ones are NOT
+  // offered: they carry a dueAt (spaced retest, +7 days) and come back when due
   await page.click("#q-review-btn");
   await page.waitForSelector("#q-box .q-stem");
+  const dueNow = errs.filter(e => !e.resolved && (e.dueAt == null || e.dueAt <= Date.now())).length;
   const n = await page.evaluate(() => document.getElementById("q-progress").textContent);
-  assert.match(n, new RegExp(`/ ${errs.filter(e => !e.resolved).length}$`));
+  assert.match(n, new RegExp(`/ ${dueNow}$`), "only records due for retest are served: " + n);
   // answer every review item correctly
   for (;;) {
     const st = await page.evaluate(() => ({ stem: document.querySelector("#q-box .q-stem")?.textContent, mcq: !!document.querySelector("#q-box .choice") }));
@@ -333,9 +335,40 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
     if (await page.$("#summary h3") && await page.evaluate(() => document.getElementById("summary").style.display !== "none")) break;
   }
   errs = await ls(page, "q-errors");
-  assert.ok(errs.every(e => e.resolved), "all reviewed records resolved");
-  assert.ok(errs.filter(e => e.lastAttempt).every(e => e.ts));
-  ok("Review past errors: migrated, legacy and new records all reviewable and resolve");
+  assert.ok(errs.filter(e => e.dueAt == null).every(e => e.resolved), "legacy/migrated records (no schedule) resolve on a correct review");
+  assert.ok(errs.filter(e => e.dueAt != null).every(e => !e.resolved), "freshly missed records stay unresolved before their retest date");
+  // scope to records first missed TODAY: the session may also re-miss the migrated b01
+  // record (a pre-existing one), which then carries its own dueAt and attempt count
+  assert.ok(errs.filter(e => e.dueAt != null && e.firstMissed === ymd).every(e => e.dueAt > Date.now() && e.attempts === 1),
+    "fresh records: dueAt ≈ +7 days out, one wrong outcome");
+  ok("Review past errors: due gate serves legacy/migrated records and they resolve; fresh misses are scheduled, not served");
+
+  // the Mistakes deep link bypasses the due gate — and an early CORRECT answer is
+  // practice: the outcome is recorded, but the record stays open until its retest date
+  const openKeys = errs.filter(e => !e.resolved).map(e => encodeURIComponent(e.key)).join(",");
+  await page.goto(BASE + "/app/quiz.html?errkeys=" + openKeys, { waitUntil: "networkidle0" });
+  await page.waitForSelector("#q-box .q-stem");
+  const n2 = await page.evaluate(() => document.getElementById("q-progress").textContent);
+  assert.match(n2, new RegExp(`/ ${errs.filter(e => !e.resolved).length}$`), "the deep link serves every picked record regardless of dueAt: " + n2);
+  for (;;) {
+    const st = await page.evaluate(() => ({ stem: document.querySelector("#q-box .q-stem")?.textContent, mcq: !!document.querySelector("#q-box .choice") }));
+    if (!st.stem) break;
+    if (st.mcq) {
+      const ans = (await ls(page, "q-errors")).find(e => e.stem === st.stem).answer;
+      await page.click(`#q-box .choice[data-i="${ans}"]`); await page.click("#q-sure");
+      await page.click("#q-next");
+    } else {
+      await page.click("#q-reveal");
+      const max = await page.evaluate(() => document.querySelector("#q-selfscore").options.length - 1);
+      await page.select("#q-selfscore", String(max)); await page.click("#q-next");
+    }
+    if (await page.$("#summary h3") && await page.evaluate(() => document.getElementById("summary").style.display !== "none")) break;
+  }
+  errs = await ls(page, "q-errors");
+  assert.ok(errs.filter(e => e.dueAt != null).every(e => !e.resolved), "a correct answer BEFORE the retest date does not resolve");
+  assert.ok(errs.filter(e => e.dueAt != null && e.firstMissed === ymd).every(e => (e.retries || []).length === 1 && e.retries[0].correct === true),
+    "the practice outcome lands in the fresh records' retry history (a re-missed b01 carries its own earlier outcome)");
+  ok("Mistake deep link bypasses the due gate; a correct answer before the retest date is practice only (recorded, still open)");
   assert.deepStrictEqual(errors.filter(e => !/favicon/.test(e)), [], "quiz run console errors");
   ok("no console errors during quiz runs");
   await ctx.close();
@@ -582,10 +615,11 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
     const { page, errors, ctx } = await newCtx(browser);
     // fixed fake clock (local noon 2026-11-20): the dated-window assertions must
     // not be calendar time-bombs — on a live clock the English commentary leaves
-    // the 21-day near window after 2026-12-09 and the EE launch enters the 60-day
-    // "start thinking" window after 2026-12-19. Pinned date → stable windows;
-    // expected membership is still derived from the live deadline/coursework
-    // data below, so calendar edits cannot stale the assertions.
+    // the 21-day near window after 2026-12-09; in the 120-day long-lead window the
+    // EE launch (2027-02-17) is already "start thinking" on the pinned date and the
+    // TOK plan (2027-03-25) stays just beyond it until 2026-11-25. Pinned date →
+    // stable windows; expected membership is still derived from the live
+    // deadline/coursework data below, so calendar edits cannot stale the assertions.
     await page.evaluateOnNewDocument(() => {
       const Real = Date, MS = new Real(2026, 10, 20, 12).getTime();
       class FakeDate extends Real {
@@ -618,15 +652,24 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
     const sugg = await page.evaluate(() => {
       const b = [...document.querySelectorAll("#today-body .td-block")]
         .find(x => (x.querySelector("h4") || {}).textContent && /Suggested/.test(x.querySelector("h4").textContent));
-      return b ? [...b.querySelectorAll(".td-subj")].map(d => ({ title: d.querySelector("strong").textContent, href: d.querySelector("a").getAttribute("href") })) : [];
+      return b ? [...b.querySelectorAll(".td-subj")].map(d => ({ title: d.querySelector("strong").textContent, text: d.textContent, href: d.querySelector("a").getAttribute("href") })) : [];
     });
-    assert.strictEqual(sugg.length, 2, "two suggestions render (got " + sugg.length + ")");
-    const cards = sugg.find(s => /cards due/.test(s.title));
-    assert.ok(cards && /^12 cards due$/.test(cards.title), "cards suggestion counts the seeded 12");
-    assert.ok(cards && /^cards\.html\?from=bio-c1-1-enzymes-metabolism&n=12&label=/.test(cards.href), "cards link: deck id + n=12");
-    const mist = sugg.find(s => /Open mistakes/.test(s.title));
-    assert.ok(mist && /C1\.1 — Enzymes & metabolism/.test(mist.title), "mistakes suggestion names the topic");
-    assert.ok(mist && /^quiz\.html\?errkeys=bio-c1-1-enzymes-metabolism%23e01$/.test(mist.href), "mistakes link: errkeys=<bank#item>");
+    // pinned date 2026-11-20 + the static schedule/deadlines: tier A fills the
+    // cap — the near-term English commentary, the maths unit closing today and
+    // the maths unit starting within BREAK_LEAD_DAYS. The seeded 12 due cards
+    // and the open mistake are tier B review, ranked beyond the cap here (they
+    // still drive blocks 1–2 above, asserted further down).
+    assert.strictEqual(sugg.length, 3, "three tiered suggestions render (got " + sugg.length + ")");
+    assert.match(sugg[0].title, /^Deadline ahead$/, "tier A first: the earliest near-term assessment");
+    assert.match(sugg[0].text, /practice commentary/, "…naming the commentary");
+    assert.match(sugg[0].href, /^(?:\.\.\/)?deadlines\.html$/, "deadline suggestion links the calendar");
+    assert.match(sugg[1].title, /^Unit closes today$/, "maths Differentiation ends on the pinned date");
+    assert.match(sugg[1].text, /Differentiation ends 20 Nov/, "…with the approximate-schedule reason");
+    assert.match(sugg[1].href, /^notes\.html\?subject=/, "a closing unit always carries a link (note notes page here)");
+    assert.match(sugg[2].title, /^Next unit$/, "tier A planning: the next maths unit starts within 7 days");
+    assert.match(sugg[2].text, /starts .* plan ahead/, "…with the plan-ahead reason");
+    assert.match(sugg[2].href, /^notes\.html\?subject=/, "plan-ahead links the notes");
+    assert.ok(sugg.every(s => s.title && s.text), "every suggestion carries a title and a reason");
     // the profile seed must actually be engaged (this is what the store-key
     // shape fix buys): a wrapped {"profile":{…}} would leave default-all active
     const prof = await page.evaluate(() => ({
@@ -643,12 +686,12 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
     }), "hidden-subject deadline (French A HL essay) dropped by the active profile");
     // dated windows pinned by the fake clock, membership derived from the live
     // data: every rendered near item must satisfy today <= d <= today+21 and
-    // every "Start thinking about" item (today+21, today+60]
+    // every "Start thinking about" item (today+21, today+120]
     const win = await page.evaluate(async () => {
       const iso = d => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
       const today = iso(new Date());
       const add = (s, n) => { const [y, m, dd] = s.split("-").map(Number); const t = new Date(y, m - 1, dd, 12); t.setDate(t.getDate() + n); return iso(t); };
-      const nearEnd = add(today, 21), farEnd = add(today, 60);
+      const nearEnd = add(today, 21), farEnd = add(today, 120);
       const cw = await (await fetch("../library/coursework/coursework.json")).json();
       const items = window.NB.deadlines
         .filter(x => x && !(x.subject && window.NB.profile.hides(x.subject)))
@@ -678,7 +721,7 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
       "near-term list exactly covers [today, today+21] (got " + coming.near.length + ", want " + win.near.length + ")");
     win.near.forEach((label, i) => assert.ok(coming.near[i].includes(label.slice(0, 70)), "near item in date order: " + label));
     assert.strictEqual(coming.think.length, win.think.length,
-      "long-lead list exactly covers (today+21, today+60] (got " + coming.think.length + ", want " + win.think.length + ")");
+      "long-lead list exactly covers (today+21, today+120] (got " + coming.think.length + ", want " + win.think.length + ")");
     win.think.forEach((label, i) => assert.ok(coming.think[i].includes(label.slice(0, 70)) && /^Start thinking about/.test(coming.think[i]),
       "long-lead item labelled: " + label));
     if (win.near.some(l => /practice commentary/.test(l)))
@@ -700,7 +743,7 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
     assert.strictEqual(manifestReqs.length, 1, "manifest NOT re-fetched by the storm re-renders");
     assert.match(await page.$eval("#today-body", e => e.textContent), /12 cards due/, "panel intact after the storm");
     assert.deepStrictEqual(errors.filter(e => !/favicon/.test(e)), [], "storage-storm console errors");
-    ok("Today suggestions (seeded storage, pinned clock): 12-cards-due + C1.1 mistakes links, active-profile deadline filtering, window-exact near/long-lead dated items, storm re-render without re-fetching the manifest");
+    ok("Today suggestions (seeded storage, pinned clock): tiered ranking — deadline/unit-close/plan-ahead actions with calendar and notes links, active-profile deadline filtering, window-exact near/long-lead dated items, storm re-render without re-fetching the manifest");
     await ctx.close();
   }
   // ── 8. resources page + the staged AI-bank import ──────────────────────────
@@ -787,6 +830,210 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
     assert.strictEqual(banks[0].subjectLabel, "biology-hl");
     assert.deepStrictEqual(errors.filter(e => !/favicon/.test(e)), [], "author staged-import console errors");
     ok("staged import: paste → preview (summary, suggested name, editable rows) → edit → Import lands one edited bank in q-userbanks");
+    await ctx.close();
+  }
+
+  // ── 9. quiz picker: uploaded-bank counts, unrated suffix, teaching status, taught-only ──
+  {
+    const { page, errors, ctx } = await newCtx(browser);
+    // a small uploaded bank (the q-userbanks shape author.html stores) for a
+    // subject the library manifest doesn't carry, so the picker shows ONLY the
+    // fixture's two topics: 4 unrated items in topic A, 2 in topic B (no
+    // difficulty field anywhere → every question ranks "unrated")
+    const e2eBank = {
+      id: "ub-e2e-9", name: "ub-e2e-9.json",
+      subject: "e2e-subject", subjectLabel: "E2E subject",
+      label: "E2E practice set", topicLabel: "E2E topic A", topic: "e2e-topic-a",
+      set: "E2E practice set", setOrder: 1, uploaded: "2026-11-20",
+      items: [
+        { id: "ea1", format: "mcq", topic: "e2e-topic-a", topicLabel: "E2E topic A", stem: "E2E stem A1", choices: ["a", "b"], answer: 0 },
+        { id: "ea2", format: "mcq", topic: "e2e-topic-a", topicLabel: "E2E topic A", stem: "E2E stem A2", choices: ["a", "b"], answer: 1 },
+        { id: "ea3", format: "mcq", topic: "e2e-topic-a", topicLabel: "E2E topic A", stem: "E2E stem A3", choices: ["a", "b"], answer: 0 },
+        { id: "ea4", format: "mcq", topic: "e2e-topic-a", topicLabel: "E2E topic A", stem: "E2E stem A4", choices: ["a", "b"], answer: 1 },
+        { id: "eb1", format: "mcq", topic: "e2e-topic-b", topicLabel: "E2E topic B", stem: "E2E stem B1", choices: ["a", "b"], answer: 0 },
+        { id: "eb2", format: "mcq", topic: "e2e-topic-b", topicLabel: "E2E topic B", stem: "E2E stem B2", choices: ["a", "b"], answer: 1 }
+      ]
+    };
+    await page.evaluateOnNewDocument(b => { localStorage.setItem("q-userbanks", JSON.stringify([b])); }, e2eBank);
+    await page.goto(BASE + "/app/quiz.html", { waitUntil: "networkidle0" });
+    await page.waitForFunction(() => [...document.getElementById("q-subject").options].some(o => o.value === "e2e-subject"), { timeout: 10000 });
+    await page.select("#q-subject", "e2e-subject");
+
+    // topic dropdown: question counts and the "· N unrated" suffix for unrated topics
+    const topicOpts = await page.$$eval("#q-topic option", os => os.map(o => o.textContent));
+    assert.ok(topicOpts.some(t => t.indexOf("E2E topic A · 4 Qs · 4 unrated") === 0),
+      "topic A shows count + unrated suffix: " + JSON.stringify(topicOpts));
+    assert.ok(topicOpts.some(t => t.indexOf("E2E topic B · 2 Qs · 2 unrated") === 0),
+      "topic B shows count + unrated suffix: " + JSON.stringify(topicOpts));
+    ok("picker topic options show question counts and · N unrated for an uploaded bank's unrated topics");
+
+    // teaching status: choosing "Learning" persists {taught: true, status: "learning", t}
+    // and the option suffix updates; the panel select is driven through the real UI
+    await page.click("#q-taught-panel summary");
+    await page.waitForFunction(() => document.querySelectorAll("#q-taught-list .q-taught-row").length >= 2);
+    const rowOf = async (label) => page.$$eval("#q-taught-list .q-taught-row", (rows, lbl) =>
+      rows.findIndex(r => r.querySelector(".q-taught-name").textContent.indexOf(lbl) === 0) + 1, label);
+    const rowA = await rowOf("E2E topic A");
+    assert.ok(rowA > 0, "the taught panel lists the uploaded bank's topic");
+    await page.select(`#q-taught-list .q-taught-row:nth-child(${rowA}) select`, "learning");
+    const tt = await ls(page, "topic-taught");
+    assert.ok(tt["e2e-topic-a"] && tt["e2e-topic-a"].taught === true && tt["e2e-topic-a"].status === "learning"
+      && typeof tt["e2e-topic-a"].t === "number", "learning stores {taught: true, status: 'learning', t}: " + JSON.stringify(tt));
+    const optsAfter = await page.$$eval("#q-topic option", os => os.map(o => [o.value, o.textContent]));
+    assert.ok(optsAfter.some(([v, t]) => v === "e2e-topic-a" && t.endsWith(" · learning")),
+      "the topic option suffix updates to · learning: " + JSON.stringify(optsAfter));
+    ok("teaching status: 'Learning' persists {taught, status, t} in topic-taught and the option suffix updates");
+
+    // "Taught topics only" + a not-taught override: a Mixed session serves only
+    // the other topic's questions (A's 4 excluded, B's 2 kept — 6 would mean the
+    // filter leaked, 0 that the bank never loaded)
+    const rowA2 = await rowOf("E2E topic A"); // the panel re-rendered after the override
+    await page.select(`#q-taught-list .q-taught-row:nth-child(${rowA2}) select`, "not-taught");
+    await page.click("#q-taught-only");
+    await page.click("#q-start");
+    await page.waitForSelector("#q-box .q-stem");
+    const served = await page.evaluate(() => ({
+      progress: document.getElementById("q-progress").textContent,
+      topicTag: document.querySelector("#q-box .q-topic").textContent
+    }));
+    assert.match(served.progress, /Question 1 \/ 2$/, "only the 2 not-not-taught questions are served: " + served.progress);
+    assert.ok(/E2E topic B/.test(served.topicTag) && !/E2E topic A/.test(served.topicTag),
+      "the session opens on the kept topic, not the not-taught one: " + served.topicTag);
+    assert.deepStrictEqual(errors.filter(e => !/favicon/.test(e)), [], "picker e2e console errors");
+    ok("taught topics only + a not-taught override: the Mixed session serves exactly the other topic's 2 questions");
+    await ctx.close();
+  }
+
+  // ── 10. spaced retests: due gate, wrong retry re-opens, recovery at due, log inspectable ──
+  {
+    const { page, errors, ctx } = await newCtx(browser);
+    // mutable fake clock pinned like section 7 — the static now() covers Date.now()
+    // too (the schedule math is epoch ms), and advance() moves it within the page
+    await page.evaluateOnNewDocument(() => {
+      const Real = Date;
+      let ms = new Real(2026, 10, 20, 12).getTime();
+      class FakeDate extends Real {
+        constructor(...a) { if (a.length === 0) super(ms); else super(...a); }
+        static now() { return ms; }
+        static advance(days) { ms += days * 86400000; }
+      }
+      window.Date = FakeDate;
+    });
+    const c1 = bank("bio-c1-1-enzymes-metabolism");
+    const stemMap = Object.fromEntries(c1.items.map(i => [i.stem, i]));
+    await page.goto(BASE + "/app/quiz.html", { waitUntil: "networkidle0" });
+    const ms0 = await page.evaluate(() => Date.now());
+    const ymd = (ms) => { const d = new Date(ms); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); };
+
+    // miss every question of a 10-question C1.1 session today → dueAt ≈ +7 days
+    await page.evaluate(() => {
+      const s = document.getElementById("q-subject");
+      for (const o of s.options) {
+        s.value = o.value; s.dispatchEvent(new Event("change"));
+        const t = [...document.getElementById("q-topic").options].find(x => /Enzymes/.test(x.textContent));
+        if (t) { document.getElementById("q-topic").value = t.value; break; }
+      }
+    });
+    await page.select("#q-format", "mixed"); await page.select("#q-length", "10");
+    await page.click("#q-start");
+    await page.waitForSelector("#q-box .q-stem");
+    for (;;) {
+      const st = await page.evaluate(() => ({ stem: document.querySelector("#q-box .q-stem")?.textContent, mcq: !!document.querySelector("#q-box .choice") }));
+      if (!st.stem) break;
+      const item = stemMap[st.stem]; assert.ok(item, "stem from the C1.1 bank");
+      if (st.mcq) {
+        const wrong = await page.evaluate((ans) => { const b = [...document.querySelectorAll("#q-box .choice")].find(x => +x.dataset.i !== ans); return +b.dataset.i; }, item.answer);
+        await page.click(`#q-box .choice[data-i="${wrong}"]`); await page.click("#q-sure");
+        await page.click("#q-next");
+      } else {
+        await page.click("#q-reveal-guess"); await page.select("#q-selfscore", "0"); await page.click("#q-next");
+      }
+      if (await page.$("#summary h3") && await page.evaluate(() => document.getElementById("summary").style.display !== "none")) break;
+    }
+    let errs = (await ls(page, "q-errors")).filter(e => e.key.startsWith("bio-c1-1-enzymes-metabolism#"));
+    assert.ok(errs.length >= 8, "missed questions recorded: " + errs.length);
+    assert.ok(errs.every(e => e.attempts === 1 && !e.resolved && Math.abs(e.dueAt - (ms0 + 7 * 86400000)) < 1000),
+      "every fresh record: attempts 1, unresolved, dueAt ≈ +7 days");
+
+    // "Review past errors" reports nothing due — the count line names the earliest date
+    await page.click("#q-again");
+    const countLine = await page.$eval("#q-review-count", e => e.textContent);
+    assert.strictEqual(countLine, "none due yet — next one " + ymd(ms0 + 7 * 86400000), "review count reflects the schedule: " + countLine);
+    await page.click("#q-review-btn");
+    assert.match(await page.$eval("#q-error", e => e.textContent), /due for retest yet .*2026-11-27/s, "the click explains when the next retest lands");
+    assert.strictEqual(await page.$eval("#runner", e => e.style.display), "none", "no session started");
+
+    // 7 days later the retest comes due: answer every review item WRONG
+    await page.evaluate(() => Date.advance(7));
+    await page.click("#q-review-btn");
+    await page.waitForSelector("#q-box .q-stem");
+    const n1 = await page.evaluate(() => document.getElementById("q-progress").textContent);
+    assert.match(n1, new RegExp(`/ ${errs.length}$`), "all due records are served: " + n1);
+    for (;;) {
+      const st = await page.evaluate(() => ({ stem: document.querySelector("#q-box .q-stem")?.textContent, mcq: !!document.querySelector("#q-box .choice") }));
+      if (!st.stem) break;
+      if (st.mcq) {
+        const wrong = await page.evaluate((stem) => {
+          const ans = JSON.parse(localStorage.getItem("q-errors")).find(e => e.stem === stem).answer;
+          const b = [...document.querySelectorAll("#q-box .choice")].find(x => +x.dataset.i !== ans); return +b.dataset.i;
+        }, st.stem);
+        await page.click(`#q-box .choice[data-i="${wrong}"]`); await page.click("#q-sure");
+        await page.click("#q-next");
+      } else {
+        await page.click("#q-reveal-guess"); await page.select("#q-selfscore", "0"); await page.click("#q-next");
+      }
+      if (await page.$("#summary h3") && await page.evaluate(() => document.getElementById("summary").style.display !== "none")) break;
+    }
+    errs = (await ls(page, "q-errors")).filter(e => e.key.startsWith("bio-c1-1-enzymes-metabolism#"));
+    assert.ok(errs.every(e => e.attempts === 2 && !e.resolved && Math.abs(e.dueAt - (ms0 + 37 * 86400000)) < 1000),
+      "wrong retry: attempts incremented, still unresolved, dueAt ≈ +30 days more");
+    assert.ok(errs.every(e => (e.retries || []).length === 1 && e.retries[0].correct === false), "the wrong outcome is in the retry history");
+
+    // 30 days later the second retest is due: answer every review item CORRECT
+    await page.click("#q-again");
+    await page.evaluate(() => Date.advance(30));
+    await page.click("#q-review-btn");
+    await page.waitForSelector("#q-box .q-stem");
+    for (;;) {
+      const st = await page.evaluate(() => ({ stem: document.querySelector("#q-box .q-stem")?.textContent, mcq: !!document.querySelector("#q-box .choice") }));
+      if (!st.stem) break;
+      if (st.mcq) {
+        const ans = (await ls(page, "q-errors")).find(e => e.stem === st.stem).answer;
+        await page.click(`#q-box .choice[data-i="${ans}"]`); await page.click("#q-sure");
+        await page.click("#q-next");
+      } else {
+        await page.click("#q-reveal");
+        const max = await page.evaluate(() => document.querySelector("#q-selfscore").options.length - 1);
+        await page.select("#q-selfscore", String(max)); await page.click("#q-next");
+      }
+      if (await page.$("#summary h3") && await page.evaluate(() => document.getElementById("summary").style.display !== "none")) break;
+    }
+    errs = (await ls(page, "q-errors")).filter(e => e.key.startsWith("bio-c1-1-enzymes-metabolism#"));
+    assert.ok(errs.every(e => e.resolved === true && e.dueAt === undefined && e.attempts === 2),
+      "correct AT the scheduled retest: recovered, schedule cleared, no duplicate records");
+    assert.ok(errs.every(e => (e.retries || []).length === 2 && e.retries[1].correct === true), "retry history keeps both outcomes — same record, same history");
+    ok("spaced retests: miss today → nothing due → +7d review wrong (re-opened, +30d) → +37d review correct (recovered, dueAt cleared)");
+
+    // the mistake log still lists the recovered records, and retirement is reversible
+    page.on("dialog", d => d.accept("off-syllabus"));
+    await page.goto(BASE + "/app/mistakes.html", { waitUntil: "networkidle0" });
+    await page.select("#mk-status", "recovered");
+    await page.waitForFunction(() => document.querySelectorAll("#mk-list .mk-row").length >= 8);
+    const shown = await page.$$eval("#mk-list .mk-row", rs => rs.map(r => r.getAttribute("data-key")));
+    assert.ok(errs.every(e => shown.includes(e.key)), "every recovered record is inspectable on the mistakes page");
+    const firstKey = shown[0];
+    await page.click(`.mk-row[data-key="${firstKey}"] .mk-retire`);
+    let rec = (await ls(page, "q-errors")).find(e => e.key === firstKey);
+    assert.strictEqual(rec.retired, true, "retire writes the soft-hide");
+    assert.strictEqual(rec.retiredReason, "off-syllabus", "the prompt reason is stored");
+    await page.select("#mk-status", "retired");
+    await page.waitForFunction(() => document.querySelectorAll("#mk-list .mk-row").length === 1);
+    await page.click(".mk-row .mk-restore");
+    rec = (await ls(page, "q-errors")).find(e => e.key === firstKey);
+    assert.strictEqual(rec.retired, false, "restore writes the explicit retired:false sentinel");
+    assert.strictEqual(rec.retiredReason, undefined);
+    ok("mistake log: recovered records listed and inspectable; a retired record restores (explicit retired:false, never deleted)");
+    assert.deepStrictEqual(errors.filter(e => !/favicon/.test(e)), [], "spaced-retest e2e console errors");
     await ctx.close();
   }
   await browser.close();

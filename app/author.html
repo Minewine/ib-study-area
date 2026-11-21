@@ -183,10 +183,10 @@
 </main>
 <footer>Private family use · exams <strong>May 2028</strong> · keep this app and its content non-public</footer>
 
-<script src="../assets/store.js?v=8"></script>
+<script src="../assets/store.js?v=10"></script>
 <script src="../assets/profile.js?v=1"></script>
-<script src="../assets/backup.js?v=6"></script>
-<script src="../assets/bank-schema.js?v=1"></script>
+<script src="../assets/backup.js?v=7"></script>
+<script src="../assets/bank-schema.js?v=2"></script>
 <script src="../assets/ai-prompt.js?v=5"></script>
 <script src="../assets/bank-import.js?v=1"></script>
 <script>
@@ -199,6 +199,13 @@
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} try { if (window.Auth && window.Auth.queueSync) window.Auth.queueSync(); } catch (e) {} }
   };
   const QBANKS = "q-userbanks", FDECKS = "fc-userdecks";
+  // Stable unique id stamped onto every uploaded quiz bank — delegates to newBankId in
+  // assets/bank-import.js so the id format stays single-sourced; the inline 1-liner is
+  // only the stale-page fallback (processContent also serves the paste path when
+  // bank-import.js didn't load).
+  const newBankId = () => (window.NB && window.NB.bankImport && window.NB.bankImport.newBankId)
+    ? window.NB.bankImport.newBankId()
+    : "ub-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 8);
   // NB.bankSchema (assets/bank-schema.js) holds the shared validators + vocabulary;
   // null only on a stale cached page that didn't load it — uploads then fail with
   // a "reload" hint instead of saving unvalidated content.
@@ -233,6 +240,41 @@
     return "";
   }
 
+  // Stamp stable set identity onto a fresh upload BEFORE it is stored (both
+  // upload paths call this): uploads default their label to the topic label, so
+  // repeated uploads into one topic would otherwise land as indistinguishable
+  // duplicate set names in the Quiz picker, and a setOrder keeps numbered sets
+  // in authored sequence. Nothing is renamed when there is no collision — the
+  // stored name is only replaced by stamping the NEW entry, never by touching
+  // existing banks. Returns what was stamped ({set, order}, null when absent)
+  // so the success message can explain the new name.
+  function stampSetMeta(entry, banks) {
+    const stamped = { set: null, order: null };
+    if (!BS) return stamped;
+    const topic = entry.topic || "(none)";
+    const sameTopic = banks.filter(b => b !== entry && b.subject === entry.subject && (b.topic || "(none)") === topic);
+    const displayName = entry.set || entry.label;
+    const names = sameTopic.map(b => b.set || b.label).filter(Boolean);
+    if (entry.set === undefined && displayName && names.indexOf(displayName) >= 0) {
+      entry.set = BS.nextSetName(names, topic);
+      stamped.set = entry.set;
+    }
+    if (!Number.isInteger(entry.setOrder)) {
+      entry.setOrder = BS.nextSetOrder(banks, entry.subject, topic);
+      stamped.order = entry.setOrder;
+    }
+    return stamped;
+  }
+
+  // The success-message fragment for what stampSetMeta stamped, naming the
+  // display name that collided (computed before stamping renamed the entry).
+  function stampNote(stamped, displayName) {
+    let s = "";
+    if (stamped.set) s += " — named \"" + stamped.set + "\" because a set called \"" + displayName + "\" already exists in this topic";
+    if (stamped.order != null) s += " · set order " + stamped.order;
+    return s;
+  }
+
   function existingFlashcardIds() {
     // seed decks (via manifest) + previously uploaded decks + user-created cards.
     // Fetched fresh on every deck upload: a cached snapshot would go stale when a
@@ -257,14 +299,16 @@
       if (err) return result(false, sourceName + ": " + err);
       const banks = store.get(QBANKS, []);
       if (banks.some(b => b.name === sourceName)) return result(false, sourceName + ": an upload with this filename already exists — delete it first or rename the file");
-      const entry = Object.assign({}, data, { name: sourceName, uploaded: new Date().toISOString().slice(0, 10) });
+      const entry = Object.assign({}, data, { id: newBankId(), name: sourceName, uploaded: new Date().toISOString().slice(0, 10) });
       if (!entry.label) entry.label = data.topicLabel || sourceName;
       if (!entry.subjectLabel) entry.subjectLabel = data.subject;
+      const setName = data.set || entry.label;
+      const stamped = stampSetMeta(entry, banks); // before the push: stamps only the new entry
       banks.push(entry);
       if (store.set(QBANKS, banks) === false) return result(false, sourceName + ": storage is full — the bank could not be saved. Download a full backup (section 5), delete some uploaded banks above, then try again.");
       const topic = data.topic || "(none)";
-      const setName = data.set || entry.label;
-      result(true, sourceName + ": saved — " + data.items.length + " questions · topic \"" + (data.topicLabel || data.topic || "(none)") + "\" · set \"" + setName + "\"" + setSuggestion(data, banks, entry));
+      // when a name was stamped, the suggestion would just repeat it — the note says it already
+      result(true, sourceName + ": saved — " + data.items.length + " questions · topic \"" + (data.topicLabel || data.topic || "(none)") + "\" · set \"" + setName + "\"" + stampNote(stamped, setName) + (stamped.set ? "" : setSuggestion(data, banks, entry)));
       renderManage();
     } else if (Array.isArray(data.cards)) {
       existingFlashcardIds().then(ids => {
@@ -445,9 +489,12 @@
     staged.name = name;
     const res = BI.finalize(staged);
     if (res.error) { pvStatus(res.error); return; }
+    const displayName = res.entry.set || res.entry.label;
+    const stamped = stampSetMeta(res.entry, banks); // same stamping as the file path, before the push
     banks.push(res.entry);
     if (store.set(QBANKS, banks) === false) { pvStatus("storage is full — the bank could not be saved. Download a full backup (section 5), delete some uploaded banks, then try again."); return; }
-    result(true, res.entry.name + ": imported — " + res.entry.items.length + " questions · topic \"" + (res.entry.topicLabel || res.entry.topic || "(none)") + "\"" + setSuggestion(res.entry, banks, res.entry));
+    // when a name was stamped, the suggestion would just repeat it — the note says it already
+    result(true, res.entry.name + ": imported — " + res.entry.items.length + " questions · topic \"" + (res.entry.topicLabel || res.entry.topic || "(none)") + "\"" + stampNote(stamped, displayName) + (stamped.set ? "" : setSuggestion(res.entry, banks, res.entry)));
     closePreview();
     document.getElementById("paste-box").value = "";
     renderManage();

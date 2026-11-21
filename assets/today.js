@@ -5,8 +5,9 @@
    (library/class-schedule.json, approximate) with links to its notes, quiz and cards,
    (4) dated items coming up — school deadlines (NB.deadlines, exported by
    assets/deadlines.js) and coursework stage dates — near-term now, longer-range ones
-   as "Start thinking about" once inside the long lead window, and (5) up to two
-   suggested next steps with a visible reason and a direct link.
+   as "Start thinking about" once inside the long lead window, and (5) up to three
+   suggested next steps, tiered: imminent dates and unit closes first, then work
+   that is due, then optional enrichment — each with a reason and a direct link.
    Blocks with nothing to show are not rendered at all. External data (schedule,
    deadlines, coursework) is never trusted: malformed records are skipped, not fatal.
    Read-only: this file never writes to storage. */
@@ -34,9 +35,16 @@
   // about" heads-up instead. An active unit ending within UNIT_CLOSE_DAYS counts
   // as closing this week. (Constants, not settings — change here if needed.)
   const LEAD_DAYS = 21;
-  const LONG_LEAD_DAYS = 60;
+  // 120 (not 60): events just after the summer break are > 60 days away for most of
+  // May–June, and the early heads-up is exactly what this window exists for.
+  const LONG_LEAD_DAYS = 120;
   const UNIT_CLOSE_DAYS = 7;
+  // Post-holiday planning: today inside a scheduled break, or the next unit
+  // starting within BREAK_LEAD_DAYS, gets a "plan ahead" suggestion.
+  const BREAK_LEAD_DAYS = 7;
   const MISTAKE_KEYS_MAX = 20; // keys packed into one quiz.html?errkeys= retry link
+  // actions the "Suggested next step" block shows (tiered — see suggestActions)
+  const MAX_SUGGESTIONS = 3;
 
   const store = (window.NB && window.NB.store) || {
     get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v === null ? d : v; } catch (e) { return d; } }
@@ -96,14 +104,32 @@
     return "maths-aa-sl";
   }
 
+  // Weak spots from UPLOADED banks can't serve the "Start a quiz" link: the link
+  // resolves library banks only (quiz-engine startFromLink matches the questions
+  // manifest), so their records are excluded here — their bankId is the explicit
+  // "ub-…" id uploads carry now, the stored bank's file-name stem (uploads saved
+  // with a name) or the legacy "user:<label-slug>" written before banks carried a
+  // name. All spellings must be excluded or the link would resolve nothing.
+  function uploadedBankIds(banks) {
+    const ids = new Set();
+    (banks || []).forEach(b => {
+      if (!b) return;
+      if (b.id) ids.add(b.id);
+      if (b.name) ids.add(fileId(b.name));
+      ids.add("user:" + String(b.label || b.topicLabel || "My bank").toLowerCase().replace(/\W+/g, "-"));
+    });
+    return ids;
+  }
+
   // Weakest topic. 1) Unresolved missed questions (q-errors), grouped by bank + topic:
   //    most unresolved first, then the most recently missed. 2) Otherwise the quiz log:
   //    note-linked quizzes are labelled "<code> <title>"; the code with the lowest
   //    average score (below 70%) over the logged sessions.
-  function weakestTopic(errors, log) {
+  function weakestTopic(errors, log, uploaded) {
+    const up = uploaded && typeof uploaded.has === "function" ? uploaded : new Set(uploaded || []);
     const groups = {};
     (errors || []).forEach(e => {
-      if (!e || e.resolved || e.retired || !e.bankId || String(e.bankId).startsWith("user:")) return;
+      if (!e || e.resolved || e.retired || !e.bankId || String(e.bankId).startsWith("user:") || up.has(e.bankId)) return;
       // per-user subject profile: a missed question from a subject the account
       // doesn't take is not a weak spot to re-quiz (unknown subjects stay)
       if (e.subject && NB.profile && NB.profile.hides(e.subject)) return;
@@ -173,13 +199,31 @@
     return out;
   }
 
+  // The next unit (after today) for each of the profile's subjects — the
+  // post-holiday "plan ahead" suggestion points at what comes next. unitsFor
+  // skips malformed records; a subject the schedule doesn't track yields nothing.
+  function nextUnits(schedule, subjects, today) {
+    const out = [];
+    (Array.isArray(subjects) ? subjects : []).forEach(row => {
+      const [s, label] = row || [];
+      const n = unitsFor(schedule, s, today).next;
+      if (n) out.push({ subject: s, label: label || s, unit: n });
+    });
+    return out;
+  }
+
   // Open (unresolved, unretired) missed questions grouped by topic label, most open
   // first, then the most recently missed. The input for the mistakes suggestion:
-  // each group carries the record keys for a quiz.html?errkeys= retry link.
-  function openMistakes(errors, hides) {
+  // each group carries the record keys for a quiz.html?errkeys= retry link. Records
+  // whose scheduled retest (optional dueAt, epoch ms — assets/quiz-engine.js) has not
+  // come around yet stay off the panel (the mistake log still lists them); records
+  // without dueAt — legacy ones — are always shown. nowMs is injectable for tests.
+  function openMistakes(errors, hides, nowMs) {
+    const now = nowMs == null ? Date.now() : nowMs;
     const groups = {};
     (Array.isArray(errors) ? errors : []).forEach(e => {
       if (!e || e.resolved || e.retired || typeof e.key !== "string" || !e.key) return;
+      if (e.dueAt != null && e.dueAt > now) return;
       if (e.subject && hides && hides(e.subject)) return;
       const label = [e.topicLabel, e.topic, e.bankId].find(v => typeof v === "string" && v) || "your mistakes";
       const g = groups[label] = groups[label] || { label, keys: [], count: 0, last: "" };
@@ -239,58 +283,94 @@
     return (Array.isArray(items) ? items : []).filter(x => x && isISO(x.date) && x.date > nearEnd && x.date <= farEnd);
   }
 
-  // Up to two suggested next steps, ranked data-driven: due cards first, then open
-  // mistakes, then an active unit closing this week, then imminent deadline prep.
+  // Up to MAX_SUGGESTIONS suggested next steps, tiered: (A) urgency and planning
+  // — the earliest near-term deadline, a unit closing this week, post-holiday
+  // work to plan for; (B) review that is due — cards, open mistakes, own cards;
+  // (C) enrichment — candidates the render path passes in inp.enrich (weak-topic
+  // quiz, read-ahead), each carrying its subject for the profile check. Output
+  // is strictly A → B → C and capped: a full tier A pushes lower priorities out.
   // Every suggestion carries a visible reason and a direct link (existing link
-  // formats only); without data behind it, nothing is suggested.
+  // formats only); without data behind it, nothing is suggested. Malformed dates
+  // skip themselves; past dates never suggest.
   function suggestActions(inp) {
     inp = inp || {};
     const today = inp.today;
     if (!isISO(today)) return [];
+    const hidden = (id) => !!(id && inp.hides && inp.hides(id));
     const out = [];
+    const push = (s) => { if (s && s.title && s.reason && s.href) out.push(s); };
+
+    // Tier A — the earliest near-term deadline or assessment (nearItems is
+    // sorted; the past-date check is repeated here — suggestActions is pure)
+    const next = (Array.isArray(inp.nearItems) ? inp.nearItems : [])[0];
+    if (next && isISO(next.date) && today <= next.date) {
+      push({
+        title: "Deadline ahead",
+        reason: clip(next.label, 60) + " — " + fmtDay(next.date) + " (" + relDay(next.date, today) + ")",
+        href: next.href || "../deadlines.html", link: next.where === "planner" ? "Open planner" : "Open calendar"
+      });
+    }
+    // Tier A — the earliest unit closing within UNIT_CLOSE_DAYS. A unit whose
+    // note yields no link no longer drops out: it falls back to the subject's
+    // notes page, so a closing unit is always acted on.
+    const closings = (Array.isArray(inp.units) ? inp.units : [])
+      .filter(u => u && u.subject && !hidden(u.subject) && isISO(u.unit && u.unit.to) && today <= u.unit.to && u.unit.to <= addDays(today, UNIT_CLOSE_DAYS))
+      .sort((a, b) => (a.unit.to < b.unit.to ? -1 : a.unit.to > b.unit.to ? 1 : 0));
+    if (closings.length) {
+      const cu = closings[0];
+      const code = (cu.unit && Array.isArray(cu.unit.codes) ? cu.unit.codes : [])[0];
+      const note = cu.subject && code ? ((inp.notes || {})[canon(cu.subject) + "|" + code]) : null;
+      const L = note ? noteLinks(note) : null;
+      push({
+        title: cu.unit.to === today ? "Unit closes today" : "Unit closes this week",
+        reason: clip(cu.unit.unit, 60) + " ends " + fmtDay(cu.unit.to) + " (class schedule, approximate)",
+        href: (L && (L.quiz || L.notes)) || "notes.html?subject=" + encodeURIComponent(canon(cu.subject)),
+        link: L && L.quiz ? "Quiz the unit" : "Open notes"
+      });
+    }
+    // Tier A — post-holiday planning: today inside a scheduled break, or the
+    // next unit of a taken subject starting within BREAK_LEAD_DAYS — shown early
+    // enough to plan for it, linking the unit's first topic note or, without
+    // one, the subject's notes page.
+    const inBreak = (Array.isArray(inp.breaks) ? inp.breaks : []).some(b => b && isISO(b.from) && isISO(b.to) && b.from <= today && today <= b.to);
+    const starts = (Array.isArray(inp.nextUnits) ? inp.nextUnits : [])
+      .filter(n => n && n.subject && n.unit && isISO(n.unit.from) && n.unit.from >= today && (inBreak || n.unit.from <= addDays(today, BREAK_LEAD_DAYS)) && !hidden(n.subject))
+      .sort((a, b) => (a.unit.from < b.unit.from ? -1 : a.unit.from > b.unit.from ? 1 : 0));
+    if (starts.length) {
+      const su = starts[0];
+      const code = (su.unit && Array.isArray(su.unit.codes) ? su.unit.codes : [])[0];
+      const note = su.subject && code ? ((inp.notes || {})[canon(su.subject) + "|" + code]) : null;
+      const L = note ? noteLinks(note) : null;
+      push({
+        title: "Next unit",
+        reason: clip(su.unit.unit, 60) + " starts " + fmtDay(su.unit.from) + " — plan ahead",
+        href: (L && L.notes) || "notes.html?subject=" + encodeURIComponent(canon(su.subject)),
+        link: "Open notes"
+      });
+    }
+
+    // Tier B — review that is due
     const due = inp.due || 0;
     if (due > 0) {
-      out.push({ title: due + " card" + (due === 1 ? "" : "s") + " due", reason: "your review schedule says so", href: inp.dueHref || "cards.html", link: "Review them" });
-    } else if ((inp.own || 0) > 0) {
-      out.push({ title: inp.own + " of your own cards due", reason: "your review schedule says so", href: "cards.html", link: "Review them" });
+      push({ title: due + " card" + (due === 1 ? "" : "s") + " due", reason: "your review schedule says so", href: inp.dueHref || "cards.html", link: "Review them" });
     }
     const m = openMistakes(inp.errors, inp.hides)[0];
     if (m) {
-      out.push({
+      push({
         title: "Open mistakes on " + clip(m.label, 40),
         reason: m.count + " missed question" + (m.count === 1 ? "" : "s") + " not yet fixed",
         href: "quiz.html?errkeys=" + m.keys.slice(0, MISTAKE_KEYS_MAX).map(encodeURIComponent).join(","),
         link: "Retry them"
       });
     }
-    // first closing unit that actually yields a direct link — a closing unit
-    // without a note must not suppress one that has
-    const closings = (Array.isArray(inp.units) ? inp.units : [])
-      .filter(u => u && isISO(u.unit && u.unit.to) && today <= u.unit.to && u.unit.to <= addDays(today, UNIT_CLOSE_DAYS))
-      .sort((a, b) => (a.unit.to < b.unit.to ? -1 : a.unit.to > b.unit.to ? 1 : 0));
-    for (let i = 0; i < closings.length; i++) {
-      const cu = closings[i];
-      const code = (cu.unit && Array.isArray(cu.unit.codes) ? cu.unit.codes : [])[0];
-      const note = cu.subject && code ? ((inp.notes || {})[canon(cu.subject) + "|" + code]) : null;
-      const L = note ? noteLinks(note) : null;
-      const href = L && (L.quiz || L.notes);
-      if (!href) continue;
-      out.push({
-        title: cu.unit.to === today ? "Unit closes today" : "Unit closes this week",
-        reason: clip(cu.unit.unit, 60) + " ends " + fmtDay(cu.unit.to) + " (class schedule, approximate)",
-        href: href, link: L.quiz ? "Quiz the unit" : "Open notes"
-      });
-      break;
+    if ((inp.own || 0) > 0) {
+      push({ title: inp.own + " of your own cards due", reason: "your review schedule says so", href: "cards.html", link: "Review them" });
     }
-    const next = (Array.isArray(inp.nearItems) ? inp.nearItems : [])[0];
-    if (next && isISO(next.date)) {
-      out.push({
-        title: "Deadline ahead",
-        reason: clip(next.label, 60) + " — " + fmtDay(next.date) + " (" + relDay(next.date, today) + ")",
-        href: next.href || "../deadlines.html", link: next.where === "planner" ? "Open planner" : "Open calendar"
-      });
-    }
-    return out.slice(0, 2);
+
+    // Tier C — enrichment candidates, only in the slots left over
+    (Array.isArray(inp.enrich) ? inp.enrich : []).forEach(c => { if (c && !hidden(c.subject)) push(c); });
+
+    return out.slice(0, MAX_SUGGESTIONS);
   }
 
   const fromParam = (id, ids) => "from=" + encodeURIComponent(id + (ids && ids.length ? ":" + ids.join(",") : ""));
@@ -403,7 +483,7 @@
   async function renderQuiz(box) {
     const sec = el("div", { class: "td-block" }, el("h4", {}, "2. Short quiz"));
     box.append(sec);
-    const weak = weakestTopic(store.get("q-errors", []), store.get("quizlog", []));
+    const weak = weakestTopic(store.get("q-errors", []), store.get("quizlog", []), uploadedBankIds(store.get("q-userbanks", [])));
     if (!weak) { sec.append(el("p", {}, "No weak spots recorded yet. Use one of this week's class quizzes below.")); return; }
     if (weak.source === "errors") {
       sec.append(el("p", {}, "Weakest topic right now: ", el("strong", {}, weak.topicLabel), ` (${weak.count} missed question${weak.count === 1 ? "" : "s"} not yet fixed).`));
@@ -502,15 +582,52 @@
     return { near: near };
   }
 
-  // (5) up to two suggested next steps with a visible reason and a direct link.
-  // No data behind a suggestion → no suggestion (and no block).
+  // (5) up to MAX_SUGGESTIONS suggested next steps, tiered by suggestActions
+  // (urgency and planning → review due → enrichment). No data behind a
+  // suggestion → no suggestion (and no block).
   function renderSuggest(box, today, inp) {
+    const hides = (id) => !!(NB.profile && NB.profile.hides && NB.profile.hides(id));
+    // tier C candidates, built here where DATA lives and then filtered, ordered
+    // and capped by suggestActions: a fresh quiz on the weakest topic (the same
+    // weakestTopic logic as block 2) and a read-ahead link for what is being
+    // taught now. Without a resolvable link the candidate is left out.
+    const enrich = [];
+    const weak = weakestTopic(store.get("q-errors", []), store.get("quizlog", []), uploadedBankIds(store.get("q-userbanks", [])));
+    if (weak) {
+      if (weak.source === "errors") {
+        enrich.push({ subject: weak.subject || null,
+          title: "Weakest topic: " + clip(weak.topicLabel, 40),
+          reason: weak.count + " missed question" + (weak.count === 1 ? "" : "s") + " not yet fixed — a fresh quiz locks it in",
+          href: quizHref(weak.bankId, null, "Today: " + weak.topicLabel, QUIZ_N), link: "Start a quiz" });
+      } else {
+        const m = (DATA.entries || []).find(n => canon(n.subject) === canon(weak.subject) && n.code === weak.code);
+        if (m) enrich.push({ subject: weak.subject,
+          title: "Weakest topic: " + clip(weak.label, 40),
+          reason: "average " + weak.pct + "% on recent quizzes — re-read the topic notes",
+          href: "notes.html?subject=" + encodeURIComponent(canon(weak.subject)) + "&topic=" + encodeURIComponent(fileId(m.file)),
+          link: "Open notes" });
+      }
+    }
+    const au = (Array.isArray(inp.units) ? inp.units : [])[0];
+    if (au) {
+      const code = (Array.isArray(au.unit.codes) ? au.unit.codes : [])[0];
+      const note = au.subject && code ? DATA.notes[canon(au.subject) + "|" + code] : null;
+      const L = note ? noteLinks(note) : null;
+      enrich.push({ subject: au.subject,
+        title: "Read ahead: " + clip(au.unit.unit, 40),
+        reason: au.label + " class is on " + clip(au.unit.unit, 60) + " now (class schedule, approximate)",
+        href: (L && L.notes) || "notes.html?subject=" + encodeURIComponent(canon(au.subject)),
+        link: "Open notes" });
+    }
     const suggestions = suggestActions({
       today: today,
       due: inp.total, dueHref: inp.href, own: inp.own,
       errors: store.get("q-errors", []),
-      hides: (id) => !!(NB.profile && NB.profile.hides && NB.profile.hides(id)),
-      units: inp.units, notes: DATA.notes, nearItems: inp.near
+      hides: hides,
+      units: inp.units, notes: DATA.notes, nearItems: inp.near,
+      breaks: DATA.schedule && Array.isArray(DATA.schedule.breaks) ? DATA.schedule.breaks : [],
+      nextUnits: nextUnits(DATA.schedule, SUBJECTS, today),
+      enrich: enrich
     });
     if (!suggestions.length) return;
     const sec = el("div", { class: "td-block" }, el("h4", {}, "5. Suggested next step"));
@@ -547,7 +664,7 @@
 
   window.NB = window.NB || {};
   window.NB.today = { dueCards, dueUserCards, weakestTopic, pickQuizIds, unitsFor, quizHref, dueCardsHref, noteLinks,
-    isISO, addDays, activeUnits, openMistakes, datedItems, nearTermItems, startThinkingItems, suggestActions };
+    isISO, addDays, activeUnits, nextUnits, openMistakes, datedItems, nearTermItems, startThinkingItems, suggestActions };
 
   if (typeof document === "undefined" || !document.getElementById || !document.getElementById("today-body")) return;
   // re-render when synced progress arrives (login on a new device) or changes in another tab

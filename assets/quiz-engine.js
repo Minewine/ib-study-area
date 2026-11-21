@@ -16,10 +16,18 @@
   const clearEl = (el) => { [...el.children].forEach(k => k.remove()); el.innerHTML = ""; };
 
   // Bank id = file name without folder/extension ("library/questions/bio-x.json" -> "bio-x");
-  // inline (uploaded) banks get "user:<label>". Used for topic fallback + error keys.
-  const bankIdFor = (b) => b.file
-    ? String(b.file).split("/").pop().replace(/\.json$/i, "")
-    : "user:" + String(b.label || b.topicLabel || "bank").toLowerCase().replace(/\W+/g, "-");
+  // uploaded banks prefer the explicit stable id ("ub-…") stamped at upload — the stored
+  // name is unique only per device, so name-derived ids collide across devices — then that
+  // stored name ("ai-photosynthesis.json"), and only legacy uploads without either fall
+  // back to "user:<label>". Used for topic fallback + error keys — the id must be stable
+  // AND unique per bank, because imports commonly reuse item ids (p01–p08): two sets that
+  // shared a label must not write into each other's history.
+  const bankIdFor = (b) => {
+    if (b && b.id) return String(b.id);
+    const f = b.name || b.file;
+    if (f) return String(f).split("/").pop().replace(/\.json$/i, "");
+    return "user:" + String(b.label || b.topicLabel || "bank").toLowerCase().replace(/\W+/g, "-");
+  };
 
   // Options that refer to other options by position ("Both A and B", "All of the above")
   // must keep their authored order; everything else is shuffled at render time.
@@ -39,6 +47,16 @@
   // "unrated" at the bottom of the ordinal DIFFICULTY_ORDER scale.
   const DIFFICULTIES = ["easy", "standard", "hard"];
   const DIFFICULTY_ORDER = ["unrated", "easy", "standard", "hard"];
+
+  // Stored teaching statuses for "topic-taught" records (the optional `status`
+  // field refines the plain `taught` bool, which stays consistent with it —
+  // (status === "not-taught") === !taught — so an older deployed client reading
+  // only the bool still shows the same thing). "taught" itself is never stored;
+  // it remains the schedule-derived state.
+  const TAUGHT_STATUS = ["not-taught", "learning", "ready"];
+  // Topic-option suffix per taughtState() result; unknown shows nothing at all
+  // (an unknown topic must not look either taught or untaught).
+  const TAUGHT_SUFFIX = { "taught": " · taught", "not-taught": " · not yet taught", "learning": " · learning", "ready": " · ready to revise", "unknown": "" };
 
   let session = null;
   let BANKS = {};
@@ -105,10 +123,11 @@ async function init() {
     store.get("q-userbanks", []).forEach(b => {
       BANKS[b.subject] = BANKS[b.subject] || { label: b.subjectLabel || b.subject, banks: [] };
       BANKS[b.subject].banks.push({
-        file: null, label: b.label || b.topicLabel || "My bank",
+        file: null, id: b.id, name: b.name || "", label: b.label || b.topicLabel || "My bank",
         items: b.items, topicLabel: b.topicLabel || b.label || "My bank", inline: true,
         topic: b.topic, set: b.set, setOrder: b.setOrder, codes: b.codes
       });
+      migrateUserBankKeys(b); // pre-name keys "user:<label>#id" → "<stored-name>#id"
     });
     const subj = $("q-subject");
     Object.entries(BANKS).forEach(([key, b]) => {
@@ -187,7 +206,7 @@ async function init() {
       const st = taughtState(n.topicKey, n.codes, SCHEDULE, key, today(), overrides);
       const o = document.createElement("option");
       o.value = n.topicKey; // NOT the bank index any more — sets resolve through the model
-      o.textContent = `${n.label} · ${n.count == null ? "?" : n.count} Qs` + (st.state === "taught" ? " · taught" : st.state === "not-taught" ? " · not yet taught" : "");
+      o.textContent = `${n.label} · ${n.count == null ? "?" : n.count} Qs` + unratedSuffix(n.difficulties) + paperTopicSuffix(n) + (TAUGHT_SUFFIX[st.state] || "");
       topic.appendChild(o);
     });
     // keep the current selection across re-renders (subject change → new list → Mixed)
@@ -213,10 +232,12 @@ async function init() {
     const all = document.createElement("option");
     all.value = "*"; all.textContent = "All sets in this topic";
     sel.appendChild(all);
-    (node ? node.sets : []).forEach((s, i) => {
+    const sets = node ? node.sets : [];
+    const names = disambiguateSetNames(sets); // display only — stored names are never rewritten here
+    sets.forEach((s, i) => {
       const o = document.createElement("option");
       o.value = String(i);
-      o.textContent = `${s.name} · ${s.count == null ? "?" : s.count} Qs` + paperBadge(s);
+      o.textContent = `${names[i]} · ${s.count == null ? "?" : s.count} Qs` + unratedSuffix(s.difficulties) + paperBadge(s);
       sel.appendChild(o);
     });
     if (prev && [...sel.children].some(c => c.value === prev)) sel.value = prev;
@@ -231,8 +252,62 @@ async function init() {
     return "";
   }
 
-  // "Topics & teaching status" panel: per topic an Auto/Taught/Not-yet override.
-  // The whole build is wrapped in try/catch — a bug here must never break session setup.
+  // " · N unrated" for a difficulty histogram (topic or set). All current banks
+  // are unrated-agnostic — the suffix only appears where it can actually inform
+  // the difficulty filter, and a null histogram (offline fallback) shows nothing.
+  function unratedSuffix(d) {
+    return d && d.unrated > 0 ? " · " + d.unrated + " unrated" : "";
+  }
+
+  // Paper-practice suffix for a TOPIC row: only topics whose sets ALL carry the
+  // same paper style get it (buildTopics computes paperOnly). The dedicated
+  // Paper-practice topics already say "Paper" in their label, so the suffix
+  // would be redundant there and is skipped.
+  function paperTopicSuffix(n) {
+    if (!n.paperOnly || /paper/i.test(String(n.label))) return "";
+    return " · Paper " + n.paperOnly + " practice";
+  }
+
+  /* Display names for a topic's sets (pure): names occurring once pass through;
+     duplicates get a stable suffix from the set's own source — the stored bank
+     name for uploads (s.ref.name), else the seeded file's stem, else the upload
+     date. Uploads default their label to the topic label, so repeated uploads
+     into one topic would otherwise show identical option text without being the
+     same set. When that suffix cannot tell the tied sets apart either, the
+     1-based position (" (set i+1)") forces uniqueness. Display only — nothing
+     stored is ever renamed here (uploads are named away from collisions at
+     upload time instead). */
+  function disambiguateSetNames(sets) {
+    const list = Array.isArray(sets) ? sets : [];
+    const base = list.map(s => String((s && s.name) || ""));
+    const occurrences = {};
+    base.forEach(n => { occurrences[n] = (occurrences[n] || 0) + 1; });
+    const src = (s) => {
+      const r = (s && s.ref) || {};
+      if (r.name) return String(r.name);
+      if (r.file) return String(r.file).split("/").pop().replace(/\.json$/i, "");
+      return r.uploaded ? String(r.uploaded) : "";
+    };
+    const out = [], used = {};
+    // a generated name must never equal a literal stored name either — seed
+    // the reservation with the base names (a set literally called "A — x"
+    // would otherwise collide with dupes of "A" getting the same suffix)
+    base.forEach(n => { used[n] = true; });
+    list.forEach((s, i) => {
+      const n = base[i];
+      if (occurrences[n] <= 1) { out.push(n); return; }
+      const withSrc = n + " — " + src(s);
+      if (src(s) && !used[withSrc]) { used[withSrc] = true; out.push(withSrc); return; }
+      let k = i + 1;
+      while (used[n + " (set " + k + ")"]) k++;
+      const pos = n + " (set " + k + ")";
+      used[pos] = true; out.push(pos);
+    });
+    return out;
+  }
+
+  // "Topics & teaching status" panel: per topic an Auto/Not-yet/Learning/Ready
+  // override. The whole build is wrapped in try/catch — a bug here must never break session setup.
   function renderTaughtPanel() {
     const panel = $("q-taught-panel");
     const list = $("q-taught-list");
@@ -258,10 +333,16 @@ async function init() {
         hint.textContent = st.source === "schedule" ? "suggested from class schedule" : (ov && typeof ov.taught === "boolean" ? "set by you" : "");
         row.appendChild(hint);
         const sel = document.createElement("select");
-        [["auto", "Auto"], ["taught", "Taught"], ["not-taught", "Not yet"]].forEach(([v, t]) => {
+        [["auto", "Auto"], ["not-taught", "Not yet"], ["learning", "Learning"], ["ready", "Ready to revise"]].forEach(([v, t]) => {
           const o = document.createElement("option"); o.value = v; o.textContent = t; sel.appendChild(o);
         });
-        sel.value = ov && typeof ov.taught === "boolean" ? (ov.taught ? "taught" : "not-taught") : "auto";
+        // anything with source "you" pre-selects its state: a stored status
+        // selects itself, and a legacy bool-only record maps to one of the
+        // stored choices ("ready" / "not-taught") — matching the suffix the
+        // topic dropdown shows for the same record. Only schedule-suggested
+        // and unknown rows stay on Auto (their state is the schedule's, or
+        // nothing, not one of the stored choices).
+        sel.value = st.source === "you" && TAUGHT_STATUS.indexOf(st.state) >= 0 ? st.state : "auto";
         sel.addEventListener("change", () => setTaughtOverride(n.topicKey, sel.value));
         row.appendChild(sel);
         list.appendChild(row);
@@ -269,35 +350,57 @@ async function init() {
     } catch (e) { clearEl(list); }
   }
 
-  // Read-modify-write of the whole "topic-taught" map: Auto deletes the override,
-  // Taught/Not-yet store {taught, t} (the sync merge is newest-t per topic).
+  // Read-modify-write of the whole "topic-taught" map: Auto deletes the override;
+  // Not-yet/Learning/Ready store {taught, status, t} (the sync merge is newest-t
+  // per topic). `taught` stays consistent with the status ((status ===
+  // "not-taught") === !taught) so an older deployed client that only reads the
+  // bool keeps showing the same thing as this one.
   function setTaughtOverride(topicKey, value) {
     let map = store.get("topic-taught", {});
     if (!map || typeof map !== "object" || Array.isArray(map)) map = {};
     if (value === "auto") delete map[topicKey];
-    else map[topicKey] = { taught: value === "taught", t: Date.now() };
+    else map[topicKey] = { taught: value !== "not-taught", status: value, t: Date.now() };
     store.set("topic-taught", map);
     fillTopics(); // option suffixes + the panel itself re-render from the new map
+  }
+
+  // Normalized COPY of a difficulty histogram ({unrated,easy,standard,hard},
+  // numeric, missing keys 0) — null when there is none. Per-set histograms feed
+  // the picker's "N unrated" suffix; the copy (never the manifest's own object)
+  // keeps buildTopics pure against its input.
+  function histCopy(d) {
+    if (!d || typeof d !== "object") return null;
+    const out = {};
+    DIFFICULTY_ORDER.forEach(k => { out[k] = typeof d[k] === "number" ? d[k] : 0; });
+    return out;
   }
 
   // ── pure topic model (exported for tests; no DOM, no fetches) ─────────────
   /* buildTopics(banks) → ordered topic nodes for the picker.
      banks: seeded entries {file, label, meta?} (meta = the parsed manifest
      entry; every field on it is optional) and inline uploads
-     {inline: true, items, label, topicLabel, topic?, set?, setOrder?, codes?}.
+     {inline: true, items, label, name?, topicLabel, topic?, set?, setOrder?, codes?}
+     (name = the stored bank's unique file name, preferred for error-key bank ids).
      Node: {topicKey, label, count, difficulties {unrated,easy,standard,hard},
-     codes, sets: [{ref, name, order, count, paperStyle, calculatorFree}]}.
+     paperOnly, codes, sets: [{ref, name, order, count, paperStyle,
+     calculatorFree, difficulties}]}.
      - Seeded WITH meta: the pre-aggregated meta.topics[] entries drive the nodes
        (bank files are never fetched here); the bank itself appears as a set of
-       every topic it contributes to, with the per-topic count.
+       every topic it contributes to, with the per-topic count (and a normalized
+       copy of that entry's difficulty histogram — null when the manifest has
+       none).
      - Seeded WITHOUT meta (offline fallback): the bank is its own topic; its
-       size is unknown → count null (the picker shows "?").
+       size is unknown → count null (the picker shows "?"), no histogram.
      - Inline uploads: items are aggregated in memory exactly like bankItems()
        maps them (effective topic = it.topic || bank.topic || bankId; retired
-       skipped; difficulty = valid value else "unrated").
+       skipped; difficulty = valid value else "unrated"); each set carries a copy
+       of the per-topic aggregate histogram.
+     paperOnly is "1A"/"1B" only when EVERY set of the topic carries that same
+     non-null paperStyle (mixed or unstyled topics → null).
      Contributions merge across banks by topicKey; set names within a topic are
-     NOT deduped (dupes are suggested away at upload time). Labels: first
-     non-null wins — inline banks are processed last, so seeded labels win. */
+     NOT deduped (dupes are named away at upload time and disambiguated for
+     display in syncSetSelect). Labels: first non-null wins — inline banks are
+     processed last, so seeded labels win. */
   function buildTopics(banks) {
     const byKey = {};
     const nodes = [];
@@ -331,7 +434,7 @@ async function init() {
             // topics "not yet taught" forever; per-code nodes inherit their precise
             // code from the topic-notes manifest (note-id matching in subjectTopics).
             if (topics.length === 1 || (meta.topic && e.topic === meta.topic)) addCodes(n, meta.codes);
-            n.sets.push({ ref: b, name: b.set || meta.set || meta.label || b.label, order: b.setOrder != null ? b.setOrder : (meta.setOrder != null ? meta.setOrder : null), count: typeof e.count === "number" ? e.count : null, paperStyle: meta.paperStyle || null, calculatorFree: !!meta.calculatorFree });
+            n.sets.push({ ref: b, name: b.set || meta.set || meta.label || b.label, order: b.setOrder != null ? b.setOrder : (meta.setOrder != null ? meta.setOrder : null), count: typeof e.count === "number" ? e.count : null, paperStyle: meta.paperStyle || null, calculatorFree: !!meta.calculatorFree, difficulties: histCopy(e.difficulty) });
           });
           return;
         }
@@ -339,7 +442,7 @@ async function init() {
         // fetching the file (which the picker deliberately never does)
         const n = nodeFor(bankIdFor(b), b.label || null);
         bump(n, null);
-        n.sets.push({ ref: b, name: b.label, order: b.setOrder != null ? b.setOrder : null, count: null, paperStyle: null, calculatorFree: false });
+        n.sets.push({ ref: b, name: b.label, order: b.setOrder != null ? b.setOrder : null, count: null, paperStyle: null, calculatorFree: false, difficulties: null });
         return;
       }
       // inline upload: aggregate its items exactly like bankItems() maps them
@@ -361,7 +464,7 @@ async function init() {
         Object.keys(t.difficulties).forEach(k => { n.difficulties[k] += t.difficulties[k]; });
         // same rule as the meta path: bank codes describe the declared bank topic
         if (Object.keys(perTopic).length === 1 || tk === b.topic) addCodes(n, b.codes);
-        n.sets.push({ ref: b, name: b.set || b.label || b.topicLabel, order: b.setOrder != null ? b.setOrder : null, count: t.count, paperStyle: null, calculatorFree: false });
+        n.sets.push({ ref: b, name: b.set || b.label || b.topicLabel, order: b.setOrder != null ? b.setOrder : null, count: t.count, paperStyle: null, calculatorFree: false, difficulties: Object.assign({}, t.difficulties) });
       });
     });
 
@@ -374,6 +477,11 @@ async function init() {
         if (y.order == null) return -1;
         return x.order !== y.order ? x.order - y.order : nameCmp(x, y);
       });
+      // paperOnly: the topic row may advertise "Paper 1A practice" only when
+      // every set agrees on that same non-null style — a mixed-style or
+      // unstyled topic would make the suffix a half-truth
+      const styles = n.sets.map(s => s.paperStyle);
+      n.paperOnly = styles.length && styles[0] && styles.every(x => x === styles[0]) ? styles[0] : null;
       n.count = n.countKnown ? n.count : null; // any unknown contributor → "?" for the whole node
       delete n.countKnown;
     });
@@ -383,16 +491,27 @@ async function init() {
 
   /* taughtState(topicKey, codes, schedule, subjectId, todayISO, overrides):
      1. a stored "topic-taught" override with a boolean taught wins → source "you";
+        its optional status ("not-taught"|"learning"|"ready") IS the state when it
+        implies the record's taught value ((status === "not-taught") === !taught).
+        A legacy record without a status — or with an invalid/contradictory one —
+        falls back to the bool: {taught:true} reads as "ready" (the old "Taught"
+        button meant exactly that: taught and ready to revise), {taught:false} as
+        "not-taught";
      2. else with non-empty codes AND schedule units for the subject: taught iff
         EVERY code is covered by at least one unit that has already finished
-        (unit.to <= todayISO) → source "schedule";
+        (unit.to <= todayISO) → source "schedule" (the only source of state
+        "taught");
      3. otherwise "unknown" (no codes, no schedule for the subject, malformed
         input). Never throws — any doubt falls back to unknown. */
   function taughtState(topicKey, codes, schedule, subjectId, todayISO, overrides) {
     try {
       if (overrides && typeof overrides === "object" && !Array.isArray(overrides)) {
         const ov = overrides[topicKey];
-        if (ov && typeof ov.taught === "boolean") return { state: ov.taught ? "taught" : "not-taught", source: "you" };
+        if (ov && typeof ov.taught === "boolean") {
+          const status = TAUGHT_STATUS.indexOf(ov.status) >= 0 ? ov.status : null;
+          if (status && (status === "not-taught") === !ov.taught) return { state: status, source: "you" };
+          return { state: ov.taught ? "ready" : "not-taught", source: "you" };
+        }
       }
       const cs = Array.isArray(codes) ? codes.filter(c => typeof c === "string" && c) : [];
       const units = scheduleUnits(schedule, subjectId);
@@ -501,9 +620,11 @@ async function init() {
     $("q-error").textContent = "";
     let nodes = [];
     try { nodes = subjectTopics(key); } catch (e) { nodes = []; }
-    // "*" = Mixed/revision: every topic node. Taught-only keeps taught topics and
-    // ALWAYS includes "unknown" ones (no schedule/override → never excluded); a
-    // specifically picked topic is kept regardless of the checkbox.
+    // "*" = Mixed/revision: every topic node. Taught-only keeps everything that
+    // is not explicitly "not-taught" (schedule-taught AND learning/ready
+    // overrides stay in) and ALWAYS includes "unknown" ones (no
+    // schedule/override → never excluded); a specifically picked topic is kept
+    // regardless of the checkbox.
     const taughtOnlyEl = $("q-taught-only");
     const taughtOnly = !!(taughtOnlyEl && taughtOnlyEl.checked);
     const overrides = store.get("topic-taught", {});
@@ -752,6 +873,33 @@ async function init() {
     return (it.bankId ? it.bankId + "#" : "") + (it.id || stemKey(it.stem));
   }
 
+  // Move a matched legacy record onto a bank-scoped key: merge into an existing record
+  // with the new key (attempts unioned, date range kept) or rename it in place. The
+  // legacyKey note lets the sync merge (assets/store.js) drop the same record when it
+  // comes back under its old key from another device's copy.
+  function absorbLegacyRecord(errs, legacy, newKey, bankId) {
+    const existing = errs.find(e => e && e.key === newKey);
+    if (existing) {
+      existing.attempts = (existing.attempts || 0) + (legacy.attempts || 0);
+      if ((legacy.firstMissed || "") && (!existing.firstMissed || legacy.firstMissed < existing.firstMissed)) existing.firstMissed = legacy.firstMissed;
+      if ((legacy.lastMissed || "") > (existing.lastMissed || "")) existing.lastMissed = legacy.lastMissed;
+      if (legacy.resolved === false) existing.resolved = false;
+      // same missing-field rule as the sync merge (assets/store.js errMerge): a record
+      // with no retired field at all (an old client) can't un-retire, but explicit values win
+      if (existing.retired === undefined && legacy.retired !== undefined) {
+        existing.retired = legacy.retired;
+        if (existing.retired) ["retiredReason", "retiredAt"].forEach(f => { if (existing[f] === undefined && legacy[f] !== undefined) existing[f] = legacy[f]; });
+      }
+      existing.ts = Math.max(existing.ts || 0, legacy.ts || 0, Date.now());
+      errs.splice(errs.indexOf(legacy), 1);
+    } else {
+      legacy.legacyKey = legacy.key;
+      legacy.key = newKey;
+      legacy.bankId = bankId;
+      legacy.ts = Date.now();
+    }
+  }
+
   // One-time, idempotent rename of legacy q-errors keys (bare "b01" or "stem-…") to bank-scoped
   // keys. A legacy record is only claimed by an item with the same id (or stem hash) AND the same
   // stem, so a collided id ("b01" exists in several banks) maps to the bank it really came from.
@@ -766,21 +914,33 @@ async function init() {
       const legacyKeys = [it.id, stemKey(it.stem)].filter(Boolean);
       const idx = errs.findIndex(e => e && legacyKeys.includes(e.key) && e.key.indexOf("#") < 0 && String(e.stem) === String(it.stem));
       if (idx < 0) return;
-      const legacy = errs[idx];
-      const existing = errs.find(e => e && e.key === newKey);
-      if (existing) {
-        existing.attempts = (existing.attempts || 0) + (legacy.attempts || 0);
-        if ((legacy.firstMissed || "") && (!existing.firstMissed || legacy.firstMissed < existing.firstMissed)) existing.firstMissed = legacy.firstMissed;
-        if ((legacy.lastMissed || "") > (existing.lastMissed || "")) existing.lastMissed = legacy.lastMissed;
-        if (legacy.resolved === false) existing.resolved = false;
-        existing.ts = Math.max(existing.ts || 0, legacy.ts || 0, Date.now());
-        errs.splice(idx, 1);
-      } else {
-        legacy.legacyKey = legacy.key;
-        legacy.key = newKey;
-        legacy.bankId = it.bankId;
-        legacy.ts = Date.now();
-      }
+      absorbLegacyRecord(errs, errs[idx], newKey, it.bankId);
+      changed = true;
+    });
+    if (changed) store.set("q-errors", errs);
+  }
+
+  // Same rename for records written before uploaded banks carried their stored name: keys were
+  // "user:<label-slug>#<id>" (bankIdFor's old inline fallback), so two sets that reused a label
+  // shared one history. Runs once per upload at load time; a record is only claimed by an item
+  // with the same id AND stem (a same-labeled set's items have different stems), and anything
+  // left unmatched stays as it is and remains reviewable. Histories already conflated under one
+  // shared key can't be split apart — they follow whichever stem matches first.
+  function migrateUserBankKeys(b) {
+    if (!b || !b.name || !Array.isArray(b.items)) return;
+    // legacy id exactly as the old BANKS entry spelled it: init defaulted its label
+    // to "My bank", so that was the last fallback the old keys were written with
+    const legacyBankId = "user:" + String(b.label || b.topicLabel || "My bank").toLowerCase().replace(/\W+/g, "-");
+    const bankId = bankIdFor(b);
+    if (bankId === legacyBankId) return;
+    const errs = store.get("q-errors", []);
+    if (!errs.length) return;
+    let changed = false;
+    b.items.forEach(it => {
+      if (!it || !it.id) return;
+      const idx = errs.findIndex(e => e && e.key === legacyBankId + "#" + it.id && String(e.stem) === String(it.stem));
+      if (idx < 0) return;
+      absorbLegacyRecord(errs, errs[idx], bankId + "#" + it.id, bankId);
       changed = true;
     });
     if (changed) store.set("q-errors", errs);
@@ -790,11 +950,46 @@ async function init() {
   function today() { const d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
 
   // retries: one {ts, correct, conf?} entry per attempt outcome, capped at 20 (the
-  // attempts counter keeps the true total); absent on records never re-attempted.
+  // attempts counter totals the wrong outcomes — see applyRetry); absent on records
+  // never re-attempted.
   const pushRetry = (e, correct, conf) => {
     const r = { ts: Date.now(), correct: !!correct };
     if (conf) r.conf = conf;
     e.retries = (Array.isArray(e.retries) ? e.retries : []).concat([r]).slice(-20);
+  };
+
+  // Spaced retests of missed questions (docs/NEXT-STEPS.md H4–H9): a record gains an
+  // optional `dueAt` (epoch ms) — when it next comes back for a scheduled retest. The
+  // ladder: 7 days after the first wrong outcome, 30 days after any later one.
+  // `attempts` counts the wrong outcomes (misses + wrong review retries). Records
+  // without dueAt (legacy, or recovered — the schedule is cleared on recovery) read as
+  // due now; a correct answer BEFORE the scheduled retest is practice only.
+  const DUE_DELAY_FIRST_DAYS = 7, DUE_DELAY_LATER_DAYS = 30, DAY_MS = 86400000;
+  const dueDelayMs = (attempts) => ((attempts || 0) <= 1 ? DUE_DELAY_FIRST_DAYS : DUE_DELAY_LATER_DAYS) * DAY_MS;
+  const nextDueAt = (rec, nowMs) => (nowMs == null ? Date.now() : nowMs) + dueDelayMs(rec && rec.attempts);
+  const isDue = (rec, nowMs) => !!rec && !rec.resolved && !rec.retired && (rec.dueAt == null || rec.dueAt <= (nowMs == null ? Date.now() : nowMs));
+
+  // One review outcome applied to a stored record (mutates it; exported for tests —
+  // markReviewResult calls this). wrong: re-opens a recovered record (a wrong retry
+  // used to leave it resolved) and schedules the next retest. correct: before the
+  // scheduled time it is practice only — the record stays open and keeps its schedule;
+  // at/after the scheduled time (or on legacy records without a schedule) it recovers
+  // and the schedule is cleared. conf rides the retry entry, as markReviewResult
+  // has always recorded it.
+  const applyRetry = (rec, correct, conf, nowMs) => {
+    const now = nowMs == null ? Date.now() : nowMs;
+    rec.lastAttempt = today();
+    pushRetry(rec, correct, conf);
+    if (!correct) {
+      rec.attempts = (rec.attempts || 0) + 1;
+      rec.resolved = false;
+      rec.dueAt = nextDueAt(rec, now);
+    } else if (rec.dueAt == null || rec.dueAt <= now) {
+      rec.resolved = true;
+      delete rec.dueAt;
+    }
+    rec.ts = now;
+    return rec;
   };
 
   function recordError(it, extra) {
@@ -807,6 +1002,7 @@ async function init() {
       existing.resolved = false;
       existing.ts = Date.now();
       pushRetry(existing, false);
+      existing.dueAt = nextDueAt(existing, existing.ts); // repeat miss → retest in 30 days
       if (extra && extra.userChoice !== undefined) existing.userAnswer = extra.userChoice; // latest wrong choice
       C.applyToError(existing, extra && extra.conf, true);
     } else {
@@ -819,6 +1015,7 @@ async function init() {
         tactic: it.tactic || "", attempts: 1, firstMissed: today(), lastMissed: today(), resolved: false,
         ts: Date.now()
       });
+      errs[errs.length - 1].dueAt = nextDueAt(errs[errs.length - 1], errs[errs.length - 1].ts); // first miss → retest in 7 days
       C.applyToError(errs[errs.length - 1], extra && extra.conf, true);
     }
     store.set("q-errors", errs);
@@ -828,12 +1025,8 @@ async function init() {
     const errs = store.get("q-errors", []);
     const e = errs.find(x => x.key === it.errKey);
     if (e) {
-      e.attempts = (e.attempts || 0) + 1;
-      e.lastAttempt = today();
-      if (correct) e.resolved = true;
-      pushRetry(e, correct, conf);
+      applyRetry(e, correct, conf);
       C.applyToError(e, conf, !correct);
-      e.ts = Date.now();
       store.set("q-errors", errs);
     }
   }
@@ -841,12 +1034,24 @@ async function init() {
   // retired records are soft-hidden ("not relevant") — they no longer count as waiting work
   function unresolvedCount() { return getErrors().filter(e => !e.resolved && !e.retired).length; }
 
+  // local YYYY-MM-DD of the earliest scheduled retest among open records ("" when none carries a dueAt)
+  function nextDueDay(errs) {
+    const times = (errs || []).filter(e => e && !e.resolved && !e.retired && e.dueAt != null).map(e => e.dueAt);
+    if (!times.length) return "";
+    const d = new Date(Math.min.apply(null, times));
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  }
+
   function updateReviewUI() {
     const btn = $("q-review-btn");
     const c = $("q-review-count");
-    const n = unresolvedCount();
-    if (btn) btn.disabled = n === 0;
-    if (c) c.textContent = n ? (n + " missed question(s) waiting for review") : "no missed questions waiting";
+    const errs = getErrors();
+    const open = errs.filter(e => !e.resolved && !e.retired).length;
+    const due = errs.filter(e => isDue(e, Date.now())).length;
+    // the button stays clickable while anything is unresolved, so the click can say
+    // when the next retest lands (startReview's empty notice) instead of dead-ending
+    if (btn) btn.disabled = open === 0;
+    if (c) c.textContent = open ? (due ? due + " missed question(s) due for retest" : "none due yet — next one " + nextDueDay(errs)) : "no missed questions waiting";
     renderConfidentWrong();
   }
 
@@ -863,28 +1068,52 @@ async function init() {
     $("q-confwrong-btn").addEventListener("click", () => startReview(true));
   }
 
+  // Pure picker for review sessions (exported for tests): which stored error records
+  // serve a review, plus the notices for the ones skipped. Retired records ("not
+  // relevant") are never served — not by the automatic paths, not by the Mistakes
+  // deep link (the log hides the Retry link on retired rows to match). "Review past
+  // errors" serves only records DUE for their scheduled retest; the Mistakes deep
+  // link (opts.keys) and the confident-but-wrong review bypass the schedule — a
+  // picked/practised question is offered immediately (opts.ignoreDue is the explicit
+  // opt-out for the plain path; opts.nowMs pins the clock for the node tests).
+  function pickReviewErrors(all, opts) {
+    if (opts.keys) {
+      const want = new Set(opts.keys);
+      const picked = all.filter(e => e && e.key && want.has(e.key));
+      const errs = picked.filter(e => !e.retired);
+      const bits = [];
+      const missing = want.size - picked.length; // unique keys — a duplicated key isn't "missing"
+      const retiredN = picked.length - errs.length;
+      if (missing) bits.push(`${missing} linked item(s) not found.`);
+      if (retiredN) bits.push(`${retiredN} linked item(s) skipped — marked \u201cnot relevant\u201d.`);
+      return { errs, bits, retiredN };
+    }
+    const errs = opts.confidentOnly
+      ? C.confidentWrongErrors(all).filter(e => !e.retired)
+      : all.filter(e => !e.resolved && !e.retired && (opts.ignoreDue || isDue(e, opts.nowMs)));
+    return { errs, bits: [], retiredN: 0 };
+  }
+
   // Review session. Back-compat: the argument is either the legacy boolean
   // (true = confident-but-wrong only) or an options object:
   //   {confidentOnly: bool} — as above;
   //   {keys: ["bank#id", …]} — build the session ONLY from the stored error records
-  //     with those keys (Mistakes page deep link, quiz.html?errkeys=…). Unknown keys
-  //     are skipped and reported with the same notice pattern startFromLink uses.
-  // Retired records ("not relevant") are never served by the automatic review paths.
+  //     with those keys (Mistakes page deep link, quiz.html?errkeys=…). Unknown or
+  //     skipped records are reported with the same notice pattern startFromLink uses.
+  // Which records serve (and that retired ones never do) is pickReviewErrors above.
+  // The plain path only serves records due for their scheduled retest — when open
+  // mistakes exist but none has come due yet, the notice names the earliest date.
   function startReview(confidentOnly) {
     const opts = (confidentOnly && typeof confidentOnly === "object") ? confidentOnly : { confidentOnly: confidentOnly === true };
-    let errs = null, bits = [];
-    if (opts.keys) {
-      const want = new Set(opts.keys);
-      errs = getErrors().filter(e => e && e.key && want.has(e.key));
-      const missing = opts.keys.length - errs.length;
-      if (missing) bits.push(`${missing} linked item(s) not found.`);
-      if (!errs.length) { $("q-error").textContent = "None of the questions picked from the mistake log could be found."; return false; }
-    } else if (opts.confidentOnly) {
-      errs = C.confidentWrongErrors(getErrors()).filter(e => !e.retired);
-    } else {
-      errs = getErrors().filter(e => !e.resolved && !e.retired);
+    const { errs, bits, retiredN } = pickReviewErrors(getErrors(), opts);
+    if (opts.keys && !errs.length) { $("q-error").textContent = "None of the questions picked from the mistake log could be found." + (retiredN ? ` (${retiredN} marked \u201cnot relevant\u201d.)` : ""); return false; }
+    if (!errs.length) {
+      const waiting = unresolvedCount();
+      $("q-error").textContent = (!opts.confidentOnly && waiting)
+        ? `No missed questions are due for retest yet \u2014 the next one comes back ${nextDueDay(getErrors())}. You can retry a question early from the mistake log.`
+        : "No missed questions to review \u2014 well done!";
+      return false;
     }
-    if (!errs.length) { $("q-error").textContent = "No missed questions to review \u2014 well done!"; return false; }
     const items = shuffle(errs).map(e => ({
       id: e.id, errKey: e.key, format: e.format, stem: e.stem,
       choices: e.choices, answer: e.answer, note: e.note,
@@ -914,9 +1143,10 @@ async function init() {
   }
 
   // test hook (node --test loads this file in a vm); the pure picker model
-  // (buildTopics/taughtState/difficultyPass) is exported for the node tests
+  // (buildTopics/taughtState/difficultyPass and the display-name helpers) is
+  // exported for the node tests
   window.NB = window.NB || {};
-  window.NB.quizEngine = { isActive, bankItems, buildTopics, taughtState, difficultyPass, DIFFICULTY_ORDER };
+  window.NB.quizEngine = { isActive, bankItems, buildTopics, taughtState, difficultyPass, DIFFICULTY_ORDER, pickReviewErrors, migrateUserBankKeys, disambiguateSetNames, unratedSuffix, TAUGHT_SUFFIX, dueDelayMs, nextDueAt, isDue, applyRetry, recordError };
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();

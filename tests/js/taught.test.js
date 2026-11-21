@@ -58,6 +58,23 @@ test("NB.merge RECORDS: missing t ranks as t=0; non-object input never crashes",
   assert.deepEqual(merge(undefined, { A: { taught: true, t: 1 } }), { A: { taught: true, t: 1 } });
 });
 
+test("NB.merge RECORDS: a status on the older side fills into a status-less newest winner", () => {
+  const merge = (a, b) => plain(env({}).NB.merge.RECORDS["topic-taught"](a, b));
+  assert.deepEqual(merge({ A: { taught: true, t: 2 } }, { A: { taught: true, status: "learning", t: 1 } }),
+    { A: { taught: true, status: "learning", t: 2 } },
+    "an old client's bool-only record must not erase a learning/ready status set elsewhere");
+  assert.deepEqual(merge({ A: { taught: false, t: 2 } }, { A: { taught: false, status: "not-taught", t: 1 } }),
+    { A: { taught: false, status: "not-taught", t: 2 } }, "not-taught implies taught:false → carried over");
+  assert.deepEqual(merge({ A: { taught: false, t: 2 } }, { A: { taught: true, status: "learning", t: 1 } }),
+    { A: { taught: false, t: 2 } }, "a status contradicting the winner's taught is dropped");
+  assert.deepEqual(merge({ A: { taught: true, t: 2 } }, { A: { taught: true, status: "garbage", t: 1 } }),
+    { A: { taught: true, t: 2 } }, "a garbage status is never filled");
+  assert.deepEqual(merge({ A: { taught: true, status: "ready", t: 2 } }, { A: { taught: true, status: "learning", t: 1 } }),
+    { A: { taught: true, status: "ready", t: 2 } }, "a winner that already has a status is untouched");
+  assert.deepEqual(merge({ A: { taught: true, t: 2 } }, { A: { taught: false, t: 1 } }),
+    { A: { taught: true, t: 2 } }, "no status on either side → plain newest-wins, unchanged");
+});
+
 test("backup: topic-taught is collected, validated and restored record-by-record", () => {
   const a = backupEnv({});
   a.NB.store.set("topic-taught", { t1: { taught: true, t: 5 }, bad: "junk", bad2: { taught: "yes" } });
@@ -76,4 +93,25 @@ test("backup: topic-taught is collected, validated and restored record-by-record
   const bad = c.NB.backup.parse(J({ format: "nevaib-backup", version: 3, keys: { "topic-taught": [1, 2] } }));
   assert.equal(bad.ok, false, "a non-object whole value is rejected as a damaged file");
   assert.match(bad.errors.join(" "), /wrong shape/);
+});
+
+test("backup: topic-taught records accept the optional status; bogus ones are dropped, good ones round-trip", () => {
+  const a = backupEnv({});
+  a.NB.store.set("topic-taught", {
+    t1: { taught: true, status: "learning", t: 5 },
+    t2: { taught: false, status: "not-taught" },
+    bad: { taught: true, status: "bogus", t: 7 }
+  });
+  const file = J(a.NB.backup.collect());
+  assert.ok(Object.keys(JSON.parse(file).keys).indexOf("topic-taught") >= 0, "collect includes the key");
+
+  const b = backupEnv({});
+  const p = b.NB.backup.parse(file);
+  assert.equal(p.ok, true, p.errors.join("; "));
+  assert.ok(p.warnings.some(w => /topic-taught/.test(w)), "the bogus-status record is dropped as a warning");
+  const r = b.NB.backup.restore(p, "merge");
+  assert.equal(r.ok, true);
+  assert.deepEqual(plain(b.NB.store.get("topic-taught", {})),
+    { t1: { taught: true, status: "learning", t: 5 }, t2: { taught: false, status: "not-taught" } },
+    "valid records restore with their status intact");
 });

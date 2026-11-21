@@ -87,6 +87,24 @@ test("nextSetName: fills the first free number at or above the lowest used numbe
   assert.equal(S.nextSetName("not-an-array"), "Practice set 1", "malformed input stays pure and safe");
 });
 
+test("nextSetOrder: one past the largest integer setOrder of the same subject + effective topic", () => {
+  const order = (banks, topic) => S.nextSetOrder(banks, "chemistry-hl", topic);
+  assert.equal(order([], "chem-s1"), 1, "empty list → 1");
+  assert.equal(order([bank([mcq("a1")], { topic: "chem-s1", setOrder: 3 })], "chem-s1"), 4, "max + 1");
+  assert.equal(order([
+    bank([mcq("a1")], { topic: "chem-s1", setOrder: 2 }),
+    bank([mcq("a2")], { topic: "chem-s1", setOrder: 7 })
+  ], "chem-s1"), 8, "the largest wins — gaps in the numbering don't matter");
+  assert.equal(order([bank([mcq("a1")], { topic: "chem-s1" })], "chem-s1"), 1, "absent setOrder is ignored");
+  assert.equal(order([bank([mcq("a1")], { topic: "chem-s1", setOrder: 1.5 })], "chem-s1"), 1, "non-integer setOrder is ignored");
+  assert.equal(order([bank([mcq("a1")], { topic: "chem-s2", setOrder: 5 })], "chem-s1"), 1, "other topics are ignored");
+  assert.equal(order([bank([mcq("a1")], { subject: "biology-hl", topic: "chem-s1", setOrder: 5 })], "chem-s1"), 1, "other subjects are ignored");
+  assert.equal(order([bank([mcq("a1")], { setOrder: 4 })]), 5, "a topic-less bank pools under (none) and matches a topic-less query");
+  assert.equal(order([bank([mcq("a1")], { setOrder: 4 })], "chem-s1"), 1, "a bank without a topic never matches a real topic query");
+  assert.equal(order([bank([mcq("a1")], { setOrder: 4 })], null), 5, "a missing topic query pools under (none)");
+  assert.equal(S.nextSetOrder("junk", "chemistry-hl", "chem-s1"), 1, "malformed input stays pure and safe");
+});
+
 test("bankSchema publishes exactly the documented exports", () => {
-  assert.deepEqual(Object.keys(env.NB.bankSchema).sort(), ["DIFFICULTIES", "DIFFICULTY_ORDER", "nextSetName", "validateDeck", "validateQuizBank"]);
+  assert.deepEqual(Object.keys(env.NB.bankSchema).sort(), ["DIFFICULTIES", "DIFFICULTY_ORDER", "nextSetName", "nextSetOrder", "validateDeck", "validateQuizBank"]);
 });

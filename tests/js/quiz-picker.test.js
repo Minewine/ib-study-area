@@ -75,7 +75,7 @@ test("buildTopics: inline uploaded banks aggregate items like bankItems maps the
   assert.deepEqual(plain(enz.difficulties), { unrated: 2, easy: 0, standard: 1, hard: 0 }, "invalid difficulty pools as unrated");
   assert.deepEqual(plain(enz.codes), ["C1.1"], "bank-level codes reach the node");
   assert.equal(enz.label, "Enzymes", "bank topicLabel is the effective item topicLabel");
-  assert.deepEqual(plain(enz.sets), [{ ref: b, name: "My enzymes bank", order: null, count: 3, paperStyle: null, calculatorFree: false }]);
+  assert.deepEqual(plain(enz.sets), [{ ref: b, name: "My enzymes bank", order: null, count: 3, paperStyle: null, calculatorFree: false, difficulties: { unrated: 2, easy: 0, standard: 1, hard: 0 } }], "inline sets carry a copy of the per-topic histogram");
   const kin = nodes[1];
   assert.equal(kin.count, 1);
   assert.deepEqual(plain(kin.difficulties), { unrated: 0, easy: 0, standard: 0, hard: 1 });
@@ -91,7 +91,7 @@ test("buildTopics: a bank without meta (offline fallback) is its own topic with 
   assert.equal(nodes[0].label, "Unity & diversity — Cells");
   assert.equal(nodes[0].count, null, "count unknown without fetching the file → '?' in the picker");
   assert.deepEqual(plain(nodes[0].difficulties), { unrated: 0, easy: 0, standard: 0, hard: 0 });
-  assert.deepEqual(plain(nodes[0].sets), [{ ref: fb, name: "Unity & diversity — Cells", order: null, count: null, paperStyle: null, calculatorFree: false }]);
+  assert.deepEqual(plain(nodes[0].sets), [{ ref: fb, name: "Unity & diversity — Cells", order: null, count: null, paperStyle: null, calculatorFree: false, difficulties: null }], "offline fallback sets have no histogram");
 });
 
 test("buildTopics: topics sort by label numerically; sets sort by order (nulls last) then name", () => {
@@ -145,11 +145,30 @@ test("taughtState: a stored override always wins, in both directions", () => {
   const { QE } = engine();
   const today = "2026-10-01"; // C1.1's unit hasn't finished, A1.1's has
   assert.deepEqual(plain(QE.taughtState("x", ["C1.1"], SCHED, "biology-hl", today, { x: { taught: true, t: 1 } })),
-    { state: "taught", source: "you" }, "override true beats the schedule's not-yet");
+    { state: "ready", source: "you" }, "legacy bool-only override true beats the schedule AND reads as ready (the old 'Taught' meaning)");
   assert.deepEqual(plain(QE.taughtState("x", ["A1.1"], SCHED, "biology-hl", today, { x: { taught: false, t: 1 } })),
     { state: "not-taught", source: "you" }, "override false beats the schedule's taught");
   assert.deepEqual(plain(QE.taughtState("x", ["A1.1"], SCHED, "biology-hl", today, { x: { taught: "yes", t: 1 } })),
     { state: "taught", source: "schedule" }, "a non-boolean override is ignored");
+});
+
+test("taughtState: a consistent status record IS the state; invalid/contradictory ones fall back to the bool", () => {
+  const { QE } = engine();
+  const today = "2026-10-01";
+  assert.deepEqual(plain(QE.taughtState("x", ["C1.1"], SCHED, "biology-hl", today, { x: { taught: true, status: "learning", t: 2 } })),
+    { state: "learning", source: "you" }, "learning beats the schedule's not-yet");
+  assert.deepEqual(plain(QE.taughtState("x", ["C1.1"], SCHED, "biology-hl", today, { x: { taught: true, status: "ready", t: 2 } })),
+    { state: "ready", source: "you" });
+  assert.deepEqual(plain(QE.taughtState("x", ["C1.1"], SCHED, "biology-hl", today, { x: { taught: false, status: "not-taught", t: 2 } })),
+    { state: "not-taught", source: "you" });
+  for (const bad of ["bogus", "taught", "", null, undefined]) {
+    assert.deepEqual(plain(QE.taughtState("x", ["C1.1"], SCHED, "biology-hl", today, { x: { taught: true, status: bad, t: 2 } })),
+      { state: "ready", source: "you" }, "status " + JSON.stringify(bad) + " is not a real state — the bool decides");
+  }
+  assert.deepEqual(plain(QE.taughtState("x", ["C1.1"], SCHED, "biology-hl", today, { x: { taught: false, status: "learning", t: 2 } })),
+    { state: "not-taught", source: "you" }, "a status contradicting the bool is ignored");
+  assert.deepEqual(plain(QE.taughtState("x", ["C1.1"], SCHED, "biology-hl", today, { x: { taught: true, status: "not-taught", t: 2 } })),
+    { state: "ready", source: "you" }, "so is not-taught on a taught:true record");
 });
 
 test("taughtState: schedule suggestion — every code covered by a finished unit", () => {
@@ -207,6 +226,83 @@ test("difficultyPass: crossed-over min/max are swapped, not silently empty", () 
   assert.equal(QE.difficultyPass({ difficulty: "standard" }, "standard", "easy"), true);
   assert.equal(QE.difficultyPass({ difficulty: "hard" }, "standard", "easy"), false);
   assert.equal(QE.difficultyPass({ difficulty: "unrated" }, "standard", "easy"), false);
+});
+
+// ── per-set histograms, paperOnly, unratedSuffix, disambiguateSetNames ─────
+test("buildTopics: per-set difficulties come from the manifest topic (meta) or the item aggregate (inline); absent → null", () => {
+  const { QE } = engine();
+  const a = metaBank("library/questions/p1a.json", "Paper 1A — Mixed",
+    [
+      { topic: "t1", topicLabel: "T one", count: 4, difficulty: { unrated: 2, easy: 1, standard: 1 } },
+      { topic: "t2", topicLabel: "T two", count: 1 } // no difficulty histogram in the manifest
+    ],
+    { paperStyle: "1A" });
+  const nodes = QE.buildTopics([a]);
+  assert.deepEqual(plain(nodes[0].sets[0].difficulties), { unrated: 2, easy: 1, standard: 1, hard: 0 }, "missing histogram keys default to 0");
+  assert.equal(nodes[1].sets[0].difficulties, null, "a manifest topic without difficulty → null");
+  const inline = { inline: true, label: "Inline", topicLabel: "T three", topic: "t3", items: [
+    { id: "i1", format: "mcq", stem: "s", choices: ["a", "b"], answer: 0, difficulty: "hard" },
+    { id: "i2", format: "mcq", stem: "s", choices: ["a", "b"], answer: 0 } ] };
+  const raw = QE.buildTopics([inline])[0];
+  assert.deepEqual(plain(raw.sets[0].difficulties), { unrated: 1, easy: 0, standard: 0, hard: 1 }, "inline sets aggregate their items like the topic node does");
+  assert.notEqual(raw.sets[0].difficulties, raw.difficulties, "the set histogram is a copy, never the node's own object");
+});
+
+test("buildTopics: paperOnly is the shared paperStyle of EVERY set; mixed or unstyled topics get null", () => {
+  const { QE } = engine();
+  const banks = [
+    metaBank("library/questions/b1.json", "B one", [{ topic: "t-1b", topicLabel: "T one", count: 1 }], { paperStyle: "1B" }),
+    metaBank("library/questions/b2.json", "B two", [{ topic: "t-1b", topicLabel: "T one", count: 1 }], { paperStyle: "1B" }),
+    metaBank("library/questions/a1.json", "A one", [{ topic: "t-1a", topicLabel: "T two", count: 1 }], { paperStyle: "1A" }),
+    metaBank("library/questions/p.json", "P plain", [{ topic: "t-none", topicLabel: "T three", count: 1 }]),
+    metaBank("library/questions/m1.json", "M one", [{ topic: "t-mixed", topicLabel: "T four", count: 1 }], { paperStyle: "1A" }),
+    metaBank("library/questions/m2.json", "M two", [{ topic: "t-mixed", topicLabel: "T four", count: 1 }], { paperStyle: "1B" })
+  ];
+  const byKey = {};
+  QE.buildTopics(banks).forEach(n => { byKey[n.topicKey] = n; });
+  assert.equal(byKey["t-1b"].paperOnly, "1B", "all sets 1B → 1B");
+  assert.equal(byKey["t-1a"].paperOnly, "1A");
+  assert.equal(byKey["t-none"].paperOnly, null, "no paperStyle anywhere → null");
+  assert.equal(byKey["t-mixed"].paperOnly, null, "sets disagreeing on the style → null");
+});
+
+test("unratedSuffix: only a positive unrated count shows; null/undefined shows nothing", () => {
+  const { QE } = engine();
+  assert.equal(QE.unratedSuffix({ unrated: 3, easy: 0, standard: 0, hard: 0 }), " · 3 unrated");
+  assert.equal(QE.unratedSuffix({ unrated: 0, easy: 2, standard: 0, hard: 1 }), "", "fully rated content shows nothing");
+  assert.equal(QE.unratedSuffix(null), "", "offline fallback sets have no histogram");
+  assert.equal(QE.unratedSuffix(undefined), "");
+});
+
+test("disambiguateSetNames: unique names pass through; tied sets get a stable source suffix, positional as the last resort", () => {
+  const { QE } = engine();
+  assert.deepEqual(plain(QE.disambiguateSetNames([])), []);
+  assert.deepEqual(plain(QE.disambiguateSetNames(null)), [], "malformed input stays pure and safe");
+  assert.deepEqual(plain(QE.disambiguateSetNames([
+    { name: "Practice set 1", ref: { name: "ub-a.json" } },
+    { name: "Photosynthesis", ref: { name: "ub-b.json" } }
+  ])), ["Practice set 1", "Photosynthesis"], "names occurring once pass through untouched");
+  assert.deepEqual(plain(QE.disambiguateSetNames([
+    { name: "Enzymes", ref: { name: "ub-aaa.json" } },
+    { name: "Enzymes", ref: { name: "ub-bbb.json" } }
+  ])), ["Enzymes — ub-aaa.json", "Enzymes — ub-bbb.json"], "tied uploads show their stored bank names");
+  assert.deepEqual(plain(QE.disambiguateSetNames([
+    { name: "Structure 1", ref: { file: "library/questions/chem-s1-a.json" } },
+    { name: "Structure 1", ref: { file: "library/questions/chem-s1-b.json" } }
+  ])), ["Structure 1 — chem-s1-a", "Structure 1 — chem-s1-b"], "seeded banks fall to the file stem");
+  assert.deepEqual(plain(QE.disambiguateSetNames([
+    { name: "My bank", ref: { uploaded: "2026-11-20" } },
+    { name: "My bank", ref: { uploaded: "2026-11-21" } }
+  ])), ["My bank — 2026-11-20", "My bank — 2026-11-21"], "no name/file → the upload date");
+  assert.deepEqual(plain(QE.disambiguateSetNames([
+    { name: "Twin", ref: { name: "ub-a.json" } },
+    { name: "Twin", ref: { name: "ub-a.json" } }
+  ])), ["Twin — ub-a.json", "Twin (set 2)"], "an identical suffix cannot disambiguate — the 1-based position forces uniqueness");
+  assert.deepEqual(plain(QE.disambiguateSetNames([
+    { name: "A", ref: { file: "library/questions/x.json" } },
+    { name: "A", ref: { file: "library/questions/y.json" } },
+    { name: "A — x", ref: { name: "ub-z.json" } }
+  ])), ["A (set 1)", "A — y", "A — x"], "a generated suffix never collides with another set's literal stored name");
 });
 
 // ── picker wiring (boot with the app/quiz.html markup, fake fetches) ───────
@@ -315,11 +411,14 @@ async function bootWith(opts) {
   };
   const env = makeEnv({ fetch, readyState: "loading", data: opts.data });
   // q-sure/q-guess/q-conf: renderQuestion wires these by id after writing innerHTML
-  // (the fake DOM doesn't parse markup, so they must exist as elements up front)
+  // (the fake DOM doesn't parse markup, so they must exist as elements up front);
+  // q-reveal/q-selfscore/q-next/q-ms are the written-path counterparts, q-again the
+  // summary's button (the last test to answer a whole session reaches summarize()).
   ["q-subject", "q-topic", "q-set", "q-format", "q-length", "q-diff-min", "q-diff-max",
    "q-taught-only", "q-taught-panel", "q-taught-list", "q-start", "q-error",
    "q-progress", "q-box", "setup", "runner", "summary", "q-log",
-   "q-conf", "q-sure", "q-guess"].forEach(id => addEl(env, id));
+   "q-conf", "q-sure", "q-guess", "q-reveal", "q-reveal-guess", "q-ms",
+   "q-selfscore", "q-next", "q-again"].forEach(id => addEl(env, id));
   env.load("store.js").load("quiz-engine.js");
   env.fire("document", "DOMContentLoaded");
   await tick(40); // manifest fetch + the background teaching-meta fetch + re-render
@@ -341,9 +440,9 @@ test("picker wiring: topic options carry topicKey values, counts and teaching su
   const opts = options(env.document.getElementById("q-topic"));
   assert.deepEqual(opts, [
     ["*", "Mixed — all topics (revision)"],
-    ["chem-s1-1", "Structure 1.1 — Moles · 4 Qs · taught"],
-    ["chem-s9-9", "Zzz untaught topic · 1 Qs"]
-  ], "values are topicKeys (not bank indexes); 'taught' comes from the finished schedule unit; unknown shows no suffix");
+    ["chem-s1-1", "Structure 1.1 — Moles · 4 Qs · 3 unrated · taught"],
+    ["chem-s9-9", "Zzz untaught topic · 1 Qs · 1 unrated"]
+  ], "values are topicKeys (not bank indexes); 'taught' comes from the finished schedule unit; unrated counts sit right after the Qs count; unknown shows no status suffix");
   assert.equal(env.document.getElementById("q-set").style.display, "none", "set select hidden while Mixed is selected");
   assert.equal(env.document.getElementById("q-set").disabled, true);
 });
@@ -361,8 +460,8 @@ test("picker wiring: choosing a topic fills #q-set with per-set counts and paper
   assert.equal(set.style.display, "");
   assert.deepEqual(options(set), [
     ["*", "All sets in this topic"],
-    ["0", "Paper 1A — Structure · 3 Qs — Paper 1A · calculator-free"],
-    ["1", "Paper 1B — Data · 1 Qs — Paper 1B · data practice (calculator allowed)"]
+    ["0", "Paper 1A — Structure · 3 Qs · 2 unrated — Paper 1A · calculator-free"],
+    ["1", "Paper 1B — Data · 1 Qs · 1 unrated — Paper 1B · data practice (calculator allowed)"]
   ]);
   topic.value = "*";
   fireChange(topic);
@@ -489,9 +588,9 @@ test("picker wiring: taught-only Mixed excludes a not-taught topic's items of a 
   fireChange(subj);
   assert.deepEqual(options(env.document.getElementById("q-topic")), [
     ["*", "Mixed — all topics (revision)"],
-    ["chem-s1-1", "Structure 1.1 — Moles · 2 Qs · taught"],
-    ["chem-s1-9", "Zzz untaught · 1 Qs · not yet taught"]
-  ], "chem-s1-1 taught via its note code + finished unit; chem-s1-9's unit ends in 2099");
+    ["chem-s1-1", "Structure 1.1 — Moles · 2 Qs · 1 unrated · Paper 1B practice · taught"],
+    ["chem-s1-9", "Zzz untaught · 1 Qs · 1 unrated · Paper 1B practice · not yet taught"]
+  ], "chem-s1-1 taught via its note code + finished unit; chem-s1-9's unit ends in 2099; the shared bank's 1B style reaches both topic rows");
   env.document.getElementById("q-taught-only").checked = true;
   env.document.getElementById("q-format").value = "mixed";
   env.document.getElementById("q-length").value = "20";
@@ -528,6 +627,210 @@ test("picker wiring: Paper 1B wins over calculatorFree in the set badge", async 
   fireChange(topic);
   assert.deepEqual(options(env.document.getElementById("q-set")), [
     ["*", "All sets in this topic"],
-    ["0", "1B calc-free bank · 1 Qs — Paper 1B"]
+    ["0", "1B calc-free bank · 1 Qs · 1 unrated — Paper 1B"]
   ], "1B + calculatorFree badges as Paper 1B, not Paper 1A");
+});
+
+// ── three-state teaching status (not-taught / learning / ready) ────────────
+test("picker wiring: the three statuses store {taught, status, t}; Auto deletes", async () => {
+  const env = await bootPicker();
+  const subj = env.document.getElementById("q-subject");
+  subj.value = "chemistry-hl";
+  fireChange(subj);
+  let selects = panelSelects(env);
+  selects[0].value = "learning";
+  fireChange(selects[0]);
+  let stored = plain(env.NB.store.get("topic-taught", {}));
+  assert.equal(stored["chem-s1-1"].taught, true, "learning implies taught:true");
+  assert.equal(stored["chem-s1-1"].status, "learning");
+  assert.ok(typeof stored["chem-s1-1"].t === "number");
+  selects = panelSelects(env);
+  assert.equal(selects[0].value, "learning", "the panel pre-selects the stored status");
+  selects[0].value = "ready";
+  fireChange(selects[0]);
+  stored = plain(env.NB.store.get("topic-taught", {}));
+  assert.deepEqual({ taught: stored["chem-s1-1"].taught, status: stored["chem-s1-1"].status }, { taught: true, status: "ready" });
+  selects[0].value = "not-taught";
+  fireChange(selects[0]);
+  stored = plain(env.NB.store.get("topic-taught", {}));
+  assert.deepEqual({ taught: stored["chem-s1-1"].taught, status: stored["chem-s1-1"].status }, { taught: false, status: "not-taught" }, "not-taught keeps taught consistent for older clients");
+  selects = panelSelects(env);
+  assert.equal(selects[0].value, "not-taught");
+  selects[0].value = "auto";
+  fireChange(selects[0]);
+  assert.deepEqual(plain(env.NB.store.get("topic-taught", {})), {}, "Auto deletes the override");
+});
+
+test("picker wiring: topic options carry the status suffixes for learning/ready/not-taught", async () => {
+  const env = await bootPicker();
+  const subj = env.document.getElementById("q-subject");
+  subj.value = "chemistry-hl";
+  fireChange(subj);
+  const topic = env.document.getElementById("q-topic");
+  const selects = panelSelects(env);
+  for (const [v, suffix] of [["learning", " · learning"], ["ready", " · ready to revise"], ["not-taught", " · not yet taught"]]) {
+    selects[0].value = v;
+    fireChange(selects[0]);
+    assert.ok(options(topic).some(o => o[0] === "chem-s1-1" && o[1].endsWith(suffix)),
+      v + " shows as" + suffix + ": " + JSON.stringify(options(topic)));
+  }
+});
+
+test("picker wiring: taught-only still includes learning and ready topics, still excludes not-taught", async () => {
+  const env = await bootPicker();
+  const subj = env.document.getElementById("q-subject");
+  subj.value = "chemistry-hl";
+  fireChange(subj);
+  env.document.getElementById("q-taught-only").checked = true;
+  env.document.getElementById("q-format").value = "mixed";
+  env.document.getElementById("q-length").value = "20";
+  const start = env.document.getElementById("q-start").listeners.click[0];
+  let selects = panelSelects(env);
+  selects[0].value = "learning"; // chem-s1-1: schedule says taught, the user says learning
+  fireChange(selects[0]);
+  await start();
+  await tick(10);
+  assert.match(env.document.getElementById("q-progress").textContent, /Question 1 \/ 5/,
+    "learning (3+1 items incl. the retired b2) + the unknown topic's item = 5");
+  selects = panelSelects(env);
+  selects[0].value = "ready";
+  fireChange(selects[0]);
+  await start();
+  await tick(10);
+  assert.match(env.document.getElementById("q-progress").textContent, /Question 1 \/ 5/, "ready is included too");
+  selects[0].value = "not-taught";
+  fireChange(selects[0]);
+  await start();
+  await tick(10);
+  assert.match(env.document.getElementById("q-progress").textContent, /Question 1 \/ 1/, "only the unknown topic's item remains");
+});
+
+// ── progress keying regression: identical item ids across two uploads ──────
+test("picker wiring: two uploads with the same topic and identical item ids keep separate q-errors records", async () => {
+  const mk = (id, name) => ({ id, name, subject: "chemistry-hl", subjectLabel: "Chemistry HL",
+    inline: true, label: name, topicLabel: "Enzymes", topic: "enzymes",
+    items: ["p01", "p02", "p03"].map(x => ({ id: x, format: "written", stem: "Stem " + id + " " + x, marks: 2, markscheme: ["point (1)", "point (1)"] })) });
+  const env = await bootWith({ data: { "q-userbanks": JSON.stringify([mk("ub-aaa-111", "Set one"), mk("ub-bbb-222", "Set two")]) } });
+  const subj = env.document.getElementById("q-subject");
+  subj.value = "chemistry-hl";
+  fireChange(subj);
+  const topic = env.document.getElementById("q-topic");
+  topic.value = "enzymes";
+  fireChange(topic);
+  env.document.getElementById("q-format").value = "written";
+  env.document.getElementById("q-length").value = "20";
+  await (env.document.getElementById("q-start").listeners.click[0])();
+  await tick(10);
+  assert.match(env.document.getElementById("q-progress").textContent, /Question 1 \/ 6/,
+    "both banks' items are in one session (same topic, identical ids, different banks)");
+  // answer every question wrong through the real written flow — the latest
+  // listener per element is the current render's (fake DOM never re-parses
+  // innerHTML, so handlers stack on the same elements across renders)
+  const last = (id) => { const el = env.document.getElementById(id); return el.listeners.click[el.listeners.click.length - 1]; };
+  for (let i = 0; i < 6; i++) {
+    last("q-reveal")();
+    env.document.getElementById("q-selfscore").value = "0";
+    last("q-next")();
+  }
+  const errs = plain(env.NB.store.get("q-errors", []));
+  assert.deepEqual(errs.map(e => e.key).sort(), [
+    "ub-aaa-111#p01", "ub-aaa-111#p02", "ub-aaa-111#p03",
+    "ub-bbb-222#p01", "ub-bbb-222#p02", "ub-bbb-222#p03"
+  ], "keys are bank-scoped: identical item ids never share a record across banks");
+  assert.equal(errs.filter(e => e.id === "p01").length, 2, "both p01s exist as separate records");
+  assert.equal(errs.filter(e => e.key === "ub-aaa-111#p01").length, 1);
+  assert.equal(errs.filter(e => e.key === "ub-bbb-222#p01").length, 1);
+  assert.ok(errs.every(e => e.attempts === 1), "each record counted its own miss only");
+});
+
+test("picker wiring: a legacy inline bank without an id still appears (fallback bank id untouched)", async () => {
+  const env = await bootWith({ data: { "q-userbanks": JSON.stringify([{ subject: "chemistry-hl", subjectLabel: "Chemistry HL",
+    label: "Legacy bank", topicLabel: "Legacy topic", topic: "legacy-topic",
+    items: [{ id: "l1", format: "mcq", stem: "s", choices: ["a", "b"], answer: 0 }] }]) } });
+  const subj = env.document.getElementById("q-subject");
+  subj.value = "chemistry-hl";
+  fireChange(subj);
+  const opts = options(env.document.getElementById("q-topic"));
+  assert.ok(opts.some(o => o[0] === "legacy-topic" && o[1].indexOf("Legacy topic · 1 Qs") === 0),
+    "the no-id bank's topic is in the picker: " + JSON.stringify(opts));
+});
+
+// ── failure paths: corrupt topic-taught data through the real boot ──────────
+test("picker wiring: a corrupt topic-taught whole value boots clean; an override choice rebuilds the map", async () => {
+  // a legacy/corrupt write can leave any JSON shape in the key ("corrupted" is a
+  // valid JSON string, so store.get hands it through verbatim): the boot must
+  // not throw, the panel must still list every topic, and the first override
+  // choice must replace the junk with a proper {taught, status, t} record
+  const env = await bootPicker({ "topic-taught": JSON.stringify("corrupted") });
+  const subj = env.document.getElementById("q-subject");
+  subj.value = "chemistry-hl";
+  fireChange(subj);
+  assert.equal(options(env.document.getElementById("q-topic")).length, 3, "topics still render over a corrupt whole value");
+  let selects = panelSelects(env);
+  assert.equal(selects.length, 2, "the taught panel still lists every topic");
+  assert.equal(selects[0].value, "auto", "a corrupt value is not mistaken for a stored override");
+  selects[0].value = "learning";
+  fireChange(selects[0]);
+  const stored = plain(env.NB.store.get("topic-taught", {}));
+  assert.deepEqual(Object.keys(stored), ["chem-s1-1"], "the corrupt whole value is replaced by a proper map");
+  assert.equal(stored["chem-s1-1"].taught, true);
+  assert.equal(stored["chem-s1-1"].status, "learning");
+  assert.ok(typeof stored["chem-s1-1"].t === "number");
+});
+
+test("picker wiring: a legacy bool-only override pre-selects its mapped choice, not Auto", async () => {
+  // records written by the pre-3-state client carry {taught, t} with no status;
+  // the panel must pre-select the same choice its topic-dropdown suffix shows
+  // ("ready to revise" for the old "Taught"), so switching subjects or
+  // re-rendering never silently drops the override back to Auto
+  const env = await bootPicker({ "topic-taught": JSON.stringify({ "chem-s1-1": { taught: true, t: 123 }, "chem-s9-9": { taught: false, t: 456 } }) });
+  const subj = env.document.getElementById("q-subject");
+  subj.value = "chemistry-hl";
+  fireChange(subj);
+  assert.deepEqual(options(env.document.getElementById("q-topic")), [
+    ["*", "Mixed — all topics (revision)"],
+    ["chem-s1-1", "Structure 1.1 — Moles · 4 Qs · 3 unrated · ready to revise"],
+    ["chem-s9-9", "Zzz untaught topic · 1 Qs · 1 unrated · not yet taught"]
+  ], "legacy bool-only records show the mapped three-state suffixes");
+  const selects = panelSelects(env);
+  assert.equal(selects[0].value, "ready", "legacy taught:true pre-selects Ready to revise");
+  assert.equal(selects[1].value, "not-taught", "legacy taught:false pre-selects Not yet");
+});
+
+test("picker wiring: junk per-topic records degrade to schedule/unknown; taught-only sessions still start", async () => {
+  const env = await bootPicker({ "topic-taught": JSON.stringify({ "chem-s1-1": "junk", "chem-s9-9": { taught: "yes", t: 1 } }) });
+  const subj = env.document.getElementById("q-subject");
+  subj.value = "chemistry-hl";
+  fireChange(subj);
+  assert.deepEqual(options(env.document.getElementById("q-topic")), [
+    ["*", "Mixed — all topics (revision)"],
+    ["chem-s1-1", "Structure 1.1 — Moles · 4 Qs · 3 unrated · taught"],
+    ["chem-s9-9", "Zzz untaught topic · 1 Qs · 1 unrated"]
+  ], "a string record and a non-boolean taught are ignored, not crashed on — the schedule decides for chem-s1-1, chem-s9-9 stays unknown");
+  const selects = panelSelects(env);
+  assert.equal(selects.length, 2, "both panel rows render over junk records");
+  assert.ok(selects.every(s => s.value === "auto"), "junk records never pre-select an override");
+  env.document.getElementById("q-taught-only").checked = true;
+  env.document.getElementById("q-format").value = "mixed";
+  env.document.getElementById("q-length").value = "20";
+  await (env.document.getElementById("q-start").listeners.click[0])();
+  await tick(10);
+  assert.match(env.document.getElementById("q-progress").textContent, /Question 1 \/ 5/,
+    "the taught-only session still serves schedule-taught (4) + unknown (1) items");
+});
+
+test("picker wiring: crossed difficulty bounds are swapped at start, not silently empty", async () => {
+  const env = await bootPicker();
+  const subj = env.document.getElementById("q-subject");
+  subj.value = "chemistry-hl";
+  fireChange(subj);
+  env.document.getElementById("q-format").value = "mixed";
+  env.document.getElementById("q-length").value = "20";
+  env.document.getElementById("q-diff-min").value = "hard";
+  env.document.getElementById("q-diff-max").value = "easy";
+  await (env.document.getElementById("q-start").listeners.click[0])();
+  await tick(10);
+  assert.match(env.document.getElementById("q-progress").textContent, /Question 1 \/ 1/,
+    "hard..easy is read as easy..hard → only a3 (easy) qualifies; unrated items rank below");
+  assert.strictEqual(env.document.getElementById("q-error").textContent, "", "no empty-result error — the session started");
 });

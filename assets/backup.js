@@ -65,7 +65,10 @@
       (r.topic === undefined || (isStr(r.topic) && r.topic.length <= 120)) &&
       (r.type === undefined || (isStr(r.type) && r.type.length <= 40)) &&
       (r.comment === undefined || (isStr(r.comment) && r.comment.length <= 500)), label: "my resources" },
-    "topic-taught": { type: isObj, record: (r) => isObj(r) && typeof r.taught === "boolean" && (r.t === undefined || typeof r.t === "number"), label: "topic teaching status" },
+    // teaching status: the optional status refines the bool ("not-taught"|
+    // "learning"|"ready"); an unknown status means the file came from a newer
+    // app — that record is dropped (a warning), not restored half-understood
+    "topic-taught": { type: isObj, record: (r) => isObj(r) && typeof r.taught === "boolean" && (r.t === undefined || typeof r.t === "number") && (r.status === undefined || ["not-taught", "learning", "ready"].indexOf(r.status) >= 0), label: "topic teaching status" },
     "fc-theme": { type: (v) => v === "dark" || v === "light", label: "theme" },
     "lib-filters": { type: isObj, label: "library filters" }
   };

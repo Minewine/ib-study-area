@@ -13,6 +13,8 @@
      valid, else a short human-readable error string (exact Upload-page wording).
    - nextSetName(existingNames, topicKey): the next free "Practice set N" for a
      topic (pure; see the comment on the function).
+   - nextSetOrder(banks, subject, topic): the next free setOrder for a topic
+     (pure; see the comment on the function).
 
    Needs window (for NB) and nothing else — no store, no DOM. */
 (function () {
@@ -89,5 +91,23 @@
     return "Practice set " + n;
   }
 
-  NB.bankSchema = { DIFFICULTIES, DIFFICULTY_ORDER, validateQuizBank, validateDeck, nextSetName };
+  /* The next free setOrder for a topic: one past the largest integer setOrder
+     already stamped on a bank of the same subject AND effective topic (a bank
+     without `topic` pools under "(none)", matching the upload-side effective-
+     topic rule that stampSetMeta and setSuggestion apply). Uploads default
+     their label to the topic label, so repeated uploads into one topic collide
+     on display names — a per-topic order number is what keeps them in authored
+     sequence (sets without an order sort last in the picker). Banks of other
+     subjects/topics and absent/non-integer setOrder values are ignored;
+     nothing here mutates `banks`. `topic` may be null/absent → the "(none)"
+     bucket. */
+  function nextSetOrder(banks, subject, topic) {
+    const eff = (t) => t || "(none)";
+    const max = (Array.isArray(banks) ? banks : [])
+      .filter(b => b && b.subject === subject && eff(b.topic) === eff(topic) && Number.isInteger(b.setOrder))
+      .reduce((m, b) => Math.max(m, b.setOrder), 0);
+    return max + 1;
+  }
+
+  NB.bankSchema = { DIFFICULTIES, DIFFICULTY_ORDER, validateQuizBank, validateDeck, nextSetName, nextSetOrder };
 })();

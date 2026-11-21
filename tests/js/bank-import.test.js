@@ -98,18 +98,20 @@ test("removeItem: items can be trimmed; the last one cannot (a bank needs items)
   assert.ok(bi.removeItem(staged, 99).error, "out-of-range index refused");
 });
 
-test("finalize: entry matches the file-upload storage shape exactly (name/uploaded/label/subjectLabel)", () => {
+test("finalize: entry matches the file-upload storage shape exactly (id/name/uploaded/label/subjectLabel)", () => {
   const e = mk();
   const bi = BI(e);
+  bi.newBankId = () => "ub-test"; // stub id generation so the full-shape compare stays deterministic
   const staged = bi.stage(J(mkBank()), []).staged;
   staged.name = "ai-a1-1.json";
   const res = bi.finalize(staged);
   assert.ok(res.ok, res.error);
   const today = new Date().toISOString().slice(0, 10);
   assert.deepEqual(plain(res.entry), {
+    id: "ub-test",
     subject: "biology-hl", topic: "a1-1", topicLabel: "A1.1 Water", items: mkBank().items,
     name: "ai-a1-1.json", uploaded: today, label: "A1.1 Water", subjectLabel: "biology-hl",
-  }, "label/subjectLabel defaults mirror processContent; original fields preserved");
+  }, "id + label/subjectLabel defaults mirror processContent; original fields preserved");
   // a bank without topicLabel gets the file name as its label
   const noLabel = bi.stage(J({ subject: "chemistry-hl", topic: "s1-1", items: mkBank().items }), []).staged;
   const res2 = bi.finalize(noLabel);
@@ -119,4 +121,46 @@ test("finalize: entry matches the file-upload storage shape exactly (name/upload
   const broken = bi.stage(J(mkBank()), []).staged;
   broken.data.items[0].answer = 99;
   assert.ok(bi.finalize(broken).error, "finalize re-validates");
+});
+
+// The authoring prompt asks for raw JSON, but chatbots still often wrap the answer
+// in a markdown fence — one optional fence is stripped before JSON.parse.
+test("stage: a markdown-fenced paste (typical chatbot output) parses; prose around the JSON still fails cleanly", () => {
+  const e = mk();
+  const res = BI(e).stage("```json\n" + J(mkBank()) + "\n```", []);
+  assert.ok(res.ok, "fenced ```json block accepted");
+  assert.equal(res.staged.name, "ai-a1-1.json");
+  assert.ok(BI(e).stage("```\n" + J(mkBank()) + "\n```", []).ok, "untagged fence accepted too");
+  assert.ok(BI(e).stage("```json\n" + J(mkBank()) + "\n```trailing prose", []).error, "an unclosed fence (prose after) is still refused");
+  assert.ok(BI(e).stage("Here you go:\n" + J(mkBank()), []).error, "prose before the JSON is refused");
+});
+
+// The staged id (assets/bank-import.js newBankId) is the bank's stable identity across
+// devices: "ub-" + base36 time + "-" + base36 random (the papers.js "pp-…" convention).
+// finalize stamps it, so two same-topic imports on ONE device already get distinct
+// names AND ids — the precondition for independent q-error histories everywhere.
+test("newBankId: ub- prefixed and unique per call; two same-topic imports on one device get distinct names AND ids", () => {
+  const bi = BI(mk());
+  assert.match(bi.newBankId(), /^ub-[0-9a-z]+-[0-9a-z]+$/, "ub- + base36 time + '-' + base36 random");
+  const ids = Array.from({ length: 25 }, () => bi.newBankId());
+  assert.equal(new Set(ids).size, 25, "the random part keeps same-millisecond calls unique");
+  const first = bi.stage(J(mkBank()), []).staged;
+  const second = bi.stage(J(mkBank()), [first.name]).staged;
+  assert.notEqual(second.name, first.name, "distinct stored names on one device");
+  const f1 = bi.finalize(first), f2 = bi.finalize(second);
+  assert.ok(f1.ok && f2.ok, f1.error || f2.error);
+  assert.notEqual(f1.entry.id, f2.entry.id, "distinct ids — the identity that survives sync, name collisions aside");
+});
+
+test("stage: fence tolerance — any language tag parses, broken JSON inside a proper fence names the parse error, arrays are not banks", () => {
+  const bi = BI(mk());
+  assert.ok(bi.stage("```javascript\n" + J(mkBank()) + "\n```", []).ok, "any fence language tag is stripped, not just 'json'");
+  const badInside = bi.stage("```json\n{oops\n```", []);
+  assert.ok(badInside.error, "invalid JSON inside a proper fence is still refused");
+  assert.match(badInside.error, /^invalid JSON — /, "the error text names the JSON problem");
+  const arr = bi.stage("[1,2,3]", []);
+  assert.ok(arr.error, "a JSON array is not a bank");
+  assert.match(arr.error, /no 'items' array found/, "…refused with the missing-items error, not a parse error");
+  assert.ok(bi.stage("Sure:\n```json\n" + J(mkBank()) + "\n```", []).error,
+    "prose before a fenced block defeats the strip — exactly ONE optional fence, anchored at the start");
 });

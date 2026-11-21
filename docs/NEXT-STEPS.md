@@ -1,8 +1,33 @@
 # Next steps (prioritised)
 
-_Updated 20 Nov 2026. Background: [HANDOFF.md](HANDOFF.md). Longer-term ideas: [VISION.md](VISION.md)._
+_Updated 21 Nov 2026. Background: [HANDOFF.md](HANDOFF.md). Longer-term ideas: [VISION.md](VISION.md)._
 
 ## Status at a glance
+- **21 Nov study-loop batch complete** (reliability fixes + WP1–WP4, one-page summary:
+  [CHANGELOG-2026-11-21-study-loop.md](CHANGELOG-2026-11-21-study-loop.md)); the per-package
+  bullets below are unchanged.
+- **WP4 exam reflections complete (21 Nov 2026):** the Quiz page's past-paper log now aggregates
+  itself — a per-subject **score trend** (last 5 scored points, each shown `score/max (pct%)`)
+  and a **by-topic summary** (scored papers, scoreless reflections, latest result, trend chain;
+  topicless records group under "(whole paper)" and a scoreless-only group never invents a
+  denominator). Data layer unchanged — the `pp-scores` record already carried score, max,
+  source, topic and the reflection; papers.js still never reads `quizlog`. Details:
+  [CHANGELOG-2026-11-21-wp4-exam-reflections.md](CHANGELOG-2026-11-21-wp4-exam-reflections.md).
+- **WP3 tiered Today suggestions complete (21 Nov 2026):** the "Suggested next step" block is
+  now tiered and capped at three — urgency/planning first (near-term deadline, unit closing with
+  an always-linkable notes fallback, next-unit plan-ahead inside/after a break), then what is
+  due (cards, open mistakes), then enrichment. Every suggestion carries a title, a reason and a
+  link; no stored data changed. Details:
+  [CHANGELOG-2026-11-21-wp3-today-panel.md](CHANGELOG-2026-11-21-wp3-today-panel.md).
+- **WP1 hierarchy polish complete (21 Nov 2026):** the practice-set hierarchy now survives
+  **repeated uploads** (unique `set` names + `setOrder` stamped at upload; stored banks never
+  rewritten; legacy duplicate names disambiguated display-only) and **topics she hasn't learned**
+  (teaching status is now not-yet-taught / learning / **ready to revise** — maths topics can be
+  marked by hand; taught-only excludes only "not yet taught"). Unrated difficulty counts are shown
+  in the picker (no labels are invented), Paper 1A/1B topics are labelled, and e2e coverage of the
+  picker controls exists. Data changes are additive only (`topic-taught` gains optional `status`;
+  no schema bump, no stored-data migration). Details and migration notes:
+  [CHANGELOG-2026-11-21-wp1-hierarchy-polish.md](CHANGELOG-2026-11-21-wp1-hierarchy-polish.md).
 - **Consolidation complete (20 Nov 2026):** all five student-feedback phases reviewed together,
   verified (`./dev.sh validate` + `./dev.sh test` + e2e green) and committed as one batch —
   phase-by-phase status, data-model notes and follow-ups in
@@ -102,7 +127,11 @@ Still open:
 
 ## 8. Remaining technical roadmap (audit Page)
 - **H4–H9** from the technical audit:
-  - spaced retests of missed questions at 7 and 30 days;
+  - ~~spaced retests of missed questions at 7 and 30 days~~ Done (Nov 2026, WP2): `q-errors` records
+    carry an optional `dueAt` — the first wrong outcome schedules a retest 7 days out, any later
+    wrong outcome 30 days out; "Review past errors" and the Today suggestions serve/list only due
+    records, and the mistake-log deep links bypass the schedule
+    ([CHANGELOG-2026-11-21-wp2-mistake-retries.md](CHANGELOG-2026-11-21-wp2-mistake-retries.md));
   - exam-style timed practice (untimed Paper 1A/1B-style banks done in PR #11);
   - ~~progress reporting~~ (parent weekly summary, PR #10);
   - typed maths answers (H9);
@@ -112,10 +141,18 @@ Still open:
 
 ## 9. "Today" panel (practice home page)
 - Built in PR #8: due cards, a 6-question quiz on the weakest topic, and this week's class units from `library/class-schedule.json`.
+- **WP3 (21 Nov 2026):** the "Suggested next step" block is tiered and capped at three —
+  planning/urgency first (deadline, unit close, next-unit plan-ahead), then due review, then
+  enrichment ([changelog](CHANGELOG-2026-11-21-wp3-today-panel.md)). Known trade-off: in the
+  last week of every unit the "Next unit" suggestion shares tier A with "Unit closes this week"
+  and can push due-card reminders past the cap.
 - **Check the schedule with her once a month.** The dates are estimates made from the ISL course calendars, and editing them is one JSON line per unit.
 - Add the **Year 13 (2027-28)** units once ISL publishes the DP2 calendars (the current Maths one is based on an older year).
 
 ## 10. Coursework planner, exam practice, weekly summary (PRs #10–#12)
 - Coursework dates are approximate; check them against the school calendar each term.
-- Past-paper scores are logged by her on the Quiz page; nothing from the papers is stored.
+- Past-paper scores are logged by her on the Quiz page; nothing from the papers is stored. WP4
+  (21 Nov 2026) adds a per-subject score trend and a by-topic summary (scoreless topic
+  reflections count but never get an invented denominator)
+  ([changelog](CHANGELOG-2026-11-21-wp4-exam-reflections.md)).
 - Weekly summary minutes are an estimate (the app doesn't time sessions).

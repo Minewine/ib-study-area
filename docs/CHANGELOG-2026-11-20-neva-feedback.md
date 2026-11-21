@@ -52,7 +52,8 @@ Phase 0 was committed first (`58f6539 fix: phase 0 — …`) and the favicon SVG
   (`mistakes-filters`, LOCAL_ONLY). Deep links: retry one question (`quiz.html?errkeys=`) and open
   the topic's notes.
 - Sync: the new `q-errors` fields merge field-aware (`store.js` `errMerge` — retries union deduped
-  by ts+correct, reflection/errorType fill-in, retired rides the winning side).
+  by ts+correct, reflection/errorType fill-in; retirement survives a newer write from a client
+  that predates the field — see the review-fix section below).
 - Registered everywhere: nav on all 9 app pages, launcher card, `build_deploy.py` PAGES, e2e page
   list (the PAGES entry was missing until this consolidation — fixed).
 - Tests: store-merge side pinned (`store.test.js`, `auth-merge.test.js`); page logic pinned in
@@ -197,3 +198,73 @@ Rough edges noted (not fixed here — small, non-blocking):
   two banks (respiration/protein-synthesis vs water-potential/origin-cells); several banks have
   skewed MCQ answer-key positions and correct-option-length cues (display is shuffled at runtime,
   so impact is limited).
+
+## Review-fix pass (20 Nov 2026, external code review)
+
+An external review of this branch found five issues; all five were verified against the code and
+fixed in this pass (225 JS tests + 33 e2e checks green afterwards).
+
+1. **High — uploaded-bank mistake keys collided.** `bankIdFor` keyed inline uploads as
+   `user:<label>`, while imports commonly reuse item ids (the AI prompt's p01–p08): two sets that
+   shared a label wrote into ONE mistake history. Uploaded banks already carry a unique stored
+   name (`ai-<topic>.json`, collision-deduped at import); it is now the bank id for error keys,
+   and records written under the old label keys rename onto it per bank at load time
+   (`migrateUserBankKeys`, matched by id AND stem — the same idempotent rename pattern as the
+   bare-id migration). Histories already conflated under one shared key follow the stem match;
+   unmatched records stay put and remain reviewable.
+2. **Medium — "not relevant" could be erased by an older client.** `errMerge` rode the retirement
+   fields on the ts-winner alone, so a stale cached page (predating the feature) overwriting the
+   same record with a newer ts silently un-retired it. Restore now writes an explicit
+   `retired: false` sentinel (not deleted fields), and `errMerge` preserves the loser's retirement
+   only when the winner has no `retired` field at all — an explicit restore still wins. Records
+   already erased before this fix cannot be recovered.
+3. **Medium — the AI authoring prompt vs the paste importer.** The prompt asked for "a JSON code
+   block" while `bank-import.js` did a bare `JSON.parse` — typical fenced chatbot output failed
+   before preview. The prompt now asks for raw JSON, and `parse()` strips one optional markdown
+   fence (tagged or bare) defensively; prose around the JSON still fails cleanly.
+4. **Medium — the Mistakes deep link served retired errors.** `quiz.html?errkeys=…` (the
+   `startReview` keys path) lacked the `!e.retired` filter the automatic paths have, and the log
+   rendered a live "Retry this question" link on retired rows. Retired records are never served
+   now (picker extracted as `pickReviewErrors`, notices count skipped-vs-missing keys), and the
+   retry link is hidden on retired rows.
+5. **Medium — the long-lead window was too short.** `LONG_LEAD_DAYS` 60 → 120: events just after
+   the summer break sit >60 days out for most of May–June, defeating the early heads-up. The e2e
+   window assertions (pinned 2026-11-20 clock) now cover (today+21, today+120].
+
+Tests: `tests/js/auth-merge.test.js` + `tests/js/mistakes.test.js` re-pinned to the new retirement
+contract; new regression tests in `tests/js/retired.test.js` (bank ids, key migration incl. the
+merge-into-existing case, deep-link picker) and `tests/js/bank-import.test.js` (fence stripping);
+`tests/e2e/e2e.js` long-lead window updated. All 225 JS tests + 33 e2e checks pass.
+
+### Independent review round (same day)
+
+A second, independent review of the fixes above confirmed the retirement/merge semantics and the
+fence handling, and caught one High + one Medium in the first implementation — both fixed and
+pinned:
+
+- **Sync convergence of the uploaded-bank rename.** The `q-errors` merge's drop filter only
+  handled legacy keys *without* a `#`, so an old-key record synced from another device survived
+  the merge, got written back, and was re-absorbed on every load — `attempts` inflating forever.
+  The filter now drops any record whose key equals another record's `legacyKey` (pinned in
+  `tests/js/auth-merge.test.js`).
+- **Today-panel dead links for uploaded banks.** `weakestTopic` excluded uploaded-bank records by
+  the old `user:` bank-id prefix; the new name-based ids passed that filter and rendered a
+  "Start a quiz" link that resolves library banks only. The exclusion now also covers the stored
+  bank names of everything in `q-userbanks` (pinned in `tests/js/today.test.js`).
+- Smaller items: the mistakes.js module header documents the new restore sentinel; the
+  migration's legacy-id fallback now spells "My bank" exactly like the old BANKS entry default;
+  duplicated keys in an `errkeys=` deep link no longer count as "not found".
+
+Known nit left as-is: for uploaded banks whose items carry no `topic`, the effective topic key
+changes from the label-derived id to the stored-name id, so a `topic-taught` override set the old
+way silently stops applying and re-toggling it re-keys it (self-healing, no data loss).
+
+### Uploaded-bank records get an explicit stable id (follow-up, same day)
+
+- **Uploaded banks get an identity.** The stored `name` is unique only per device at import time —
+  two devices uploading the same topic produced identical names, the `q-userbanks` union merge
+  collapsed them into one record, and their mistake keys collided. Both upload paths now stamp
+  `id: "ub-" + base36 time + "-" + base36 random`; `bankIdFor` prefers it, the union merge dedupes
+  by it (pre-id records keep the `subject::name` composite) and the Today exclusion covers the id
+  spelling. Existing records are never stamped — their name-derived identity and keys stay as they
+  are (pinned in `tests/js/bank-import.test.js`, `tests/js/today.test.js`).

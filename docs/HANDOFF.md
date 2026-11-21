@@ -1,6 +1,64 @@
 # NevaIB study area: handoff
 
-_Last updated 20 Nov 2026 (consolidation pass — phases 0–5 reviewed, tested, committed). Read this first, then [NEXT-STEPS.md](NEXT-STEPS.md); ideas for later are in [VISION.md](VISION.md)._
+_Last updated 21 Nov 2026 (WP4 exam reflections + WP3 tiered Today suggestions; the WP1/WP2 +
+20 Nov consolidation passes below still apply). One page covering the whole 21 Nov study-loop
+batch (reliability fixes + WP1–WP4): [CHANGELOG-2026-11-21-study-loop.md](CHANGELOG-2026-11-21-study-loop.md).
+Read this first, then [NEXT-STEPS.md](NEXT-STEPS.md); ideas for later are in [VISION.md](VISION.md)._
+
+**WP4 exam reflections (21 Nov 2026):** the Quiz page's past-paper log (`pp-scores`) gained an
+aggregation layer: a **Score trend** list (one line per subject, each scored point shown
+`score/max (pct%) on D Mon`, ascending, last 5) and a **By topic** table (per subject+topic:
+scored papers, scoreless reflections, latest result and the trend chain — topicless records
+group under "(whole paper)", and a scoreless-only group never invents a denominator). Data
+layer unchanged by design — the record already carried score, max, paper, teacher/self source,
+topic and the reflection; no schema bump, no migration, no backup change. `papers.js` still
+never reads `quizlog` (practice-quiz sessions stay in quiz history, pinned by a test) and the
+parent summary page stays quizlog-only. Scored predicates require `max > 0` everywhere, so
+corrupt synced data can't render "5/0 (0%)". Script version bumped (`papers.js ?v=3`).
+Verification: `./dev.sh validate` + `./dev.sh test` (277 node tests + 230 pytest + php) +
+`./dev.sh e2e` (39 checks). Details:
+[CHANGELOG-2026-11-21-wp4-exam-reflections.md](CHANGELOG-2026-11-21-wp4-exam-reflections.md).
+
+**WP3 Today suggestions (21 Nov 2026):** the home panel's "Suggested next step" block is now a
+tiered, three-slot ranking (was: two slots, cards first) — tier A urgency/planning: the earliest
+near-term deadline, the earliest unit close (always linkable now: without a topic note it falls
+back to the subject's notes page) and post-holiday planning (today inside a scheduled break, or
+the next unit of a taken subject starting within 7 days — linking the unit's first topic note or
+the subject's notes page); tier B review that is due (due cards, due-gated open mistakes, due
+own cards); tier C enrichment (weak-topic quiz, read-ahead) only in the slots left over. Every
+suggestion carries a title, a reason and a link; the new sources are `isISO`-guarded,
+profile-filtered and canon-checked; a pure `nextUnits` helper is exported for tests. No stored
+data changed. Script version bumped (`today.js ?v=7`). Verification: `./dev.sh validate` +
+`./dev.sh test` (277 node tests + 230 pytest + php) + `./dev.sh e2e` (39 checks). Details:
+[CHANGELOG-2026-11-21-wp3-today-panel.md](CHANGELOG-2026-11-21-wp3-today-panel.md).
+
+**WP2 spaced mistake retests (21 Nov 2026):** the mistake log now drives follow-up practice on a
+schedule. `q-errors` records gain one optional `dueAt` (epoch ms): the first wrong outcome schedules
+a retest 7 days out, any later wrong outcome 30 days out; "Review past errors" and the Today panel
+serve/list only due records (the `quiz.html?errkeys=` deep links and the confident-but-wrong review
+stay ungated); a wrong review retry re-opens a recovered record (an old bug let it stay recovered)
+and `attempts` now counts wrong outcomes; a correct answer before the due date is practice only —
+at/after it the record recovers and the schedule clears (legacy records without `dueAt` recover as
+before). No schema bump, no migration, nothing hard-deleted; the sync merge fills `dueAt` from the
+loser when the winner lacks it. Script versions bumped (`store.js ?v=10` on 23 pages + the build
+template, `quiz-engine.js ?v=22`, `today.js ?v=6`, `mistakes.js ?v=2`). Verification: `./dev.sh
+validate` + `./dev.sh test` (269 node tests + 230 pytest + php) + `./dev.sh e2e` (39 checks).
+Details + migration notes:
+[CHANGELOG-2026-11-21-wp2-mistake-retries.md](CHANGELOG-2026-11-21-wp2-mistake-retries.md).
+
+**WP1 hierarchy polish (21 Nov 2026):** the practice-set hierarchy was polished for repeated
+uploads and not-yet-taught topics — teaching status is three-state (not yet taught / learning /
+ready to revise, additive optional `status` on `topic-taught`, bool kept consistent for older
+clients, newest-`t` merge with status carry-over); uploads stamp a unique `set` name on collision
+and the next `setOrder` (stored banks are never rewritten; legacy duplicate names are
+disambiguated display-only in the picker); topic rows label all-Paper 1A/1B topics and show
+`· N unrated` difficulty counts (labels are never invented). Per-item progress stays keyed
+`<bankId>#<id>` — two uploads sharing a topic and item ids keep separate mistakes (regression
+test added). No schema bump, no stored-data migration; script versions bumped (`quiz-engine.js
+?v=21`, `bank-schema.js ?v=2`, `store.js ?v=9`, `backup.js ?v=7`). Verification: `./dev.sh
+validate` + `./dev.sh test` (242 node tests + 230 pytest + php) + `./dev.sh e2e` (36 checks, now
+including the picker controls). Details + migration notes:
+[CHANGELOG-2026-11-21-wp1-hierarchy-polish.md](CHANGELOG-2026-11-21-wp1-hierarchy-polish.md).
 
 **Consolidation (20 Nov 2026):** the student-feedback phases were built in separate sessions and
 this pass reviewed, verified and committed them together — phase-by-phase status, data-model notes
