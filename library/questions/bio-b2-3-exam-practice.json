@@ -1,0 +1,253 @@
+{
+ "subject": "biology-hl",
+ "topic": "bio-b2-3",
+ "topicLabel": "B2.3 Cell specialization",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "B2.3"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "b23-x01",
+   "format": "mcq",
+   "topic": "bio-b2-3",
+   "topicLabel": "B2.3 Cell specialization",
+   "difficulty": "easy",
+   "stem": "Stem cells are defined by their ability to:",
+   "choices": [
+    "Carry out one specialised function very efficiently for the organism",
+    "Divide only once before they become a specialised cell",
+    "Fuse with other cells to form tissues with many nuclei",
+    "Divide many times and differentiate along different pathways"
+   ],
+   "answer": 3,
+   "note": "The two properties are unlimited division (self-renewal) and the capacity to differentiate."
+  },
+  {
+   "id": "b23-x02",
+   "format": "mcq",
+   "topic": "bio-b2-3",
+   "topicLabel": "B2.3 Cell specialization",
+   "difficulty": "easy",
+   "stem": "A cell that can differentiate into any cell type of the body, but not into placenta, is described as:",
+   "choices": [
+    "Totipotent",
+    "Multipotent",
+    "Pluripotent",
+    "Unipotent"
+   ],
+   "answer": 2,
+   "note": "Totipotent = every cell type including extra-embryonic (zygote); pluripotent = all body cells (embryonic stem cells); multipotent = a limited range (e.g. blood stem cells)."
+  },
+  {
+   "id": "b23-x03",
+   "format": "mcq",
+   "topic": "bio-b2-3",
+   "topicLabel": "B2.3 Cell specialization",
+   "difficulty": "easy",
+   "stem": "Which is an example of a stem cell niche in an adult human?",
+   "choices": [
+    "Bone marrow",
+    "Red blood cells",
+    "Skeletal muscle fibres",
+    "The lens of the eye"
+   ],
+   "answer": 0,
+   "note": "Two examples to know: bone marrow (blood cells) and hair follicles. A niche is the location that maintains stem cells or promotes their proliferation and differentiation."
+  },
+  {
+   "id": "b23-x04",
+   "format": "mcq",
+   "topic": "bio-b2-3",
+   "topicLabel": "B2.3 Cell specialization",
+   "difficulty": "standard",
+   "stem": "In an early embryo, cells in different positions develop differently mainly because:",
+   "choices": [
+    "Each cell receives a different set of chromosomes from the zygote",
+    "Gradients of signal molecules cause different genes to be expressed",
+    "Cells at the edge of the embryo mutate more often than cells in the centre",
+    "Cells in the centre receive more oxygen than cells at the edge"
+   ],
+   "answer": 1,
+   "note": "Morphogen gradients switch genes on or off depending on concentration, so position decides the cell's fate. The DNA is the same in each cell."
+  },
+  {
+   "id": "b23-x05",
+   "format": "mcq",
+   "topic": "bio-b2-3",
+   "topicLabel": "B2.3 Cell specialization",
+   "difficulty": "standard",
+   "stem": "Why do cells divide when they reach a certain size rather than keep growing?",
+   "choices": [
+    "Surface area to volume ratio falls as a cell grows, limiting exchange",
+    "Volume to surface area ratio falls as a cell grows, limiting exchange",
+    "The nucleus becomes too large to fit inside the cell membrane",
+    "The cell wall prevents further growth in all cell types"
+   ],
+   "answer": 0,
+   "note": "As size increases, volume (needs) grows faster than surface area (supply). The SA:V ratio falls, so exchange with the surroundings cannot keep up."
+  },
+  {
+   "id": "b23-x06",
+   "format": "mcq",
+   "topic": "bio-b2-3",
+   "topicLabel": "B2.3 Cell specialization",
+   "difficulty": "standard",
+   "stem": "A cube-shaped cell has sides of 20 µm. What is its surface area to volume ratio?",
+   "choices": [
+    "3 : 1",
+    "0.3 : 1",
+    "0.03 : 1",
+    "30 : 1"
+   ],
+   "answer": 1,
+   "note": "SA = 6 × 20² = 2400 µm²; V = 20³ = 8000 µm³; 2400 ÷ 8000 = 0.3 µm⁻¹. Units cancel to give a ratio of 0.3 : 1."
+  },
+  {
+   "id": "b23-x07",
+   "format": "mcq",
+   "topic": "bio-b2-3",
+   "topicLabel": "B2.3 Cell specialization",
+   "difficulty": "standard",
+   "stem": "Type I pneumocytes are adapted for gas exchange because they are:",
+   "choices": [
+    "Thick and cuboidal, making surfactant to coat the alveoli",
+    "Covered with cilia that sweep mucus out of the lungs",
+    "Extremely thin, giving a short diffusion distance",
+    "Packed with mitochondria to pump oxygen actively"
+   ],
+   "answer": 2,
+   "note": "Type I cells are flattened, about 0.15 µm thick. Type II cells are cuboidal and secrete surfactant."
+  },
+  {
+   "id": "b23-x08",
+   "format": "mcq",
+   "topic": "bio-b2-3",
+   "topicLabel": "B2.3 Cell specialization",
+   "difficulty": "standard",
+   "stem": "Which adaptation of a sperm cell is correctly linked to its function?",
+   "choices": [
+    "A large cytoplasm stores yolk to nourish the early embryo",
+    "A cortical granule layer prevents polyspermy at fertilisation",
+    "A haploid nucleus with two sets of chromosomes for the zygote",
+    "Mitochondria in the midpiece supply ATP for the flagellum"
+   ],
+   "answer": 3,
+   "note": "Sperm: small, flagellum, many mitochondria, acrosome with enzymes, haploid nucleus (one set). Yolk and cortical granules belong to the egg."
+  },
+  {
+   "id": "b23-x09",
+   "format": "mcq",
+   "topic": "bio-b2-3",
+   "topicLabel": "B2.3 Cell specialization",
+   "difficulty": "hard",
+   "stem": "Some cells become very large but keep a high SA:V ratio. Which adaptation achieves this?",
+   "choices": [
+    "Being long and thin, or having a highly folded surface",
+    "Being as close to a sphere in shape as possible",
+    "Increasing the thickness of the plasma membrane to allow faster exchange",
+    "Storing more water in a central vacuole"
+   ],
+   "answer": 0,
+   "note": "A sphere has the lowest SA:V for its volume. Flattening, elongation and folds (microvilli) increase surface area relative to volume."
+  },
+  {
+   "id": "b23-x10",
+   "format": "mcq",
+   "topic": "bio-b2-3",
+   "topicLabel": "B2.3 Cell specialization",
+   "difficulty": "hard",
+   "stem": "Cardiac muscle cells are connected by intercalated discs. The main function of these is to:",
+   "choices": [
+    "Store the calcium ions that are released each time the heart muscle relaxes",
+    "Make the cells multinucleate like skeletal muscle fibres",
+    "Prevent ions from passing from one cell to the next",
+    "Let electrical impulses pass quickly so the cells contract in sync"
+   ],
+   "answer": 3,
+   "note": "Intercalated discs contain gap junctions (and anchoring junctions), so the impulse spreads cell to cell and the chambers contract together."
+  },
+  {
+   "id": "b23-x11",
+   "format": "mcq",
+   "topic": "bio-b2-3",
+   "topicLabel": "B2.3 Cell specialization",
+   "difficulty": "hard",
+   "stem": "Which statement about the use of stem cells is correct?",
+   "choices": [
+    "Adult stem cells from bone marrow are totipotent and can form a whole organism",
+    "Using cord blood stem cells always requires the destruction of an embryo",
+    "Embryonic stem cells have greater potency than adult stem cells but raise more ethical issues",
+    "Stem cells from one person can be given to any other person with no risk at all of immune rejection"
+   ],
+   "answer": 2,
+   "note": "Embryonic cells are pluripotent but obtaining them destroys an embryo; adult and cord blood cells are multipotent with fewer ethical issues; mismatched cells can be rejected."
+  },
+  {
+   "id": "b23-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b2-3",
+   "topicLabel": "B2.3 Cell specialization",
+   "difficulty": "standard",
+   "stem": "Explain the importance of the surface area to volume ratio as a factor limiting cell size.",
+   "markscheme": [
+    "Rate of metabolism / need for exchange depends on volume (1)",
+    "Rate of exchange depends on surface area (1)",
+    "As the cell grows, volume increases faster than surface area, so SA:V falls (1)",
+    "Above a certain size exchange becomes too slow / cell must divide (1)"
+   ],
+   "tactic": "Ratio questions: say which grows faster and what that means for supply vs demand."
+  },
+  {
+   "id": "b23-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b2-3",
+   "topicLabel": "B2.3 Cell specialization",
+   "difficulty": "standard",
+   "stem": "Outline how stem cells in the bone marrow maintain the population of red blood cells.",
+   "markscheme": [
+    "Stem cells in the bone marrow niche divide repeatedly (1)",
+    "Some daughter cells remain stem cells (self-renewal) (1)",
+    "Others differentiate into red blood cells (lose nucleus, make haemoglobin) (1)",
+    "This replaces red blood cells that are destroyed after about 120 days (1)"
+   ],
+   "tactic": "Outline: link the two stem-cell properties to the outcome."
+  },
+  {
+   "id": "b23-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-b2-3",
+   "topicLabel": "B2.3 Cell specialization",
+   "difficulty": "hard",
+   "stem": "Compare the adaptations of red and white blood cells to their functions.",
+   "markscheme": [
+    "Both are made from stem cells in the bone marrow (1)",
+    "Red cells lack a nucleus/mitochondria, giving more room for haemoglobin; white cells have a nucleus (1)",
+    "Red cells are biconcave for a large SA:V and fast oxygen diffusion (1)",
+    "White cells can change shape to squeeze out of capillaries / engulf pathogens (1)",
+    "Some white cells make antibodies, needing many ribosomes/rough ER (1)"
+   ],
+   "tactic": "Compare = similarities and differences, each tied to function."
+  },
+  {
+   "id": "b23-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-b2-3",
+   "topicLabel": "B2.3 Cell specialization",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) Cubes of agar containing a pink pH indicator were placed in acid. Acid diffusing in turns the indicator colourless. Cube side (cm) / SA:V (cm⁻¹) / time to fully decolourise (min): 1 / 6.0 / 4; 2 / 3.0 / 15; 3 / 2.0 / 34.\n(a) Show that the SA:V ratio of the 3 cm cube is 2.0 cm⁻¹. (b) Describe the relationship between SA:V and the time taken. (c) Use the data to explain why large organisms need specialised exchange surfaces.",
+   "markscheme": [
+    "(a) SA = 6 × 3² = 54 cm²; V = 3³ = 27 cm³; 54 ÷ 27 = 2.0 cm⁻¹ (1)",
+    "(b) As SA:V decreases, time increases, and not proportionally: from 6.0 to 2.0 cm⁻¹ time rises from 4 to 34 min (1)",
+    "(c) Large organisms have a low SA:V so diffusion to the centre is too slow (1)",
+    "Specialised surfaces (e.g. lungs, villi) increase surface area / reduce distance (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

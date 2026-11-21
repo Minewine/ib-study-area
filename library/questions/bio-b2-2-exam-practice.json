@@ -1,0 +1,252 @@
+{
+ "subject": "biology-hl",
+ "topic": "bio-b2-2",
+ "topicLabel": "B2.2 Organelles and compartmentalization",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "B2.2"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "b22-x01",
+   "format": "mcq",
+   "topic": "bio-b2-2",
+   "topicLabel": "B2.2 Organelles and compartmentalization",
+   "difficulty": "easy",
+   "stem": "Which of these is NOT usually classed as an organelle?",
+   "choices": [
+    "The cell wall",
+    "The mitochondrion",
+    "The nucleus",
+    "The Golgi apparatus"
+   ],
+   "answer": 0,
+   "note": "The cell wall, cytoskeleton and cytoplasm are not organelles: organelles are discrete structures within the cell with a specialised function. The wall is outside the membrane."
+  },
+  {
+   "id": "b22-x02",
+   "format": "mcq",
+   "topic": "bio-b2-2",
+   "topicLabel": "B2.2 Organelles and compartmentalization",
+   "difficulty": "easy",
+   "stem": "Proteins that will be secreted from the cell are made by:",
+   "choices": [
+    "Free ribosomes floating in the cytoplasm of the cell body",
+    "Ribosomes inside the nucleus next to the chromosomes",
+    "Ribosomes in the Golgi apparatus before packaging",
+    "Ribosomes attached to the rough endoplasmic reticulum"
+   ],
+   "answer": 3,
+   "note": "Bound ribosomes on rough ER make proteins for secretion, lysosomes and membranes; free ribosomes make proteins kept in the cytosol."
+  },
+  {
+   "id": "b22-x03",
+   "format": "mcq",
+   "topic": "bio-b2-2",
+   "topicLabel": "B2.2 Organelles and compartmentalization",
+   "difficulty": "easy",
+   "stem": "The main role of the Golgi apparatus is to:",
+   "choices": [
+    "Make proteins from amino acids according to the base sequence of each mRNA",
+    "Process and modify proteins and package them into vesicles for secretion",
+    "Release energy from glucose by aerobic respiration in its cisternae",
+    "Store the cell's genetic material and control its activities"
+   ],
+   "answer": 1,
+   "note": "The Golgi receives vesicles from the rough ER, modifies proteins (e.g. adds carbohydrate) and sends vesicles to the plasma membrane."
+  },
+  {
+   "id": "b22-x04",
+   "format": "mcq",
+   "topic": "bio-b2-2",
+   "topicLabel": "B2.2 Organelles and compartmentalization",
+   "difficulty": "standard",
+   "stem": "One advantage of separating the nucleus from the cytoplasm is that:",
+   "choices": [
+    "Transcription and translation can happen at the same time on one mRNA",
+    "Ribosomes can enter the nucleus easily and translate the DNA there directly",
+    "mRNA can be modified before translation, without ribosomes acting on it",
+    "The DNA is protected from all mutations caused by radiation"
+   ],
+   "answer": 2,
+   "note": "The nuclear membrane separates transcription from translation, so pre-mRNA can be processed (e.g. intron removal) first. In prokaryotes the two are coupled."
+  },
+  {
+   "id": "b22-x05",
+   "format": "mcq",
+   "topic": "bio-b2-2",
+   "topicLabel": "B2.2 Organelles and compartmentalization",
+   "difficulty": "standard",
+   "stem": "Why does the nuclear membrane have pores?",
+   "choices": [
+    "DNA must leave the nucleus so it can be copied in the cytoplasm",
+    "Ribosomes are assembled in the cytoplasm and must enter the nucleus to work",
+    "mRNA must leave the nucleus and proteins such as enzymes must enter",
+    "Pores let the nucleus divide without its membrane breaking down"
+   ],
+   "answer": 2,
+   "note": "Pores allow controlled exchange: mRNA and ribosome subunits out, proteins (e.g. DNA polymerase) in. DNA stays inside."
+  },
+  {
+   "id": "b22-x06",
+   "format": "mcq",
+   "topic": "bio-b2-2",
+   "topicLabel": "B2.2 Organelles and compartmentalization",
+   "difficulty": "standard",
+   "stem": "Which feature of the mitochondrion is matched correctly to its function?",
+   "choices": [
+    "The outer membrane contains ATP synthase that makes most ATP",
+    "The matrix holds chlorophyll that absorbs light for respiration",
+    "The intermembrane space contains the enzymes of the Krebs cycle",
+    "Cristae increase the surface area for the electron transport chain"
+   ],
+   "answer": 3,
+   "note": "Cristae (folded inner membrane) carry the ETC and ATP synthase; the matrix contains Krebs cycle enzymes; the small intermembrane space allows a steep proton gradient."
+  },
+  {
+   "id": "b22-x07",
+   "format": "mcq",
+   "topic": "bio-b2-2",
+   "topicLabel": "B2.2 Organelles and compartmentalization",
+   "difficulty": "standard",
+   "stem": "In a chloroplast, the light-dependent reactions take place:",
+   "choices": [
+    "In the stroma, which contains the Calvin cycle enzymes",
+    "On the thylakoid membranes, which hold the photosystems",
+    "In the outer envelope membrane, which faces the cytoplasm",
+    "In the starch grains, which store the products of the reactions"
+   ],
+   "answer": 1,
+   "note": "Thylakoid membranes (stacked into grana) give a large area for photosystems and ATP synthase; the stroma compartmentalises the Calvin cycle."
+  },
+  {
+   "id": "b22-x08",
+   "format": "mcq",
+   "topic": "bio-b2-2",
+   "topicLabel": "B2.2 Organelles and compartmentalization",
+   "difficulty": "standard",
+   "stem": "Lysosomes keep their digestive enzymes inside a membrane. The main advantage is that:",
+   "choices": [
+    "The enzymes cannot digest molecules in the cytoplasm of the cell",
+    "The enzymes can work at a higher temperature than the rest of the cytoplasm",
+    "The enzymes are made more quickly inside the lysosome",
+    "The enzymes are only needed when the cell is dividing"
+   ],
+   "answer": 0,
+   "note": "Compartmentalisation keeps harmful enzymes away from cell components and lets a different internal pH be maintained."
+  },
+  {
+   "id": "b22-x09",
+   "format": "mcq",
+   "topic": "bio-b2-2",
+   "topicLabel": "B2.2 Organelles and compartmentalization",
+   "difficulty": "hard",
+   "stem": "Clathrin has a role in:",
+   "choices": [
+    "Pumping protons across the inner mitochondrial membrane into the intermembrane space",
+    "Attaching free ribosomes to the membranes of the rough endoplasmic reticulum",
+    "Forming the protein-lined pores in the double membrane around the nucleus",
+    "Shaping the plasma membrane into a pit that pinches off as a vesicle"
+   ],
+   "answer": 3,
+   "note": "Clathrin proteins coat the membrane, curve it into a pit and help it bud off as a vesicle during endocytosis."
+  },
+  {
+   "id": "b22-x10",
+   "format": "mcq",
+   "topic": "bio-b2-2",
+   "topicLabel": "B2.2 Organelles and compartmentalization",
+   "difficulty": "hard",
+   "stem": "During mitosis the nuclear membrane breaks into vesicles. The benefit is that:",
+   "choices": [
+    "The DNA can be replicated in the cytoplasm",
+    "Ribosomes can translate DNA directly",
+    "The spindle can reach and move the chromosomes",
+    "The cell can absorb nutrients for growth"
+   ],
+   "answer": 2,
+   "note": "The spindle microtubules form in the cytoplasm; the membrane must break down so they can attach to centromeres. It re-forms around each new nucleus."
+  },
+  {
+   "id": "b22-x11",
+   "format": "mcq",
+   "topic": "bio-b2-2",
+   "topicLabel": "B2.2 Organelles and compartmentalization",
+   "difficulty": "hard",
+   "stem": "A drug blocks movement of vesicles from the rough ER to the Golgi apparatus. Which process is affected most directly?",
+   "choices": [
+    "Synthesis of haemoglobin by free ribosomes in a red blood cell precursor",
+    "Secretion of digestive enzymes by a pancreas cell",
+    "Production of ATP by aerobic respiration",
+    "Replication of DNA in the nucleus"
+   ],
+   "answer": 1,
+   "note": "Secreted proteins follow rough ER → vesicle → Golgi → vesicle → plasma membrane. Haemoglobin is made on free ribosomes and stays in the cell."
+  },
+  {
+   "id": "b22-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b2-2",
+   "topicLabel": "B2.2 Organelles and compartmentalization",
+   "difficulty": "standard",
+   "stem": "Contrast the synthesis of proteins by free ribosomes with that by ribosomes bound to the rough endoplasmic reticulum.",
+   "markscheme": [
+    "Free ribosomes make proteins for use in the cytoplasm / retained in the cell (1)",
+    "Bound ribosomes make proteins for secretion / for lysosomes / for membranes (1)",
+    "Proteins from bound ribosomes enter the ER lumen and are transported in vesicles; free ribosome proteins are released into the cytosol (1)"
+   ],
+   "tactic": "Contrast = differences only; always pair the two sides."
+  },
+  {
+   "id": "b22-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-b2-2",
+   "topicLabel": "B2.2 Organelles and compartmentalization",
+   "difficulty": "standard",
+   "stem": "Explain how the structure of a chloroplast is adapted to photosynthesis.",
+   "markscheme": [
+    "Thylakoid membranes give a large surface area for photosystems / light absorption (1)",
+    "Small space inside thylakoids allows a steep proton gradient for ATP synthesis (1)",
+    "Stroma contains Calvin cycle enzymes, concentrated in one compartment (1)",
+    "Double membrane separates the reactions from the cytoplasm (1)"
+   ],
+   "tactic": "Pair each structure with how it helps — a list of structures without functions earns nothing."
+  },
+  {
+   "id": "b22-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-b2-2",
+   "topicLabel": "B2.2 Organelles and compartmentalization",
+   "difficulty": "hard",
+   "stem": "Describe the route taken by a protein that is made in a cell and then secreted.",
+   "markscheme": [
+    "Made by ribosomes on the rough ER (1)",
+    "Enters the ER lumen and is carried in a vesicle to the Golgi apparatus (1)",
+    "Modified/processed in the Golgi (e.g. carbohydrate added) (1)",
+    "Packaged into vesicles that bud from the Golgi (1)",
+    "Vesicles fuse with the plasma membrane, releasing the protein by exocytosis (1)"
+   ],
+   "tactic": "Describe a pathway in order; name each organelle and the vesicle step between them."
+  },
+  {
+   "id": "b22-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-b2-2",
+   "topicLabel": "B2.2 Organelles and compartmentalization",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) In an invented experiment, cells were given radioactive amino acids for 3 minutes. The percentage of total radioactivity found in each compartment was measured: 3 min: rough ER 85%, Golgi 10%, secretory vesicles 5%; 20 min: rough ER 15%, Golgi 60%, vesicles 25%; 120 min: rough ER 5%, Golgi 10%, vesicles 85%.\n(a) Describe the change in radioactivity in the Golgi apparatus. (b) Explain what the data show about the route of secreted proteins. (c) Suggest why the total in the cell would fall after several hours.",
+   "markscheme": [
+    "(a) Golgi rises from 10% to a peak of 60% at 20 min, then falls to 10% at 120 min (1)",
+    "(b) Labelled amino acids enter proteins first at the rough ER (1)",
+    "Proteins then move to the Golgi and finally into secretory vesicles (order of peaks) (1)",
+    "(c) Vesicles fuse with the plasma membrane and the labelled protein is secreted out of the cell (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

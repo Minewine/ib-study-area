@@ -1,0 +1,251 @@
+{
+ "subject": "chemistry-hl",
+ "topic": "chem-s1-5",
+ "topicLabel": "S1.5 Ideal gases",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "S1.5"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "s15-x01",
+   "format": "mcq",
+   "topic": "chem-s1-5",
+   "topicLabel": "S1.5 Ideal gases",
+   "difficulty": "easy",
+   "stem": "Which is an assumption of the ideal gas model?",
+   "choices": [
+    "The particles occupy most of the volume of the container",
+    "Collisions between particles lose kinetic energy",
+    "There are no attractive forces between the particles",
+    "The particles move only when the gas is heated"
+   ],
+   "answer": 2,
+   "note": "Ideal gas: negligible particle volume, no intermolecular forces, elastic collisions, random motion. Each wrong option contradicts one of these."
+  },
+  {
+   "id": "s15-x02",
+   "format": "mcq",
+   "topic": "chem-s1-5",
+   "topicLabel": "S1.5 Ideal gases",
+   "difficulty": "easy",
+   "stem": "At constant temperature, the pressure of a fixed amount of gas is doubled. The volume becomes:",
+   "choices": [
+    "Double the original volume",
+    "Four times the original volume",
+    "Unchanged, as temperature is constant",
+    "Half the original volume"
+   ],
+   "answer": 3,
+   "note": "Boyle's law: pV = constant at fixed T and n, so doubling p halves V."
+  },
+  {
+   "id": "s15-x03",
+   "format": "mcq",
+   "topic": "chem-s1-5",
+   "topicLabel": "S1.5 Ideal gases",
+   "difficulty": "easy",
+   "stem": "Which temperature must be used in gas law calculations?",
+   "choices": [
+    "Celsius, because gas laws were measured in °C",
+    "Kelvin, found by adding 273 to the Celsius value",
+    "Kelvin, found by subtracting 273 from the Celsius value",
+    "Either scale, as long as the same one is used throughout"
+   ],
+   "answer": 1,
+   "note": "Gas laws need absolute temperature: T(K) = T(°C) + 273. Ratios using °C give wrong answers (e.g. doubling 10 °C is not doubling the kinetic energy)."
+  },
+  {
+   "id": "s15-x04",
+   "format": "mcq",
+   "topic": "chem-s1-5",
+   "topicLabel": "S1.5 Ideal gases",
+   "difficulty": "standard",
+   "stem": "What volume does 0.500 mol of an ideal gas occupy at 300 K and 150 kPa? (R = 8.31 J K⁻¹ mol⁻¹)",
+   "choices": [
+    "8.31 dm³",
+    "0.00831 dm³",
+    "83.1 dm³",
+    "0.831 dm³"
+   ],
+   "answer": 0,
+   "note": "V = nRT/p = 0.500 × 8.31 × 300 ÷ 150 000 Pa = 0.00831 m³ = 8.31 dm³. Use Pa and get m³, then × 1000 for dm³."
+  },
+  {
+   "id": "s15-x05",
+   "format": "mcq",
+   "topic": "chem-s1-5",
+   "topicLabel": "S1.5 Ideal gases",
+   "difficulty": "standard",
+   "stem": "How many moles of gas are in 2.27 dm³ at STP? (molar volume = 22.7 dm³ mol⁻¹)",
+   "choices": [
+    "10.0 mol",
+    "0.100 mol",
+    "51.5 mol",
+    "0.0100 mol"
+   ],
+   "answer": 1,
+   "note": "n = V ÷ Vm = 2.27 ÷ 22.7 = 0.100 mol. The data booklet STP is 273 K and 100 kPa."
+  },
+  {
+   "id": "s15-x06",
+   "format": "mcq",
+   "topic": "chem-s1-5",
+   "topicLabel": "S1.5 Ideal gases",
+   "difficulty": "standard",
+   "stem": "A gas occupies 2.00 dm³ at 300 K and 100 kPa. What is its volume at 400 K and 200 kPa?",
+   "choices": [
+    "1.33 dm³",
+    "3.00 dm³",
+    "5.33 dm³",
+    "0.750 dm³"
+   ],
+   "answer": 0,
+   "note": "V₂ = V₁ × (p₁/p₂) × (T₂/T₁) = 2.00 × (100/200) × (400/300) = 1.33 dm³."
+  },
+  {
+   "id": "s15-x07",
+   "format": "mcq",
+   "topic": "chem-s1-5",
+   "topicLabel": "S1.5 Ideal gases",
+   "difficulty": "standard",
+   "stem": "A sealed gas syringe is warmed from 20 °C to 40 °C at constant pressure. The volume of gas:",
+   "choices": [
+    "Doubles",
+    "Increases by about 20%",
+    "Increases by about 7%",
+    "Stays the same"
+   ],
+   "answer": 2,
+   "note": "V ∝ T in kelvin: 313 ÷ 293 = 1.068, about 7%. Doubling the Celsius value does not double the absolute temperature."
+  },
+  {
+   "id": "s15-x08",
+   "format": "mcq",
+   "topic": "chem-s1-5",
+   "topicLabel": "S1.5 Ideal gases",
+   "difficulty": "standard",
+   "stem": "Real gases deviate most from ideal behaviour at:",
+   "choices": [
+    "Low pressure and high temperature",
+    "Low pressure and low temperature",
+    "High pressure and high temperature",
+    "High pressure and low temperature"
+   ],
+   "answer": 3,
+   "note": "At high pressure the particle volume is no longer negligible; at low temperature intermolecular forces become significant (particles move slowly)."
+  },
+  {
+   "id": "s15-x09",
+   "format": "mcq",
+   "topic": "chem-s1-5",
+   "topicLabel": "S1.5 Ideal gases",
+   "difficulty": "hard",
+   "stem": "0.640 g of a gas occupies 0.250 dm³ at 298 K and 100 kPa. What is its molar mass? (R = 8.31 J K⁻¹ mol⁻¹)",
+   "choices": [
+    "6.34 g mol⁻¹",
+    "63.4 g mol⁻¹",
+    "0.0634 g mol⁻¹",
+    "634 g mol⁻¹"
+   ],
+   "answer": 1,
+   "note": "n = pV/RT = (100 000 × 0.000250) ÷ (8.31 × 298) = 0.01010 mol; M = 0.640 ÷ 0.01010 = 63.4 g mol⁻¹. Unit slips give the factor-of-10 distractors."
+  },
+  {
+   "id": "s15-x10",
+   "format": "mcq",
+   "topic": "chem-s1-5",
+   "topicLabel": "S1.5 Ideal gases",
+   "difficulty": "hard",
+   "stem": "Why does ammonia deviate more from ideal gas behaviour than helium at the same conditions?",
+   "choices": [
+    "Ammonia molecules form hydrogen bonds with each other",
+    "Helium atoms are larger than ammonia molecules",
+    "Ammonia molecules move faster than helium atoms at the same temperature",
+    "Helium atoms attract each other more strongly"
+   ],
+   "answer": 0,
+   "note": "Stronger intermolecular forces (hydrogen bonding in NH₃) make the real gas behave less ideally. He has only very weak London forces."
+  },
+  {
+   "id": "s15-x11",
+   "format": "mcq",
+   "topic": "chem-s1-5",
+   "topicLabel": "S1.5 Ideal gases",
+   "difficulty": "hard",
+   "stem": "A graph of pV against p for 1 mol of an ideal gas at constant temperature is:",
+   "choices": [
+    "A straight line through the origin",
+    "A curve that falls towards zero",
+    "A straight line with a negative gradient",
+    "A horizontal straight line"
+   ],
+   "answer": 3,
+   "note": "For an ideal gas pV = nRT is constant at fixed n and T, whatever p is, so the graph is horizontal. Real gases curve away from it at high p."
+  },
+  {
+   "id": "s15-x12",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-s1-5",
+   "topicLabel": "S1.5 Ideal gases",
+   "difficulty": "standard",
+   "stem": "State two assumptions of the kinetic theory for an ideal gas.",
+   "markscheme": [
+    "Particles have negligible volume compared with the container (1)",
+    "No intermolecular forces between particles (1)",
+    "Collisions are perfectly elastic (1)",
+    "Particles move randomly in straight lines between collisions (1)"
+   ],
+   "tactic": "State = no explanation needed, but each assumption must be precise (\"negligible\", not \"no\" volume)."
+  },
+  {
+   "id": "s15-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s1-5",
+   "topicLabel": "S1.5 Ideal gases",
+   "difficulty": "standard",
+   "stem": "Calculate the volume, in cm³, of hydrogen produced at STP when 0.243 g of magnesium reacts completely with excess hydrochloric acid. Mg(s) + 2HCl(aq) → MgCl₂(aq) + H₂(g). (Ar Mg = 24.31; molar volume = 22.7 dm³ mol⁻¹ at STP)",
+   "markscheme": [
+    "n(Mg) = 0.243 ÷ 24.31 = 0.0100 mol (1)",
+    "n(H₂) = 0.0100 mol (1 : 1 ratio) (1)",
+    "V = 0.0100 × 22.7 = 0.227 dm³ = 227 cm³ (1)"
+   ],
+   "tactic": "Mole maps: mass → moles → ratio → volume, one line each."
+  },
+  {
+   "id": "s15-x14",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s1-5",
+   "topicLabel": "S1.5 Ideal gases",
+   "difficulty": "hard",
+   "stem": "Explain, in terms of particles, why the pressure of a gas in a sealed rigid container increases when it is heated.",
+   "markscheme": [
+    "Particles gain kinetic energy and move faster (1)",
+    "They collide with the container walls more frequently (1)",
+    "Collisions are with greater force/momentum, so force per unit area (pressure) increases (1)"
+   ],
+   "tactic": "Pressure explanations need both frequency and force of collisions."
+  },
+  {
+   "id": "s15-x15",
+   "format": "written",
+   "marks": 5,
+   "topic": "chem-s1-5",
+   "topicLabel": "S1.5 Ideal gases",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) A student measured the volume of 0.00200 mol of a gas at constant pressure (101 kPa) at different temperatures: 0 °C 44.9 cm³; 25 °C 49.0 cm³; 50 °C 53.2 cm³; 75 °C 57.3 cm³.\n(a) Show that the data are consistent with V ∝ T (in K). (b) Use the 25 °C result to calculate a value for R. (c) The expected value of R is 8.31 J K⁻¹ mol⁻¹. Calculate the percentage error and suggest one cause.",
+   "markscheme": [
+    "(a) V/T is roughly constant: e.g. 44.9/273 = 0.164 and 57.3/348 = 0.165 cm³ K⁻¹ (1)",
+    "(b) R = pV/nT = (101 000 × 49.0 × 10⁻⁶) ÷ (0.00200 × 298) (1)",
+    "R = 8.30 J K⁻¹ mol⁻¹ (1)",
+    "(c) % error = (8.31 − 8.30)/8.31 × 100 = 0.1% (accept 0.1–0.2%) (1)",
+    "Cause: e.g. gas syringe friction / temperature of gas not equal to water bath / reading the scale (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

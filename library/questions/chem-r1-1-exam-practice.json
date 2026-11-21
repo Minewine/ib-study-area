@@ -1,0 +1,252 @@
+{
+ "subject": "chemistry-hl",
+ "topic": "chem-r1-1",
+ "topicLabel": "R1.1 Measuring enthalpy changes",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "R1.1"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "r11-x01",
+   "format": "mcq",
+   "topic": "chem-r1-1",
+   "topicLabel": "R1.1 Measuring enthalpy changes",
+   "difficulty": "easy",
+   "stem": "In an exothermic reaction:",
+   "choices": [
+    "Heat is released to the surroundings, so ΔH is negative",
+    "Heat is absorbed from the surroundings, so ΔH is positive",
+    "Heat is released to the surroundings, so ΔH is positive",
+    "The temperature of the surroundings falls as bonds form"
+   ],
+   "answer": 0,
+   "note": "Exothermic: system loses energy, surroundings warm up, ΔH < 0. Sign is about the system, not the surroundings."
+  },
+  {
+   "id": "r11-x02",
+   "format": "mcq",
+   "topic": "chem-r1-1",
+   "topicLabel": "R1.1 Measuring enthalpy changes",
+   "difficulty": "easy",
+   "stem": "Which process is endothermic?",
+   "choices": [
+    "Burning methane",
+    "Neutralising an acid",
+    "Melting ice",
+    "Condensing steam"
+   ],
+   "answer": 2,
+   "note": "Melting needs energy to overcome intermolecular forces. Combustion, neutralisation and condensation release energy."
+  },
+  {
+   "id": "r11-x03",
+   "format": "mcq",
+   "topic": "chem-r1-1",
+   "topicLabel": "R1.1 Measuring enthalpy changes",
+   "difficulty": "easy",
+   "stem": "Which expression gives the heat energy absorbed by water in a calorimeter?",
+   "choices": [
+    "q = mΔT ÷ c",
+    "q = cΔT ÷ m",
+    "q = nΔH ÷ m",
+    "q = mcΔT"
+   ],
+   "answer": 3,
+   "note": "q = mcΔT with m the mass of water (g), c = 4.18 J g⁻¹ K⁻¹ and ΔT the temperature change (K or °C)."
+  },
+  {
+   "id": "r11-x04",
+   "format": "mcq",
+   "topic": "chem-r1-1",
+   "topicLabel": "R1.1 Measuring enthalpy changes",
+   "difficulty": "standard",
+   "stem": "In an energy profile for an exothermic reaction:",
+   "choices": [
+    "The activation energy is negative",
+    "The products are lower in energy than the reactants",
+    "The reactants are lower in energy than the products",
+    "The transition state is lower than the products"
+   ],
+   "answer": 1,
+   "note": "ΔH = H(products) − H(reactants) is negative. Activation energy is always positive — the peak is above both."
+  },
+  {
+   "id": "r11-x05",
+   "format": "mcq",
+   "topic": "chem-r1-1",
+   "topicLabel": "R1.1 Measuring enthalpy changes",
+   "difficulty": "standard",
+   "stem": "Standard conditions for enthalpy changes in the IB data booklet are:",
+   "choices": [
+    "101.3 kPa and 273 K",
+    "100 kPa and a stated temperature, usually 298 K",
+    "100 kPa and 273 K, called STP",
+    "1 atm and 0 °C for all reactions"
+   ],
+   "answer": 1,
+   "note": "Standard state = 100 kPa, solutions 1 mol dm⁻³, usually quoted at 298 K. STP (273 K) is for gas volumes."
+  },
+  {
+   "id": "r11-x06",
+   "format": "mcq",
+   "topic": "chem-r1-1",
+   "topicLabel": "R1.1 Measuring enthalpy changes",
+   "difficulty": "standard",
+   "stem": "50.0 cm³ of acid is mixed with 50.0 cm³ of alkali; the temperature rises by 6.5 °C. Assuming the solution behaves like water (c = 4.18 J g⁻¹ K⁻¹), the heat released is:",
+   "choices": [
+    "1.36 kJ",
+    "27.2 kJ",
+    "2.72 kJ",
+    "0.272 kJ"
+   ],
+   "answer": 2,
+   "note": "m = 100.0 g (total volume), q = 100.0 × 4.18 × 6.5 = 2717 J = 2.72 kJ. Using only 50 g gives 1.36 kJ."
+  },
+  {
+   "id": "r11-x07",
+   "format": "mcq",
+   "topic": "chem-r1-1",
+   "topicLabel": "R1.1 Measuring enthalpy changes",
+   "difficulty": "standard",
+   "stem": "0.0250 mol of water forms when 1.36 kJ is released in a neutralisation. What is ΔH for the reaction per mole of water?",
+   "choices": [
+    "−54.4 kJ mol⁻¹",
+    "+54.4 kJ mol⁻¹",
+    "−0.0340 kJ mol⁻¹",
+    "−34.0 kJ mol⁻¹"
+   ],
+   "answer": 0,
+   "note": "ΔH = −q ÷ n = −1.36 ÷ 0.0250 = −54.4 kJ mol⁻¹. Add the negative sign because heat was released."
+  },
+  {
+   "id": "r11-x08",
+   "format": "mcq",
+   "topic": "chem-r1-1",
+   "topicLabel": "R1.1 Measuring enthalpy changes",
+   "difficulty": "standard",
+   "stem": "In a simple coffee-cup calorimetry experiment, the main reason the measured ΔH is less exothermic than the literature value is:",
+   "choices": [
+    "The thermometer reads too high",
+    "The mass of solution is too large",
+    "The reaction is too fast",
+    "Heat is lost to the surroundings"
+   ],
+   "answer": 3,
+   "note": "Heat loss means the measured ΔT is too small, so |ΔH| is too small. Use a lid, insulation and extrapolate the cooling curve."
+  },
+  {
+   "id": "r11-x09",
+   "format": "mcq",
+   "topic": "chem-r1-1",
+   "topicLabel": "R1.1 Measuring enthalpy changes",
+   "difficulty": "hard",
+   "stem": "A temperature–time graph is plotted, and the cooling line after mixing is extrapolated back to the time of mixing. The purpose is to:",
+   "choices": [
+    "Find the rate of the reaction from the gradient of the line",
+    "Find the initial temperature of the two solutions",
+    "Estimate the maximum temperature rise as if no heat had been lost",
+    "Remove the random error caused by the thermometer"
+   ],
+   "answer": 2,
+   "note": "Extrapolation compensates for heat lost while the reaction was happening, giving a better ΔT."
+  },
+  {
+   "id": "r11-x10",
+   "format": "mcq",
+   "topic": "chem-r1-1",
+   "topicLabel": "R1.1 Measuring enthalpy changes",
+   "difficulty": "hard",
+   "stem": "0.460 g of ethanol (M = 46.08) is burned and heats 100.0 g of water by 25.0 K. What is the experimental enthalpy of combustion?",
+   "choices": [
+    "−1050 kJ mol⁻¹",
+    "−10.5 kJ mol⁻¹",
+    "+1050 kJ mol⁻¹",
+    "−105 kJ mol⁻¹"
+   ],
+   "answer": 0,
+   "note": "q = 100.0 × 4.18 × 25.0 = 10 450 J; n = 0.00998 mol; ΔH = −10.45 ÷ 0.00998 = −1047 ≈ −1050 kJ mol⁻¹ (literature −1367; heat loss)."
+  },
+  {
+   "id": "r11-x11",
+   "format": "mcq",
+   "topic": "chem-r1-1",
+   "topicLabel": "R1.1 Measuring enthalpy changes",
+   "difficulty": "hard",
+   "stem": "The same neutralisation is repeated with double the volumes of both solutions at the same concentrations. Compared with the first experiment:",
+   "choices": [
+    "ΔT doubles and ΔH per mole doubles",
+    "ΔT halves and ΔH per mole is the same",
+    "ΔT doubles and ΔH per mole is the same",
+    "ΔT is the same and ΔH per mole is the same"
+   ],
+   "answer": 3,
+   "note": "Twice the moles release twice the heat, but into twice the mass of water, so ΔT is unchanged. ΔH per mole is a fixed property of the reaction."
+  },
+  {
+   "id": "r11-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r1-1",
+   "topicLabel": "R1.1 Measuring enthalpy changes",
+   "difficulty": "standard",
+   "stem": "Sketch and label an energy profile for an endothermic reaction. Include ΔH and the activation energy.",
+   "markscheme": [
+    "Products drawn higher than reactants (1)",
+    "Activation energy shown from reactants to the peak (1)",
+    "ΔH shown as the difference between reactants and products, positive/upward arrow (1)"
+   ],
+   "tactic": "Profiles: axes labelled (energy / reaction progress), arrows start at the reactant line."
+  },
+  {
+   "id": "r11-x13",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-r1-1",
+   "topicLabel": "R1.1 Measuring enthalpy changes",
+   "difficulty": "standard",
+   "stem": "Explain why the temperature rises in an exothermic reaction even though the energy of the system decreases.",
+   "markscheme": [
+    "Energy released when bonds form is greater than energy needed to break bonds (1)",
+    "This energy is transferred to the surroundings (water/solution), so its temperature rises (1)"
+   ],
+   "tactic": "Keep system and surroundings separate in your answer."
+  },
+  {
+   "id": "r11-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "chem-r1-1",
+   "topicLabel": "R1.1 Measuring enthalpy changes",
+   "difficulty": "hard",
+   "stem": "Suggest two improvements to a calorimetry experiment measuring the enthalpy of combustion of a fuel, and explain how each makes the result more accurate.",
+   "markscheme": [
+    "Use a lid / draught shield (1)",
+    "reduces heat lost to the air, so ΔT is closer to the true value (1)",
+    "Use a copper (better conducting) calorimeter close to the flame / insulate the sides (1)",
+    "more of the heat is transferred to the water (1)",
+    "Weigh the burner with its cap on to stop evaporation of the fuel (1)",
+    "mass of fuel burned is not overestimated (1)"
+   ],
+   "tactic": "Each improvement needs a \"how it helps\" link — two marks per improvement."
+  },
+  {
+   "id": "r11-x15",
+   "format": "written",
+   "marks": 5,
+   "topic": "chem-r1-1",
+   "topicLabel": "R1.1 Measuring enthalpy changes",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) A student found the enthalpy of combustion of an invented liquid fuel, M = 74.12 g mol⁻¹. Mass of burner before 52.384 g, after 51.890 g; water 150.0 g; initial temperature 19.5 °C; maximum 35.8 °C.\n(a) Calculate the heat absorbed by the water. (b) Calculate ΔH of combustion in kJ mol⁻¹. (c) The literature value is −2670 kJ mol⁻¹. Calculate the percentage error and state the main source.",
+   "markscheme": [
+    "(a) ΔT = 16.3 K; q = 150.0 × 4.18 × 16.3 = 10 220 J (10.2 kJ) (1)",
+    "(b) mass burned = 0.494 g; n = 0.494 ÷ 74.12 = 0.006665 mol (1)",
+    "ΔH = −10.22 ÷ 0.006665 = −1533 kJ mol⁻¹ (≈ −1530) (1)",
+    "(c) % error = (2670 − 1533)/2670 × 100 = 42.6% (1)",
+    "Heat lost to the surroundings (or incomplete combustion) (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

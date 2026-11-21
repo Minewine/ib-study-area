@@ -1,0 +1,252 @@
+{
+ "subject": "biology-hl",
+ "topic": "bio-a2-2",
+ "topicLabel": "A2.2 Cell structure",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "A2.2"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "a22-x01",
+   "format": "mcq",
+   "topic": "bio-a2-2",
+   "topicLabel": "A2.2 Cell structure",
+   "difficulty": "easy",
+   "stem": "Which structures are found in all cells, both prokaryotic and eukaryotic?",
+   "choices": [
+    "Nucleus, mitochondria, ribosomes and a cell wall",
+    "Plasma membrane, cytoplasm, DNA and ribosomes",
+    "Plasma membrane, nucleus, cytoplasm and chloroplasts",
+    "Cell wall, plasmids, 80S ribosomes and a nucleoid"
+   ],
+   "answer": 1,
+   "note": "Every cell has a membrane, cytoplasm (mostly water), DNA as genetic material and ribosomes. Nuclei and mitochondria are eukaryote-only; walls are not universal."
+  },
+  {
+   "id": "a22-x02",
+   "format": "mcq",
+   "topic": "bio-a2-2",
+   "topicLabel": "A2.2 Cell structure",
+   "difficulty": "easy",
+   "stem": "A drawing of a mitochondrion is 45 mm long. The mitochondrion is actually 3 µm long. What is the magnification of the drawing?",
+   "choices": [
+    "× 15 000",
+    "× 15",
+    "× 1 500",
+    "× 150 000"
+   ],
+   "answer": 0,
+   "note": "Convert to the same unit first: 45 mm = 45 000 µm. Magnification = image ÷ actual = 45 000 ÷ 3 = 15 000. The usual error is forgetting to convert mm to µm."
+  },
+  {
+   "id": "a22-x03",
+   "format": "mcq",
+   "topic": "bio-a2-2",
+   "topicLabel": "A2.2 Cell structure",
+   "difficulty": "easy",
+   "stem": "Which feature is found in a Gram-positive bacterium such as Bacillus but not in an animal cell?",
+   "choices": [
+    "A plasma membrane made of phospholipids",
+    "Ribosomes that make proteins in the cytoplasm",
+    "DNA that carries the genetic information",
+    "A cell wall made of peptidoglycan"
+   ],
+   "answer": 3,
+   "note": "Prokaryotes have a peptidoglycan wall, a nucleoid (naked DNA), 70S ribosomes and often plasmids. Membranes, ribosomes and DNA are shared by all cells."
+  },
+  {
+   "id": "a22-x04",
+   "format": "mcq",
+   "topic": "bio-a2-2",
+   "topicLabel": "A2.2 Cell structure",
+   "difficulty": "standard",
+   "stem": "A micrograph shows a cell with a cell wall, a large central vacuole and no chloroplasts. The cell is most likely:",
+   "choices": [
+    "A fungal hypha cell",
+    "An animal liver cell",
+    "A plant root cell",
+    "A Gram-positive bacterium"
+   ],
+   "answer": 2,
+   "note": "A wall plus a large central vacuole is the typical plant pattern; root cells receive no light, so they have no chloroplasts. Animal cells have no wall; bacteria have no large central vacuole."
+  },
+  {
+   "id": "a22-x05",
+   "format": "mcq",
+   "topic": "bio-a2-2",
+   "topicLabel": "A2.2 Cell structure",
+   "difficulty": "standard",
+   "stem": "Which statement about red blood cells in mammals makes them an atypical cell?",
+   "choices": [
+    "They contain many nuclei because they form by cells fusing together",
+    "They have a thin cell wall that stops them bursting in the blood plasma",
+    "They lack a nucleus when mature, which leaves more room for haemoglobin",
+    "They lack a plasma membrane, so haemoglobin is free in the blood"
+   ],
+   "answer": 2,
+   "note": "Mature mammalian erythrocytes have no nucleus (and no mitochondria). Multinucleate = skeletal muscle fibres; no cell has no membrane."
+  },
+  {
+   "id": "a22-x06",
+   "format": "mcq",
+   "topic": "bio-a2-2",
+   "topicLabel": "A2.2 Cell structure",
+   "difficulty": "standard",
+   "stem": "Skeletal muscle fibres are described as atypical because they:",
+   "choices": [
+    "Contain no nucleus at maturity and rely on companion cells",
+    "Contain many nuclei and are much longer than a typical cell",
+    "Lack mitochondria and depend on anaerobic respiration only",
+    "Are joined end to end into one tube with sieve plates between them"
+   ],
+   "answer": 1,
+   "note": "Muscle fibres form by fusion of cells, so they are multinucleate and very long. The companion-cell link describes phloem sieve tubes."
+  },
+  {
+   "id": "a22-x07",
+   "format": "mcq",
+   "topic": "bio-a2-2",
+   "topicLabel": "A2.2 Cell structure",
+   "difficulty": "standard",
+   "stem": "Which technique would best show where one specific protein is located inside a cell?",
+   "choices": [
+    "Immunofluorescence, using antibodies tagged with a fluorescent marker",
+    "Freeze-fracture electron microscopy, splitting the membrane along its middle",
+    "Staining with iodine solution and viewing with a light microscope",
+    "Cryogenic electron microscopy of the whole tissue section"
+   ],
+   "answer": 0,
+   "note": "Fluorescent antibodies bind only to their target protein, so the glow shows its location. Freeze fracture shows membrane interiors; cryo-EM shows protein structure."
+  },
+  {
+   "id": "a22-x08",
+   "format": "mcq",
+   "topic": "bio-a2-2",
+   "topicLabel": "A2.2 Cell structure",
+   "difficulty": "standard",
+   "stem": "Which of the following is a function of life that a unicellular organism such as Paramecium must carry out on its own?",
+   "choices": [
+    "Formation of tissues from groups of similar cells working together",
+    "Transport of oxygen by a circulatory system to its organelles",
+    "Sexual reproduction only, since it cannot divide by mitosis",
+    "Excretion of metabolic waste such as ammonia across its membrane"
+   ],
+   "answer": 3,
+   "note": "Unicellular organisms perform all functions of life (homeostasis, metabolism, nutrition, movement, excretion, growth, response, reproduction) in one cell."
+  },
+  {
+   "id": "a22-x09",
+   "format": "mcq",
+   "topic": "bio-a2-2",
+   "topicLabel": "A2.2 Cell structure",
+   "difficulty": "hard",
+   "stem": "The resolution of an electron microscope is much better than that of a light microscope because:",
+   "choices": [
+    "Electrons have a much shorter wavelength than visible light",
+    "Electron microscopes use stronger glass lenses than light microscopes",
+    "Electrons can pass through thicker specimens than light can",
+    "Electron microscopes give higher magnification so detail is resolved"
+   ],
+   "answer": 0,
+   "note": "Resolution depends on wavelength: shorter wavelength separates closer points. Magnification alone does not add detail."
+  },
+  {
+   "id": "a22-x10",
+   "format": "mcq",
+   "topic": "bio-a2-2",
+   "topicLabel": "A2.2 Cell structure",
+   "difficulty": "hard",
+   "stem": "Which evidence best supports the theory that mitochondria evolved by endosymbiosis?",
+   "choices": [
+    "They are surrounded by a single membrane like the plasma membrane",
+    "They have their own circular DNA and 70S ribosomes, like bacteria",
+    "They contain 80S ribosomes like those in the cytoplasm of eukaryotes",
+    "They are made by the Golgi apparatus whenever the cell needs energy"
+   ],
+   "answer": 1,
+   "note": "Mitochondria (and chloroplasts) have naked circular DNA, 70S ribosomes, a double membrane and divide by binary fission — all prokaryote features."
+  },
+  {
+   "id": "a22-x11",
+   "format": "mcq",
+   "topic": "bio-a2-2",
+   "topicLabel": "A2.2 Cell structure",
+   "difficulty": "hard",
+   "stem": "All cells in a human body contain the same genes, yet a liver cell differs from a nerve cell. This is because:",
+   "choices": [
+    "Each cell type loses the genes it does not need during development",
+    "Mutations in each cell type create the new genes it needs",
+    "Different genes are expressed in different cell types",
+    "Nerve cells have more chromosomes than liver cells"
+   ],
+   "answer": 2,
+   "note": "Differentiation results from differential gene expression; the genome is (almost always) the same in every body cell."
+  },
+  {
+   "id": "a22-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-a2-2",
+   "topicLabel": "A2.2 Cell structure",
+   "difficulty": "standard",
+   "stem": "Outline three differences between a prokaryotic cell and an animal cell.",
+   "markscheme": [
+    "Prokaryote has no nucleus (DNA in nucleoid); animal cell has DNA in a nucleus (1)",
+    "Prokaryote DNA is circular and naked; animal DNA is linear with histones (1)",
+    "Prokaryote has 70S ribosomes; animal cell has 80S (1)",
+    "Prokaryote has a cell wall (peptidoglycan); animal cell has none (1)",
+    "Prokaryote lacks membrane-bound organelles such as mitochondria (1)"
+   ],
+   "tactic": "Each difference must state both sides; \"prokaryotes have no nucleus\" alone is often only half a point."
+  },
+  {
+   "id": "a22-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-a2-2",
+   "topicLabel": "A2.2 Cell structure",
+   "difficulty": "standard",
+   "stem": "Explain why a large central vacuole is useful to a plant cell but would not be useful to an animal cell.",
+   "markscheme": [
+    "Vacuole fills with water, pushing the membrane against the cell wall (1)",
+    "This generates turgor pressure that supports the plant (1)",
+    "Animal cells have no wall to resist the pressure, so they would burst / they rely on other support (1)"
+   ],
+   "tactic": "Explain = give the reason and the consequence; link structure to function."
+  },
+  {
+   "id": "a22-x14",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-a2-2",
+   "topicLabel": "A2.2 Cell structure",
+   "difficulty": "hard",
+   "stem": "Outline the origin of eukaryotic cells by endosymbiosis.",
+   "markscheme": [
+    "An ancestral cell engulfed an aerobic prokaryote by endocytosis (1)",
+    "The prokaryote was not digested and survived inside, giving a mutual benefit (1)",
+    "It became the mitochondrion, sharing its ATP with the host (1)",
+    "A later engulfment of a photosynthetic prokaryote gave chloroplasts in some lines (1)"
+   ],
+   "tactic": "Outline: a short sequence of events, in order."
+  },
+  {
+   "id": "a22-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-a2-2",
+   "topicLabel": "A2.2 Cell structure",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) A student measured an invented single-celled organism under a light microscope. The eyepiece graticule was calibrated so that one eyepiece unit = 2.5 µm at ×400. The cell measured 32 eyepiece units long. A photo of the same cell, printed for her notes, was 64 mm long.\n(a) Calculate the actual length of the cell. (b) Calculate the magnification of the printed photo. (c) State why the eyepiece graticule must be recalibrated if she switches to the ×100 objective.",
+   "markscheme": [
+    "(a) 32 × 2.5 = 80 µm (1)",
+    "(b) 64 mm = 64 000 µm; 64 000 ÷ 80 = × 800 (1)",
+    "Correct units/conversion shown in (b) (1)",
+    "(c) Each eyepiece unit covers a different actual distance at a different magnification (the graticule scale stays the same while the image size changes) (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

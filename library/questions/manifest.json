@@ -1668,5 +1668,344 @@
     }
    }
   ]
+ },
+ {
+  "file": "library/questions/bio-a2-2-exam-practice.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL",
+  "label": "A2.2 Cell structure — exam practice (mixed difficulty, written + data response)",
+  "topic": "bio-a2-2",
+  "topicLabel": "A2.2 Cell structure",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "A2.2"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "bio-a2-2",
+    "topicLabel": "A2.2 Cell structure",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 7,
+     "hard": 5
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/bio-b2-2-exam-practice.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL",
+  "label": "B2.2 Organelles and compartmentalization — exam practice (mixed difficulty, written + data response)",
+  "topic": "bio-b2-2",
+  "topicLabel": "B2.2 Organelles and compartmentalization",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "B2.2"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "bio-b2-2",
+    "topicLabel": "B2.2 Organelles and compartmentalization",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 7,
+     "hard": 5
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/bio-b2-3-exam-practice.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL",
+  "label": "B2.3 Cell specialization — exam practice (mixed difficulty, written + data response)",
+  "topic": "bio-b2-3",
+  "topicLabel": "B2.3 Cell specialization",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "B2.3"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "bio-b2-3",
+    "topicLabel": "B2.3 Cell specialization",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 7,
+     "hard": 5
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/bio-c1-1-exam-practice.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL",
+  "label": "C1.1 Enzymes and metabolism — exam practice (mixed difficulty, written + data response)",
+  "topic": "bio-c1-1",
+  "topicLabel": "C1.1 Enzymes and metabolism",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "C1.1"
+  ],
+  "counts": {
+   "mcq": 13,
+   "written": 4,
+   "total": 17
+  },
+  "topics": [
+   {
+    "topic": "bio-c1-1",
+    "topicLabel": "C1.1 Enzymes and metabolism",
+    "count": 17,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 8,
+     "hard": 6
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/chem-r1-1-exam-practice.json",
+  "subject": "chemistry-hl",
+  "subjectLabel": "Chemistry HL",
+  "label": "R1.1 Measuring enthalpy changes — exam practice (mixed difficulty, written + data response)",
+  "topic": "chem-r1-1",
+  "topicLabel": "R1.1 Measuring enthalpy changes",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "R1.1"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "chem-r1-1",
+    "topicLabel": "R1.1 Measuring enthalpy changes",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 7,
+     "hard": 5
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/chem-r2-1-exam-practice.json",
+  "subject": "chemistry-hl",
+  "subjectLabel": "Chemistry HL",
+  "label": "R2.1 How much? The amount of chemical change — exam practice (mixed difficulty, written + data response)",
+  "topic": "chem-r2-1",
+  "topicLabel": "R2.1 How much? The amount of chemical change",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "R2.1"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "chem-r2-1",
+    "topicLabel": "R2.1 How much? The amount of chemical change",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 7,
+     "hard": 5
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/chem-s1-4-exam-practice.json",
+  "subject": "chemistry-hl",
+  "subjectLabel": "Chemistry HL",
+  "label": "S1.4 Counting particles by mass: the mole — exam practice (mixed difficulty, written + data response)",
+  "topic": "chem-s1-4",
+  "topicLabel": "S1.4 Counting particles by mass: the mole",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "S1.4"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "chem-s1-4",
+    "topicLabel": "S1.4 Counting particles by mass: the mole",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 7,
+     "hard": 5
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/chem-s1-5-exam-practice.json",
+  "subject": "chemistry-hl",
+  "subjectLabel": "Chemistry HL",
+  "label": "S1.5 Ideal gases — exam practice (mixed difficulty, written + data response)",
+  "topic": "chem-s1-5",
+  "topicLabel": "S1.5 Ideal gases",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "S1.5"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "chem-s1-5",
+    "topicLabel": "S1.5 Ideal gases",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 7,
+     "hard": 5
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/chem-s2-1-exam-practice.json",
+  "subject": "chemistry-hl",
+  "subjectLabel": "Chemistry HL",
+  "label": "S2.1 The ionic model — exam practice (mixed difficulty, written + data response)",
+  "topic": "chem-s2-1",
+  "topicLabel": "S2.1 The ionic model",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "S2.1"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "chem-s2-1",
+    "topicLabel": "S2.1 The ionic model",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 7,
+     "hard": 5
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/math-aa-circular-trig-exam-practice.json",
+  "subject": "math-aa-sl",
+  "subjectLabel": "Math AA SL",
+  "label": "Circular trigonometry (3.1–3.6) — exam practice (mixed difficulty, written + data response)",
+  "topic": "math-y12-circular-trig",
+  "topicLabel": "Circular trigonometry (3.1–3.6)",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "3.1",
+   "3.2",
+   "3.3",
+   "3.4",
+   "3.5",
+   "3.6"
+  ],
+  "counts": {
+   "mcq": 12,
+   "written": 4,
+   "total": 16
+  },
+  "topics": [
+   {
+    "topic": "math-y12-circular-trig",
+    "topicLabel": "Circular trigonometry (3.1–3.6)",
+    "count": 16,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 4,
+     "standard": 8,
+     "hard": 4
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/math-aa-differentiation-exam-practice.json",
+  "subject": "math-aa-sl",
+  "subjectLabel": "Math AA SL",
+  "label": "Differentiation (5.1–5.4, 5.8) — exam practice (mixed difficulty, written + data response)",
+  "topic": "math-y12-differentiation",
+  "topicLabel": "Differentiation (5.1–5.4, 5.8)",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "5.1",
+   "5.2",
+   "5.3",
+   "5.4",
+   "5.8"
+  ],
+  "counts": {
+   "mcq": 12,
+   "written": 4,
+   "total": 16
+  },
+  "topics": [
+   {
+    "topic": "math-y12-differentiation",
+    "topicLabel": "Differentiation (5.1–5.4, 5.8)",
+    "count": 16,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 8,
+     "hard": 5
+    }
+   }
+  ]
  }
 ]
