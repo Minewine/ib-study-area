@@ -52,7 +52,7 @@ test("filterRecords: status filter (retired hidden from open), subject + profile
     "search narrows to the matching stem");
 });
 
-test("retire/restore: reversible soft-hide with a reason, never deleted, ts bumped", () => {
+test("retire/restore: reversible soft-hide with a reason, never deleted, ts bumped; restore keeps retired:false explicitly", () => {
   const e = mk({ "q-errors": J([err()]) });
   const r = M(e);
   assert.equal(r.retire("bio-molecules-water#wm01", "  beyond the syllabus  "), true);
@@ -64,7 +64,7 @@ test("retire/restore: reversible soft-hide with a reason, never deleted, ts bump
   assert.equal(rec.key, "bio-molecules-water#wm01", "record still present — never hard-deleted");
   assert.equal(r.restore("bio-molecules-water#wm01"), true);
   rec = plain(e.NB.store.get("q-errors"))[0];
-  assert.equal(rec.retired, undefined);
+  assert.equal(rec.retired, false, "explicit sentinel, so the merge reads a MISSING field as 'client predates retirement'");
   assert.equal(rec.retiredReason, undefined);
   assert.equal(rec.retiredAt, undefined);
   assert.equal(r.retire("nope#1", "x"), false, "unknown key refused");

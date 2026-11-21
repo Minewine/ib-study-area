@@ -384,16 +384,18 @@ const noCoursework = (url) => (String(url).includes("coursework")
 const isoOffset = (n) => { const d = new Date(); d.setDate(d.getDate() + n);
   return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); };
 
-test("today panel: dated items render near-term, start-thinking label for the long lead window; empty data hides the block entirely", async () => {
+test("today panel: dated items render near-term, start-thinking label for the long lead window (120 days); empty data hides the block entirely", async () => {
   const { box } = await bootDl([
     { d: isoOffset(0), t: "Good thing now" },
     { d: isoOffset(30), t: "Think piece" },
-    { d: isoOffset(90), t: "Too far out" }
+    { d: isoOffset(90), t: "Start of summer term" },
+    { d: isoOffset(130), t: "Too far out" }
   ], { fetch: noCoursework });
   assert.match(allText(box), /4\. Coming up/);
   assert.match(allText(box), /Good thing now/, "near-term item shown");
   assert.match(allText(box), /\(today\)/, "dated today reads as today");
   assert.match(allText(box), /Start thinking about Think piece/, "long-lead item labelled 'Start thinking about'");
+  assert.match(allText(box), /Start thinking about Start of summer term/, "90 days out is inside the 120-day window (post-summer events need the heads-up)");
   assert.doesNotMatch(allText(box), /Too far out/, "beyond the long lead window → not shown");
 
   const empty = await bootDl([], { fetch: noCoursework });
@@ -527,4 +529,70 @@ test("maths notes resolve across the manifest's legacy 'maths-aa-sl' spelling an
   const hrefs = [];
   (function walk(el) { if (el.tagName === "A" && el.attrs && el.attrs.href) hrefs.push(el.attrs.href); (el.children || []).forEach(walk); })(box);
   assert.ok(hrefs.some(h => h.startsWith("quiz.html?from=math-aa-1")), "suggestion links the note's quiz bank");
+});
+test("weakestTopic: uploaded banks keyed by their stored name are excluded too — the Today link resolves library banks only", () => {
+  const t = T();
+  const errs = [
+    { key: "ai-photosynthesis#p01", id: "1", bankId: "ai-photosynthesis", topic: "p", topicLabel: "Photosynthesis", lastMissed: "2026-11-15" },
+    { key: "bio-y#1", id: "1", bankId: "bio-y", topic: "c1-1", topicLabel: "Enzymes", lastMissed: "2026-11-10" },
+  ];
+  const up = ["ai-photosynthesis", "user:photosynthesis"];
+  assert.equal(t.weakestTopic(errs, [], up).bankId, "bio-y", "name-keyed uploaded-bank records are excluded like the old user:* ones");
+  assert.equal(t.weakestTopic(errs, [], []).bankId, "ai-photosynthesis", "the caller must supply the uploaded list — without it nothing is excluded");
+  // uploads now carry an explicit "ub-…" id — its error records must be excluded as well
+  const idErrs = [
+    { key: "ub-mc2x#p01", id: "1", bankId: "ub-mc2x", topic: "p", topicLabel: "Photosynthesis", lastMissed: "2026-11-15" },
+    { key: "bio-y#1", id: "1", bankId: "bio-y", topic: "c1-1", topicLabel: "Enzymes", lastMissed: "2026-11-10" },
+  ];
+  assert.equal(t.weakestTopic(idErrs, [], ["ub-mc2x"]).bankId, "bio-y", "id-keyed uploaded-bank records are excluded like the name/user:* ones");
+});
+
+// The Today panel's mistake suggestion packs record keys into a quiz.html?errkeys=
+// link (openMistakes → suggestActions): retired records must never be packed in —
+// the deep link would skip them — and an all-retired log suggests nothing at all.
+test("suggestActions: the mistakes retry link carries only unretired keys; an all-retired log suggests nothing", () => {
+  const t = T();
+  const today = "2026-11-20";
+  const errs = [
+    { key: "bio-y#1", bankId: "bio-y", topicLabel: "Enzymes", lastMissed: "2026-11-02" },
+    { key: "bio-y#2", bankId: "bio-y", topicLabel: "Enzymes", retired: true, retiredReason: "off-syllabus" },
+  ];
+  const s = plain(t.suggestActions({ today, due: 0, own: 0, errors: errs, units: [], nearItems: [] }));
+  assert.equal(s.length, 1);
+  assert.equal(s[0].href, "quiz.html?errkeys=bio-y%231", "the retired key is left out of the packed link");
+  assert.deepEqual(plain(t.suggestActions({ today, due: 0, own: 0,
+    errors: [{ key: "bio-y#1", bankId: "bio-y", topicLabel: "Enzymes", retired: true }], units: [], nearItems: [] })),
+    [], "nothing open → no mistakes suggestion at all");
+});
+
+test("startThinkingItems: the exact far-end date is the last start-thinking day (May → September); the near-end date belongs to the near list", () => {
+  const t = T();
+  const mk = (date, label) => ({ date, label, href: "x.html", where: "calendar" });
+  // fixed literal today (no Date mocking): a May 4 "today" puts the exact 120-day
+  // far end on Sep 1 — post-summer deadlines get their heads-up from May onwards
+  const today = "2027-05-04";
+  assert.equal(t.addDays(today, 120), "2027-09-01", "the documented May → September span");
+  const items = [mk(today, "today"), mk("2027-05-25", "near-end"), mk("2027-09-01", "far-end"), mk("2027-09-02", "past-end")];
+  assert.deepEqual(plain(t.startThinkingItems(items, today, 21, 120)).map(x => x.label), ["far-end"],
+    "farEnd inclusive, farEnd+1 excluded");
+  assert.deepEqual(plain(t.nearTermItems(items, today, 21)).map(x => x.label), ["today", "near-end"],
+    "nearEnd inclusive in the near list — and exactly there, not in start-thinking");
+});
+
+// render path with the PRODUCTION constants (today.js LEAD_DAYS/LONG_LEAD_DAYS are
+// not exported, so the panel is the only place the real 21/120 windows are exercised):
+// the boundaries are exact — day 21 near-term, day 22 starts thinking, day 120 in, 121 out.
+test("today panel: the production lead windows are exact — day 21 near-term, day 22 starts thinking, day 120 in, day 121 out", async () => {
+  const { box } = await bootDl([
+    { d: isoOffset(21), t: "Lead edge" },
+    { d: isoOffset(22), t: "First think day" },
+    { d: isoOffset(120), t: "Far edge" },
+    { d: isoOffset(121), t: "Beyond the window" },
+  ], { fetch: noCoursework });
+  const text = allText(box);
+  assert.match(text, /4\. Coming up/);
+  assert.match(text, /Lead edge/, "today + LEAD_DAYS (21) is still near-term");
+  assert.match(text, /Start thinking about First think day/, "today + 22 opens the long lead window");
+  assert.match(text, /Start thinking about Far edge/, "today + LONG_LEAD_DAYS (120) still shows");
+  assert.doesNotMatch(text, /Beyond the window/, "today + 121 is out of both windows");
 });

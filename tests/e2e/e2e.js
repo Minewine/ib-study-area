@@ -582,10 +582,11 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
     const { page, errors, ctx } = await newCtx(browser);
     // fixed fake clock (local noon 2026-11-20): the dated-window assertions must
     // not be calendar time-bombs — on a live clock the English commentary leaves
-    // the 21-day near window after 2026-12-09 and the EE launch enters the 60-day
-    // "start thinking" window after 2026-12-19. Pinned date → stable windows;
-    // expected membership is still derived from the live deadline/coursework
-    // data below, so calendar edits cannot stale the assertions.
+    // the 21-day near window after 2026-12-09; in the 120-day long-lead window the
+    // EE launch (2027-02-17) is already "start thinking" on the pinned date and the
+    // TOK plan (2027-03-25) stays just beyond it until 2026-11-25. Pinned date →
+    // stable windows; expected membership is still derived from the live
+    // deadline/coursework data below, so calendar edits cannot stale the assertions.
     await page.evaluateOnNewDocument(() => {
       const Real = Date, MS = new Real(2026, 10, 20, 12).getTime();
       class FakeDate extends Real {
@@ -643,12 +644,12 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
     }), "hidden-subject deadline (French A HL essay) dropped by the active profile");
     // dated windows pinned by the fake clock, membership derived from the live
     // data: every rendered near item must satisfy today <= d <= today+21 and
-    // every "Start thinking about" item (today+21, today+60]
+    // every "Start thinking about" item (today+21, today+120]
     const win = await page.evaluate(async () => {
       const iso = d => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
       const today = iso(new Date());
       const add = (s, n) => { const [y, m, dd] = s.split("-").map(Number); const t = new Date(y, m - 1, dd, 12); t.setDate(t.getDate() + n); return iso(t); };
-      const nearEnd = add(today, 21), farEnd = add(today, 60);
+      const nearEnd = add(today, 21), farEnd = add(today, 120);
       const cw = await (await fetch("../library/coursework/coursework.json")).json();
       const items = window.NB.deadlines
         .filter(x => x && !(x.subject && window.NB.profile.hides(x.subject)))
@@ -678,7 +679,7 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
       "near-term list exactly covers [today, today+21] (got " + coming.near.length + ", want " + win.near.length + ")");
     win.near.forEach((label, i) => assert.ok(coming.near[i].includes(label.slice(0, 70)), "near item in date order: " + label));
     assert.strictEqual(coming.think.length, win.think.length,
-      "long-lead list exactly covers (today+21, today+60] (got " + coming.think.length + ", want " + win.think.length + ")");
+      "long-lead list exactly covers (today+21, today+120] (got " + coming.think.length + ", want " + win.think.length + ")");
     win.think.forEach((label, i) => assert.ok(coming.think[i].includes(label.slice(0, 70)) && /^Start thinking about/.test(coming.think[i]),
       "long-lead item labelled: " + label));
     if (win.near.some(l => /practice commentary/.test(l)))

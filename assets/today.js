@@ -34,7 +34,9 @@
   // about" heads-up instead. An active unit ending within UNIT_CLOSE_DAYS counts
   // as closing this week. (Constants, not settings — change here if needed.)
   const LEAD_DAYS = 21;
-  const LONG_LEAD_DAYS = 60;
+  // 120 (not 60): events just after the summer break are > 60 days away for most of
+  // May–June, and the early heads-up is exactly what this window exists for.
+  const LONG_LEAD_DAYS = 120;
   const UNIT_CLOSE_DAYS = 7;
   const MISTAKE_KEYS_MAX = 20; // keys packed into one quiz.html?errkeys= retry link
 
@@ -96,14 +98,32 @@
     return "maths-aa-sl";
   }
 
+  // Weak spots from UPLOADED banks can't serve the "Start a quiz" link: the link
+  // resolves library banks only (quiz-engine startFromLink matches the questions
+  // manifest), so their records are excluded here — their bankId is the explicit
+  // "ub-…" id uploads carry now, the stored bank's file-name stem (uploads saved
+  // with a name) or the legacy "user:<label-slug>" written before banks carried a
+  // name. All spellings must be excluded or the link would resolve nothing.
+  function uploadedBankIds(banks) {
+    const ids = new Set();
+    (banks || []).forEach(b => {
+      if (!b) return;
+      if (b.id) ids.add(b.id);
+      if (b.name) ids.add(fileId(b.name));
+      ids.add("user:" + String(b.label || b.topicLabel || "My bank").toLowerCase().replace(/\W+/g, "-"));
+    });
+    return ids;
+  }
+
   // Weakest topic. 1) Unresolved missed questions (q-errors), grouped by bank + topic:
   //    most unresolved first, then the most recently missed. 2) Otherwise the quiz log:
   //    note-linked quizzes are labelled "<code> <title>"; the code with the lowest
   //    average score (below 70%) over the logged sessions.
-  function weakestTopic(errors, log) {
+  function weakestTopic(errors, log, uploaded) {
+    const up = uploaded && typeof uploaded.has === "function" ? uploaded : new Set(uploaded || []);
     const groups = {};
     (errors || []).forEach(e => {
-      if (!e || e.resolved || e.retired || !e.bankId || String(e.bankId).startsWith("user:")) return;
+      if (!e || e.resolved || e.retired || !e.bankId || String(e.bankId).startsWith("user:") || up.has(e.bankId)) return;
       // per-user subject profile: a missed question from a subject the account
       // doesn't take is not a weak spot to re-quiz (unknown subjects stay)
       if (e.subject && NB.profile && NB.profile.hides(e.subject)) return;
@@ -403,7 +423,7 @@
   async function renderQuiz(box) {
     const sec = el("div", { class: "td-block" }, el("h4", {}, "2. Short quiz"));
     box.append(sec);
-    const weak = weakestTopic(store.get("q-errors", []), store.get("quizlog", []));
+    const weak = weakestTopic(store.get("q-errors", []), store.get("quizlog", []), uploadedBankIds(store.get("q-userbanks", [])));
     if (!weak) { sec.append(el("p", {}, "No weak spots recorded yet. Use one of this week's class quizzes below.")); return; }
     if (weak.source === "errors") {
       sec.append(el("p", {}, "Weakest topic right now: ", el("strong", {}, weak.topicLabel), ` (${weak.count} missed question${weak.count === 1 ? "" : "s"} not yet fixed).`));

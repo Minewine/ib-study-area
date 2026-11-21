@@ -53,14 +53,21 @@ t("q-errors: winner's reflection/errorType win; missing ones fill from the loser
   assert.strictEqual(e.errorType, "careless", "winner's value wins");
   assert.strictEqual(e.reflection, "re-read the stem", "loser fills the winner's gap");
 });
-t("q-errors: retries only on the loser are kept; retired fields never fill in from the loser", () => {
-  const local = [{ key: "k1", ts: 300 }];
+t("q-errors: retries only on the loser are kept; a retirement-unaware winner can't erase \"not relevant\"", () => {
+  const local = [{ key: "k1", ts: 300 }]; // no retired field — e.g. a stale cached page predating the feature
   const server = [{ key: "k1", ts: 200, retries: [{ ts: 4, correct: true, conf: "sure" }], retired: true, retiredReason: "off-syllabus", retiredAt: 9 }];
   const e = M("q-errors", local, server).find(x => x.key === "k1");
   assert.deepStrictEqual(plain(e.retries), [{ ts: 4, correct: true, conf: "sure" }]);
-  assert.strictEqual(e.retired, undefined);
+  assert.strictEqual(e.retired, true, "retirement survives the older-but-newer-ts write");
+  assert.strictEqual(e.retiredReason, "off-syllabus");
+  assert.strictEqual(e.retiredAt, 9);
+});
+t("q-errors: an explicit retired:false (restore) beats a retired loser", () => {
+  const local = [{ key: "k1", ts: 300, retired: false }];
+  const server = [{ key: "k1", ts: 200, retired: true, retiredReason: "off-syllabus", retiredAt: 9 }];
+  const e = M("q-errors", local, server).find(x => x.key === "k1");
+  assert.strictEqual(e.retired, false, "restore is a real answer, not a missing field");
   assert.strictEqual(e.retiredReason, undefined);
-  assert.strictEqual(e.retiredAt, undefined);
 });
 t("q-errors: records without the new fields merge exactly as before", () => {
   const local = [{ key: "k1", attempts: 3, ts: 300, resolved: true }];
@@ -88,3 +95,87 @@ t("non-merge keys keep server-wins behaviour", () => {
   assert.strictEqual(JSON.stringify(M("quizlog", [{ date: "b" }], [{ date: "a" }])), JSON.stringify([{ date: "b" }, { date: "a" }]), "quizlog is now a union");
 });
 
+t("q-errors: a legacy-key copy folds into the renamed record (attempts take the max) and is still dropped", () => {
+  const local = [{ key: "ai-photosynthesis#p01", legacyKey: "user:photosynthesis#p01", attempts: 1, ts: 9 }];
+  const server = [{ key: "user:photosynthesis#p01", attempts: 3, ts: 5, firstMissed: "2026-11-01", retries: [{ ts: 2, correct: false }] }];
+  const m = M("q-errors", local, server);
+  assert.strictEqual(JSON.stringify(m.map(e => e.key)), JSON.stringify(["ai-photosynthesis#p01"]),
+    "the pre-migration copy must not survive the merge, or it resurrects every load");
+  const folded = m[0];
+  assert.strictEqual(folded.attempts, 3, "the stale copy's higher attempts are folded in, not lost by the drop");
+  assert.deepStrictEqual(plain(folded.retries), [{ ts: 2, correct: false }], "errMerge semantics: the doomed copy's retries ride along");
+});
+t("q-errors: folding is idempotent — re-merging the same stale copy never re-inflates attempts", () => {
+  const local = [{ key: "ai-photosynthesis#p01", legacyKey: "user:photosynthesis#p01", attempts: 1, ts: 9 }];
+  const server = [{ key: "user:photosynthesis#p01", attempts: 3, ts: 5 }];
+  const again = M("q-errors", plain(M("q-errors", local, server)), server);
+  assert.strictEqual(again[0].attempts, 3, "max, not a sum — the ping-pong stays flat across repeated merges");
+});
+t("q-errors: a legacy-key copy's retirement folds into a new-key record missing the field; an explicit retired:false survivor keeps false", () => {
+  const m = M("q-errors",
+    [{ key: "ai-photosynthesis#p01", legacyKey: "user:photosynthesis#p01", attempts: 1, ts: 9 }],
+    [{ key: "user:photosynthesis#p01", attempts: 1, retired: true, retiredReason: "off-syllabus", retiredAt: 9 }]);
+  assert.strictEqual(m[0].retired, true, "the doomed copy's \"not relevant\" isn't lost by the fold");
+  assert.strictEqual(m[0].retiredReason, "off-syllabus");
+  assert.strictEqual(m[0].retiredAt, 9);
+  const restored = M("q-errors",
+    [{ key: "ai-photosynthesis#p01", legacyKey: "user:photosynthesis#p01", attempts: 1, ts: 9, retired: false }],
+    [{ key: "user:photosynthesis#p01", attempts: 1, retired: true, retiredReason: "off-syllabus" }])[0];
+  assert.strictEqual(restored.retired, false, "an explicit answer on the survivor outranks the inherited one");
+  assert.strictEqual(restored.retiredReason, undefined);
+});
+
+// ── explicit-vs-explicit retirement: inheritance is only for records MISSING the field ──
+
+t("q-errors: explicit retired:true beats an explicit retired:false loser — two explicit answers are ranked, not inherited", () => {
+  const e = M("q-errors",
+    [{ key: "k1", ts: 300, retired: true, retiredReason: "off-syllabus", retiredAt: 9 }],
+    [{ key: "k1", ts: 200, retired: false }])[0];
+  assert.strictEqual(e.retired, true, "the ranked winner's explicit answer stands");
+  assert.strictEqual(e.retiredReason, "off-syllabus");
+});
+t("q-errors: explicit retired:false beats an explicit retired:true loser (the restore outranks by ts)", () => {
+  const e = M("q-errors",
+    [{ key: "k1", ts: 100, retired: true, retiredReason: "off-syllabus", retiredAt: 9 }],
+    [{ key: "k1", ts: 300, retired: false }])[0];
+  assert.strictEqual(e.retired, false, "the ranked winner's explicit answer stands");
+  assert.strictEqual(e.retiredReason, undefined, "a restored record carries no reason again");
+});
+t("q-errors: a restore survives an old-tab write-back — a retirement-unaware winner inherits the loser's retired:false", () => {
+  const e = M("q-errors",
+    [{ key: "k1", ts: 300, attempts: 1 }], // stale cached page predating the feature — no retired field at all
+    [{ key: "k1", ts: 200, retired: false }])[0];
+  assert.strictEqual(e.retired, false, "inherited from the restored loser — a missing field is no opinion, but false IS one");
+});
+
+// ── bank identity in the q-userbanks union (store.js bankId): uploads carry a stable
+// "ub-…" id so same-topic sets from two devices never collapse; pre-id copies keep
+// converging on the subject::name composite as before. Used for q-userbanks AND
+// fc-userdecks; the copy passed first (the dirty side, per auth.js union(k, l, r)) wins. ──
+const U = (k, a, b) => env.NB.merge.union(k, a, b);
+
+t("q-userbanks: two same-topic uploads with distinct ids both survive the union even with the same stored name", () => {
+  const a = [{ id: "ub-aa1", name: "ai-photosynthesis.json", subject: "biology-hl", label: "Photosynthesis" }];
+  const b = [{ id: "ub-bb2", name: "ai-photosynthesis.json", subject: "biology-hl", label: "Photosynthesis" }];
+  const m = U("q-userbanks", a, b);
+  assert.strictEqual(m.length, 2, "distinct ids → two banks; no attempt-history pooling between them");
+  assert.strictEqual(JSON.stringify(m.map(x => x.id).sort()), JSON.stringify(["ub-aa1", "ub-bb2"]));
+});
+t("q-userbanks: the same id on both devices converges to one record — the copy passed first (the dirty side) wins", () => {
+  const a = [{ id: "ub-aa1", name: "ai-photosynthesis.json", uploaded: "2026-11-20", label: "Dirty copy" }];
+  const b = [{ id: "ub-aa1", name: "ai-photosynthesis.json", uploaded: "2026-11-19", label: "Server copy" }];
+  const m = U("q-userbanks", a, b);
+  assert.strictEqual(m.length, 1, "one id is one bank — the union converges");
+  assert.strictEqual(m[0].label, "Dirty copy");
+});
+t("q-userbanks: pre-id banks keep the composite identity — same subject::name dedupes, a different name stays", () => {
+  const a = [{ subject: "biology-hl", name: "ai-x.json", label: "X" }];
+  const b = [{ subject: "biology-hl", name: "ai-x.json", label: "Older copy" }, { subject: "biology-hl", name: "ai-y.json" }];
+  const m = U("q-userbanks", a, b);
+  assert.strictEqual(m.length, 2, "the composite collision collapses to a's copy; the differently-named bank survives");
+});
+t("q-userbanks: an id-bearing upload and an id-less old copy of the same bank do not collapse (ids are never back-stamped)", () => {
+  const a = [{ id: "ub-aa1", subject: "biology-hl", name: "ai-x.json" }];
+  const b = [{ subject: "biology-hl", name: "ai-x.json" }];
+  assert.strictEqual(U("q-userbanks", a, b).length, 2, "'i:ub-aa1' and 'biology-hl::ai-x.json' are different identities");
+});

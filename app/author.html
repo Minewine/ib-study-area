@@ -199,6 +199,13 @@
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} try { if (window.Auth && window.Auth.queueSync) window.Auth.queueSync(); } catch (e) {} }
   };
   const QBANKS = "q-userbanks", FDECKS = "fc-userdecks";
+  // Stable unique id stamped onto every uploaded quiz bank — delegates to newBankId in
+  // assets/bank-import.js so the id format stays single-sourced; the inline 1-liner is
+  // only the stale-page fallback (processContent also serves the paste path when
+  // bank-import.js didn't load).
+  const newBankId = () => (window.NB && window.NB.bankImport && window.NB.bankImport.newBankId)
+    ? window.NB.bankImport.newBankId()
+    : "ub-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 8);
   // NB.bankSchema (assets/bank-schema.js) holds the shared validators + vocabulary;
   // null only on a stale cached page that didn't load it — uploads then fail with
   // a "reload" hint instead of saving unvalidated content.
@@ -257,7 +264,7 @@
       if (err) return result(false, sourceName + ": " + err);
       const banks = store.get(QBANKS, []);
       if (banks.some(b => b.name === sourceName)) return result(false, sourceName + ": an upload with this filename already exists — delete it first or rename the file");
-      const entry = Object.assign({}, data, { name: sourceName, uploaded: new Date().toISOString().slice(0, 10) });
+      const entry = Object.assign({}, data, { id: newBankId(), name: sourceName, uploaded: new Date().toISOString().slice(0, 10) });
       if (!entry.label) entry.label = data.topicLabel || sourceName;
       if (!entry.subjectLabel) entry.subjectLabel = data.subject;
       banks.push(entry);

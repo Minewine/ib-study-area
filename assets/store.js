@@ -395,9 +395,10 @@
   // errRank winner, `l` the loser. retries are a union of both devices' outcomes
   // (deduped by ts+correct identity, ascending by ts — the engines cap at 20 on their
   // next write); reflection/errorType fill in from the loser only when the winner
-  // lacks them; retired/retiredReason/retiredAt ride the winner alone, since ts
-  // already decides retire/restore races. Records without the optional fields are
-  // untouched by all of this.
+  // lacks them. Retirement is preserved from the loser when the winner has NO retired
+  // field at all — a client predating the feature cannot erase "not relevant" by
+  // overwriting the record. An explicit retired:false (a restore, mistakes.js) is a
+  // real answer and still wins. Records without the optional fields are untouched.
   const errMerge = (w, l) => {
     const out = Object.assign({}, w);
     const seen = new Set(), retries = [];
@@ -409,6 +410,10 @@
     });
     if (retries.length) out.retries = retries.sort((x, y) => (x.ts || 0) - (y.ts || 0));
     ["reflection", "errorType"].forEach(f => { if (out[f] === undefined && l[f] !== undefined) out[f] = l[f]; });
+    if (out.retired === undefined && l.retired !== undefined) {
+      out.retired = l.retired;
+      if (out.retired) ["retiredReason", "retiredAt"].forEach(f => { if (out[f] === undefined && l[f] !== undefined) out[f] = l[f]; });
+    }
     return out;
   };
 
@@ -424,8 +429,9 @@
     },
     // [ {key, …, ts?} ] — union by key, newest wins, merged field-aware when the
     // same record exists on both sides (errMerge: retries union, reflection/
-    // errorType fill-in, retired fields ride the winner); a record renamed by the
-    // quiz's key migration doesn't come back under its legacy key from an older copy
+    // errorType fill in from the loser when missing, retirement preserved when the
+    // winner has no retired field); a record renamed by the quiz's key migration
+    // that comes back under its legacy key from an older copy is folded in and dropped
     "q-errors": function (a, b) {
       if (!Array.isArray(a)) return b; if (!Array.isArray(b)) return a;
       const byKey = new Map();
@@ -436,8 +442,22 @@
         byKey.set(e.key, cur ? errMerge(newer(e, cur, errRank) ? e : cur, newer(e, cur, errRank) ? cur : e) : e);
       });
       const out = Array.from(byKey.values());
-      const renamed = new Set(out.map(e => e.legacyKey).filter(Boolean));
-      return out.filter(e => !(renamed.has(e.key) && String(e.key).indexOf("#") < 0));
+      // a record whose key equals another record's legacyKey is that record's
+      // pre-migration copy — any key shape (bare legacy ids AND "#" keys from the
+      // uploaded-bank rename) is folded into the renamed record and dropped, so
+      // renames converge under sync instead of resurrecting the old copy; attempts
+      // take the max (not a sum) so re-merging a stale copy can't re-inflate them
+      const survivorFor = new Map(); // legacyKey → the record the rename moved onto
+      out.forEach(e => { if (e && e.legacyKey) survivorFor.set(e.legacyKey, e); });
+      const folded = new Map(); // survivor → its record after folding the doomed copy in
+      out.forEach(e => {
+        const survivor = e && survivorFor.get(e.key);
+        if (!survivor || survivor === e) return;
+        const m = errMerge(survivor, e);
+        if (survivor.attempts || e.attempts) m.attempts = Math.max(survivor.attempts || 0, e.attempts || 0);
+        folded.set(survivor, m);
+      });
+      return out.filter(e => e && !survivorFor.has(e.key)).map(e => folded.get(e) || e);
     },
     // [ {date, label, got, max, pct, ts?} ] newest first, capped at 20 (as saveLog does)
     "quizlog": function (a, b) {
@@ -524,7 +544,10 @@
     if (!isObj(b) || !Array.isArray(b.items)) return a;
     return Object.assign({}, b, a, { items: byField("t")(a.items, b.items) });
   };
-  const bankId = (x) => x && typeof x === "object" ? (x.subject || "") + "::" + (x.name || x.label || x.topic || JSON.stringify(x)) : JSON.stringify(x);
+  // Bank identity in the union merge: uploads carry an explicit stable id, and two
+  // different banks with ids must never collapse — while pre-id records keep the
+  // subject::name composite so id-less copies of one upload still converge to one.
+  const bankId = (x) => x && typeof x === "object" ? (x.id ? "i:" + x.id : (x.subject || "") + "::" + (x.name || x.label || x.topic || JSON.stringify(x))) : JSON.stringify(x);
   const UNIONS = {
     "fc-user": byField("id"),
     "fc-deleted": setUnion(0),

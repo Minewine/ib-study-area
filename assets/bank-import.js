@@ -10,7 +10,7 @@
    which is fine: she re-pastes.
 
    finalize() produces EXACTLY the stored-bank shape the file-upload path builds
-   in author.html processContent (Object.assign(data, {name, uploaded}) +
+   in author.html processContent (Object.assign(data, {id, name, uploaded}) +
    label/subjectLabel defaults), so staged imports and file uploads are
    indistinguishable to the quiz engine. */
 (function () {
@@ -26,6 +26,13 @@
 
   const slug = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40);
 
+  // Stable unique id stamped onto every newly stored bank ("ub-" + base36 time + "-" +
+  // base36 random — the papers.js "pp-…" convention): the stored name is unique only per
+  // device at import time, so two devices uploading the same topic would collide in the
+  // sync union merge and share q-errors keys. finalize looks this up through NB.bankImport
+  // (not the closure) so tests can stub it and keep comparing full record shapes.
+  const newBankId = () => "ub-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 8);
+
   // "ai-<topic>.json", "-2"/"-3"… on collision with the stored banks' names
   function suggestName(data, existingNames) {
     const names = new Set(existingNames || []);
@@ -35,8 +42,13 @@
     return name;
   }
 
+  // The authoring prompt asks for raw JSON, but chatbots still often wrap the answer
+  // in a Markdown fence — strip one optional ``` fence (with optional language tag)
+  // before parsing, so a fenced paste doesn't fail before preview.
+  const FENCE = /^\s*```[a-zA-Z0-9_-]*\s*\n([\s\S]*?)\n?\s*```\s*$/;
   function parse(text) {
-    try { return { data: JSON.parse(text) }; }
+    const m = String(text || "").match(FENCE);
+    try { return { data: JSON.parse(m ? m[1] : text) }; }
     catch (e) { return { error: "invalid JSON — " + e.message }; }
   }
 
@@ -129,17 +141,17 @@
   }
 
   // → {ok, entry} | {error}. The entry mirrors author.html's processContent
-  // storage shape exactly (name/uploaded/label/subjectLabel defaults included).
+  // storage shape exactly (id/name/uploaded/label/subjectLabel defaults included).
   function finalize(staged) {
     if (!staged || !staged.data) return { error: "nothing staged" };
     const err = validate(staged);
     if (err) return { error: err };
     const data = staged.data;
-    const entry = Object.assign({}, data, { name: String(staged.name || "").trim() || suggestName(data, []), uploaded: new Date().toISOString().slice(0, 10) });
+    const entry = Object.assign({}, data, { id: NB.bankImport.newBankId(), name: String(staged.name || "").trim() || suggestName(data, []), uploaded: new Date().toISOString().slice(0, 10) });
     if (!entry.label) entry.label = data.topicLabel || entry.name;
     if (!entry.subjectLabel) entry.subjectLabel = data.subject;
     return { ok: true, entry: entry };
   }
 
-  NB.bankImport = { MAX_EDIT_ITEMS, stage, validate, editItem, removeItem, finalize, suggestName };
+  NB.bankImport = { MAX_EDIT_ITEMS, stage, validate, editItem, removeItem, finalize, suggestName, newBankId };
 })();

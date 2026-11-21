@@ -16,10 +16,18 @@
   const clearEl = (el) => { [...el.children].forEach(k => k.remove()); el.innerHTML = ""; };
 
   // Bank id = file name without folder/extension ("library/questions/bio-x.json" -> "bio-x");
-  // inline (uploaded) banks get "user:<label>". Used for topic fallback + error keys.
-  const bankIdFor = (b) => b.file
-    ? String(b.file).split("/").pop().replace(/\.json$/i, "")
-    : "user:" + String(b.label || b.topicLabel || "bank").toLowerCase().replace(/\W+/g, "-");
+  // uploaded banks prefer the explicit stable id ("ub-…") stamped at upload — the stored
+  // name is unique only per device, so name-derived ids collide across devices — then that
+  // stored name ("ai-photosynthesis.json"), and only legacy uploads without either fall
+  // back to "user:<label>". Used for topic fallback + error keys — the id must be stable
+  // AND unique per bank, because imports commonly reuse item ids (p01–p08): two sets that
+  // shared a label must not write into each other's history.
+  const bankIdFor = (b) => {
+    if (b && b.id) return String(b.id);
+    const f = b.name || b.file;
+    if (f) return String(f).split("/").pop().replace(/\.json$/i, "");
+    return "user:" + String(b.label || b.topicLabel || "bank").toLowerCase().replace(/\W+/g, "-");
+  };
 
   // Options that refer to other options by position ("Both A and B", "All of the above")
   // must keep their authored order; everything else is shuffled at render time.
@@ -105,10 +113,11 @@ async function init() {
     store.get("q-userbanks", []).forEach(b => {
       BANKS[b.subject] = BANKS[b.subject] || { label: b.subjectLabel || b.subject, banks: [] };
       BANKS[b.subject].banks.push({
-        file: null, label: b.label || b.topicLabel || "My bank",
+        file: null, id: b.id, name: b.name || "", label: b.label || b.topicLabel || "My bank",
         items: b.items, topicLabel: b.topicLabel || b.label || "My bank", inline: true,
         topic: b.topic, set: b.set, setOrder: b.setOrder, codes: b.codes
       });
+      migrateUserBankKeys(b); // pre-name keys "user:<label>#id" → "<stored-name>#id"
     });
     const subj = $("q-subject");
     Object.entries(BANKS).forEach(([key, b]) => {
@@ -284,7 +293,8 @@ async function init() {
   /* buildTopics(banks) → ordered topic nodes for the picker.
      banks: seeded entries {file, label, meta?} (meta = the parsed manifest
      entry; every field on it is optional) and inline uploads
-     {inline: true, items, label, topicLabel, topic?, set?, setOrder?, codes?}.
+     {inline: true, items, label, name?, topicLabel, topic?, set?, setOrder?, codes?}
+     (name = the stored bank's unique file name, preferred for error-key bank ids).
      Node: {topicKey, label, count, difficulties {unrated,easy,standard,hard},
      codes, sets: [{ref, name, order, count, paperStyle, calculatorFree}]}.
      - Seeded WITH meta: the pre-aggregated meta.topics[] entries drive the nodes
@@ -752,6 +762,33 @@ async function init() {
     return (it.bankId ? it.bankId + "#" : "") + (it.id || stemKey(it.stem));
   }
 
+  // Move a matched legacy record onto a bank-scoped key: merge into an existing record
+  // with the new key (attempts unioned, date range kept) or rename it in place. The
+  // legacyKey note lets the sync merge (assets/store.js) drop the same record when it
+  // comes back under its old key from another device's copy.
+  function absorbLegacyRecord(errs, legacy, newKey, bankId) {
+    const existing = errs.find(e => e && e.key === newKey);
+    if (existing) {
+      existing.attempts = (existing.attempts || 0) + (legacy.attempts || 0);
+      if ((legacy.firstMissed || "") && (!existing.firstMissed || legacy.firstMissed < existing.firstMissed)) existing.firstMissed = legacy.firstMissed;
+      if ((legacy.lastMissed || "") > (existing.lastMissed || "")) existing.lastMissed = legacy.lastMissed;
+      if (legacy.resolved === false) existing.resolved = false;
+      // same missing-field rule as the sync merge (assets/store.js errMerge): a record
+      // with no retired field at all (an old client) can't un-retire, but explicit values win
+      if (existing.retired === undefined && legacy.retired !== undefined) {
+        existing.retired = legacy.retired;
+        if (existing.retired) ["retiredReason", "retiredAt"].forEach(f => { if (existing[f] === undefined && legacy[f] !== undefined) existing[f] = legacy[f]; });
+      }
+      existing.ts = Math.max(existing.ts || 0, legacy.ts || 0, Date.now());
+      errs.splice(errs.indexOf(legacy), 1);
+    } else {
+      legacy.legacyKey = legacy.key;
+      legacy.key = newKey;
+      legacy.bankId = bankId;
+      legacy.ts = Date.now();
+    }
+  }
+
   // One-time, idempotent rename of legacy q-errors keys (bare "b01" or "stem-…") to bank-scoped
   // keys. A legacy record is only claimed by an item with the same id (or stem hash) AND the same
   // stem, so a collided id ("b01" exists in several banks) maps to the bank it really came from.
@@ -766,21 +803,33 @@ async function init() {
       const legacyKeys = [it.id, stemKey(it.stem)].filter(Boolean);
       const idx = errs.findIndex(e => e && legacyKeys.includes(e.key) && e.key.indexOf("#") < 0 && String(e.stem) === String(it.stem));
       if (idx < 0) return;
-      const legacy = errs[idx];
-      const existing = errs.find(e => e && e.key === newKey);
-      if (existing) {
-        existing.attempts = (existing.attempts || 0) + (legacy.attempts || 0);
-        if ((legacy.firstMissed || "") && (!existing.firstMissed || legacy.firstMissed < existing.firstMissed)) existing.firstMissed = legacy.firstMissed;
-        if ((legacy.lastMissed || "") > (existing.lastMissed || "")) existing.lastMissed = legacy.lastMissed;
-        if (legacy.resolved === false) existing.resolved = false;
-        existing.ts = Math.max(existing.ts || 0, legacy.ts || 0, Date.now());
-        errs.splice(idx, 1);
-      } else {
-        legacy.legacyKey = legacy.key;
-        legacy.key = newKey;
-        legacy.bankId = it.bankId;
-        legacy.ts = Date.now();
-      }
+      absorbLegacyRecord(errs, errs[idx], newKey, it.bankId);
+      changed = true;
+    });
+    if (changed) store.set("q-errors", errs);
+  }
+
+  // Same rename for records written before uploaded banks carried their stored name: keys were
+  // "user:<label-slug>#<id>" (bankIdFor's old inline fallback), so two sets that reused a label
+  // shared one history. Runs once per upload at load time; a record is only claimed by an item
+  // with the same id AND stem (a same-labeled set's items have different stems), and anything
+  // left unmatched stays as it is and remains reviewable. Histories already conflated under one
+  // shared key can't be split apart — they follow whichever stem matches first.
+  function migrateUserBankKeys(b) {
+    if (!b || !b.name || !Array.isArray(b.items)) return;
+    // legacy id exactly as the old BANKS entry spelled it: init defaulted its label
+    // to "My bank", so that was the last fallback the old keys were written with
+    const legacyBankId = "user:" + String(b.label || b.topicLabel || "My bank").toLowerCase().replace(/\W+/g, "-");
+    const bankId = bankIdFor(b);
+    if (bankId === legacyBankId) return;
+    const errs = store.get("q-errors", []);
+    if (!errs.length) return;
+    let changed = false;
+    b.items.forEach(it => {
+      if (!it || !it.id) return;
+      const idx = errs.findIndex(e => e && e.key === legacyBankId + "#" + it.id && String(e.stem) === String(it.stem));
+      if (idx < 0) return;
+      absorbLegacyRecord(errs, errs[idx], bankId + "#" + it.id, bankId);
       changed = true;
     });
     if (changed) store.set("q-errors", errs);
@@ -863,27 +912,39 @@ async function init() {
     $("q-confwrong-btn").addEventListener("click", () => startReview(true));
   }
 
+  // Pure picker for review sessions (exported for tests): which stored error records
+  // serve a review, plus the notices for the ones skipped. Retired records ("not
+  // relevant") are never served — not by the automatic paths, not by the Mistakes
+  // deep link (the log hides the Retry link on retired rows to match).
+  function pickReviewErrors(all, opts) {
+    if (opts.keys) {
+      const want = new Set(opts.keys);
+      const picked = all.filter(e => e && e.key && want.has(e.key));
+      const errs = picked.filter(e => !e.retired);
+      const bits = [];
+      const missing = want.size - picked.length; // unique keys — a duplicated key isn't "missing"
+      const retiredN = picked.length - errs.length;
+      if (missing) bits.push(`${missing} linked item(s) not found.`);
+      if (retiredN) bits.push(`${retiredN} linked item(s) skipped — marked \u201cnot relevant\u201d.`);
+      return { errs, bits, retiredN };
+    }
+    const errs = opts.confidentOnly
+      ? C.confidentWrongErrors(all).filter(e => !e.retired)
+      : all.filter(e => !e.resolved && !e.retired);
+    return { errs, bits: [], retiredN: 0 };
+  }
+
   // Review session. Back-compat: the argument is either the legacy boolean
   // (true = confident-but-wrong only) or an options object:
   //   {confidentOnly: bool} — as above;
   //   {keys: ["bank#id", …]} — build the session ONLY from the stored error records
-  //     with those keys (Mistakes page deep link, quiz.html?errkeys=…). Unknown keys
-  //     are skipped and reported with the same notice pattern startFromLink uses.
-  // Retired records ("not relevant") are never served by the automatic review paths.
+  //     with those keys (Mistakes page deep link, quiz.html?errkeys=…). Unknown or
+  //     skipped records are reported with the same notice pattern startFromLink uses.
+  // Which records serve (and that retired ones never do) is pickReviewErrors above.
   function startReview(confidentOnly) {
     const opts = (confidentOnly && typeof confidentOnly === "object") ? confidentOnly : { confidentOnly: confidentOnly === true };
-    let errs = null, bits = [];
-    if (opts.keys) {
-      const want = new Set(opts.keys);
-      errs = getErrors().filter(e => e && e.key && want.has(e.key));
-      const missing = opts.keys.length - errs.length;
-      if (missing) bits.push(`${missing} linked item(s) not found.`);
-      if (!errs.length) { $("q-error").textContent = "None of the questions picked from the mistake log could be found."; return false; }
-    } else if (opts.confidentOnly) {
-      errs = C.confidentWrongErrors(getErrors()).filter(e => !e.retired);
-    } else {
-      errs = getErrors().filter(e => !e.resolved && !e.retired);
-    }
+    const { errs, bits, retiredN } = pickReviewErrors(getErrors(), opts);
+    if (opts.keys && !errs.length) { $("q-error").textContent = "None of the questions picked from the mistake log could be found." + (retiredN ? ` (${retiredN} marked \u201cnot relevant\u201d.)` : ""); return false; }
     if (!errs.length) { $("q-error").textContent = "No missed questions to review \u2014 well done!"; return false; }
     const items = shuffle(errs).map(e => ({
       id: e.id, errKey: e.key, format: e.format, stem: e.stem,
@@ -916,7 +977,7 @@ async function init() {
   // test hook (node --test loads this file in a vm); the pure picker model
   // (buildTopics/taughtState/difficultyPass) is exported for the node tests
   window.NB = window.NB || {};
-  window.NB.quizEngine = { isActive, bankItems, buildTopics, taughtState, difficultyPass, DIFFICULTY_ORDER };
+  window.NB.quizEngine = { isActive, bankItems, buildTopics, taughtState, difficultyPass, DIFFICULTY_ORDER, pickReviewErrors, migrateUserBankKeys };
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();

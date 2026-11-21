@@ -8,8 +8,10 @@
      reflection? ≤500 chars
      retries?    [{ts, correct, conf?}] — capped at 20 by the quiz engine
      retired? / retiredReason? / retiredAt? — reversible soft-hide ("not relevant");
-                 restore removes the three fields and bumps ts; records are never
-                 hard-deleted here or in the sync/backup merge.
+                 restore writes an explicit retired:false (dropping reason/at) and
+                 bumps ts — the sync/backup merge reads a MISSING retired field as
+                 "written by a client predating the feature" and preserves the other
+                 side's retirement; records are never hard-deleted here or in merges.
    The page's own filter state lives in "mistakes-filters" (LOCAL_ONLY in
    assets/store.js — device-local, never synced, scoped per user). */
 (function () {
@@ -74,7 +76,10 @@
   function restore(key) {
     const errs = errors(); const e = find(errs, key);
     if (!e) return false;
-    delete e.retired; delete e.retiredReason; delete e.retiredAt;
+    // retired stays as an explicit false sentinel, not deleted: the record merge
+    // (assets/store.js errMerge) reads a record with NO retired field as written by a
+    // client predating the feature, and preserves the other side's "not relevant" state.
+    e.retired = false; delete e.retiredReason; delete e.retiredAt;
     e.ts = Date.now();
     return S.set(KEY, errs) !== false;
   }
@@ -141,7 +146,7 @@
       ${e.reflection ? `<div class="mk-reflect">${esc(String(e.reflection))}</div>` : ""}
       ${st === "retired" ? `<div class="mk-why muted">Not relevant${e.retiredReason ? ": " + esc(String(e.retiredReason)) : ""}.</div>` : ""}
       <div class="mk-actions">
-        <a class="btn mk-retry" href="quiz.html?errkeys=${encodeURIComponent(e.key)}">Retry this question</a>
+        ${st === "retired" ? "" : `<a class="btn mk-retry" href="quiz.html?errkeys=${encodeURIComponent(e.key)}">Retry this question</a>`}
         ${notes}
         <button class="btn mk-edit">Edit</button>
         ${st === "retired"
