@@ -1,0 +1,250 @@
+{
+ "subject": "biology-hl",
+ "topic": "bio-c1-3",
+ "topicLabel": "C1.3 Photosynthesis",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "C1.3"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "c13-x01",
+   "format": "mcq",
+   "topic": "bio-c1-3",
+   "topicLabel": "C1.3 Photosynthesis",
+   "difficulty": "easy",
+   "stem": "In photosynthesis, light energy is converted into:",
+   "choices": [
+    "Chemical energy in carbon compounds",
+    "Heat energy released to the air",
+    "Kinetic energy of water molecules",
+    "Electrical energy in the chloroplast"
+   ],
+   "answer": 0,
+   "note": "Light is transformed into chemical energy stored in glucose and other organic molecules."
+  },
+  {
+   "id": "c13-x02",
+   "format": "mcq",
+   "topic": "bio-c1-3",
+   "topicLabel": "C1.3 Photosynthesis",
+   "difficulty": "easy",
+   "stem": "The oxygen released in photosynthesis comes from:",
+   "choices": [
+    "Carbon dioxide",
+    "Glucose",
+    "Chlorophyll",
+    "Water"
+   ],
+   "answer": 3,
+   "note": "Photolysis splits water; the O₂ is a waste product. Isotope experiments with ¹⁸O confirmed this."
+  },
+  {
+   "id": "c13-x03",
+   "format": "mcq",
+   "topic": "bio-c1-3",
+   "topicLabel": "C1.3 Photosynthesis",
+   "difficulty": "easy",
+   "stem": "Chlorophyll appears green because it:",
+   "choices": [
+    "Absorbs green light most strongly",
+    "Emits green light when its electrons are excited",
+    "Reflects green light and absorbs red and blue",
+    "Absorbs all wavelengths of light equally"
+   ],
+   "answer": 2,
+   "note": "Chlorophyll absorbs mainly red and blue; green is reflected or transmitted."
+  },
+  {
+   "id": "c13-x04",
+   "format": "mcq",
+   "topic": "bio-c1-3",
+   "topicLabel": "C1.3 Photosynthesis",
+   "difficulty": "standard",
+   "stem": "An action spectrum shows:",
+   "choices": [
+    "The amount of light absorbed by each separate pigment",
+    "The rate of photosynthesis at each wavelength of light",
+    "The concentration of each pigment in a leaf",
+    "The wavelengths of light reaching the leaf"
+   ],
+   "answer": 1,
+   "note": "Absorption spectrum = light absorbed per wavelength; action spectrum = photosynthesis rate per wavelength. They match closely."
+  },
+  {
+   "id": "c13-x05",
+   "format": "mcq",
+   "topic": "bio-c1-3",
+   "topicLabel": "C1.3 Photosynthesis",
+   "difficulty": "standard",
+   "stem": "In paper chromatography of leaf pigments, the Rf value is:",
+   "choices": [
+    "Distance moved by the solvent ÷ distance moved by the pigment",
+    "Distance moved by the pigment ÷ distance moved by the solvent",
+    "Distance moved by the pigment × distance moved by the solvent",
+    "Distance from the origin to the bottom of the paper"
+   ],
+   "answer": 1,
+   "note": "Rf = pigment distance ÷ solvent front distance, always between 0 and 1."
+  },
+  {
+   "id": "c13-x06",
+   "format": "mcq",
+   "topic": "bio-c1-3",
+   "topicLabel": "C1.3 Photosynthesis",
+   "difficulty": "standard",
+   "stem": "At high light intensity, increasing the CO₂ concentration increases the rate of photosynthesis. This shows that:",
+   "choices": [
+    "CO₂ concentration was the limiting factor",
+    "Light intensity was the limiting factor at that point",
+    "Temperature was the limiting factor",
+    "No factor was limiting the rate"
+   ],
+   "answer": 0,
+   "note": "The factor in shortest supply limits the rate. If raising CO₂ raises the rate, CO₂ was limiting."
+  },
+  {
+   "id": "c13-x07",
+   "format": "mcq",
+   "topic": "bio-c1-3",
+   "topicLabel": "C1.3 Photosynthesis",
+   "difficulty": "standard",
+   "stem": "Growers add CO₂ to glasshouses mainly to:",
+   "choices": [
+    "Reduce the temperature inside the glasshouse",
+    "Kill insect pests that feed on the crop plants",
+    "Increase the water uptake by the roots",
+    "Increase the rate of photosynthesis and so the yield"
+   ],
+   "answer": 3,
+   "note": "CO₂ enrichment raises the rate when CO₂ is limiting, increasing growth, as long as light and temperature are not limiting."
+  },
+  {
+   "id": "c13-x08",
+   "format": "mcq",
+   "topic": "bio-c1-3",
+   "topicLabel": "C1.3 Photosynthesis",
+   "difficulty": "hard",
+   "stem": "In the light-dependent reactions, photolysis of water:",
+   "choices": [
+    "Produces the CO₂ that is fixed in the Calvin cycle",
+    "Supplies the energy that drives ATP synthase directly",
+    "Replaces the electrons lost by photosystem II",
+    "Reduces NADP using electrons from photosystem I"
+   ],
+   "answer": 2,
+   "note": "Excited electrons leave PS II; water splitting provides replacement electrons, plus protons and O₂."
+  },
+  {
+   "id": "c13-x09",
+   "format": "mcq",
+   "topic": "bio-c1-3",
+   "topicLabel": "C1.3 Photosynthesis",
+   "difficulty": "hard",
+   "stem": "In the Calvin cycle, the enzyme Rubisco catalyses:",
+   "choices": [
+    "The reduction of glycerate 3-phosphate to triose phosphate",
+    "The regeneration of RuBP using ATP",
+    "The splitting of water in the thylakoid lumen",
+    "The fixation of CO₂ onto ribulose bisphosphate (RuBP)"
+   ],
+   "answer": 3,
+   "note": "Rubisco joins CO₂ to RuBP (5C), forming two glycerate 3-phosphate (3C) molecules."
+  },
+  {
+   "id": "c13-x10",
+   "format": "mcq",
+   "topic": "bio-c1-3",
+   "topicLabel": "C1.3 Photosynthesis",
+   "difficulty": "hard",
+   "stem": "ATP and reduced NADP from the light-dependent reactions are used in the Calvin cycle to:",
+   "choices": [
+    "Fix carbon dioxide onto RuBP using Rubisco",
+    "Convert glycerate 3-phosphate into triose phosphate",
+    "Split water molecules into hydrogen and oxygen",
+    "Pump protons into the thylakoid space"
+   ],
+   "answer": 1,
+   "note": "GP is reduced to triose phosphate using NADPH and ATP. ATP is also used to regenerate RuBP."
+  },
+  {
+   "id": "c13-x11",
+   "format": "mcq",
+   "topic": "bio-c1-3",
+   "topicLabel": "C1.3 Photosynthesis",
+   "difficulty": "hard",
+   "stem": "If a plant in light is suddenly put in darkness, the concentration of RuBP in the chloroplast:",
+   "choices": [
+    "Falls, because ATP and NADPH are no longer made to regenerate it",
+    "Rises, because CO₂ fixation continues faster in the dark",
+    "Stays constant, because the Calvin cycle does not need light",
+    "Rises, because photolysis of water stops producing oxygen"
+   ],
+   "answer": 0,
+   "note": "Without light, no ATP/NADPH, so GP cannot be converted to TP and RuBP is not regenerated, while fixation still uses RuBP up."
+  },
+  {
+   "id": "c13-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-c1-3",
+   "topicLabel": "C1.3 Photosynthesis",
+   "difficulty": "standard",
+   "stem": "Explain how temperature affects the rate of photosynthesis.",
+   "markscheme": [
+    "Rate increases with temperature up to an optimum (1)",
+    "Because enzymes (e.g. Rubisco) and molecules move faster, more collisions (1)",
+    "Above the optimum, enzymes denature, so rate falls (1)"
+   ],
+   "tactic": "Same shape as an enzyme curve: name the enzyme-controlled stage."
+  },
+  {
+   "id": "c13-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-c1-3",
+   "topicLabel": "C1.3 Photosynthesis",
+   "difficulty": "standard",
+   "stem": "Outline how leaf pigments can be separated by chromatography.",
+   "markscheme": [
+    "Grind leaf with solvent/sand to extract pigments; spot a concentrated sample on a pencil origin line (1)",
+    "Place in solvent with the origin above the solvent level (1)",
+    "Pigments move different distances due to different solubility/attraction to paper; calculate Rf values (1)"
+   ],
+   "tactic": "Practical outlines: preparation, running, and how results are interpreted."
+  },
+  {
+   "id": "c13-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-c1-3",
+   "topicLabel": "C1.3 Photosynthesis",
+   "difficulty": "hard",
+   "stem": "Explain how ATP is produced by chemiosmosis in the chloroplast.",
+   "markscheme": [
+    "Excited electrons pass along the electron transport chain in the thylakoid membrane (1)",
+    "Energy is used to pump protons into the thylakoid space (1)",
+    "A proton gradient forms across the thylakoid membrane (1)",
+    "Protons diffuse back through ATP synthase into the stroma (1)",
+    "This drives phosphorylation of ADP to ATP (photophosphorylation) (1)"
+   ],
+   "tactic": "Trace the energy: light → electrons → proton gradient → ATP synthase."
+  },
+  {
+   "id": "c13-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-c1-3",
+   "topicLabel": "C1.3 Photosynthesis",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) Oxygen bubbles per minute from an aquatic plant at different light intensities (arbitrary units) and two CO₂ concentrations: low CO₂ — 10: 8, 20: 15, 40: 22, 60: 23, 80: 23; high CO₂ — 10: 8, 20: 16, 40: 30, 60: 41, 80: 44.\n(a) Identify the limiting factor at light intensity 10, with evidence. (b) Identify the limiting factor at light intensity 80 for low CO₂, with evidence. (c) Explain why bubble counting may underestimate the rate.",
+   "markscheme": [
+    "(a) Light intensity: both CO₂ levels give the same rate (8) at intensity 10 (1)",
+    "(b) CO₂ concentration: rate levels off at 23 for low CO₂ but is higher (44) with high CO₂ (1)",
+    "(c) Bubbles vary in size / some O₂ dissolves in water or is used in respiration (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

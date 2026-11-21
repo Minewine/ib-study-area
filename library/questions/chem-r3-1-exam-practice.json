@@ -1,0 +1,251 @@
+{
+ "subject": "chemistry-hl",
+ "topic": "chem-r3-1",
+ "topicLabel": "R3.1 Proton transfer reactions",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "R3.1"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "r31-x01",
+   "format": "mcq",
+   "topic": "chem-r3-1",
+   "topicLabel": "R3.1 Proton transfer reactions",
+   "difficulty": "easy",
+   "stem": "A Brønsted–Lowry acid is a:",
+   "choices": [
+    "Proton acceptor",
+    "Proton donor",
+    "Electron-pair donor",
+    "Hydroxide ion donor"
+   ],
+   "answer": 1,
+   "note": "Brønsted–Lowry: acids donate H⁺, bases accept H⁺. Electron-pair definitions are Lewis theory."
+  },
+  {
+   "id": "r31-x02",
+   "format": "mcq",
+   "topic": "chem-r3-1",
+   "topicLabel": "R3.1 Proton transfer reactions",
+   "difficulty": "easy",
+   "stem": "What is the conjugate base of H₂SO₄?",
+   "choices": [
+    "HSO₄⁻",
+    "SO₄²⁻",
+    "H₃SO₄⁺",
+    "H₂O"
+   ],
+   "answer": 0,
+   "note": "A conjugate pair differs by one H⁺: H₂SO₄ → HSO₄⁻ + H⁺."
+  },
+  {
+   "id": "r31-x03",
+   "format": "mcq",
+   "topic": "chem-r3-1",
+   "topicLabel": "R3.1 Proton transfer reactions",
+   "difficulty": "easy",
+   "stem": "What is the pH of 0.010 mol dm⁻³ HCl?",
+   "choices": [
+    "1.0",
+    "0.010",
+    "12.0",
+    "2.0"
+   ],
+   "answer": 3,
+   "note": "Strong acid fully dissociates: [H⁺] = 0.010 = 10⁻²; pH = −log[H⁺] = 2.0."
+  },
+  {
+   "id": "r31-x04",
+   "format": "mcq",
+   "topic": "chem-r3-1",
+   "topicLabel": "R3.1 Proton transfer reactions",
+   "difficulty": "standard",
+   "stem": "Which species is amphiprotic?",
+   "choices": [
+    "Cl⁻",
+    "NH₄⁺",
+    "HCO₃⁻",
+    "CO₃²⁻"
+   ],
+   "answer": 2,
+   "note": "HCO₃⁻ can donate a proton (→ CO₃²⁻) or accept one (→ H₂CO₃). Water and H₂PO₄⁻ are other examples."
+  },
+  {
+   "id": "r31-x05",
+   "format": "mcq",
+   "topic": "chem-r3-1",
+   "topicLabel": "R3.1 Proton transfer reactions",
+   "difficulty": "standard",
+   "stem": "Diluting a strong acid solution by a factor of 100 changes its pH by:",
+   "choices": [
+    "+2",
+    "−2",
+    "+100",
+    "+0.01"
+   ],
+   "answer": 0,
+   "note": "pH is logarithmic: [H⁺] falls by 10², so pH rises by 2."
+  },
+  {
+   "id": "r31-x06",
+   "format": "mcq",
+   "topic": "chem-r3-1",
+   "topicLabel": "R3.1 Proton transfer reactions",
+   "difficulty": "standard",
+   "stem": "0.10 mol dm⁻³ ethanoic acid has a higher pH than 0.10 mol dm⁻³ hydrochloric acid because ethanoic acid:",
+   "choices": [
+    "Has fewer hydrogen atoms per molecule",
+    "Is only partially dissociated",
+    "Is a stronger acid than HCl",
+    "Is fully dissociated in water"
+   ],
+   "answer": 1,
+   "note": "Weak acids dissociate only slightly, so [H⁺] is much lower than the acid concentration."
+  },
+  {
+   "id": "r31-x07",
+   "format": "mcq",
+   "topic": "chem-r3-1",
+   "topicLabel": "R3.1 Proton transfer reactions",
+   "difficulty": "standard",
+   "stem": "At 298 K, Kw = 1.0 × 10⁻¹⁴. What is the pH of 0.0010 mol dm⁻³ NaOH?",
+   "choices": [
+    "3.0",
+    "10.0",
+    "14.0",
+    "11.0"
+   ],
+   "answer": 3,
+   "note": "[OH⁻] = 10⁻³ → pOH = 3 → pH = 14 − 3 = 11.0."
+  },
+  {
+   "id": "r31-x08",
+   "format": "mcq",
+   "topic": "chem-r3-1",
+   "topicLabel": "R3.1 Proton transfer reactions",
+   "difficulty": "hard",
+   "stem": "A weak acid HA (0.10 mol dm⁻³) has Ka = 1.8 × 10⁻⁵. What is its pH?",
+   "choices": [
+    "4.74",
+    "1.00",
+    "2.87",
+    "5.74"
+   ],
+   "answer": 2,
+   "note": "[H⁺] = √(Ka × c) = √(1.8 × 10⁻⁶) = 1.34 × 10⁻³ → pH 2.87. 4.74 is pKa."
+  },
+  {
+   "id": "r31-x09",
+   "format": "mcq",
+   "topic": "chem-r3-1",
+   "topicLabel": "R3.1 Proton transfer reactions",
+   "difficulty": "hard",
+   "stem": "A buffer is made with equal concentrations of a weak acid (pKa 4.74) and its conjugate base. Its pH is:",
+   "choices": [
+    "7.00",
+    "2.37",
+    "4.74",
+    "9.26"
+   ],
+   "answer": 2,
+   "note": "pH = pKa + log([A⁻]/[HA]) = pKa when the ratio is 1. Also the half-equivalence point on a titration curve."
+  },
+  {
+   "id": "r31-x10",
+   "format": "mcq",
+   "topic": "chem-r3-1",
+   "topicLabel": "R3.1 Proton transfer reactions",
+   "difficulty": "hard",
+   "stem": "An aqueous solution of sodium ethanoate is:",
+   "choices": [
+    "Neutral, because it is a salt",
+    "Alkaline, because ethanoate ions accept protons from water",
+    "Acidic, because it contains a carboxylate group",
+    "Acidic, because sodium ions donate protons"
+   ],
+   "answer": 1,
+   "note": "CH₃COO⁻ + H₂O ⇌ CH₃COOH + OH⁻. Salts of weak acids and strong bases are alkaline."
+  },
+  {
+   "id": "r31-x11",
+   "format": "mcq",
+   "topic": "chem-r3-1",
+   "topicLabel": "R3.1 Proton transfer reactions",
+   "difficulty": "hard",
+   "stem": "In the titration of a weak acid with a strong base, the pH at the equivalence point is:",
+   "choices": [
+    "Exactly 7",
+    "Less than 7",
+    "Equal to the pKa",
+    "Greater than 7"
+   ],
+   "answer": 3,
+   "note": "At equivalence the solution contains the conjugate base (A⁻), which makes it alkaline. Choose an indicator such as phenolphthalein."
+  },
+  {
+   "id": "r31-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r3-1",
+   "topicLabel": "R3.1 Proton transfer reactions",
+   "difficulty": "standard",
+   "stem": "Identify the two conjugate acid–base pairs in NH₃ + H₂O ⇌ NH₄⁺ + OH⁻.",
+   "markscheme": [
+    "NH₄⁺ / NH₃ (acid / conjugate base) (1)",
+    "H₂O / OH⁻ (acid / conjugate base) (1)",
+    "Water acts as the acid here, donating H⁺ to ammonia (1)"
+   ],
+   "tactic": "Pair species that differ by exactly one H⁺."
+  },
+  {
+   "id": "r31-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r3-1",
+   "topicLabel": "R3.1 Proton transfer reactions",
+   "difficulty": "standard",
+   "stem": "Describe two experimental methods to distinguish between equal-concentration solutions of a strong acid and a weak acid.",
+   "markscheme": [
+    "Measure pH: the strong acid has the lower pH (1)",
+    "Measure electrical conductivity: the strong acid conducts better (more ions) (1)",
+    "React with Mg/CaCO₃: the strong acid gives faster gas production (1)"
+   ],
+   "tactic": "Each method: what you measure plus the expected difference."
+  },
+  {
+   "id": "r31-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "chem-r3-1",
+   "topicLabel": "R3.1 Proton transfer reactions",
+   "difficulty": "hard",
+   "stem": "A buffer contains 0.20 mol dm⁻³ sodium ethanoate and 0.10 mol dm⁻³ ethanoic acid (pKa = 4.74). (a) Calculate its pH. (b) Explain how it resists a change in pH when a small amount of HCl is added.",
+   "markscheme": [
+    "(a) pH = 4.74 + log(0.20/0.10) (1)",
+    "= 5.04 (1)",
+    "(b) Added H⁺ reacts with CH₃COO⁻ to form CH₃COOH (1)",
+    "Ratio [A⁻]/[HA] changes only slightly, so pH changes very little (1)"
+   ],
+   "tactic": "Buffers: write the equation for the added acid (or base) reacting with the buffer component."
+  },
+  {
+   "id": "r31-x15",
+   "format": "written",
+   "marks": 5,
+   "topic": "chem-r3-1",
+   "topicLabel": "R3.1 Proton transfer reactions",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) 25.00 cm³ of an invented weak monoprotic acid was titrated with 0.100 mol dm⁻³ NaOH. pH readings: 0.00 cm³ 3.0; 5.00 cm³ 4.2; 10.00 cm³ 4.8; 20.00 cm³ 8.7 (steep rise); 25.00 cm³ 11.9.\n(a) Calculate the concentration of the acid (equivalence at 20.00 cm³). (b) Estimate pKa, explaining your method. (c) Use the initial pH to estimate Ka and compare with (b).",
+   "markscheme": [
+    "(a) n(NaOH) = 0.100 × 0.02000 = 2.00 × 10⁻³ mol (1)",
+    "c = 2.00 × 10⁻³ ÷ 0.02500 = 0.0800 mol dm⁻³ (1)",
+    "(b) At half-equivalence (10.00 cm³) pH = pKa, so pKa ≈ 4.8 (1)",
+    "(c) Ka ≈ [H⁺]²/c = (10⁻³)² ÷ 0.0800 = 1.25 × 10⁻⁵ (pKa 4.9), close to (b) (1)",
+    "Any difference due to the approximations / reading the curve (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

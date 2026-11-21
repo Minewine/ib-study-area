@@ -1,0 +1,249 @@
+{
+ "subject": "chemistry-hl",
+ "topic": "chem-r1-3",
+ "topicLabel": "R1.3 Energy from fuels",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "R1.3"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "r13-x01",
+   "format": "mcq",
+   "topic": "chem-r1-3",
+   "topicLabel": "R1.3 Energy from fuels",
+   "difficulty": "easy",
+   "stem": "Complete combustion of a hydrocarbon produces:",
+   "choices": [
+    "Carbon dioxide and water",
+    "Carbon monoxide and water",
+    "Carbon and hydrogen",
+    "Carbon dioxide and hydrogen"
+   ],
+   "answer": 0,
+   "note": "With enough oxygen, all C → CO₂ and all H → H₂O."
+  },
+  {
+   "id": "r13-x02",
+   "format": "mcq",
+   "topic": "chem-r1-3",
+   "topicLabel": "R1.3 Energy from fuels",
+   "difficulty": "easy",
+   "stem": "Incomplete combustion is a problem mainly because it:",
+   "choices": [
+    "Releases more energy than complete combustion",
+    "Produces toxic carbon monoxide and soot",
+    "Uses up more oxygen than complete combustion",
+    "Produces only water vapour as waste"
+   ],
+   "answer": 1,
+   "note": "CO binds to haemoglobin; soot (C) damages lungs. Less energy is released per mole of fuel."
+  },
+  {
+   "id": "r13-x03",
+   "format": "mcq",
+   "topic": "chem-r1-3",
+   "topicLabel": "R1.3 Energy from fuels",
+   "difficulty": "easy",
+   "stem": "Which is a fossil fuel?",
+   "choices": [
+    "Ethanol from sugar cane",
+    "Biodiesel",
+    "Coal",
+    "Wood"
+   ],
+   "answer": 2,
+   "note": "Coal, crude oil and natural gas formed over millions of years. The others are renewable biofuels."
+  },
+  {
+   "id": "r13-x04",
+   "format": "mcq",
+   "topic": "chem-r1-3",
+   "topicLabel": "R1.3 Energy from fuels",
+   "difficulty": "standard",
+   "stem": "What is the balanced equation for the complete combustion of propane?",
+   "choices": [
+    "C₃H₈ + 3O₂ → 3CO₂ + 4H₂",
+    "C₃H₈ + 7O₂ → 3CO₂ + 4H₂O",
+    "2C₃H₈ + 7O₂ → 6CO + 8H₂O",
+    "C₃H₈ + 5O₂ → 3CO₂ + 4H₂O"
+   ],
+   "answer": 3,
+   "note": "3 C → 3CO₂; 8 H → 4H₂O; O atoms 6 + 4 = 10 → 5O₂."
+  },
+  {
+   "id": "r13-x05",
+   "format": "mcq",
+   "topic": "chem-r1-3",
+   "topicLabel": "R1.3 Energy from fuels",
+   "difficulty": "standard",
+   "stem": "Biofuels are described as renewable because:",
+   "choices": [
+    "They release no carbon dioxide when they burn",
+    "They have a higher specific energy than petrol",
+    "They do not need any land or water to produce",
+    "The plants they come from can be regrown in a short time"
+   ],
+   "answer": 3,
+   "note": "CO₂ released was recently absorbed by photosynthesis; they are not carbon-neutral overall because of farming and processing."
+  },
+  {
+   "id": "r13-x06",
+   "format": "mcq",
+   "topic": "chem-r1-3",
+   "topicLabel": "R1.3 Energy from fuels",
+   "difficulty": "standard",
+   "stem": "Specific energy is the energy released per:",
+   "choices": [
+    "Unit mass of fuel",
+    "Unit volume of fuel",
+    "Mole of fuel",
+    "Mole of oxygen used"
+   ],
+   "answer": 0,
+   "note": "Specific energy (kJ kg⁻¹) is per mass; energy density is per volume."
+  },
+  {
+   "id": "r13-x07",
+   "format": "mcq",
+   "topic": "chem-r1-3",
+   "topicLabel": "R1.3 Energy from fuels",
+   "difficulty": "standard",
+   "stem": "The enthalpy of combustion of methane is −891 kJ mol⁻¹ (M = 16.05 g mol⁻¹). Its specific energy is about:",
+   "choices": [
+    "14 300 kJ g⁻¹",
+    "55.5 kJ g⁻¹",
+    "0.018 kJ g⁻¹",
+    "891 kJ g⁻¹"
+   ],
+   "answer": 1,
+   "note": "891 ÷ 16.05 = 55.5 kJ g⁻¹ (55 500 kJ kg⁻¹)."
+  },
+  {
+   "id": "r13-x08",
+   "format": "mcq",
+   "topic": "chem-r1-3",
+   "topicLabel": "R1.3 Energy from fuels",
+   "difficulty": "hard",
+   "stem": "Carbon dioxide is a greenhouse gas because its molecules:",
+   "choices": [
+    "Absorb ultraviolet radiation from the Sun",
+    "Reflect visible light back into space",
+    "Absorb infrared radiation re-emitted by the Earth",
+    "Destroy ozone in the upper atmosphere"
+   ],
+   "answer": 2,
+   "note": "Bond vibrations in CO₂ absorb IR emitted by the warm Earth, then re-emit it, warming the lower atmosphere."
+  },
+  {
+   "id": "r13-x09",
+   "format": "mcq",
+   "topic": "chem-r1-3",
+   "topicLabel": "R1.3 Energy from fuels",
+   "difficulty": "hard",
+   "stem": "In a hydrogen–oxygen fuel cell with an acidic electrolyte, the reaction at the anode is:",
+   "choices": [
+    "O₂ + 4H⁺ + 4e⁻ → 2H₂O",
+    "2H₂O → O₂ + 4H⁺ + 4e⁻",
+    "2H⁺ + 2e⁻ → H₂",
+    "H₂ → 2H⁺ + 2e⁻"
+   ],
+   "answer": 3,
+   "note": "Oxidation at the anode: hydrogen loses electrons. Oxygen is reduced at the cathode."
+  },
+  {
+   "id": "r13-x10",
+   "format": "mcq",
+   "topic": "chem-r1-3",
+   "topicLabel": "R1.3 Energy from fuels",
+   "difficulty": "hard",
+   "stem": "Compared with petrol, ethanol releases less energy per gram when burned mainly because:",
+   "choices": [
+    "It has stronger intermolecular forces",
+    "It is already partly oxidised, as it contains oxygen",
+    "It is a liquid rather than a gas",
+    "It produces more water per mole"
+   ],
+   "answer": 1,
+   "note": "Ethanol (C₂H₅OH) contains an O atom; less energy is released as fewer bonds to O are formed per gram."
+  },
+  {
+   "id": "r13-x11",
+   "format": "mcq",
+   "topic": "chem-r1-3",
+   "topicLabel": "R1.3 Energy from fuels",
+   "difficulty": "hard",
+   "stem": "Which reason best explains why the efficiency of electricity from a fuel cell can exceed that from burning the same fuel in a power station?",
+   "choices": [
+    "The fuel cell releases more energy per mole of fuel",
+    "The fuel cell uses a catalyst that increases ΔH",
+    "Chemical energy is converted directly to electrical energy, with less heat loss",
+    "The fuel cell produces no products at all"
+   ],
+   "answer": 2,
+   "note": "Power stations convert chemical → heat → kinetic → electrical, losing heat at each step."
+  },
+  {
+   "id": "r13-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r1-3",
+   "topicLabel": "R1.3 Energy from fuels",
+   "difficulty": "standard",
+   "stem": "Compare the advantages and disadvantages of using coal and natural gas as fuels.",
+   "markscheme": [
+    "Coal: more abundant/cheaper in many places (1)",
+    "Coal releases more CO₂ per unit energy, plus SO₂ and particulates (1)",
+    "Natural gas: burns more cleanly, less CO₂ per unit energy (1)",
+    "Both are non-renewable fossil fuels (1)"
+   ],
+   "tactic": "Balance: at least one point for and against each fuel."
+  },
+  {
+   "id": "r13-x13",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-r1-3",
+   "topicLabel": "R1.3 Energy from fuels",
+   "difficulty": "standard",
+   "stem": "Write equations for the incomplete combustion of methane to form (a) carbon monoxide and (b) carbon.",
+   "markscheme": [
+    "2CH₄ + 3O₂ → 2CO + 4H₂O (1)",
+    "CH₄ + O₂ → C + 2H₂O (1)"
+   ],
+   "tactic": "Balance O last; incomplete combustion uses less oxygen per mole of fuel."
+  },
+  {
+   "id": "r13-x14",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r1-3",
+   "topicLabel": "R1.3 Energy from fuels",
+   "difficulty": "hard",
+   "stem": "Explain why biofuels are not completely carbon-neutral.",
+   "markscheme": [
+    "CO₂ released on burning was absorbed in photosynthesis (so partly neutral) (1)",
+    "Fossil fuels are used in farming, fertiliser production, transport and processing (1)",
+    "Land-use change (e.g. deforestation) releases additional CO₂ (1)"
+   ],
+   "tactic": "Evaluate: state the neutral argument, then what it misses."
+  },
+  {
+   "id": "r13-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "chem-r1-3",
+   "topicLabel": "R1.3 Energy from fuels",
+   "difficulty": "hard",
+   "stem": "Data response. Specific energies of four fuels (kJ g⁻¹, calculated from enthalpies of combustion) and CO₂ released per kJ (mg kJ⁻¹): hydrogen 141, 0; methane 55.5, 49.4; octane 47.9, 64.4; ethanol 29.7, 64.4.\n(a) Calculate the mass of octane needed to release 1000 kJ. (b) Which fuel releases the least CO₂ per kJ among the carbon-based fuels? (c) Suggest two reasons why hydrogen is not yet widely used in cars despite its high specific energy.",
+   "markscheme": [
+    "(a) 1000 ÷ 47.9 = 20.9 g (1)",
+    "(b) Methane (49.4 mg kJ⁻¹) (1)",
+    "(c) Hydrogen is a gas with low energy density, so needs high-pressure storage (1)",
+    "Mostly produced from fossil fuels / lack of refuelling infrastructure / safety (flammability) (1)"
+   ],
+   "tactic": "Data questions: quote the values you use, with units, and name the fuel in your answer."
+  }
+ ]
+}

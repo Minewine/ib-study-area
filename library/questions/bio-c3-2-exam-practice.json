@@ -1,0 +1,253 @@
+{
+ "subject": "biology-hl",
+ "topic": "bio-c3-2",
+ "topicLabel": "C3.2 Defence against disease",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "C3.2"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "c32-x01",
+   "format": "mcq",
+   "topic": "bio-c3-2",
+   "topicLabel": "C3.2 Defence against disease",
+   "difficulty": "easy",
+   "stem": "A pathogen is:",
+   "choices": [
+    "An organism or virus that causes disease",
+    "Any microorganism living in the body",
+    "A protein that triggers antibody production",
+    "A white blood cell that destroys bacteria"
+   ],
+   "answer": 0,
+   "note": "Pathogens include viruses, bacteria, fungi and protists. An antigen is the molecule recognised by the immune system."
+  },
+  {
+   "id": "c32-x02",
+   "format": "mcq",
+   "topic": "bio-c3-2",
+   "topicLabel": "C3.2 Defence against disease",
+   "difficulty": "easy",
+   "stem": "Which is part of the body's first line of defence?",
+   "choices": [
+    "Antibodies made by plasma cells",
+    "Skin and mucous membranes",
+    "Phagocytes engulfing bacteria",
+    "Memory B cells in lymph nodes"
+   ],
+   "answer": 1,
+   "note": "Physical/chemical barriers stop entry. Phagocytes are innate but act after entry; antibodies belong to the adaptive response."
+  },
+  {
+   "id": "c32-x03",
+   "format": "mcq",
+   "topic": "bio-c3-2",
+   "topicLabel": "C3.2 Defence against disease",
+   "difficulty": "easy",
+   "stem": "Antibiotics are effective against:",
+   "choices": [
+    "Viruses but not bacteria",
+    "Both bacteria and viruses",
+    "Neither bacteria nor viruses",
+    "Bacteria but not viruses"
+   ],
+   "answer": 3,
+   "note": "Antibiotics target bacterial processes (e.g. cell wall, 70S ribosomes). Viruses use host cell machinery, so they are not affected."
+  },
+  {
+   "id": "c32-x04",
+   "format": "mcq",
+   "topic": "bio-c3-2",
+   "topicLabel": "C3.2 Defence against disease",
+   "difficulty": "standard",
+   "stem": "During blood clotting, the role of thrombin is to:",
+   "choices": [
+    "Release clotting factors from platelets",
+    "Make antibodies against the invading pathogen",
+    "Convert soluble fibrinogen into insoluble fibrin",
+    "Dissolve the clot once the damaged wound has healed"
+   ],
+   "answer": 2,
+   "note": "Clotting factors from platelets and damaged tissue activate thrombin, which converts fibrinogen → fibrin threads that trap cells."
+  },
+  {
+   "id": "c32-x05",
+   "format": "mcq",
+   "topic": "bio-c3-2",
+   "topicLabel": "C3.2 Defence against disease",
+   "difficulty": "standard",
+   "stem": "Phagocytes are part of the innate immune system because they:",
+   "choices": [
+    "Make antibodies specific to one antigen",
+    "Respond in the same non-specific way to any pathogen",
+    "Remember specific pathogens from earlier infections of the body",
+    "Only respond after vaccination"
+   ],
+   "answer": 1,
+   "note": "Innate = non-specific and unchanged by exposure. Adaptive = specific, with memory."
+  },
+  {
+   "id": "c32-x06",
+   "format": "mcq",
+   "topic": "bio-c3-2",
+   "topicLabel": "C3.2 Defence against disease",
+   "difficulty": "standard",
+   "stem": "Activation of a B lymphocyte to divide into plasma cells requires:",
+   "choices": [
+    "Binding of any antigen to any receptor on its surface",
+    "Engulfing a pathogen by phagocytosis and then digesting it completely",
+    "Exposure to an antibiotic that kills the pathogen",
+    "Binding of its antigen and signals from an activated helper T cell"
+   ],
+   "answer": 3,
+   "note": "Both antigen binding and helper T cell activation are needed; clonal selection then produces many plasma cells."
+  },
+  {
+   "id": "c32-x07",
+   "format": "mcq",
+   "topic": "bio-c3-2",
+   "topicLabel": "C3.2 Defence against disease",
+   "difficulty": "standard",
+   "stem": "Memory cells give long-lasting immunity because they:",
+   "choices": [
+    "Persist and respond quickly with many antibodies on re-infection",
+    "Produce large amounts of antibody continuously throughout life",
+    "Destroy pathogens by phagocytosis as soon as they enter",
+    "Stop pathogens from crossing the skin barrier"
+   ],
+   "answer": 0,
+   "note": "On second exposure memory cells divide rapidly, giving a faster, larger secondary response."
+  },
+  {
+   "id": "c32-x08",
+   "format": "mcq",
+   "topic": "bio-c3-2",
+   "topicLabel": "C3.2 Defence against disease",
+   "difficulty": "standard",
+   "stem": "Zoonoses are diseases that:",
+   "choices": [
+    "Spread only between plants",
+    "Are caused only by bacteria",
+    "Pass from other animals to humans",
+    "Cannot ever be passed on by contact"
+   ],
+   "answer": 2,
+   "note": "Examples include tuberculosis, rabies, COVID-19. Many new infectious diseases are zoonotic."
+  },
+  {
+   "id": "c32-x09",
+   "format": "mcq",
+   "topic": "bio-c3-2",
+   "topicLabel": "C3.2 Defence against disease",
+   "difficulty": "hard",
+   "stem": "HIV reduces the ability to fight infections mainly because it:",
+   "choices": [
+    "Infects red blood cells and so reduces the oxygen carried to tissues",
+    "Destroys platelets, so blood does not clot",
+    "Directly kills all antibodies in the blood plasma",
+    "Infects and destroys helper T cells, so fewer antibodies are made"
+   ],
+   "answer": 3,
+   "note": "Without helper T cells, B cells are not activated; AIDS follows, with opportunistic infections."
+  },
+  {
+   "id": "c32-x10",
+   "format": "mcq",
+   "topic": "bio-c3-2",
+   "topicLabel": "C3.2 Defence against disease",
+   "difficulty": "hard",
+   "stem": "Herd immunity protects unvaccinated people because:",
+   "choices": [
+    "They receive antibodies from vaccinated people nearby",
+    "Vaccinated people kill pathogens in the air around them",
+    "So many people are immune that the pathogen cannot spread easily",
+    "The pathogen mutates to a harmless form in vaccinated people"
+   ],
+   "answer": 2,
+   "note": "When a large proportion are immune, chains of transmission are broken, protecting those who cannot be vaccinated."
+  },
+  {
+   "id": "c32-x11",
+   "format": "mcq",
+   "topic": "bio-c3-2",
+   "topicLabel": "C3.2 Defence against disease",
+   "difficulty": "hard",
+   "stem": "Antibiotic resistance in a bacterial population increases mainly because:",
+   "choices": [
+    "Resistant variants survive treatment and reproduce, so their alleles become common",
+    "Bacteria develop resistance in response to the antibiotic",
+    "Antibiotics cause mutations that make bacteria resistant",
+    "Patients become immune to the antibiotic after using it many times, so it stops working"
+   ],
+   "answer": 0,
+   "note": "Natural selection: random mutations give resistance; the antibiotic kills susceptible cells; resistant ones survive and multiply."
+  },
+  {
+   "id": "c32-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-c3-2",
+   "topicLabel": "C3.2 Defence against disease",
+   "difficulty": "standard",
+   "stem": "Explain how vaccines provide immunity.",
+   "markscheme": [
+    "Vaccine contains antigens (weakened/inactivated pathogen, or mRNA coding for an antigen) (1)",
+    "Triggers a primary immune response: specific B and T cells activated, antibodies made (1)",
+    "Memory cells form and remain (1)",
+    "Faster, larger secondary response if the real pathogen infects (1)"
+   ],
+   "tactic": "Chain of events: antigen → response → memory → protection."
+  },
+  {
+   "id": "c32-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-c3-2",
+   "topicLabel": "C3.2 Defence against disease",
+   "difficulty": "standard",
+   "stem": "Outline the role of antibodies in defence against pathogens.",
+   "markscheme": [
+    "Antibodies bind to specific antigens on the pathogen (1)",
+    "They make pathogens clump together (agglutination) / neutralise toxins (1)",
+    "They mark pathogens for phagocytes (opsonisation) / activate complement (1)"
+   ],
+   "tactic": "Give the binding step, then at least two consequences."
+  },
+  {
+   "id": "c32-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-c3-2",
+   "topicLabel": "C3.2 Defence against disease",
+   "difficulty": "hard",
+   "stem": "Compare the primary and secondary immune responses.",
+   "markscheme": [
+    "Both produce specific antibodies against the antigen (1)",
+    "Secondary response is faster (shorter lag) (1)",
+    "Secondary produces more antibody / higher peak (1)",
+    "Secondary lasts longer (1)",
+    "Secondary is due to memory cells from the primary response (1)"
+   ],
+   "tactic": "Compare graphs: lag time, peak, duration, plus the reason."
+  },
+  {
+   "id": "c32-x15",
+   "format": "written",
+   "marks": 5,
+   "topic": "bio-c3-2",
+   "topicLabel": "C3.2 Defence against disease",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) Cases of an invented infectious disease per 100 000 people in four regions, with vaccination coverage: Region A 95% coverage, 2 cases; B 85%, 15 cases; C 70%, 120 cases; D 50%, 410 cases.\n(a) Describe the relationship between coverage and cases. (b) Calculate how many times more cases occur in D than in A. (c) Explain why cases rise sharply below about 85% coverage. (d) Suggest one other factor that could explain differences between regions.",
+   "markscheme": [
+    "(a) Higher coverage, fewer cases (negative correlation), not linear (1)",
+    "(b) 410 ÷ 2 = 205 times (1)",
+    "(c) Below a threshold there are enough susceptible people for the pathogen to keep spreading / herd immunity is lost (1)",
+    "Each infected person can infect more than one other (1)",
+    "(d) e.g. population density, healthcare access, hygiene, travel, age structure (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}
