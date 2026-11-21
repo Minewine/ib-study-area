@@ -1,0 +1,251 @@
+{
+ "subject": "biology-hl",
+ "topic": "bio-c4-2",
+ "topicLabel": "C4.2 Transfer of energy and matter",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "C4.2"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "c42-x01",
+   "format": "mcq",
+   "topic": "bio-c4-2",
+   "topicLabel": "C4.2 Transfer of energy and matter",
+   "difficulty": "easy",
+   "stem": "Ecosystems are described as open systems because:",
+   "choices": [
+    "Only energy can enter but matter cannot",
+    "Neither energy nor matter can enter or leave",
+    "Only matter cycles, so energy is not involved",
+    "Both energy and matter can enter and leave"
+   ],
+   "answer": 3,
+   "note": "Energy and matter can cross ecosystem boundaries (e.g. light in, heat out, nutrients carried by water)."
+  },
+  {
+   "id": "c42-x02",
+   "format": "mcq",
+   "topic": "bio-c4-2",
+   "topicLabel": "C4.2 Transfer of energy and matter",
+   "difficulty": "easy",
+   "stem": "The original source of energy for almost all ecosystems is:",
+   "choices": [
+    "Heat from the Earth's core",
+    "Glucose in the soil",
+    "Sunlight",
+    "Decomposers"
+   ],
+   "answer": 2,
+   "note": "Producers capture light energy in photosynthesis. Some deep-sea ecosystems rely on chemoautotrophs instead."
+  },
+  {
+   "id": "c42-x03",
+   "format": "mcq",
+   "topic": "bio-c4-2",
+   "topicLabel": "C4.2 Transfer of energy and matter",
+   "difficulty": "easy",
+   "stem": "In a food chain, the arrows show:",
+   "choices": [
+    "The direction of energy flow",
+    "Which organism eats the next one in the chain",
+    "The direction of predator movement",
+    "The number of organisms at each level"
+   ],
+   "answer": 0,
+   "note": "Arrows go from the food to the feeder, showing energy transfer."
+  },
+  {
+   "id": "c42-x04",
+   "format": "mcq",
+   "topic": "bio-c4-2",
+   "topicLabel": "C4.2 Transfer of energy and matter",
+   "difficulty": "standard",
+   "stem": "Chemoautotrophs differ from photoautotrophs because they:",
+   "choices": [
+    "Obtain their carbon compounds by eating other organisms",
+    "Use energy from oxidising inorganic chemicals to make carbon compounds",
+    "Use light energy but do not need carbon dioxide",
+    "Break down dead organic matter for energy"
+   ],
+   "answer": 1,
+   "note": "Chemoautotrophs (e.g. bacteria at hydrothermal vents) oxidise inorganic substances such as H₂S or Fe²⁺ to fix carbon."
+  },
+  {
+   "id": "c42-x05",
+   "format": "mcq",
+   "topic": "bio-c4-2",
+   "topicLabel": "C4.2 Transfer of energy and matter",
+   "difficulty": "standard",
+   "stem": "Energy is lost between trophic levels mainly as:",
+   "choices": [
+    "Heat from cell respiration",
+    "Light reflected by leaves",
+    "Chemical energy in the oxygen",
+    "Kinetic energy of wind"
+   ],
+   "answer": 0,
+   "note": "Respiration releases heat, which is not passed on. Undigested material and uneaten parts are also lost to the next level."
+  },
+  {
+   "id": "c42-x06",
+   "format": "mcq",
+   "topic": "bio-c4-2",
+   "topicLabel": "C4.2 Transfer of energy and matter",
+   "difficulty": "standard",
+   "stem": "A pyramid of energy can never be inverted because:",
+   "choices": [
+    "Producers are always much larger in size than their consumers",
+    "There are always more producers than consumers",
+    "Biomass increases at each trophic level",
+    "Energy is lost at each level, so less is available to the next"
+   ],
+   "answer": 3,
+   "note": "Only ~10% of energy passes on. Pyramids of numbers (and sometimes biomass) can be inverted; energy cannot."
+  },
+  {
+   "id": "c42-x07",
+   "format": "mcq",
+   "topic": "bio-c4-2",
+   "topicLabel": "C4.2 Transfer of energy and matter",
+   "difficulty": "standard",
+   "stem": "Producers capture 20 000 kJ m⁻² yr⁻¹. If about 10% passes to each level, the energy reaching secondary consumers is about:",
+   "choices": [
+    "2000 kJ m⁻² yr⁻¹",
+    "20 kJ m⁻² yr⁻¹",
+    "200 kJ m⁻² yr⁻¹",
+    "18 000 kJ m⁻² yr⁻¹"
+   ],
+   "answer": 2,
+   "note": "Primary consumers ≈ 2000; secondary consumers ≈ 200. Two transfers of 10%."
+  },
+  {
+   "id": "c42-x08",
+   "format": "mcq",
+   "topic": "bio-c4-2",
+   "topicLabel": "C4.2 Transfer of energy and matter",
+   "difficulty": "hard",
+   "stem": "Net primary production is:",
+   "choices": [
+    "The total energy fixed by photosynthesis in producers",
+    "Gross primary production minus energy lost in producer respiration",
+    "Energy passed from producers to primary consumers",
+    "Biomass of all consumers in an ecosystem"
+   ],
+   "answer": 1,
+   "note": "NPP = GPP − R. It is the energy (or biomass) available to consumers and decomposers."
+  },
+  {
+   "id": "c42-x09",
+   "format": "mcq",
+   "topic": "bio-c4-2",
+   "topicLabel": "C4.2 Transfer of energy and matter",
+   "difficulty": "hard",
+   "stem": "Food chains rarely have more than four or five trophic levels because:",
+   "choices": [
+    "Top predators would eat each other until the population went extinct",
+    "Decomposers break down energy at higher levels",
+    "Carbon is lost at each level as carbon dioxide",
+    "Too little energy remains at higher levels to support a population"
+   ],
+   "answer": 3,
+   "note": "Energy losses are cumulative; after a few transfers too little energy is left to sustain another level."
+  },
+  {
+   "id": "c42-x10",
+   "format": "mcq",
+   "topic": "bio-c4-2",
+   "topicLabel": "C4.2 Transfer of energy and matter",
+   "difficulty": "hard",
+   "stem": "Which process removes carbon dioxide from the atmosphere?",
+   "choices": [
+    "Photosynthesis",
+    "Combustion of fossil fuels",
+    "Respiration by decomposers",
+    "Release from volcanoes"
+   ],
+   "answer": 0,
+   "note": "Photosynthesis fixes CO₂ into organic compounds. The others add CO₂ to the atmosphere."
+  },
+  {
+   "id": "c42-x11",
+   "format": "mcq",
+   "topic": "bio-c4-2",
+   "topicLabel": "C4.2 Transfer of energy and matter",
+   "difficulty": "hard",
+   "stem": "The annual rise and fall in the Keeling curve (atmospheric CO₂ at Mauna Loa) is explained by:",
+   "choices": [
+    "Burning more fossil fuels in winter each year",
+    "Seasonal changes in photosynthesis in the northern hemisphere",
+    "Changes in the Sun's output over the year",
+    "Volcanic eruptions that happen each spring"
+   ],
+   "answer": 1,
+   "note": "More land and plants in the north; summer photosynthesis lowers CO₂, winter raises it. The overall upward trend is from fossil fuel combustion."
+  },
+  {
+   "id": "c42-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-c4-2",
+   "topicLabel": "C4.2 Transfer of energy and matter",
+   "difficulty": "standard",
+   "stem": "Explain why the efficiency of energy transfer between trophic levels is low.",
+   "markscheme": [
+    "Energy is lost as heat from respiration (1)",
+    "Not all parts of an organism are eaten (e.g. bones, roots) (1)",
+    "Not all food is digested/absorbed; lost in faeces (1)",
+    "Energy in dead organisms passes to decomposers (1)"
+   ],
+   "tactic": "Give at least three distinct losses."
+  },
+  {
+   "id": "c42-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-c4-2",
+   "topicLabel": "C4.2 Transfer of energy and matter",
+   "difficulty": "standard",
+   "stem": "Outline the role of decomposers in recycling carbon.",
+   "markscheme": [
+    "Decomposers (saprotrophs) feed on dead organic matter/waste (1)",
+    "They secrete enzymes and absorb the products (1)",
+    "Respiration releases carbon as CO₂ back to the atmosphere (1)"
+   ],
+   "tactic": "Cycles: say where carbon comes from, the process, and where it goes."
+  },
+  {
+   "id": "c42-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-c4-2",
+   "topicLabel": "C4.2 Transfer of energy and matter",
+   "difficulty": "hard",
+   "stem": "Distinguish between gross primary production and net primary production, and explain why NPP is higher in tropical rainforests than in deserts.",
+   "markscheme": [
+    "GPP = total energy/biomass fixed by photosynthesis (1)",
+    "NPP = GPP minus the energy used by producers in respiration (1)",
+    "Rainforests have more water, warmth and light all year (1)",
+    "so more photosynthesis/more producer biomass per unit area (1)"
+   ],
+   "tactic": "Define both terms first; then link climate to the rate of photosynthesis."
+  },
+  {
+   "id": "c42-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-c4-2",
+   "topicLabel": "C4.2 Transfer of energy and matter",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) Energy flow in an invented grassland (kJ m⁻² yr⁻¹): producers GPP 24 000, producer respiration 14 000; primary consumers take in 1 500, of which 900 is lost in faeces and 450 in respiration.\n(a) Calculate the NPP of the producers. (b) Calculate the percentage of NPP taken in by primary consumers. (c) Calculate the energy available as growth (secondary production) of primary consumers. (d) Suggest why this efficiency is low for herbivores.",
+   "markscheme": [
+    "(a) 24 000 − 14 000 = 10 000 (1)",
+    "(b) 1500 ÷ 10 000 × 100 = 15% (1)",
+    "(c) 1500 − 900 − 450 = 150 kJ m⁻² yr⁻¹ (1)",
+    "(d) Plant material (cellulose, lignin) is hard to digest, so much is lost in faeces (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

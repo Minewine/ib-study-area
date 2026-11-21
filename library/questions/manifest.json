@@ -2313,5 +2313,309 @@
     }
    }
   ]
+ },
+ {
+  "file": "library/questions/bio-c1-3-exam-practice.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL",
+  "label": "C1.3 Photosynthesis — exam practice (mixed difficulty, written + data response)",
+  "topic": "bio-c1-3",
+  "topicLabel": "C1.3 Photosynthesis",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "C1.3"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "bio-c1-3",
+    "topicLabel": "C1.3 Photosynthesis",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 6,
+     "hard": 6
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/bio-c3-2-exam-practice.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL",
+  "label": "C3.2 Defence against disease — exam practice (mixed difficulty, written + data response)",
+  "topic": "bio-c3-2",
+  "topicLabel": "C3.2 Defence against disease",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "C3.2"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "bio-c3-2",
+    "topicLabel": "C3.2 Defence against disease",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 7,
+     "hard": 5
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/bio-c4-2-exam-practice.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL",
+  "label": "C4.2 Transfer of energy and matter — exam practice (mixed difficulty, written + data response)",
+  "topic": "bio-c4-2",
+  "topicLabel": "C4.2 Transfer of energy and matter",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "C4.2"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "bio-c4-2",
+    "topicLabel": "C4.2 Transfer of energy and matter",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 6,
+     "hard": 6
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/bio-d1-2-exam-practice.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL",
+  "label": "D1.2 Protein synthesis — exam practice (mixed difficulty, written + data response)",
+  "topic": "bio-d1-2",
+  "topicLabel": "D1.2 Protein synthesis",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "D1.2"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "bio-d1-2",
+    "topicLabel": "D1.2 Protein synthesis",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 6,
+     "hard": 6
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/bio-d2-2-exam-practice.json",
+  "subject": "biology-hl",
+  "subjectLabel": "Biology HL",
+  "label": "D2.2 Gene expression (additional higher level) — exam practice (mixed difficulty, written + data response)",
+  "topic": "bio-d2-2",
+  "topicLabel": "D2.2 Gene expression (additional higher level)",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "D2.2"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "bio-d2-2",
+    "topicLabel": "D2.2 Gene expression (additional higher level)",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 6,
+     "hard": 6
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/chem-r1-3-exam-practice.json",
+  "subject": "chemistry-hl",
+  "subjectLabel": "Chemistry HL",
+  "label": "R1.3 Energy from fuels — exam practice (mixed difficulty, written + data response)",
+  "topic": "chem-r1-3",
+  "topicLabel": "R1.3 Energy from fuels",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "R1.3"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "chem-r1-3",
+    "topicLabel": "R1.3 Energy from fuels",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 6,
+     "hard": 6
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/chem-r3-1-exam-practice.json",
+  "subject": "chemistry-hl",
+  "subjectLabel": "Chemistry HL",
+  "label": "R3.1 Proton transfer reactions — exam practice (mixed difficulty, written + data response)",
+  "topic": "chem-r3-1",
+  "topicLabel": "R3.1 Proton transfer reactions",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "R3.1"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "chem-r3-1",
+    "topicLabel": "R3.1 Proton transfer reactions",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 6,
+     "hard": 6
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/chem-r3-2-exam-practice.json",
+  "subject": "chemistry-hl",
+  "subjectLabel": "Chemistry HL",
+  "label": "R3.2 Electron transfer reactions — exam practice (mixed difficulty, written + data response)",
+  "topic": "chem-r3-2",
+  "topicLabel": "R3.2 Electron transfer reactions",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "R3.2"
+  ],
+  "counts": {
+   "mcq": 11,
+   "written": 4,
+   "total": 15
+  },
+  "topics": [
+   {
+    "topic": "chem-r3-2",
+    "topicLabel": "R3.2 Electron transfer reactions",
+    "count": 15,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 6,
+     "hard": 6
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/math-aa-further-differentiation-exam-practice.json",
+  "subject": "math-aa-sl",
+  "subjectLabel": "Math AA SL",
+  "label": "Further differentiation (5.6–5.8) — exam practice (mixed difficulty, written + data response)",
+  "topic": "math-y12-further-differentiation",
+  "topicLabel": "Further differentiation (5.6–5.8)",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "5.6",
+   "5.7",
+   "5.8"
+  ],
+  "counts": {
+   "mcq": 12,
+   "written": 4,
+   "total": 16
+  },
+  "topics": [
+   {
+    "topic": "math-y12-further-differentiation",
+    "topicLabel": "Further differentiation (5.6–5.8)",
+    "count": 16,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 7,
+     "hard": 6
+    }
+   }
+  ]
+ },
+ {
+  "file": "library/questions/math-aa-integration-exam-practice.json",
+  "subject": "math-aa-sl",
+  "subjectLabel": "Math AA SL",
+  "label": "Integration (5.5, 5.10, 5.11) — exam practice (mixed difficulty, written + data response)",
+  "topic": "math-y12-integration",
+  "topicLabel": "Integration (5.5, 5.10, 5.11)",
+  "set": "Exam practice — mixed difficulty",
+  "codes": [
+   "5.5",
+   "5.10",
+   "5.11"
+  ],
+  "counts": {
+   "mcq": 12,
+   "written": 4,
+   "total": 16
+  },
+  "topics": [
+   {
+    "topic": "math-y12-integration",
+    "topicLabel": "Integration (5.5, 5.10, 5.11)",
+    "count": 16,
+    "difficulty": {
+     "unrated": 0,
+     "easy": 3,
+     "standard": 7,
+     "hard": 6
+    }
+   }
+  ]
  }
 ]

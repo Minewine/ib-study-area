@@ -1,0 +1,269 @@
+{
+ "subject": "math-aa-sl",
+ "topic": "math-y12-further-differentiation",
+ "topicLabel": "Further differentiation (5.6–5.8)",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "5.6",
+  "5.7",
+  "5.8"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "fdf-x01",
+   "format": "mcq",
+   "topic": "math-y12-further-differentiation",
+   "topicLabel": "Further differentiation (5.6–5.8)",
+   "difficulty": "easy",
+   "stem": "Find d/dx (sin x).",
+   "choices": [
+    "−cos x",
+    "sin x",
+    "cos x",
+    "−sin x"
+   ],
+   "answer": 2,
+   "note": "d/dx sin x = cos x; d/dx cos x = −sin x (x in radians)."
+  },
+  {
+   "id": "fdf-x02",
+   "format": "mcq",
+   "topic": "math-y12-further-differentiation",
+   "topicLabel": "Further differentiation (5.6–5.8)",
+   "difficulty": "easy",
+   "stem": "Find d/dx (eˣ + ln x).",
+   "choices": [
+    "eˣ + ln x",
+    "xeˣ⁻¹ + 1/x",
+    "eˣ − 1/x",
+    "eˣ + 1/x"
+   ],
+   "answer": 3,
+   "note": "eˣ is its own derivative; d/dx ln x = 1/x."
+  },
+  {
+   "id": "fdf-x03",
+   "format": "mcq",
+   "topic": "math-y12-further-differentiation",
+   "topicLabel": "Further differentiation (5.6–5.8)",
+   "difficulty": "easy",
+   "stem": "Find f′(x) for f(x) = (3x + 1)⁵.",
+   "choices": [
+    "15(3x + 1)⁴",
+    "5(3x + 1)⁴",
+    "15(3x + 1)⁵",
+    "3(3x + 1)⁴"
+   ],
+   "answer": 0,
+   "note": "Chain rule: 5(3x + 1)⁴ × 3. Do not forget the derivative of the inner function."
+  },
+  {
+   "id": "fdf-x04",
+   "format": "mcq",
+   "topic": "math-y12-further-differentiation",
+   "topicLabel": "Further differentiation (5.6–5.8)",
+   "difficulty": "standard",
+   "stem": "Find dy/dx for y = e^(2x²).",
+   "choices": [
+    "2x² e^(2x²)",
+    "4x e^(2x²)",
+    "e^(4x)",
+    "4x e^(4x)"
+   ],
+   "answer": 1,
+   "note": "Chain rule: derivative of the exponent (4x) times e^(2x²)."
+  },
+  {
+   "id": "fdf-x05",
+   "format": "mcq",
+   "topic": "math-y12-further-differentiation",
+   "topicLabel": "Further differentiation (5.6–5.8)",
+   "difficulty": "standard",
+   "stem": "Find dy/dx for y = x² sin x.",
+   "choices": [
+    "2x sin x + x² cos x",
+    "2x cos x",
+    "2x sin x − x² cos x",
+    "x² cos x"
+   ],
+   "answer": 0,
+   "note": "Product rule: u′v + uv′ with u = x², v = sin x."
+  },
+  {
+   "id": "fdf-x06",
+   "format": "mcq",
+   "topic": "math-y12-further-differentiation",
+   "topicLabel": "Further differentiation (5.6–5.8)",
+   "difficulty": "standard",
+   "stem": "Find d/dx [ln(5x − 2)].",
+   "choices": [
+    "1/(5x − 2)",
+    "5 ln(5x − 2)",
+    "5/(5x − 2)",
+    "1/5x"
+   ],
+   "answer": 2,
+   "note": "Chain rule: (1/(5x − 2)) × 5."
+  },
+  {
+   "id": "fdf-x07",
+   "format": "mcq",
+   "topic": "math-y12-further-differentiation",
+   "topicLabel": "Further differentiation (5.6–5.8)",
+   "difficulty": "standard",
+   "stem": "Find dy/dx for y = x / (x + 1).",
+   "choices": [
+    "−1/(x + 1)²",
+    "1/(x + 1)²",
+    "(2x + 1)/(x + 1)²",
+    "1/(x + 1)"
+   ],
+   "answer": 1,
+   "note": "Quotient rule: (v·u′ − u·v′)/v² = ((x + 1)(1) − x(1))/(x + 1)² = 1/(x + 1)²."
+  },
+  {
+   "id": "fdf-x08",
+   "format": "mcq",
+   "topic": "math-y12-further-differentiation",
+   "topicLabel": "Further differentiation (5.6–5.8)",
+   "difficulty": "standard",
+   "stem": "If f″(x) > 0 on an interval, the graph of f is:",
+   "choices": [
+    "Concave down on that interval",
+    "Decreasing on that interval",
+    "Increasing on that interval",
+    "Concave up on that interval"
+   ],
+   "answer": 3,
+   "note": "f″ > 0 means the gradient is increasing: the curve bends upward. Whether f increases depends on f′, not f″."
+  },
+  {
+   "id": "fdf-x09",
+   "format": "mcq",
+   "topic": "math-y12-further-differentiation",
+   "topicLabel": "Further differentiation (5.6–5.8)",
+   "difficulty": "hard",
+   "stem": "f(x) = x³ − 3x² + 2. Find the point of inflection.",
+   "choices": [
+    "(0, 2)",
+    "(2, −2)",
+    "(1, 0)",
+    "(−1, −2)"
+   ],
+   "answer": 2,
+   "note": "f″(x) = 6x − 6 = 0 at x = 1, and f″ changes sign there. f(1) = 0."
+  },
+  {
+   "id": "fdf-x10",
+   "format": "mcq",
+   "topic": "math-y12-further-differentiation",
+   "topicLabel": "Further differentiation (5.6–5.8)",
+   "difficulty": "hard",
+   "stem": "At a point where f′(a) = 0 and f″(a) < 0, the graph of f has:",
+   "choices": [
+    "A local minimum",
+    "A local maximum",
+    "A point of inflection with zero gradient",
+    "Not enough information to decide"
+   ],
+   "answer": 1,
+   "note": "Second derivative test: f″ < 0 → concave down → local maximum. If f″(a) = 0, the test is inconclusive."
+  },
+  {
+   "id": "fdf-x11",
+   "format": "mcq",
+   "topic": "math-y12-further-differentiation",
+   "topicLabel": "Further differentiation (5.6–5.8)",
+   "difficulty": "hard",
+   "stem": "The graph of y = f′(x) crosses the x-axis from positive to negative at x = 2. At x = 2, the graph of y = f(x) has:",
+   "choices": [
+    "A local minimum",
+    "A point of inflection",
+    "A vertical asymptote",
+    "A local maximum"
+   ],
+   "answer": 3,
+   "note": "f′ changes from + to −: f stops increasing and starts decreasing → maximum."
+  },
+  {
+   "id": "fdf-x12",
+   "format": "mcq",
+   "topic": "math-y12-further-differentiation",
+   "topicLabel": "Further differentiation (5.6–5.8)",
+   "difficulty": "hard",
+   "stem": "Find the minimum value of f(x) = x ln x for x > 0.",
+   "choices": [
+    "−1/e",
+    "0",
+    "−e",
+    "1/e"
+   ],
+   "answer": 0,
+   "note": "f′(x) = ln x + 1 = 0 → x = 1/e; f(1/e) = (1/e)(−1) = −1/e. f″(x) = 1/x > 0, so minimum."
+  },
+  {
+   "id": "fdf-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "math-y12-further-differentiation",
+   "topicLabel": "Further differentiation (5.6–5.8)",
+   "difficulty": "standard",
+   "stem": "Differentiate y = e^(3x) cos x.",
+   "markscheme": [
+    "Product rule with u = e^(3x), v = cos x (1)",
+    "u′ = 3e^(3x), v′ = −sin x (1)",
+    "dy/dx = 3e^(3x) cos x − e^(3x) sin x = e^(3x)(3cos x − sin x) (1)"
+   ],
+   "tactic": "Write u, v, u′, v′ first, then combine."
+  },
+  {
+   "id": "fdf-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "math-y12-further-differentiation",
+   "topicLabel": "Further differentiation (5.6–5.8)",
+   "difficulty": "standard",
+   "stem": "Find the equation of the tangent to y = ln(2x − 1) at x = 1.",
+   "markscheme": [
+    "y(1) = ln 1 = 0 (1)",
+    "dy/dx = 2/(2x − 1) (1)",
+    "at x = 1 gradient = 2 (1)",
+    "y = 2(x − 1), i.e. y = 2x − 2 (1)"
+   ],
+   "tactic": "Point, gradient, line — exact values where possible."
+  },
+  {
+   "id": "fdf-x15",
+   "format": "written",
+   "marks": 5,
+   "topic": "math-y12-further-differentiation",
+   "topicLabel": "Further differentiation (5.6–5.8)",
+   "difficulty": "hard",
+   "stem": "f(x) = x e^(−x). (a) Show that f′(x) = (1 − x)e^(−x). (b) Find the coordinates of the maximum point. (c) Find f″(x) and the x-coordinate of the point of inflection.",
+   "markscheme": [
+    "(a) Product rule: e^(−x) + x(−e^(−x)) = (1 − x)e^(−x) (1)",
+    "(b) f′ = 0 → x = 1; maximum at (1, 1/e) (1)",
+    "(c) f″(x) = −e^(−x) − (1 − x)e^(−x) (1)",
+    "= (x − 2)e^(−x) (1)",
+    "f″ = 0 and changes sign at x = 2 (1)"
+   ],
+   "tactic": "e^(−x) is never zero, so solve the bracket."
+  },
+  {
+   "id": "fdf-x16",
+   "format": "written",
+   "marks": 3,
+   "topic": "math-y12-further-differentiation",
+   "topicLabel": "Further differentiation (5.6–5.8)",
+   "difficulty": "hard",
+   "stem": "A rectangle has one vertex at the origin and the opposite vertex on y = e^(−x), x > 0. Show that the maximum area occurs at x = 1.",
+   "markscheme": [
+    "Area A = x e^(−x) (1)",
+    "dA/dx = (1 − x)e^(−x) = 0 → x = 1 (1)",
+    "dA/dx changes from + to − (or A″(1) = −e⁻¹ < 0), so maximum (1)"
+   ],
+   "tactic": "Write the quantity to optimise in one variable before differentiating."
+  }
+ ]
+}

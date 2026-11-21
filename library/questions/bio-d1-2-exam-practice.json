@@ -1,0 +1,253 @@
+{
+ "subject": "biology-hl",
+ "topic": "bio-d1-2",
+ "topicLabel": "D1.2 Protein synthesis",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "D1.2"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "d12-x01",
+   "format": "mcq",
+   "topic": "bio-d1-2",
+   "topicLabel": "D1.2 Protein synthesis",
+   "difficulty": "easy",
+   "stem": "During transcription, which enzyme links RNA nucleotides together?",
+   "choices": [
+    "DNA polymerase",
+    "Helicase",
+    "RNA polymerase",
+    "Ligase"
+   ],
+   "answer": 2,
+   "note": "RNA polymerase separates the DNA strands and joins RNA nucleotides complementary to the template strand. DNA polymerase is for replication."
+  },
+  {
+   "id": "d12-x02",
+   "format": "mcq",
+   "topic": "bio-d1-2",
+   "topicLabel": "D1.2 Protein synthesis",
+   "difficulty": "easy",
+   "stem": "Which base in RNA pairs with adenine on the DNA template strand?",
+   "choices": [
+    "Thymine",
+    "Guanine",
+    "Cytosine",
+    "Uracil"
+   ],
+   "answer": 3,
+   "note": "RNA has uracil instead of thymine, so A on the template pairs with U in mRNA."
+  },
+  {
+   "id": "d12-x03",
+   "format": "mcq",
+   "topic": "bio-d1-2",
+   "topicLabel": "D1.2 Protein synthesis",
+   "difficulty": "easy",
+   "stem": "A codon consists of:",
+   "choices": [
+    "Three bases on mRNA that code for one amino acid",
+    "Three bases on a tRNA molecule that pair with mRNA",
+    "One base on mRNA that codes for one amino acid",
+    "Three amino acids joined by peptide bonds"
+   ],
+   "answer": 0,
+   "note": "Codons are mRNA triplets; anticodons are the complementary triplets on tRNA."
+  },
+  {
+   "id": "d12-x04",
+   "format": "mcq",
+   "topic": "bio-d1-2",
+   "topicLabel": "D1.2 Protein synthesis",
+   "difficulty": "standard",
+   "stem": "The genetic code is described as degenerate because:",
+   "choices": [
+    "Each codon can code for more than one different amino acid",
+    "More than one codon can code for the same amino acid",
+    "The code is different in different organisms",
+    "Some codons have only two bases"
+   ],
+   "answer": 1,
+   "note": "64 codons for 20 amino acids — e.g. several codons for leucine. It is also (almost) universal."
+  },
+  {
+   "id": "d12-x05",
+   "format": "mcq",
+   "topic": "bio-d1-2",
+   "topicLabel": "D1.2 Protein synthesis",
+   "difficulty": "standard",
+   "stem": "A DNA template strand reads 3′–TAC GGA TTC–5′. What is the mRNA sequence?",
+   "choices": [
+    "5′–ATG CCT AAG–3′",
+    "5′–AUG CCU AAG–3′",
+    "5′–UAC GGA UUC–3′",
+    "5′–AUG CCU AAC–3′"
+   ],
+   "answer": 1,
+   "note": "Pair each base (A–U, T–A, C–G, G–C) and write mRNA 5′→3′, antiparallel to the template."
+  },
+  {
+   "id": "d12-x06",
+   "format": "mcq",
+   "topic": "bio-d1-2",
+   "topicLabel": "D1.2 Protein synthesis",
+   "difficulty": "standard",
+   "stem": "During translation, the role of tRNA is to:",
+   "choices": [
+    "Carry the code from the nucleus to the ribosome",
+    "Join amino acids together with peptide bonds as a catalyst",
+    "Copy the base sequence of the DNA template strand into RNA",
+    "Carry a specific amino acid and pair its anticodon with a codon"
+   ],
+   "answer": 3,
+   "note": "Each tRNA has an anticodon and carries the matching amino acid. The ribosome (rRNA) catalyses peptide bonds."
+  },
+  {
+   "id": "d12-x07",
+   "format": "mcq",
+   "topic": "bio-d1-2",
+   "topicLabel": "D1.2 Protein synthesis",
+   "difficulty": "standard",
+   "stem": "A substitution changes one base so that GAA becomes GAG; both code for glutamic acid. The effect on the protein is:",
+   "choices": [
+    "None, because the amino acid sequence is unchanged",
+    "One amino acid is replaced, changing the shape",
+    "The protein is shortened by a stop codon",
+    "Every amino acid after the mutation changes"
+   ],
+   "answer": 0,
+   "note": "A silent mutation, possible because the code is degenerate."
+  },
+  {
+   "id": "d12-x08",
+   "format": "mcq",
+   "topic": "bio-d1-2",
+   "topicLabel": "D1.2 Protein synthesis",
+   "difficulty": "hard",
+   "stem": "RNA polymerase begins transcription at:",
+   "choices": [
+    "The start codon AUG at the beginning of the gene",
+    "The first exon after the terminator sequence",
+    "A promoter, a non-coding sequence upstream of the gene",
+    "Any point where the DNA strands happen to separate"
+   ],
+   "answer": 2,
+   "note": "The promoter is where RNA polymerase (with transcription factors) binds. AUG is a translation start, on mRNA."
+  },
+  {
+   "id": "d12-x09",
+   "format": "mcq",
+   "topic": "bio-d1-2",
+   "topicLabel": "D1.2 Protein synthesis",
+   "difficulty": "hard",
+   "stem": "Alternative splicing allows:",
+   "choices": [
+    "One gene to code for several different polypeptides",
+    "One mRNA to be translated by several ribosomes at once",
+    "Introns to be translated into short peptides",
+    "Exons to be removed so the mRNA is shorter"
+   ],
+   "answer": 0,
+   "note": "Different combinations of exons are kept in mature mRNA, so one gene can give several proteins."
+  },
+  {
+   "id": "d12-x10",
+   "format": "mcq",
+   "topic": "bio-d1-2",
+   "topicLabel": "D1.2 Protein synthesis",
+   "difficulty": "hard",
+   "stem": "In which direction do ribosomes move along mRNA, and how is the polypeptide extended?",
+   "choices": [
+    "3′→5′, with each new amino acid added at the E site",
+    "5′→3′, with each new amino acid added to the free amino (N) end",
+    "3′→5′, starting at the stop codon",
+    "5′→3′, with each new amino acid added to the growing chain at the A site"
+   ],
+   "answer": 3,
+   "note": "The ribosome reads 5′→3′. The chain on tRNA in the P site is transferred to the amino acid in the A site."
+  },
+  {
+   "id": "d12-x11",
+   "format": "mcq",
+   "topic": "bio-d1-2",
+   "topicLabel": "D1.2 Protein synthesis",
+   "difficulty": "hard",
+   "stem": "Insulin is made as a longer precursor that is cut to form the active hormone. This is an example of:",
+   "choices": [
+    "Alternative splicing of mRNA",
+    "Removal of introns before translation",
+    "Post-translational modification",
+    "A frameshift mutation in the gene"
+   ],
+   "answer": 2,
+   "note": "Pre-proinsulin is cleaved after translation (signal sequence, then C-peptide removed) to give active insulin."
+  },
+  {
+   "id": "d12-x12",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-d1-2",
+   "topicLabel": "D1.2 Protein synthesis",
+   "difficulty": "standard",
+   "stem": "Outline the process of transcription.",
+   "markscheme": [
+    "RNA polymerase binds to the DNA (at the promoter) (1)",
+    "DNA strands are separated by breaking hydrogen bonds (1)",
+    "Free RNA nucleotides pair with complementary bases on the template strand (A–U, C–G) (1)",
+    "RNA polymerase joins nucleotides into a strand 5′→3′ (1)",
+    "mRNA detaches and the DNA re-forms its double helix (1)"
+   ],
+   "tactic": "Outline: key steps in order with the enzyme named."
+  },
+  {
+   "id": "d12-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-d1-2",
+   "topicLabel": "D1.2 Protein synthesis",
+   "difficulty": "standard",
+   "stem": "Explain how a single base substitution can cause sickle cell anaemia.",
+   "markscheme": [
+    "GAG → GTG in the gene for the β-globin chain (1)",
+    "Codon changes so valine replaces glutamic acid (1)",
+    "Haemoglobin is less soluble at low O₂ / forms fibres, causing sickle-shaped red blood cells (1)"
+   ],
+   "tactic": "Mutation questions: DNA change → mRNA codon → amino acid → protein → phenotype."
+  },
+  {
+   "id": "d12-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-d1-2",
+   "topicLabel": "D1.2 Protein synthesis",
+   "difficulty": "hard",
+   "stem": "Describe how mRNA is processed in eukaryotic cells before translation.",
+   "markscheme": [
+    "Introns (non-coding sequences) are removed (1)",
+    "Exons are spliced together (1)",
+    "A cap is added to the 5′ end (1)",
+    "A poly-A tail is added to the 3′ end (1)",
+    "Alternative splicing can give different mRNAs from one gene (1)"
+   ],
+   "tactic": "Processing: list each modification and where on the molecule it happens."
+  },
+  {
+   "id": "d12-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-d1-2",
+   "topicLabel": "D1.2 Protein synthesis",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) Researchers made an invented antibiotic and tested its effect on protein production by bacteria. Protein made (arbitrary units): no antibiotic 100; antibiotic 1 µg cm⁻³ 62; 2 µg cm⁻³ 35; 5 µg cm⁻³ 12. mRNA levels were the same in all samples.\n(a) Calculate the percentage decrease in protein at 2 µg cm⁻³. (b) Deduce which stage of protein synthesis is affected, with a reason. (c) Suggest why such an antibiotic would not harm human cells.",
+   "markscheme": [
+    "(a) (100 − 35)/100 × 100 = 65% (1)",
+    "(b) Translation (1)",
+    "mRNA levels unchanged, so transcription is not affected but protein is reduced (1)",
+    "(c) Bacteria have 70S ribosomes; human cytoplasmic ribosomes are 80S, so the drug can target bacterial ribosomes only (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

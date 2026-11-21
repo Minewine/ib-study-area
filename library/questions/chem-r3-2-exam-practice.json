@@ -1,0 +1,252 @@
+{
+ "subject": "chemistry-hl",
+ "topic": "chem-r3-2",
+ "topicLabel": "R3.2 Electron transfer reactions",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "R3.2"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "r32-x01",
+   "format": "mcq",
+   "topic": "chem-r3-2",
+   "topicLabel": "R3.2 Electron transfer reactions",
+   "difficulty": "easy",
+   "stem": "Oxidation is:",
+   "choices": [
+    "Loss of electrons, or an increase in oxidation state",
+    "Gain of electrons, or a decrease in the oxidation state",
+    "Gain of hydrogen, or loss of oxygen",
+    "Loss of oxygen, or a decrease in oxidation state"
+   ],
+   "answer": 0,
+   "note": "OIL RIG: oxidation is loss of electrons; the oxidation state increases."
+  },
+  {
+   "id": "r32-x02",
+   "format": "mcq",
+   "topic": "chem-r3-2",
+   "topicLabel": "R3.2 Electron transfer reactions",
+   "difficulty": "easy",
+   "stem": "What is the oxidation state of manganese in KMnO₄?",
+   "choices": [
+    "+5",
+    "+4",
+    "−1",
+    "+7"
+   ],
+   "answer": 3,
+   "note": "K +1, 4 × O −2 = −8; sum zero: +1 + Mn − 8 = 0 → Mn = +7."
+  },
+  {
+   "id": "r32-x03",
+   "format": "mcq",
+   "topic": "chem-r3-2",
+   "topicLabel": "R3.2 Electron transfer reactions",
+   "difficulty": "easy",
+   "stem": "In Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s), the oxidising agent is:",
+   "choices": [
+    "Zn",
+    "Zn²⁺",
+    "Cu²⁺",
+    "Cu"
+   ],
+   "answer": 2,
+   "note": "The oxidising agent is reduced (gains electrons): Cu²⁺ → Cu. Zn is the reducing agent."
+  },
+  {
+   "id": "r32-x04",
+   "format": "mcq",
+   "topic": "chem-r3-2",
+   "topicLabel": "R3.2 Electron transfer reactions",
+   "difficulty": "standard",
+   "stem": "In a voltaic (galvanic) cell made of Zn/Zn²⁺ and Cu/Cu²⁺ half-cells, electrons flow:",
+   "choices": [
+    "From copper to zinc through the external wire",
+    "From zinc to copper through the external wire",
+    "From zinc to copper through the salt bridge",
+    "In both directions until equilibrium"
+   ],
+   "answer": 1,
+   "note": "Zn is the more reactive metal: oxidised at the anode (negative electrode). Electrons go through the wire; ions move through the salt bridge."
+  },
+  {
+   "id": "r32-x05",
+   "format": "mcq",
+   "topic": "chem-r3-2",
+   "topicLabel": "R3.2 Electron transfer reactions",
+   "difficulty": "standard",
+   "stem": "The purpose of the salt bridge in a voltaic cell is to:",
+   "choices": [
+    "Allow ions to move and keep each half-cell electrically neutral",
+    "Allow electrons to flow between the two half-cells directly",
+    "Prevent the two metals from reacting with each other",
+    "Supply the electrons needed for reduction"
+   ],
+   "answer": 0,
+   "note": "The circuit is completed by ion movement in the salt bridge; electrons never pass through solutions."
+  },
+  {
+   "id": "r32-x06",
+   "format": "mcq",
+   "topic": "chem-r3-2",
+   "topicLabel": "R3.2 Electron transfer reactions",
+   "difficulty": "standard",
+   "stem": "In the electrolysis of molten sodium chloride, what forms at the cathode?",
+   "choices": [
+    "Chlorine gas",
+    "Hydrogen gas",
+    "Oxygen gas",
+    "Sodium metal"
+   ],
+   "answer": 3,
+   "note": "Cathode (negative) attracts Na⁺, which is reduced: Na⁺ + e⁻ → Na. Chloride ions are oxidised to Cl₂ at the anode."
+  },
+  {
+   "id": "r32-x07",
+   "format": "mcq",
+   "topic": "chem-r3-2",
+   "topicLabel": "R3.2 Electron transfer reactions",
+   "difficulty": "standard",
+   "stem": "Primary ethanol (CH₃CH₂OH) heated under reflux with excess acidified potassium dichromate(VI) forms:",
+   "choices": [
+    "Ethanal",
+    "Ethene",
+    "Ethanoic acid",
+    "Ethane"
+   ],
+   "answer": 2,
+   "note": "Reflux with excess oxidant goes all the way to the carboxylic acid. Distilling off immediately gives ethanal. The colour changes orange → green."
+  },
+  {
+   "id": "r32-x08",
+   "format": "mcq",
+   "topic": "chem-r3-2",
+   "topicLabel": "R3.2 Electron transfer reactions",
+   "difficulty": "hard",
+   "stem": "Using E° values (Zn²⁺/Zn −0.76 V; Cu²⁺/Cu +0.34 V), E°cell for the zinc–copper cell is:",
+   "choices": [
+    "+0.42 V",
+    "+1.10 V",
+    "−1.10 V",
+    "+0.08 V"
+   ],
+   "answer": 1,
+   "note": "E°cell = E°(cathode) − E°(anode) = 0.34 − (−0.76) = +1.10 V."
+  },
+  {
+   "id": "r32-x09",
+   "format": "mcq",
+   "topic": "chem-r3-2",
+   "topicLabel": "R3.2 Electron transfer reactions",
+   "difficulty": "hard",
+   "stem": "For the cell above (n = 2, E°cell = +1.10 V, F = 96 500 C mol⁻¹), ΔG° is:",
+   "choices": [
+    "+212 kJ mol⁻¹",
+    "−106 kJ mol⁻¹",
+    "−212 000 kJ mol⁻¹",
+    "−212 kJ mol⁻¹"
+   ],
+   "answer": 3,
+   "note": "ΔG° = −nFE° = −2 × 96 500 × 1.10 = −212 300 J = −212 kJ mol⁻¹. Positive E° ↔ negative ΔG° (spontaneous)."
+  },
+  {
+   "id": "r32-x10",
+   "format": "mcq",
+   "topic": "chem-r3-2",
+   "topicLabel": "R3.2 Electron transfer reactions",
+   "difficulty": "hard",
+   "stem": "In the electrolysis of concentrated aqueous sodium chloride with inert electrodes, the products are:",
+   "choices": [
+    "Sodium at the cathode and chlorine at the anode",
+    "Hydrogen at the cathode and oxygen at the anode",
+    "Hydrogen at the cathode and chlorine at the anode",
+    "Sodium at the cathode and oxygen at the anode"
+   ],
+   "answer": 2,
+   "note": "Water is reduced in preference to Na⁺ (more positive E°). At high [Cl⁻], chloride is oxidised rather than water."
+  },
+  {
+   "id": "r32-x11",
+   "format": "mcq",
+   "topic": "chem-r3-2",
+   "topicLabel": "R3.2 Electron transfer reactions",
+   "difficulty": "hard",
+   "stem": "To electroplate an object with silver, the object should be:",
+   "choices": [
+    "The anode, in a solution containing Ag⁺ ions",
+    "The cathode, in a solution containing Ag⁺ ions",
+    "The cathode, in a solution of sodium chloride",
+    "The anode, with a silver cathode"
+   ],
+   "answer": 1,
+   "note": "Ag⁺ + e⁻ → Ag deposits on the cathode. A silver anode dissolves to replace the Ag⁺."
+  },
+  {
+   "id": "r32-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r3-2",
+   "topicLabel": "R3.2 Electron transfer reactions",
+   "difficulty": "standard",
+   "stem": "Deduce the balanced equation for the reaction of MnO₄⁻ with Fe²⁺ in acidic solution. Half-equations: MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O; Fe²⁺ → Fe³⁺ + e⁻.",
+   "markscheme": [
+    "Multiply the iron half-equation by 5 (1)",
+    "Add: MnO₄⁻ + 8H⁺ + 5Fe²⁺ → Mn²⁺ + 4H₂O + 5Fe³⁺ (1)",
+    "Electrons cancel and charges balance (+17 on each side) (1)"
+   ],
+   "tactic": "Balance electrons first, then add and cancel; check charge."
+  },
+  {
+   "id": "r32-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r3-2",
+   "topicLabel": "R3.2 Electron transfer reactions",
+   "difficulty": "standard",
+   "stem": "Compare a voltaic cell and an electrolytic cell.",
+   "markscheme": [
+    "Both involve oxidation at the anode and reduction at the cathode (1)",
+    "Voltaic: spontaneous reaction converts chemical energy to electrical energy (1)",
+    "Electrolytic: electrical energy drives a non-spontaneous reaction (1)",
+    "Voltaic anode is negative; electrolytic anode is positive (1)"
+   ],
+   "tactic": "Compare: one similarity plus paired differences."
+  },
+  {
+   "id": "r32-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "chem-r3-2",
+   "topicLabel": "R3.2 Electron transfer reactions",
+   "difficulty": "hard",
+   "stem": "A cell is made from Ag⁺/Ag (E° = +0.80 V) and Cu²⁺/Cu (E° = +0.34 V). (a) Identify the anode and cathode. (b) Write the overall equation. (c) Calculate E°cell and state what it shows.",
+   "markscheme": [
+    "(a) Cu is the anode (oxidised); Ag is the cathode (1)",
+    "(b) Cu + 2Ag⁺ → Cu²⁺ + 2Ag (1)",
+    "(c) E°cell = 0.80 − 0.34 = +0.46 V (1)",
+    "Positive, so the reaction is spontaneous (ΔG° negative) (1)"
+   ],
+   "tactic": "The more positive E° half-cell is reduced. Do not multiply E° by stoichiometric coefficients."
+  },
+  {
+   "id": "r32-x15",
+   "format": "written",
+   "marks": 5,
+   "topic": "chem-r3-2",
+   "topicLabel": "R3.2 Electron transfer reactions",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) A student measured the voltage between copper (in 1 mol dm⁻³ Cu²⁺) and four invented metals in their 1 mol dm⁻³ ion solutions: metal P 0.78 V (P negative); Q 1.45 V (Q negative); R 0.12 V (R positive); S 0.40 V (S negative).\n(a) Arrange P, Q, R, S and Cu in order of reducing strength (strongest first). (b) Predict the voltage of a P–Q cell and which is negative. (c) State why the measured values may differ from data booklet values.",
+   "markscheme": [
+    "(a) Q > P > S > Cu > R (1)",
+    "(b) 1.45 − 0.78 = 0.67 V (1)",
+    "Q is the negative electrode (anode) (1)",
+    "(c) Non-standard conditions, e.g. temperature, concentration, or resistance/impure metal surfaces (1)",
+    "Order justified: larger voltage with the metal negative = more reactive (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

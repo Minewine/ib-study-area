@@ -1,0 +1,249 @@
+{
+ "subject": "biology-hl",
+ "topic": "bio-d2-2",
+ "topicLabel": "D2.2 Gene expression (additional higher level)",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "D2.2"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "d22-x01",
+   "format": "mcq",
+   "topic": "bio-d2-2",
+   "topicLabel": "D2.2 Gene expression (additional higher level)",
+   "difficulty": "easy",
+   "stem": "Gene expression is the process by which:",
+   "choices": [
+    "A gene is copied before cell division",
+    "Genes are passed from parents to their offspring in gametes",
+    "New alleles are formed by mutation",
+    "The information in a gene is used to make a product such as a protein"
+   ],
+   "answer": 3,
+   "note": "Expression = transcription (and translation) of the gene's information into a functional product."
+  },
+  {
+   "id": "d22-x02",
+   "format": "mcq",
+   "topic": "bio-d2-2",
+   "topicLabel": "D2.2 Gene expression (additional higher level)",
+   "difficulty": "easy",
+   "stem": "Transcription factors are proteins that:",
+   "choices": [
+    "Bind to DNA and increase or decrease transcription of genes",
+    "Join amino acids together at the ribosome",
+    "Remove introns from pre-mRNA in the nucleus before export",
+    "Copy DNA during the S phase of the cell cycle"
+   ],
+   "answer": 0,
+   "note": "They bind near promoters or at enhancers and control whether RNA polymerase can transcribe."
+  },
+  {
+   "id": "d22-x03",
+   "format": "mcq",
+   "topic": "bio-d2-2",
+   "topicLabel": "D2.2 Gene expression (additional higher level)",
+   "difficulty": "easy",
+   "stem": "Monozygotic (identical) twins can develop different traits over their lives mainly because of:",
+   "choices": [
+    "Differences in the base sequences of their genomes",
+    "Independent assortment of chromosomes during their early development",
+    "Differences in gene expression caused by their environment",
+    "Crossing over in their body cells"
+   ],
+   "answer": 2,
+   "note": "Their DNA sequences are essentially the same; epigenetic and environmental differences alter which genes are expressed."
+  },
+  {
+   "id": "d22-x04",
+   "format": "mcq",
+   "topic": "bio-d2-2",
+   "topicLabel": "D2.2 Gene expression (additional higher level)",
+   "difficulty": "standard",
+   "stem": "Methylation of cytosine bases in a gene's promoter usually:",
+   "choices": [
+    "Increases transcription of the gene",
+    "Reduces transcription of the gene",
+    "Changes the amino acid sequence coded",
+    "Converts cytosine into thymine permanently"
+   ],
+   "answer": 1,
+   "note": "Methyl groups on DNA (CpG sites) block transcription factors and attract proteins that condense chromatin."
+  },
+  {
+   "id": "d22-x05",
+   "format": "mcq",
+   "topic": "bio-d2-2",
+   "topicLabel": "D2.2 Gene expression (additional higher level)",
+   "difficulty": "standard",
+   "stem": "Acetylation of histones makes chromatin:",
+   "choices": [
+    "More condensed, so genes are silenced",
+    "Less condensed, so genes are more easily transcribed",
+    "Break into separate nucleosomes that leave the nucleus",
+    "Bind more tightly to the DNA, removing the promoter"
+   ],
+   "answer": 1,
+   "note": "Acetyl groups neutralise positive charges on histones, loosening their grip on DNA and opening it for transcription."
+  },
+  {
+   "id": "d22-x06",
+   "format": "mcq",
+   "topic": "bio-d2-2",
+   "topicLabel": "D2.2 Gene expression (additional higher level)",
+   "difficulty": "standard",
+   "stem": "The epigenome is:",
+   "choices": [
+    "The full base sequence of all the genes in a cell",
+    "The complete set of all proteins made by a cell at any one time",
+    "All the mRNA molecules made by a cell at one time",
+    "The pattern of chemical tags on DNA and histones that affects expression"
+   ],
+   "answer": 3,
+   "note": "Epigenetic marks change expression without changing the base sequence. The proteome is the set of proteins; the transcriptome the RNA."
+  },
+  {
+   "id": "d22-x07",
+   "format": "mcq",
+   "topic": "bio-d2-2",
+   "topicLabel": "D2.2 Gene expression (additional higher level)",
+   "difficulty": "standard",
+   "stem": "Lactose in the surroundings of E. coli causes the genes for lactose metabolism to be expressed. This shows that:",
+   "choices": [
+    "The environment can change gene expression",
+    "Genes mutate in response to what an organism needs",
+    "Bacteria can choose which genes they inherit",
+    "Lactose is converted into new DNA by the bacterium"
+   ],
+   "answer": 0,
+   "note": "Lactose binds to a repressor, releasing it from DNA, so the genes are transcribed only when needed."
+  },
+  {
+   "id": "d22-x08",
+   "format": "mcq",
+   "topic": "bio-d2-2",
+   "topicLabel": "D2.2 Gene expression (additional higher level)",
+   "difficulty": "hard",
+   "stem": "A steroid hormone such as oestradiol changes gene expression in its target cells by:",
+   "choices": [
+    "Binding to the cell surface and adding methyl groups to every gene in the nucleus",
+    "Being translated at ribosomes into proteins that replace the cell's own DNA",
+    "Entering the cell and binding a receptor that then acts as a transcription factor",
+    "Changing the base sequence of the genes that the cell transcribes"
+   ],
+   "answer": 2,
+   "note": "Steroids pass through the membrane; the hormone–receptor complex binds DNA and alters transcription of specific genes."
+  },
+  {
+   "id": "d22-x09",
+   "format": "mcq",
+   "topic": "bio-d2-2",
+   "topicLabel": "D2.2 Gene expression (additional higher level)",
+   "difficulty": "hard",
+   "stem": "Most epigenetic tags are removed in gametes and early embryos, but some are inherited. The best evidence for inheritance of epigenetic marks is that:",
+   "choices": [
+    "The offspring have new mutations in their genes",
+    "Offspring always have the same phenotype as their parents",
+    "DNA sequences change in each generation",
+    "Effects of a parent's environment are seen in offspring without DNA sequence changes"
+   ],
+   "answer": 3,
+   "note": "Studies (e.g. famine exposure) show effects passed on that are not explained by base-sequence change."
+  },
+  {
+   "id": "d22-x10",
+   "format": "mcq",
+   "topic": "bio-d2-2",
+   "topicLabel": "D2.2 Gene expression (additional higher level)",
+   "difficulty": "hard",
+   "stem": "Different cell types in one organism have different transcriptomes but the same genome. This is because:",
+   "choices": [
+    "Each cell type has permanently lost the genes it does not use",
+    "Each cell type expresses a different subset of its genes",
+    "Each cell type contains different chromosomes",
+    "Each cell type mutates its genome as it develops"
+   ],
+   "answer": 1,
+   "note": "Differentiation depends on gene regulation (transcription factors, epigenetic marks), not loss of DNA."
+  },
+  {
+   "id": "d22-x11",
+   "format": "mcq",
+   "topic": "bio-d2-2",
+   "topicLabel": "D2.2 Gene expression (additional higher level)",
+   "difficulty": "hard",
+   "stem": "Air pollution has been linked to changes in DNA methylation in some people. A likely consequence is:",
+   "choices": [
+    "Altered expression of genes, which might affect health",
+    "A change in the base sequence of every gene affected",
+    "Inheritance of new alleles by all of the person's children",
+    "Immediate death of the cells exposed to the pollutant"
+   ],
+   "answer": 0,
+   "note": "Environmental factors can change methylation patterns, altering expression (e.g. of genes linked to inflammation) without mutating DNA."
+  },
+  {
+   "id": "d22-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-d2-2",
+   "topicLabel": "D2.2 Gene expression (additional higher level)",
+   "difficulty": "standard",
+   "stem": "Explain how DNA methylation can control gene expression.",
+   "markscheme": [
+    "Methyl groups are added to cytosine (CpG sites) in or near promoters (1)",
+    "Transcription factors/RNA polymerase cannot bind (1)",
+    "Chromatin becomes more condensed, so the gene is not transcribed (silenced) (1)"
+   ],
+   "tactic": "Mechanism questions: chemical change → effect on binding → effect on transcription."
+  },
+  {
+   "id": "d22-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-d2-2",
+   "topicLabel": "D2.2 Gene expression (additional higher level)",
+   "difficulty": "standard",
+   "stem": "Distinguish between the genome, the transcriptome and the proteome.",
+   "markscheme": [
+    "Genome = all the genetic information/DNA of an organism (the same in all body cells) (1)",
+    "Transcriptome = all the RNA transcribed in a cell at a given time (1)",
+    "Proteome = all the proteins produced by a cell/organism at a given time; both vary with cell type and time (1)"
+   ],
+   "tactic": "Define each term in one line, then state what varies."
+  },
+  {
+   "id": "d22-x14",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-d2-2",
+   "topicLabel": "D2.2 Gene expression (additional higher level)",
+   "difficulty": "hard",
+   "stem": "Outline how environmental factors can affect gene expression, using one named example.",
+   "markscheme": [
+    "Environment affects which genes are transcribed (or epigenetic tags) (1)",
+    "Named example, e.g. temperature and fur colour in Himalayan rabbits / lactose and the lac genes (1)",
+    "Explanation of mechanism for the example (e.g. heat-sensitive enzyme for pigment inactive at body core temperature) (1)",
+    "Effect on phenotype stated (1)"
+   ],
+   "tactic": "Name the example early, then link cause → mechanism → phenotype."
+  },
+  {
+   "id": "d22-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-d2-2",
+   "topicLabel": "D2.2 Gene expression (additional higher level)",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) DNA methylation (%) of a gene promoter and the gene's mRNA level (arbitrary units) were measured in 5 tissues: A 10%, 95; B 25%, 70; C 50%, 40; D 70%, 18; E 90%, 4.\n(a) Describe the relationship. (b) Suggest an explanation. (c) State why a correlation alone does not prove that methylation causes the change.",
+   "markscheme": [
+    "(a) Negative correlation: as methylation increases from 10% to 90%, mRNA falls from 95 to 4 (1)",
+    "(b) Methylation blocks the binding of transcription factors/RNA polymerase, so less transcription (1)",
+    "(c) Another factor could cause both (e.g. histone modification) / correlation does not show cause; experiments that change methylation are needed (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}
