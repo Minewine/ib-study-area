@@ -44,8 +44,28 @@
     "res-bookmarks": { type: arrOf(isStr), label: "pinned resources" },
     "res-notes": { type: isObj, label: "resource notes" },
     "res-recent": { type: arrOf(isStr), label: "recently opened" },
-    "pp-scores": { type: Array.isArray, record: (r) => isObj(r) && isStr(r.id) && r.id !== "" && (r.deleted === true || (isStr(r.date) && typeof r.score === "number" && typeof r.max === "number")), label: "past-paper scores" },
-    "my-res": { type: isObj, record: (r) => isObj(r) && typeof r.t === "number" && isStr(r.note) && r.note !== "" && (r.deleted === true || (isStr(r.label) && r.label.trim() !== "" && r.label.length <= 200 && isStr(r.url) && r.url.length <= 2000 && /^(https?:\/\/|file:\/\/)\S+$/i.test(r.url))), label: "my resources on notes" },
+    // exam results & reflections: score/max are optional (a scoreless record is a
+    // topic reflection); when either is present both must be valid, max > 0.
+    // source ("teacher"/"self") and topic are optional; tombstones unchanged.
+    "pp-scores": { type: Array.isArray, record: (r) => isObj(r) && isStr(r.id) && r.id !== "" && (r.deleted === true || (isStr(r.date) &&
+      (r.source === undefined || r.source === "teacher" || r.source === "self") &&
+      ((r.score === undefined && r.max === undefined) || (typeof r.score === "number" && isFinite(r.score) && typeof r.max === "number" && isFinite(r.max) && r.max > 0 && r.score >= 0 && r.score <= r.max)))), label: "past-paper scores" },
+    // "my-res" holds two kinds of records: per-note links (note = topic-note id)
+    // and page-level resources (optional subject/topic/type/comment, no note).
+    // note, subject, topic, type and comment are all optional strings; label/url
+    // rules apply to live records only — a tombstone ({note/subject, deleted, t})
+    // carries neither (matches assets/notes.js + assets/resources.js deletes).
+    "my-res": { type: isObj, record: (r) => isObj(r) && typeof r.t === "number" &&
+      (r.deleted === true
+        ? true
+        : (isStr(r.label) && r.label.trim() !== "" && r.label.length <= 200 &&
+           isStr(r.url) && r.url.length <= 2000 && /^(https?:\/\/|file:\/\/)\S+$/i.test(r.url))) &&
+      (r.note === undefined || (isStr(r.note) && r.note !== "")) &&
+      (r.subject === undefined || (isStr(r.subject) && r.subject !== "" && r.subject.length <= 40)) &&
+      (r.topic === undefined || (isStr(r.topic) && r.topic.length <= 120)) &&
+      (r.type === undefined || (isStr(r.type) && r.type.length <= 40)) &&
+      (r.comment === undefined || (isStr(r.comment) && r.comment.length <= 500)), label: "my resources" },
+    "topic-taught": { type: isObj, record: (r) => isObj(r) && typeof r.taught === "boolean" && (r.t === undefined || typeof r.t === "number"), label: "topic teaching status" },
     "fc-theme": { type: (v) => v === "dark" || v === "light", label: "theme" },
     "lib-filters": { type: isObj, label: "library filters" }
   };

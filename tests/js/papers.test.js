@@ -25,14 +25,35 @@ test("add validates input and persists to localStorage", () => {
   assert.match(P.add(Object.assign({}, OK, { date: "" })).error, /date/);
   assert.match(P.add(Object.assign({}, OK, { paper: " " })).error, /paper/i);
   assert.match(P.add(Object.assign({}, OK, { max: 0 })).error, /Max/);
+  assert.match(P.add(Object.assign({}, OK, { max: NaN })).error, /together/, "score without out-of is rejected");
+  assert.match(P.add(Object.assign({}, OK, { score: NaN })).error, /together/, "out-of without score is rejected");
+  assert.match(P.add(Object.assign({}, OK, { paper: " ", topic: "" })).error, /paper.*topic/s, "paper or topic is required");
   const r = P.add(OK);
   assert.ok(r.ok);
   const stored = JSON.parse(e.storage.getItem("pp-scores"));
   assert.equal(stored.length, 1);
   assert.equal(stored[0].paper, "Paper 1A, May 2024");
   assert.equal(stored[0].score, 28); assert.ok(stored[0].id && stored[0].ts);
+  assert.equal(stored[0].source, "teacher", "source defaults to teacher-marked");
   assert.ok(plain(e.NB.store.dirty())["pp-scores"], "marked dirty for the next sync");
   assert.equal(P.pct(stored[0]), 70);
+});
+
+test("scoreless topic reflection: paper optional, score/max omitted, source and topic stored", () => {
+  const e = env();
+  const P = e.NB.papers;
+  const r = P.add({ date: "2026-11-14", subject: "biology-hl", topic: "Enzymes — what to re-study", source: "self", notes: "cofactors" });
+  assert.ok(r.ok, r.error);
+  const rec = JSON.parse(e.storage.getItem("pp-scores"))[0];
+  assert.equal(rec.source, "self");
+  assert.equal(rec.topic, "Enzymes — what to re-study");
+  assert.ok(!("score" in rec) && !("max" in rec), "scoreless record omits both fields");
+  assert.match(P.check(rec), /^$/, "the stored record passes its own validation");
+  const long = P.add({ date: "2026-11-14", subject: "biology-hl", topic: "x".repeat(130) });
+  assert.equal(long.ok, true);
+  assert.equal(long.record.topic.length, 120, "topic is capped at 120 chars");
+  const badSrc = P.add({ date: "2026-11-14", subject: "biology-hl", topic: "t", source: "coach" });
+  assert.equal(badSrc.ok, false);
 });
 
 test("list newest first; remove leaves a tombstone; summary per subject", () => {
@@ -41,11 +62,14 @@ test("list newest first; remove leaves a tombstone; summary per subject", () => 
   P.add(OK);
   P.add(Object.assign({}, OK, { date: "2026-11-15", score: 30 }));
   const third = P.add(Object.assign({}, OK, { date: "2026-10-01", subject: "biology-hl", score: 20, max: 50 })).record;
-  assert.deepEqual(plain(P.list()).map(r => r.date), ["2026-11-15", "2026-11-12", "2026-10-01"]);
+  P.add({ date: "2026-11-16", subject: "chemistry-hl", topic: "Periodicity", source: "self", notes: "revisit buffers" }); // reflection, no score
+  assert.deepEqual(plain(P.list()).map(r => r.date), ["2026-11-16", "2026-11-15", "2026-11-12", "2026-10-01"]);
   const s = plain(P.summary()).find(x => x.subject === "chemistry-hl");
-  assert.deepEqual([s.count, s.latest, s.recentMean], [2, 75, 73]);
+  assert.deepEqual([s.count, s.latest, s.recentMean], [2, 75, 73], "averages/latest use score-bearing records only");
+  assert.equal(s.reflections, 1, "scoreless records counted as reflections");
+  assert.equal(plain(P.summary()).find(x => x.subject === "biology-hl").reflections, 0);
   assert.ok(P.remove(third.id));
-  assert.equal(P.list().length, 2);
+  assert.equal(P.list().length, 3);
   const raw = JSON.parse(e.storage.getItem("pp-scores"));
   assert.ok(raw.find(r => r.id === third.id && r.deleted === true), "tombstone kept for sync");
 });
@@ -65,13 +89,22 @@ test("backup: export includes pp-scores; restore merges and drops malformed reco
   a.NB.papers.add(OK);
   const file = plain(a.NB.backup.collect());
   assert.ok(Array.isArray(file.keys["pp-scores"]) && file.keys["pp-scores"].length === 1);
-  file.keys["pp-scores"].push({ id: "bad" }, "nope");
+  file.keys["pp-scores"].push(
+    { id: "bad" }, "nope",
+    { id: "refl", date: "2026-11-01", subject: "math-aa-sl", source: "self", topic: "Quadratics", ts: 2 } // scoreless reflection survives the SPEC
+  );
   const b = env({ "pp-scores": J([{ id: "local", date: "2026-09-01", subject: "math-aa-sl", paper: "P1", score: 50, max: 80, ts: 1 }]) });
   const p = b.NB.backup.parse(J(file));
   assert.ok(p.ok);
   assert.ok(plain(p.warnings).some(w => /2 unreadable record.*pp-scores/.test(w)), "malformed records reported");
   b.NB.backup.restore(p, "merge");
-  assert.deepEqual(plain(b.NB.papers.list()).map(r => r.paper).sort(), ["P1", "Paper 1A, May 2024"]);
+  const merged = plain(b.NB.papers.list());
+  assert.ok(merged.some(r => r.id === "local"), "local record kept");
+  assert.ok(merged.some(r => r.paper === "Paper 1A, May 2024"), "restored record merged in");
+  const refl = merged.find(r => r.id === "refl");
+  assert.ok(refl, "scoreless reflection record restored");
+  assert.equal(refl.topic, "Quadratics");
+  assert.ok(!("score" in refl) && !("max" in refl));
 });
 
 test("sync: a logged-in device pushes pp-scores to the server; another device receives it", async () => {

@@ -152,6 +152,16 @@ CHEM_SECTIONS = {
 }
 
 
+def syllabus(fname):
+    """Official syllabus JSON (library/syllabus/): {checklistKey: topic} plus the
+    ordered theme/level labels used for the hub checklist grouping."""
+    data = json.loads((LIB / "syllabus" / fname).read_text(encoding="utf-8"))
+    return ({t["checklistKey"]: t for t in data["topics"]}, data["themes"], data["levels"])
+
+
+BIO_SYLLABUS = syllabus("biology-hl.json")
+
+
 def official_links():
     out = {}
     spec = {
@@ -222,29 +232,78 @@ def topic_note_links():
 NOTE_LINKS = topic_note_links()
 
 
-def checklist(subject, section_names):
+def checklist(subject, section_names, syllabus_map=None):
+    """Hub checklist rows. With syllabus_map (from syllabus()), rows join to the
+    official topic codes via their checklistKey and group under sections A–D +
+    unit sub-headings; rows with no code land in a final "Tools & other" group.
+    Without it, rows group by notes directory (math/chem)."""
     blocks = []
     idx = 0
-    for section, rows in gather_notes(subject):
-        label = section_names.get(section, pretty(section) if section else "Topics")
-        items = []
-        for rel, disp in rows:
-            key = f"{subject}::{rel}"
-            items.append(
-                f'<div class="row" data-key="{html.escape(key)}">'
-                f'<input type="checkbox" aria-label="done">'
-                f'<span class="name">{disp}</span>'
-                f'<select class="rag" aria-label="confidence">'
-                f'<option value="">–</option><option value="r">red</option>'
-                f'<option value="a">amber</option><option value="g">green</option></select>'
-                + (f'<a href="{NOTE_LINKS[key]}">study&nbsp;notes</a>' if key in NOTE_LINKS else "")
-                + f'<a href="{html.escape(rel)}" target="_blank">notes&nbsp;PDF</a></div>'
-            )
-            idx += 1
-        blocks.append(
-            f'<h3>{label} <span class="count">({len(rows)})</span></h3>'
-            + "\n".join(items)
+
+    def row_html(rel, disp, attrs=""):
+        key = f"{subject}::{rel}"
+        return (
+            f'<div class="row" data-key="{html.escape(key)}"{attrs}>'
+            f'<input type="checkbox" aria-label="done">'
+            f'<span class="name">{disp}</span>'
+            f'<select class="rag" aria-label="confidence">'
+            f'<option value="">–</option><option value="r">red</option>'
+            f'<option value="a">amber</option><option value="g">green</option></select>'
+            + (f'<a href="{NOTE_LINKS[key]}">study&nbsp;notes</a>' if key in NOTE_LINKS else "")
+            + f'<a href="{html.escape(rel)}" target="_blank">notes&nbsp;PDF</a></div>'
         )
+
+    if syllabus_map:
+        by_key, themes, levels = syllabus_map
+        level_label = {lv["n"]: lv["label"] for lv in levels}
+        units, other = {}, []  # (theme, level) -> [(code, rel, disp)]; rows with no code
+        for _, rows in gather_notes(subject):
+            for rel, disp in rows:
+                t = by_key.get(f"{subject}::{rel}")
+                if t:
+                    units.setdefault((t["theme"], t["level"]), []).append((t["code"], rel, disp))
+                else:
+                    other.append((rel, disp))
+        for th in themes:
+            k = th["key"]
+            present = sorted(lv for (tm, lv) in units if tm == k)
+            if not present:
+                continue
+            n = sum(len(units[(k, lv)]) for lv in present)
+            blocks.append(
+                f'<h3 data-chk="{html.escape(k)}">{html.escape(k)} — {html.escape(th["label"])} '
+                f'<span class="count">({n})</span></h3>'
+            )
+            for lv in present:
+                gk = f"{k}{lv}"
+                rows = sorted(units[(k, lv)])
+                blocks.append(
+                    f'<h4 class="lib-sec" data-chk="{html.escape(gk)}">{html.escape(gk)} · {html.escape(level_label[lv])} '
+                    f'<span class="count">({len(rows)})</span></h4>'
+                )
+                for code, rel, disp in rows:
+                    idx += 1
+                    blocks.append(
+                        row_html(rel, disp, f' data-code="{html.escape(code)}" data-chk="{html.escape(gk)}"')
+                    )
+        if other:  # e.g. tools PDFs — no syllabus code, so code search never shows them
+            blocks.append(
+                f'<h3 data-chk="tools">Tools &amp; other <span class="count">({len(other)})</span></h3>'
+            )
+            for rel, disp in other:
+                idx += 1
+                blocks.append(row_html(rel, disp, ' data-chk="tools"'))
+    else:
+        for section, rows in gather_notes(subject):
+            label = section_names.get(section, pretty(section) if section else "Topics")
+            items = []
+            for rel, disp in rows:
+                idx += 1
+                items.append(row_html(rel, disp))
+            blocks.append(
+                f'<h3>{label} <span class="count">({len(rows)})</span></h3>'
+                + "\n".join(items)
+            )
     return "\n".join(blocks), idx
 
 
@@ -254,6 +313,9 @@ BASE = """<!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>__TITLE__ — IB Study Area</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -279,9 +341,9 @@ BASE = """<!DOCTYPE html>
 __CONTENT__
 </main>
 <footer>Private family study area · exams <strong>May 2028</strong> · keep this site and its library non-public</footer>
-<script src="assets/store.js?v=7"></script>
+<script src="assets/store.js?v=8"></script>
 <script src="assets/profile.js?v=1"></script>
-<script src="assets/app.js?v=5"></script>
+<script src="assets/app.js?v=6"></script>
 </body>
 </html>
 """
@@ -303,8 +365,13 @@ CALLOUT = (
     '<p><a class="btn-link" href="quiz.html">Start a session →</a> · <a href="plan.html">how sessions fit the week</a></p></section>'
 )
 
+# the biology checklist is built here (not in its section below) because n_bio feeds BIO_CHECKLIST_HEAD;
+# named bio_topics_html so the math/chem calls below can keep reusing `topics_html`
+bio_topics_html, n_bio = checklist("biology-hl", BIO_SECTIONS, syllabus_map=BIO_SYLLABUS)
 MATH_ANCHOR = "<section class=\"card\" data-subject=\"math-aa-sl\"><h3>Syllabus checklist <span class='count'>(topics with notes PDFs)</span></h3>"
-BIO_ANCHOR = "<section class=\"card\" data-subject=\"biology-hl\"><h3>Syllabus checklist <span class='count'>(43 topics, new-syllabus themes)</span></h3>"
+# one constant for the checklist card head so the patch anchor below can never drift from it
+BIO_CHECKLIST_HEAD = f"<h3>Syllabus checklist <span class='count'>(official sections A–D + tools · {n_bio} rows)</span></h3>"
+BIO_ANCHOR = '<section class="card" data-subject="biology-hl">' + BIO_CHECKLIST_HEAD
 CHEM_ANCHOR = "<section class=\"card\" data-subject=\"chemistry-hl\"><h3>Syllabus checklist <span class='count'>(25 topics, Structure/Reactivity)</span></h3>"
 MATH_PANEL = '<section class="card" data-subject="math-aa-sl">\n    <h3>Teaching hours (SL) <span class="count">(from the official syllabus content)</span></h3>\n    <table class="wt"><thead><tr><th>Topic</th><th>SL hours</th></tr></thead><tbody>\n      <tr><td>1. Number &amp; algebra</td><td>19</td></tr>\n      <tr><td>2. Functions</td><td>21</td></tr>\n      <tr><td>3. Geometry &amp; trigonometry</td><td>25</td></tr>\n      <tr><td>4. Statistics &amp; probability</td><td>27</td></tr>\n      <tr><td>5. Calculus</td><td>28</td></tr>\n    </tbody></table>\n    <p class="muted">Calculus carries the most hours and lands last — it is where steady DP1 pacing pays off. Full document: <a href="library/school/math-aa-syllabus-content.pdf" target="_blank">math-aa-syllabus-content.pdf</a>.</p>\n  </section>\n'
 BIO_PANEL = '<section class="card" data-subject="biology-hl">\n    <h3>ISL teaching sequence 2026–28 <span class="count">(from the school course outline — timings approximate)</span></h3>\n    <table class="wt"><thead><tr><th>When</th><th>Units</th><th>Assessments</th></tr></thead><tbody>\n      <tr><td>DP1 Sep–Oct</td><td>Form &amp; function: A1.1 water · B1.1/B1.2 carbohydrates, lipids, proteins · A1.2 nucleic acids</td><td>unit tests</td></tr>\n      <tr><td>DP1 Nov</td><td>C1.1 enzymes &amp; metabolism</td><td><strong>IA practice</strong>: hydrogen peroxide (design · analysis · conclusion · evaluation)</td></tr>\n      <tr><td>DP1 Nov–Dec</td><td>Unity: A2.2 cell structure · B2.2 organelles · B2.3 specialization · A2.1 origin of cells</td><td><strong>January exam</strong> — everything to date</td></tr>\n      <tr><td>DP1 Jan–Feb</td><td>B2.1 membranes &amp; transport · D2.3 water potential</td><td><strong>IA practice</strong>: beetroot membranes (research design) · osmosis in potatoes (analysis/conclusion/evaluation)</td></tr>\n      <tr><td>DP1 Feb–Mar</td><td>C1.2 cell respiration · D1.2 protein synthesis · D2.2 gene expression · C3.2 defence against disease</td><td>tests</td></tr>\n      <tr><td>DP1 Apr–May</td><td>Flow: C1.3 photosynthesis · C4.2 transfer of energy &amp; matter · B3.1 gas exchange · B3.2 transport</td><td><strong>June exam</strong> — everything to date</td></tr>\n      <tr><td>DP1 June</td><td>B4.1/B4.2 niches · C4.1 populations · D1.1 DNA replication · A2.3 viruses</td><td><strong>IA experiments (late June)</strong></td></tr>\n      <tr><td>DP2 Sep–Nov</td><td>Continuity: D2.1 division · D3.1 reproduction · Diversity: A3.1/A3.2 · D1.3 mutation · D3.2 inheritance · A4.2 conservation</td><td><strong>IA draft (early Sept)</strong> → <strong>IA final (early Nov)</strong></td></tr>\n      <tr><td>DP2 Dec–Mar</td><td>Control &amp; coordination (C3.1, C2.2, B3.3, D3.3, C2.1) · Change (D4.1 selection, A4.1 evolution, D4.2, D4.3 climate)</td><td><strong>Mock exams (January)</strong></td></tr>\n    </tbody></table>\n    <p class="muted">Checklist rows below carry the same topic codes — keep the current unit green before its test. Official outline: <a href="library/school/bio-course-outline-2026-28.pdf" target="_blank">bio-course-outline-2026-28.pdf</a>.</p>\n  </section>\n'
@@ -389,8 +456,8 @@ def page(fname, title, content_html, active):
     if fname in AUTH_PAGES:
         h = h.replace("</nav>", '  <span id="auth-slot"></span>\n</nav>', 1)
         h = h.replace(
-            '<script src="assets/app.js?v=5"></script>',
-            '<script src="assets/app.js?v=5"></script>\n<script src="assets/auth.js?v=10"></script>',
+            '<script src="assets/app.js?v=6"></script>',
+            '<script src="assets/app.js?v=6"></script>\n<script src="assets/auth.js?v=10"></script>',
             1,
         )
     if fname in EXTRA_SCRIPTS:
@@ -402,8 +469,8 @@ def page(fname, title, content_html, active):
         )
     if fname == "index.html":
         h = h.replace(
-            '<script src="assets/app.js?v=5"></script>',
-            '<script src="assets/deadlines.js?v=5"></script>\n<script src="assets/app.js?v=5"></script>',
+            '<script src="assets/app.js?v=6"></script>',
+            '<script src="assets/deadlines.js?v=6"></script>\n<script src="assets/app.js?v=6"></script>',
             1,
         )
     out.write_text(h, encoding="utf-8")
@@ -504,7 +571,6 @@ SUBJECTS["math-aa-sl.html"] = dict(
 )
 
 # ---------- BIOLOGY HL ----------
-topics_html, n_bio = checklist("biology-hl", BIO_SECTIONS)
 SUBJECTS["biology-hl.html"] = dict(
     title="Biology HL",
     active="Biology HL",
@@ -535,10 +601,13 @@ SUBJECTS["biology-hl.html"] = dict(
         )
         + subject_card(
             "biology-hl",
-            "<h3>Syllabus checklist <span class='count'>(43 topics, new-syllabus themes)</span></h3>"
+            BIO_CHECKLIST_HEAD
             + "<div class='legend'>checkbox = revised · red/amber/green = confidence</div>"
             + "<div class='bar' data-subject='biology-hl'></div>"
-            + topics_html
+            + "<div class='lib-filter'><input id='chk-search' type='text' "
+              "placeholder='search syllabus code or title…' aria-label='search'></div>"
+            + "<p class='muted' id='chk-empty' hidden>No matches — clear the search to see every row.</p>"
+            + bio_topics_html
         )
         + card(
             "<h3>Official documents</h3><ul class='links'>"
@@ -784,7 +853,8 @@ SUBJECTS["practice.html"] = dict(
             "<h3>Missed questions (auto-tracked by the Quiz)</h3>"
             "<div id='err-summary' class='muted'></div><div id='err-list'></div>"
             "<p class='muted'>Every wrong answer in a Quiz session is stored here until it's answered correctly in a "
-            "Review session. Open the <a href='quiz.html'>Quiz</a> → “Review past errors” to re-attempt them.</p>"
+            "Review session. Open the <a href='quiz.html'>Quiz</a> → “Review past errors” to re-attempt them, or browse "
+            "the full log with error types and reflections on the <a href='app/mistakes.html'>Mistakes</a> page.</p>"
             "<script>\n"
             "(function () {\n"
             "  function render() {\n"
@@ -1036,6 +1106,7 @@ h3:not(:first-child){margin-top:1rem}
 .row .name{flex:1;font-size:.95rem}
 .row a{font-size:.85rem;white-space:nowrap}
 select.rag{border:1px solid var(--line);border-radius:8px;padding:.15rem .35rem;font-size:.85rem;background:#fff}
+.row[hidden]{display:none} /* checklist search (chk-search) hides non-matching rows */
 .bar{height:8px;border-radius:999px;background:#e7ebef;position:relative;margin:.4rem 0 .8rem;overflow:hidden}
 .bar::after{content:"";position:absolute;inset:0;width:var(--pct,0%);border-radius:999px;background:var(--accent)}
 table.wt{border-collapse:collapse;width:100%;font-size:.93rem}
@@ -1241,6 +1312,29 @@ JS = """(function () {
     inp.value = store.get('week:' + inp.dataset.i, '');
     inp.addEventListener('input', () => { store.set('week:' + inp.dataset.i, inp.value); try { if (window.Auth && window.Auth.queueSync) window.Auth.queueSync(); } catch (e) {} });
   });
+  // Checklist filter (biology hub emits #chk-search; other pages no-op here).
+  // Rows match on their syllabus code (data-code) or display title; headings
+  // tagged data-chk hide once no visible row still belongs to them.
+  const chkSearch = document.getElementById('chk-search');
+  if (chkSearch) {
+    const chkCard = chkSearch.closest('.card');
+    const chkEmpty = document.getElementById('chk-empty');
+    const chkRows = chkCard ? [...chkCard.querySelectorAll('.row[data-key]')] : [];
+    chkSearch.addEventListener('input', () => {
+      const q = chkSearch.value.trim().toLowerCase();
+      let shown = 0;
+      chkRows.forEach(r => {
+        const name = r.querySelector('.name');
+        const hay = ((r.dataset.code || '') + ' ' + (name ? name.textContent : '')).toLowerCase();
+        r.hidden = !!q && hay.indexOf(q) < 0;
+        if (!r.hidden) shown++;
+      });
+      if (chkCard) chkCard.querySelectorAll('h3[data-chk],h4[data-chk]').forEach(h => {
+        h.hidden = !chkRows.some(r => !r.hidden && (r.dataset.chk || '').slice(0, h.dataset.chk.length) === h.dataset.chk);
+      });
+      if (chkEmpty) chkEmpty.hidden = shown > 0;
+    });
+  }
 })();
 """
 

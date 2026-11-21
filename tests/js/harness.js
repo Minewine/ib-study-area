@@ -87,6 +87,7 @@ function makeEnv(opts) {
     location: Object.assign({ search: "", hostname: "rametric.com", pathname: "/nevaib/index.html", reload() { ctx.reloads++; } }, opts.location || {}),
     URLSearchParams, setTimeout: opts.setTimeout || setTimeout, clearTimeout, setInterval: () => 0, clearInterval() {},
     Date, JSON, Math, Promise, Map, Set, Array, Object, String, Number, Error, Blob: function () {},
+    AbortController, // today.js fetch timeouts hang-test via this (node has it globally)
     Node: function Node() {}, // notes.js tests `c instanceof Node` — a bare stand-in is enough
     fetch: opts.fetch || (() => Promise.reject(new Error("offline"))),
     navigator: {}, reloads: 0

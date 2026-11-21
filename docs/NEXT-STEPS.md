@@ -1,8 +1,45 @@
 # Next steps (prioritised)
 
-_Updated 19 Nov 2026 (evening). Background: [HANDOFF.md](HANDOFF.md). Longer-term ideas: [VISION.md](VISION.md)._
+_Updated 20 Nov 2026. Background: [HANDOFF.md](HANDOFF.md). Longer-term ideas: [VISION.md](VISION.md)._
 
 ## Status at a glance
+- **Consolidation complete (20 Nov 2026):** all five student-feedback phases reviewed together,
+  verified (`./dev.sh validate` + `./dev.sh test` + e2e green) and committed as one batch —
+  phase-by-phase status, data-model notes and follow-ups in
+  [CHANGELOG-2026-11-20-neva-feedback.md](CHANGELOG-2026-11-20-neva-feedback.md). **Deploy is the
+  next step and stays gated on explicit approval (section 1 below).**
+- **Phase 4 complete (20 Nov 2026):** **resources + AI-assisted authoring** — a Resources page for
+  her own links (tagged subject/topic, synced via `my-res`, never quiz content, no file contents in
+  localStorage), and the AI workflow moved into the Upload page: pick a topic → copy a prompt that
+  carries the exact subject id and topic key → paste the returned JSON into a **preview** that
+  validates and lets her edit/remove items → **Import** the whole set in one batch. Same button on
+  every topic note. No external API calls; Classroom import and in-app generation stay deferred.
+  Details in [HANDOFF.md](HANDOFF.md) and docs/AUTHORING.md.
+- **Phase 0 complete (20 Nov 2026):** pre-improvement review of the existing app before the flashcard/quiz
+  organisation work. Verified: the live site (rametric.com/nevaib) matches `main` byte-for-byte (209 files;
+  the only difference is the not-yet-deployed favicon commit). Today panel: adds a 10 s fetch timeout plus
+  clear error states — a failed class-schedule/deck/notes load no longer masquerades as an empty panel, and a
+  hung fetch or failed script can no longer leave it on "Loading…" indefinitely. Fixed while checking the
+  existing features: **dark mode never applied** (attribute mismatch — CSS looked for `data-fcTheme`, JS wrote
+  `data-fc-theme`); the Cards editor's deck dropdown didn't re-render the card list on change and forgot the
+  selection after saves; new cards always landed in the first deck's topic; uploaded-deck cards were edited/
+  deleted as hidden overrides instead of updating the deck itself; quiz uploads left the manage list stale;
+  storage-full writes reported success; and the deck-id collision check was silently broken on `/app/` pages
+  (wrong fetch path, then cached forever). See [HANDOFF.md](HANDOFF.md) for the full list.
+- **Upload limit measured (20 Nov 2026):** there is **no question-count or file-size cap** anywhere in the
+  author/editor code or validation — the "8 questions" in [USER-TEST.md](USER-TEST.md) is only the example
+  size in the AI-generation prompt (`tools/validate_content.py`'s `MIN_MCQ_FOR_CUE_CHECK = 8` is a pre-commit
+  quality heuristic, not an import cap). Measured on a logged-in dev account (Chrome): 300 items (49 KB)
+  import in ~0.15 s, 5,000 (0.77 MB) in ~0.9 s; 20,000 (~3 MB) and 40,000 (~6 MB) also import. The real
+  ceiling is the browser's localStorage quota, which now reports as a clear error on the Upload page.
+  Kept: malformed-JSON, duplicate-id and per-item validation. Caveat: a ~6 MB user-state file can make the
+  sync push sluggish on the next load (seen once with the 40k-item test bank) — not a concern at realistic sizes.
+- **Next focus (20 Nov 2026, updated by the consolidation pass):** the organisation improvements —
+  folders/practice sets, mistake log, filtering, card editing, Today-panel suggestions — are **built,
+  tested and committed** on the branch `feat/neva-feedback-consolidation` (open merge request; see
+  [CHANGELOG-2026-11-20-neva-feedback.md](CHANGELOG-2026-11-20-neva-feedback.md)). The "higher upload
+  limits" item is resolved too: there is no cap — see the measured behaviour above. **Next action: merge
+  that branch, then deploy (§1).** New content batches follow after the deploy.
 - **Done and live (18 Nov morning):** PRs #1–#4.
 - **Done and live (deployed 19 Nov evening):** PRs #1–#16 (topic notes, sync, Today panel, security hardening, weekly summary, exam practice, coursework planner, My resources, Ask an AI). `./dev.sh validate`, `./dev.sh test` and `./dev.sh e2e` pass on `main`.
 - **Done, merged into `main` (Nov 2026), included in the later deploy:** the private cross-check of 25 topic notes and **My resources** on every note (PR #14).
@@ -10,8 +47,9 @@ _Updated 19 Nov 2026 (evening). Background: [HANDOFF.md](HANDOFF.md). Longer-ter
 - **Multi-user: done and live (deployed 19 Nov evening, PRs #17–#19):** per-student accounts with isolated data (per-user storage scopes), subject profiles filtering nav/quiz/cards/notes/library/coursework/deadlines, and the **admin** account (`admin` — password held by the family; there is no password-change feature). Students are created via the admin on the study site's `admin.html`, or via the API (see `server/deploy-notes.md`). Neva's login is unchanged and sees all subjects. Details in [HANDOFF.md](HANDOFF.md).
 
 ## 1. Deploy `main` (only with explicit approval)
+0. **Merge the consolidation branch first:** `origin/main` still predates phases 0–5 — deploying it as-is would ship the pre-phase site. Merge `feat/neva-feedback-consolidation` (open merge request) into `main`, then run the steps below on the updated `main`.
 1. **Back up first:** the server copy via `api/api.php?action=export` (logged in), and her browser progress with Cards → "Download full backup".
-2. `git switch main && git pull && ./dev.sh test && ./dev.sh deploy`. This is a dry run: check the list includes `api/api.php`, `api/summary.php`, `api/weekly_email.php`, `coursework.html`, `summary.html`, and no PDFs or private folders.
+2. `git switch main && git pull && ./dev.sh test && ./dev.sh deploy`. This is a dry run: check the list includes `api/api.php`, `api/summary.php`, `api/weekly_email.php`, `coursework.html`, `summary.html`, `app/mistakes.html`, `app/resources.html`, and no PDFs or private folders.
 3. `./dev.sh deploy --confirm`, then type DEPLOY. `api/api.php` goes first.
 4. Hard-refresh (Ctrl+Shift+R) on every device she uses: the new API only accepts the token in a header, so an old cached page may need to log in again. Script versions are bumped so fresh pages load the new code.
 5. Check: log in, do a few cards and a quiz, open Coursework and the Weekly summary, then save a fresh `?action=export` backup.
@@ -19,7 +57,7 @@ _Updated 19 Nov 2026 (evening). Background: [HANDOFF.md](HANDOFF.md). Longer-ter
 6. **Optional:** `~/nevaib-data/config.json` (outside `public_html`) for the weekly e-mail and a separate parent login, plus a cPanel cron job. Recipe in `server/deploy-notes.md`, "Parent weekly summary". Without it the summary page works with her own login.
 
 ## 2. Privacy
-- **Make the GitHub repo private.** It is still public and shows the school, year group, IA notes and the hosting layout.
+- **Make the GitHub repo private.** Re-flagged 20 Nov 2026: the repo is **still public** and shows the school, year group, IA notes and the hosting layout. (Visibility not changed without an explicit ask.)
 - Don't run the old `python3 -m http.server --bind 0.0.0.0`. Use `./dev.sh start` (local only) or `./dev.sh start --lan` (serves only the built copy).
 
 ## 3. Open questions for the student

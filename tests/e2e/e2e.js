@@ -57,7 +57,7 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
   // ── 1. every page loads without console errors ───────────────────────────
   {
     const { page, errors, ctx } = await newCtx(browser);
-    const pages = ["/index.html", "/app/index.html", "/app/notes.html", "/app/quiz.html", "/app/cards.html", "/app/author.html", "/app/summary.html", "/app/coursework.html",
+    const pages = ["/index.html", "/app/index.html", "/app/notes.html", "/app/quiz.html", "/app/cards.html", "/app/author.html", "/app/summary.html", "/app/coursework.html", "/app/mistakes.html", "/app/resources.html",
       ...fs.readdirSync(REPO).filter(f => f.endsWith(".html")).map(f => "/" + f)];
     for (const p of [...new Set(pages)]) {
       errors.length = 0;
@@ -554,6 +554,240 @@ const serverState = () => JSON.parse(fs.readFileSync(STATE_FILE, "utf8")).state;
     assert.deepStrictEqual(P.errors.filter(e => !/favicon/.test(e)), [], "subject-profile console errors");
     ok("subject profile: student with bio+chem → nav links and dashboard cards outside her subjects hidden");
     await P.ctx.close();
+  }
+
+  // ── 6. biology checklist search: empty state, then restore ─────────────────
+  {
+    const { page, errors, ctx } = await newCtx(browser);
+    await page.goto(BASE + "/biology-hl.html", { waitUntil: "networkidle0" });
+    assert.deepStrictEqual(await page.$$eval("h3[data-chk]", hs => hs.map(h => h.dataset.chk)),
+      ["A", "B", "C", "D", "tools"], "official sections A–D + Tools & other render");
+    const rows = ".card .row[data-key]";
+    assert.strictEqual(await page.$$eval(rows, rs => rs.filter(r => !r.hidden).length), 43, "all 43 rows visible");
+    await page.type("#chk-search", "zzzqqq"); // nonsense
+    await page.waitForFunction(() => !document.getElementById("chk-empty").hidden);
+    assert.strictEqual(await page.$$eval(rows, rs => rs.filter(r => !r.hidden).length), 0, "nonsense query hides every row");
+    assert.ok(await page.$$eval("h3[data-chk],h4[data-chk]", hs => hs.every(h => h.hidden)), "every data-chk heading hides");
+    await page.$eval("#chk-search", e => { e.focus(); e.select(); });
+    await page.keyboard.press("Backspace");
+    await page.waitForFunction(() => document.getElementById("chk-empty").hidden);
+    assert.strictEqual(await page.$$eval(rows, rs => rs.filter(r => !r.hidden).length), 43, "clearing restores all rows");
+    assert.deepStrictEqual(errors.filter(e => !/favicon/.test(e)), [], "checklist search console errors");
+    ok("biology checklist search: nonsense query → #chk-empty with zero rows, clearing restores all 43");
+    await ctx.close();
+  }
+
+  // ── 7. Today panel suggestions with seeded storage; manifest fetched once ──
+  {
+    const { page, errors, ctx } = await newCtx(browser);
+    // fixed fake clock (local noon 2026-11-20): the dated-window assertions must
+    // not be calendar time-bombs — on a live clock the English commentary leaves
+    // the 21-day near window after 2026-12-09 and the EE launch enters the 60-day
+    // "start thinking" window after 2026-12-19. Pinned date → stable windows;
+    // expected membership is still derived from the live deadline/coursework
+    // data below, so calendar edits cannot stale the assertions.
+    await page.evaluateOnNewDocument(() => {
+      const Real = Date, MS = new Real(2026, 10, 20, 12).getTime();
+      class FakeDate extends Real {
+        constructor(...a) { if (a.length === 0) super(MS); else super(...a); }
+        static now() { return MS; }
+      }
+      window.Date = FakeDate;
+    });
+    // seed before any page script runs: 12 bio-c1-1 cards due (9 + 3 due on the
+    // pinned today), one open biology C1.1 mistake, and an ACTIVE subject
+    // profile — the store key holds {subjects:[…]} directly (profile.js reads
+    // p.subjects); a wrapped {"profile":{…}} shape would be silently ignored
+    const fc = {}; for (let i = 1; i <= 12; i++) fc["fc-bio-e-" + String(i).padStart(2, "0")] =
+      { box: i <= 9 ? 2 : 1, due: i <= 9 ? "2026-11-15" : "2026-11-20", seen: 1, t: 1763000000000 + i };
+    const seed = {
+      profile: { subjects: ["biology-hl", "english-lit-hl", "chemistry-hl", "math-aa-sl"] },
+      "fc-state": fc,
+      "q-errors": [{ key: "bio-c1-1-enzymes-metabolism#e01", id: "e01", bankId: "bio-c1-1-enzymes-metabolism",
+        subject: "biology-hl", topic: "c1-1-enzymes-metabolism", topicLabel: "C1.1 — Enzymes & metabolism (Nov unit)",
+        format: "mcq", stem: "Seeded mistake stem", attempts: 1, firstMissed: "2026-11-18", lastMissed: "2026-11-18", resolved: false, ts: 1763450000000 }]
+    };
+    await page.evaluateOnNewDocument(s => { for (const [k, v] of Object.entries(s)) localStorage.setItem(k, JSON.stringify(v)); }, seed);
+    const manifestReqs = [];
+    page.on("request", r => { if (/library\/questions\/manifest\.json/.test(r.url())) manifestReqs.push(r.url()); });
+    await page.goto(BASE + "/app/index.html", { waitUntil: "networkidle0" });
+    await page.waitForFunction(() => {
+      const b = document.getElementById("today-body");
+      return b && b.textContent.indexOf("Loading today's plan") === -1;
+    }, { timeout: 15000, polling: 100 });
+    const sugg = await page.evaluate(() => {
+      const b = [...document.querySelectorAll("#today-body .td-block")]
+        .find(x => (x.querySelector("h4") || {}).textContent && /Suggested/.test(x.querySelector("h4").textContent));
+      return b ? [...b.querySelectorAll(".td-subj")].map(d => ({ title: d.querySelector("strong").textContent, href: d.querySelector("a").getAttribute("href") })) : [];
+    });
+    assert.strictEqual(sugg.length, 2, "two suggestions render (got " + sugg.length + ")");
+    const cards = sugg.find(s => /cards due/.test(s.title));
+    assert.ok(cards && /^12 cards due$/.test(cards.title), "cards suggestion counts the seeded 12");
+    assert.ok(cards && /^cards\.html\?from=bio-c1-1-enzymes-metabolism&n=12&label=/.test(cards.href), "cards link: deck id + n=12");
+    const mist = sugg.find(s => /Open mistakes/.test(s.title));
+    assert.ok(mist && /C1\.1 — Enzymes & metabolism/.test(mist.title), "mistakes suggestion names the topic");
+    assert.ok(mist && /^quiz\.html\?errkeys=bio-c1-1-enzymes-metabolism%23e01$/.test(mist.href), "mistakes link: errkeys=<bank#item>");
+    // the profile seed must actually be engaged (this is what the store-key
+    // shape fix buys): a wrapped {"profile":{…}} would leave default-all active
+    const prof = await page.evaluate(() => ({
+      subjects: window.NB.profile.subjects(),
+      hidesFrench: window.NB.profile.hides("french-a-langlit")
+    }));
+    assert.deepStrictEqual(prof.subjects, ["biology-hl", "english-lit-hl", "chemistry-hl", "math-aa-sl"],
+      "seeded profile is active, not default-all");
+    assert.strictEqual(prof.hidesFrench, true, "profile filtering engaged");
+    assert.ok(await page.evaluate(() => {
+      const fr = window.NB.deadlines.find(x => /French A HL: essay \(draft\)/.test(x.t));
+      const items = window.NB.today.datedItems(window.NB.deadlines, [], window.NB.profile.hides);
+      return !!fr && !items.some(x => x.label === fr.t);
+    }), "hidden-subject deadline (French A HL essay) dropped by the active profile");
+    // dated windows pinned by the fake clock, membership derived from the live
+    // data: every rendered near item must satisfy today <= d <= today+21 and
+    // every "Start thinking about" item (today+21, today+60]
+    const win = await page.evaluate(async () => {
+      const iso = d => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+      const today = iso(new Date());
+      const add = (s, n) => { const [y, m, dd] = s.split("-").map(Number); const t = new Date(y, m - 1, dd, 12); t.setDate(t.getDate() + n); return iso(t); };
+      const nearEnd = add(today, 21), farEnd = add(today, 60);
+      const cw = await (await fetch("../library/coursework/coursework.json")).json();
+      const items = window.NB.deadlines
+        .filter(x => x && !(x.subject && window.NB.profile.hides(x.subject)))
+        .map(x => ({ d: x.d, label: x.t }));
+      (Array.isArray(cw.tracks) ? cw.tracks : []).forEach(tr => {
+        if (tr && tr.subject && window.NB.profile.hides(tr.subject)) return;
+        (Array.isArray(tr.stages) ? tr.stages : []).forEach(st => (Array.isArray(st.dates) ? st.dates : []).forEach(dv => {
+          const label = [dv.label, st.title, tr.label].find(v => typeof v === "string" && v);
+          if (dv && label) items.push({ d: dv.date, label });
+        }));
+      });
+      items.sort((a, b) => (a.d < b.d ? -1 : 1));
+      return {
+        near: items.filter(x => today <= x.d && x.d <= nearEnd).map(x => x.label),
+        think: items.filter(x => x.d > nearEnd && x.d <= farEnd).map(x => x.label)
+      };
+    });
+    const coming = await page.evaluate(() => {
+      const b = [...document.querySelectorAll("#today-body .td-block")]
+        .find(x => (x.querySelector("h4") || {}).textContent && /Coming up/.test(x.querySelector("h4").textContent));
+      if (!b) return { near: [], think: [] };
+      const uls = [...b.querySelectorAll("ul")];
+      const texts = ul => ul ? [...ul.querySelectorAll("li")].map(li => li.textContent) : [];
+      return { near: texts(uls[0]), think: texts(uls[1]) };
+    });
+    assert.strictEqual(coming.near.length, win.near.length,
+      "near-term list exactly covers [today, today+21] (got " + coming.near.length + ", want " + win.near.length + ")");
+    win.near.forEach((label, i) => assert.ok(coming.near[i].includes(label.slice(0, 70)), "near item in date order: " + label));
+    assert.strictEqual(coming.think.length, win.think.length,
+      "long-lead list exactly covers (today+21, today+60] (got " + coming.think.length + ", want " + win.think.length + ")");
+    win.think.forEach((label, i) => assert.ok(coming.think[i].includes(label.slice(0, 70)) && /^Start thinking about/.test(coming.think[i]),
+      "long-lead item labelled: " + label));
+    if (win.near.some(l => /practice commentary/.test(l)))
+      assert.match(coming.near.join(" "), /practice commentary/, "English commentary (2026-12-08) is near-term on the pinned date");
+    if (!win.near.concat(win.think).some(l => /Extended Essay|TOK Exhibition/.test(l)))
+      assert.ok(!/Extended Essay|TOK Exhibition/.test(await page.$eval("#today-body", e => e.textContent)),
+        "EE launch (2027-02-17) and TOK plan (2027-03-25) stay beyond both windows");
+    assert.deepStrictEqual(errors.filter(e => !/favicon/.test(e)), [], "seeded Today console errors");
+    // storage-event storm → debounced re-render, and the questions manifest is
+    // cached in DATA: fetched once on load, never per re-render
+    assert.strictEqual(manifestReqs.length, 1, "manifest fetched once on load");
+    errors.length = 0;
+    await page.evaluate(() => {
+      const m = document.createElement("div"); m.id = "storm-marker";
+      document.getElementById("today-body").appendChild(m);
+      for (let i = 0; i < 50; i++) window.dispatchEvent(new StorageEvent("storage", { key: i % 2 ? "fc-state" : "q-errors" }));
+    });
+    await page.waitForFunction(() => !document.getElementById("storm-marker"), { timeout: 5000 });
+    assert.strictEqual(manifestReqs.length, 1, "manifest NOT re-fetched by the storm re-renders");
+    assert.match(await page.$eval("#today-body", e => e.textContent), /12 cards due/, "panel intact after the storm");
+    assert.deepStrictEqual(errors.filter(e => !/favicon/.test(e)), [], "storage-storm console errors");
+    ok("Today suggestions (seeded storage, pinned clock): 12-cards-due + C1.1 mistakes links, active-profile deadline filtering, window-exact near/long-lead dated items, storm re-render without re-fetching the manifest");
+    await ctx.close();
+  }
+  // ── 8. resources page + the staged AI-bank import ──────────────────────────
+  {
+    const { page, errors, ctx } = await newCtx(browser);
+    const today = new Date().toISOString().slice(0, 10);
+    // 8a. save a resource: tagged, note-linked, escaped, and never a quiz bank
+    await page.goto(BASE + "/app/resources.html", { waitUntil: "networkidle0" });
+    await page.waitForSelector("#res-add-form");
+    await page.type("#res-label", "<b>Water video</b>");
+    await page.select("#res-subject-add", "biology-hl");
+    await page.waitForFunction(() => [...document.querySelectorAll("#res-topics option")].length > 0, { timeout: 5000 });
+    await page.type("#res-topic", "a1-1");
+    await page.select("#res-type-add", "video");
+    await page.type("#res-url", "https://example.org/water");
+    await page.type("#res-comment", "osmosis at 4:30");
+    await page.waitForSelector("#res-note-wrap:not([hidden])", { timeout: 5000 });
+    assert.ok(await page.$eval("#res-note-link", e => e.checked), "note link pre-ticked for a known topic");
+    await page.click("#res-add-form button[type=submit]");
+    await page.waitForSelector("#res-list .res-row");
+    assert.strictEqual(await page.$eval("#res-list .res-link", e => e.textContent), "<b>Water video</b>", "title rendered as text, not HTML");
+    assert.strictEqual(await page.$eval("#res-list .res-link", e => e.getAttribute("href")), "https://example.org/water");
+    const stored = await page.evaluate(() => JSON.parse(localStorage.getItem("my-res")));
+    assert.strictEqual(Object.keys(stored).length, 1);
+    const rec = Object.values(stored)[0];
+    assert.strictEqual(rec.subject, "biology-hl");
+    assert.strictEqual(rec.topic, "a1-1");
+    assert.strictEqual(rec.type, "video");
+    assert.strictEqual(rec.note, "bio-a1-1", "topic matched the manifest note id");
+    assert.strictEqual(rec.comment, "osmosis at 4:30");
+    assert.strictEqual(await page.evaluate(() => localStorage.getItem("q-userbanks")), null, "a resource never becomes a quiz bank");
+    // 8b. delete leaves a tombstone
+    await page.click("#res-list .res-del");
+    const after = await page.evaluate(() => JSON.parse(localStorage.getItem("my-res")));
+    assert.strictEqual(Object.values(after)[0].deleted, true, "deletion stored as a tombstone");
+    assert.deepStrictEqual(errors.filter(e => !/favicon/.test(e)), [], "resources console errors");
+    ok("resources: tagged save (subject/topic/type/note-link), escaped title, tombstone delete, quiz storage untouched");
+    // 8c. Ask an AI for a practice set: deep link → bankgen prompt → copy + open
+    await page.goto(`${BASE}/app/author.html?ai-subject=biology-hl&ai-topic=a1-1`, { waitUntil: "networkidle0" });
+    await page.waitForSelector("#ai-card #nt-ai-modes button[data-mode=bankgen]", { timeout: 5000 });
+    assert.strictEqual(await page.$eval("#ai-subject", e => e.value), "biology-hl", "deep-link subject preselected");
+    assert.strictEqual(await page.$eval("#ai-topic", e => e.value), "a1-1", "deep-link topic preselected");
+    assert.strictEqual(await page.$$eval("#ai-card #nt-ai-modes button[data-mode]", bs => bs.length), 1, "only the bankgen mode is offered on the Upload page");
+    await page.evaluate(() => { window.__opened = []; window.open = (u) => { window.__opened.push({ u }); return { close() {} }; }; });
+    await page.click('#ai-card #nt-ai-modes button[data-mode="bankgen"]');
+    const opened = await page.evaluate(() => window.__opened);
+    assert.strictEqual(opened.length, 1);
+    assert.strictEqual(opened[0].u, "https://gemini.google.com/app");
+    const copied = await page.evaluate(() => window.NB.aiPrompt.lastText);
+    assert.match(copied, /"subject": "biology-hl"/);
+    assert.match(copied, /"topic": "a1-1"/);
+    assert.match(copied, /A1\.1 Water/);
+    assert.match(copied, /0-based index/);
+    assert.doesNotMatch(copied, /\{[a-z_]+\}/);
+    ok("AI picker: deep link prefills bio/a1-1, bankgen prompt carries the exact subject id + topic key, copy-before-open preserved");
+    // 8d. staged import: paste → preview → edit a stem → Import in one batch
+    const aiBank = JSON.stringify({ subject: "biology-hl", topic: "a1-1", topicLabel: "A1.1 Water", items: [
+      { id: "p01", format: "mcq", topic: "a1-1", stem: "Why is water polar?", choices: ["O is more electronegative", "the molecule is symmetric", "hydrogen is heavier"], answer: 0, note: "electronegativity difference" },
+      { id: "p02", format: "mcq", topic: "a1-1", stem: "Water has a high specific heat because…", choices: ["hydrogen bonding absorbs energy", "its mass is low", "covalent bonds break"], answer: 0 },
+      { id: "p03", format: "written", topic: "a1-1", marks: 2, stem: "Define cohesion.", markscheme: ["hydrogen bonding between water molecules (1)", "attraction (1)"] },
+    ] });
+    await page.evaluate((b) => { document.getElementById("paste-box").value = b; }, aiBank);
+    await page.click("#paste-add");
+    await page.waitForSelector("#preview-panel:not([hidden])", { timeout: 5000 });
+    assert.match(await page.$eval("#pv-summary", e => e.textContent), /3 questions \(2 MCQ, 1 written\)/);
+    assert.strictEqual(await page.$eval("#pv-name", e => e.value), "ai-a1-1.json", "unique name suggested from the topic");
+    assert.match(await page.$eval("#pv-status", e => e.textContent), /Ready to import/);
+    assert.strictEqual(await page.$$eval("#pv-items .pv-item", els => els.length), 3, "one editable row per item");
+    await page.evaluate(() => {
+      const t = document.querySelector('.pv-item[data-pv="0"] .pv-stem');
+      t.value = "Why is a water molecule polar (edited)?";
+      t.dispatchEvent(new Event("input", { bubbles: true }));
+    });
+    assert.match(await page.$eval("#pv-status", e => e.textContent), /Ready to import/, "the edit keeps the bank valid");
+    await page.click("#pv-import");
+    await page.waitForFunction(() => document.getElementById("preview-panel").hidden, { timeout: 5000 });
+    const banks = await page.evaluate(() => JSON.parse(localStorage.getItem("q-userbanks")));
+    assert.strictEqual(banks.length, 1, "exactly one bank imported");
+    assert.strictEqual(banks[0].name, "ai-a1-1.json");
+    assert.strictEqual(banks[0].items[0].stem, "Why is a water molecule polar (edited)?", "the preview edit was imported");
+    assert.strictEqual(banks[0].items.length, 3, "the whole set imported in one batch");
+    assert.strictEqual(banks[0].label, "A1.1 Water");
+    assert.strictEqual(banks[0].uploaded, today);
+    assert.strictEqual(banks[0].subjectLabel, "biology-hl");
+    assert.deepStrictEqual(errors.filter(e => !/favicon/.test(e)), [], "author staged-import console errors");
+    ok("staged import: paste → preview (summary, suggested name, editable rows) → edit → Import lands one edited bank in q-userbanks");
+    await ctx.close();
   }
   await browser.close();
   php.kill();

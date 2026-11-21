@@ -1,14 +1,14 @@
 # Development Notes
 
-_Last updated: 19 Nov 2026._
+_Last updated: 20 Nov 2026._
 
 Architecture, data schemas, conventions and gotchas for anyone (including future-you)
 touching this site.
 
 ## Architecture
 
-- **Static site, no build step.** 19 study-site pages (incl. `admin.html`) + 7 practice-app pages (`app/`, LIVE on rametric.com/nevaib) + 17 asset files + JSON data in `library/` (32 quiz banks / 841 items, 28 flashcard decks / 594 cards, 113 topic notes, and the PDF manifest `library/library-manifest.json` / 127 items). The engines build their pickers from `library/questions/manifest.json` + `library/flashcards/manifest.json`; the Library browser reads `library/library-manifest.json`.
-- **Practice app (`app/`)**: `index.html` (launcher), `quiz.html`, `cards.html`, `author.html` (upload/manage/export).
+- **Static site, no build step.** 19 study-site pages (incl. `admin.html`) + 9 practice-app pages (`app/`, LIVE on rametric.com/nevaib) + 22 asset files + JSON data in `library/` (32 quiz banks / 841 items, 28 flashcard decks / 594 cards, 113 topic notes, and the PDF manifest `library/library-manifest.json` / 127 items). The engines build their pickers from `library/questions/manifest.json` + `library/flashcards/manifest.json`; the Library browser reads `library/library-manifest.json`.
+- **Practice app (`app/`)**: `index.html` (launcher), `quiz.html`, `cards.html`, `notes.html`, `mistakes.html` (mistake log), `coursework.html`, `resources.html`, `author.html` (upload/manage/export), `summary.html` (parent weekly summary).
   Engines resolve content via `PATH_BASE` (`../` when served from `/app/`, empty at the root), so the same engine
   files serve both layers. Root `quiz.html`/`flashcards.html` are one-line redirect stubs to the app.
 - **Hosted deployment**: `server/api.php` (auth + per-user state, PHP sessions, JSON files under the cPanel home)
@@ -73,7 +73,7 @@ touching this site.
   (tracks), today.js (subject list + schedule keys), deadlines.js (tagged entries). Admins manage accounts and
   subject lists on `admin.html` (server actions `create-user` / `list-users` / `set-profile`, admin-only).
 - **Sync model** (`assets/auth.js`): synced keys = `NB.store.SYNCED_KEYS` (`q-userbanks, fc-userdecks, fc-state,
-  fc-user, fc-deleted, fc-edits, quizlog, q-errors, tok-objects, ee-ideas, io-issues, ia-debriefs, res-bookmarks,
+  fc-user, fc-deleted, fc-edits, quizlog, q-errors, topic-taught, tok-objects, ee-ideas, io-issues, ia-debriefs, res-bookmarks,
   res-notes, res-recent, pp-scores, cw-progress, my-res, profile`) **+ `site-state`** (`{checklists: {"chk:…": {c,r}}, week: {"week:0": "…"}}`, built from
   the per-row keys; rows are tracked individually). Rules, applied on page load, after login and on a 409:
   1. `fc-state`, `q-errors`, `quizlog` merge **per record** (`NB.merge.RECORDS`): `fc-state` per card (newest `t`,
@@ -108,11 +108,14 @@ touching this site.
   (records newest-wins, otherwise the current value wins conflicts and gaps are filled); Replace is an explicit
   opt-in for the keys in the file; "Undo last restore" brings the snapshot back.
 - **Cache-busting convention**: engine script tags carry `?v=N` — bump N in the referencing pages whenever an engine
-  file changes. `store.js` `?v=7` (first script on every storing page), `profile.js` `?v=1` (right after store.js),
-  `backup.js` `?v=4` (cards, author), `auth.js` `?v=10`, `quiz-engine.js` `?v=17`, `flashcards.js` `?v=13`,
-  `notes.js` `?v=4` (app/notes.html), `app.js` `?v=5`, `lists.js` `?v=4`
-  (core, ia, french hub, ee, library), `library.js` `?v=4` (library.html, index, practice), `deadlines.js` `?v=5`
-  (index + deadlines), `today.js` `?v=2`, `coursework.js` `?v=2`, `ai-prompt.js` `?v=4`. Bank/deck/manifest fetches use `?cb=Date.now()` + `cache: no-store`.
+  file changes. `store.js` `?v=8` (first script on every storing page), `profile.js` `?v=1` (right after store.js),
+  `backup.js` `?v=6` (cards, author), `bank-schema.js` `?v=1` (quiz, author — before quiz-engine/inline author script),
+  `bank-import.js` `?v=1` (author), `auth.js` `?v=10`, `quiz-engine.js` `?v=20`, `flashcards.js` `?v=16`,
+  `mistakes.js` `?v=1` (app/mistakes.html), `resources.js` `?v=1` (app/resources.html),
+  `notes.js` `?v=5` + `ai-prompt.js` `?v=5` (app/notes.html; ai-prompt also on author), `app.js` `?v=6`,
+  `lists.js` `?v=4` (core, ia, french hub, ee, library), `library.js` `?v=4` (library.html, index, practice),
+  `deadlines.js` `?v=6` (index + deadlines), `today.js` `?v=5`, `coursework.js` `?v=2`,
+  `papers.js` `?v=2` / `confidence.js` `?v=1` (quiz). Bank/deck/manifest fetches use `?cb=Date.now()` + `cache: no-store`.
 - **Vanilla JS, one engine per concern**:
   | File | Owns | Page(s) |
   |---|---|---|
@@ -156,11 +159,16 @@ Open a page once with `?nbapi=/api/api.php` to point it at the local API (localh
   `sync.test.js` (offline then online, write-then-navigate, two devices / stale tab + 409, first login with
   local data, `me` failing, checklist defaults, legacy server, storage full — against `fake-server.js`),
   `backup.test.js` (v1/v2/server-export fixtures, round trip, merge vs replace, undo, malformed input),
-  `auth-merge.test.js`.
+  `auth-merge.test.js`, `bank-schema.test.js` (upload validators incl. the optional
+  `set`/`setOrder`/`codes`/`difficulty` fields, next-set-name suggestion), `quiz-picker.test.js`
+  (subject → topic → set model, difficulty-range filter, taught-topics filter),
+  `taught.test.js` (`topic-taught` storage + per-topic newest-`t` merge).
 - `tests/test_api.py`: `server/api.php` on `php -S` with a temp data dir (skipped without php): auth,
   revisions + 409, partial saves, legacy files and clients, history rotation, export, atomic writes,
   unreadable file, lockout, plus a PHP 7.2 syntax guard.
-- `tests/test_validate_content.py`, `tests/test_build_deploy.py`, `tests/test_course_calendar.py` (regenerates
+- `tests/test_validate_content.py`, `tests/test_questions_manifest.py` (questions-manifest
+  generator: labels/order preserved, aggregation rules, `--check` drift detection),
+  `tests/test_build_deploy.py`, `tests/test_course_calendar.py` (regenerates
   the site and requires byte-identical output — works without the private PDFs via `library-manifest.json`).
 - `tests/e2e/e2e.js` (needs Chrome + `npm install --prefix tests/e2e`): every page loads cleanly, quiz flows,
   migration, two-browser sync, leave-within-2 s, offline study, stale tab, restore through the Cards UI.
@@ -186,7 +194,10 @@ store.js); the table lists the **logical** names engines use. `nb-*` bookkeeping
 | `fc-theme` | `flashcards.js` | "light"/"dark" for the Cards page |
 | `q-userbanks` | `app/author.html` + quiz-engine | uploaded quiz banks (per device) |
 | `fc-userdecks` | `app/author.html` + flashcards | uploaded flashcard decks (per device) |
-| `q-errors` | quiz-engine + `practice.html` | missed-question tracker: `{key, subject, topic, topicLabel, format, stem, choices, answer, userAnswer, note, marks, markscheme, tactic, attempts, firstMissed, lastMissed, resolved}` + `id, bankId, ts, lastAttempt, legacyKey` — key = `"<bankId>#<id>"` (bankId = bank file name without `.json`, `user:<slug>` for uploaded banks; ids are only unique per file). Older records keyed by bare id / stem hash are renamed when their bank loads in a session (same id AND same stem), keeping `legacyKey`; unmatched old records stay as they are and remain reviewable. `ts` = last-change ms timestamp for the sync merge. Synced cross-device when logged in |
+| `topic-taught` | quiz-engine | per-topic teaching-status overrides `{topicKey: {taught: bool, t}}` — written by the Quiz page's "Topics & teaching status" panel; topics without an override fall back to the class-schedule suggestion. Synced and merged **per topic** (newest `t` wins) |
+| `q-errors` | quiz-engine + `practice.html` + `assets/mistakes.js` | missed-question tracker: `{key, subject, topic, topicLabel, format, stem, choices, answer, userAnswer, note, marks, markscheme, tactic, attempts, firstMissed, lastMissed, resolved}` + `id, bankId, ts, lastAttempt, legacyKey` — key = `"<bankId>#<id>"` (bankId = bank file name without `.json`, `user:<slug>` for uploaded banks; ids are only unique per file). Older records keyed by bare id / stem hash are renamed when their bank loads in a session (same id AND same stem), keeping `legacyKey`; unmatched old records stay as they are and remain reviewable. `ts` = last-change ms timestamp for the sync merge. **Mistake-log fields (all optional, written by the mistakes page, never required):** `errorType` (`careless|misread|content|time|other`), `reflection` (≤500 chars), `retries` `[{ts, correct, conf?}]` (capped 20, written by the quiz engine), `retired` + `retiredReason` (≤200) + `retiredAt` (reversible soft-hide — excluded from review and unresolved counts, never hard-deleted). Synced cross-device when logged in |
+| `my-res` | `assets/notes.js` + `assets/resources.js` | her own resources/links `{id: {note?, subject?, topic?, type?, comment?, label, url, t}}` — `note` = topic-note id (the per-note "My resources" box), `subject`/`topic`/`type` (`website|video|doc|practice|other`)/`comment` (≤500) = the Resources page's tags. `url` must be `http(s)://` or `file://` (≤2000 chars; links only — never file contents). Deletion = tombstone `{note?/subject?, deleted: true, t}`; merged per id, newest `t` wins; `assets/backup.js` validates the extended shape. Resources are never read by the quiz/card engines |
+| `mistakes-filters` | `assets/mistakes.js` | the mistake-log page's filter state `{status, subject, q}` — LOCAL_ONLY (device-local, per-user scoped, never synced or backed up) |
 | `profile` | `profile.js` / server | per-user subject list `{subjects: ["biology-hl", …]}` (canonical ids; absent = all six subjects; empty array = none). Set by an admin via `set-profile`/`create-user`, synced as a normal state key |
 | `nb-token` | `auth.js` | login bearer token (sent as `X-Nevaib-Token`) — cross-origin sync — global |
 | `nb-api` | `auth.js` | dev-only API override set via `?nbapi=` on localhost pages — global |
@@ -221,8 +232,14 @@ practice.html's inline script (folded into the generator) renders it.
   "subject": "chemistry-hl",
   "topic": "structure-3-1-periodicity",
   "topicLabel": "human-readable",
+  "set": "Practice set 1 — core recall",
+  "setOrder": 1,
+  "codes": ["S3.1"],
+  "paperStyle": "1A",
+  "calculatorFree": true,
   "items": [
     {"id": "p01", "format": "mcq", "stem": "…", "choices": ["…"], "answer": 1,
+     "difficulty": "standard",
      "note": "why the answer is right + the trap"},
     {"id": "p21", "format": "written", "marks": 3, "stem": "…",
      "markscheme": ["point (1)", "point (1)"], "tactic": "how to attack this question type"}
@@ -230,7 +247,11 @@ practice.html's inline script (folded into the generator) renders it.
 }
 ```
 Rules: ids unique across the file; `answer` is a 0-based choice index; every item carries
-its unit `topic` code; notes state the fact and the trap — never hedge.
+its unit `topic` code; notes state the fact and the trap — never hedge. All of `set` (practice-set
+display name, unique per topic), `setOrder` (int), `codes` (IB codes for the taught suggestion),
+`paperStyle`/`calculatorFree` (Paper-style labelling) and item `difficulty` (`easy|standard|hard`,
+absent = Unrated — never guessed) are **optional**; the Quiz picker groups banks as sets under
+their effective topics (item `topic`, else the bank's, else the filename stem).
 
 ### Flashcard deck (`library/flashcards/*.json`)
 ```json
@@ -238,19 +259,26 @@ its unit `topic` code; notes state the fact and the trap — never hedge.
   "subject": "biology-hl",
   "topic": "c1-1-enzymes-metabolism",
   "topicLabel": "human-readable",
+  "set": "Core definitions",
+  "setOrder": 1,
   "cards": [
     {"id": "fc-bio-e-01", "type": "term | qa", "tags": ["definition", "IA"],
      "front": "term or question", "back": "definition or answer"}
   ]
 }
 ```
-Ids unique **across all decks** (prefix per deck). Same `topic` keys as question banks.
+Ids unique **across all decks** (prefix per deck). Same `topic` keys as question banks. Optional
+deck-level `set`/`setOrder` name and order decks that share a topic (display only).
 
 ### Content manifests (`library/questions/manifest.json`, `library/flashcards/manifest.json`)
 ```json
 [
   {"file": "library/questions/bio-unity-diversity-cells.json", "subject": "biology-hl",
-   "subjectLabel": "Biology HL", "label": "Unity & diversity — Cells & membranes"}
+   "subjectLabel": "Biology HL", "label": "Unity & diversity — Cells & membranes",
+   "topic": "unity-diversity-cells", "topicLabel": "…", "codes": ["A1.1"],
+   "counts": {"mcq": 12, "written": 8, "total": 20},
+   "topics": [{"topic": "unity-diversity-cells", "topicLabel": "…", "count": 20,
+               "difficulty": {"unrated": 20, "easy": 0, "standard": 0, "hard": 0}}]}
 ]
 ```
 Array of entries; this is what `quiz-engine.js` / `flashcards.js` fetch to build their
@@ -258,6 +286,16 @@ pickers (`?cb=` + `cache: no-store`). The flashcards manifest omits `label`. The
 `FALLBACK_BANKS` / `FALLBACK_REGISTRY` lists at the top of the engines are partial
 fetch-failure snapshots, not the source of truth — the manifests are. `validate_content.py`
 checks that every manifest entry points to an existing file.
+
+The questions manifest is **generated** by `python3 -I tools/build_questions_manifest.py`
+(`--check` = exit 1 on drift): existing entries keep their hand-written `file`/`subject`/
+`subjectLabel`/`label` byte-identical, unlisted banks are appended (label = `topicLabel` or
+filename stem), and the computed fields (`topic`, `topicLabel`, `set`, `setOrder`, `codes`,
+`paperStyle`, `calculatorFree`, `counts`, `topics`) are derived from the bank files — active
+items only (`retired: true` excluded), effective topic = item `topic` || bank `topic` || stem,
+difficulty histogram always has all four buckets. The validator verifies the computed fields
+against the banks and errors on unknown item difficulty values or malformed `set`/`setOrder`/
+`codes`; it warns when two banks share subject + topic + set display name.
 
 ### Library manifest (`library/library-manifest.json`)
 ```json
@@ -338,6 +376,12 @@ Rules:
   hand-authored. Keep them in sync. Core/ia/ee load auth.js because their lists/notes sync.
 - Per-page engine scripts go through `EXTRA_SCRIPTS` (lists.js on core/ia/french; library.js on index
   + practice — it drives the dashboard pins card and the practice papers list).
+- The biology hub groups its checklist under the official sections A–D with unit sub-headings
+  (`A1 · Molecules`), driven by `library/syllabus/biology-hl.json` — rows join via each topic's
+  `checklistKey` and carry `data-code`/`data-chk`; rows with no code (tools PDFs) land in
+  "Tools & other". The card's `#chk-search` input filters rows by code/title and hides emptied
+  headings (app.js no-ops on pages without the input); `BIO_ANCHOR` is built from the same
+  `BIO_CHECKLIST_HEAD` constant as the card title, so a retitle can't desync the panel splice.
 - The hand-maintained pages (`quiz.html`, `plan.html`, `deadlines.html`, `flashcards.html`,
   `english-lit-hl.html`, `ee.html`, `library.html`, `sixth-subject.html`) are never touched by the generator.
 
@@ -396,7 +440,9 @@ EOF
 - `source-archives/` holds the original downloaded ZIPs (~434 MB) — provenance only,
   deletable once confident in `library/notes/`.
 - The Cards page dark mode is scoped to that page (`data-fcTheme` attribute); the rest of
-  the site is light-only by design (one thing to change at a time).
+  the site is light-only by design (one thing to change at a time). A first visit is always
+  light — no OS `prefers-color-scheme` auto-dark; dark applies only after toggling, which
+  stores the choice per profile (`fc-theme`).
 - **The host runs PHP 7.2.34**, not 8 (cPanel can switch it — worth asking for). `server/api.php`
   is written for 7.2+: no `never` return type, no arrow functions, positional
   `session_set_cookie_params`, no trailing commas in calls. Keep it that way even though local

@@ -1,12 +1,56 @@
 # Feature Roadmap
 
-_Last updated: 19 Nov 2026._
+_Last updated: 20 Nov 2026._
 
 Scope guard: every item must serve the actual DP1→DP2 sequence (exams May 2028).
 The weekly loop — quiz sessions, flashcards, error log, idea log — is the product;
 features only exist to make that loop easier or more targeted.
 
 ---
+
+## Shipped (2026-11-20)
+
+Student-feedback improvement phases (built across 20 Nov sessions; consolidated, tested and
+committed the same day — deploy pending approval):
+
+- [x] **Phase 0 — baseline review + Today panel loading/error states** (commit `58f6539`): every
+  Today fetch gets a 10 s timeout with explicit error states; dark-mode attribute mismatch fixed
+  (`data-fcTheme`); Cards editor deck dropdown, uploaded-deck edits, quiz-upload manage list,
+  storage-full reporting and deck-id collisions fixed; upload limits measured and documented (no cap).
+- [x] **Phase 1 — practice sets + filters**: banks/decks carry optional `set`/`setOrder`/`codes`
+  (+ `paperStyle`/`calculatorFree`) and item-level `difficulty` (`easy|standard|hard`, absent =
+  unrated — zero migration); the Quiz picker groups banks as **sets under their topics**, adds a
+  **difficulty-range filter** and a **taught-topics-only toggle** backed by a "Topics & teaching
+  status" panel (`topic-taught`, synced per topic). Shared validators live in `assets/bank-schema.js`
+  (same rules run in `tools/validate_content.py`); `tools/build_questions_manifest.py` computes the
+  picker metadata. Upload limits confirmed: no cap (40k items import; ceiling = localStorage quota).
+- [x] **Phase 2 — mistake log** (`app/mistakes.html` + `assets/mistakes.js`): every wrong answer
+  with error type, reflection (≤500), retry history (capped 20); recovered vs unresolved vs
+  **"not relevant"** (reversible soft-hide, never deleted); status/subject/search filters;
+  one-question retry deep links (`quiz.html?errkeys=`). Sync-merge of the new `q-errors` fields is
+  field-aware (retries union, reflection fill-in, retired rides the winner).
+- [x] **Phase 3 — biology navigation + today suggestions**: Biology hub checklist grouped under
+  **A/B/C/D theme headings with live search** (empty state + heading hiding); Today panel adds
+  **ranked suggestions with visible reasons** (open mistakes → retry link, closing units → note
+  link, deadline prep) capped at two, plus near/long-lead dated items; pinned-clock e2e.
+- [x] **Phase 4 — resources + AI-assisted authoring** (`app/resources.html`): she saves her own
+  links (title, subject, topic, type, note) tagged to a syllabus topic and optionally shown on
+  that topic's note; stored in the synced `my-res` key, tombstone deletes, links only
+  (http(s)/file, no file contents in localStorage), never read by the quiz/card engines. Each
+  resource offers "Make questions…" into the Upload page's AI flow.
+- [x] **Phase 4 — AI-assisted authoring end-to-end** (Upload page §1–2 + every topic note): pick
+  topic → copy the `bankgen` prompt (exact subject id + topic key) → open the assistant → paste
+  the JSON into a **staged preview** (`assets/bank-import.js`): validate, edit
+  stems/choices/answers/marks, remove items, unique suggested name → **Import bank** in one batch,
+  identical storage shape to a file upload. No external API calls. Classroom import and in-app
+  generation explicitly deferred (privacy, OAuth, cost).
+- [x] **Phase 5 — polish**: PNG favicon fallbacks + apple-touch icon on every page (`favicon.ico`,
+  `assets/favicon-32.png`, `assets/apple-touch-icon.png` — committed with this batch); editor
+  discoverability (Upload page rewritten as a five-section map, launcher-card copy, Cards editor
+  explainers, Quiz "Extending the banks" note); Cards page **defaults to light mode** (dark stays
+  a toggle).
+- [x] Deploy-list gap fixed: `mistakes.html` added to `build_deploy.py`'s PAGES (would have 404ed
+  on the live site once phases 0–3 shipped) + launcher cards for Mistakes and Resources.
 
 ## Shipped (2026-11-15)
 
@@ -56,7 +100,7 @@ features only exist to make that loop easier or more targeted.
 - [ ] **Fill the IA debriefs** after each session (Nov hydrogen-peroxide, Jan beetroot/osmosis) — the page and storage are live; the content is hers to capture.
 - [ ] **EE shortlist → proposal**: she keeps the idea log current in `ee.html`; shortlist ready at the Feb 17 launch, proposal checklist ticked with the supervisor before Mar 2. TOK object candidates accumulate on `core.html` (plan due Mar 25).
 - [x] **Quiz banks one unit ahead** (2026-11-15): chem kinetics + equilibrium (Feb–Mar) and bio respiration/protein synthesis built, each with a flashcard deck — the whole Feb–Mar queue is in place.
-- [x] **Flashcards decks kept current** (2026-11-15): every DP1 science/math unit covered + French terminology (35) + English literary terms (42); 23 decks / 484 cards total.
+- [x] **Flashcards decks kept current** (2026-11-15): every DP1 science/math unit covered + French terminology (35) + English literary terms (42); 23 decks / 484 cards at the time — now 28 decks / 594 cards.
 - [x] **Progress dashboard v2** (2026-11-15): "Progress pulse" card on the study dashboard — quiz-score trend (last 5 sessions), flashcards due/mastered/seen, checklist % overall + weakest subject. Checklist % denominator fixed (untouched rows now initialise on hub visits).
 - [x] **Deployment** (2026-11-15): live at rametric.com/nevaib over HTTPS, verified end-to-end (api auth, CORS preflights, token sync). Host runs PHP 7.2 — api.php written for it. Remaining habit: `push_deploy.py` for updates + cPanel backup of `~/nevaib-data/`.
 - [x] **Study-site sync** (2026-11-15): hub checklist ticks (`chk:*`) + this-week items sync cross-device via a batched `site-state` payload (token auth + CORS in api.php; per-row merge, first-login migration without data loss — browser-verified).
@@ -73,6 +117,7 @@ features only exist to make that loop easier or more targeted.
 - [ ] **Whole-site dark mode** (currently only the Cards page has it).
 - [ ] **NLP-style marking of written answers** — the wishlist item from the original notes; requires a defined marking methodology and is a real product, not a static-page feature. Revisit only if the self-marking discipline proves weak.
 - [ ] **AI-predicted questions** — the notes' third sourcing idea; gated on a documented methodology mapped to the syllabus (the blind spot the notes themselves flagged).
+- [ ] **Coursework / Google Classroom automation** — deferred until she asks for it; the coursework planner stays manual until then.
 - [x] **Git version control** — repo live at `github.com/Minewine/ib-study-area` (public; making it private is NEXT-STEPS step 2), `source-archives/` and the copyrighted PDF folders git-ignored.
 
 ## Explicitly not doing
@@ -85,7 +130,9 @@ features only exist to make that loop easier or more targeted.
 
 ---
 
-## Next phase (handoff prompt ready)
+## Next phase
 
-The prioritized next-phase list and the full handoff prompt live in
-[NEXT-PHASE-PROMPT.md](NEXT-PHASE-PROMPT.md) — paste it into a fresh chat to continue.
+~~The prioritized next-phase list and the full handoff prompt live in
+[NEXT-PHASE-PROMPT.md](NEXT-PHASE-PROMPT.md)~~ — **superseded 20 Nov 2026**: that prompt describes the
+phases 1–5 work, which is now done (see "Shipped (2026-11-20)" above). Next actions are in
+[NEXT-STEPS.md](NEXT-STEPS.md): merge the consolidation branch, then the gated deploy.

@@ -5,11 +5,17 @@ deliberately minimal: one PHP file, JSON storage, a login per student (and one a
 Everything here was built around one idea: **content is only useful if it matches the exact
 syllabus editions she is examined on (May 2028) and the order ISL actually teaches it.**
 
-Status snapshot: **2026-11-19 (evening)** — **rametric.com/nevaib runs the full multi-user release**:
-everything through PR #19 is live (topic notes, Today panel, exam practice, coursework planner,
-weekly parent summary, Ask an AI, security hardening) **plus per-student accounts with isolated
-data, subject profiles, and an admin account**. Nothing is pending deploy. See
-[docs/HANDOFF.md](docs/HANDOFF.md) and [docs/NEXT-STEPS.md](docs/NEXT-STEPS.md).
+Status snapshot: **2026-11-20 (consolidation)** — **rametric.com/nevaib runs the multi-user release**
+(everything through PR #19). Built locally since then, awaiting deploy: the 20 Nov student-feedback
+phases — **practice sets + taught/difficulty filters (phase 1)**, a **mistake log (phase 2)**,
+**biology A–D navigation + search and Today suggestions with reasons (phase 3)**, a **Resources
+page + AI-assisted bank authoring with a check-first preview (phase 4)**, and favicon/editor-copy/
+light-mode polish (phase 5). Everything passes `./dev.sh validate` + `./dev.sh test` + e2e. See
+[docs/HANDOFF.md](docs/HANDOFF.md), [docs/NEXT-STEPS.md](docs/NEXT-STEPS.md) and the phase summary
+[docs/CHANGELOG-2026-11-20-neva-feedback.md](docs/CHANGELOG-2026-11-20-neva-feedback.md).
+
+Next focus (2026-11-20): **deploy this batch** (only with explicit approval — NEXT-STEPS step 1),
+then usage: December 8 English rehearsal, January mocks, IA debriefs, EE shortlist.
 
 ---
 
@@ -18,12 +24,14 @@ data, subject profiles, and an admin account**. Nothing is pending deploy. See
 | Module | Page | Notes |
 |---|---|---|
 | Dashboard | `index.html` | Countdown to May 2028, "this week" box, 6 subject progress cards, next school deadlines |
-| Subject hubs (6) | `math-aa-sl.html` `biology-hl.html` `chemistry-hl.html` `history-sl.html` `french-a-langlit.html` `english-lit-hl.html` | Verified assessment weightings, currency banners (which papers/guides match), syllabus checklists linked to notes PDFs, IA corners, ISL teaching-sequence panels (bio/chem), teaching hours (math) |
+| Subject hubs (6) | `math-aa-sl.html` `biology-hl.html` `chemistry-hl.html` `history-sl.html` `french-a-langlit.html` `english-lit-hl.html` | Verified assessment weightings, currency banners (which papers/guides match), syllabus checklists linked to notes PDFs (biology grouped under searchable A–D theme headings), IA corners, ISL teaching-sequence panels (bio/chem), teaching hours (math) |
 | Core | `core.html` | TOK (exhibition 33% / essay 67%), **new EE guide** (first assessment 2027), CAS + TOK exhibition object shortlist (tracked, synced) |
 | EE workspace | `ee.html` | Idea-log shortlist (tracked, synced), one-page proposal checklist mapped to the new-EE criteria, DP1 timeline, reflection-session guidance |
-| Quiz engine | `quiz.html` | 20-question sessions, filtered by subject/topic/format; instant MCQ marking; written answers self-marked against markschemes; weak-topic flags + tactics; "＋ Flashcard" button on every answer |
-| Topic notes | `app/notes.html` | 113 original notes (Biology HL 40, Chemistry HL 22, Maths AA SL 51) by syllabus code: recall-first key ideas, key terms (+ card), common mistakes, worked examples, practice prompts (self-check points, not IB markschemes), booklet pointers, one-tap quiz/flashcards on the linked items; **My resources** box per note (her own links, synced); **Ask an AI** copies a pre-filled prompt and opens the preferred assistant; linked from every matching checklist row |
-| Today panel | `app/index.html` | due cards, a 6-question quiz on the weakest topic, and this week's class units from `library/class-schedule.json` |
+| Quiz engine | `quiz.html` | 20-question sessions, filtered by subject/topic/format; **practice sets grouped under topics, difficulty-range filter (easy/standard/hard/unrated), taught-topics-only toggle with a "Topics & teaching status" panel**; instant MCQ marking; written answers self-marked against markschemes; weak-topic flags + tactics; "＋ Flashcard" button on every answer |
+| Topic notes | `app/notes.html` | 113 original notes (Biology HL 40, Chemistry HL 22, Maths AA SL 51) by syllabus code: recall-first key ideas, key terms (+ card), common mistakes, worked examples, practice prompts (self-check points, not IB markschemes), booklet pointers, one-tap quiz/flashcards on the linked items; **My resources** box per note (her own links, synced); **Ask an AI** copies a pre-filled prompt and opens the preferred assistant — including "Write a practice set to import"; linked from every matching checklist row |
+| Mistake log | `app/mistakes.html` | every wrong answer with its why: error type (careless/misread/content/time/other), reflection, retry history; recovered ("green") vs unresolved vs "not relevant" (reversible); filter by status/subject/search; one-question retry deep links |
+| Resources | `app/resources.html` | her own collection of links (videos, class notes, files), tagged by subject/topic/type — never quiz content; links only (http/file), synced; each row offers "Make questions…" into the Upload page's AI flow |
+| Today panel | `app/index.html` | due cards, a 6-question quiz on the weakest topic, this week's class units from `library/class-schedule.json`, plus **ranked suggestions with visible reasons** (open mistakes, closing units, deadline prep) and near/long-lead dated items |
 | Exam practice | `app/quiz.html` | Paper 1A/1B-style Chemistry banks, Biology data-response practice, "sure/guessing" confidence ratings, past-paper score log |
 | Coursework planner | `app/coursework.html` | Bio/Chem scientific investigation + Maths exploration: stages, self-checks, pitfalls, her own dates (synced per record) |
 | Weekly summary | `app/summary.html` | read-only parent view (own login) + optional cron e-mail |
@@ -69,23 +77,30 @@ ibsystem/
 │   ├── CONTENT-PLAN.md       ← per-subject content status + what to add next
 │   ├── ROADMAP.md            ← feature roadmap (shipped / short / medium / later)
 │   ├── DEVELOPMENT.md        ← architecture, data schemas, localStorage keys, gotchas
+│   ├── AUTHORING.md          ← how to add quiz banks/decks (schema, practice sets, AI prompt)
+│   ├── USER-TEST.md          ← student user-test guide (+ AI bank-generation prompt)
+│   ├── CHANGELOG-2026-11-20-neva-feedback.md ← what changed in phases 0–5 (student feedback batch)
 │   ├── MAINTENANCE.md        ← weekly/termly checklists
 │   └── VISION.md             ← ideas for later (nothing committed)
 ├── index.html … *.html       ← study-site pages (see table above) + admin.html (account admin)
-├── app/                      ← self-contained practice app (notes, quiz, cards, today, coursework, upload, summary)
+├── app/                      ← self-contained practice app (notes, quiz, cards, mistakes, resources, today, coursework, upload, summary)
 ├── server/                   ← PHP backend + deploy notes for rametric.com/nevaib (accounts + cross-device sync)
 ├── assets/
 │   ├── style.css             ← site-wide styles
 │   ├── store.js              ← shared storage layer (NB.store): per-user scopes, schema, migrations, sync markers, snapshots
 │   ├── profile.js            ← canonical subject registry + per-user subject profiles (filtering)
 │   ├── auth.js               ← login widget + sync (dirty-key pushes, 409 retry, pagehide flush)
-│   ├── app.js                ← checklists, progress bars, countdown, this-week
-│   ├── quiz-engine.js        ← quiz sessions + flashcard hook
+│   ├── app.js                ← checklists, progress bars, countdown, this-week, hub checklist search
+│   ├── quiz-engine.js        ← quiz sessions (topics/sets, difficulty + taught filters) + flashcard hook
+│   ├── bank-schema.js        ← shared bank/deck validators (upload + library, same rules)
 │   ├── flashcards.js         ← SRS engine + editor
-│   ├── today.js              ← Today panel (due cards, weakest topic, class week)
+│   ├── today.js              ← Today panel (due cards, weakest topic, class week, suggestions with reasons)
+│   ├── mistakes.js           ← mistake log over q-errors (tags, reflections, retire/restore)
+│   ├── resources.js          ← Resources page engine (my-res links, tagged, never quiz content)
 │   ├── coursework.js         ← coursework planner
 │   ├── confidence.js/papers.js ← confidence ratings + past-paper score log
-│   ├── notes.js/ai-prompt.js ← topic-notes viewer + Ask an AI
+│   ├── notes.js/ai-prompt.js ← topic-notes viewer + Ask an AI (incl. practice-set prompt mode)
+│   ├── bank-import.js        ← Upload page staged paste import (validate → preview/edit → import)
 │   ├── backup.js             ← full backup + validated, merge-by-default restore
 │   ├── lists.js              ← tracked lists + debrief notes (synced blobs)
 │   ├── library.js            ← library browser: manifest filter/search, pins/notes/recent tracking
@@ -94,7 +109,7 @@ ibsystem/
 │   ├── official/             ← PDFs from ibo.org (guides, specimens, briefs, booklets, EE guide)
 │   ├── school/               ← ISL course documents (bio outline, chem at-a-glance, math syllabus)
 │   ├── notes/                ← topic PDFs, organised by ISL teaching order
-│   ├── questions/            ← 32 quiz banks (841 items) — schema in DEVELOPMENT.md
+│   ├── questions/            ← 32 quiz banks (841 items) + manifest.json (picker metadata) — schema in DEVELOPMENT.md
 │   ├── flashcards/           ← 28 decks (594 cards) — schema in DEVELOPMENT.md
 │   ├── topic-notes/          ← 113 original notes (JSON, per subject) + syllabus maps
 │   ├── coursework/           ← coursework planner content
@@ -102,7 +117,10 @@ ibsystem/
 │   └── library-manifest.json ← auto-built index of every PDF (127 items) — rebuild after changes
 ├── source-archives/          ← original downloaded ZIPs (kept as provenance; deletable once confident)
 ├── tools/build_site.py       ← generator for 10 study-site pages — see DEVELOPMENT.md (generated files must match it)
-└── tools/build_library_manifest.py ← rebuilds library/library-manifest.json from the PDF tree
+├── tools/build_library_manifest.py ← rebuilds library/library-manifest.json from the PDF tree
+├── tools/build_questions_manifest.py ← rebuilds library/questions/manifest.json (picker metadata)
+├── tools/validate_content.py ← pre-commit content validator (./dev.sh validate)
+└── tools/build_deploy.py     ← assembles deploy/nevaib/ (original content only)
 ```
 
 ## How content is organised
@@ -154,6 +172,7 @@ Full handoff: [docs/HANDOFF.md](docs/HANDOFF.md) · what to do next: [docs/NEXT-
 | [server/deploy-notes.md](server/deploy-notes.md) | Hosted deployment to rametric.com/nevaib (accounts, admin bootstrap, cross-device sync) |
 | [docs/NEXT-PHASE-PROMPT.md](docs/NEXT-PHASE-PROMPT.md) | Point-in-time handoff prompt (superseded by HANDOFF.md for current state) |
 | [docs/QUIZ-GENERATION-PROMPT.md](docs/QUIZ-GENERATION-PROMPT.md) | Reusable prompt for generating new question batches |
+| [docs/CHANGELOG-2026-11-20-neva-feedback.md](docs/CHANGELOG-2026-11-20-neva-feedback.md) | Phase-by-phase summary of the 20 Nov student-feedback work (phases 0–5) |
 
 ## Next actions (ordered — details in the linked docs)
 

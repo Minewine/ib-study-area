@@ -2,6 +2,7 @@
   "subject": "biology-hl",
   "topic": "ecology-adaptations-populations",
   "topicLabel": "B4.1/B4.2/C4.1 — Ecology, adaptations & populations (June unit)",
+  "codes": ["B4.1", "B4.2", "C4.1"],
   "items": [
     {"id": "ec01", "format": "mcq", "topic": "ecology-adaptations-populations", "stem": "An ecological niche includes:",
      "choices": ["Only the habitat where a species lives", "The role of a species in its ecosystem \u2014 what it eats, where and when it lives and interacts", "Only the food a species eats", "The population size of a species"], "answer": 1,

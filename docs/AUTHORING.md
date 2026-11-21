@@ -43,6 +43,21 @@ Rules that the validator enforces:
 - Every item needs `stem`; written items should also carry a `tactic`.
 - `topic` must match the topic key used by the hub checklist (that's what links the two).
 
+Optional fields (all validated; unknown values are rejected, absent fields change nothing):
+- Bank-level `set`: the practice-set display name shown under its topic in the Quiz picker
+  (e.g. `"Practice set 1 — core recall"`). Without it, the picker uses the manifest `label` — so
+  old banks need no renaming. Two sets may share a topic but must use unique `set` names
+  (duplicate names get a warning; uploads get a suggested next name instead).
+- Bank-level `setOrder`: integer, display order of the set within its topic (sets without one sort last).
+- Bank-level `codes`: array of official IB topic codes the bank covers, e.g. `["S1.1", "S1.2"]` —
+  used to suggest which topics are already taught (from `library/class-schedule.json`). Only state
+  codes the data actually covers; the item-level `topic` keys stay the join to notes and cards.
+- Bank-level `paperStyle` (`"1A"` / `"1B"`) + `calculatorFree` (`true`): label Paper-style sets
+  ("Paper 1A · calculator-free", "Paper 1B · data practice") in the set picker. Never infer these —
+  they describe what the set emulates.
+- Item-level `difficulty`: `"easy"`, `"standard"` or `"hard"`, per question. Untagged questions
+  show and filter as **Unrated** — only tag what you know; nothing guesses a rating for you.
+
 ### 2. Flashcard deck (`library/flashcards/*.json`)
 
 ```json
@@ -74,6 +89,8 @@ Rules:
 - `type`: `"term"` (term → definition) or `"qa"` (question → answer). Purely presentational.
 - `tags` free-form; the site uses `definition`, `formula`, `process`, `command-term`, `IA`, `exam`.
 - `topic` must match the quiz bank's topic so cards and questions interlink.
+- Optional deck-level `set` / `setOrder`: display name + order when several decks share one topic
+  (Cards topic options then show "— <set name>"). Same rules as the quiz-bank fields above.
 
 ---
 
@@ -82,10 +99,15 @@ Rules:
 1. **Copy the template**: `library/templates/quiz-bank-template.json` (or `flashcard-deck-template.json`).
 2. **Fill it in** — keep `subject` and `topic` keys consistent with the existing banks (copy them from a working file).
 3. **Save** into `library/questions/` (or `library/flashcards/`) as `kebab-case-name.json`.
-4. **Register**: add one line to the matching manifest:
-   - `library/questions/manifest.json` → `{"file": "library/questions/my-new-bank.json", "subject": "chemistry-hl", "subjectLabel": "Chemistry HL", "label": "My new topic"}`
+4. **Register**: add one line to the matching manifest (for `library/questions/`, or run the
+   generator instead — it appends the entry and computes the picker metadata for you):
+   - `python3 -I tools/build_questions_manifest.py` — preserves every existing entry (labels and
+     order) byte-identical, appends new banks (label = `topicLabel` or filename), and fills in the
+     computed `counts`/`topics` metadata the Quiz picker uses for its hierarchy. `--check` exits
+     non-zero if the file on disk would change (CI-friendly).
    - `library/flashcards/manifest.json` → `{"file": "library/flashcards/my-new-deck.json", "subject": "biology-hl", "subjectLabel": "Biology HL"}`
-5. **Validate + refresh**: run `python3 -I tools/validate_content.py` (it exits non-zero on any problem), then reload the browser page. Done — the picker picks it up automatically.
+5. **Validate + refresh**: run `python3 -I tools/validate_content.py` (it exits non-zero on any problem; it also
+   verifies the generated questions manifest against the bank files), then reload the browser page. Done — the picker picks it up automatically.
 
 Uploaded banks also feed the **error-review loop**: wrong answers from an uploaded bank are stored in the
 missed-question tracker (`q-errors`, synced when logged in), and the Quiz page's “Review past errors” mode
@@ -109,14 +131,28 @@ one fact per card).
 
 ## Where the engines read from
 
-- `quiz.html` loads `library/questions/manifest.json` at startup and builds its subject/topic
-  pickers from it. Each entry: `{"file": "...", "subject": "...", "subjectLabel": "...", "label": "..."}`.
-- `flashcards.html` loads `library/flashcards/manifest.json` the same way.
-- Both have a built-in fallback list, so the site keeps working even if a manifest is broken.
+- `quiz.html` loads `library/questions/manifest.json` at startup and builds its **Subject →
+  syllabus topic → practice set** hierarchy from it. Each entry keeps its hand-written
+  `{"file", "subject", "subjectLabel", "label"}` plus computed metadata (added by
+  `tools/build_questions_manifest.py`): the bank's `topic`/`topicLabel`/`set`/`setOrder`/
+  `codes`/`paperStyle`/`calculatorFree`, `counts {mcq, written, total}` over active items, and
+  `topics: [{topic, topicLabel, count, difficulty:{unrated, easy, standard, hard}}]` — the
+  per-topic aggregation (effective topic = item `topic`, else the bank's, else the filename).
+- `flashcards.html` loads `library/flashcards/manifest.json` the same way (topic options show
+  card counts; deck `set` names appear when a topic has them).
+- Both have a built-in fallback list, so the site keeps working even if a manifest is broken —
+  fallback banks simply appear as one set each, without metadata.
+
+Topic options show question counts and teaching status; the **Taught topics only** filter and
+the optional difficulty range (Unrated < easy < standard < hard) then apply to specific topics
+and to *Mixed* alike. Teaching status is suggested from `library/class-schedule.json` (a topic
+whose codes are all in units that have finished) and can be overridden per topic in the
+"Topics & teaching status" panel on the Quiz page (stored in the synced `topic-taught` key).
+Topics with no schedule data are always shown — nothing is hidden by default.
 
 A good "Mixed" session for the current term = set Subject to the subject, Topic to
-*Mixed — all available topics*: the engine concatenates every registered bank for that
-subject, so review + new unit mix automatically.
+*Mixed — all topics (revision)*: the engine concatenates every registered bank for that
+subject, so review + new unit mix automatically (narrowed to taught topics when the filter is on).
 
 ---
 
@@ -158,8 +194,74 @@ Notes:
   and **Import** to restore on a new device.
 - To make an uploaded bank permanent for every device: save its JSON into
   `library/questions/` (or `library/flashcards/`) and add one line to the matching
-  `manifest.json` — then delete the upload from the app to avoid duplicates.
+  `manifest.json` (or run `python3 -I tools/build_questions_manifest.py`) — then delete the
+  upload from the app to avoid duplicates.
 - Uploaded quiz banks must carry a `subject` key; a bank-level `label` and `subjectLabel`
-  are optional (they name the entry in the picker).
+  are optional (they name the entry in the picker). Bank-level `set`/`setOrder`/`codes` and
+  item-level `difficulty` follow the same optional-field rules as above; the item editor can
+  set per-question difficulty (Unrated omits the field).
+- There is **no question-count or file-size limit** on uploads — batch-import as many files as
+  you like in one go; each file gets its own result line. The real ceiling is the browser's
+  storage quota (the upload reports it if hit). When a topic already has sets, the result
+  suggests the next free "Practice set N" name (a suggestion only — your file is saved as-is).
 - Validate before uploading: `python3 -I tools/validate_content.py` checks the library
   files; the Upload page applies the same rules in the browser.
+
+---
+
+## AI-assisted authoring (Ask an AI → paste → preview → import)
+
+For one-topic practice sets there is a built-in path that needs no JSON knowledge —
+the student picks a topic and the app writes the prompt for her:
+
+1. **Upload page, section 1** — pick a subject and a topic (topics come from the
+   topic-notes manifest), press **Copy the prompt & open your AI**. The prompt (mode
+   `bankgen` in `library/ai-prompts.json`) carries the exact `subject` id and `topic`
+   key, so the AI's JSON lands in the right picker. Nothing is sent by the site: the
+   prompt is copied to the clipboard first, then the assistant opens in a new tab.
+2. The same **"Write a practice set to import"** button sits in every topic note's
+   Ask an AI box (Notes page), prefilled with that note's topic.
+3. **Paste the returned JSON into section 2** and press **Preview pasted JSON**. The
+   staged preview shows every item for editing (stem, choices, correct answer, note,
+   marks/markscheme) or removal, re-validating with the shared bank rules
+   (`assets/bank-schema.js`) after every keystroke. Nothing is saved yet.
+4. **Import bank** saves the whole set in one batch as a normal uploaded bank
+   (`q-userbanks` — identical shape to a file upload), and it appears in the Quiz
+   picker immediately. *Discard* throws the staging away.
+
+Rules and edges:
+- Files still upload **directly** (no preview) — the preview is for pasted AI output.
+  Very large pastes get per-item editors for the **first 200 items** only; the rest
+  are shown as a count and import as-is (edit them afterwards in the item editor,
+  section 4).
+- The preview suggests a unique bank name (`ai-<topic>.json`, `-2`, `-3`…); the
+  duplicate-name collision that used to block a second paste is resolved by editing
+  that field. The suggested name is editable.
+- To change the prompt wording, add a mode, or switch assistants: edit
+  `library/ai-prompts.json` (`_doc` lists the placeholders; `bankgen` also uses
+  `{subjectid}` and `{topickey}`) and run `./dev.sh test`. There are **no external API
+  calls** anywhere in this flow — copy-and-paste is the transport, on purpose.
+- Same hard rule as everywhere: the AI must write **original** items to the syllabus;
+  the prompt forbids past-paper reproduction, and pasted content passes the same
+  validation as hand-written banks.
+
+---
+
+## My resources (links — never quiz content)
+
+The **Resources** page (`app/resources.html`) collects the student's own links:
+title, subject, optional topic, type (website / video / document / practice
+questions / other), URL and an optional note. Rules:
+
+- Stored in the same synced key the per-note links use (`my-res`, per-user scoped,
+  tombstone deletes, newest-`t` merge — see `assets/resources.js`). A resource whose
+  topic matches a topic note can also **show on that note** (the "Also show on the
+  topic note" checkbox), and the notes page's own "My resources" box keeps working.
+- A resource is **only a link**: URLs must be `http(s)://` or `file://` (≤2000 chars).
+  File contents are never stored — no base64 PDFs in localStorage.
+- Resources are **never read by the quiz or card engines** — nothing on that page can
+  turn into quiz content. Each row offers *Make questions…*, which opens the Upload
+  page's AI flow (section 1) pre-selected to the resource's subject/topic.
+- Backups and restore accept the extended record shape (`assets/backup.js` validates
+  label/url/subject/topic/type/comment); tests: `tests/js/resources.test.js`,
+  `tests/js/myres.test.js`.

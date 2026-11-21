@@ -3,192 +3,1670 @@
   "file": "library/questions/bio-unity-diversity-cells.json",
   "subject": "biology-hl",
   "subjectLabel": "Biology HL",
-  "label": "Unity & diversity — Cells & membranes"
+  "label": "Unity & diversity — Cells & membranes",
+  "topic": "unity-diversity-cells",
+  "topicLabel": "Unity & diversity — Cells, membranes & division",
+  "counts": {
+   "mcq": 38,
+   "written": 4,
+   "total": 42
+  },
+  "topics": [
+   {
+    "topic": "unity-diversity-cells",
+    "topicLabel": "Unity & diversity — Cells, membranes & division",
+    "count": 42,
+    "difficulty": {
+     "unrated": 42,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/bio-c1-1-enzymes-metabolism.json",
   "subject": "biology-hl",
   "subjectLabel": "Biology HL",
-  "label": "C1.1 — Enzymes & metabolism (Nov unit)"
+  "label": "C1.1 — Enzymes & metabolism (Nov unit)",
+  "topic": "c1-1-enzymes-metabolism",
+  "topicLabel": "C1.1 — Enzymes & metabolism (Nov unit)",
+  "codes": [
+   "C1.1"
+  ],
+  "counts": {
+   "mcq": 27,
+   "written": 3,
+   "total": 30
+  },
+  "topics": [
+   {
+    "topic": "c1-1-enzymes-metabolism",
+    "topicLabel": "C1.1 — Enzymes & metabolism (Nov unit)",
+    "count": 30,
+    "difficulty": {
+     "unrated": 30,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/bio-water-potential-origin-cells.json",
   "subject": "biology-hl",
   "subjectLabel": "Biology HL",
-  "label": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)"
+  "label": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)",
+  "topic": "water-potential-origin-cells",
+  "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)",
+  "codes": [
+   "D2.3",
+   "A2.1"
+  ],
+  "counts": {
+   "mcq": 33,
+   "written": 4,
+   "total": 37
+  },
+  "topics": [
+   {
+    "topic": "water-potential-origin-cells",
+    "topicLabel": "D2.3 — Water potential & A2.1 — Origin of cells (Jan unit)",
+    "count": 37,
+    "difficulty": {
+     "unrated": 37,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/bio-respiration-protein-synthesis.json",
   "subject": "biology-hl",
   "subjectLabel": "Biology HL",
-  "label": "C1.2 — Cell respiration & D1.2 — Protein synthesis (Feb–Mar unit)"
+  "label": "C1.2 — Cell respiration & D1.2 — Protein synthesis (Feb–Mar unit)",
+  "topic": "respiration-protein-synthesis",
+  "topicLabel": "C1.2 — Cell respiration & D1.2 — Protein synthesis (Feb–Mar unit)",
+  "codes": [
+   "C1.2",
+   "D1.2"
+  ],
+  "counts": {
+   "mcq": 27,
+   "written": 2,
+   "total": 29
+  },
+  "topics": [
+   {
+    "topic": "respiration-protein-synthesis",
+    "topicLabel": "C1.2 — Cell respiration & D1.2 — Protein synthesis (Feb–Mar unit)",
+    "count": 29,
+    "difficulty": {
+     "unrated": 29,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/chem-structure-1-stoichiometry.json",
   "subject": "chemistry-hl",
   "subjectLabel": "Chemistry HL",
-  "label": "Structure 1 — Stoichiometry (notes 1)"
+  "label": "Structure 1 — Stoichiometry (notes 1)",
+  "topic": "structure-1-stoichiometry",
+  "topicLabel": "Structure 1 — Stoichiometry & the particulate nature of matter",
+  "counts": {
+   "mcq": 36,
+   "written": 4,
+   "total": 40
+  },
+  "topics": [
+   {
+    "topic": "structure-1-stoichiometry",
+    "topicLabel": "Structure 1 — Stoichiometry & the particulate nature of matter",
+    "count": 40,
+    "difficulty": {
+     "unrated": 40,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/chem-structure-3-1-periodicity.json",
   "subject": "chemistry-hl",
   "subjectLabel": "Chemistry HL",
-  "label": "Structure 3.1 — Periodicity (Nov unit)"
+  "label": "Structure 3.1 — Periodicity (Nov unit)",
+  "topic": "structure-3-1-periodicity",
+  "topicLabel": "Structure 3.1 — Periodic table & electron structure (Nov unit)",
+  "counts": {
+   "mcq": 28,
+   "written": 2,
+   "total": 30
+  },
+  "topics": [
+   {
+    "topic": "structure-3-1-periodicity",
+    "topicLabel": "Structure 3.1 — Periodic table & electron structure (Nov unit)",
+    "count": 30,
+    "difficulty": {
+     "unrated": 30,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/chem-reactivity-1-energetics.json",
   "subject": "chemistry-hl",
   "subjectLabel": "Chemistry HL",
-  "label": "Reactivity 1 — Energetics (Dec–Jan unit)"
+  "label": "Reactivity 1 — Energetics (Dec–Jan unit)",
+  "topic": "reactivity-1-energetics",
+  "topicLabel": "Reactivity 1 — Energetics (Dec–Jan unit)",
+  "counts": {
+   "mcq": 28,
+   "written": 2,
+   "total": 30
+  },
+  "topics": [
+   {
+    "topic": "reactivity-1-energetics",
+    "topicLabel": "Reactivity 1 — Energetics (Dec–Jan unit)",
+    "count": 30,
+    "difficulty": {
+     "unrated": 30,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/chem-reactivity-2-kinetics-equilibrium.json",
   "subject": "chemistry-hl",
   "subjectLabel": "Chemistry HL",
-  "label": "Reactivity 2 — Kinetics & equilibrium (Feb–Mar unit)"
+  "label": "Reactivity 2 — Kinetics & equilibrium (Feb–Mar unit)",
+  "topic": "reactivity-2-kinetics-equilibrium",
+  "topicLabel": "Reactivity 2 — Kinetics & equilibrium (Feb–Mar unit)",
+  "counts": {
+   "mcq": 20,
+   "written": 2,
+   "total": 22
+  },
+  "topics": [
+   {
+    "topic": "reactivity-2-kinetics-equilibrium",
+    "topicLabel": "Reactivity 2 — Kinetics & equilibrium (Feb–Mar unit)",
+    "count": 22,
+    "difficulty": {
+     "unrated": 22,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/chem-reactivity-3-redox-acids-bases.json",
   "subject": "chemistry-hl",
   "subjectLabel": "Chemistry HL",
-  "label": "Reactivity 3 — Redox & acids/bases (Apr–Jun unit)"
+  "label": "Reactivity 3 — Redox & acids/bases (Apr–Jun unit)",
+  "topic": "reactivity-3-redox-acids-bases",
+  "topicLabel": "Reactivity 3 — Redox & acids/bases (Apr–Jun unit)",
+  "counts": {
+   "mcq": 20,
+   "written": 2,
+   "total": 22
+  },
+  "topics": [
+   {
+    "topic": "reactivity-3-redox-acids-bases",
+    "topicLabel": "Reactivity 3 — Redox & acids/bases (Apr–Jun unit)",
+    "count": 22,
+    "difficulty": {
+     "unrated": 22,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/chem-structure-2-bonding.json",
   "subject": "chemistry-hl",
   "subjectLabel": "Chemistry HL",
-  "label": "Structure 2 — Bonding (DP2: Oct–Nov unit)"
+  "label": "Structure 2 — Bonding (DP2: Oct–Nov unit)",
+  "topic": "structure-2-bonding",
+  "topicLabel": "Structure 2 — Bonding (DP2: Oct–Nov unit)",
+  "counts": {
+   "mcq": 20,
+   "written": 2,
+   "total": 22
+  },
+  "topics": [
+   {
+    "topic": "structure-2-bonding",
+    "topicLabel": "Structure 2 — Bonding (DP2: Oct–Nov unit)",
+    "count": 22,
+    "difficulty": {
+     "unrated": 22,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/chem-organic-chemistry.json",
   "subject": "chemistry-hl",
   "subjectLabel": "Chemistry HL",
-  "label": "Organic chemistry (DP2: Nov–Mar unit)"
+  "label": "Organic chemistry (DP2: Nov–Mar unit)",
+  "topic": "organic-chemistry",
+  "topicLabel": "Organic chemistry (DP2: Nov–Mar unit)",
+  "counts": {
+   "mcq": 20,
+   "written": 2,
+   "total": 22
+  },
+  "topics": [
+   {
+    "topic": "organic-chemistry",
+    "topicLabel": "Organic chemistry (DP2: Nov–Mar unit)",
+    "count": 22,
+    "difficulty": {
+     "unrated": 22,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/math-aa-number-algebra.json",
   "subject": "math-aa-sl",
   "subjectLabel": "Math AA SL",
-  "label": "Number & algebra (1.1–1.3)"
+  "label": "Number & algebra (1.1–1.3)",
+  "topic": "number-algebra-1-1-to-1-3",
+  "topicLabel": "Number & algebra — 1.1 toolkit, 1.2 sequences, 1.3 exponents & logs",
+  "counts": {
+   "mcq": 24,
+   "written": 4,
+   "total": 28
+  },
+  "topics": [
+   {
+    "topic": "number-algebra-1-1-to-1-3",
+    "topicLabel": "Number & algebra — 1.1 toolkit, 1.2 sequences, 1.3 exponents & logs",
+    "count": 28,
+    "difficulty": {
+     "unrated": 28,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/math-aa-functions-2-1-to-2-3.json",
   "subject": "math-aa-sl",
   "subjectLabel": "Math AA SL",
-  "label": "Functions (2.1–2.3) — linear, quadratic & toolkit"
+  "label": "Functions (2.1–2.3) — linear, quadratic & toolkit",
+  "topic": "functions-2-1-to-2-3",
+  "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit",
+  "counts": {
+   "mcq": 31,
+   "written": 4,
+   "total": 35
+  },
+  "topics": [
+   {
+    "topic": "functions-2-1-to-2-3",
+    "topicLabel": "Functions (2.1–2.3) — linear, quadratic & toolkit",
+    "count": 35,
+    "difficulty": {
+     "unrated": 35,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/math-functions-2-4-to-2-5.json",
   "subject": "math-aa-sl",
   "subjectLabel": "Math AA SL",
-  "label": "Functions 2.4–2.5 — further functions & transformations (next unit)"
+  "label": "Functions 2.4–2.5 — further functions & transformations (next unit)",
+  "topic": "functions-2-4-to-2-5",
+  "topicLabel": "Functions (2.4–2.5) — further functions & transformations (next unit)",
+  "counts": {
+   "mcq": 19,
+   "written": 2,
+   "total": 21
+  },
+  "topics": [
+   {
+    "topic": "functions-2-4-to-2-5",
+    "topicLabel": "Functions (2.4–2.5) — further functions & transformations (next unit)",
+    "count": 21,
+    "difficulty": {
+     "unrated": 21,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/bio-defence-against-disease.json",
   "subject": "biology-hl",
   "subjectLabel": "Biology HL",
-  "label": "C3.2 — Defence against disease (Feb–Mar unit)"
+  "label": "C3.2 — Defence against disease (Feb–Mar unit)",
+  "topic": "defence-against-disease",
+  "topicLabel": "C3.2 — Defence against disease (Feb–Mar unit)",
+  "codes": [
+   "C3.2"
+  ],
+  "counts": {
+   "mcq": 20,
+   "written": 2,
+   "total": 22
+  },
+  "topics": [
+   {
+    "topic": "defence-against-disease",
+    "topicLabel": "C3.2 — Defence against disease (Feb–Mar unit)",
+    "count": 22,
+    "difficulty": {
+     "unrated": 22,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/math-aa-topic3-geometry-trig.json",
   "subject": "math-aa-sl",
   "subjectLabel": "Math AA SL",
-  "label": "Geometry & trigonometry (3.1–3.6)"
+  "label": "Geometry & trigonometry (3.1–3.6)",
+  "topic": "geometry-trigonometry-3-1-to-3-6",
+  "topicLabel": "Geometry & trigonometry (3.1–3.6)",
+  "counts": {
+   "mcq": 20,
+   "written": 2,
+   "total": 22
+  },
+  "topics": [
+   {
+    "topic": "geometry-trigonometry-3-1-to-3-6",
+    "topicLabel": "Geometry & trigonometry (3.1–3.6)",
+    "count": 22,
+    "difficulty": {
+     "unrated": 22,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/math-aa-topic4-statistics.json",
   "subject": "math-aa-sl",
   "subjectLabel": "Math AA SL",
-  "label": "Statistics & probability (4.1–4.6)"
+  "label": "Statistics & probability (4.1–4.6)",
+  "topic": "statistics-probability-4-1-to-4-6",
+  "topicLabel": "Statistics & probability (4.1–4.6)",
+  "counts": {
+   "mcq": 19,
+   "written": 2,
+   "total": 21
+  },
+  "topics": [
+   {
+    "topic": "statistics-probability-4-1-to-4-6",
+    "topicLabel": "Statistics & probability (4.1–4.6)",
+    "count": 21,
+    "difficulty": {
+     "unrated": 21,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/math-aa-topic5-calculus.json",
   "subject": "math-aa-sl",
   "subjectLabel": "Math AA SL",
-  "label": "Calculus (5.1–5.6)"
+  "label": "Calculus (5.1–5.6)",
+  "topic": "calculus-5-1-to-5-6",
+  "topicLabel": "Calculus (5.1–5.6)",
+  "counts": {
+   "mcq": 20,
+   "written": 2,
+   "total": 22
+  },
+  "topics": [
+   {
+    "topic": "calculus-5-1-to-5-6",
+    "topicLabel": "Calculus (5.1–5.6)",
+    "count": 22,
+    "difficulty": {
+     "unrated": 22,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/bio-molecules-water.json",
   "subject": "biology-hl",
   "subjectLabel": "Biology HL",
-  "label": "A1.1/B1.1/B1.2/A1.2 — Water & biological molecules (Sep–Oct unit)"
+  "label": "A1.1/B1.1/B1.2/A1.2 — Water & biological molecules (Sep–Oct unit)",
+  "topic": "water-and-biological-molecules",
+  "topicLabel": "A1.1/B1.1/B1.2/A1.2 — Water & biological molecules (Sep–Oct unit)",
+  "codes": [
+   "A1.1",
+   "B1.1",
+   "B1.2",
+   "A1.2"
+  ],
+  "counts": {
+   "mcq": 38,
+   "written": 3,
+   "total": 41
+  },
+  "topics": [
+   {
+    "topic": "water-and-biological-molecules",
+    "topicLabel": "A1.1/B1.1/B1.2/A1.2 — Water & biological molecules (Sep–Oct unit)",
+    "count": 41,
+    "difficulty": {
+     "unrated": 41,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/bio-photosynthesis-energy.json",
   "subject": "biology-hl",
   "subjectLabel": "Biology HL",
-  "label": "C1.3 — Photosynthesis & C4.2 — Transfer of energy (Apr–May unit)"
+  "label": "C1.3 — Photosynthesis & C4.2 — Transfer of energy (Apr–May unit)",
+  "topic": "photosynthesis-energy-transfer",
+  "topicLabel": "C1.3 — Photosynthesis & C4.2 — Transfer of energy (Apr–May unit)",
+  "codes": [
+   "C1.3",
+   "C4.2"
+  ],
+  "counts": {
+   "mcq": 14,
+   "written": 2,
+   "total": 16
+  },
+  "topics": [
+   {
+    "topic": "photosynthesis-energy-transfer",
+    "topicLabel": "C1.3 — Photosynthesis & C4.2 — Transfer of energy (Apr–May unit)",
+    "count": 16,
+    "difficulty": {
+     "unrated": 16,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/bio-gas-exchange-transport.json",
   "subject": "biology-hl",
   "subjectLabel": "Biology HL",
-  "label": "B3.1/B3.2 — Gas exchange & transport (Apr–May unit)"
+  "label": "B3.1/B3.2 — Gas exchange & transport (Apr–May unit)",
+  "topic": "gas-exchange-transport",
+  "topicLabel": "B3.1 — Gas exchange & B3.2 — Transport (Apr–May unit)",
+  "codes": [
+   "B3.1",
+   "B3.2"
+  ],
+  "counts": {
+   "mcq": 17,
+   "written": 2,
+   "total": 19
+  },
+  "topics": [
+   {
+    "topic": "gas-exchange-transport",
+    "topicLabel": "B3.1 — Gas exchange & B3.2 — Transport (Apr–May unit)",
+    "count": 19,
+    "difficulty": {
+     "unrated": 19,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/bio-ecology-adaptations-populations.json",
   "subject": "biology-hl",
   "subjectLabel": "Biology HL",
-  "label": "B4.1/B4.2/C4.1 — Ecology & populations (June unit)"
+  "label": "B4.1/B4.2/C4.1 — Ecology & populations (June unit)",
+  "topic": "ecology-adaptations-populations",
+  "topicLabel": "B4.1/B4.2/C4.1 — Ecology, adaptations & populations (June unit)",
+  "codes": [
+   "B4.1",
+   "B4.2",
+   "C4.1"
+  ],
+  "counts": {
+   "mcq": 15,
+   "written": 2,
+   "total": 17
+  },
+  "topics": [
+   {
+    "topic": "ecology-adaptations-populations",
+    "topicLabel": "B4.1/B4.2/C4.1 — Ecology, adaptations & populations (June unit)",
+    "count": 17,
+    "difficulty": {
+     "unrated": 17,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/chem-periodicity-energetics-review.json",
   "subject": "chemistry-hl",
   "subjectLabel": "Chemistry HL",
-  "label": "Periodicity & Energetics — Nov–Dec window review"
+  "label": "Periodicity & Energetics — Nov–Dec window review",
+  "topic": "periodicity-energetics-review",
+  "topicLabel": "Periodicity & Energetics — Nov–Dec window review (Structure 3.1 + Reactivity 1)",
+  "counts": {
+   "mcq": 20,
+   "written": 2,
+   "total": 22
+  },
+  "topics": [
+   {
+    "topic": "periodicity-energetics-review",
+    "topicLabel": "Periodicity & Energetics — Nov–Dec window review (Structure 3.1 + Reactivity 1)",
+    "count": 22,
+    "difficulty": {
+     "unrated": 22,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/math-aa-course-calendar.json",
   "subject": "math-aa-sl",
   "subjectLabel": "Math AA SL",
-  "label": "Course calendar 2026–28 — teaching order & milestones"
+  "label": "Course calendar 2026–28 — teaching order & milestones",
+  "topic": "course-calendar-2026-2028",
+  "topicLabel": "Course calendar 2026–28 — teaching order & milestones",
+  "counts": {
+   "mcq": 36,
+   "written": 6,
+   "total": 42
+  },
+  "topics": [
+   {
+    "topic": "course-calendar-2026-2028",
+    "topicLabel": "Course calendar 2026–28 — teaching order & milestones",
+    "count": 42,
+    "difficulty": {
+     "unrated": 42,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/chem-p1a-structure-1.json",
   "subject": "chemistry-hl",
   "subjectLabel": "Chemistry HL",
-  "label": "Paper 1A-style calculator-free practice — Structure 1"
+  "label": "Paper 1A-style calculator-free practice — Structure 1",
+  "topic": "chem-p1a-structure-1",
+  "topicLabel": "Paper 1A-style calculator-free practice — Structure 1",
+  "codes": [
+   "S1.1",
+   "S1.2",
+   "S1.3",
+   "S1.4",
+   "S1.5"
+  ],
+  "paperStyle": "1A",
+  "calculatorFree": true,
+  "counts": {
+   "mcq": 22,
+   "written": 0,
+   "total": 22
+  },
+  "topics": [
+   {
+    "topic": "chem-s1-1",
+    "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+    "count": 8,
+    "difficulty": {
+     "unrated": 8,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-s1-2",
+    "topicLabel": "S1.2 The nuclear atom",
+    "count": 3,
+    "difficulty": {
+     "unrated": 3,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-s1-3",
+    "topicLabel": "S1.3 Electron configurations",
+    "count": 4,
+    "difficulty": {
+     "unrated": 4,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-s1-4",
+    "topicLabel": "S1.4 Counting particles by mass: the mole",
+    "count": 4,
+    "difficulty": {
+     "unrated": 4,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-s1-5",
+    "topicLabel": "S1.5 Ideal gases",
+    "count": 3,
+    "difficulty": {
+     "unrated": 3,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/chem-p1a-structure-2-3.json",
   "subject": "chemistry-hl",
   "subjectLabel": "Chemistry HL",
-  "label": "Paper 1A-style calculator-free practice — Structure 2–3"
+  "label": "Paper 1A-style calculator-free practice — Structure 2–3",
+  "topic": "chem-p1a-structure-2-3",
+  "topicLabel": "Paper 1A-style calculator-free practice — Structure 2–3",
+  "codes": [
+   "S2.1",
+   "S2.2",
+   "S2.3",
+   "S2.4",
+   "S3.1",
+   "S3.2"
+  ],
+  "paperStyle": "1A",
+  "calculatorFree": true,
+  "counts": {
+   "mcq": 23,
+   "written": 0,
+   "total": 23
+  },
+  "topics": [
+   {
+    "topic": "chem-s2-1",
+    "topicLabel": "S2.1 The ionic model",
+    "count": 3,
+    "difficulty": {
+     "unrated": 3,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-s2-2",
+    "topicLabel": "S2.2 The covalent model",
+    "count": 5,
+    "difficulty": {
+     "unrated": 5,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-s2-3",
+    "topicLabel": "S2.3 The metallic model",
+    "count": 2,
+    "difficulty": {
+     "unrated": 2,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-s2-4",
+    "topicLabel": "S2.4 From models to materials",
+    "count": 3,
+    "difficulty": {
+     "unrated": 3,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-s3-1",
+    "topicLabel": "S3.1 The periodic table: classification of elements",
+    "count": 5,
+    "difficulty": {
+     "unrated": 5,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-s3-2",
+    "topicLabel": "S3.2 Functional groups: classification of organic compounds",
+    "count": 5,
+    "difficulty": {
+     "unrated": 5,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/chem-p1a-reactivity-1-2.json",
   "subject": "chemistry-hl",
   "subjectLabel": "Chemistry HL",
-  "label": "Paper 1A-style calculator-free practice — Reactivity 1–2"
+  "label": "Paper 1A-style calculator-free practice — Reactivity 1–2",
+  "topic": "chem-p1a-reactivity-1-2",
+  "topicLabel": "Paper 1A-style calculator-free practice — Reactivity 1–2",
+  "codes": [
+   "R1.1",
+   "R1.2",
+   "R1.3",
+   "R1.4",
+   "R2.1",
+   "R2.2",
+   "R2.3"
+  ],
+  "paperStyle": "1A",
+  "calculatorFree": true,
+  "counts": {
+   "mcq": 24,
+   "written": 0,
+   "total": 24
+  },
+  "topics": [
+   {
+    "topic": "chem-r1-1",
+    "topicLabel": "R1.1 Measuring enthalpy changes",
+    "count": 3,
+    "difficulty": {
+     "unrated": 3,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r1-2",
+    "topicLabel": "R1.2 Energy cycles in reactions",
+    "count": 4,
+    "difficulty": {
+     "unrated": 4,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r1-3",
+    "topicLabel": "R1.3 Energy from fuels",
+    "count": 3,
+    "difficulty": {
+     "unrated": 3,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r1-4",
+    "topicLabel": "R1.4 Entropy and spontaneity (additional higher level)",
+    "count": 3,
+    "difficulty": {
+     "unrated": 3,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r2-1",
+    "topicLabel": "R2.1 How much? The amount of chemical change",
+    "count": 3,
+    "difficulty": {
+     "unrated": 3,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r2-2",
+    "topicLabel": "R2.2 How fast? The rate of chemical change",
+    "count": 4,
+    "difficulty": {
+     "unrated": 4,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r2-3",
+    "topicLabel": "R2.3 How far? The extent of chemical change",
+    "count": 4,
+    "difficulty": {
+     "unrated": 4,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/chem-p1a-reactivity-3.json",
   "subject": "chemistry-hl",
   "subjectLabel": "Chemistry HL",
-  "label": "Paper 1A-style calculator-free practice — Reactivity 3"
+  "label": "Paper 1A-style calculator-free practice — Reactivity 3",
+  "topic": "chem-p1a-reactivity-3",
+  "topicLabel": "Paper 1A-style calculator-free practice — Reactivity 3",
+  "codes": [
+   "R3.1",
+   "R3.2",
+   "R3.3",
+   "R3.4"
+  ],
+  "paperStyle": "1A",
+  "calculatorFree": true,
+  "counts": {
+   "mcq": 17,
+   "written": 0,
+   "total": 17
+  },
+  "topics": [
+   {
+    "topic": "chem-r3-1",
+    "topicLabel": "R3.1 Proton transfer reactions",
+    "count": 5,
+    "difficulty": {
+     "unrated": 5,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r3-2",
+    "topicLabel": "R3.2 Electron transfer reactions",
+    "count": 5,
+    "difficulty": {
+     "unrated": 5,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r3-3",
+    "topicLabel": "R3.3 Electron sharing reactions",
+    "count": 2,
+    "difficulty": {
+     "unrated": 2,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r3-4",
+    "topicLabel": "R3.4 Electron-pair sharing reactions",
+    "count": 5,
+    "difficulty": {
+     "unrated": 5,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/chem-p1b-data-practice.json",
   "subject": "chemistry-hl",
   "subjectLabel": "Chemistry HL",
-  "label": "Paper 1B-style data practice (calculator allowed)"
+  "label": "Paper 1B-style data practice (calculator allowed)",
+  "topic": "chem-paper-1b-practice",
+  "topicLabel": "Paper 1B-style data practice (Structure & Reactivity)",
+  "codes": [
+   "S1.1",
+   "S1.2",
+   "S1.3",
+   "S1.4",
+   "S1.5",
+   "S2.1",
+   "S2.2",
+   "S2.3",
+   "S2.4",
+   "S3.1",
+   "S3.2",
+   "R1.1",
+   "R1.2",
+   "R1.3",
+   "R1.4",
+   "R2.1",
+   "R2.2",
+   "R2.3",
+   "R3.1",
+   "R3.2",
+   "R3.3",
+   "R3.4"
+  ],
+  "paperStyle": "1B",
+  "counts": {
+   "mcq": 0,
+   "written": 26,
+   "total": 26
+  },
+  "topics": [
+   {
+    "topic": "chem-s1-1",
+    "topicLabel": "S1.1 Introduction to the particulate nature of matter",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-s1-2",
+    "topicLabel": "S1.2 The nuclear atom",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-s1-3",
+    "topicLabel": "S1.3 Electron configurations",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-s1-4",
+    "topicLabel": "S1.4 Counting particles by mass: the mole",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-s1-5",
+    "topicLabel": "S1.5 Ideal gases",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-s2-1",
+    "topicLabel": "S2.1 The ionic model",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-s2-2",
+    "topicLabel": "S2.2 The covalent model",
+    "count": 2,
+    "difficulty": {
+     "unrated": 2,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-s2-3",
+    "topicLabel": "S2.3 The metallic model",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-s2-4",
+    "topicLabel": "S2.4 From models to materials",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-s3-1",
+    "topicLabel": "S3.1 The periodic table: classification of elements",
+    "count": 2,
+    "difficulty": {
+     "unrated": 2,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-s3-2",
+    "topicLabel": "S3.2 Functional groups: classification of organic compounds",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r1-1",
+    "topicLabel": "R1.1 Measuring enthalpy changes",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r1-2",
+    "topicLabel": "R1.2 Energy cycles in reactions",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r1-3",
+    "topicLabel": "R1.3 Energy from fuels",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r1-4",
+    "topicLabel": "R1.4 Entropy and spontaneity (additional higher level)",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r2-1",
+    "topicLabel": "R2.1 How much? The amount of chemical change",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r2-2",
+    "topicLabel": "R2.2 How fast? The rate of chemical change",
+    "count": 2,
+    "difficulty": {
+     "unrated": 2,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r2-3",
+    "topicLabel": "R2.3 How far? The extent of chemical change",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r3-1",
+    "topicLabel": "R3.1 Proton transfer reactions",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r3-2",
+    "topicLabel": "R3.2 Electron transfer reactions",
+    "count": 2,
+    "difficulty": {
+     "unrated": 2,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r3-3",
+    "topicLabel": "R3.3 Electron sharing reactions",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r3-4",
+    "topicLabel": "R3.4 Electron-pair sharing reactions",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/chem-p1b-experimental-skills.json",
   "subject": "chemistry-hl",
   "subjectLabel": "Chemistry HL",
-  "label": "Paper 1B-style experimental skills — uncertainties, graphs, evaluation (calculator allowed)"
+  "label": "Paper 1B-style experimental skills — uncertainties, graphs, evaluation (calculator allowed)",
+  "topic": "chem-tools",
+  "topicLabel": "Tools & inquiry: measurement, uncertainty, graphs and evaluation",
+  "codes": [
+   "R1.3",
+   "R2.2",
+   "S1.5",
+   "R1.1",
+   "R2.3",
+   "R3.1",
+   "R3.2",
+   "R1.2",
+   "S3.2",
+   "R2.1"
+  ],
+  "paperStyle": "1B",
+  "counts": {
+   "mcq": 0,
+   "written": 20,
+   "total": 20
+  },
+  "topics": [
+   {
+    "topic": "chem-tools",
+    "topicLabel": "Tools & inquiry: measurement, uncertainty, graphs and evaluation",
+    "count": 5,
+    "difficulty": {
+     "unrated": 5,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r1-3",
+    "topicLabel": "R1.3 Energy from fuels",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r2-2",
+    "topicLabel": "R2.2 How fast? The rate of chemical change",
+    "count": 4,
+    "difficulty": {
+     "unrated": 4,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-s1-5",
+    "topicLabel": "S1.5 Ideal gases",
+    "count": 2,
+    "difficulty": {
+     "unrated": 2,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r1-1",
+    "topicLabel": "R1.1 Measuring enthalpy changes",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r2-3",
+    "topicLabel": "R2.3 How far? The extent of chemical change",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r3-1",
+    "topicLabel": "R3.1 Proton transfer reactions",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r3-2",
+    "topicLabel": "R3.2 Electron transfer reactions",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r1-2",
+    "topicLabel": "R1.2 Energy cycles in reactions",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-s3-2",
+    "topicLabel": "S3.2 Functional groups: classification of organic compounds",
+    "count": 2,
+    "difficulty": {
+     "unrated": 2,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "chem-r2-1",
+    "topicLabel": "R2.1 How much? The amount of chemical change",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/bio-data-response-unfamiliar.json",
   "subject": "biology-hl",
   "subjectLabel": "Biology HL",
-  "label": "Data response & extended answers — unfamiliar contexts (A1–A2, B1–B2, C1.1, D2.3)"
+  "label": "Data response & extended answers — unfamiliar contexts (A1–A2, B1–B2, C1.1, D2.3)",
+  "topic": "bio-data-response",
+  "topicLabel": "Data response & extended answers (unfamiliar contexts)",
+  "codes": [
+   "A1.1",
+   "A1.2",
+   "A2.1",
+   "A2.2",
+   "A2.3",
+   "B1.1",
+   "B2.1",
+   "B1.2",
+   "B2.2",
+   "B2.3",
+   "C1.1",
+   "D2.3"
+  ],
+  "counts": {
+   "mcq": 0,
+   "written": 24,
+   "total": 24
+  },
+  "topics": [
+   {
+    "topic": "bio-a1-1",
+    "topicLabel": "A1.1 Water",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "bio-a1-2",
+    "topicLabel": "A1.2 Nucleic acids",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "bio-a2-1",
+    "topicLabel": "A2.1 Origins of cells",
+    "count": 2,
+    "difficulty": {
+     "unrated": 2,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "bio-a2-2",
+    "topicLabel": "A2.2 Cell structure",
+    "count": 2,
+    "difficulty": {
+     "unrated": 2,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "bio-a2-3",
+    "topicLabel": "A2.3 Viruses",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "bio-b1-1",
+    "topicLabel": "B1.1 Carbohydrates and lipids",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "bio-b2-1",
+    "topicLabel": "B2.1 Membranes and membrane transport",
+    "count": 4,
+    "difficulty": {
+     "unrated": 4,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "bio-b1-2",
+    "topicLabel": "B1.2 Proteins",
+    "count": 2,
+    "difficulty": {
+     "unrated": 2,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "bio-b2-2",
+    "topicLabel": "B2.2 Organelles and compartmentalization",
+    "count": 1,
+    "difficulty": {
+     "unrated": 1,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "bio-b2-3",
+    "topicLabel": "B2.3 Cell specialization",
+    "count": 2,
+    "difficulty": {
+     "unrated": 2,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "bio-c1-1",
+    "topicLabel": "C1.1 Enzymes and metabolism",
+    "count": 4,
+    "difficulty": {
+     "unrated": 4,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "bio-d2-3",
+    "topicLabel": "D2.3 Water potential",
+    "count": 3,
+    "difficulty": {
+     "unrated": 3,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  },
  {
   "file": "library/questions/ia-practical-skills.json",
   "subject": "ia-skills",
   "subjectLabel": "Coursework & practical skills",
-  "label": "Practical & IA skills — design, uncertainties, statistics, evaluation"
+  "label": "Practical & IA skills — design, uncertainties, statistics, evaluation",
+  "topic": "practical-ia-skills",
+  "topicLabel": "Practical & IA skills — design, uncertainties, statistics, evaluation",
+  "counts": {
+   "mcq": 25,
+   "written": 2,
+   "total": 27
+  },
+  "topics": [
+   {
+    "topic": "variables-design",
+    "topicLabel": "Practical & IA skills — design, uncertainties, statistics, evaluation",
+    "count": 6,
+    "difficulty": {
+     "unrated": 6,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "uncertainties",
+    "topicLabel": "Practical & IA skills — design, uncertainties, statistics, evaluation",
+    "count": 9,
+    "difficulty": {
+     "unrated": 9,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "statistics",
+    "topicLabel": "Practical & IA skills — design, uncertainties, statistics, evaluation",
+    "count": 5,
+    "difficulty": {
+     "unrated": 5,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "data-handling",
+    "topicLabel": "Practical & IA skills — design, uncertainties, statistics, evaluation",
+    "count": 2,
+    "difficulty": {
+     "unrated": 2,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "evaluation-conclusion",
+    "topicLabel": "Practical & IA skills — design, uncertainties, statistics, evaluation",
+    "count": 3,
+    "difficulty": {
+     "unrated": 3,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   },
+   {
+    "topic": "ia-rules",
+    "topicLabel": "Practical & IA skills — design, uncertainties, statistics, evaluation",
+    "count": 2,
+    "difficulty": {
+     "unrated": 2,
+     "easy": 0,
+     "standard": 0,
+     "hard": 0
+    }
+   }
+  ]
  }
 ]

@@ -2,6 +2,7 @@
  "subject": "chemistry-hl",
  "topic": "chem-p1a-reactivity-3",
  "topicLabel": "Paper 1A-style calculator-free practice — Reactivity 3",
+ "codes": ["R3.1", "R3.2", "R3.3", "R3.4"],
  "paperStyle": "1A",
  "calculatorFree": true,
  "about": "Original practice questions written for the IB Chemistry 2025 guide (HL). Not IB past-paper questions or markschemes, and not a prediction of exam questions. Calculator-free practice: every item can be done without a calculator.",

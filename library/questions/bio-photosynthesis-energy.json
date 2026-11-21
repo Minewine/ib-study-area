@@ -2,6 +2,7 @@
   "subject": "biology-hl",
   "topic": "photosynthesis-energy-transfer",
   "topicLabel": "C1.3 — Photosynthesis & C4.2 — Transfer of energy (Apr–May unit)",
+  "codes": ["C1.3", "C4.2"],
   "items": [
     {"id": "ph01", "format": "mcq", "topic": "photosynthesis-energy-transfer", "stem": "The overall equation for photosynthesis is:",
      "choices": ["glucose + 6O\u2082 \u2192 6CO\u2082 + 6H\u2082O", "6CO\u2082 + 6H\u2082O \u2192 glucose + 6O\u2082", "6CO\u2082 + 6O\u2082 \u2192 glucose + 6H\u2082O", "glucose \u2192 CO\u2082 + H\u2082O"], "answer": 1,

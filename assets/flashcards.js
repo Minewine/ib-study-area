@@ -68,12 +68,13 @@
         const res = await fetch(PATH_BASE + r.file + "?cb=" + Date.now(), { cache: "no-store" });
         if (!res.ok) throw new Error(res.status + " " + r.file);
         const d = await res.json();
-        return { id: String(r.file).split("/").pop().replace(/\.json$/i, ""), subject: d.subject || r.subject, subjectLabel: r.subjectLabel, topic: d.topic, topicLabel: d.topicLabel, cards: d.cards || [] };
+        // set/setOrder ride along for the topic picker's set info + ordering (both optional)
+        return { id: String(r.file).split("/").pop().replace(/\.json$/i, ""), subject: d.subject || r.subject, subjectLabel: r.subjectLabel, topic: d.topic, topicLabel: d.topicLabel, set: d.set, setOrder: d.setOrder, cards: d.cards || [] };
       } catch (e) { console.warn("deck failed:", r.file, e); return null; }
     }));
     loaded.forEach(d => { if (d) DECKS.push(d); });
     store.get("fc-userdecks", []).forEach(ud => {
-      DECKS.push({ subject: ud.subject, subjectLabel: ud.subjectLabel || ud.subject, topic: ud.topic, topicLabel: ud.topicLabel || ud.topic, cards: ud.cards || [] });
+      DECKS.push({ subject: ud.subject, subjectLabel: ud.subjectLabel || ud.subject, topic: ud.topic, topicLabel: ud.topicLabel || ud.topic, set: ud.set, setOrder: ud.setOrder, cards: ud.cards || [] });
     });
     rebuild();
   }
@@ -104,6 +105,19 @@
       deleted: store.get("fc-deleted", []),
       edits: store.get("fc-edits", {})
     };
+  }
+
+  // Locate a card that came from an uploaded deck (fc-userdecks) so edits and
+  // deletes land in the deck itself — exported JSON stays truthful, instead of
+  // the card silently reappearing from the deck entry (the old seed-override path).
+  function findUserDeckCard(id) {
+    const decks = store.get("fc-userdecks", []);
+    for (let i = 0; i < decks.length; i++) {
+      const cards = decks[i].cards || [];
+      const j = cards.findIndex(c => c && c.id === id);
+      if (j >= 0) return { decks, i, j, card: cards[j] };
+    }
+    return null;
   }
 
   function groups() {
@@ -226,19 +240,24 @@
   // ---------- editor ----------
   function renderEditor() {
     const sel = $("ed-deck");
+    const prev = sel.value; // keep the current deck selected across saves/deletes
+    const values = [];
     sel.innerHTML = "";
     groups().forEach((g) => {
+      values.push(g.subject + "::" + g.topic);
       const o = document.createElement("option");
       o.value = g.subject + "::" + g.topic;
-      o.textContent = g.subjectLabel + " \u2014 " + g.topicLabel + ` (${g.total})`;
+      o.textContent = g.subjectLabel + " — " + g.topicLabel + ` (${g.total})`;
       sel.appendChild(o);
     });
     const mine = CARDS.filter(c => !c.seed);
     if (mine.length) {
+      values.push("*user*");
       const o = document.createElement("option");
       o.value = "*user*"; o.textContent = "My created cards (" + mine.length + ")";
       sel.appendChild(o);
     }
+    if (prev && values.includes(prev)) sel.value = prev;
     renderEditorList();
   }
 
@@ -258,7 +277,9 @@
       if (!c) return;
       if (b.dataset.act === "del") {
         const { user, deleted } = loadState();
-        if (c.seed) { deleted.push(id); store.set("fc-deleted", deleted); }
+        const loc = findUserDeckCard(id);
+        if (loc) { loc.decks[loc.i].cards.splice(loc.j, 1); store.set("fc-userdecks", loc.decks); }
+        else if (c.seed) { deleted.push(id); store.set("fc-deleted", deleted); }
         else { store.set("fc-user", user.filter(x => x.id !== id)); }
         rebuild(); renderEditor(); renderProgress();
       } else {
@@ -269,15 +290,27 @@
         $("ed-tags").value = (c.tags || []).join(", ");
         $("ed-topic").value = c.topic;
         $("ed-topiclabel").value = c.topicLabel || "";
+        // deck cards take their topic from the deck file; edits to it would be
+        // silently dropped, so say so instead of showing two editable fields
+        $("ed-topic").disabled = c.seed;
+        $("ed-topiclabel").disabled = c.seed;
+        $("ed-topic").title = c.seed ? "Comes from the deck file — only cards you create yourself can pick a topic" : "";
+        $("ed-topiclabel").title = $("ed-topic").title;
       }
     }));
     $("ed-add").onclick = () => {
       $("ed-formwrap").style.display = "";
       $("ed-id").value = "";
       $("ed-front").value = ""; $("ed-back").value = ""; $("ed-tags").value = "definition";
-      const g = groups()[0];
-      $("ed-topic").value = g ? g.topic : "";
+      // pre-fill the topic from the deck currently selected in the dropdown (was
+      // always groups()[0], so a card added while viewing deck X landed in deck Y's topic)
+      const key = $("ed-deck").value;
+      const g = key === "*user*" ? null : groups().find(x => (x.subject + "::" + x.topic) === key) || groups()[0];
+      $("ed-topic").value = g ? g.topic : "user";
       $("ed-topiclabel").value = g ? g.topicLabel : "";
+      $("ed-topic").disabled = false;
+      $("ed-topiclabel").disabled = false;
+      $("ed-topic").title = ""; $("ed-topiclabel").title = "";
     };
     $("ed-save").onclick = () => {
       const id = $("ed-id").value;
@@ -290,7 +323,16 @@
       };
       if (!card.front || !card.back) { alert("Front and back are both required."); return; }
       const { user, deleted, edits } = loadState();
-      if (id && CARDS.find(x => x.id === id && x.seed)) { edits[id] = { front: card.front, back: card.back, tags: card.tags }; store.set("fc-edits", edits); }
+      const loc = id ? findUserDeckCard(id) : null;
+      if (loc) {
+        // uploaded-deck card: update the deck entry itself, keeping its id and type
+        loc.decks[loc.i].cards[loc.j] = Object.assign({}, loc.card, {
+          front: card.front, back: card.back, tags: card.tags,
+          topic: card.topic, topicLabel: card.topicLabel
+        });
+        store.set("fc-userdecks", loc.decks);
+      }
+      else if (id && CARDS.find(x => x.id === id && x.seed)) { edits[id] = { front: card.front, back: card.back, tags: card.tags }; store.set("fc-edits", edits); }
       else if (id && CARDS.find(x => x.id === id)) { store.set("fc-user", user.map(x => x.id === id ? card : x)); }
       else { user.push(card); store.set("fc-user", user); }
       rebuild(); renderEditor(); renderProgress();
@@ -350,14 +392,19 @@
   }
 
   // ---------- theme ----------
+  // NB: the attribute is set with setAttribute, not dataset — dataset.fcTheme
+  // writes "data-fc-theme", but the CSS below matches "data-fcTheme", so the
+  // dark rules never applied. Attribute names are case-insensitive in HTML,
+  // so setAttribute("data-fcTheme", …) matches the selector.
   function applyTheme() {
-    const saved = store.get("fc-theme", null) || (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    document.documentElement.dataset.fcTheme = saved;
+    // light is the site-wide default by design — dark applies only after toggling (stored per profile)
+    const saved = store.get("fc-theme", null) || "light";
+    document.documentElement.setAttribute("data-fcTheme", saved);
     const btn = $("fc-theme-btn");
     if (btn) btn.textContent = saved === "dark" ? "Light mode" : "Dark mode";
   }
   function toggleTheme() {
-    const next = document.documentElement.dataset.fcTheme === "dark" ? "light" : "dark";
+    const next = document.documentElement.getAttribute("data-fcTheme") === "dark" ? "light" : "dark";
     store.set("fc-theme", next);
     applyTheme();
   }
@@ -391,6 +438,10 @@
     fillTopics();
     $("fc-start").addEventListener("click", startSession);
     $("fc-open-editor").addEventListener("click", () => { $("setup").style.display = "none"; $("editor").style.display = ""; renderEditor(); });
+    $("fc-runner-edit").addEventListener("click", () => { $("runner").style.display = "none"; $("editor").style.display = ""; renderEditor(); });
+    // the editor's card list must follow the Deck dropdown (it previously kept
+    // showing the old deck's cards until the next save/delete — looked frozen)
+    if ($("ed-deck")) $("ed-deck").addEventListener("change", renderEditorList);
     $("fc-export").addEventListener("click", doExport);
     $("fc-import").addEventListener("click", doImport);
     if ($("fc-import-file")) $("fc-import-file").addEventListener("change", doImportFile);
@@ -399,13 +450,35 @@
     applyTheme();
     renderProgress();
   }
+  // Topic dropdown: decks already pool per subject::topic in groups(), so the
+  // options carry real card counts (CARDS is post retired/delete/edit filtering)
+  // plus the deck set names when the decks of a topic carry one. Values stay
+  // "subject::topic" — buildQueue is untouched. Topics order by setOrder only
+  // when every visible group has one (else the load order is kept).
   function fillTopics() {
     const subj = $("fc-subject").value;
     const topic = $("fc-topic");
+    const prev = topic.value;
     topic.innerHTML = '<option value="*">All topics in this selection</option>';
-    DECKS.filter(d => subj === "*" || d.subject === subj).forEach(d => {
-      const o = document.createElement("option"); o.value = d.subject + "::" + d.topic; o.textContent = d.subjectLabel + " \u2014 " + d.topicLabel; topic.appendChild(o);
+    const gs = groups().filter(g => subj === "*" || g.subject === subj);
+    const groupOrder = (g) => {
+      const decks = DECKS.filter(d => d.subject === g.subject && d.topic === g.topic);
+      return decks.length && decks.every(d => d.setOrder != null) ? decks[0].setOrder : null;
+    };
+    const ordered = gs.every(g => groupOrder(g) != null) ? gs.slice().sort((a, b) => groupOrder(a) - groupOrder(b)) : gs;
+    ordered.forEach(g => {
+      const decks = DECKS.filter(d => d.subject === g.subject && d.topic === g.topic);
+      const sets = [...new Set(decks.map(d => d.set).filter(Boolean))];
+      let suffix = "";
+      if (sets.length === 1) suffix = " — " + sets[0];
+      else if (sets.length > 1) suffix = " (sets: " + sets.join(", ") + ")";
+      const o = document.createElement("option");
+      o.value = g.subject + "::" + g.topic;
+      o.textContent = g.subjectLabel + " — " + g.topicLabel + " · " + g.total + " cards" + suffix;
+      topic.appendChild(o);
     });
+    // keep the current selection across re-renders (subject change → new list → all)
+    topic.value = (prev && ordered.some(g => g.subject + "::" + g.topic === prev)) ? prev : "*";
   }
 
   function fromLink() {

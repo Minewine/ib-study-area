@@ -120,4 +120,27 @@
     inp.value = store.get('week:' + inp.dataset.i, '');
     inp.addEventListener('input', () => { store.set('week:' + inp.dataset.i, inp.value); try { if (window.Auth && window.Auth.queueSync) window.Auth.queueSync(); } catch (e) {} });
   });
+  // Checklist filter (biology hub emits #chk-search; other pages no-op here).
+  // Rows match on their syllabus code (data-code) or display title; headings
+  // tagged data-chk hide once no visible row still belongs to them.
+  const chkSearch = document.getElementById('chk-search');
+  if (chkSearch) {
+    const chkCard = chkSearch.closest('.card');
+    const chkEmpty = document.getElementById('chk-empty');
+    const chkRows = chkCard ? [...chkCard.querySelectorAll('.row[data-key]')] : [];
+    chkSearch.addEventListener('input', () => {
+      const q = chkSearch.value.trim().toLowerCase();
+      let shown = 0;
+      chkRows.forEach(r => {
+        const name = r.querySelector('.name');
+        const hay = ((r.dataset.code || '') + ' ' + (name ? name.textContent : '')).toLowerCase();
+        r.hidden = !!q && hay.indexOf(q) < 0;
+        if (!r.hidden) shown++;
+      });
+      if (chkCard) chkCard.querySelectorAll('h3[data-chk],h4[data-chk]').forEach(h => {
+        h.hidden = !chkRows.some(r => !r.hidden && (r.dataset.chk || '').slice(0, h.dataset.chk.length) === h.dataset.chk);
+      });
+      if (chkEmpty) chkEmpty.hidden = shown > 0;
+    });
+  }
 })();

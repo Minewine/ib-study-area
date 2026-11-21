@@ -1,8 +1,14 @@
 /* IB Study Area — "Today" panel on the practice home page.
-   Three suggestions, no streaks or scores: (1) flashcards due today (Leitner state in
+   Blocks, no streaks or scores: (1) flashcards due today (Leitner state in
    fc-state), (2) a short quiz on the weakest topic (unresolved q-errors first, then
    note-linked quizlog results), (3) what is being taught in class this week
-   (library/class-schedule.json, approximate) with links to its notes, quiz and cards.
+   (library/class-schedule.json, approximate) with links to its notes, quiz and cards,
+   (4) dated items coming up — school deadlines (NB.deadlines, exported by
+   assets/deadlines.js) and coursework stage dates — near-term now, longer-range ones
+   as "Start thinking about" once inside the long lead window, and (5) up to two
+   suggested next steps with a visible reason and a direct link.
+   Blocks with nothing to show are not rendered at all. External data (schedule,
+   deadlines, coursework) is never trusted: malformed records are skipped, not fatal.
    Read-only: this file never writes to storage. */
 (function () {
   "use strict";
@@ -23,6 +29,14 @@
   const canon = NB.canonicalSubject || ((x) => x);
   const QUIZ_N = 6;
   const WEAK_PCT = 70;
+  // Lead times for dated items (days from today): items within LEAD_DAYS are near
+  // term; items beyond that but within LONG_LEAD_DAYS get the "Start thinking
+  // about" heads-up instead. An active unit ending within UNIT_CLOSE_DAYS counts
+  // as closing this week. (Constants, not settings — change here if needed.)
+  const LEAD_DAYS = 21;
+  const LONG_LEAD_DAYS = 60;
+  const UNIT_CLOSE_DAYS = 7;
+  const MISTAKE_KEYS_MAX = 20; // keys packed into one quiz.html?errkeys= retry link
 
   const store = (window.NB && window.NB.store) || {
     get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v === null ? d : v; } catch (e) { return d; } }
@@ -31,6 +45,27 @@
   const isoDate = (d) => d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
   const fileId = (f) => String(f).split("/").pop().replace(/\.json$/i, "");
   const shuffle = (a, rnd) => { rnd = rnd || Math.random; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+  // External data (schedule, deadlines, coursework) is never trusted: a date field
+  // is only used after this guard, so a malformed record skips itself instead of
+  // throwing and taking the whole panel down. Everything after it string-compares
+  // "YYYY-MM-DD" values.
+  const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+  const isISO = (s) => {
+    if (typeof s !== "string" || !ISO_DATE.test(s)) return false;
+    const [y, m, d] = s.split("-").map(Number);
+    const t = new Date(y, m - 1, d, 12);
+    return t.getFullYear() === y && t.getMonth() === m - 1 && t.getDate() === d;
+  };
+  const addDays = (iso, n) => { const [y, m, d] = iso.split("-").map(Number); const t = new Date(y, m - 1, d, 12); t.setDate(t.getDate() + n); return isoDate(t); };
+  const clip = (s, n) => { s = String(s == null ? "" : s); return s.length > n ? s.slice(0, n - 1).trimEnd() + "…" : s; };
+  // label key for dedupe: ignore case and punctuation, so "Biology: IA experiment
+  // day (group 1)" and "Biology IA experiment day (group 1)" are the same event
+  const labelKey = (s) => String(s == null ? "" : s).toLowerCase().replace(/[^a-z0-9]/g, "");
+  const relDay = (date, today) => {
+    const d = Math.round((new Date(date + "T12:00:00") - new Date(today + "T12:00:00")) / 86400000);
+    return d === 0 ? "today" : d === 1 ? "tomorrow" : "in " + d + " days";
+  };
 
   // ---------- pure logic (exported for tests) ----------
 
@@ -68,7 +103,7 @@
   function weakestTopic(errors, log) {
     const groups = {};
     (errors || []).forEach(e => {
-      if (!e || e.resolved || !e.bankId || String(e.bankId).startsWith("user:")) return;
+      if (!e || e.resolved || e.retired || !e.bankId || String(e.bankId).startsWith("user:")) return;
       // per-user subject profile: a missed question from a subject the account
       // doesn't take is not a weak spot to re-quiz (unknown subjects stay)
       if (e.subject && NB.profile && NB.profile.hides(e.subject)) return;
@@ -111,16 +146,151 @@
 
   // Units taught on `date` for one subject, the break (if any) covering it, and the next unit.
   // The schedule key is found by canonical id (see `canon` above), so callers may
-  // pass either spelling of a subject id.
+  // pass either spelling of a subject id. Malformed units/breaks (non-ISO dates,
+  // missing fields) are skipped, not fatal.
   function unitsFor(schedule, subject, date) {
     const subs = (schedule && schedule.subjects) || {};
     const key = Object.keys(subs).find(k => canon(k) === canon(subject));
     const s = key ? subs[key] : null;
-    const units = (s && s.units || []).slice().sort((a, b) => (a.from < b.from ? -1 : a.from > b.from ? 1 : 0));
-    const brk = ((schedule && schedule.breaks) || []).find(b => b.from <= date && date <= b.to) || null;
-    const current = brk ? [] : units.filter(u => u.from <= date && date <= u.to);
-    const next = units.find(u => u.from > date) || null;
+    const units = (Array.isArray(s && s.units) ? s.units : []).slice().sort((a, b) => (a.from < b.from ? -1 : a.from > b.from ? 1 : 0));
+    const brk = (Array.isArray(schedule && schedule.breaks) ? schedule.breaks : []).find(b => b && isISO(b.from) && isISO(b.to) && b.from <= date && date <= b.to) || null;
+    const current = brk ? [] : units.filter(u => u && isISO(u.from) && isISO(u.to) && u.from <= date && date <= u.to);
+    const next = units.find(u => u && isISO(u.from) && u.from > date) || null;
     return { current, brk, next };
+  }
+
+  // Active units across the profile's subjects: today within [from,to] (the class
+  // schedule is approximate — see class-schedule.json). Returns
+  // [{subject, label, unit}] so suggestions can point at what is being taught now.
+  function activeUnits(schedule, subjects, today) {
+    const out = [];
+    (Array.isArray(subjects) ? subjects : []).forEach(row => {
+      const [s, label] = row || [];
+      unitsFor(schedule, s, today).current.forEach(u => {
+        if (u && isISO(u.from) && isISO(u.to)) out.push({ subject: s, label: label || s, unit: u });
+      });
+    });
+    return out;
+  }
+
+  // Open (unresolved, unretired) missed questions grouped by topic label, most open
+  // first, then the most recently missed. The input for the mistakes suggestion:
+  // each group carries the record keys for a quiz.html?errkeys= retry link.
+  function openMistakes(errors, hides) {
+    const groups = {};
+    (Array.isArray(errors) ? errors : []).forEach(e => {
+      if (!e || e.resolved || e.retired || typeof e.key !== "string" || !e.key) return;
+      if (e.subject && hides && hides(e.subject)) return;
+      const label = [e.topicLabel, e.topic, e.bankId].find(v => typeof v === "string" && v) || "your mistakes";
+      const g = groups[label] = groups[label] || { label, keys: [], count: 0, last: "" };
+      g.count++;
+      g.keys.push(e.key);
+      if (isISO(e.lastMissed) && e.lastMissed > g.last) g.last = e.lastMissed;
+    });
+    return Object.values(groups).sort((a, b) => (b.count - a.count) || (b.last < a.last ? -1 : b.last > a.last ? 1 : 0) || (a.label < b.label ? -1 : 1));
+  }
+
+  // Dated items the panel knows about, normalized to {date, label, href, where}:
+  // the school deadline calendar (NB.deadlines, exported by assets/deadlines.js —
+  // records {d, t, tag, subject?}) and coursework stage dates (tracks[].stages[]
+  // .dates[] in library/coursework/coursework.json). Sorted defensively like
+  // deadlines.js does; entries with a subject the profile hides are dropped, and
+  // records without a real date or label are skipped.
+  function datedItems(deadlines, coursework, hides) {
+    const out = [];
+    (Array.isArray(deadlines) ? deadlines : []).forEach(x => {
+      if (!x || !isISO(x.d) || typeof x.t !== "string" || !x.t) return;
+      if (x.subject && hides && hides(x.subject)) return;
+      out.push({ date: x.d, label: x.t, href: "../deadlines.html", where: "calendar" });
+    });
+    (coursework && Array.isArray(coursework.tracks) ? coursework.tracks : []).forEach(tr => {
+      if (!tr || (tr.subject && hides && hides(tr.subject))) return;
+      (Array.isArray(tr.stages) ? tr.stages : []).forEach(st => {
+        (st && Array.isArray(st.dates) ? st.dates : []).forEach(dv => {
+          if (!dv || !isISO(dv.date)) return;
+          const label = [dv.label, st.title, tr.label].find(v => typeof v === "string" && v);
+          if (!label) return;
+          out.push({ date: dv.date, label: label, href: "coursework.html", where: "planner" });
+        });
+      });
+    });
+    // the deadline calendar and the coursework planner share events (the sciences
+    // IA days) under slightly different labels — dedupe by date + normalized label
+    // (bare date is not enough: distinct events can share one)
+    const seen = new Set();
+    return out.filter(x => {
+      const k = x.date + "|" + labelKey(x.label);
+      if (seen.has(k)) return false;
+      seen.add(k);
+      return true;
+    }).sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
+  }
+
+  // Near-term dated items: today (inclusive) through today + leadDays.
+  function nearTermItems(items, today, leadDays) {
+    const horizon = addDays(today, leadDays);
+    return (Array.isArray(items) ? items : []).filter(x => x && isISO(x.date) && today <= x.date && x.date <= horizon);
+  }
+
+  // Longer-range dated items: past the near-term window, inside the long lead
+  // window — shown as "Start thinking about …", never earlier.
+  function startThinkingItems(items, today, leadDays, longLeadDays) {
+    const nearEnd = addDays(today, leadDays), farEnd = addDays(today, longLeadDays);
+    return (Array.isArray(items) ? items : []).filter(x => x && isISO(x.date) && x.date > nearEnd && x.date <= farEnd);
+  }
+
+  // Up to two suggested next steps, ranked data-driven: due cards first, then open
+  // mistakes, then an active unit closing this week, then imminent deadline prep.
+  // Every suggestion carries a visible reason and a direct link (existing link
+  // formats only); without data behind it, nothing is suggested.
+  function suggestActions(inp) {
+    inp = inp || {};
+    const today = inp.today;
+    if (!isISO(today)) return [];
+    const out = [];
+    const due = inp.due || 0;
+    if (due > 0) {
+      out.push({ title: due + " card" + (due === 1 ? "" : "s") + " due", reason: "your review schedule says so", href: inp.dueHref || "cards.html", link: "Review them" });
+    } else if ((inp.own || 0) > 0) {
+      out.push({ title: inp.own + " of your own cards due", reason: "your review schedule says so", href: "cards.html", link: "Review them" });
+    }
+    const m = openMistakes(inp.errors, inp.hides)[0];
+    if (m) {
+      out.push({
+        title: "Open mistakes on " + clip(m.label, 40),
+        reason: m.count + " missed question" + (m.count === 1 ? "" : "s") + " not yet fixed",
+        href: "quiz.html?errkeys=" + m.keys.slice(0, MISTAKE_KEYS_MAX).map(encodeURIComponent).join(","),
+        link: "Retry them"
+      });
+    }
+    // first closing unit that actually yields a direct link — a closing unit
+    // without a note must not suppress one that has
+    const closings = (Array.isArray(inp.units) ? inp.units : [])
+      .filter(u => u && isISO(u.unit && u.unit.to) && today <= u.unit.to && u.unit.to <= addDays(today, UNIT_CLOSE_DAYS))
+      .sort((a, b) => (a.unit.to < b.unit.to ? -1 : a.unit.to > b.unit.to ? 1 : 0));
+    for (let i = 0; i < closings.length; i++) {
+      const cu = closings[i];
+      const code = (cu.unit && Array.isArray(cu.unit.codes) ? cu.unit.codes : [])[0];
+      const note = cu.subject && code ? ((inp.notes || {})[canon(cu.subject) + "|" + code]) : null;
+      const L = note ? noteLinks(note) : null;
+      const href = L && (L.quiz || L.notes);
+      if (!href) continue;
+      out.push({
+        title: cu.unit.to === today ? "Unit closes today" : "Unit closes this week",
+        reason: clip(cu.unit.unit, 60) + " ends " + fmtDay(cu.unit.to) + " (class schedule, approximate)",
+        href: href, link: L.quiz ? "Quiz the unit" : "Open notes"
+      });
+      break;
+    }
+    const next = (Array.isArray(inp.nearItems) ? inp.nearItems : [])[0];
+    if (next && isISO(next.date)) {
+      out.push({
+        title: "Deadline ahead",
+        reason: clip(next.label, 60) + " — " + fmtDay(next.date) + " (" + relDay(next.date, today) + ")",
+        href: next.href || "../deadlines.html", link: next.where === "planner" ? "Open planner" : "Open calendar"
+      });
+    }
+    return out.slice(0, 2);
   }
 
   const fromParam = (id, ids) => "from=" + encodeURIComponent(id + (ids && ids.length ? ":" + ids.join(",") : ""));
@@ -152,43 +322,82 @@
     kids.flat().forEach(k => { if (k === null || k === undefined || k === false) return; n.append(typeof k === "string" ? document.createTextNode(k) : k); });
     return n;
   };
-  const getJSON = (path) => fetch(PATH_BASE + path, { cache: "no-cache" }).then(r => { if (!r.ok) throw new Error(r.status + " " + path); return r.json(); });
-  const fmtDay = (iso) => { const [y, m, d] = iso.split("-").map(Number); return new Date(y, m - 1, d).toLocaleDateString(undefined, { day: "numeric", month: "short" }); };
+  // Every fetch gets a hard timeout: a request that never settles must not leave
+  // the panel stuck on "Loading today's plan…" (the render guard can't reset until
+  // load() settles, so a hung fetch would also block all re-renders).
+  const FETCH_TIMEOUT = 10000;
+  const getJSON = (path) => {
+    const ctrl = typeof AbortController === "function" ? new AbortController() : null;
+    const timer = ctrl ? setTimeout(() => ctrl.abort(), FETCH_TIMEOUT) : null;
+    const clear = () => { if (timer !== null) clearTimeout(timer); };
+    return fetch(PATH_BASE + path, { cache: "no-cache", signal: ctrl ? ctrl.signal : undefined }).then(
+      (r) => { clear(); if (!r.ok) throw new Error(r.status + " " + path); return r.json(); },
+      (e) => { clear(); throw e; }
+    );
+  };
+  const fmtDay = (iso) => {
+    if (!isISO(iso)) return String(iso == null ? "" : iso);
+    const [y, m, d] = iso.split("-").map(Number);
+    return new Date(y, m - 1, d).toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+  };
 
-  let DATA = null; // { schedule, manifest, notes: {subject|code: note}, cards: [...] }
+  let DATA = null; // { schedule, manifest, notes: {canonicalSubject|code: note}, cards: [...] }
 
   async function load() {
-    const [schedule, manifest, registry] = await Promise.all([
+    const failed = { decks: false, notes: false }; // surfaced as error states, not silent "empty" panels
+    // All manifests are fetched once here and cached in DATA — re-renders (storage
+    // events from other tabs) must not re-fetch.
+    const [schedule, manifest, registry, coursework, qmanifest] = await Promise.all([
       getJSON("library/class-schedule.json").catch(() => null),
-      getJSON("library/topic-notes/manifest.json").catch(() => null),
-      getJSON("library/flashcards/manifest.json").catch(() => [])
+      getJSON("library/topic-notes/manifest.json").catch(() => { failed.notes = true; return null; }),
+      getJSON("library/flashcards/manifest.json").catch(() => { failed.decks = true; return []; }),
+      getJSON("library/coursework/coursework.json").catch(() => null),
+      getJSON("library/questions/manifest.json").catch(() => null)
     ]);
     const today = isoDate(new Date());
     const wanted = [];
-    SUBJECTS.forEach(([s]) => unitsFor(schedule, s, today).current.forEach(u => u.codes.forEach(c => wanted.push([s, c]))));
+    SUBJECTS.forEach(([s]) => unitsFor(schedule, s, today).current.forEach(u => (Array.isArray(u.codes) ? u.codes : []).forEach(c => wanted.push([s, c]))));
     const entries = (manifest && manifest.notes) || [];
     const notes = {};
+    // Per-user subject profile (assets/profile.js): decks for subjects the account
+    // doesn't take are dropped before their files are fetched (mirrors flashcards.js).
+    const visible = (registry || []).filter(r => !(NB.profile && NB.profile.hides(r.subject)));
     const decks = await Promise.all([
       Promise.all(wanted.map(([s, c]) => {
-        const m = entries.find(n => n.subject === s && n.code === c);
-        return m ? getJSON(m.file).then(n => { notes[s + "|" + c] = Object.assign({ file: m.file }, n); }).catch(() => {}) : null;
+        // the topic-notes manifest predates the id scheme ("maths-aa-sl") —
+        // canon-compare both sides and key notes by the canonical subject id
+        const m = entries.find(n => canon(n.subject) === canon(s) && n.code === c);
+        return m ? getJSON(m.file).then(n => { notes[canon(s) + "|" + c] = Object.assign({ file: m.file }, n); }).catch(() => {}) : null;
       })),
-      Promise.all((registry || []).map(r => getJSON(r.file).then(d => (d.cards || []).map(c => ({ id: c.id, deck: fileId(r.file), retired: c.retired === true }))).catch(() => [])))
+      Promise.all(visible.map(r => getJSON(r.file).then(d => (d.cards || []).map(c => ({ id: c.id, deck: fileId(r.file), retired: c.retired === true }))).catch(() => { failed.decks = true; return []; })))
     ]).then(([, d]) => d);
-    DATA = { schedule, manifest, entries, notes, cards: [].concat(...decks) };
+    DATA = { schedule, manifest, entries, notes, cards: [].concat(...decks), failed, coursework, qmanifest, qbanks: {} };
   }
 
   function renderCards(box, today) {
+    const failedDecks = !!(DATA.failed && DATA.failed.decks);
     const st = store.get("fc-state", {});
     const deleted = store.get("fc-deleted", []);
-    const d = dueCards(DATA.cards, st, today, deleted);
+    // Uploaded decks (fc-userdecks) are not in the library manifest; their cards
+    // live in storage, so they are counted without a fetch. deck: null → they add
+    // to the total but never to the per-deck deep link (dueCardsHref skips it).
+    const uploaded = store.get("fc-userdecks", []).map(d => (d.cards || []).map(c => ({ id: c.id, deck: null, retired: c.retired === true })));
+    const d = dueCards(DATA.cards.concat(...uploaded), st, today, deleted);
     const own = dueUserCards(store.get("fc-user", []), st, today, deleted);
     const href = dueCardsHref(d.byDeck, d.total);
     const sec = el("div", { class: "td-block" }, el("h4", {}, "1. Flashcards"));
-    if (d.total) sec.append(el("p", {}, `${d.total} card${d.total === 1 ? "" : "s"} due today. `), href ? el("a", { class: "td-btn", href }, "Start due cards") : null);
-    else sec.append(el("p", {}, "Nothing due today. ", d.fresh ? `There are ${d.fresh} cards you haven't started; the class topics below link to the right deck.` : ""));
+    if (d.total) {
+      sec.append(el("p", {}, `${d.total} card${d.total === 1 ? "" : "s"} due today. `), href ? el("a", { class: "td-btn", href }, "Start due cards") : null);
+      if (failedDecks) sec.append(el("p", { class: "muted" }, "Some card decks could not be loaded, so this count may be low."));
+    } else {
+      sec.append(el("p", {}, failedDecks
+        ? "Card decks could not be loaded — the Cards page still works."
+        : "Nothing due today. " + (d.fresh ? `There are ${d.fresh} cards you haven't started; the class topics below link to the right deck.` : "")));
+    }
     if (own) sec.append(el("p", { class: "muted" }, `Plus ${own} of your own card${own === 1 ? "" : "s"} due. They're on the `, el("a", { href: "cards.html" }, "Cards"), " page."));
     box.append(sec);
+    // counts for the "suggested next step" block (same data, one computation)
+    return { total: d.total, own: own, href: d.total ? (href || "cards.html") : (own ? "cards.html" : null) };
   }
 
   async function renderQuiz(box) {
@@ -200,9 +409,14 @@
       sec.append(el("p", {}, "Weakest topic right now: ", el("strong", {}, weak.topicLabel), ` (${weak.count} missed question${weak.count === 1 ? "" : "s"} not yet fixed).`));
       let ids = null;
       try {
-        const qm = await getJSON("library/questions/manifest.json");
-        const m = (qm || []).find(b => fileId(b.file) === weak.bankId);
-        if (m) ids = pickQuizIds((await getJSON(m.file)).items, weak, QUIZ_N);
+        // DATA.qmanifest / DATA.qbanks are cached in load() — a storage-event
+        // re-render must not re-fetch the manifest or the bank file
+        const m = (DATA.qmanifest || []).find(b => fileId(b.file) === weak.bankId);
+        if (m) {
+          const fid = fileId(m.file);
+          if (!DATA.qbanks[fid]) DATA.qbanks[fid] = ((await getJSON(m.file)) || {}).items || [];
+          ids = pickQuizIds(DATA.qbanks[fid], weak, QUIZ_N);
+        }
       } catch (e) { ids = null; }
       sec.append(el("a", { class: "td-btn", href: quizHref(weak.bankId, ids, "Today: " + weak.topicLabel, QUIZ_N) }, `Start a ${QUIZ_N}-question quiz`));
     } else {
@@ -210,7 +424,8 @@
       sec.append(el("p", {}, "Lowest recent quiz score: ", el("strong", {}, weak.label), ` (average ${weak.pct}%).`));
       if (m) {
         try {
-          const note = Object.assign({ file: m.file }, await getJSON(m.file));
+          DATA.noteCache = DATA.noteCache || {};
+          const note = DATA.noteCache[m.file] || (DATA.noteCache[m.file] = Object.assign({ file: m.file }, await getJSON(m.file)));
           const L = (note.links && note.links.quizBanks) || [];
           if (L.length) {
             const b = L[0];
@@ -237,13 +452,14 @@
       else if (!u.current.length) row.append("No unit listed for this week.", u.next ? ` Next: ${u.next.unit} from ${fmtDay(u.next.from)}.` : "");
       else {
         u.current.forEach((cu, i) => {
-          row.append((i ? "; " : "") + cu.unit, cu.codes.length ? ` (${cu.codes.join(", ")})` : "");
+          const cs = Array.isArray(cu.codes) ? cu.codes : [];
+          row.append((i ? "; " : "") + cu.unit, cs.length ? ` (${cs.join(", ")})` : "");
         });
         const links = el("ul", { class: "links td-links" });
         const seen = new Set();
-        u.current.forEach(cu => cu.codes.forEach(c => {
+        u.current.forEach(cu => (Array.isArray(cu.codes) ? cu.codes : []).forEach(c => {
           if (seen.has(c)) return; seen.add(c);
-          const note = DATA.notes[s + "|" + c];
+          const note = DATA.notes[canon(s) + "|" + c];
           if (!note) return;
           const L = noteLinks(note);
           links.append(el("li", {}, el("a", { href: L.notes }, `${c} ${note.title}`),
@@ -251,11 +467,55 @@
             L.cards ? [" · ", el("a", { href: L.cards }, "cards")] : null));
         }));
         if (links.childNodes.length) row.append(links);
-        else row.append(el("span", { class: "muted" }, " No notes written for these codes yet."));
+        else row.append(el("span", { class: "muted" }, (DATA.failed && DATA.failed.notes) ? " Notes could not be loaded." : " No notes written for these codes yet."));
       }
       sec.append(row);
     });
     sec.append(el("p", { class: "muted" }, "Class weeks are estimates from the school's course calendars and can shift. Your teacher's plan always wins."));
+    box.append(sec);
+  }
+
+  // (4) dated items ahead: school deadlines (NB.deadlines, exported by
+  // assets/deadlines.js) + coursework stage dates. Near-term within LEAD_DAYS;
+  // longer-range items only once inside the long lead window, labelled
+  // "Start thinking about". With nothing in either window the block is not
+  // rendered at all.
+  function renderDates(box, today) {
+    const items = datedItems(NB.deadlines, DATA.coursework, (id) => !!(NB.profile && NB.profile.hides && NB.profile.hides(id)));
+    const near = nearTermItems(items, today, LEAD_DAYS);
+    const think = startThinkingItems(items, today, LEAD_DAYS, LONG_LEAD_DAYS);
+    if (!near.length && !think.length) return { near: near };
+    const sec = el("div", { class: "td-block" }, el("h4", {}, "4. Coming up"));
+    const list = el("ul", { class: "links td-links" });
+    near.forEach(x => list.append(el("li", {},
+      el("strong", {}, fmtDay(x.date)), " — ", el("a", { href: x.href }, clip(x.label, 80)),
+      el("span", { class: "muted" }, " (" + relDay(x.date, today) + ")"))));
+    sec.append(list);
+    if (think.length) {
+      const tl = el("ul", { class: "links td-links" });
+      think.forEach(x => tl.append(el("li", {}, "Start thinking about ",
+        el("a", { href: x.href }, clip(x.label, 80)), el("span", { class: "muted" }, " (" + fmtDay(x.date) + ")"))));
+      sec.append(tl);
+    }
+    sec.append(el("p", { class: "muted" }, "From the school deadline calendar and the coursework planner — both approximate."));
+    box.append(sec);
+    return { near: near };
+  }
+
+  // (5) up to two suggested next steps with a visible reason and a direct link.
+  // No data behind a suggestion → no suggestion (and no block).
+  function renderSuggest(box, today, inp) {
+    const suggestions = suggestActions({
+      today: today,
+      due: inp.total, dueHref: inp.href, own: inp.own,
+      errors: store.get("q-errors", []),
+      hides: (id) => !!(NB.profile && NB.profile.hides && NB.profile.hides(id)),
+      units: inp.units, notes: DATA.notes, nearItems: inp.near
+    });
+    if (!suggestions.length) return;
+    const sec = el("div", { class: "td-block" }, el("h4", {}, "5. Suggested next step"));
+    suggestions.forEach(s => sec.append(el("div", { class: "td-subj" },
+      el("strong", {}, s.title), " — " + s.reason + " ", el("a", { class: "td-btn", href: s.href }, s.link || "Open"))));
     box.append(sec);
   }
 
@@ -268,19 +528,26 @@
       if (!DATA) await load();
       const today = isoDate(new Date());
       const out = el("div", {});
-      renderCards(out, today);
+      const cards = renderCards(out, today);
       const quizDone = renderQuiz(out);
       renderClass(out, today);
+      const dated = renderDates(out, today);
+      renderSuggest(out, today, {
+        total: cards.total, own: cards.own, href: cards.href,
+        units: activeUnits(DATA.schedule, SUBJECTS, today), near: dated.near
+      });
       box.textContent = "";
       box.append(out);
       await quizDone;
     } catch (e) {
-      box.textContent = "Today's plan could not be loaded. The Quiz and Cards pages still work.";
+      box.textContent = "";
+      box.append(el("p", { class: "muted" }, "Today's plan could not be loaded (" + ((e && e.message) || "error") + "). The Quiz and Cards pages still work."));
     } finally { rendering = false; }
   }
 
   window.NB = window.NB || {};
-  window.NB.today = { dueCards, dueUserCards, weakestTopic, pickQuizIds, unitsFor, quizHref, dueCardsHref, noteLinks };
+  window.NB.today = { dueCards, dueUserCards, weakestTopic, pickQuizIds, unitsFor, quizHref, dueCardsHref, noteLinks,
+    isISO, addDays, activeUnits, openMistakes, datedItems, nearTermItems, startThinkingItems, suggestActions };
 
   if (typeof document === "undefined" || !document.getElementById || !document.getElementById("today-body")) return;
   // re-render when synced progress arrives (login on a new device) or changes in another tab

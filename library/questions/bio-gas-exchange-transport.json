@@ -2,6 +2,7 @@
   "subject": "biology-hl",
   "topic": "gas-exchange-transport",
   "topicLabel": "B3.1 — Gas exchange & B3.2 — Transport (Apr–May unit)",
+  "codes": ["B3.1", "B3.2"],
   "items": [
     {"id": "ge01", "format": "mcq", "topic": "gas-exchange-transport", "stem": "Gas exchange surfaces are thin, moist and have a large surface area. The main reason for a large surface area is:",
      "choices": ["To increase the rate of diffusion", "To reduce water loss", "To pump air faster", "To keep the surface warm"], "answer": 0,

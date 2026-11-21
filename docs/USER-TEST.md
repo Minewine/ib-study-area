@@ -41,10 +41,22 @@ This is the fun one: you choose the topic, an AI writes the questions, you uploa
 ### Step 1 — pick a topic
 One syllabus topic you want to get better at (e.g. Bio A1.1 Water, Chem S1.1 Particulate nature, Maths 1.1 Number toolkit).
 
-### Step 2 — give this prompt to any AI (Gemini / ChatGPT / Claude)
+### Step 2 — let the app write the prompt for you (new, easier)
 
-Copy the whole block below, replace the three `FILL-IN` lines, paste it into the AI, and send it.
-It asks for **only the JSON** in exactly the format the site needs.
+1. Open **Upload** (`author.html`) → section **1 · Ask an AI for a practice set**.
+2. Pick your **subject** and **topic** from the dropdowns.
+3. Press **Copy the prompt & open your AI** — the prompt is copied and your assistant
+   (Gemini by default) opens in a new tab. Paste with Ctrl+V and send.
+4. The same button is on every **topic note** ("Write a practice set to import" in its
+   Ask an AI box) if you prefer to start from the note.
+5. If the AI adds chatter around the JSON, reply: *"only the JSON, nothing else"*.
+
+The prompt asks for **only the JSON** in exactly the format the site needs — including the
+correct subject id and topic key, so nothing can land in the wrong subject. Nothing is sent
+by the site itself: you copy and paste, always.
+
+*(Manual fallback — works anywhere, no dropdowns:* copy the block below, replace the three
+`FILL-IN` lines, and send it to any AI. The Upload flow above does this for you.)
 
 ```text
 You are writing quiz questions for an IB Diploma student. Output ONLY a JSON code block —
@@ -69,7 +81,7 @@ Fill this EXACT JSON shape:
 }
 
 Rules:
-- 8 questions total: 5 MCQ (ids p01–p05), 3 written (ids p06–p08).
+- 8 questions total: 5 MCQ (ids p01–p05), 3 written (ids p06–p08). (The 8 is only this example's size for the AI to generate — the app accepts banks of any size; the real limit is browser storage.)
 - "answer" is the 0-based index into "choices" (first option = 0).
 - Every item repeats the same "topic" as the bank.
 - MCQ distractors must be plausible — real misconceptions, not joke answers.
@@ -78,12 +90,11 @@ Rules:
 - My topic name: FILL-IN (for example: "C1.1 — Enzymes & metabolism")
 ```
 
-If the AI adds chatter around the JSON, reply: *"only the JSON, nothing else"*.
-
-### Step 3 — upload it
-1. Go to **Upload** (the author page, `author.html`).
-2. Paste the JSON into the paste box (or use the file import if you saved it as a `.json` file) and submit.
-3. Green result = uploaded. Red error = the JSON is malformed — check the message, fix (usually a missing comma) or ask the AI to repair it, and try again. Stuck? Screenshot it for dad.
+### Step 3 — check the preview, then import
+1. Go to **Upload** (`author.html`), section 2, paste the JSON into the paste box and press **Preview pasted JSON**.
+2. The **preview** shows every question for a final look — you can fix wording, choices or markschemes right there (the app re-checks the rules as you type) and remove questions you don't want. Nothing is saved until you press **Import bank**, which saves the whole set in one go.
+3. Red error = the JSON is malformed — check the message, fix (usually a missing comma) or ask the AI to repair it, paste again and try. Stuck? Screenshot it for dad.
+4. (Files you upload as `.json` skip the preview and save straight away, like before.)
 
 ### Step 4 — use it
 1. Open **Quiz** → your bank appears under its subject (it's labelled as one of your uploaded banks).
@@ -95,7 +106,7 @@ Was the upload flow clear? Did the AI's questions feel like real exam questions?
 
 ## 3. About "Ask an AI" (the copy-and-open thing)
 
-- It lives on every **topic note**, with modes: explain it, quiz me on it, unfamiliar data-response, help with my wrong answers.
+- It lives on every **topic note**, with modes: explain it, quiz me on it, unfamiliar data-response, help with my wrong answers, and **write a practice set to import** (that one hands you JSON for the Upload page — see step 2 above). The Upload page has the same practice-set prompt with a subject/topic picker.
 - It **copies the prompt first, then opens the assistant** — because a browser only allows copying while the page still has focus. So: button → switch to the AI tab → **paste** → send.
 - If you see "Copied ✓" but no tab opened, your browser blocked the pop-up — there's a hint for that; allow pop-ups for this site.
 - The prompt never contains your name, school, or grades — just the topic content.

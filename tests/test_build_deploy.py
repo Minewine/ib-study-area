@@ -59,9 +59,13 @@ def test_built_folder_structure(built):
         "quiz.html",
         "cards.html",
         "author.html",
+        "mistakes.html",
+        "resources.html",
         "assets/app.js",
         "assets/auth.js",
         "assets/quiz-engine.js",
+        "assets/resources.js",
+        "assets/bank-import.js",
         "api/api.php",
         "docs/AUTHORING.md",
         "library/questions/manifest.json",
@@ -76,7 +80,14 @@ def test_built_folder_structure(built):
 
 def test_built_pages_are_rewritten(built):
     out, _ = built
-    for page in ("index.html", "quiz.html", "cards.html", "author.html"):
+    for page in (
+        "index.html",
+        "quiz.html",
+        "cards.html",
+        "author.html",
+        "mistakes.html",
+        "resources.html",
+    ):
         t = (out / page).read_text(encoding="utf-8")
         assert "../assets/" not in t, page
         assert "← Study site" not in t, page

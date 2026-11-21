@@ -1,6 +1,77 @@
 # NevaIB study area: handoff
 
-_Last updated 19 Nov 2026 (evening). Read this first, then [NEXT-STEPS.md](NEXT-STEPS.md); ideas for later are in [VISION.md](VISION.md)._
+_Last updated 20 Nov 2026 (consolidation pass — phases 0–5 reviewed, tested, committed). Read this first, then [NEXT-STEPS.md](NEXT-STEPS.md); ideas for later are in [VISION.md](VISION.md)._
+
+**Consolidation (20 Nov 2026):** the student-feedback phases were built in separate sessions and
+this pass reviewed, verified and committed them together — phase-by-phase status, data-model notes
+and follow-ups live in [CHANGELOG-2026-11-20-neva-feedback.md](CHANGELOG-2026-11-20-neva-feedback.md).
+Short version: **phase 1** practice sets + taught/difficulty filters (`assets/bank-schema.js`,
+quiz picker, `topic-taught`, `tools/build_questions_manifest.py`, no upload cap); **phase 2**
+mistake log (`app/mistakes.html` + `assets/mistakes.js`: error type, reflection, retries,
+reversible "not relevant"); **phase 3** Biology A–D hub navigation + search and Today suggestions
+with visible reasons (pinned-clock e2e); **phase 4** Resources page + AI-assisted bank authoring
+with a staged check-first preview (details below); **phase 5** favicon PNG fallbacks (now
+committed — the pages referenced them but the binaries were untracked), editor discoverability
+copy, Cards light-mode default. Verification: `./dev.sh validate` + `./dev.sh test` (196 node
+tests + pytest + php) + `./dev.sh e2e` (33 checks) all pass. Known follow-ups: no e2e coverage yet
+for the phase-1 picker controls or the mistake-log page interactions (unit-tested); deploy of the
+batch is pending explicit approval.
+
+**Phase 4 complete (20 Nov 2026): resources + AI-assisted authoring.** She can save
+resources (title, subject, topic, type, link, note) on a new **Resources** page
+(`app/resources.html` + `assets/resources.js`, stored in the existing synced `my-res` key with
+optional subject/topic/type/comment fields — tombstone deletes and the newest-`t` merge are
+unchanged, `assets/backup.js` validates the extended shape). Resources are links only
+(`http(s)://`/`file://`, ≤2000 chars; no base64 in localStorage) and are never read by the quiz
+or card engines. The AI path is built into the **Upload page, section 1**: pick subject/topic →
+**Copy the prompt & open your AI** (mode `bankgen` in `library/ai-prompts.json`, using new
+`{subjectid}`/`{topickey}` placeholders; `ai-prompt.js` gained `render(note, opts)` for the
+picker) → paste the JSON into the paste box, which now **stages** it
+(`assets/bank-import.js`): validate → editable preview (per-item stem/choices/answer/marks,
+remove items, unique suggested `ai-<topic>.json` name) → **Import bank** in one batch into
+`q-userbanks`, byte-shape-equal to a file upload. The same "Write a practice set to import"
+button sits in every topic note's Ask an AI box. Files still upload directly; very large
+pastes get per-item editors for the first 200 items only (the rest import as-is).
+Documented in docs/AUTHORING.md ("AI-assisted authoring", "My
+resources") and docs/USER-TEST.md §2–3. Explicitly deferred: Google Classroom import and true
+in-app generation (privacy/OAuth/cost). Also fixed while wiring: `mistakes.html` was missing
+from `build_deploy.py`'s deploy list (would have 404ed once deployed) and from the launcher
+cards. Tests: `tests/js/resources.test.js`, `tests/js/bank-import.test.js` (new), extended
+`ai-prompt`/`myres`/`backup` tests + e2e section 8.
+
+**Next focus (20 Nov 2026, updated by the consolidation pass):** the organisation work above — practice
+sets, mistake log, card editing, Today suggestions — is **done** (see the consolidation block at the top
+and [CHANGELOG-2026-11-20-neva-feedback.md](CHANGELOG-2026-11-20-neva-feedback.md)). The next step is the
+gated deploy of that batch to rametric.com/nevaib (NEXT-STEPS.md §1); further content batches follow after it.
+
+**Phase 0 complete (20 Nov 2026, before the above work):** the existing app was reviewed against the live
+site and the real flows before anything new gets built. The live deploy (rametric.com/nevaib) matches `main`
+byte-for-byte except the not-yet-deployed favicon commit. Logged-in testing (identical local build) found and
+fixed, all verified in the browser and by `./dev.sh test`:
+
+- **Today panel** (`assets/today.js`): every fetch now has a 10 s timeout; a failed class-schedule, decks or
+  notes load shows an explicit error state instead of a silent "empty" panel ("Nothing due today" / "No notes
+  written yet"); a failed script load shows an error after 8 s (`app/index.html` fallback) — the panel can no
+  longer sit on "Loading…" indefinitely. Also: decks for subjects outside the account's profile are no longer
+  fetched/counted (mirrors Cards), and uploaded decks (`fc-userdecks`) now count towards due cards.
+- **Dark mode never applied** (Cards page): the CSS matched `data-fcTheme` while JS wrote `data-fc-theme` via
+  `dataset` — fixed with `setAttribute`; verified dark applies and persists across reloads.
+- **Cards editor**: the Deck dropdown now re-renders the card list on change (it previously kept the old deck's
+  cards until the next save — looked frozen); the selection survives saves; topic fields are disabled for deck
+  cards instead of being silently dropped; "＋ Add card" pre-fills the selected deck's topic (was always the
+  first deck); editing/deleting an uploaded deck's card updates the deck entry itself (previously hidden
+  `fc-edits`/`fc-deleted` overrides, so exported deck JSON silently reverted).
+- **Upload page** (`app/author.html`): quiz uploads refresh the manage list immediately; a storage-full write is
+  reported as an error on the page (was a green "saved" message); the deck-id collision check now works on
+  `/app/` pages (it fetched library decks without the `../` prefix, got 404s, cached the empty set forever in
+  `fc-seedids`) and also checks previously uploaded decks and user cards; no caching, so library growth is seen.
+- **Upload limits confirmed:** there is no question-count or file-size cap in code — measured imports up to
+  40,000 items (~6 MB). The real ceiling is the browser's localStorage quota; the failure now surfaces as a
+  clear error. Validation kept as-is (malformed JSON, duplicate ids, per-item schema). Details + measurements
+  in [NEXT-STEPS.md](NEXT-STEPS.md).
+- Known, left as-is: the quiz-item editor form handles at most 4 choices (items with more are guarded by an
+  alert pointing at export/re-upload); the Maths hub has no checklist yet (see NEXT-STEPS §5); `practice.html`
+  still builds its missed-question list unescaped (local-only page, pre-existing).
 
 ## What the system is
 
@@ -39,6 +110,8 @@ Stack: static HTML, vanilla JS, JSON content, browser localStorage, one PHP file
 | Full backup and validated, merge-by-default restore with undo | `assets/backup.js` (Cards and Upload pages) |
 | Topic notes viewer | `app/notes.html`, `assets/notes.js` |
 | Ask an AI (copy a topic prompt, open the preferred assistant so she pastes with Ctrl+V) | `library/ai-prompts.json`, `assets/ai-prompt.js` |
+| Resources page (her own links, tagged subject/topic — never quiz content) | `app/resources.html`, `assets/resources.js` (synced `my-res`) |
+| AI practice-set picker + staged paste import (validate → edit → import in one batch) | `app/author.html` §1–2, `assets/bank-import.js`, `library/ai-prompts.json` (`bankgen` mode) |
 | Coursework planner (Bio/Chem scientific investigation, Maths exploration: stages, self-checks, pitfalls, approximate ISL dates) | `app/coursework.html`, `assets/coursework.js`, `library/coursework/coursework.json`; skills quiz `library/questions/ia-practical-skills.json` |
 | Quiz / cards engines (both accept `?from=` deep links from notes) | `assets/quiz-engine.js`, `assets/flashcards.js` |
 | Today panel (due cards, weakest-topic quiz, this week's class units) | `assets/today.js`, `library/class-schedule.json` |
