@@ -1,0 +1,250 @@
+{
+ "subject": "chemistry-hl",
+ "topic": "chem-s1-4",
+ "topicLabel": "S1.4 Counting particles by mass: the mole",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "S1.4"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "s14-x01",
+   "format": "mcq",
+   "topic": "chem-s1-4",
+   "topicLabel": "S1.4 Counting particles by mass: the mole",
+   "difficulty": "easy",
+   "stem": "One mole of a substance contains:",
+   "choices": [
+    "6.02 × 10²³ grams of the substance",
+    "22.7 dm³ of the substance at any temperature",
+    "12 g of the substance, whatever it is",
+    "6.02 × 10²³ of the specified particles"
+   ],
+   "answer": 3,
+   "note": "The Avogadro constant gives the number of particles (atoms, molecules, ions, formula units) per mole. Molar mass and molar volume depend on the substance or conditions."
+  },
+  {
+   "id": "s14-x02",
+   "format": "mcq",
+   "topic": "chem-s1-4",
+   "topicLabel": "S1.4 Counting particles by mass: the mole",
+   "difficulty": "easy",
+   "stem": "What is the molar mass of calcium carbonate, CaCO₃? (Ar: Ca 40.08, C 12.01, O 16.00)",
+   "choices": [
+    "68.09 g mol⁻¹",
+    "84.09 g mol⁻¹",
+    "100.09 g mol⁻¹",
+    "116.09 g mol⁻¹"
+   ],
+   "answer": 2,
+   "note": "40.08 + 12.01 + 3 × 16.00 = 100.09. Common slips: counting one O (68.09) or two O (84.09)."
+  },
+  {
+   "id": "s14-x03",
+   "format": "mcq",
+   "topic": "chem-s1-4",
+   "topicLabel": "S1.4 Counting particles by mass: the mole",
+   "difficulty": "easy",
+   "stem": "How many moles are in 25.0 g of CaCO₃ (M = 100.09 g mol⁻¹)?",
+   "choices": [
+    "0.250 mol",
+    "4.00 mol",
+    "2.50 mol",
+    "0.0250 mol"
+   ],
+   "answer": 0,
+   "note": "n = m ÷ M = 25.0 ÷ 100.09 = 0.250 mol. Inverting (M ÷ m) gives 4.00."
+  },
+  {
+   "id": "s14-x04",
+   "format": "mcq",
+   "topic": "chem-s1-4",
+   "topicLabel": "S1.4 Counting particles by mass: the mole",
+   "difficulty": "standard",
+   "stem": "How many atoms are in 9.01 g of water (M = 18.02 g mol⁻¹)?",
+   "choices": [
+    "3.01 × 10²³",
+    "9.03 × 10²³",
+    "1.81 × 10²⁴",
+    "6.02 × 10²³"
+   ],
+   "answer": 1,
+   "note": "9.01 g = 0.500 mol H₂O = 3.01 × 10²³ molecules; each molecule has 3 atoms, so 9.03 × 10²³ atoms. Read whether the question asks for molecules or atoms."
+  },
+  {
+   "id": "s14-x05",
+   "format": "mcq",
+   "topic": "chem-s1-4",
+   "topicLabel": "S1.4 Counting particles by mass: the mole",
+   "difficulty": "standard",
+   "stem": "A compound contains 40.0% C, 6.7% H and 53.3% O by mass. What is its empirical formula?",
+   "choices": [
+    "CHO",
+    "C₂H₄O",
+    "CH₂O",
+    "CH₃O"
+   ],
+   "answer": 2,
+   "note": "Divide by Ar: C 3.33, H 6.63, O 3.33. Divide by the smallest: 1 : 2 : 1 → CH₂O."
+  },
+  {
+   "id": "s14-x06",
+   "format": "mcq",
+   "topic": "chem-s1-4",
+   "topicLabel": "S1.4 Counting particles by mass: the mole",
+   "difficulty": "standard",
+   "stem": "A compound has empirical formula CH₂O and molar mass 180.18 g mol⁻¹. Its molecular formula is:",
+   "choices": [
+    "C₃H₆O₃",
+    "C₂H₄O₂",
+    "C₆H₆O₆",
+    "C₆H₁₂O₆"
+   ],
+   "answer": 3,
+   "note": "Mass of CH₂O unit = 30.03; 180.18 ÷ 30.03 = 6, so multiply every subscript by 6."
+  },
+  {
+   "id": "s14-x07",
+   "format": "mcq",
+   "topic": "chem-s1-4",
+   "topicLabel": "S1.4 Counting particles by mass: the mole",
+   "difficulty": "standard",
+   "stem": "2.00 g of NaOH (M = 40.00 g mol⁻¹) is dissolved to make 250.0 cm³ of solution. What is its concentration?",
+   "choices": [
+    "0.0500 mol dm⁻³",
+    "0.200 mol dm⁻³",
+    "8.00 mol dm⁻³",
+    "0.00800 mol dm⁻³"
+   ],
+   "answer": 1,
+   "note": "n = 0.0500 mol; V = 0.2500 dm³; c = 0.0500 ÷ 0.2500 = 0.200 mol dm⁻³. Convert cm³ to dm³ (÷ 1000) before dividing."
+  },
+  {
+   "id": "s14-x08",
+   "format": "mcq",
+   "topic": "chem-s1-4",
+   "topicLabel": "S1.4 Counting particles by mass: the mole",
+   "difficulty": "standard",
+   "stem": "Equal volumes of two different gases at the same temperature and pressure contain:",
+   "choices": [
+    "Equal numbers of molecules",
+    "Equal masses of gas",
+    "Equal numbers of atoms",
+    "Equal densities of gas"
+   ],
+   "answer": 0,
+   "note": "Avogadro's law: equal volumes, same T and p → same amount (mol) of gas particles. Masses differ because molar masses differ; atom counts differ if molecules have different atomicity."
+  },
+  {
+   "id": "s14-x09",
+   "format": "mcq",
+   "topic": "chem-s1-4",
+   "topicLabel": "S1.4 Counting particles by mass: the mole",
+   "difficulty": "hard",
+   "stem": "25.0 cm³ of 0.400 mol dm⁻³ HCl is diluted with water to 100.0 cm³. What is the new concentration?",
+   "choices": [
+    "1.60 mol dm⁻³",
+    "0.0100 mol dm⁻³",
+    "0.100 mol dm⁻³",
+    "0.133 mol dm⁻³"
+   ],
+   "answer": 2,
+   "note": "Amount stays the same: c₁V₁ = c₂V₂, so 0.400 × 25.0 = c₂ × 100.0 → c₂ = 0.100. The 0.133 trap uses 75 cm³ (water added) instead of the final volume."
+  },
+  {
+   "id": "s14-x10",
+   "format": "mcq",
+   "topic": "chem-s1-4",
+   "topicLabel": "S1.4 Counting particles by mass: the mole",
+   "difficulty": "hard",
+   "stem": "Which sample contains the greatest number of oxygen atoms?",
+   "choices": [
+    "0.30 mol of CO₂",
+    "0.20 mol of Mg(NO₃)₂",
+    "0.50 mol of H₂O",
+    "0.10 mol of H₂SO₄"
+   ],
+   "answer": 1,
+   "note": "O atoms: Mg(NO₃)₂ 0.20 × 6 = 1.2 mol; CO₂ 0.60; H₂O 0.50; H₂SO₄ 0.40. Multiply by the count per formula unit."
+  },
+  {
+   "id": "s14-x11",
+   "format": "mcq",
+   "topic": "chem-s1-4",
+   "topicLabel": "S1.4 Counting particles by mass: the mole",
+   "difficulty": "hard",
+   "stem": "A hydrated salt CuSO₄·xH₂O loses 36.1% of its mass when heated to constant mass. What is x? (M CuSO₄ = 159.62, H₂O = 18.02)",
+   "choices": [
+    "5",
+    "2",
+    "6",
+    "3"
+   ],
+   "answer": 0,
+   "note": "Per 100 g: water 36.1 g → 2.003 mol; CuSO₄ 63.9 g → 0.4003 mol. Ratio 2.003 ÷ 0.4003 = 5.00."
+  },
+  {
+   "id": "s14-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s1-4",
+   "topicLabel": "S1.4 Counting particles by mass: the mole",
+   "difficulty": "standard",
+   "stem": "0.500 g of an oxide of iron contains 0.350 g of iron. Determine the empirical formula of the oxide. (Ar: Fe 55.85, O 16.00). Show your working.",
+   "markscheme": [
+    "Mass of oxygen = 0.500 − 0.350 = 0.150 g (1)",
+    "Moles: Fe 0.350 ÷ 55.85 = 0.00627; O 0.150 ÷ 16.00 = 0.00938 (1)",
+    "Ratio 1 : 1.50 = 2 : 3, so Fe₂O₃ (1)"
+   ],
+   "tactic": "Empirical formula: mass → moles → divide by smallest → convert to whole numbers (×2 when you get .5)."
+  },
+  {
+   "id": "s14-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s1-4",
+   "topicLabel": "S1.4 Counting particles by mass: the mole",
+   "difficulty": "standard",
+   "stem": "Outline how you would prepare 250.0 cm³ of a 0.100 mol dm⁻³ standard solution of sodium carbonate (M = 105.99 g mol⁻¹).",
+   "markscheme": [
+    "Calculate and weigh 0.100 × 0.2500 × 105.99 = 2.65 g (1)",
+    "Dissolve in a small volume of distilled water in a beaker, then transfer to a 250.0 cm³ volumetric flask with rinsings (1)",
+    "Make up to the mark with distilled water (meniscus on the line) and invert to mix (1)"
+   ],
+   "tactic": "Practical outlines: quantity, equipment by name, and the step that makes it accurate."
+  },
+  {
+   "id": "s14-x14",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s1-4",
+   "topicLabel": "S1.4 Counting particles by mass: the mole",
+   "difficulty": "hard",
+   "stem": "Explain why the molar volume of an ideal gas is the same for all gases at a given temperature and pressure, but the molar mass is not.",
+   "markscheme": [
+    "Gas particles are far apart, so the volume is mainly empty space (1)",
+    "The size of the particles is negligible, so volume depends only on number of particles (T and p fixed) (1)",
+    "Molar mass depends on the mass of each particle, which differs between substances (1)"
+   ],
+   "tactic": "Link each property to what it depends on: particle count vs particle mass."
+  },
+  {
+   "id": "s14-x15",
+   "format": "written",
+   "marks": 5,
+   "topic": "chem-s1-4",
+   "topicLabel": "S1.4 Counting particles by mass: the mole",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) A student heats an invented hydrated salt, MX·nH₂O (M of MX = 120.0 g mol⁻¹), to constant mass. Mass of crucible 21.450 g; crucible + hydrated salt 24.602 g; after 1st heating 23.400 g; after 2nd 23.250 g; after 3rd 23.250 g.\n(a) Explain why the student heated three times. (b) Calculate n. (c) Suggest how the value of n would change if some salt spat out of the crucible during heating, and why.",
+   "markscheme": [
+    "(a) To check that all the water has been removed: mass stops changing (constant mass) (1)",
+    "(b) Mass of MX = 23.250 − 21.450 = 1.800 g → 1.800 ÷ 120.0 = 0.01500 mol (1)",
+    "Mass of water = 24.602 − 23.250 = 1.352 g → 1.352 ÷ 18.02 = 0.07503 mol (1)",
+    "n = 0.07503 ÷ 0.01500 = 5.00, so n = 5 (1)",
+    "(c) Mass lost would be too large, so calculated water too large and n too high (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

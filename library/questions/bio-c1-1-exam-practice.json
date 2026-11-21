@@ -1,0 +1,287 @@
+{
+ "subject": "biology-hl",
+ "topic": "bio-c1-1",
+ "topicLabel": "C1.1 Enzymes and metabolism",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "C1.1"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "c11-x01",
+   "format": "mcq",
+   "topic": "bio-c1-1",
+   "topicLabel": "C1.1 Enzymes and metabolism",
+   "difficulty": "easy",
+   "stem": "Metabolism is best described as:",
+   "choices": [
+    "All the interdependent, enzyme-controlled chemical reactions in an organism",
+    "The breakdown of food molecules in mitochondria to release the energy that cells need for all their activities",
+    "Only the reactions that build macromolecules such as proteins and glycogen from their monomers",
+    "The reactions that happen outside cells during digestion"
+   ],
+   "answer": 0,
+   "note": "Metabolism = anabolism + catabolism, interlinked. Trap: picking only catabolism (respiration) or only anabolism."
+  },
+  {
+   "id": "c11-x02",
+   "format": "mcq",
+   "topic": "bio-c1-1",
+   "topicLabel": "C1.1 Enzymes and metabolism",
+   "difficulty": "easy",
+   "stem": "Which process is an example of anabolism?",
+   "choices": [
+    "Hydrolysis of starch in the small intestine",
+    "Oxidation of pyruvate in respiration",
+    "Formation of glycogen from glucose",
+    "Digestion of proteins into amino acids"
+   ],
+   "answer": 2,
+   "note": "Anabolism builds macromolecules by condensation (glycogen, protein synthesis, photosynthesis). The other three break molecules down (catabolism)."
+  },
+  {
+   "id": "c11-x03",
+   "format": "mcq",
+   "topic": "bio-c1-1",
+   "topicLabel": "C1.1 Enzymes and metabolism",
+   "difficulty": "easy",
+   "stem": "Why does an enzyme catalyse only one or a few reactions?",
+   "choices": [
+    "It is made of only one type of amino acid, so it can only attract one type of molecule",
+    "Its active site's shape and chemistry are complementary to specific substrates",
+    "It is used up after it catalyses a reaction, so it cannot meet a second substrate",
+    "It works at only one exact temperature, and other reactions need a different one"
+   ],
+   "answer": 1,
+   "note": "Specificity comes from the 3D shape and chemistry of the active site. Enzymes are not used up, and they work over a range of temperatures."
+  },
+  {
+   "id": "c11-x04",
+   "format": "mcq",
+   "topic": "bio-c1-1",
+   "topicLabel": "C1.1 Enzymes and metabolism",
+   "difficulty": "standard",
+   "stem": "In the induced-fit model of enzyme action:",
+   "choices": [
+    "The active site is rigid and its shape already matches the substrate exactly, like a key in a lock",
+    "The substrate changes shape but the enzyme does not",
+    "The enzyme changes shape only after the products have been released from the active site",
+    "Both the substrate and the active site change shape when binding occurs"
+   ],
+   "answer": 3,
+   "note": "The guide expects you to say both change shape on binding; this strains bonds in the substrate. The rigid version is the older lock-and-key model."
+  },
+  {
+   "id": "c11-x05",
+   "format": "mcq",
+   "topic": "bio-c1-1",
+   "topicLabel": "C1.1 Enzymes and metabolism",
+   "difficulty": "standard",
+   "stem": "The active site of an enzyme is formed by only a few amino acids. Why can a change to an amino acid far from the active site still stop catalysis?",
+   "choices": [
+    "Interactions between amino acids across the whole molecule hold the active site in its precise 3D shape",
+    "Amino acids far from the active site bind the substrate first and pass it on to the active site",
+    "Every amino acid in the enzyme takes part directly in breaking the bonds of the substrate",
+    "Distant amino acids supply the activation energy that the substrate needs to react"
+   ],
+   "answer": 0,
+   "note": "The tertiary structure as a whole maintains the active site. Changing a distant residue can alter folding and so the active-site shape."
+  },
+  {
+   "id": "c11-x06",
+   "format": "mcq",
+   "topic": "bio-c1-1",
+   "topicLabel": "C1.1 Enzymes and metabolism",
+   "difficulty": "standard",
+   "stem": "Increasing temperature from 10 °C to 30 °C increases the rate of an enzyme-catalysed reaction mainly because:",
+   "choices": [
+    "The active site expands as the protein warms, so more substrate molecules fit into it at once",
+    "The enzyme starts to denature, which unfolds the protein and exposes extra active sites",
+    "Molecules move faster, so substrate–active site collisions happen more often and with more energy",
+    "The activation energy of the reaction increases, so the products that form store more energy"
+   ],
+   "answer": 2,
+   "note": "Collision theory: more kinetic energy → more frequent and more successful collisions. Denaturation only becomes important above the optimum."
+  },
+  {
+   "id": "c11-x07",
+   "format": "mcq",
+   "topic": "bio-c1-1",
+   "topicLabel": "C1.1 Enzymes and metabolism",
+   "difficulty": "standard",
+   "stem": "Above its optimum temperature the rate of an enzyme reaction falls steeply. The best explanation is:",
+   "choices": [
+    "The substrate molecules move too fast to stay in the active site long enough to react",
+    "The enzyme is used up faster at high temperature because each molecule reacts more often",
+    "Water evaporates from the mixture, so the enzyme and substrate become too concentrated",
+    "Bonds holding the tertiary structure break, so the active site changes shape and substrate no longer binds"
+   ],
+   "answer": 3,
+   "note": "Denaturation is a structural change in the enzyme; substrate cannot bind to the altered active site. It is usually permanent."
+  },
+  {
+   "id": "c11-x08",
+   "format": "mcq",
+   "topic": "bio-c1-1",
+   "topicLabel": "C1.1 Enzymes and metabolism",
+   "difficulty": "standard",
+   "stem": "At high substrate concentration the rate of an enzyme reaction reaches a plateau. This is because:",
+   "choices": [
+    "The high concentration of substrate begins to denature the enzyme by changing the pH",
+    "Nearly all active sites are occupied at any moment, so enzyme concentration becomes limiting",
+    "The products build up and always inhibit the enzyme competitively, cancelling any extra substrate",
+    "The activation energy of the reaction rises as more substrate molecules are added to the mixture"
+   ],
+   "answer": 1,
+   "note": "At saturation, adding substrate cannot increase the number of enzyme–substrate complexes formed per second. Add more enzyme to raise the plateau."
+  },
+  {
+   "id": "c11-x09",
+   "format": "mcq",
+   "topic": "bio-c1-1",
+   "topicLabel": "C1.1 Enzymes and metabolism",
+   "difficulty": "standard",
+   "stem": "Statins lower cholesterol production by binding to the active site of an enzyme in the cholesterol pathway. Statins are therefore:",
+   "choices": [
+    "Non-competitive inhibitors, which bind to an allosteric site and lower the maximum rate permanently",
+    "Competitive inhibitors, whose effect can be reduced by raising substrate concentration",
+    "Mechanism-based inhibitors, which bind permanently to the active site and destroy the enzyme",
+    "Allosteric activators, which change the active site so it binds cholesterol instead"
+   ],
+   "answer": 1,
+   "note": "Binding at the active site and competing with the substrate = competitive. High substrate concentration out-competes the inhibitor, so the maximum rate can still be reached."
+  },
+  {
+   "id": "c11-x10",
+   "format": "mcq",
+   "topic": "bio-c1-1",
+   "topicLabel": "C1.1 Enzymes and metabolism",
+   "difficulty": "hard",
+   "stem": "A non-competitive inhibitor is added to an enzyme reaction. Compared with the uninhibited reaction, the rate at very high substrate concentration will be:",
+   "choices": [
+    "Lower, because the inhibitor changes the active site shape and adding substrate cannot reverse this",
+    "The same, because a large excess of substrate out-competes the inhibitor for the active site",
+    "Higher, because the inhibitor binds allosterically and holds the active site open for substrate",
+    "Zero, because a non-competitive inhibitor permanently destroys every enzyme molecule present"
+   ],
+   "answer": 0,
+   "note": "Non-competitive inhibitors bind to an allosteric site; the maximum rate (plateau) is lowered and extra substrate does not restore it. That is the graph difference from competitive inhibition."
+  },
+  {
+   "id": "c11-x11",
+   "format": "mcq",
+   "topic": "bio-c1-1",
+   "topicLabel": "C1.1 Enzymes and metabolism",
+   "difficulty": "hard",
+   "stem": "In the pathway threonine → (enzyme 1) → … → isoleucine, a high isoleucine concentration slows the whole pathway. This happens because isoleucine:",
+   "choices": [
+    "Competes with threonine for the active site of the last enzyme in the pathway, blocking it",
+    "Denatures every enzyme in the pathway, so they must be resynthesised before it restarts",
+    "Binds to an allosteric site on the first enzyme, so less product is made when it is not needed",
+    "Is converted back into threonine by the same enzymes, so the substrate keeps being recycled"
+   ],
+   "answer": 2,
+   "note": "End-product (feedback) inhibition acts on the first enzyme of the pathway, through an allosteric site. It is reversible, so the pathway restarts when isoleucine is used up."
+  },
+  {
+   "id": "c11-x12",
+   "format": "mcq",
+   "topic": "bio-c1-1",
+   "topicLabel": "C1.1 Enzymes and metabolism",
+   "difficulty": "hard",
+   "stem": "Penicillin binds irreversibly to the active site of the bacterial enzyme transpeptidase. This is an example of:",
+   "choices": [
+    "End-product inhibition",
+    "Competitive, reversible inhibition",
+    "Denaturation by heat",
+    "Mechanism-based inhibition"
+   ],
+   "answer": 3,
+   "note": "Penicillin forms a permanent covalent bond with the active site, so the enzyme can no longer build cross-links in the cell wall. Irreversible = mechanism-based."
+  },
+  {
+   "id": "c11-x13",
+   "format": "mcq",
+   "topic": "bio-c1-1",
+   "topicLabel": "C1.1 Enzymes and metabolism",
+   "difficulty": "hard",
+   "stem": "Which pair are correctly matched as a cyclical and a linear metabolic pathway?",
+   "choices": [
+    "Krebs cycle (cyclical); glycolysis (linear)",
+    "Glycolysis (cyclical) and Calvin cycle (linear)",
+    "Krebs cycle (linear) and Calvin cycle (cyclical)",
+    "Glycolysis (cyclical) and Krebs cycle (linear)"
+   ],
+   "answer": 0,
+   "note": "The Krebs and Calvin cycles regenerate their starting compound; glycolysis is a chain from glucose to pyruvate."
+  },
+  {
+   "id": "c11-x14",
+   "format": "written",
+   "marks": 3,
+   "topic": "bio-c1-1",
+   "topicLabel": "C1.1 Enzymes and metabolism",
+   "difficulty": "standard",
+   "stem": "Explain why enzymes in the human body produce heat as a by-product, and how this is useful to mammals.",
+   "markscheme": [
+    "Metabolic reactions are not 100% efficient in energy transfer (1)",
+    "Some energy is lost as heat in each reaction (1)",
+    "Mammals (endotherms) use this heat to keep body temperature constant/high (1)",
+    "Higher body temperature keeps enzyme rates high (1)"
+   ],
+   "tactic": "State the inefficiency first, then link it to a consequence for the organism."
+  },
+  {
+   "id": "c11-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-c1-1",
+   "topicLabel": "C1.1 Enzymes and metabolism",
+   "difficulty": "standard",
+   "stem": "Describe how the effect of pH on the activity of an enzyme can be explained.",
+   "markscheme": [
+    "Each enzyme has an optimum pH where the rate is highest (1)",
+    "A change in pH alters the charges on amino acids (R groups) of the active site (1)",
+    "Ionic/hydrogen bonds in the tertiary structure are disrupted (1)",
+    "The active site changes shape so the substrate binds less well (1)",
+    "Extreme pH causes denaturation (1)"
+   ],
+   "tactic": "Describe the shape of the curve first, then explain each side using charges and bonds."
+  },
+  {
+   "id": "c11-x16",
+   "format": "written",
+   "marks": 4,
+   "topic": "bio-c1-1",
+   "topicLabel": "C1.1 Enzymes and metabolism",
+   "difficulty": "hard",
+   "stem": "Compare and contrast competitive and non-competitive inhibition.",
+   "markscheme": [
+    "Both reduce the rate of reaction (1)",
+    "Competitive inhibitor binds the active site; non-competitive binds an allosteric site (1)",
+    "Competitive inhibitor resembles the substrate in shape; non-competitive does not need to (1)",
+    "Competitive: effect overcome by raising substrate concentration; non-competitive: it is not (1)",
+    "Competitive: same maximum rate eventually; non-competitive: lower maximum rate (1)"
+   ],
+   "tactic": "Compare-and-contrast needs at least one similarity plus paired differences in the same sentence."
+  },
+  {
+   "id": "c11-x17",
+   "format": "written",
+   "marks": 5,
+   "topic": "bio-c1-1",
+   "topicLabel": "C1.1 Enzymes and metabolism",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) A student measured the volume of oxygen released from hydrogen peroxide by catalase extracted from an invented plant at five temperatures. Oxygen released in 2 minutes (cm³): 10 °C 4.0; 20 °C 7.8; 30 °C 12.4; 40 °C 15.1; 50 °C 3.2.\n(a) Calculate the mean rate of oxygen release at 30 °C, in cm³ per minute. (b) Describe and explain the trend from 10 °C to 50 °C. (c) Suggest one improvement to find the optimum temperature more precisely.",
+   "markscheme": [
+    "(a) 12.4 ÷ 2 = 6.2 cm³ min⁻¹ (1)",
+    "(b) Rate rises from 10 °C to 40 °C (4.0 to 15.1 cm³) (1)",
+    "More kinetic energy so more frequent successful substrate–active site collisions (1)",
+    "Rate falls sharply above 40 °C (to 3.2 cm³ at 50 °C) because the enzyme denatures / active site changes shape (1)",
+    "(c) Test more temperatures between 40 °C and 50 °C (e.g. every 2 °C) with repeats (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

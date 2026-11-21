@@ -1,0 +1,249 @@
+{
+ "subject": "chemistry-hl",
+ "topic": "chem-r2-1",
+ "topicLabel": "R2.1 How much? The amount of chemical change",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "R2.1"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "r21-x01",
+   "format": "mcq",
+   "topic": "chem-r2-1",
+   "topicLabel": "R2.1 How much? The amount of chemical change",
+   "difficulty": "easy",
+   "stem": "What is the coefficient of O₂ when the equation is balanced with whole numbers? __C₃H₈ + __O₂ → __CO₂ + __H₂O",
+   "choices": [
+    "5",
+    "3",
+    "7",
+    "10"
+   ],
+   "answer": 0,
+   "note": "C₃H₈ + 5O₂ → 3CO₂ + 4H₂O. Balance C, then H, then O last: 3 × 2 + 4 = 10 O atoms = 5 O₂."
+  },
+  {
+   "id": "r21-x02",
+   "format": "mcq",
+   "topic": "chem-r2-1",
+   "topicLabel": "R2.1 How much? The amount of chemical change",
+   "difficulty": "easy",
+   "stem": "In the reaction N₂ + 3H₂ → 2NH₃, how many moles of NH₃ form from 6.0 mol of H₂ with excess N₂?",
+   "choices": [
+    "2.0 mol",
+    "9.0 mol",
+    "4.0 mol",
+    "12 mol"
+   ],
+   "answer": 2,
+   "note": "Mole ratio H₂ : NH₃ = 3 : 2, so 6.0 × 2/3 = 4.0 mol."
+  },
+  {
+   "id": "r21-x03",
+   "format": "mcq",
+   "topic": "chem-r2-1",
+   "topicLabel": "R2.1 How much? The amount of chemical change",
+   "difficulty": "easy",
+   "stem": "The limiting reactant is the reactant that:",
+   "choices": [
+    "Has the smallest mass at the start of the reaction",
+    "Has the smallest coefficient in the balanced equation",
+    "Is left over when the reaction has finished",
+    "Is completely used up and so decides the amount of product"
+   ],
+   "answer": 3,
+   "note": "Compare moles divided by coefficients, not masses. The reactant left over is in excess."
+  },
+  {
+   "id": "r21-x04",
+   "format": "mcq",
+   "topic": "chem-r2-1",
+   "topicLabel": "R2.1 How much? The amount of chemical change",
+   "difficulty": "standard",
+   "stem": "What mass of iron can be made from 16.0 g of Fe₂O₃ (M = 159.70 g mol⁻¹)? Fe₂O₃ + 3CO → 2Fe + 3CO₂ (Ar Fe = 55.85)",
+   "choices": [
+    "5.60 g",
+    "11.2 g",
+    "22.4 g",
+    "16.0 g"
+   ],
+   "answer": 1,
+   "note": "n(Fe₂O₃) = 0.1002 mol → n(Fe) = 0.2004 mol → 0.2004 × 55.85 = 11.2 g. Missing the 1 : 2 ratio gives 5.60 g."
+  },
+  {
+   "id": "r21-x05",
+   "format": "mcq",
+   "topic": "chem-r2-1",
+   "topicLabel": "R2.1 How much? The amount of chemical change",
+   "difficulty": "standard",
+   "stem": "0.100 mol of Al reacts with 0.100 mol of Cl₂: 2Al + 3Cl₂ → 2AlCl₃. Which statement is correct?",
+   "choices": [
+    "Al is limiting and 0.100 mol of AlCl₃ forms",
+    "Cl₂ is limiting and 0.100 mol of AlCl₃ forms",
+    "Neither is limiting and 0.150 mol of AlCl₃ forms",
+    "Cl₂ is limiting and 0.0667 mol of AlCl₃ forms"
+   ],
+   "answer": 3,
+   "note": "Al would need 0.150 mol Cl₂; only 0.100 is present, so Cl₂ limits. n(AlCl₃) = 0.100 × 2/3 = 0.0667 mol."
+  },
+  {
+   "id": "r21-x06",
+   "format": "mcq",
+   "topic": "chem-r2-1",
+   "topicLabel": "R2.1 How much? The amount of chemical change",
+   "difficulty": "standard",
+   "stem": "A reaction has a theoretical yield of 4.00 g. The student obtains 3.20 g. The percentage yield is:",
+   "choices": [
+    "80.0%",
+    "125%",
+    "20.0%",
+    "0.800%"
+   ],
+   "answer": 0,
+   "note": "% yield = actual ÷ theoretical × 100 = 3.20 ÷ 4.00 × 100 = 80.0%. A yield above 100% points to an impure (e.g. wet) product."
+  },
+  {
+   "id": "r21-x07",
+   "format": "mcq",
+   "topic": "chem-r2-1",
+   "topicLabel": "R2.1 How much? The amount of chemical change",
+   "difficulty": "standard",
+   "stem": "What is the atom economy for making ethanol by fermentation? C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂ (M: glucose 180.18, ethanol 46.08)",
+   "choices": [
+    "25.6%",
+    "48.9%",
+    "51.1%",
+    "100%"
+   ],
+   "answer": 2,
+   "note": "Atom economy = mass of desired product ÷ total mass of reactants × 100 = 2 × 46.08 ÷ 180.18 × 100 = 51.1%. Remember the coefficient 2."
+  },
+  {
+   "id": "r21-x08",
+   "format": "mcq",
+   "topic": "chem-r2-1",
+   "topicLabel": "R2.1 How much? The amount of chemical change",
+   "difficulty": "standard",
+   "stem": "10 cm³ of methane reacts with 30 cm³ of oxygen: CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(l). What is the final gas volume at room temperature?",
+   "choices": [
+    "10 cm³",
+    "20 cm³",
+    "30 cm³",
+    "40 cm³"
+   ],
+   "answer": 1,
+   "note": "Gas volumes react in the mole ratio. 10 cm³ CH₄ uses 20 cm³ O₂ (10 left) and makes 10 cm³ CO₂; liquid water has negligible volume. Total 20 cm³."
+  },
+  {
+   "id": "r21-x09",
+   "format": "mcq",
+   "topic": "chem-r2-1",
+   "topicLabel": "R2.1 How much? The amount of chemical change",
+   "difficulty": "hard",
+   "stem": "25.00 cm³ of 0.0500 mol dm⁻³ Na₂CO₃ needs 21.30 cm³ of HCl for neutralisation. Na₂CO₃ + 2HCl → 2NaCl + H₂O + CO₂. What is the concentration of the HCl?",
+   "choices": [
+    "0.0587 mol dm⁻³",
+    "0.0426 mol dm⁻³",
+    "0.117 mol dm⁻³",
+    "0.235 mol dm⁻³"
+   ],
+   "answer": 2,
+   "note": "n(Na₂CO₃) = 0.001250 mol; n(HCl) = 0.002500 mol; c = 0.002500 ÷ 0.02130 = 0.117 mol dm⁻³."
+  },
+  {
+   "id": "r21-x10",
+   "format": "mcq",
+   "topic": "chem-r2-1",
+   "topicLabel": "R2.1 How much? The amount of chemical change",
+   "difficulty": "hard",
+   "stem": "A student's percentage yield of a crystalline product is 108%. The most likely reason is:",
+   "choices": [
+    "Some product was lost when it was transferred",
+    "The reaction did not go to completion",
+    "A side reaction formed a different product",
+    "The product was not completely dry when weighed"
+   ],
+   "answer": 3,
+   "note": "Over 100% means extra mass: water or another impurity in the product. The other three all lower the yield."
+  },
+  {
+   "id": "r21-x11",
+   "format": "mcq",
+   "topic": "chem-r2-1",
+   "topicLabel": "R2.1 How much? The amount of chemical change",
+   "difficulty": "hard",
+   "stem": "Which change increases the atom economy of a process, rather than its percentage yield?",
+   "choices": [
+    "Recovering more product from the filter paper",
+    "Choosing a route that makes no by-product",
+    "Running the reaction for longer",
+    "Using an excess of the cheaper reactant"
+   ],
+   "answer": 1,
+   "note": "Atom economy depends only on the balanced equation. Yield depends on how much product you actually isolate."
+  },
+  {
+   "id": "r21-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r2-1",
+   "topicLabel": "R2.1 How much? The amount of chemical change",
+   "difficulty": "standard",
+   "stem": "2.43 g of magnesium is added to 100.0 cm³ of 1.00 mol dm⁻³ hydrochloric acid. Mg + 2HCl → MgCl₂ + H₂. Determine the limiting reactant and the amount of H₂ formed. (Ar Mg = 24.31)",
+   "markscheme": [
+    "n(Mg) = 2.43 ÷ 24.31 = 0.100 mol; n(HCl) = 0.100 mol (1)",
+    "Mg needs 0.200 mol HCl, so HCl is limiting (1)",
+    "n(H₂) = 0.100 ÷ 2 = 0.0500 mol (1)"
+   ],
+   "tactic": "Limiting reactant: divide each amount by its coefficient; the smaller value limits."
+  },
+  {
+   "id": "r21-x13",
+   "format": "written",
+   "marks": 2,
+   "topic": "chem-r2-1",
+   "topicLabel": "R2.1 How much? The amount of chemical change",
+   "difficulty": "standard",
+   "stem": "Distinguish between percentage yield and atom economy.",
+   "markscheme": [
+    "Percentage yield = actual mass obtained compared with the theoretical maximum (depends on the practical) (1)",
+    "Atom economy = proportion of reactant mass that ends up in the desired product (depends on the equation) (1)"
+   ],
+   "tactic": "Distinguish = one clear difference per side, in matched terms."
+  },
+  {
+   "id": "r21-x14",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-r2-1",
+   "topicLabel": "R2.1 How much? The amount of chemical change",
+   "difficulty": "hard",
+   "stem": "Explain why a process with 100% yield could still be wasteful, and why chemists consider atom economy when designing a green synthesis.",
+   "markscheme": [
+    "A 100% yield can still produce a large mass of by-products (1)",
+    "Low atom economy means much of the reactant mass ends up as waste (1)",
+    "High atom economy uses resources efficiently / less waste to treat (1)"
+   ],
+   "tactic": "Green chemistry questions want both the definition and the consequence."
+  },
+  {
+   "id": "r21-x15",
+   "format": "written",
+   "marks": 5,
+   "topic": "chem-r2-1",
+   "topicLabel": "R2.1 How much? The amount of chemical change",
+   "difficulty": "hard",
+   "stem": "(Invented data for practice.) A student heated 1.000 g samples of an invented metal carbonate, XCO₃, to constant mass: XCO₃(s) → XO(s) + CO₂(g). Results: trial 1 residue 0.562 g; trial 2 0.565 g; trial 3 0.559 g.\n(a) Calculate the mean mass of CO₂ lost. (b) Calculate the molar mass of XCO₃ and suggest the identity of X. (c) Explain the effect on the result if heating was stopped before constant mass.",
+   "markscheme": [
+    "(a) Mean residue 0.562 g, so CO₂ lost = 0.438 g (1)",
+    "(b) n(CO₂) = 0.438 ÷ 44.01 = 0.00995 mol = n(XCO₃) (1)",
+    "M = 1.000 ÷ 0.00995 = 100.5 g mol⁻¹ (accept 100–101) (1)",
+    "M(X) ≈ 100.5 − 60.01 = 40.5, so X = calcium (1)",
+    "(c) Less CO₂ lost, so fewer moles calculated and M too high (1)"
+   ],
+   "tactic": "Unfamiliar context: find the syllabus idea being tested, quote the data (with units) when you describe a trend, then explain it with that idea. One marking point per linked step."
+  }
+ ]
+}

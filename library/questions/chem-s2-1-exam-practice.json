@@ -1,0 +1,251 @@
+{
+ "subject": "chemistry-hl",
+ "topic": "chem-s2-1",
+ "topicLabel": "S2.1 The ionic model",
+ "set": "Exam practice — mixed difficulty",
+ "codes": [
+  "S2.1"
+ ],
+ "about": "Original practice questions written for NevaIB from the IB guide's syllabus understandings and the school's unit order. Not IB past-paper questions, not publisher material and not IB markschemes: the marking points are written for self-marking. Organisms, experiments and data in data-response items are invented for practice.",
+ "items": [
+  {
+   "id": "s21-x01",
+   "format": "mcq",
+   "topic": "chem-s2-1",
+   "topicLabel": "S2.1 The ionic model",
+   "difficulty": "easy",
+   "stem": "When magnesium reacts with oxygen, each magnesium atom:",
+   "choices": [
+    "Gains two electrons to form Mg²⁻",
+    "Shares two electrons with an oxygen atom",
+    "Loses one electron to form Mg⁺",
+    "Loses two electrons to form Mg²⁺"
+   ],
+   "answer": 3,
+   "note": "Group 2 metals lose their two outer electrons to reach a noble gas configuration; oxygen gains two to form O²⁻."
+  },
+  {
+   "id": "s21-x02",
+   "format": "mcq",
+   "topic": "chem-s2-1",
+   "topicLabel": "S2.1 The ionic model",
+   "difficulty": "easy",
+   "stem": "What is the formula of aluminium sulfate?",
+   "choices": [
+    "Al₃(SO₄)₂",
+    "AlSO₄",
+    "Al₂(SO₄)₃",
+    "Al₂S₃"
+   ],
+   "answer": 2,
+   "note": "Al³⁺ and SO₄²⁻: the charges balance with 2 × (+3) = 3 × (−2). Al₂S₃ is aluminium sulfide (S²⁻)."
+  },
+  {
+   "id": "s21-x03",
+   "format": "mcq",
+   "topic": "chem-s2-1",
+   "topicLabel": "S2.1 The ionic model",
+   "difficulty": "easy",
+   "stem": "An ionic bond is best described as:",
+   "choices": [
+    "Electrostatic attraction between oppositely charged ions",
+    "A shared pair of electrons between two non-metal atoms",
+    "Attraction between metal cations and delocalised electrons",
+    "Attraction between the nucleus and its own electrons"
+   ],
+   "answer": 0,
+   "note": "Ionic bonding is non-directional electrostatic attraction in a lattice. Shared pairs = covalent; delocalised electrons = metallic."
+  },
+  {
+   "id": "s21-x04",
+   "format": "mcq",
+   "topic": "chem-s2-1",
+   "topicLabel": "S2.1 The ionic model",
+   "difficulty": "standard",
+   "stem": "What is the formula of the ammonium phosphate compound formed from NH₄⁺ and PO₄³⁻?",
+   "choices": [
+    "NH₄PO₄",
+    "(NH₄)₃PO₄",
+    "NH₄(PO₄)₃",
+    "(NH₄)₂PO₄"
+   ],
+   "answer": 1,
+   "note": "Three +1 ions balance one −3 ion. Brackets are needed around polyatomic ions when there is more than one."
+  },
+  {
+   "id": "s21-x05",
+   "format": "mcq",
+   "topic": "chem-s2-1",
+   "topicLabel": "S2.1 The ionic model",
+   "difficulty": "standard",
+   "stem": "Solid sodium chloride does not conduct electricity but molten sodium chloride does because:",
+   "choices": [
+    "In the melt electrons are released from the chloride ions",
+    "In the solid the ions are held by covalent bonds",
+    "In the melt the ions are free to move and carry charge",
+    "In the solid there are no ions, only neutral atoms"
+   ],
+   "answer": 2,
+   "note": "The solid has ions fixed in a lattice; melting or dissolving frees the ions. The current is carried by ions, not electrons."
+  },
+  {
+   "id": "s21-x06",
+   "format": "mcq",
+   "topic": "chem-s2-1",
+   "topicLabel": "S2.1 The ionic model",
+   "difficulty": "standard",
+   "stem": "Ionic solids are usually brittle because:",
+   "choices": [
+    "The ions are held by weak intermolecular forces only",
+    "A force shifts layers so like-charged ions line up and repel",
+    "The electrons in the lattice cannot move when hit",
+    "The lattice contains gaps where cracks start easily"
+   ],
+   "answer": 1,
+   "note": "Displacing one layer by one ion brings ions of the same charge next to each other; the repulsion splits the crystal."
+  },
+  {
+   "id": "s21-x07",
+   "format": "mcq",
+   "topic": "chem-s2-1",
+   "topicLabel": "S2.1 The ionic model",
+   "difficulty": "standard",
+   "stem": "Which compound would you expect to have the largest lattice enthalpy?",
+   "choices": [
+    "MgO",
+    "NaCl",
+    "KBr",
+    "NaF"
+   ],
+   "answer": 0,
+   "note": "Lattice enthalpy increases with ionic charge and decreases with ionic radius. MgO has 2+ and 2− ions that are small, so the attraction is strongest."
+  },
+  {
+   "id": "s21-x08",
+   "format": "mcq",
+   "topic": "chem-s2-1",
+   "topicLabel": "S2.1 The ionic model",
+   "difficulty": "standard",
+   "stem": "Which property is typical of most ionic compounds?",
+   "choices": [
+    "Low boiling point",
+    "Conduct when solid",
+    "Soft and malleable",
+    "High melting point"
+   ],
+   "answer": 3,
+   "note": "Many strong electrostatic attractions in the lattice must be overcome, so melting points are high. Ionic solids do not conduct and are hard but brittle."
+  },
+  {
+   "id": "s21-x09",
+   "format": "mcq",
+   "topic": "chem-s2-1",
+   "topicLabel": "S2.1 The ionic model",
+   "difficulty": "hard",
+   "stem": "The lattice enthalpy of NaF is larger than that of KCl. The best explanation is:",
+   "choices": [
+    "NaF contains ions with larger charges than KCl does",
+    "Fluorine is more electronegative, so NaF is more covalent",
+    "Na⁺ and F⁻ are smaller, so the ions are closer and attract more strongly",
+    "K⁺ and Cl⁻ are smaller and so repel each other more"
+   ],
+   "answer": 2,
+   "note": "All four ions have charge 1; the difference is ionic radius. Smaller ions → shorter distance → stronger attraction → larger lattice enthalpy."
+  },
+  {
+   "id": "s21-x10",
+   "format": "mcq",
+   "topic": "chem-s2-1",
+   "topicLabel": "S2.1 The ionic model",
+   "difficulty": "hard",
+   "stem": "Which statement explains why many ionic compounds dissolve in water but not in hexane?",
+   "choices": [
+    "Polar water molecules attract and surround the ions, releasing energy",
+    "Water breaks the ionic bonds into neutral atoms of each element",
+    "Hexane molecules are too large to fit between the ions in the lattice",
+    "Ionic compounds react with water to form covalent molecules"
+   ],
+   "answer": 0,
+   "note": "The partial charges of water attract ions (hydration). Non-polar hexane cannot interact strongly with ions, so the lattice stays intact."
+  },
+  {
+   "id": "s21-x11",
+   "format": "mcq",
+   "topic": "chem-s2-1",
+   "topicLabel": "S2.1 The ionic model",
+   "difficulty": "hard",
+   "stem": "Which pair of elements is most likely to form an ionic compound?",
+   "choices": [
+    "Carbon and oxygen",
+    "Nitrogen and hydrogen",
+    "Chlorine and bromine",
+    "Caesium and fluorine"
+   ],
+   "answer": 3,
+   "note": "A large electronegativity difference (Cs 0.8, F 4.0) favours ionic bonding. The other pairs are non-metals with small differences."
+  },
+  {
+   "id": "s21-x12",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s2-1",
+   "topicLabel": "S2.1 The ionic model",
+   "difficulty": "standard",
+   "stem": "Describe the structure of solid sodium chloride.",
+   "markscheme": [
+    "A giant three-dimensional lattice (1)",
+    "of alternating Na⁺ and Cl⁻ ions (1)",
+    "each ion surrounded by six oppositely charged ions (1)",
+    "held by strong electrostatic attraction in all directions (1)"
+   ],
+   "tactic": "Describe a structure: type (giant lattice), the particles, the arrangement, the force."
+  },
+  {
+   "id": "s21-x13",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s2-1",
+   "topicLabel": "S2.1 The ionic model",
+   "difficulty": "standard",
+   "stem": "Explain why magnesium oxide has a much higher melting point than sodium chloride.",
+   "markscheme": [
+    "Both are giant ionic lattices (1)",
+    "Mg²⁺ and O²⁻ have larger charges than Na⁺ and Cl⁻ (1)",
+    "Mg²⁺ and O²⁻ are smaller, so the ions are closer (1)",
+    "Stronger electrostatic attraction / higher lattice enthalpy, so more energy needed to separate ions (1)"
+   ],
+   "tactic": "Comparisons need \"both… but…\" and must refer to charge and size."
+  },
+  {
+   "id": "s21-x14",
+   "format": "written",
+   "marks": 3,
+   "topic": "chem-s2-1",
+   "topicLabel": "S2.1 The ionic model",
+   "difficulty": "hard",
+   "stem": "Explain why an aqueous solution of copper(II) sulfate conducts electricity, and predict what is seen at each electrode during electrolysis with inert electrodes.",
+   "markscheme": [
+    "Ions (Cu²⁺, SO₄²⁻) are free to move in solution and carry the charge (1)",
+    "Cu²⁺ ions move to the negative electrode, where a pink/brown copper coating forms (1)",
+    "Bubbles of gas (oxygen) form at the positive electrode (1)"
+   ],
+   "tactic": "Link ion movement to charge flow; predictions need an observation, not just a product name."
+  },
+  {
+   "id": "s21-x15",
+   "format": "written",
+   "marks": 4,
+   "topic": "chem-s2-1",
+   "topicLabel": "S2.1 The ionic model",
+   "difficulty": "hard",
+   "stem": "Data response. Lattice enthalpies from the data booklet (kJ mol⁻¹): LiF 1049, NaF 930, KF 829, RbF 795; MgO 3791, CaO 3401.\n(a) Describe the trend for the group 1 fluorides. (b) Explain this trend. (c) Explain why MgO has a lattice enthalpy over three times that of NaF, using the data.",
+   "markscheme": [
+    "(a) Lattice enthalpy decreases from LiF to RbF (1049 to 795 kJ mol⁻¹) (1)",
+    "(b) Cation radius increases down the group, so the distance between ion centres increases and attraction is weaker (1)",
+    "(c) MgO ions have charges 2+ and 2− compared with 1+ and 1− (1)",
+    "Product of charges is four times larger (and ions are small), giving 3791 vs 930 kJ mol⁻¹ (1)"
+   ],
+   "tactic": "Data questions: quote the numbers with units when you describe a trend, then explain with charge and ionic radius."
+  }
+ ]
+}
