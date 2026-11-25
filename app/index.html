@@ -23,6 +23,27 @@
   #today .td-btn{display:inline-block;margin:.2rem 0 .4rem;padding:.35rem .8rem;border-radius:8px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600}
   #today .td-subj{margin:.35rem 0}
   #today .td-links{margin:.15rem 0 .2rem 1rem}
+  #sheet-open{display:inline-block;margin:.2rem 0 .4rem;padding:.35rem .8rem;border-radius:8px;background:var(--accent);color:#fff;border:none;font:inherit;font-weight:600;cursor:pointer}
+  .cal-row{display:flex;align-items:center;gap:.6rem;margin:.25rem 0}
+  .cal-label{width:7.5rem;flex:none;font-weight:600}
+  .cal-bar{flex:1;height:.55rem;background:var(--line);border-radius:4px;overflow:hidden;min-width:80px}
+  .cal-bar>div{height:100%;background:var(--accent)}
+  .cal-n{flex:none;font-size:.85rem}
+  .cal-subs-h{margin:.4rem 0 .1rem}
+  .cal-subs{margin:.1rem 0;padding-left:1.2rem;font-size:.9rem}
+  #sheet-print{display:none}
+  #sheet-print.open{display:block;position:fixed;inset:0;z-index:9999;overflow:auto;background:#fff;color:#000;padding:1.2rem}
+  #sheet-bar{display:flex;gap:.5rem;align-items:center;margin-bottom:.8rem}
+  #sheet-bar button{font:inherit;padding:.35rem .9rem;border:1px solid #999;border-radius:8px;background:#fff;cursor:pointer}
+  .sheet-q{margin:.7rem 0;border-bottom:1px solid #ddd;padding-bottom:.5rem}
+  .sheet-lines div{border-bottom:1px solid #bbb;height:1.4rem}
+  .sheet-key h2{margin-top:1rem}
+  @media print{
+    body.sheet-printing>*:not(#sheet-print){display:none !important}
+    #sheet-print,#sheet-print.open{display:block !important;position:static;inset:auto;overflow:visible;padding:0}
+    #sheet-bar{display:none !important}
+    .sheet-key{break-before:page}
+  }
 </style>
 </head>
 <body>
@@ -44,6 +65,11 @@
   <section class="card" id="today">
     <h3>Today</h3>
     <div id="today-body"><p class="muted">Loading today's plan…</p></div>
+  </section>
+
+  <section class="card" id="calib">
+    <h3>Calibration — is "I'm sure" actually right?</h3>
+    <div id="calib-body"><p class="muted">Loading…</p></div>
   </section>
 
   <div class="big-links">
@@ -75,6 +101,8 @@
 <script src="../assets/auth.js?v=10"></script>
 <script src="../assets/deadlines.js?v=6"></script>
 <script src="../assets/today.js?v=8"></script>
+<script src="../assets/calib.js?v=1"></script>
+<script src="../assets/sheet.js?v=1"></script>
 <script>
   // Belt and braces: if today.js fails to load or run at all (stale cache, 404,
   // early exception), the panel must not sit on "Loading…" forever.

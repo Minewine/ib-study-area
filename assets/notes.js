@@ -31,6 +31,7 @@
   const section = (title, ...kids) => el("section", { class: "card nt-sec" }, el("h3", {}, title), ...kids);
 
   let MAN = null;
+  let QMAN = null; // library/questions/manifest.json — exam-style (paperStyle) banks per syllabus code
   const cache = {};
 
   async function getJSON(path) {
@@ -38,6 +39,12 @@
     if (!res.ok) throw new Error(res.status + " " + path);
     return res.json();
   }
+  // Same hard-timeout rule as today.js: a hung manifest fetch must not leave the
+  // page unrendered — the exam-style links are an enhancement, never a blocker.
+  const getJSONTimed = (path, ms) => Promise.race([
+    getJSON(path),
+    new Promise((_, rej) => setTimeout(() => rej(new Error("timeout " + path)), ms || 10000))
+  ]);
 
   function themesFor(subject) {
     const s = MAN.subjects[subject] || { themes: [] };
@@ -74,6 +81,22 @@
     });
   }
 
+  // Exam-style banks (paperStyle 1A/1B, data-response) whose syllabus codes include
+  // this note's code — e.g. a Structure 1.x note links the Paper 1A Structure bank.
+  // The notes manifest predates the canonical id scheme ("maths-aa-sl"), so both
+  // sides go through canonicalSubject. Uploaded user banks are not in the
+  // questions manifest and are not linked here.
+  function examBanksFor(note) {
+    if (!Array.isArray(QMAN)) return [];
+    const canon = (window.NB && window.NB.canonicalSubject) || ((x) => x);
+    return QMAN
+      .filter(b => b && b.file && canon(b.subject) === canon(note.subject)
+        && Array.isArray(b.codes) && b.codes.indexOf(note.code) >= 0
+        && (b.paperStyle || /data[- ]response/i.test(String(b.label || ""))))
+      .filter((b, i, a) => a.findIndex(x => fileId(x.file) === fileId(b.file)) === i)
+      .slice(0, 3);
+  }
+
   function practiceLinks(note) {
     const L = note.links || {};
     const label = encodeURIComponent(`${note.code} ${note.title}`);
@@ -85,6 +108,17 @@
     if (q.length) wrap.append(el("a", { class: "btn primary", id: "nt-quiz", href: `quiz.html?${q.join("&")}&label=${label}` }, "Quiz on this topic" + (nq ? ` (${nq} linked)` : " (whole bank)")));
     if (c.length) wrap.append(el("a", { class: "btn primary", id: "nt-cards", href: `cards.html?${c.join("&")}&label=${label}` }, "Flashcards for this topic" + (nc ? ` (${nc} linked)` : " (whole deck)")));
     if (!q.length && !c.length) wrap.append(el("span", { class: "muted" }, "No quiz questions or flashcards for this topic yet."));
+    const exam = examBanksFor(note);
+    if (exam.length) {
+      const row = el("p", { class: "muted nt-exam" }, "Exam-style practice: ");
+      exam.forEach((b, i) => {
+        if (i) row.append(" ");
+        const fid = fileId(b.file);
+        row.append(el("a", { class: "btn nt-mini", href: `quiz.html?from=${encodeURIComponent(fid)}&label=${encodeURIComponent(String(b.label || fid).slice(0, 80))}` },
+          b.paperStyle ? `Paper ${b.paperStyle}-style` : "Data response"));
+      });
+      wrap.append(row);
+    }
     if (L.gap) wrap.append(el("p", { class: "muted" }, L.gap));
     return wrap;
   }
@@ -309,6 +343,10 @@
   async function init() {
     try { MAN = await getJSON("library/topic-notes/manifest.json"); }
     catch (e) { $("nt-index").textContent = "Could not load the notes list: " + e.message; return; }
+    // Exam-style bank links (practiceLinks). Optional: a missing/slow manifest
+    // just means no extra links, never a broken page.
+    try { QMAN = await getJSONTimed("library/questions/manifest.json"); }
+    catch (e) { QMAN = null; }
     // Per-user subject profile (assets/profile.js): drop the subjects — and
     // their notes — the account doesn't take, ONCE, so every renderer below
     // (subject buttons, index, default subject, deep links) filters the same
