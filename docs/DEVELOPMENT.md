@@ -114,9 +114,9 @@ touching this site.
   `qhidden.js` `?v=1` (quiz — before quiz-engine; app home — before today.js; cards — before flashcards.js),
   `bank-import.js` `?v=2` (author), `auth.js` `?v=10`, `quiz-engine.js` `?v=24`, `flashcards.js` `?v=17`,
   `mistakes.js` `?v=3` (app/mistakes.html), `resources.js` `?v=1` (app/resources.html),
-  `notes.js` `?v=5` + `ai-prompt.js` `?v=5` (app/notes.html; ai-prompt also on author), `app.js` `?v=6`,
+  `notes.js` `?v=6` + `ai-prompt.js` `?v=5` (app/notes.html; ai-prompt also on author), `app.js` `?v=6`,
   `lists.js` `?v=4` (core, ia, french hub, ee), `library.js` `?v=4` (library.html, index, practice),
-  `deadlines.js` `?v=6` (index + deadlines), `today.js` `?v=8`, `coursework.js` `?v=2`,
+  `deadlines.js` `?v=6` (index + deadlines), `today.js` `?v=8`, `calib.js` `?v=1` + `sheet.js` `?v=1` (app home, after `today.js`), `coursework.js` `?v=2`,
   `feedback.js` `?v=2` (the 8 `app/` practice pages, after `profile.js`),
   `papers.js` `?v=3` / `confidence.js` `?v=1` (quiz). Bank/deck/manifest fetches use `?cb=Date.now()` + `cache: no-store`.
 - **Vanilla JS, one engine per concern**:
@@ -130,6 +130,8 @@ touching this site.
   | `assets/quiz-engine.js` | Session builder, MCQ marking, written self-marking, summaries, `fcSaveFromQuiz()` hook, PATH_BASE content resolution, user-bank merge | `app/quiz.html` (root `quiz.html` is a redirect stub) |
   | `assets/flashcards.js` | Deck loading, Leitner SRS, session runner, editor, backup/restore buttons (via backup.js), theme, PATH_BASE, user-deck merge | `app/cards.html` (root `flashcards.html` is a redirect stub) |
   | `assets/deadlines.js` | Deadline data + `#nextup` / `#timeline` renderers | `index.html`, `deadlines.html` |
+  | `assets/calib.js` | `NB.calib.summarize(quizlog)` — calibration card: how often "sure"/"guessing" answers were right, overall + per subject + last rated sessions | `app/index.html` |
+  | `assets/sheet.js` | `NB.sheet` — printable weekly retrieval sheet: due missed questions (full item already on the q-errors record) + due cards, answer key on page 2 | `app/index.html` |
   | `assets/lists.js` | Tracked lists (`data-list` containers) + debrief notes (`textarea[data-note]`), one synced blob each | `core.html`, `ia.html`, `french-a-langlit.html`, `ee.html` |
   | `assets/library.js` | Library browser over `library/library-manifest.json`: filter bar (subject/type/free-text), rows reusing the hub-row convention, ★ pins / notes / recent tracking, `#res-pins` + `#papers-list` renderers | `library.html`, `index.html`, `practice.html` |
   | `assets/feedback.js` | `NB.feedback`: Feedback widget (bottom-right button + modal), payload build/validation, JSON POST to the Signalbox install at `rametric.com/signalbox/api.php` (`FEEDBACK_CONFIG` at the top of the file) | the 8 `app/` practice pages (after `profile.js`) |
