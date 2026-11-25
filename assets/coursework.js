@@ -53,7 +53,7 @@
     return out.sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
   }
 
-  NB.coursework = { KEY, normalize, setCheck, setNote, setDate, isChecked, noteText, ownDate, stageCount, trackCount, upcoming };
+  NB.coursework = { KEY, setCheck, setNote, setDate, isChecked, noteText, ownDate, stageCount, trackCount, upcoming };
 
   // ── page ─────────────────────────────────────────────────────────────────
   const PATH_BASE = (typeof location !== "undefined" && location.pathname.includes("/app/")) ? "../" : "";

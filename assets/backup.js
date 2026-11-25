@@ -282,5 +282,5 @@
     return parsed;
   }
 
-  NB.backup = { FORMAT, VERSION, collect, parse, summarize, restore, undoLast, download, filename, openRestore };
+  NB.backup = { collect, parse, summarize, restore, undoLast, download, filename, openRestore };
 })();

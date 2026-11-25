@@ -38,7 +38,8 @@ on the same Wi-Fi: `http://<that-ip>:8018`. Home Wi-Fi only — plain HTTP, don'
    family use into redistribution.
 
 3. **Updates**: edit pages (or re-run `tools/build_site.py` for the ten generated hubs),
-   then re-rsync. `quiz.html`, `plan.html`, `deadlines.html`, `sixth-subject.html` and
+   then re-rsync. `quiz.html`, `flashcards.html` (→ the practice app) and `sixth-subject.html`
+   (→ `english-lit-hl.html`) are one-line redirect stubs; `plan.html`, `deadlines.html` and
    anything in `library/questions/` are hand-maintained files — the generator won't overwrite them.
 
 ## Notes on behaviour

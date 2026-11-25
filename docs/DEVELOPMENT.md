@@ -115,7 +115,7 @@ touching this site.
   `bank-import.js` `?v=2` (author), `auth.js` `?v=10`, `quiz-engine.js` `?v=24`, `flashcards.js` `?v=17`,
   `mistakes.js` `?v=3` (app/mistakes.html), `resources.js` `?v=1` (app/resources.html),
   `notes.js` `?v=5` + `ai-prompt.js` `?v=5` (app/notes.html; ai-prompt also on author), `app.js` `?v=6`,
-  `lists.js` `?v=4` (core, ia, french hub, ee, library), `library.js` `?v=4` (library.html, index, practice),
+  `lists.js` `?v=4` (core, ia, french hub, ee), `library.js` `?v=4` (library.html, index, practice),
   `deadlines.js` `?v=6` (index + deadlines), `today.js` `?v=8`, `coursework.js` `?v=2`,
   `feedback.js` `?v=2` (the 8 `app/` practice pages, after `profile.js`),
   `papers.js` `?v=3` / `confidence.js` `?v=1` (quiz). Bank/deck/manifest fetches use `?cb=Date.now()` + `cache: no-store`.
@@ -127,8 +127,8 @@ touching this site.
   | `assets/backup.js` | `NB.backup`: full backup, validated restore (merge/replace), undo, restore dialog | `app/cards.html`, `app/author.html` |
   | `assets/auth.js` | Login widget, sync (reconcile, dirty-key pushes with `base_rev`, 409 retry, pagehide flush), role + admin link | auth pages + app pages |
   | `assets/app.js` | Checklist rows (RAG + ticks), progress bars, countdown, this-week inputs | all pages (safe no-op) |
-  | `assets/quiz-engine.js` | Session builder, MCQ marking, written self-marking, summaries, `fcSaveFromQuiz()` hook, PATH_BASE content resolution, user-bank merge | `quiz.html` (root + `app/`) |
-  | `assets/flashcards.js` | Deck loading, Leitner SRS, session runner, editor, backup/restore buttons (via backup.js), theme, PATH_BASE, user-deck merge | `flashcards.html` (root + `app/`) |
+  | `assets/quiz-engine.js` | Session builder, MCQ marking, written self-marking, summaries, `fcSaveFromQuiz()` hook, PATH_BASE content resolution, user-bank merge | `app/quiz.html` (root `quiz.html` is a redirect stub) |
+  | `assets/flashcards.js` | Deck loading, Leitner SRS, session runner, editor, backup/restore buttons (via backup.js), theme, PATH_BASE, user-deck merge | `app/cards.html` (root `flashcards.html` is a redirect stub) |
   | `assets/deadlines.js` | Deadline data + `#nextup` / `#timeline` renderers | `index.html`, `deadlines.html` |
   | `assets/lists.js` | Tracked lists (`data-list` containers) + debrief notes (`textarea[data-note]`), one synced blob each | `core.html`, `ia.html`, `french-a-langlit.html`, `ee.html` |
   | `assets/library.js` | Library browser over `library/library-manifest.json`: filter bar (subject/type/free-text), rows reusing the hub-row convention, ★ pins / notes / recent tracking, `#res-pins` + `#papers-list` renderers | `library.html`, `index.html`, `practice.html` |

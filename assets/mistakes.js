@@ -252,7 +252,7 @@
     redraw();
   }
 
-  NB.mistakes = { ERROR_TYPES, statusOf, filterRecords, sortRecords, retire, restore, saveReflection, saveErrorType, mount };
+  NB.mistakes = { statusOf, filterRecords, sortRecords, retire, restore, saveReflection, saveErrorType, mount };
 
   // re-render when q-errors changes (sync arriving, another tab, or this page's
   // edits) — same debounced watch as today.js; the storage event only fires in

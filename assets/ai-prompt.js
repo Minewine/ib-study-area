@@ -10,7 +10,6 @@
   const NB = window.NB = window.NB || {};
   const PATH_BASE = location.pathname.includes("/app/") ? "../" : "";
   const PREF_KEY = "ai-pref";
-  const KNOWN = ["subject", "level", "topic", "understandings", "keyterms", "wrong_questions", "subjectid", "topickey"];
   const fileId = (f) => String(f).split("/").pop().replace(/\.json$/i, "");
   const tidy = (s) => String(s || "").replace(/[ \t]+\n/g, "\n").replace(/ {2,}/g, " ").replace(/\n{3,}/g, "\n\n").trim();
   const httpsUrl = (u) => { const s = String(u || "").trim(); return /^https:\/\/[^\s<]+$/i.test(s) ? s : ""; };
@@ -249,5 +248,5 @@
     return box;
   }
 
-  NB.aiPrompt = { load: load, build: build, values: values, render: render, copyText: copyText, clickMsg: clickMsg, KNOWN: KNOWN, PREF_KEY: PREF_KEY, lastText: "", lastNote: "" };
+  NB.aiPrompt = { load: load, build: build, values: values, render: render, copyText: copyText, clickMsg: clickMsg, PREF_KEY: PREF_KEY, lastText: "", lastNote: "" };
 })();

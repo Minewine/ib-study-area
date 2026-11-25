@@ -397,7 +397,7 @@
     await connect();
   }
 
-  window.Auth = { queueSync, pull, login, logout: doLogout, user: () => user, role: () => role, mergeValue, pushNow, _reconcile: reconcile };
+  window.Auth = { queueSync, pull, login, logout: doLogout, user: () => user, role: () => role, mergeValue, pushNow };
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();

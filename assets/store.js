@@ -371,7 +371,7 @@
   }
 
   const api = {
-    SCHEMA_VERSION, SYNCED_KEYS, BACKUP_PREFIX, CORRUPT_PREFIX,
+    SCHEMA_VERSION, SYNCED_KEYS, CORRUPT_PREFIX,
     get, set, remove, keys, getRaw, setRaw, onChange,
     isSynced, isSiteRow, isLocalOnly, progressKeys,
     dirty, markDirty, clearDirty,

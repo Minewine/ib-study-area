@@ -294,6 +294,20 @@ Stack: static HTML, vanilla JS, JSON content, browser localStorage, one PHP file
 - **Data isolation**: every data key is physically stored per user in localStorage (`<user>:<key>`) with scoped dirty markers/backups; on login the scope switches *before* any sync, a second student on a used browser starts empty from the server, and the legacy flat data is adopted into its owner's scope behind a safety snapshot (postponed-and-retried on quota errors, target pinned). Tests: `tests/js/store.test.js` + `tests/js/scope.test.js` + e2e section 4.
 - **Subject profiles**: each account has a synced `profile.subjects` list (set by the admin at creation, editable via `set-profile`); `assets/profile.js` filters nav links, dashboard cards, hub sections, quiz banks, decks, notes, library subjects, coursework tracks, the Today panel and tagged deadlines to those subjects (legacy id spellings are normalized). Accounts without a profile (neva) see everything, exactly as before. Tests: `tests/js/profile.test.js`, e2e section 5.
 
+**Dead-code cleanup (25 Nov 2026):** audit of the practice app and shared assets found no orphan JS files
+and no fully-dead functions; dead weight was confined to unused public-surface members, now removed from
+the export objects (internal definitions kept — all are still used inside their own file): `TAUGHT_SUFFIX`
+(quiz-engine), `BACKUP_PREFIX` (store), `ERROR_TYPES` (mistakes), `FORMAT`/`VERSION` (backup), `_reconcile`
+(Auth), `normalize` (coursework), and the never-used `KNOWN` const (ai-prompt). Also removed: the dead
+`.titem .t-tick` CSS rule (`assets/style.css` + its generator copy in `tools/build_site.py`), the unused
+`lists.js` script tag on `library.html` (the page has no `data-list`/`data-note` elements), and a dead
+replace rule in `tools/build_deploy.py` that left an empty `<p></p>` in the deployed quiz page. Kept
+deliberately: the redirect stubs (`quiz.html`, `flashcards.html`, `sixth-subject.html`), the `fc-seedids`
+LOCAL_ONLY tombstone (hides stale keys left by the pre-fix author page from backups/progress), the
+duplicated offline `esc`/store-fallback shims across assets (by-design stale-cache resilience), server
+`action=history/export/setup` (ops/recovery tooling), and every test-seam export. No behavior change;
+`./dev.sh validate` + `./dev.sh test` green before and after.
+
 
 ## Reports (Pages)
 

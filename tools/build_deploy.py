@@ -70,13 +70,15 @@ def build_pages(out: Path) -> None:
             '<a href="index.html" style="margin-left:auto">← Study site</a>', ""
         )
         t = t.replace(
-            '<a href="../plan.html">← How sessions fit the weekly plan</a>', ""
+            '<p><a href="../plan.html">← How sessions fit the weekly plan</a></p>', ""
         )
-        t = t.replace('<p><a href="../plan.html">', "<p>")
         # blocks that only make sense next to the local study site (e.g. the
         # "Study site →" launcher card, which would link the app to itself)
         t = re.sub(
-            r"<!-- study-site-only -->.*?<!-- /study-site-only -->", "", t, flags=re.DOTALL
+            r"<!-- study-site-only -->.*?<!-- /study-site-only -->",
+            "",
+            t,
+            flags=re.DOTALL,
         )
         (out / page).write_text(t, encoding="utf-8")
 

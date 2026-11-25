@@ -16,9 +16,12 @@ from pathlib import Path
 
 # Repo-relative by default (was hard-coded to /home/mick/Projects/ibsystem, which
 # made a second checkout regenerate the main tree); NEVAIB_ROOT overrides.
-ROOT = Path(os.environ.get("NEVAIB_ROOT") or Path(__file__).resolve().parent.parent).resolve()
+ROOT = Path(
+    os.environ.get("NEVAIB_ROOT") or Path(__file__).resolve().parent.parent
+).resolve()
 LIB = ROOT / "library"
 ASSETS = ROOT / "assets"
+
 
 # The PDFs (library/notes, library/official, …) are private and git-ignored. On a
 # checkout without them (CI, a fresh clone) the committed library-manifest.json —
@@ -27,7 +30,11 @@ ASSETS = ROOT / "assets"
 def _manifest_files():
     try:
         data = json.loads((LIB / "library-manifest.json").read_text(encoding="utf-8"))
-        return {it["file"] for it in data.get("items", []) if isinstance(it, dict) and "file" in it}
+        return {
+            it["file"]
+            for it in data.get("items", [])
+            if isinstance(it, dict) and "file" in it
+        }
     except (OSError, ValueError):
         return set()
 
@@ -44,7 +51,9 @@ def lib_exists(p):
         rel = p.relative_to(ROOT).as_posix()
     except ValueError:
         return False
-    top = rel.split("/")[1] if rel.startswith("library/") and rel.count("/") >= 2 else ""
+    top = (
+        rel.split("/")[1] if rel.startswith("library/") and rel.count("/") >= 2 else ""
+    )
     return bool(top) and not (LIB / top).is_dir() and rel in MANIFEST_FILES
 
 
@@ -69,7 +78,11 @@ def gather_notes(subject):
         pdfs = sorted(base.rglob("*.pdf"))
     else:  # no private notes folder here — use the committed manifest
         prefix = "library/notes/" + subject + "/"
-        pdfs = sorted(ROOT / f for f in MANIFEST_FILES if f.startswith(prefix) and f.endswith(".pdf"))
+        pdfs = sorted(
+            ROOT / f
+            for f in MANIFEST_FILES
+            if f.startswith(prefix) and f.endswith(".pdf")
+        )
     sections = {}
     for pdf in pdfs:
         rel = pdf.relative_to(ROOT).as_posix()
@@ -156,7 +169,11 @@ def syllabus(fname):
     """Official syllabus JSON (library/syllabus/): {checklistKey: topic} plus the
     ordered theme/level labels used for the hub checklist grouping."""
     data = json.loads((LIB / "syllabus" / fname).read_text(encoding="utf-8"))
-    return ({t["checklistKey"]: t for t in data["topics"]}, data["themes"], data["levels"])
+    return (
+        {t["checklistKey"]: t for t in data["topics"]},
+        data["themes"],
+        data["levels"],
+    )
 
 
 BIO_SYLLABUS = syllabus("biology-hl.json")
@@ -249,19 +266,28 @@ def checklist(subject, section_names, syllabus_map=None):
             f'<select class="rag" aria-label="confidence">'
             f'<option value="">–</option><option value="r">red</option>'
             f'<option value="a">amber</option><option value="g">green</option></select>'
-            + (f'<a href="{NOTE_LINKS[key]}">study&nbsp;notes</a>' if key in NOTE_LINKS else "")
+            + (
+                f'<a href="{NOTE_LINKS[key]}">study&nbsp;notes</a>'
+                if key in NOTE_LINKS
+                else ""
+            )
             + f'<a href="{html.escape(rel)}" target="_blank">notes&nbsp;PDF</a></div>'
         )
 
     if syllabus_map:
         by_key, themes, levels = syllabus_map
         level_label = {lv["n"]: lv["label"] for lv in levels}
-        units, other = {}, []  # (theme, level) -> [(code, rel, disp)]; rows with no code
+        units, other = (
+            {},
+            [],
+        )  # (theme, level) -> [(code, rel, disp)]; rows with no code
         for _, rows in gather_notes(subject):
             for rel, disp in rows:
                 t = by_key.get(f"{subject}::{rel}")
                 if t:
-                    units.setdefault((t["theme"], t["level"]), []).append((t["code"], rel, disp))
+                    units.setdefault((t["theme"], t["level"]), []).append(
+                        (t["code"], rel, disp)
+                    )
                 else:
                     other.append((rel, disp))
         for th in themes:
@@ -284,7 +310,11 @@ def checklist(subject, section_names, syllabus_map=None):
                 for code, rel, disp in rows:
                     idx += 1
                     blocks.append(
-                        row_html(rel, disp, f' data-code="{html.escape(code)}" data-chk="{html.escape(gk)}"')
+                        row_html(
+                            rel,
+                            disp,
+                            f' data-code="{html.escape(code)}" data-chk="{html.escape(gk)}"',
+                        )
                     )
         if other:  # e.g. tools PDFs — no syllabus code, so code search never shows them
             blocks.append(
@@ -367,12 +397,14 @@ CALLOUT = (
 
 # the biology checklist is built here (not in its section below) because n_bio feeds BIO_CHECKLIST_HEAD;
 # named bio_topics_html so the math/chem calls below can keep reusing `topics_html`
-bio_topics_html, n_bio = checklist("biology-hl", BIO_SECTIONS, syllabus_map=BIO_SYLLABUS)
-MATH_ANCHOR = "<section class=\"card\" data-subject=\"math-aa-sl\"><h3>Syllabus checklist <span class='count'>(topics with notes PDFs)</span></h3>"
+bio_topics_html, n_bio = checklist(
+    "biology-hl", BIO_SECTIONS, syllabus_map=BIO_SYLLABUS
+)
+MATH_ANCHOR = '<section class="card" data-subject="math-aa-sl"><h3>Syllabus checklist <span class=\'count\'>(topics with notes PDFs)</span></h3>'
 # one constant for the checklist card head so the patch anchor below can never drift from it
 BIO_CHECKLIST_HEAD = f"<h3>Syllabus checklist <span class='count'>(official sections A–D + tools · {n_bio} rows)</span></h3>"
 BIO_ANCHOR = '<section class="card" data-subject="biology-hl">' + BIO_CHECKLIST_HEAD
-CHEM_ANCHOR = "<section class=\"card\" data-subject=\"chemistry-hl\"><h3>Syllabus checklist <span class='count'>(25 topics, Structure/Reactivity)</span></h3>"
+CHEM_ANCHOR = '<section class="card" data-subject="chemistry-hl"><h3>Syllabus checklist <span class=\'count\'>(25 topics, Structure/Reactivity)</span></h3>'
 MATH_PANEL = '<section class="card" data-subject="math-aa-sl">\n    <h3>Teaching hours (SL) <span class="count">(from the official syllabus content)</span></h3>\n    <table class="wt"><thead><tr><th>Topic</th><th>SL hours</th></tr></thead><tbody>\n      <tr><td>1. Number &amp; algebra</td><td>19</td></tr>\n      <tr><td>2. Functions</td><td>21</td></tr>\n      <tr><td>3. Geometry &amp; trigonometry</td><td>25</td></tr>\n      <tr><td>4. Statistics &amp; probability</td><td>27</td></tr>\n      <tr><td>5. Calculus</td><td>28</td></tr>\n    </tbody></table>\n    <p class="muted">Calculus carries the most hours and lands last — it is where steady DP1 pacing pays off. Full document: <a href="library/school/math-aa-syllabus-content.pdf" target="_blank">math-aa-syllabus-content.pdf</a>.</p>\n  </section>\n'
 BIO_PANEL = '<section class="card" data-subject="biology-hl">\n    <h3>ISL teaching sequence 2026–28 <span class="count">(from the school course outline — timings approximate)</span></h3>\n    <table class="wt"><thead><tr><th>When</th><th>Units</th><th>Assessments</th></tr></thead><tbody>\n      <tr><td>DP1 Sep–Oct</td><td>Form &amp; function: A1.1 water · B1.1/B1.2 carbohydrates, lipids, proteins · A1.2 nucleic acids</td><td>unit tests</td></tr>\n      <tr><td>DP1 Nov</td><td>C1.1 enzymes &amp; metabolism</td><td><strong>IA practice</strong>: hydrogen peroxide (design · analysis · conclusion · evaluation)</td></tr>\n      <tr><td>DP1 Nov–Dec</td><td>Unity: A2.2 cell structure · B2.2 organelles · B2.3 specialization · A2.1 origin of cells</td><td><strong>January exam</strong> — everything to date</td></tr>\n      <tr><td>DP1 Jan–Feb</td><td>B2.1 membranes &amp; transport · D2.3 water potential</td><td><strong>IA practice</strong>: beetroot membranes (research design) · osmosis in potatoes (analysis/conclusion/evaluation)</td></tr>\n      <tr><td>DP1 Feb–Mar</td><td>C1.2 cell respiration · D1.2 protein synthesis · D2.2 gene expression · C3.2 defence against disease</td><td>tests</td></tr>\n      <tr><td>DP1 Apr–May</td><td>Flow: C1.3 photosynthesis · C4.2 transfer of energy &amp; matter · B3.1 gas exchange · B3.2 transport</td><td><strong>June exam</strong> — everything to date</td></tr>\n      <tr><td>DP1 June</td><td>B4.1/B4.2 niches · C4.1 populations · D1.1 DNA replication · A2.3 viruses</td><td><strong>IA experiments (late June)</strong></td></tr>\n      <tr><td>DP2 Sep–Nov</td><td>Continuity: D2.1 division · D3.1 reproduction · Diversity: A3.1/A3.2 · D1.3 mutation · D3.2 inheritance · A4.2 conservation</td><td><strong>IA draft (early Sept)</strong> → <strong>IA final (early Nov)</strong></td></tr>\n      <tr><td>DP2 Dec–Mar</td><td>Control &amp; coordination (C3.1, C2.2, B3.3, D3.3, C2.1) · Change (D4.1 selection, A4.1 evolution, D4.2, D4.3 climate)</td><td><strong>Mock exams (January)</strong></td></tr>\n    </tbody></table>\n    <p class="muted">Checklist rows below carry the same topic codes — keep the current unit green before its test. Official outline: <a href="library/school/bio-course-outline-2026-28.pdf" target="_blank">bio-course-outline-2026-28.pdf</a>.</p>\n  </section>\n'
 CHEM_PANEL = '<section class="card" data-subject="chemistry-hl">\n    <h3>ISL timeline for the M28 cohort <span class="count">(from the school\'s "Chemistry at a glance")</span></h3>\n    <table class="wt"><thead><tr><th>When</th><th>ISL unit</th><th>Checklist section below</th></tr></thead><tbody>\n      <tr><td>DP1 Sep</td><td>Atomic theory &amp; kinetic theory</td><td>Structure 1 — particulate nature of matter</td></tr>\n      <tr><td>DP1 Oct–Nov</td><td>Periodicity · Stoichiometry</td><td>Structure 3 (classification) · Reactivity 2 — how much</td></tr>\n      <tr><td>DP1 Dec–Jan</td><td>Energetics</td><td>Reactivity 1 — what drives reactions</td></tr>\n      <tr><td>DP1 Feb–Mar</td><td>Kinetics · Equilibrium</td><td>Reactivity 2 — how fast · how far</td></tr>\n      <tr><td>DP1 Apr–May</td><td>Redox</td><td>Reactivity 3 — mechanisms of change</td></tr>\n      <tr><td>DP1 June</td><td>Acids and bases</td><td>Reactivity 3 — mechanisms of change</td></tr>\n      <tr><td>DP2 Sep–Oct</td><td>Acids &amp; bases (finish) · <strong>IA labwork</strong></td><td>—</td></tr>\n      <tr><td>DP2 Oct–Nov</td><td>Bonding</td><td>Structure 2 — models of bonding</td></tr>\n      <tr><td>DP2 Nov–Mar</td><td>Organic chemistry</td><td>Structure 3 — functional groups · Reactivity 3</td></tr>\n      <tr><td>DP2 Apr</td><td>Practical skills for Paper 1B</td><td>Tools (skills)</td></tr>\n    </tbody></table>\n    <p class="muted">School document: <a href="library/school/chem-at-a-glance-m28.pdf" target="_blank">chem-at-a-glance-m28.pdf</a> (subject to change — it does not replace the IB guide).</p>\n  </section>\n'
@@ -550,14 +582,14 @@ SUBJECTS["math-aa-sl.html"] = dict(
             + "<div class='legend'>bold = non-teaching weeks (exams, IA, revision, trips &amp; breaks)</div>"
             + math_calendar_html
             + "<p class='muted'>Week numbering as published (source footnote: “based on 2019/2020 calendar”); "
-            "no absolute dates are set yet — milestones as published in the “Course Calendar 2026–2028”.</p>"
+            "no absolute dates are set yet — milestones as published in the “Course Calendar 2026–2028”.</p>",
         )
         + subject_card(
             "math-aa-sl",
             "<h3>Syllabus checklist <span class='count'>(topics with notes PDFs)</span></h3>"
             + "<div class='legend'>checkbox = revised · red/amber/green = confidence</div>"
             + "<div class='bar' data-subject='math-aa-sl'></div>"
-            + topics_html
+            + topics_html,
         )
         + card(
             "<h3>Official documents</h3><ul class='links'>"
@@ -605,9 +637,9 @@ SUBJECTS["biology-hl.html"] = dict(
             + "<div class='legend'>checkbox = revised · red/amber/green = confidence</div>"
             + "<div class='bar' data-subject='biology-hl'></div>"
             + "<div class='lib-filter'><input id='chk-search' type='text' "
-              "placeholder='search syllabus code or title…' aria-label='search'></div>"
+            "placeholder='search syllabus code or title…' aria-label='search'></div>"
             + "<p class='muted' id='chk-empty' hidden>No matches — clear the search to see every row.</p>"
-            + bio_topics_html
+            + bio_topics_html,
         )
         + card(
             "<h3>Official documents</h3><ul class='links'>"
@@ -652,7 +684,7 @@ SUBJECTS["chemistry-hl.html"] = dict(
             "<h3>Syllabus checklist <span class='count'>(25 topics, Structure/Reactivity)</span></h3>"
             + "<div class='legend'>checkbox = revised · red/amber/green = confidence</div>"
             + "<div class='bar' data-subject='chemistry-hl'></div>"
-            + topics_html
+            + topics_html,
         )
         + card(
             "<h3>Official documents</h3><ul class='links'>"
@@ -704,7 +736,7 @@ SUBJECTS["history-sl.html"] = dict(
             + rag_row(
                 "history::ia-topic",
                 "IA — topic chosen, 7-source cap planned, research underway",
-            )
+            ),
         )
         + card(
             "<h3>Official documents</h3><ul class='links'>"
@@ -765,7 +797,7 @@ SUBJECTS["french-a-langlit.html"] = dict(
             )
             + rag_row(
                 "french::io-bank", "IO — global-issue bank + extract choices building"
-            )
+            ),
         )
         + card(
             "<h3>Official documents</h3><ul class='links'>"
@@ -1155,7 +1187,6 @@ li.future{padding:.3rem 0}
 .t-main{flex:2 1 230px;min-width:170px}
 .t-field{flex:1 1 150px;min-width:130px}
 .titem input[type="checkbox"]{width:auto;margin:0 .1rem}
-.titem .t-tick{font-size:.75rem;color:var(--muted)}
 .t-del{border:none;background:none;color:#c23b3b;cursor:pointer;font-size:1.05rem;padding:.05rem .3rem}
 .tadd{display:flex;flex-wrap:wrap;gap:.4rem;margin:.55rem 0 .2rem}
 .tadd button{font:inherit;font-size:.88rem;border:1px solid var(--accent);border-radius:8px;padding:.3rem .7rem;background:var(--accent);color:#fff;cursor:pointer}

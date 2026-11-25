@@ -229,7 +229,7 @@ async function init() {
   // selected. Set option values are indexes into the node's sorted sets list.
   function syncSetSelect() {
     const sel = $("q-set");
-    if (!sel) return; // pages without the new markup (legacy quiz.html) keep working
+    if (!sel) return; // pages that load the engine without the picker markup keep working
     const key = $("q-subject").value;
     const pick = $("q-topic") ? $("q-topic").value : "*";
     if (pick === "*") { sel.value = "*"; sel.disabled = true; sel.style.display = "none"; return; }
@@ -1387,7 +1387,7 @@ async function init() {
   // (buildTopics/taughtState/difficultyPass and the display-name helpers) is
   // exported for the node tests
   window.NB = window.NB || {};
-  window.NB.quizEngine = { isActive, bankItems, buildTopics, taughtState, difficultyPass, pickSessionItems, DIFFICULTY_ORDER, pickReviewErrors, migrateUserBankKeys, disambiguateSetNames, unratedSuffix, TAUGHT_SUFFIX, dueDelayMs, nextDueAt, isDue, applyRetry, recordError, markReviewResult, boundResponse, hideQuestion, restoreQuestion, fcSaveFromQuiz };
+  window.NB.quizEngine = { isActive, bankItems, buildTopics, taughtState, difficultyPass, pickSessionItems, DIFFICULTY_ORDER, pickReviewErrors, migrateUserBankKeys, disambiguateSetNames, unratedSuffix, dueDelayMs, nextDueAt, isDue, applyRetry, recordError, markReviewResult, boundResponse, hideQuestion, restoreQuestion, fcSaveFromQuiz };
 
   // the hidden panel re-renders when "q-hidden" changes (sync arriving, another
   // tab, or this page's own hide/restore) — the same debounced watch as

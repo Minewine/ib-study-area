@@ -135,14 +135,14 @@ one fact per card).
 
 ## Where the engines read from
 
-- `quiz.html` loads `library/questions/manifest.json` at startup and builds its **Subject →
+- `app/quiz.html` loads `library/questions/manifest.json` at startup and builds its **Subject →
   syllabus topic → practice set** hierarchy from it. Each entry keeps its hand-written
   `{"file", "subject", "subjectLabel", "label"}` plus computed metadata (added by
   `tools/build_questions_manifest.py`): the bank's `topic`/`topicLabel`/`set`/`setOrder`/
   `codes`/`paperStyle`/`calculatorFree`, `counts {mcq, written, total}` over active items, and
   `topics: [{topic, topicLabel, count, difficulty:{unrated, easy, standard, hard}}]` — the
   per-topic aggregation (effective topic = item `topic`, else the bank's, else the filename).
-- `flashcards.html` loads `library/flashcards/manifest.json` the same way (topic options show
+- `app/cards.html` loads `library/flashcards/manifest.json` the same way (topic options show
   card counts; deck `set` names appear when a topic has them).
 - Both have a built-in fallback list, so the site keeps working even if a manifest is broken —
   fallback banks simply appear as one set each, without metadata.
